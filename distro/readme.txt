@@ -34,8 +34,8 @@ The pipeline accepts an XML document and emits a validity report as XML.
 
 DTD validation is performed on the document (the DTD must be declared in 
 the document itself in the normal way), and Schematron validation is performed
-on the document. The results of these processes are combined into a consolidated
-validation report.
+on the document if it is valid. The results of these processes are combined
+into a consolidated validation report.
 
 To invoke the pipeline, first ensure the calabash.jar and the Saxon JAR are on
 the CLASSPATH (as well as the current folder). Then 
