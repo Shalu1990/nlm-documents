@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!DOCTYPE book SYSTEM "../../../eclipse/plugins/com.oxygenxml.editor_11.2.0.v2010061615/frameworks/docbook/5.0/dtd/docbook.dtd">
+<book>
+  <title>Nature Content Specification </title>
+
+  <chapter>
+    <title>Using this document</title>
+    <sect1>
+      <title>General</title>
+      <para>This document specifies XML-based content for Nature's publications. All deliveries made
+        to Nature must conform to the provisions of this document.</para>
+    </sect1>
+
+    <sect1>
+      <title>Verbal Forms</title>
+      <para>The words “must” and “should” – and their negative forms - appear in bold type and are
+        to be interpreted as per [RFC 2199], i.e.</para>
+
+
+
+      <itemizedlist>
+        <listitem>
+          <para><command>must</command> &#x2014; this word means that the course of action specified
+            is an absolute requirement.</para>
+        </listitem>
+        <listitem>
+          <para><command>must not</command>&#x2014; this phrase means that the course of action
+            specified is an absolute prohibition.</para>
+        </listitem>
+        <listitem>
+          <para><command>should</command> &#x2014; this word means that there may exist valid
+            reasons in particular circumstances to ignore a particular item, but the full
+            implications must be understood and carefully weighed before choosing a different
+            course.</para>
+        </listitem>
+        <listitem>
+          <para><command>should not</command> &#x2014; this phrase means that there may exist valid
+            reasons in particular circumstances when a course of action is acceptable or even
+            useful, but the full implications should be understood and the case carefully weighed
+            implementing any course of action described with this label. </para>
+        </listitem>
+      </itemizedlist>
+
+    </sect1>
+  </chapter>
+
+  <chapter>
+    <title>Packaging Format</title>
+    <para>About Zip archive structures &amp; naming conventions.</para>
+  </chapter>
+
+  <chapter>
+    <title>Media files</title>
+    <para>About graphics etc. file formats.</para>
+  </chapter>
+
+  <chapter>
+    <title>XML documentss</title>
+    <sect1>
+      <title>General</title>
+      <sect2>
+        <title>XML</title>
+        <para>All supplied XML documents must conform to the XML Recommendation of the W3C [W3C
+          XML].</para>
+      </sect2>
+      <sect2>
+        <title>Validity</title>
+        <para>All supplied XML documents must be valid to a schema (or DTD) of the NLM Journal
+          Publishing Tag Set version 3.0 [NLM 3.0].</para>
+      </sect2>
+      <sect2>
+        <title>Whitespace</title>
+        <para>Supplied XML may be pretty-printed to aid editing. All sequences of whitespace
+          characters (space, tab and newline) are interpreted a single whitespace characters during
+          processing. To represent multiple spaces more specific whitespace characters
+            <command>must</command> be used, such as the Unicode 'NO-BREAK SPACE' (U+00A0).</para>
+      </sect2>
+    </sect1>
+    <sect1>
+      <title>Reference markup</title>
+      <sect2>
+        <title>General</title>
+        <para>All back-of-article references <command>must</command> be contained within a
+            <tag>&lt;ref></tag> element. An <tag>id</tag> attribute <command>must</command> be
+          supplied. For Nature content, the child element of &lt; ref <command>must</command> be
+            <tag>&lt;element-citation></tag>. The <tag>&lt;mixed-citation></tag> and
+            <tag>&lt;nlm-citation></tag> element <command>must not</command> be used. Punctuation
+          between components of the reference (other than around initials in given names)
+            <command>must not</command> be present.</para>
+      </sect2>
+      <sect2>
+        <title>References to journal articles</title>
+        <sect3>
+          <title>General</title>
+          <para>All references to journal articles must have a value of "journal" for the
+              <tag>publication-type</tag> attribute of the <tag>&lt;element-citation></tag> element.
+            The content of the element <command>should</command> appear in the order in which it
+            appears when rendered. The following elements must be used for content: </para>
+          <itemizedlist>
+            <listitem>
+              <para><command>authors</command> &#x2014; each author <command>must</command> be marked-up with a
+                <tag>&lt;name></tag> element. The surname <command>must</command> be marked-up with a <tag>&lt;surname></tag> element and
+                given names with the &lt;given-names> element. Other name elements <command>should</command> be marked
+                up with <tag>&lt;prefix></tag> and <tag>&lt;suffix></tag> elements as appropriate (e.g. the suffix "Jr"
+                <command>should</command> be marked-up with a <tag>&lt;suffix></tag> element.</para>
+
+            </listitem>
+            <listitem>
+              <para><command>etal</command> &#x2014; the content "etal" or "et al" <command>must not</command> appear as
+                text in XML content, but <command>must</command> be marked up as an empty <tag>&lt;etal></tag> element following
+                the last name in the reference.</para>
+            </listitem>
+            <listitem>
+              <para><command>journal titles</command> &#x2014; <command>must</command> be marked-up using the
+                <tag>&lt;source></tag> element.</para>
+            </listitem>
+            <listitem>
+              <para><command>cover years</command> &#x2014; <command>must</command> be marked-up using the <tag>&lt;year></tag>
+                element.</para>
+            </listitem>
+            <listitem>
+              <para><command>pages</command> &#x2014; <command>must</command> be marked-up using the <tag>&lt;fpage></tag> and
+               <tag> &lt;lpage></tag> elements. For single-page articles the <tag>&lt;fpage></tag> element only <command>must</command> be
+                used. Any <tag>&lt;lpage></tag> elements <command>must</command> contain the full page number: abbreviated numbers
+                <command>must not</command> be used.</para>
+            </listitem>
+          </itemizedlist>
+        </sect3>
+        <sect3>
+          <title>Example</title>
+          <programlisting><![CDATA[   <ref id="b2">
+    <element-citation publication-type="journal">
+      <name><surname>Pelicano</surname><given-names>H.</given-names></name>
+      <etal/>
+      <source>Oncogene</source>
+      <volume>25</volume>
+      <fpage>4633</fpage>
+      <lpage>4646</lpage>
+      <year>2006</year>
+    </element-citation>
+  </ref> ]]>
+            
+          </programlisting>
+        
+        </sect3>
+      </sect2>
+    </sect1>
+
+  </chapter>
+
+</book>

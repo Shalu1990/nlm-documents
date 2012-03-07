@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//NPG//DTD XML Article//EN" "NPG_XML_Article.dtd">
+<article publish="online" id="scibx.2008.1098">
+<pubfm>
+<jtl>Science-Business eXchange</jtl>
+<vol>1</vol>
+<iss>45</iss>
+<idt>20081218</idt>
+<categ id="dther"/>
+<pp><spn>2</spn><epn>2</epn><cnt>1</cnt></pp>
+<issn>1945-3477</issn>
+<cpg><cpy>2008</cpy><cpn>Nature Publishing Group</cpn></cpg>
+<chghst>
+	<chg chgtype="erratum">
+		<chgperson>
+			<fnm></fnm>
+			<snm></snm>
+		</chgperson>
+		<chgdate year="2009" month="02" day="13"></chgdate>
+		<chgloc></chgloc>
+		<chgmade>In the original version of this article, the information about Regulus Therapeutics LLC was omitted.</chgmade>
+		<chgreason></chgreason>
+	</chg>
+</chghst>
+<subject code="scibx-12"/>
+<indications code="Cardiovascular disease"/>
+<indications code="fibrosis"/>
+<doi>10.1038/scibx.2008.1098</doi></pubfm>
+<fm>
+<atl>MicroRNA-21 (miRNA-21)</atl>
+<hst>
+<pubdate year="2008" month="12" day="18"/></hst>
+<edsumm publish="issue" type="standfirst"><title></title><p>Studies in mice suggest that antagonizing miRNA-21 could potentially lower cardiac fibrosis and treat cardiovascular disease.</p></edsumm></fm>
+<bdy>
+<sec level="1">
+<sectitle>Summary</sectitle>
+<p>Studies in mice suggest that antagonizing miRNA-21 could potentially lower cardiac fibrosis and treat cardiovascular disease. Myocardial miRNA-21 was upregulated in three different mouse models of cardiac failure and in patients with end-stage heart failure compared with what was seen in healthy controls. An antagomir targeting miRNA-21 lowered cardiac fibrosis, cardiomyocyte size and heart weight and improved cardiac function in two different mouse models of cardiac failure compared with what was seen in mice that received saline control. Further studies in larger animal models of heart failure are necessary to determine the therapeutic efficacy of an antagomir approach to silencing miRNA-21.</p>
+<p><weblink url="http://www.biocentury.com/companies/Regulus_Therapeutics_LLC?utm_source=1"><b>Regulus Therapeutics LLC</b></weblink>, which was an author on the paper, has an early-stage miRNA program targeting miRNA-21 for cardiovascular diseases and fibrosis. Regulus is a joint venture between <weblink url="http://www.biocentury.com/companies/Alnylam_Pharmaceuticals_Inc?utm_source=1"><b>Alnylam Pharmaceuticals Inc.</b></weblink> and <weblink url="http://www.biocentury.com/companies/Isis_Pharmaceuticals_Inc?utm_source=1"><b>Isis Pharmaceuticals Inc.</b></weblink></p>
+<p><weblink url="http://www.biocentury.com/companies/miRagen_Therapeutics_Inc?utm_source=1"><b>miRagen Therapeutics Inc.</b></weblink> has multiple miRNA-targeting compounds in preclinical development to treat cardiovascular indications.</p></sec>
+<sec level="1">
+<sectitle>Licensing Status</sectitle>
+<p>Several patent applications filed covering diagnostic and therapeutic application of miRNAs in cardiovascular disease; available for licensing</p></sec></bdy>
+<bm>
+<bibl>
+<bib id="b1"><reftxt><refau><snm>Thum</snm>, <fnm>T.</fnm></refau> <i>et al</i>. <jtl>Nature</jtl>; published online <cd year="2008" month="11" day="30">Nov. 30, 2008</cd>; <refdoi>10.1038/nature07511</refdoi>
+<contact>Stefan Engelhardt, University of W&uuml;rzburg, W&uuml;rzburg, Germany
+<email>stefan.engelhardt@virchow.uni-wuerzburg.de</email></contact></reftxt></bib></bibl></bm></article>

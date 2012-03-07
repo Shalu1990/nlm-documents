@@ -1,0 +1,65 @@
+This folder contains a pipeline for validating XML documents that conform to
+Nature's spec for using the NLM Journal Publishing model version 3.0.
+
+
+FOLDER CONTENTS
+===============
+
+The folder contains:
+
+Files supplied by NPG:
+- the customized NLM DTD (.dtd files, .ent files, associated folders, etc.)
+- a Schematron schema (Nature-NLM.sch, with supporting XML files)
+
+Support files for running the pipeline:
+- The SAXON XSLT and XQuery processor (in the saxon folder)
+- The Calabash XProc processor (in the calabash-1.0.2-94 folder)
+
+The pipeline itself:
+- XProc file: Nature-validate.xpl
+- A custom java class (Documap* class and java files)
+- convenience scrips for invocation (.bat files)
+
+
+JVM REQUIREMENTS
+================
+
+The pipeline require a Java JVM version 1.6 or greater.
+
+
+RUNNING THE PIPELINE
+====================
+
+The pipeline accepts an XML document and emits a validity report as XML.
+
+DTD validation is performed on the document (the DTD must be declared in 
+the document itself in the normal way), and Schematron validation is performed
+on the document. The results of these processes are combined into a consolidated
+validation report.
+
+To invoke the pipeline, first ensure the calabash.jar and the Saxon JAR are on
+the CLASSPATH (as well as the current folder). Then 
+
+java com.xmlcalabash.drivers.Main Nature-validate.xpl candidate-sysid=[file]
+
+where [file] is the system identifier or URI of the document to be validated.
+
+The emitted report is rooted on the <report> element and contains a <message>
+element for each invalidity and/or Schematron rule triggered.
+
+
+EXAMPLE OUTPUT
+==============
+
+<report>
+  <message type="error" code="err:SXXP0003" line="12" column="15">org.xml.sax.SAXParseException:
+    Element type "eissn" must be declared.</message>
+  <message type="error" code="err:SXXP0003" line="16" column="20">org.xml.sax.SAXParseException: The
+    content of element type "journal-meta" must match
+    "(journal-id+,journal-title-group*,issn+,isbn*,publisher?,notes?)".</message>
+  <message id="ameta1b" location="/article[1]/front[1]/article-meta[1]/article-id[2]" line="19"
+    column="46">Article publisher id (scibx.2008.1091) does not match XML filename:
+    file:/C:/work/npg-xml/trunk/distro/test-candidate.xml.</message>
+</report> 
+
+ 

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+*******************************************************************************
+*
+This allowed values file is for use with the NLM Schematron rules file.
+
+It contains the allowed values of elements and attributes for each journal.
+
+Created - 20120208
+
+
+
+Notes: May have more than one doi-stem value depending upon history of journal
+
+?? Article types - list per journal, or have as separate elements with journal children (as in subject codes) ??
+
+*
+*******************************************************************************
+-->
+
+<allowed-values>
+  <journal title="Application Notes"></journal>
+  <journal title="BDJ"></journal>
+  <journal title="Bioentrepreneur"></journal>
+  <journal title="BoneKEy-Osteovision"></journal>
+  <journal title="BoneKEy Reports"></journal>
+  <journal title="British Dental Journal"></journal>
+  <journal title="Cell Migration Gateway"></journal>
+  <journal title="EMBO reports"></journal>
+  <journal title="Functional Glycomics"></journal>
+  <journal title="Functional Glycomics Gateway"></journal>
+  <journal title="GI Motility online"></journal>
+  <journal title="IBMS BoneKEy"></journal>
+  <journal title="Lab Animal"></journal>
+  <journal title="Molecular Systems Biology"></journal>
+  <journal title="Nature"></journal>
+  <journal title="Nature Biotechnology"></journal>
+  <journal title="Nature Cell Biology"></journal>
+  <journal title="Nature Chemical Biology"></journal>
+  <journal title="Nature Chemistry"></journal>
+  <journal title="Nature China"></journal>
+  <journal title="Nature Climate Change"></journal>
+  <journal title="Nature Clinical Practice Cardiovascular Medicine"></journal>
+  <journal title="Nature Clinical Practice Endocrinology &amp; Metabolism"></journal>
+  <journal title="Nature Clinical Practice Gastroenterology &amp; Hepatology"></journal>
+  <journal title="Nature Clinical Practice Nephrology"></journal>
+  <journal title="Nature Clinical Practice Neurology"></journal>
+  <journal title="Nature Clinical Practice Oncology"></journal>
+  <journal title="Nature Clinical Practice Rheumatology"></journal>
+  <journal title="Nature Clinical Practice Urology"></journal>
+  <journal title="Nature Communications"></journal>
+  <journal title="Nature Digest"></journal>
+  <journal title="Nature Genetics"></journal>
+  <journal title="Nature Geoscience"></journal>
+  <journal title="Nature Immunology"></journal>
+  <journal title="Nature India"></journal>
+  <journal title="Nature Materials"></journal>
+  <journal title="Nature Medicine"></journal>
+  <journal title="Nature Methods"></journal>
+  <journal title="Nature Middle East"></journal>
+  <journal title="Nature Nanotechnology"></journal>
+  <journal title="Nature Neuroscience">
+    <id>nneuro</id>
+  </journal>
+  <journal title="Nature News"></journal>
+  <journal title="Nature Photonics"></journal>
+  <journal title="Nature Physics"></journal>
+  <journal title="Nature Protocols"></journal>
+  <journal title="Nature Reports Climate Change"></journal>
+  <journal title="Nature Reports Stem Cells"></journal>
+  <journal title="Nature Reviews Cancer"></journal>
+  <journal title="Nature Reviews Cardiology"></journal>
+  <journal title="Nature Reviews Clinical Oncology"></journal>
+  <journal title="Nature Reviews Drug Discovery"></journal>
+  <journal title="Nature Reviews Endocrinology"></journal>
+  <journal title="Nature Reviews Gastroenterology &amp; Hepatology"></journal>
+  <journal title="Nature Reviews Genetics"></journal>
+  <journal title="Nature Reviews Immunology"></journal>
+  <journal title="Nature Reviews Microbiology"></journal>
+  <journal title="Nature Reviews Molecular Cell Biology"></journal>
+  <journal title="Nature Reviews Nephrology"></journal>
+  <journal title="Nature Reviews Neurology"></journal>
+  <journal title="Nature Reviews Neuroscience"></journal>
+  <journal title="Nature Reviews Rheumatology"></journal>
+  <journal title="Nature Reviews Urology"/>
+  <journal title="Nature Structural &amp; Molecular Biology"></journal>
+  <journal title="Nature Structural Biology"></journal>
+  <journal title="NatureJobs"></journal>
+  <journal title="Neuroscience Gateway"/>
+  <journal title="PSI Structural Genomics Knowledgebase"></journal>
+  <journal title="Science-Business eXchange">
+    <id>scibx</id>
+    <doi-stem>10.1038/</doi-stem>
+    <publisher>Nature Publishing Group</publisher>
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+    <article-types>cstory dplat dtech dther mark ppi prostmech prostools tmech tnotes tools</article-types>
+  </journal>
+  <journal title="Scientific American"></journal>
+  <journal title="Scientific American Mind"></journal>
+  <journal title="Scientific Reports"></journal>
+  <journal title="Structural Biology KnowledgeBase"></journal>
+  <journal title="Structural Genomics Update"></journal>
+  <journal title="The EMBO Journal"></journal>
+  <journal title="Vital"></journal>
+
+</allowed-values>

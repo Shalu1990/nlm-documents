@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//NPG//DTD XML Article//EN" "NPG_XML_Article.dtd">
+<article publish="online" id="scibx.2010.940">
+<entity-declarations>
+<entity id="figf1" url="scibx.2010.940-F1.jpg"/>
+<entity id="tbl1" url="scibx.2010.940-T1.jpg"/>
+<entity id="slidepf1" url="scibx.2010.940-pf1.ppt"/>
+<entity id="slidept1" url="scibx.2010.940-pt1.ppt"/>
+<entity id="ill1" url="scibx.2010.940-I1.jpg"/>
+</entity-declarations>
+<pubfm>
+<jtl>Science-Business eXchange</jtl>
+<vol>3</vol>
+<iss>31</iss>
+<idt>20100812</idt>
+<categ id="cstory"/>
+<issn>1945-3477</issn>
+<cpg><cpy>2010</cpy><cpn>Nature Publishing Group</cpn></cpg>
+<nvid extrefid="scibx.2010.954"/>
+<subject code="scibx-14"/>
+<indications code="Tuberculosis (TB)"/>
+<doi>10.1038/scibx.2010.940</doi></pubfm>
+<fm>
+<atl>Resolving the PPAR<sub>&gamma;</sub> paradox</atl>
+<alt-title>New antidiabetic mechanism of PPAR<sub>&gamma;</sub> agonists</alt-title>
+<aug>
+<auname><fnm>Chris</fnm><snm>Cain</snm><ttl>Staff Writer</ttl><inits>C.</inits></auname></aug>
+<hst><pubdate year="2010" month="08" day="12"/></hst>
+<edsumm type="standfirst" publish="issue"><title></title>
+<p>Dana-Farber and Scripps Florida scientists have identified an alternative mechanism by which PPAR<sub>&gamma;</sub> agonists could exert their antidiabetic effects. The findings provide a rationale for a renewed look at compounds previously dismissed due to poor agonist activity but that now may offer therapeutic benefits with the potential for fewer side effects than marketed PPAR<sub>&gamma;</sub> agonists.</p></edsumm>
+<kwdg class="article-keywords">
+<kwd>peroxisome proliferation&ndash;activated receptor-&gamma;</kwd>
+<kwd>PPARG</kwd>
+<kwd>PPAR<sub>&gamma;</sub></kwd>
+<kwd>insulin</kwd>
+<kwd>INT131</kwd>
+<kwd>Avandia rosiglitazone</kwd>
+<kwd>Actos pioglitazone</kwd>
+<kwd>thiazolidinedione</kwd>
+<kwd>TZD</kwd>
+<kwd>cyclin dependent kinase 5</kwd>
+<kwd>CDK<sup>5</sup></kwd>
+<kwd>adiponectin</kwd>
+<kwd>glucose</kwd>
+<kwd>MBX-102</kwd>
+<kwd>Balaglitazone</kwd>
+<kwd>DRF 2593</kwd>
+<kwd>Dana-Farber Cancer Institute</kwd>
+<kwd>GlaxoSmithKline plc</kwd>
+<kwd>Harvard Medical School</kwd>
+<kwd>InteKrin Therapeutics Inc.</kwd>
+<kwd>Metabolex Inc.</kwd>
+<kwd>Scripps Florida</kwd>
+<kwd>Takeda Pharmaceutical Co. Ltd.</kwd>
+<kwd>The University of Texas Southwestern Medical Center at Dallas</kwd>
+</kwdg></fm>
+<bdy>
+<p>Researchers at the <weblink url="http://www.dana-farber.org/"><b>Dana-Farber Cancer Institute</b></weblink> and <weblink url="http://www.scripps.edu/florida/"><b>Scripps Florida</b></weblink> have found an alternative mechanism by which peroxisome proliferation&ndash;activated receptor-&gamma; <!--(PPARG; PPAR<sub>&gamma;</sub>)-->agonists exert their antidiabetic effects.<bibr rid="b1"/> By blocking phosphorylation of the protein, these compounds actually may improve insulin sensitivity independent of receptor agonism.</p>
+<p><illusr rid="illus1"/></p>
+<p>The findings offer a reason for drug companies to take a fresh look at antidiabetic compounds that may have been previously dismissed due to their reduced agonistic activity but now may be seen to offer therapeutic benefits with the potential for fewer side effects than marketed peroxisome proliferation&ndash;activated receptor-&gamma; (PPARG; PPAR<sub>&gamma;</sub>) agonists.</p>
+<p>Indeed, the alternative mechanism may explain how partial PPAR<sub>&gamma;</sub> agonists in clinical development, including <weblink url="http://www.biocentury.com/companies/InteKrin_Therapeutics_Inc?utm_source=1"><b>InteKrin Therapeutics Inc.</b></weblink>'s INT131, can exhibit potent antidiabetic effects similar to those of full agonists such as <weblink url="http://www.biocentury.com/companies/GlaxoSmithKline_plc?utm_source=1"><b>GlaxoSmithKline plc</b></weblink>'s Avandia rosiglitazone and <weblink url="http://www.biocentury.com/companies/Takeda_Pharmaceutical_Co_Ltd?utm_source=1"><b>Takeda Pharmaceutical Co. Ltd.</b></weblink>'s Actos pioglitazone.</p>
+<p>Avandia and Actos are marketed to treat type 2 diabetes and had combined worldwide sales of over &dollar;4.5 billion in 2009. However, patients taking these thiazolidinedione (TZD) drugs can experience side effects such as weight gain and edema. An FDA advisory panel recently split on whether Avandia should be taken off the market due to a potential increase in the risk of cardiovascular events.<bibr rid="b2"/></p>
+<p>Patents on Actos and Avandia will begin to expire in 2011 and 2012, respectively, placing further commercial pressure on companies targeting PPAR<sub>&gamma;</sub>.</p>
+<p>Now, a team led by Bruce Spiegelman, Korsmeyer professor of cell biology at <weblink url="http://hms.harvard.edu/hms/home.asp"><b>Harvard Medical School</b></weblink> and Dana-Farber, and Patrick Griffin, professor and chair of molecular therapeutics and director of the Translational Research Institute at Scripps Florida, has shown that PPAR<sub>&gamma;</sub> is phosphorylated by the obesity-activated cyclin dependent kinase 5 (CDK<sup>5</sup>), which results in misregulation of a subset of genes that are important for insulin sensitivity (<i>see</i> <figr rid="f1"><b>Figure 1</b></figr><b>, &ldquo;A new way to target PPAR<sub>&gamma;</sub>&rdquo;</b>).</p>
+<p>The researchers then went on to show that some PPAR<sub>&gamma;</sub> agonists can block this CDK<sup>5</sup>-mediated phosphorylation (<i>see</i> <tablr rid="t1"><b>Table 1</b></tablr><b>, &ldquo;Targeting PPAR<sub>&gamma;</sub>&rdquo;</b>). Critically, the extent to which a compound agonizes PPAR<sub>&gamma;</sub> is not correlated with the extent to which it inhibits phosphorylation, suggesting that these compounds have two distinct and separable activities.</p>
+<p>The results were published in <bi>Nature</bi>.</p>
+<p>&ldquo;It always seemed strange that so-called 'full' agonists such as TZDs and 'partial' agonists such as non-TZDs had similar antidiabetic function <i>in vivo</i>,&rdquo; said Spiegelman. &ldquo;It just didn't make sense. It now appears likely that a substantial portion of the therapeutic benefit of PPAR<sub>&gamma;</sub> ligands is through the inhibition of CDK<sup>5</sup>-mediated phosphorylation.&rdquo;</p>
+<p>PPAR<sub>&gamma;</sub> agonism has classically been measured as a compound's ability to stimulate transcription of a PPAR<sub>&gamma;</sub>-responsive reporter gene in cell culture. A compound was dubbed a partial agonist if it stimulated less reporter activity than rosiglitazone, the standard benchmark.</p>
+<p>&ldquo;For a number of years compounds have been identified that bound to PPAR<sub>&gamma;</sub>, had little or no transcriptional agonism in a traditional sense and yet had antidiabetic properties in animal models,&rdquo;<bibr rid="b3 b4 b5"/> noted Steven Kliewer, professor of molecular biology at <weblink url="http://www.utsouthwestern.edu/"><b>The University of Texas Southwestern Medical Center at Dallas</b></weblink> and a member of InteKrin's scientific advisory board. &ldquo;This paper presents a potential mechanism for understanding this, and it's a big advance.&rdquo;</p>
+<p>Spiegelman's team demonstrated the function of CDK<sup>5</sup>-mediated phosphorylation by transplanting fibroblasts subcutaneously into mice and allowing them to differentiate into adipocytes. Transplantation of adipocytes that expressed PPAR<sub>&gamma;</sub> lacking this phosphorylation site led to greater levels of adiponectin, a key hormone that maintains insulin sensitivity, whereas transplantation of adipocytes that expressed wild-type PPAR<sub>&gamma;</sub> did not (ref. <bibrinl rid="b7">7</bibrinl>).</p>
+<p>In contrast, mutation of this phosphorylation site had no effect on the level of PPAR<sub>&gamma;</sub> agonism in classical transcriptional reporter assays, whether in the presence or absence of rosiglitazone.</p>
+<p>However the most striking result was shown in patients taking a TZD agonist, in this case Avandia, in which a decrease in PPAR<sub>&gamma;</sub> phosphorylation was significantly correlated with improvement in glucose infusion rate, a measure of insulin sensitivity (<i>p</i>=0.001).</p>
+<p>&ldquo;This is the most exciting result,&rdquo; said Kliewer. &ldquo;It's a killer figure.&rdquo;</p>
+<sec level="1">
+<sectitle>Agonizing over mechanism</sectitle>
+<p>Spiegelman reached out to Griffin to gain structural insight into how chemically distinct PPAR<sub>&gamma;</sub>-agonizing compounds also prevent its phosphorylation. Although all these compounds were known to interact with a large ligand-binding pocket on PPAR<sub>&gamma;</sub>, Griffin's laboratory used hydrogen-deuterium exchange mass spectroscopy (HDX-MS) to show that they cause distinct conformational changes in the receptor that could influence subsequent phosphorylation.</p>
+<p>&ldquo;We knew from our previous work that partial agonists altered the conformational dynamics of specific regions of PPAR<sub>&gamma;</sub> differently from full agonists,&rdquo; Griffin told <i>SciBX</i>. &ldquo;We hypothesized that they might affect coactivator recruitment by generating a new interaction surface or by altering post-translational modifications.<bibr rid="b6"/> Here we show that one way they may act is by stabilizing the phosphorylated region of the protein in a configuration that is less favorable to CDK<sup>5</sup>.&rdquo;</p>
+<p>These details are important because they provide a mechanistic explanation for how non-TZDs still have potent antidiabetic effects even though they only partially agonize the PPAR<sub>&gamma;</sub> receptor. These types of compounds are often referred to as selective PPAR modulators (SPPARMs) and include <weblink url="http://www.biocentury.com/companies/Metabolex_Inc?utm_source=1"><b>Metabolex Inc.</b></weblink>'s MBX-102 and InteKrin's INT131.<pullquoter rid="pq1"/></p>
+<p>&ldquo;PPAR<sub>&gamma;</sub> full agonists are associated with weight gain, fluid retention, edema, congestive heart failure and bone fracture,&rdquo; said Linda Higgins, president and CEO of InteKrin. &ldquo;SPPARMs such as INT131 have been characterized that achieve separation of side effects from antidiabetic activity. It is not known yet whether INT131 blocks this phosphorylation event, but the central thesis of this paper predicts that it would.&rdquo;</p>
+<p>InteKrin has completed a Phase IIb trial of INT131 and plans to move forward with Phase III testing in type 2 diabetes, although it hasn't provided a timeline. INT131 is the SPPARM furthest along in development.</p>
+<p>MBX-102 was shown by Spiegelman's group to inhibit phosphorylation of PPAR<sub>&gamma;</sub>. Although the compound made it to Phase II testing for type 2 diabetes, it is no longer in development for that indication.</p>
+<p>&ldquo;We were one of the first companies to demonstrate the promise of selective modulation of PPAR<sub>&gamma;</sub>, by demonstrating glucose lowering without any weight gain or edema, even in diabetic patients also taking insulin,&rdquo; said Metabolex CMO David Karpf. &ldquo;The efficacy can be separated from classic PPAR<sub>&gamma;</sub> side effects. This paper is a game changer because it suggests agonizing the receptor may not be necessary at all.&rdquo;</p>
+<p>Karpf did note that &ldquo;the glycemic efficacy of MBX-102 didn't reach the commercial threshold to enter into a Phase III trial for type 2 diabetes. However, MBX-102 is also an effective uricosuric agent, where its insulin-sensitizing effects may provide an additional benefit for treatment of gout.&rdquo;<bibr rid="b7"/></p>
+<p>Metabolex is considering doing a Phase II trial in gout or partnering the compound.</p></sec>
+<sec level="1">
+<sectitle>PPARanoia</sectitle>
+<p>Although companies could re-examine compounds that bind PPAR<sub>&gamma;</sub> but were dismissed due to a lack of agonism in classical transcriptional reporter assays, the stigma attached to PPAR<sub>&gamma;</sub> as a therapeutic target still may dissuade further investigation.</p>
+<p>&ldquo;Companies have run away from PPAR<sub>&gamma;</sub>, and it will be interesting to see if this reignites their interest,&rdquo; said Kliewer. &ldquo;I believe the stigma surrounding PPAR<sub>&gamma;</sub> is unwarranted; it is a validated target with a big market, and it is surprising that many companies have completely left it behind.&rdquo;</p>
+<p>One problem, according to Kliewer, is that &ldquo;no one knows which PPAR<sub>&gamma;</sub> target genes cause the unwanted side effects. Until we know why patients taking Avandia have an increased rate of heart attack, companies will be reticent to target PPAR<sub>&gamma;</sub>.&rdquo;</p>
+<p>At the same time, he noted, &ldquo;while <i>in vivo</i> data suggest that SPPARM compounds are safer, we really don't know why that is.&rdquo;</p>
+<p>Spiegelman thinks companies are in a good position to take advantage of the findings. &ldquo;The cool thing is that they probably have freezers full of PPAR<sub>&gamma;</sub> agonist derivatives,&rdquo; he said. &ldquo;They should be able to reassess what they have already made rather quickly and dial this mechanism in while dialing agonism out.&rdquo;</p>
+<p>Future studies from Spiegelman and Griffin will focus on separating the effects of agonism from the effects of inhibiting phosphorylation. The team is developing compounds that block only the CDK<sup>5</sup> phosphorylation site and do not agonize PPAR<sub>&gamma;</sub>. They also are developing mice with a mutation at the PPAR<sub>&gamma;</sub> phosphorylation site to address its <i>in vivo</i> function in metabolism.</p>
+<p>Spiegelman said a patent application has been filed covering this work. It is available for licensing.</p></sec>
+<sec level="1">
+<sectitle>Companies and institutions mentioned</sectitle>
+<p><list id="l1">
+<li><weblink url="http://www.dana-farber.org/"><b>Dana-Farber Cancer Institute</b></weblink>, Boston, Mass.</li>
+<li><weblink url="http://www.biocentury.com/companies/GlaxoSmithKline_plc?utm_source=1"><b>GlaxoSmithKline plc</b></weblink> (LSE:GSK; NYSE:GSK), London, U.K.</li>
+<li><weblink url="http://hms.harvard.edu/hms/home.asp"><b>Harvard Medical School</b></weblink>, Boston, Mass.</li>
+<li><weblink url="http://www.biocentury.com/companies/InteKrin_Therapeutics_Inc?utm_source=1"><b>InteKrin Therapeutics Inc.</b></weblink>, Los Altos, Calif.</li>
+<li><weblink url="http://www.biocentury.com/companies/Metabolex_Inc?utm_source=1"><b>Metabolex Inc.</b></weblink>, Hayward, Calif.</li>
+<li><weblink url="http://www.scripps.edu/florida/"><b>Scripps Florida</b></weblink>, Jupiter, Fla.</li>
+<li><weblink url="http://www.biocentury.com/companies/Takeda_Pharmaceutical_Co_Ltd?utm_source=1"><b>Takeda Pharmaceutical Co. Ltd.</b></weblink> (Tokyo:4502), Osaka, Japan</li>
+<li><weblink url="http://www.utsouthwestern.edu/"><b>The University of Texas Southwestern Medical Center at Dallas</b></weblink>, Dallas, Texas</li></list></p></sec></bdy>
+<bm>
+<objects>
+<pullquote id="pq1">&ldquo;This paper is a game changer because it suggests agonizing the receptor may not be necessary at all.&rdquo;<statedby>David Karpf</statedby><aff>Metabolex Inc.</aff></pullquote>
+<fig id="f1" type="bmp" entname="figf1"><slide entname="slidepf1"/>
+<figtl>A new way to target PPAR<sub>&gamma;</sub>.</figtl>
+<caption><p><weblink url="http://hms.harvard.edu/hms/home.asp"><b>Harvard Medical School</b></weblink> researchers suggest that compounds that block phosphorylation of peroxisome proliferation&ndash;activated receptor-&gamma; (PPARG; PPAR<sub>&gamma;</sub>) could provide a better way of treating obesity and type 2 diabetes than marketed thiazolidinediones (TZDs), which agonize the transcription factor, resulting in not only insulin sensitivity but also unwanted downstream effects.</p>
+<p>In adipocytes of mice fed a high-fat diet, cyclin dependent kinase 5 (CDK<sup>5</sup>)-dependent phosphorylation (P) of PPAR<sub>&gamma;</sub> at serine 273 is increased, which decreases downstream expression of insulin-sensitizing genes [<b>a</b>]. By blocking CDK<sup>5</sup>-dependent phosphorylation, PPAR<sub>&gamma;</sub> is able to increase the expression of these genes [<b>b</b>].</p></caption>
+</fig>
+<illus id="illus1" type="gif" entref="ill1" display="print-online"/>
+<table id="t1" tocentry="0" frame="topbot" colsep="0" rowsep="0" orient="port" pgwide="0" tabcols="4">
+<title><b>Targeting PPAR<sub>&gamma;</sub>.</b> A study by <weblink url="http://hms.harvard.edu/hms/home.asp"><b>Harvard Medical School</b></weblink> researchers found that the peroxisome proliferation&ndash;activated receptor-&gamma; (PPARG; PPAR<sub>&gamma;</sub>) agonists Avandia rosiglitazone and MBX-102 blocked cyclin dependent kinase 5 (CDK<sup>5</sup>) phosphorylation of PPAR<sub>&gamma;</sub>. Below are other compounds that agonize PPAR<sub>&gamma;</sub> on the market or in development that may also block CDK<sup>5</sup> phosphorylation. <i>Source: BCIQ: BioCentury Online Intelligence</i></title>
+<tgroup cols="4" colsep="0" rowsep="0" align="center">
+<colspec colnum="1" colname="1" align="left" colwidth="1*"/>
+<colspec colnum="2" colname="2" align="left" colwidth="1*"/>
+<colspec colnum="3" colname="3" align="left" colwidth="1*"/>
+<colspec colnum="4" colname="4" align="left" colwidth="1*"/>
+<spanspec namest="1" nameend="4" spanname="1"/>
+<thead valign="top">
+<row rowsep="1">
+<entry>Company</entry>
+<entry>Product</entry>
+<entry>Compound class</entry>
+<entry>Lead status</entry></row></thead>
+<tbody valign="top">
+<row>
+<entry><weblink url="http://www.biocentury.com/companies/GlaxoSmithKline_plc?utm_source=1"><b>GlaxoSmithKline plc</b></weblink> (LSE:GSK; NYSE:GSK)</entry>
+<entry>Avandia rosiglitazone</entry>
+<entry>Thiazolidinedione (TZD)</entry>
+<entry>Marketed</entry></row>
+<row>
+<entry><weblink url="http://www.biocentury.com/companies/Takeda_Pharmaceutical_Co_Ltd?utm_source=1"><b>Takeda Pharmaceutical Co. Ltd.</b></weblink> (Tokyo :4502)/<newline/><weblink url="http://www.biocentury.com/companies/Eli_Lilly_and_Co?utm_source=1"><b>Eli Lilly and Co.</b></weblink> (NYSE:LLY)/<newline /><weblink url="http://www.biocentury.com/companies/Pfizer_Inc?utm_source=1"><b>Pfizer Inc.</b></weblink> (NYSE:PFE)</entry>
+<entry>Actos pioglitazone</entry>
+<entry>TZD</entry>
+<entry>Marketed</entry></row>
+<row>
+<entry><weblink url="http://www.biocentury.com/companies/Dr_Reddys_Laboratories_Ltd?utm_source=1"><b>Dr. Reddy's Laboratories Ltd.</b></weblink> (NYSE:RDY)/<weblink url="http://www.biocentury.com/companies/Nordic_Bioscience_Holding?utm_source=1"><b>Nordic Bioscience Holding</b></weblink></entry>
+<entry>Balaglitazone (DRF 2593)</entry>
+<entry>TZD</entry>
+<entry>Phase III</entry></row>
+<row>
+<entry><weblink url="http://www.biocentury.com/companies/InteKrin_Therapeutics_Inc?utm_source=1"><b>InteKrin Therapeutics Inc.</b></weblink></entry>
+<entry>INT131</entry>
+<entry>Non-TZD</entry>
+<entry>Phase IIb completed</entry></row>
+<row>
+<entry><weblink url="http://www.biocentury.com/companies/Metabolex_Inc?utm_source=1"><b>Metabolex Inc.</b></weblink></entry>
+<entry>MBX-102</entry>
+<entry>Non-TZD</entry>
+<entry>Not applicable<fnr rid="t1-fn1"><super>A</super></fnr></entry></row>
+<row>
+<entry spanname="1"><fn id="t1-fn1" type="footnote"><p><super>A</super>No longer in development for diabetes.</p></fn></entry></row>
+</tbody></tgroup>
+<slide entname="slidept1"/>
+</table></objects>
+<bibl>
+<bib id="b1"><reftxt><refau><snm>Choi</snm>, <fnm>J.H.</fnm></refau> <i>et al</i>. <jtl>Nature</jtl>; published online <cd day="21" month="07" year="2010">July 21, 2010</cd>; <refdoi>10.1038/nature09291</refdoi>
+<contact>Bruce Spiegelman, Harvard Medical School, Boston, Mass.
+<email>bruce_spiegelman@dfci.harvard.edu</email></contact></reftxt></bib>
+<bib id="b2"><reftxt><refau><snm>Usdin</snm>, <fnm>S.</fnm></refau> <jtl>BioCentury</jtl> <vid>18</vid>(<iid>32</iid>), <ppf>A6</ppf>; <cd day="19" month="07" year="2010">July 19, 2010</cd></reftxt></bib>
+<bib id="b3"><reftxt><refau><snm>Motani</snm>, <fnm>A.</fnm></refau> <i>et al</i>. <jtl>J. Mol. Biol.</jtl> <vid>386</vid>, <ppf>1301</ppf>&ndash;<ppl>1311</ppl> (<cd year="2009">2009</cd>)</reftxt></bib>
+<bib id="b4"><reftxt><refau><snm>Gregoire</snm>, <fnm>F.M.</fnm></refau> <i>et al</i>. <jtl>Mol. Endocrinol.</jtl> <vid>23</vid>, <ppf>975</ppf>&ndash;<ppl>988</ppl> (<cd year="2009">2009</cd>)</reftxt></bib>
+<bib id="b5"><reftxt><refau><snm>Acton</snm>, <fnm>J.J.</fnm> <suff>III</suff></refau> <i>et al</i>. <jtl>Bioorg. Med. Chem. Lett.</jtl> <vid>15</vid>, <ppf>357</ppf>&ndash;<ppl>362</ppl> (<cd year="2005">2005</cd>)</reftxt></bib>
+<bib id="b6"><reftxt><refau><snm>Bruning</snm>, <fnm>J.B.</fnm></refau> <i>et al</i>. <jtl>Structure</jtl> <vid>15</vid>, <ppf>1258</ppf>&ndash;<ppl>1271</ppl> (<cd year="2007">2007</cd>)</reftxt></bib>
+<bib id="b7"><reftxt><refau><snm>Flanagan</snm>, <fnm>M.</fnm></refau> <jtl>BioCentury</jtl> <vid>18</vid>(<iid>32</iid>), <ppf>A12</ppf>; <cd day="19" month="07" year="2010">July 19, 2010</cd></reftxt></bib></bibl></bm></article>

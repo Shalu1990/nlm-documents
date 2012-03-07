@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<subjects uri="/ns.nature.com/products/emboj/subjects.xml" xmlns="http://ns.nature.com/subjects/" xmlns:p="http://ns.nature.com/products/">
+    <subject uri="data:,npg.subject:/631" id="biological_sciences" name="Biological sciences" code="631" urn="http://ns.nature.com/subjects/biological_sciences">
+        <p:references>
+            <p:reference type="product" pcode="emboj"/>
+            <p:reference type="product" pcode="msb"/>
+            <p:reference type="product" pcode="nature"/>
+            <p:reference type="product" pcode="nbt"/>
+            <p:reference type="product" pcode="ncb"/>
+            <p:reference type="product" pcode="nchem"/>
+            <p:reference type="product" pcode="nchembio"/>
+            <p:reference type="product" pcode="ncomms"/>
+            <p:reference type="product" pcode="ncpcardio"/>
+            <p:reference type="product" pcode="ncpendmet"/>
+            <p:reference type="product" pcode="ncpgasthep"/>
+            <p:reference type="product" pcode="ncpneph"/>
+            <p:reference type="product" pcode="ncpneuro"/>
+            <p:reference type="product" pcode="ncponc"/>
+            <p:reference type="product" pcode="ncprheum"/>
+            <p:reference type="product" pcode="ncpuro"/>
+            <p:reference type="product" pcode="neuro"/>
+            <p:reference type="product" pcode="ng"/>
+            <p:reference type="product" pcode="ngeo"/>
+            <p:reference type="product" pcode="ni"/>
+            <p:reference type="product" pcode="nm"/>
+            <p:reference type="product" pcode="nmat"/>
+            <p:reference type="product" pcode="nmeth"/>
+            <p:reference type="product" pcode="nnano"/>
+            <p:reference type="product" pcode="nphoton"/>
+            <p:reference type="product" pcode="nphys"/>
+            <p:reference type="product" pcode="nprot"/>
+            <p:reference type="product" pcode="nrc"/>
+            <p:reference type="product" pcode="nrd"/>
+            <p:reference type="product" pcode="nrg"/>
+            <p:reference type="product" pcode="nri"/>
+            <p:reference type="product" pcode="nrm"/>
+            <p:reference type="product" pcode="nrmicro"/>
+            <p:reference type="product" pcode="nrn"/>
+            <p:reference type="product" pcode="nsmb"/>
+            <p:reference type="product" pcode="srep"/>
+        </p:references>
+    </subject>
+    <subject uri="data:,npg.subject:/631/693" id="biological_molecules" name="Biological molecules" code="693" urn="http://ns.nature.com/subjects/biological_molecules">
+	    <p:references>
+            <p:reference type="product" pcode="nature"/>
+            <p:reference type="product" pcode="nbt"/>
+            <p:reference type="product" pcode="ncb"/>
+            <p:reference type="product" pcode="nchembio"/>
+            <p:reference type="product" pcode="ncomms"/>
+            <p:reference type="product" pcode="ncpendmet"/>
+            <p:reference type="product" pcode="ng"/>
+            <p:reference type="product" pcode="ni"/>
+            <p:reference type="product" pcode="nm"/>
+            <p:reference type="product" pcode="nmat"/>
+            <p:reference type="product" pcode="nrd"/>
+            <p:reference type="product" pcode="nrg"/>
+            <p:reference type="product" pcode="nri"/>
+            <p:reference type="product" pcode="nrm"/>
+            <p:reference type="product" pcode="nrmicro"/>
+            <p:reference type="product" pcode="nrn"/>
+            <p:reference type="product" pcode="nsmb"/>
+	        <p:reference type="product" pcode="scibx"/><!--Included for prototype testing purposes only-->
+	        <p:reference type="product" pcode="srep"/>
+        </p:references>
+    </subject>
+    <subject uri="data:,npg.subject:/631/693/610" id="nucleic_acids" name="Nucleic acids" code="610" urn="ns.nature.com/subjects/nucleic_acids">
+        <description>High molecular weight polymers containing a mixture of purine and pyrimidine nucleotides chained together by ribose or deoxyribose linkages.</description>
+        <synonyms>
+            <synonym>Acids, nucleic</synonym>
+        </synonyms>
+        <p:references>
+            <p:reference type="product" pcode="nature"/>
+            <p:reference type="product" pcode="ncb"/>
+            <p:reference type="product" pcode="nchembio"/>
+            <p:reference type="product" pcode="ncomms"/>
+            <p:reference type="product" pcode="ng"/>
+            <p:reference type="product" pcode="ni"/>
+            <p:reference type="product" pcode="nrd"/>
+            <p:reference type="product" pcode="nrg"/>
+            <p:reference type="product" pcode="nrm"/>
+            <p:reference type="product" pcode="nsmb"/>
+            <p:reference type="product" pcode="srep"/>
+        </p:references>
+    </subject>
+    <subject uri="data:,npg.subject:/631/701" id="organisms" name="Organisms" code="701" urn="http://ns.nature.com/subjects/organisms">
+        <p:references>
+            <p:reference type="product" pcode="nature"/>
+            <p:reference type="product" pcode="ncomms"/>
+            <p:reference type="product" pcode="ng"/>
+            <p:reference type="product" pcode="nm"/>
+            <p:reference type="product" pcode="nmeth"/>
+            <p:reference type="product" pcode="nrmicro"/>
+            <p:reference type="product" pcode="nsmb"/>
+            <p:reference type="product" pcode="srep"/>
+        </p:references>
+    </subject>
+    <subject uri="data:,npg.subject:/631/701/41" id="bacteria" name="Bacteria" code="41" urn="http://ns.nature.com/subjects/bacteria">
+        <description>One of the three domains of life (the others being Eukarya and ARCHAEA), also called Eubacteria. They are unicellular prokaryotic microorganisms 
+            which generally possess rigid cell walls, multiply by cell division, and exhibit three principal forms: round or coccal, rodlike or bacillary, and spiral or 
+            spirochetal. Bacteria can be classified by their response to OXYGEN: aerobic, anaerobic, or facultatively anaerobic; by the mode by which they obtain their 
+            energy: chemotrophy (via chemical reaction) or PHOTOTROPHY (via light reaction); for chemotrophs by their source of chemical energy: CHEMOLITHOTROPHY 
+            (from inorganic compounds) or chemoorganotrophy (from organic compounds); and by their source for CARBON; NITROGEN; etc.; HETEROTROPHY (from organic sources) 
+            or AUTOTROPHY (from CARBON DIOXIDE). They can also be classified by whether or not they stain (based on the structure of their CELL WALLS) with CRYSTAL VIOLET 
+            dye: gram-negative or gram-positive.</description>
+        <synonyms>
+            <synonym>Eubacteria</synonym>
+        </synonyms>
+        <p:references>
+            <p:reference type="product" pcode="nature"/>
+            <p:reference type="product" pcode="ncomms"/>
+            <p:reference type="product" pcode="nm"/>
+            <p:reference type="product" pcode="nrmicro"/>
+            <p:reference type="product" pcode="nsmb"/>
+            <p:reference type="product" pcode="srep"/>
+        </p:references>
+    </subject>
+</subjects>
