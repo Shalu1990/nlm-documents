@@ -69,6 +69,7 @@ result: a validation report.
     </p:replace>
 
     <p:add-attribute match="c:error" attribute-name="validated-by" attribute-value="dtd"/>
+    <p:delete match="@href"/>
 
   </p:pipeline>
 
@@ -203,6 +204,11 @@ result: a validation report.
       </p:inline>
     </p:input>
   </p:xslt>
+
+  <p:add-attribute match="/*" attribute-name="candidate-href">
+    <p:with-option name="attribute-value" select="$candidate-sysid"/>
+  </p:add-attribute>
+  <p:make-absolute-uris match="/*/@candidate-href"/>
 
   <!-- discard the document map - not wanted in the report -->
   <p:delete match="documap"/>
