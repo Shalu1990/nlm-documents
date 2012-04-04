@@ -4,103 +4,246 @@
 *
 This allowed values file is for use with the NLM Schematron rules file.
 
-It contains the allowed values of elements and attributes for each journal.
+It contains the allowed values of elements and attributes for each journal that are not covered by the current Ontology files.
 
 Created - 20120208
-
-
-
-Notes: May have more than one doi-stem value depending upon history of journal
-
-?? Article types - list per journal, or have as separate elements with journal children (as in subject codes) ??
-
 *
 *******************************************************************************
 -->
 
 <allowed-values>
-  <journal title="Application Notes"></journal>
-  <journal title="BDJ"></journal>
-  <journal title="Bioentrepreneur"></journal>
-  <journal title="BoneKEy-Osteovision"></journal>
-  <journal title="BoneKEy Reports"></journal>
-  <journal title="British Dental Journal"></journal>
-  <journal title="Cell Migration Gateway"></journal>
-  <journal title="EMBO reports"></journal>
-  <journal title="Functional Glycomics"></journal>
-  <journal title="Functional Glycomics Gateway"></journal>
-  <journal title="GI Motility online"></journal>
-  <journal title="IBMS BoneKEy"></journal>
-  <journal title="Lab Animal"></journal>
-  <journal title="Molecular Systems Biology"></journal>
-  <journal title="Nature"></journal>
-  <journal title="Nature Biotechnology"></journal>
-  <journal title="Nature Cell Biology"></journal>
-  <journal title="Nature Chemical Biology"></journal>
-  <journal title="Nature Chemistry"></journal>
-  <journal title="Nature China"></journal>
-  <journal title="Nature Climate Change"></journal>
-  <journal title="Nature Clinical Practice Cardiovascular Medicine"></journal>
-  <journal title="Nature Clinical Practice Endocrinology &amp; Metabolism"></journal>
-  <journal title="Nature Clinical Practice Gastroenterology &amp; Hepatology"></journal>
-  <journal title="Nature Clinical Practice Nephrology"></journal>
-  <journal title="Nature Clinical Practice Neurology"></journal>
-  <journal title="Nature Clinical Practice Oncology"></journal>
-  <journal title="Nature Clinical Practice Rheumatology"></journal>
-  <journal title="Nature Clinical Practice Urology"></journal>
-  <journal title="Nature Communications"></journal>
-  <journal title="Nature Digest"></journal>
-  <journal title="Nature Genetics"></journal>
-  <journal title="Nature Geoscience"></journal>
-  <journal title="Nature Immunology"></journal>
-  <journal title="Nature India"></journal>
-  <journal title="Nature Materials"></journal>
-  <journal title="Nature Medicine"></journal>
-  <journal title="Nature Methods"></journal>
-  <journal title="Nature Middle East"></journal>
-  <journal title="Nature Nanotechnology"></journal>
-  <journal title="Nature Neuroscience">
-    <id>nneuro</id>
+  <languages>en de ja</languages><!--en-English, de-German, ja-Japanese-->
+  <journal title="Application Notes">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
   </journal>
-  <journal title="Nature News"></journal>
-  <journal title="Nature Photonics"></journal>
-  <journal title="Nature Physics"></journal>
-  <journal title="Nature Protocols"></journal>
-  <journal title="Nature Reports Climate Change"></journal>
-  <journal title="Nature Reports Stem Cells"></journal>
-  <journal title="Nature Reviews Cancer"></journal>
-  <journal title="Nature Reviews Cardiology"></journal>
-  <journal title="Nature Reviews Clinical Oncology"></journal>
-  <journal title="Nature Reviews Drug Discovery"></journal>
-  <journal title="Nature Reviews Endocrinology"></journal>
-  <journal title="Nature Reviews Gastroenterology &amp; Hepatology"></journal>
-  <journal title="Nature Reviews Genetics"></journal>
-  <journal title="Nature Reviews Immunology"></journal>
-  <journal title="Nature Reviews Microbiology"></journal>
-  <journal title="Nature Reviews Molecular Cell Biology"></journal>
-  <journal title="Nature Reviews Nephrology"></journal>
-  <journal title="Nature Reviews Neurology"></journal>
-  <journal title="Nature Reviews Neuroscience"></journal>
-  <journal title="Nature Reviews Rheumatology"></journal>
-  <journal title="Nature Reviews Urology"/>
-  <journal title="Nature Structural &amp; Molecular Biology"></journal>
-  <journal title="Nature Structural Biology"></journal>
-  <journal title="NatureJobs"></journal>
-  <journal title="Neuroscience Gateway"/>
-  <journal title="PSI Structural Genomics Knowledgebase"></journal>
+  <journal title="BDJ">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Bioentrepreneur">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="BoneKEy-Osteovision">
+    <copyright-holder>International Bone and Mineral Society</copyright-holder>
+  </journal>
+  <journal title="BoneKEy Reports">
+    <copyright-holder>International Bone &amp; Mineral Society</copyright-holder>
+  </journal>
+  <journal title="British Dental Journal">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Cell Migration Gateway">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="EMBO reports">
+    <copyright-holder>European Molecular Biology Organization</copyright-holder>
+  </journal>
+  <journal title="Functional Glycomics">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Functional Glycomics Gateway">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="GI Motility online">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="IBMS BoneKEy">
+    <copyright-holder>International Bone &amp; Mineral Society</copyright-holder>
+  </journal>
+  <journal title="Lab Animal">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Molecular Systems Biology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature">
+    <article-types>20q 50ya ac add adfeat adv advert advice af ag an antig apn ar ars article as askb aske ate au aub ba bb bc bca beingg bio biov bkstory blog bn bnf bo boo br brf brn bru bks bsn buyg cal car careersqa case casefv categtxt cc cg cm cn cna clin clinadv clincon clinimg clintechnq clnimg clinres clncon cme col com compbio conc conf confa conred couch cprot cr critmass crsswrd cs cstory cy db dept diary digest dplat dtech dther dw ecot ecr ed edfv edin eds edu egame el emr eng er erp essaycon ethicsw essay ewr fa faf faq fd fe fep fn fno focus focusrev fof forum fpln fqc fr fromed frontl ftf ftw fut futsol gen getact gu gus gw hc headg headl hh hn hor hp hrn hs highlts ht hyp hyst ib illus in indp insight insit iniss insp intvw is itp iye japnf japau japlnf japmuse japnw japsi japsn jcb jr le lfln livg lstwrd lt ma mark marw medrv meetteam memrv mgt minirv misc mp mr mt mtp multr na naturejobs natview nb nbr nbri nemr neuro ngal nj nvqa mktana nm nmr nobellr np nscan nt nv nvb nvf nvfv nw nf ob onbr onyrft op opcom out outlab ov pa pe pefv phot  pi pl pn pod polw ppi ppro ppt prac pr prf prhl primer pro prog proscstory prosdplat prosmark prosppi prostmech prostnotes prostools prot prv puzzle pw qa ra rcom rd re recom reflect rep reply ret revrec rhighlts rl rlet rn rnote rolem rr rs rsrc rv rvfv ru sb sc sciampe scn sevendays sf si sim skep snaps sp spfwd spot sprep strle stw ss sr su susdev swr syn talk tech techn tenv tf thes th thinkb thismo thk thtr timeln tmat tmech tn tnotes tools tr trialw tt turnp tvr upd upfrnt view vitupd vp vpt vr wk woh</article-types>
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Biotechnology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Cell Biology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Chemical Biology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Chemistry">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature China">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Climate Change">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+    <article-types>af ba blogosphere byndbndrs cg cr cs cy ed er fe iniss intvw le marw nf nv nw pe polw rhighlts rv snaps</article-types>
+  </journal>
+  <journal title="Nature Clinical Practice Cardiovascular Medicine">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Clinical Practice Endocrinology &amp; Metabolism">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Clinical Practice Gastroenterology &amp; Hepatology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Clinical Practice Nephrology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Clinical Practice Neurology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Clinical Practice Oncology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Clinical Practice Rheumatology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Clinical Practice Urology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Communications">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Digest">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Genetics">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Geoscience">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Immunology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature India">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Materials">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Medicine">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Methods">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+    <article-types>add adfeat af an apn bc bca categtxt cg cm com cprot cr cy ed er fd fe hc insight jcb le lt mib mr na naturejobs natview nbr neuro nf nv nw pe pr prim prot rhighlts rs rv su tf thismo tib</article-types>
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Middle East">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Nanotechnology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+    <article-types>af ba cg cr cs cy ed er fe iniss intvw le lt nv phot prog re rhighlts rv thes</article-types>
+  </journal>
+  <journal title="Nature Neuroscience">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature News">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Photonics">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Physics">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Protocols">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reports Climate Change">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reports Stem Cells">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reviews Cancer">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reviews Cardiology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reviews Clinical Oncology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reviews Drug Discovery">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reviews Endocrinology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reviews Gastroenterology &amp; Hepatology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reviews Genetics">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+    <article-types>an cg com cr cs er fe fromed iniss natview pe pr reply ret rhighlts rs rv ss</article-types>
+  </journal>
+  <journal title="Nature Reviews Immunology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reviews Microbiology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+    <article-types>af an cg com cr cs dw ed er fd gw highlts iniss na natview pe pr reply rhighlts rv</article-types>
+  </journal>
+  <journal title="Nature Reviews Molecular Cell Biology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reviews Nephrology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reviews Neurology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reviews Neuroscience">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reviews Rheumatology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Reviews Urology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Structural &amp; Molecular Biology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Nature Structural Biology">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Neuroscience Gateway">
+    <copyright-holder>Allen Brain Atlas</copyright-holder>
+  </journal>
+  <journal title="PSI Structural Genomics Knowledgebase">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
   <journal title="Science-Business eXchange">
-    <id>scibx</id>
-    <doi-stem>10.1038/</doi-stem>
-    <publisher>Nature Publishing Group</publisher>
     <copyright-holder>Nature Publishing Group</copyright-holder>
     <article-types>cstory dplat dtech dther mark ppi prostmech prostools tmech tnotes tools</article-types>
   </journal>
-  <journal title="Scientific American"></journal>
-  <journal title="Scientific American Mind"></journal>
-  <journal title="Scientific Reports"></journal>
-  <journal title="Structural Biology KnowledgeBase"></journal>
-  <journal title="Structural Genomics Update"></journal>
-  <journal title="The EMBO Journal"></journal>
-  <journal title="Vital"></journal>
+  <journal title="Scientific American">
+    <article-types>20q 50ya ac add adfeat adv advert advice af ag an antig apn ar ars article as askb aske ate au aub ba bb bc bca beingg bio biov bkstory blog bn bnf bo boo br brf brn bru bks bsn buyg cal car careersqa case casefv categtxt cc cg cm cn cna clin clinadv clincon clinimg clintechnq clnimg clinres clncon cme col com compbio conc conf confa conred couch cprot cr critmass crsswrd cs cstory cy db dept diary digest dplat dtech dther dw ecot ecr ed edfv edin eds edu egame el emr eng er erp essaycon ethicsw essay ewr fa faf faq fd fe fep fn fno focus focusrev fof forum fpln fqc fr fromed frontl ftf ftw fut futsol gen getact gu gus gw hc headg headl hh hn hor hp hrn hs highlts ht hyp hyst ib illus in indp insight insit iniss insp intvw is itp iye japnf japau japlnf japmuse japnw japsi japsn jcb jr le lfln livg lstwrd lt ma mark marw medrv meetteam memrv mgt minirv misc mp mr mt mtp multr na naturejobs natview nb nbr nbri nemr neuro ngal nj nvqa mktana nm nmr nobellr np nscan nt nv nvb nvf nvfv nw nf ob onbr onyrft op opcom out outlab ov pa pe pefv phot  pi pl pn pod polw ppi ppro ppt prac pr prf prhl primer pro prog proscstory prosdplat prosmark prosppi prostmech prostnotes prostools prot prv puzzle pw qa ra rcom rd re recom reflect rep reply ret revrec rhighlts rl rlet rn rnote rolem rr rs rsrc rv rvfv ru sb sc sciampe scn sevendays sf si sim skep snaps sp spfwd spot sprep strle stw ss sr su susdev swr syn talk tech techn tenv tf thes th thinkb thismo thk thtr timeln tmat tmech tn tnotes tools tr trialw tt turnp tvr upd upfrnt view vitupd vp vpt vr wk woh</article-types>
+    <copyright-holder>Scientific American, Inc.</copyright-holder>
+  </journal>
+  <journal title="Scientific American Mind">
+    <copyright-holder>Scientific American, Inc.</copyright-holder>
+  </journal>
+  <journal title="Scientific Reports">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+    <article-types>af nw rhighlts rv</article-types>
+  </journal>
+  <journal title="Structural Biology KnowledgeBase">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Structural Genomics Update">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="The EMBO Journal">
+    <copyright-holder>Nature Publishing Group</copyright-holder>
+  </journal>
+  <journal title="Vital">
+    <copyright-holder>British Dental Association</copyright-holder>
+  </journal>
 
 </allowed-values>
