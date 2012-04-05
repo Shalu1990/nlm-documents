@@ -129,11 +129,12 @@
   
   <pattern><!--Is the article heading type valid and does it match the main article type?-->
     <rule context="subject[@content-type='article-type']" role="error">
-      <assert id="ameta2a" test="contains($allowed-values/journal[@title=$journal-title]/article-types,.) or not($allowed-values/journal[@title=$journal-title])">Unexpected subject article type (<value-of select="."/>) for <value-of select="$journal-title"/>.</assert>
-      <!--This rule falls over if article/@article-type does not exist. Also fires if there is an error in the article/@article-type. Attributes changed. Rewrite.--><assert id="ameta2b" test="article/@article-type and matches(.,ancestor::article/@article-type) or not($allowed-values/journal[@title=$journal-title]) or not(contains($allowed-values/journal[@title=$journal-title]/article-types,.))">Subject article type (<value-of select="."/>) does not match root article type (<value-of select="ancestor::article/@article-type"/>)</assert>
+      <assert id="ameta2a" test="contains($allowed-values/journal[@title=$journal-title]/article-types,.) or not($products[descendant::dc:title=$journal-title])">Unexpected subject article type (<value-of select="."/>) for <value-of select="$journal-title"/>.</assert>
+      <!--This rule falls over if article/@article-type does not exist. Also fires if there is an error in the article/@article-type. Attributes changed. Rewrite.-->
+      <assert id="ameta2b" test="matches(.,ancestor::article/@article-type)">Subject article type (<value-of select="."/>) does not match root article type (<value-of select="ancestor::article/@article-type"/>)</assert>
     </rule>
   </pattern>
-  
+  <!--or not(article/@article-type) -->
 <!--
   <pattern>Has at least one subject code been included? Is this applicable to all journals?
     <rule context="article-categories" role="error">
