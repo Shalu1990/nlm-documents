@@ -101,10 +101,16 @@
     </rule>
   </pattern>
   
+  <pattern>
+    <rule context="journal-title-group | journal-title | publisher">
+      <report id="jmeta8a" test="@content-type">Unnecessary use of "content-type" attribute on "<name/>" element.</report>
+    </rule>
+  </pattern>
+  
   <pattern><!--Does the publisher-name match the copyright-holder?-->
     <let name="holder" value="//permissions/copyright-holder"></let>
     <rule context="publisher/publisher-name" role="error">
-      <assert id="jmeta8" test=". = $holder or not($holder) or not($holder=$allowed-values/journal[@title=$journal-title]/copyright-holder)">The publisher-name (<value-of select="."/>) should match the copyright-holder (<value-of select="$holder"/>).</assert>
+      <assert id="jmeta9" test=". = $holder or not($holder) or not($holder=$allowed-values/journal[@title=$journal-title]/copyright-holder)">The publisher-name (<value-of select="."/>) should match the copyright-holder (<value-of select="$holder"/>).</assert>
     </rule>
   </pattern>
 
@@ -112,20 +118,12 @@
 
   <pattern>
     <rule context="article-meta" role="error"><!--Two article ids, one doi and one publisher-id-->
-      <assert id="ameta1a" test="article-id[@pub-id-type='doi'] and article-id[@pub-id-type='publisher-id']">Article metadata should contain two "article-id" elements, one with attribute pub-id-type="doi" and one with attribute pub-id-type="publisher-id".</assert>
-    </rule>
-  </pattern>
-
-  <!--test doi is as expected in same test-->
-  
-  <!--Article categories-->
-  
-  <pattern>
-    <rule context="article-meta"><!--article-categories exists-->
+      <assert id="ameta1a" test="article-id[@pub-id-type='doi'] and article-id[@pub-id-type='publisher-id']">Article metadata should contain at least two "article-id" elements, one with attribute pub-id-type="doi" and one with attribute pub-id-type="publisher-id".</assert>
       <assert id="ameta1b" test="article-categories">Article metadata should include an "article-categories" element.</assert>
     </rule>
   </pattern>
-  
+
+  <!--Article categories-->
   
   <pattern><!--Is the article heading type valid and does it match the main article type?-->
     <rule context="subject[@content-type='article-type']" role="error">
@@ -159,6 +157,19 @@
   <!--@content-type='indications' rules-->
   
   <!--Article title (title-group)-->
+  <pattern>
+    <rule context="fn-group | trans-title-group" role="error"><!--No unexpected children of article title-group used-->
+      <report id="arttitle1" test="parent::title-group">Unexpected use of "<name/>" in article "title-group". "title-group" should only contain "article-title", "subtitle", "alt-title".</report>
+    </rule>
+  </pattern>
+  
+  <pattern>
+    <rule context="title-group/article-title/styled-content">
+      <report id="arttitle2a" test="@specific-use">Unnecessary use of "specific-use" attribute on "styled-content" element in "article-title".</report>
+      <report id="arttitle2b" test="@style">Unnecessary use of "style" attribute on "styled-content" element in "article-title".</report>
+      <assert id="arttitle2c" test="@style-type='hide'">The "styled-content" element in "article-title" should have attribute "style-type='hide'". If the correct element has been used here, add the required attribute.</assert>
+    </rule>
+  </pattern>
   
   <!--Contrib group-->
   
