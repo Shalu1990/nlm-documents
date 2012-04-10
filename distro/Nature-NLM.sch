@@ -164,10 +164,16 @@
   </pattern>
   
   <pattern>
-    <rule context="title-group/article-title/styled-content">
-      <report id="arttitle2a" test="@specific-use">Unnecessary use of "specific-use" attribute on "styled-content" element in "article-title".</report>
-      <report id="arttitle2b" test="@style">Unnecessary use of "style" attribute on "styled-content" element in "article-title".</report>
-      <assert id="arttitle2c" test="@style-type='hide'">The "styled-content" element in "article-title" should have attribute "style-type='hide'". If the correct element has been used here, add the required attribute.</assert>
+    <rule context="article-title" role="error"><!--No @id on article title-->
+      <report id="arttitle2" test="@id">Do not use "id" attribute on "article-title".</report>
+    </rule>
+  </pattern>
+  
+  <pattern>
+    <rule context="title-group/article-title/styled-content" role="error"><!--correct attributes used on styled-content element-->
+      <report id="arttitle3a" test="@specific-use">Unnecessary use of "specific-use" attribute on "styled-content" element in "article-title".</report>
+      <report id="arttitle3b" test="@style">Unnecessary use of "style" attribute on "styled-content" element in "article-title".</report>
+      <assert id="arttitle3c" test="@style-type='hide'">The "styled-content" element in "article-title" should have attribute "style-type='hide'". If the correct element has been used here, add the required attribute.</assert>
     </rule>
   </pattern>
   
@@ -175,25 +181,44 @@
   
   <!-- **** Publication date **** -->
   
-  <!--Rules around expected attribute values of pub-date-->
+  <pattern><!--Rules around expected attribute values of pub-date, and only one of each type-->
+    <rule context="pub-date" role="error">
+      <assert id="pubdate0a" test="@pub-type">"pub-date" element should have attribute "pub-type" declared. Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert>
+    </rule>
+    <rule context="pub-date/@pub-type" role="error">
+      <assert id="pubdate0b" test="contains($allowed-values/pub-types,.)">Unexpected value for "pub-type" attribute on "pub-date" element (<value-of select="."/>). Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert>
+    </rule>
+  </pattern>
+ 
+  <pattern><!--... and only one of each type-->
+    <rule context="pub-date" role="error">
+      <report id="pubdate0c" test="@pub-type=./preceding-sibling::pub-date/@pub-type">There should only be one instance of the "pub-date" element with "pub-type" attribute value of "<value-of select="@pub-type"/>". Please check with NPG Editorial Production.</report>
+    </rule>
+  </pattern>
   
   <pattern><!--Valid values for year, month and day-->
     <rule context="pub-date" role="error">
-      <assert id="date1a" test="not(year) or matches(year, '^(19|20)[0-9]{2}$')">Invalid year value: <value-of select="year"/>. It should be a 4-digit number starting with 19 or 20.</assert>
-      <assert id="date1b" test="not(month) or matches(month, '^((0[1-9])|(1[0-2]))$')">Invalid month value: <value-of select="month"/>. It should be a 2-digit number between 01 and 12.</assert>
-      <assert id="date1c" test="not(day) or matches(day, '^(0[1-9]|[12][0-9]|3[01])$')">Invalid day value: <value-of select="day"/>. It should be a 2-digit number between 01 and 31.</assert>
+      <assert id="pubdate1a" test="not(year) or matches(year, '^(19|20)[0-9]{2}$')">Invalid year value: <value-of select="year"/>. It should be a 4-digit number starting with 19 or 20.</assert>
+      <assert id="pubdate1b" test="not(month) or matches(month, '^((0[1-9])|(1[0-2]))$')">Invalid month value: <value-of select="month"/>. It should be a 2-digit number between 01 and 12.</assert>
+      <assert id="pubdate1c" test="not(day) or matches(day, '^(0[1-9]|[12][0-9]|3[01])$')">Invalid day value: <value-of select="day"/>. It should be a 2-digit number between 01 and 31.</assert>
     </rule>
   </pattern> 
   
   <pattern><!--Concatenate year/month/day and check valid if those elements have already passed basic validation checks. This rule adapted from http://regexlib.com, author Michel Chouinard -->
     <rule context="pub-date[matches(year, '^(19|20)[0-9]{2}$') and matches(month, '^((0[1-9])|(1[0-2]))$') and matches(day, '^(0[1-9]|[12][0-9]|3[01])$')]" role="error">
-      <assert id="date2" test="matches(concat(year,month,day), '^(((19|20)(([0][48])|([2468][048])|([13579][26]))|2000)(([0][13578]|[1][02])([012][0-9]|[3][01])|([0][469]|11)([012][0-9]|30)|02([012][0-9]))|((19|20)(([02468][1235679])|([13579][01345789]))|1900)(([0][13578]|[1][02])([012][0-9]|[3][01])|([0][469]|11)([012][0-9]|30)|02([012][0-8])))$')">Invalid publication date - the day value (<value-of select="day"/>) does not exist for the month (<value-of select="month"/>) in the year (<value-of select="year"/>).</assert>
+      <assert id="pubdate2" test="matches(concat(year,month,day), '^(((19|20)(([0][48])|([2468][048])|([13579][26]))|2000)(([0][13578]|[1][02])([012][0-9]|[3][01])|([0][469]|11)([012][0-9]|30)|02([012][0-9]))|((19|20)(([02468][1235679])|([13579][01345789]))|1900)(([0][13578]|[1][02])([012][0-9]|[3][01])|([0][469]|11)([012][0-9]|30)|02([012][0-8])))$')">Invalid publication date - the day value (<value-of select="day"/>) does not exist for the month (<value-of select="month"/>) in the year (<value-of select="year"/>).</assert>
     </rule>
   </pattern>
   
   <pattern><!--Year/Day - invalid combination in pub-date-->
     <rule context="pub-date" role="error">
-      <report id="date3" test="year and day and not(month)">Missing month in pub-date. Currently only contains year and day.</report>
+      <report id="pubdate3" test="year and day and not(month)">Missing month in pub-date. Currently only contains year and day.</report>
+    </rule>
+  </pattern>
+  
+  <pattern>
+    <rule context="day[parent::pub-date] | month[parent::pub-date] | year[parent::pub-date]" role="error"><!--No content-type attribute on day, month or year-->
+      <report id="pubdate4" test="@content-type">Do not use "content-type" attribute on <name/> within "pub-date" element.</report>
     </rule>
   </pattern>
   
@@ -202,6 +227,49 @@
   <!--Issue-->
   
   <!--Page spans correct, not present for online only or aop-->
+
+  <!--History - same rules for dates as for pub-dates-->
+
+  <pattern><!--Rules around expected attribute values of date-->
+    <rule context="history/date" role="error">
+      <assert id="histdate0a" test="@date-type">"date" element should have attribute "date-type" declared. Allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
+    </rule>
+    <rule context="history/date/@date-type" role="error">
+      <assert id="histdate0b" test="contains($allowed-values/date-types,.)">Unexpected value for "date-type" attribute on "date" element (<value-of select="."/>). Allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--... and only one of each type-->
+    <rule context="history/date" role="error">
+      <report id="histdate0c" test="@date-type=./preceding-sibling::date/@date-type">There should only be one instance of the "date" element with "date-type" attribute value of "<value-of select="@date-type"/>". Please check with NPG Editorial Production.</report>
+    </rule>
+  </pattern>
+  
+  <pattern><!--Valid values for year, month and day-->
+    <rule context="history/date" role="error">
+      <assert id="histdate1a" test="not(year) or matches(year, '^(19|20)[0-9]{2}$')">Invalid year value: <value-of select="year"/>. It should be a 4-digit number starting with 19 or 20.</assert>
+      <assert id="histdate1b" test="not(month) or matches(month, '^((0[1-9])|(1[0-2]))$')">Invalid month value: <value-of select="month"/>. It should be a 2-digit number between 01 and 12.</assert>
+      <assert id="histdate1c" test="not(day) or matches(day, '^(0[1-9]|[12][0-9]|3[01])$')">Invalid day value: <value-of select="day"/>. It should be a 2-digit number between 01 and 31.</assert>
+    </rule>
+  </pattern> 
+  
+  <pattern><!--Concatenate year/month/day and check valid if those elements have already passed basic validation checks. This rule adapted from http://regexlib.com, author Michel Chouinard -->
+    <rule context="history/date[matches(year, '^(19|20)[0-9]{2}$') and matches(month, '^((0[1-9])|(1[0-2]))$') and matches(day, '^(0[1-9]|[12][0-9]|3[01])$')]" role="error">
+      <assert id="histdate2" test="matches(concat(year,month,day), '^(((19|20)(([0][48])|([2468][048])|([13579][26]))|2000)(([0][13578]|[1][02])([012][0-9]|[3][01])|([0][469]|11)([012][0-9]|30)|02([012][0-9]))|((19|20)(([02468][1235679])|([13579][01345789]))|1900)(([0][13578]|[1][02])([012][0-9]|[3][01])|([0][469]|11)([012][0-9]|30)|02([012][0-8])))$')">Invalid history date - the day value (<value-of select="day"/>) does not exist for the month (<value-of select="month"/>) in the year (<value-of select="year"/>).</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--Year/Day - invalid combination in date-->
+    <rule context="history/date" role="error">
+      <report id="histdate3" test="year and day and not(month)">Missing month in "date" element. Currently only contains year and day.</report>
+    </rule>
+  </pattern>
+  
+  <pattern><!--No content-type attribute on day, month or year-->
+    <rule context="day[ancestor::history] | month[ancestor::history] | year[ancestor::history]" role="error">
+      <report id="histdate4" test="@content-type">Do not use "content-type" attribute on <name/> within "date" element.</report>
+    </rule>
+  </pattern>
 
   <!--Permissions, including copyright info-->
   
