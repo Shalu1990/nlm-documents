@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
-  <title>Schematron rules for NPG content in NLM v3.0 - metadata</title>
+  <title>Schematron rules for NPG content in NLM v3.0</title>
   <ns uri="http://www.w3.org/1998/Math/MathML" prefix="mml"/>
   <ns uri="http://docs.oasis-open.org/ns/oasis-exchange/table" prefix="oasis"/>
   <ns uri="http://www.w3.org/1999/xlink" prefix="xlink"/>
@@ -40,8 +40,8 @@
   </pattern>
   
   <pattern>
-    <rule context="article[@xml:lang]" role="error"><!--If @xml:lang exists, does it have an allowed value-->
-      <assert  id="article3" test="contains($allowed-values/languages,@xml:lang)">Unexpected language "<value-of select="@xml:lang"/>" declared on root article element. Expected values are "en" (English), "de" (German) and "ja" (Japanese/Kanji).</assert>
+    <rule context="article[@xml:lang]/@xml:lang" role="error"><!--If @xml:lang exists, does it have an allowed value-->
+      <assert  id="article3" test=". = $allowed-values/languages/language">Unexpected language "<value-of select="."/>" declared on root article element. Expected values are "en" (English), "de" (German) and "ja" (Japanese/Kanji).</assert>
     </rule>
   </pattern>
   
@@ -97,7 +97,13 @@
   
   <pattern>
     <rule context="journal-meta" role="error"><!--Other expected and unexpected elements-->
-      <assert id="jmeta7" test="publisher">Journal metadata should include a "publisher" element.</assert>
+      <assert id="jmeta7a" test="publisher">Journal metadata should include a "publisher" element.</assert>
+    </rule>
+  </pattern>
+  
+  <pattern>
+    <rule context="publisher" role="error">
+      <report id="jmeta7b" test="publisher-loc">Do not use "publisher-loc" element in publisher information. This is not necessary for NPG articles.</report>
     </rule>
   </pattern>
   
@@ -186,7 +192,7 @@
       <assert id="pubdate0a" test="@pub-type">"pub-date" element should have attribute "pub-type" declared. Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert>
     </rule>
     <rule context="pub-date/@pub-type" role="error">
-      <assert id="pubdate0b" test="contains($allowed-values/pub-types,.)">Unexpected value for "pub-type" attribute on "pub-date" element (<value-of select="."/>). Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert>
+      <assert id="pubdate0b" test=". = $allowed-values/pub-types/pub-type">Unexpected value for "pub-type" attribute on "pub-date" element (<value-of select="."/>). Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert>
     </rule>
   </pattern>
  
@@ -222,12 +228,42 @@
     </rule>
   </pattern>
   
-  <!--Volume-->
+  <!--Volume, issue, fpage, lpage, counts/page-count. Add tests for when we don't expect to have volume/issue values dependent on pub-type (aop etc) -->
   
-  <!--Issue-->
+  <pattern>
+    <rule context="volume[parent::article-meta] | issue[parent::article-meta] | fpage[parent::article-meta] | lpage[parent::article-meta] | page-count[@count='0'][parent::article-meta]" role="error">
+      <assert id="artinfo1" test="normalize-space(.) or *">Empty "<name/>" element should not be used - please delete.</assert>
+    </rule>
+  </pattern>
   
-  <!--Page spans correct, not present for online only or aop-->
-
+  <pattern>
+    <rule context="volume[parent::article-meta] | issue[parent::article-meta] | fpage[parent::article-meta] | lpage[parent::article-meta] | page-count/@count" role="error">
+      <assert id="artinfo2" test="not(normalize-space(.) or *) or matches(.,'^[0-9]+$')">Invalid value for "<name/>" (<value-of select="."/>) - this should only contain numerals.</assert>
+    </rule>
+  </pattern>
+  
+  <pattern>
+    <rule context="fpage[normalize-space(.) or *][parent::article-meta]" role="error">
+      <assert id="artinfo3a" test="following-sibling::lpage and following-sibling::counts/page-count">As "fpage" is used, we also expect "lpage" and "counts"/"page-count" elements to be used in article metadata.</assert>
+    </rule>
+    <rule context="counts[page-count]" role="error">
+      <assert id="artinfo3b" test="preceding-sibling::fpage">As "page-count" is used, we also expect "fpage" and "lpage" elements to be used in article metadata. Please check if "page-count" should have been used.</assert>
+    </rule>
+  </pattern>
+  
+  <pattern>
+    <let name="span" value="//lpage[normalize-space(.) or *][matches(.,'^[0-9]+$')][parent::article-meta] - //fpage[normalize-space(.) or *][matches(.,'^[0-9]+$')][parent::article-meta] + 1"/>
+    <rule context="counts/page-count[not(@count='0')][matches(@count,'^[0-9]+$')]">
+      <assert id="artinfo4" test="@count = $span or not($span)">Incorrect value given for "page-count" attribute "count". Expected value is: <value-of select="$span"/>.</assert>
+    </rule>
+  </pattern>
+  
+  <pattern>
+    <rule context="fig-count | table-count | equation-count | ref-count | word-count" role="error">
+      <report id="artinfo5" test="parent::counts">Unexpected use of "<name/>" element. Please delete - not necessary in NPG articles.</report>
+    </rule>
+  </pattern>
+  
   <!--History - same rules for dates as for pub-dates-->
 
   <pattern><!--Rules around expected attribute values of date-->
@@ -235,7 +271,7 @@
       <assert id="histdate0a" test="@date-type">"date" element should have attribute "date-type" declared. Allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
     </rule>
     <rule context="history/date/@date-type" role="error">
-      <assert id="histdate0b" test="contains($allowed-values/date-types,.)">Unexpected value for "date-type" attribute on "date" element (<value-of select="."/>). Allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
+      <assert id="histdate0b" test=". = $allowed-values/date-types/date-type">Unexpected value for "date-type" attribute on "date" element (<value-of select="."/>). Allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
     </rule>
   </pattern>
   
@@ -276,8 +312,13 @@
   <pattern>
     <rule context="article-meta"><!--permissions and expected children exist-->
       <assert id="copy1a" test="permissions">Article metadata should include a "permissions" element.</assert>
-      <assert id="copy1b" test="permissions/copyright-year">Permissions should include the copyright year.</assert>
-      <assert id="copy1c" test="permissions/copyright-holder">Permissions should include the copyright holder: <value-of select="$allowed-values/journal[@title=$journal-title]/copyright-holder"/>.</assert>
+    </rule>
+  </pattern>
+  
+  <pattern>
+    <rule context="permissions"><!--permissions and expected children exist-->
+      <assert id="copy1b" test="copyright-year">Permissions should include the copyright year.</assert>
+      <assert id="copy1c" test="copyright-holder">Permissions should include the copyright holder: <value-of select="$allowed-values/journal[@title=$journal-title]/copyright-holder"/>.</assert>
     </rule>
   </pattern>
   
