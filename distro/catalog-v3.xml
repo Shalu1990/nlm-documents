@@ -216,8 +216,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!--                    JOURNAL PUBLISHING DTD (BLUE)               -->
 <!-- ============================================================== -->
 
-<group xml:base="file:///C:/Work/Tasks/DTDJournal/"
-         prefer="public">
+<group prefer="public">
 
   <public publicId="-//NLM//DTD Journal Publishing DTD v3.0 20080202//EN"
                uri="journalpublishing3.dtd"/>
@@ -235,7 +234,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
                uri="journalpubcustom-models3.ent"/>
 
   <public publicId="-//NLM//DTD NLM Citation v3.0 20080202//EN"
-               uri="nlmcitation.ent3"/>
+               uri="nlmcitation3.ent"/>
 
 </group>
 
@@ -245,8 +244,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!-- ============================================================== -->
 
 
-<group xml:base="file:///C:/Work/Tasks/DTDArchiving/"
-         prefer="public">
+<group prefer="public">
 
   <public publicId="-//NLM//DTD Journal Archiving and Interchange DTD v3.0 20080202//EN"
                uri="archivearticle3.dtd"/>
@@ -271,8 +269,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!-- ============================================================== -->
 
 
-<group xml:base="file:///C:/Work/Tasks/DTDAuthoring/"
-         prefer="public">
+<group prefer="public">
 
   <public publicId="-//NLM//DTD Article Authoring DTD v3.0 20080202//EN"
                uri="articleauthoring3.dtd"/>
@@ -295,8 +292,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!--                    NCBI BOOK DTDS (PURPLE)                     -->
 <!-- ============================================================== -->
 
-<group xml:base="file:///C:/Work/Tasks/DTDBook/"
-         prefer="public">
+<group prefer="public">
 
 <!-- .............................................................. -->
 <!--                    NCBI BOOK DTD                               -->
@@ -349,8 +345,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!-- ============================================================== -->
 
 
-<group xml:base="file:///C:/Work/Tasks/DTDArchiving-OASIS/"
-         prefer="public">
+<group prefer="public">
 
  <public publicId="-//NLM//DTD Journal Archiving with OASIS Tables v3.0 20080202//EN"
                uri="archive-oasis-article3.dtd"/>
@@ -372,8 +367,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!-- ============================================================== -->
 
 
-<group xml:base="file:///C:/Work/Tasks/DTDJournal-OASIS/"
-         prefer="public">
+<group prefer="public">
 
  <public publicId="-//NLM//DTD Journal Publishing with OASIS Tables v3.0 20080202//EN"
                uri="journalpub-oasis3.dtd"/>
@@ -394,8 +388,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!--                    MODULAR LIBRARY                             -->
 <!-- ============================================================== -->
 
-<group xml:base="file:///C:/Work/Tasks/Common/"
-         prefer="public">
+<group prefer="public">
 
 <!--                    MODULE OF MODULES                           -->
 
@@ -494,8 +487,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!--                    CHARACTER-ENTITY SETS USED IN THE SUITE    -->
 <!-- ============================================================= -->
 
-<group xml:base="file:///C:/Work/Entities/"
-         prefer="public">
+<group prefer="public">
 
 <!-- .............................................................. -->
 <!--                    TABLES: XHTML TABLE MODULES                 -->
