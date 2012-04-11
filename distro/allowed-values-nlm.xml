@@ -12,9 +12,26 @@ Created - 20120208
 -->
 
 <allowed-values>
-  <languages>en de ja</languages><!--en-English, de-German, ja-Japanese-->
-  <pub-types>issue-date aop collection epub epreprint and embargo</pub-types>
-  <date-types>created received rev-recd accepted misc</date-types>
+  <languages><!--en-English, de-German, ja-Japanese-->
+    <language>en</language>
+    <language>de</language>
+    <language>ja</language>
+  </languages>
+  <pub-types>
+    <pub-type>issue-date</pub-type>
+    <pub-type>aop</pub-type>
+    <pub-type>collection</pub-type>
+    <pub-type>epub</pub-type>
+    <pub-type>epreprint</pub-type>
+    <pub-type>embargo</pub-type>
+  </pub-types>
+  <date-types>
+    <date-type>created</date-type>
+    <date-type>received</date-type>
+    <date-type>rev-recd</date-type>
+    <date-type>accepted</date-type>
+    <date-type>misc</date-type>
+  </date-types>
   <journal title="Application Notes">
     <copyright-holder>Nature Publishing Group</copyright-holder>
   </journal>
