@@ -47,6 +47,9 @@
         <abstract abstract-type="editor">
             <p>Belgian and U.S. researchers have elucidated a symbiosis between hypoxic and oxygenated tumor cells that could be harnessed to kill the former cell type by targeting a <underline>lactate transporter</underline> on the latter type. If a suitable inhibitor of the transporter is identified, it could complement existing therapies.</p>
         </abstract>
+        <counts>
+            <page-count count="4"/>
+        </counts>
         <custom-meta-group>
             <custom-meta specific-use="change">
                 <meta-name>erratum</meta-name>
