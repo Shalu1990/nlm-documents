@@ -1,0 +1,37 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>nlm-pipeline</groupId>
+        <artifactId>nlm-pipeline</artifactId>
+	<packaging>pom</packaging>
+	<version>1.0</version>
+	<name>nlm-pipeline</name>
+	<build>
+		<plugins>
+
+
+			<!-- Packaging schema -->
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>package-schema</id>
+						<phase>package</phase>
+						<configuration>
+							<tasks>
+								<zip destfile="${project.basedir}/deploy/schema-package.zip">
+
+									<zipfileset dir="validation-pipeline/distro" prefix="schema" excludes="calabash-1.0.2-94/**, saxon/**, *.bat, *.sh, *.java, *.class " />
+								</zip>
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
