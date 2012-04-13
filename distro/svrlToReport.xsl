@@ -14,7 +14,7 @@
 	 		<xsl:attribute name="location"><xsl:value-of select ="@location" /></xsl:attribute>
 	 		<xsl:attribute name="line"><xsl:value-of select ="@line-number" /></xsl:attribute>
 	 		<xsl:attribute name="column"><xsl:value-of select ="@column-number" /></xsl:attribute>
-	 		<xsl:attribute name="validated-by">schematron</xsl:attribute>
+	 		<xsl:attribute name="validatedBy">schematron</xsl:attribute>
 	 		<xsl:value-of select="svrl:text/text()" />
 	 	</xsl:element>
 	</xsl:template>
@@ -24,7 +24,7 @@
 	 		<xsl:attribute name="location"><xsl:value-of select ="@location" /></xsl:attribute>
 	 		<xsl:attribute name="line"><xsl:value-of select ="@line-number" /></xsl:attribute>
 	 		<xsl:attribute name="column"><xsl:value-of select ="@column-number" /></xsl:attribute>
-	 		<xsl:attribute name="validated-by">schematron</xsl:attribute>
+	 		<xsl:attribute name="validatedBy">schematron</xsl:attribute>
 	 		<xsl:value-of select="svrl:text/text()" />
 	 	</xsl:element>
 	</xsl:template>
