@@ -16,6 +16,7 @@
   <!--Regularly used values throughout rules-->
   <let name="journal-title" value="//journal-meta/journal-title-group/journal-title"/>
   <let name="journal-id" value="//journal-meta/journal-id"/>
+  <let name="article-type" value="article/@article-type"/>
   <let name="filename" value="base-uri()"/><!--May not be necessary to declare this - delete if filename not used-->
   
   <!--Rules only cover metadata sections at the moment; more rules to be added for body-->
@@ -26,7 +27,7 @@
     ******************************************************************************************************************************
   -->
   
-  <!--article/@article-type matches expected values for journal-->
+  <!--article/@article-type exists and matches expected values for journal-->
   <pattern>
     <rule context="article" role="error"><!--Does the article have an article-type attribute-->
       <assert  id="article1" test="@article-type">All articles should have an article-type attribute on "article". The value should be the same as the information contained in the subject element with attribute content-type="article-type".</assert>
@@ -76,7 +77,7 @@
   </pattern>
   
   <pattern>
-    <rule context="journal-subtitle | abbrev-journal-title | trans-title-group" role="error"><!--No other children of journal-title-group used-->
+    <rule context="journal-subtitle | trans-title-group" role="error"><!--No other children of journal-title-group used-->
       <report id="jmeta4" test="parent::journal-title-group">Unexpected use of "<name/>" in "journal-title-group". "journal-title-group" should only contain "journal-title".</report>
     </rule>
   </pattern>
@@ -131,14 +132,13 @@
 
   <!--Article categories-->
   
-  <pattern><!--Is the article heading type valid and does it match the main article type?-->
-    <rule context="subject[@content-type='article-type']" role="error">
-      <assert id="ameta2a" test="contains($allowed-values/journal[@title=$journal-title]/article-types,.) or not($products[descendant::dc:title=$journal-title])">Unexpected subject article type (<value-of select="."/>) for <value-of select="$journal-title"/>.</assert>
-      <!--This rule falls over if article/@article-type does not exist. Also fires if there is an error in the article/@article-type. Attributes changed. Rewrite.-->
-      <assert id="ameta2b" test="matches(.,ancestor::article/@article-type)">Subject article type (<value-of select="."/>) does not match root article type (<value-of select="ancestor::article/@article-type"/>)</assert>
+  <pattern><!--Does article categories contain "category" information and does it match article/@article-type?-->
+    <rule context="article-categories" role="error">
+      <assert id="ameta2a" test="subj-group[@subj-group-type='category']">Article categories should contain a "subj-group" element with attribute "subj-group-type='category'". The value of the child "subject" element should be the same as the main article-type attribute: <value-of select="$article-type"/>.</assert>
+      <assert id="ameta2b" test="subj-group[@subj-group-type='category']/subject = $article-type or not($article-type) or not(subj-group[@subj-group-type='category']/subject)">Subject catgory (<value-of select="subj-group[@subj-group-type='category']/subject"/>) does not match root article type (<value-of select="$article-type"/>)</assert>
     </rule>
   </pattern>
-  <!--or not(article/@article-type) -->
+  
 <!--
   <pattern>Has at least one subject code been included? Is this applicable to all journals?
     <rule context="article-categories" role="error">
@@ -160,7 +160,9 @@
   </pattern>
 -->
   
-  <!--@content-type='indications' rules-->
+  <!--If @subj-group-type="career" or "discipline" or "sector" - article/@article-type="naturejobs"; only one of each type
+  If @subj-group-type="region" - article/@article-type="naturejobs"; should contain subject/@content-type="continent"; may also contain subject/@content-type="country", "state" "area"
+  allowed values - "continent" (africa, all, asia, aus, eur, na, sa); country, state (two letter state names) and area -->
   
   <!--Article title (title-group)-->
   <pattern>
@@ -224,7 +226,7 @@
   
   <pattern>
     <rule context="day[parent::pub-date] | month[parent::pub-date] | year[parent::pub-date]" role="error"><!--No content-type attribute on day, month or year-->
-      <report id="pubdate4" test="@content-type">Do not use "content-type" attribute on <name/> within "pub-date" element.</report>
+      <report id="pubdate4" test="@content-type">Do not use "content-type" attribute on "<name/>" within "pub-date" element.</report>
     </rule>
   </pattern>
   
@@ -232,7 +234,8 @@
   
   <pattern>
     <rule context="volume[parent::article-meta] | issue[parent::article-meta] | fpage[parent::article-meta] | lpage[parent::article-meta] | page-count[@count='0'][parent::article-meta]" role="error">
-      <assert id="artinfo1" test="normalize-space(.) or *">Empty "<name/>" element should not be used - please delete.</assert>
+      <assert id="artinfo1a" test="normalize-space(.) or *">Empty "<name/>" element should not be used - please delete.</assert>
+      <assert id="artinfo1b" test="not(@content-type)">Do not use "content-type" attribute on "<name/>" within article metadata.</assert>
     </rule>
   </pattern>
   
@@ -252,7 +255,7 @@
   </pattern>
   
   <pattern>
-    <let name="span" value="//lpage[normalize-space(.) or *][matches(.,'^[0-9]+$')][parent::article-meta] - //fpage[normalize-space(.) or *][matches(.,'^[0-9]+$')][parent::article-meta] + 1"/>
+    <let name="span" value="//article-meta/lpage[normalize-space(.) or *][matches(.,'^[0-9]+$')] - //article-meta/fpage[normalize-space(.) or *][matches(.,'^[0-9]+$')] + 1"/>
     <rule context="counts/page-count[not(@count='0')][matches(@count,'^[0-9]+$')]">
       <assert id="artinfo4" test="@count = $span or not($span)">Incorrect value given for "page-count" attribute "count". Expected value is: <value-of select="$span"/>.</assert>
     </rule>
