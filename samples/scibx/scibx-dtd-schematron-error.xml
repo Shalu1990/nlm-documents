@@ -12,8 +12,8 @@
         <article-id pub-id-type="doi">10.1038/scibx.2009.1491</article-id>
         <article-id pub-id-type="publisher-id">scibx.2009.1491</article-id>
         <article-categories>
-            <subj-group subj-group-type="article-heading">
-                <subject content-type="article-type">cstory</subject>
+            <subj-group subj-group-type="category">
+                <subject>cstory</subject>
             </subj-group>
             <subj-group subj-group-type="subjects">
             <subject content-type="subject">scibx-10</subject>
@@ -32,7 +32,7 @@
                 <role>Senior Writer</role>
             </contrib>
         </contrib-group>
-        <pub-date>
+        <pub-date pub-type="issue-date">
             <day>15</day>
             <month>10</month>
             <year>2009</year>

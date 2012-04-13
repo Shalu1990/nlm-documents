@@ -7,7 +7,7 @@
         <journal-title-group>
             <journal-title>Science-Business eXchange</journal-title>
             <journal-subtitle>a journal</journal-subtitle>
-            <abbrev-journal-title>scibx</abbrev-journal-title>
+            <trans-title-group xml:lang="de"><trans-title>Wissenschaft und Wirtschaft</trans-title></trans-title-group>
         </journal-title-group>
         <issn pub-type="pub">1945-3477</issn>
         <issn pub-type="epub">195-3477</issn>
@@ -16,8 +16,8 @@
     <article-meta>
         <article-id pub-id-type="publisher-id">scibx.test</article-id>
         <article-categories>
-            <subj-group subj-group-type="article-heading">
-                <subject content-type="article-type">csrory</subject>
+            <subj-group subj-group-type="category">
+                <subject>csrory</subject>
             </subj-group>
             <subj-group subj-group-type="subjects">  
                 <subject content-type="npg.subject">
