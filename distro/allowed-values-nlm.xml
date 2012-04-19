@@ -12,7 +12,8 @@ Created - 20120208
 -->
 
 <allowed-values>
-  <languages><!--en-English, de-German, ja-Japanese-->
+  <languages>
+    <!--en-English, de-German, ja-Japanese-->
     <language>en</language>
     <language>de</language>
     <language>ja</language>
@@ -32,10 +33,62 @@ Created - 20120208
     <date-type>accepted</date-type>
     <date-type>misc</date-type>
   </date-types>
+  <states>
+    <state fullname="Alabama">AL</state>
+    <state fullname="Alaska">AK</state>
+    <state fullname="Arizona">AZ</state>
+    <state fullname="Arkansas">AR</state>
+    <state fullname="California">CA</state>
+    <state fullname="Colorado">CO</state>
+    <state fullname="Connecticut">CT</state>
+    <state fullname="Delaware">DE</state>
+    <state fullname="Florida">FL</state>
+    <state fullname="Georgia">GA</state>
+    <state fullname="Hawaii">HI</state>
+    <state fullname="Idaho">ID</state>
+    <state fullname="Illinois">IL</state>
+    <state fullname="Indiana">IN</state>
+    <state fullname="Iowa">IA</state>
+    <state fullname="Kansas">KS</state>
+    <state fullname="Kentucky">KY</state>
+    <state fullname="Louisiana">LA</state>
+    <state fullname="Maine">ME</state>
+    <state fullname="Maryland">MD</state>
+    <state fullname="Massachusetts">MA</state>
+    <state fullname="Michigan">MI</state>
+    <state fullname="Minnesota">MN</state>
+    <state fullname="Mississippi">MS</state>
+    <state fullname="Missouri">MO</state>
+    <state fullname="Montana">MT</state>
+    <state fullname="Nebraska">NE</state>
+    <state fullname="Nevada">NV</state>
+    <state fullname="New Hampshire">NH</state>
+    <state fullname="New Jersey">NJ</state>
+    <state fullname="New Mexico">NM</state>
+    <state fullname="New York">NY</state>
+    <state fullname="North Carolina">NC</state>
+    <state fullname="North Dakota">ND</state>
+    <state fullname="Ohio">OH</state>
+    <state fullname="Oklahoma">OK</state>
+    <state fullname="Oregon">OR</state>
+    <state fullname="Pennsylvania">PA</state>
+    <state fullname="Rhode Island">RI</state>
+    <state fullname="South Carolina">SC</state>
+    <state fullname="South Dakota">SD</state>
+    <state fullname="Tennessee">TN</state>
+    <state fullname="Texas">TX</state>
+    <state fullname="Utah">UT</state>
+    <state fullname="Vermont">VT</state>
+    <state fullname="Virginia">VA</state>
+    <state fullname="Washington">WA</state>
+    <state fullname="West Virginia">WV</state>
+    <state fullname="Wisconsin">WI</state>
+    <state fullname="Wyoming">WY</state>
+  </states>
   <journal title="Application Notes">
     <copyright-holder>Nature Publishing Group</copyright-holder>
   </journal>
-  <journal title="BDJ">
+  <journal title="British Dental Journal">
     <copyright-holder>Nature Publishing Group</copyright-holder>
   </journal>
   <journal title="Bioentrepreneur">
@@ -75,7 +128,6 @@ Created - 20120208
     <copyright-holder>Nature Publishing Group</copyright-holder>
   </journal>
   <journal title="Nature">
-    <article-types>20q 50ya ac add adfeat adv advert advice af ag an antig apn ar ars article as askb aske ate au aub ba bb bc bca beingg bio biov bkstory blog bn bnf bo boo br brf brn bru bks bsn buyg cal car careersqa case casefv categtxt cc cg cm cn cna clin clinadv clincon clinimg clintechnq clnimg clinres clncon cme col com compbio conc conf confa conred couch cprot cr critmass crsswrd cs cstory cy db dept diary digest dplat dtech dther dw ecot ecr ed edfv edin eds edu egame el emr eng er erp essaycon ethicsw essay ewr fa faf faq fd fe fep fn fno focus focusrev fof forum fpln fqc fr fromed frontl ftf ftw fut futsol gen getact gu gus gw hc headg headl hh hn hor hp hrn hs highlts ht hyp hyst ib illus in indp insight insit iniss insp intvw is itp iye japnf japau japlnf japmuse japnw japsi japsn jcb jr le lfln livg lstwrd lt ma mark marw medrv meetteam memrv mgt minirv misc mp mr mt mtp multr na naturejobs natview nb nbr nbri nemr neuro ngal nj nvqa mktana nm nmr nobellr np nscan nt nv nvb nvf nvfv nw nf ob onbr onyrft op opcom out outlab ov pa pe pefv phot  pi pl pn pod polw ppi ppro ppt prac pr prf prhl primer pro prog proscstory prosdplat prosmark prosppi prostmech prostnotes prostools prot prv puzzle pw qa ra rcom rd re recom reflect rep reply ret revrec rhighlts rl rlet rn rnote rolem rr rs rsrc rv rvfv ru sb sc sciampe scn sevendays sf si sim skep snaps sp spfwd spot sprep strle stw ss sr su susdev swr syn talk tech techn tenv tf thes th thinkb thismo thk thtr timeln tmat tmech tn tnotes tools tr trialw tt turnp tvr upd upfrnt view vitupd vp vpt vr wk woh</article-types>
     <copyright-holder>Nature Publishing Group</copyright-holder>
   </journal>
   <journal title="Nature Biotechnology">
@@ -95,7 +147,6 @@ Created - 20120208
   </journal>
   <journal title="Nature Climate Change">
     <copyright-holder>Nature Publishing Group</copyright-holder>
-    <article-types>af ba blogosphere byndbndrs cg cr cs cy ed er fe iniss intvw le marw nf nv nw pe polw rhighlts rv snaps</article-types>
   </journal>
   <journal title="Nature Clinical Practice Cardiovascular Medicine">
     <copyright-holder>Nature Publishing Group</copyright-holder>
@@ -147,15 +198,12 @@ Created - 20120208
   </journal>
   <journal title="Nature Methods">
     <copyright-holder>Nature Publishing Group</copyright-holder>
-    <article-types>add adfeat af an apn bc bca categtxt cg cm com cprot cr cy ed er fd fe hc insight jcb le lt mib mr na naturejobs natview nbr neuro nf nv nw pe pr prim prot rhighlts rs rv su tf thismo tib</article-types>
-    <copyright-holder>Nature Publishing Group</copyright-holder>
   </journal>
   <journal title="Nature Middle East">
     <copyright-holder>Nature Publishing Group</copyright-holder>
   </journal>
   <journal title="Nature Nanotechnology">
     <copyright-holder>Nature Publishing Group</copyright-holder>
-    <article-types>af ba cg cr cs cy ed er fe iniss intvw le lt nv phot prog re rhighlts rv thes</article-types>
   </journal>
   <journal title="Nature Neuroscience">
     <copyright-holder>Nature Publishing Group</copyright-holder>
@@ -198,14 +246,12 @@ Created - 20120208
   </journal>
   <journal title="Nature Reviews Genetics">
     <copyright-holder>Nature Publishing Group</copyright-holder>
-    <article-types>an cg com cr cs er fe fromed iniss natview pe pr reply ret rhighlts rs rv ss</article-types>
   </journal>
   <journal title="Nature Reviews Immunology">
     <copyright-holder>Nature Publishing Group</copyright-holder>
   </journal>
   <journal title="Nature Reviews Microbiology">
     <copyright-holder>Nature Publishing Group</copyright-holder>
-    <article-types>af an cg com cr cs dw ed er fd gw highlts iniss na natview pe pr reply rhighlts rv</article-types>
   </journal>
   <journal title="Nature Reviews Molecular Cell Biology">
     <copyright-holder>Nature Publishing Group</copyright-holder>
@@ -239,10 +285,8 @@ Created - 20120208
   </journal>
   <journal title="Science-Business eXchange">
     <copyright-holder>Nature Publishing Group</copyright-holder>
-    <article-types>cstory dplat dtech dther mark ppi prostmech prostools tmech tnotes tools</article-types>
   </journal>
   <journal title="Scientific American">
-    <article-types>20q 50ya ac add adfeat adv advert advice af ag an antig apn ar ars article as askb aske ate au aub ba bb bc bca beingg bio biov bkstory blog bn bnf bo boo br brf brn bru bks bsn buyg cal car careersqa case casefv categtxt cc cg cm cn cna clin clinadv clincon clinimg clintechnq clnimg clinres clncon cme col com compbio conc conf confa conred couch cprot cr critmass crsswrd cs cstory cy db dept diary digest dplat dtech dther dw ecot ecr ed edfv edin eds edu egame el emr eng er erp essaycon ethicsw essay ewr fa faf faq fd fe fep fn fno focus focusrev fof forum fpln fqc fr fromed frontl ftf ftw fut futsol gen getact gu gus gw hc headg headl hh hn hor hp hrn hs highlts ht hyp hyst ib illus in indp insight insit iniss insp intvw is itp iye japnf japau japlnf japmuse japnw japsi japsn jcb jr le lfln livg lstwrd lt ma mark marw medrv meetteam memrv mgt minirv misc mp mr mt mtp multr na naturejobs natview nb nbr nbri nemr neuro ngal nj nvqa mktana nm nmr nobellr np nscan nt nv nvb nvf nvfv nw nf ob onbr onyrft op opcom out outlab ov pa pe pefv phot  pi pl pn pod polw ppi ppro ppt prac pr prf prhl primer pro prog proscstory prosdplat prosmark prosppi prostmech prostnotes prostools prot prv puzzle pw qa ra rcom rd re recom reflect rep reply ret revrec rhighlts rl rlet rn rnote rolem rr rs rsrc rv rvfv ru sb sc sciampe scn sevendays sf si sim skep snaps sp spfwd spot sprep strle stw ss sr su susdev swr syn talk tech techn tenv tf thes th thinkb thismo thk thtr timeln tmat tmech tn tnotes tools tr trialw tt turnp tvr upd upfrnt view vitupd vp vpt vr wk woh</article-types>
     <copyright-holder>Scientific American, Inc.</copyright-holder>
   </journal>
   <journal title="Scientific American Mind">
@@ -250,7 +294,6 @@ Created - 20120208
   </journal>
   <journal title="Scientific Reports">
     <copyright-holder>Nature Publishing Group</copyright-holder>
-    <article-types>af nw rhighlts rv</article-types>
   </journal>
   <journal title="Structural Biology KnowledgeBase">
     <copyright-holder>Nature Publishing Group</copyright-holder>
@@ -264,5 +307,1226 @@ Created - 20120208
   <journal title="Vital">
     <copyright-holder>British Dental Association</copyright-holder>
   </journal>
-
+  <article-types>
+    <article-type type="20q">
+      <journal>Nature Reviews Drug Discovery</journal>
+    </article-type>
+    <article-type type="50ya">
+      <journal>Scientific American</journal>
+    </article-type>
+    <article-type type="ac">
+      <journal/>
+    </article-type>
+    <article-type type="add">
+      <journal>Nature Physics</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Genetics</journal>
+      <journal>The EMBO Journal</journal>
+      <journal>Nature Chemistry</journal>
+      <journal>Nature Reviews Neuroscience</journal>
+    </article-type>
+    <article-type type="adfeat">
+      <journal>Nature</journal>
+    </article-type>
+    <article-type type="adv">
+      <journal>Scientific American</journal>
+    </article-type>
+    <article-type type="advert">
+      <journal/>
+    </article-type>
+    <article-type type="advice">
+      <journal>Vital</journal>
+    </article-type>
+    <article-type type="af">
+      <journal>Nature Chemistry</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>The EMBO Journal</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Molecular Systems Biology</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature</journal>
+      <journal>Nature Communications</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>IBMS BoneKEy</journal>
+    </article-type>
+    <article-type type="ag">
+      <journal>British Dental Journal</journal>
+    </article-type>
+    <!--Though ML returns BDJ, so this may not be used anymore-->
+    <article-type type="an">
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Reviews Microbiology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+    </article-type>
+    <article-type type="antig">
+      <journal>Scientific American</journal>
+    </article-type>
+    <article-type type="apn">
+      <journal>Application Notes</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Photonics</journal>
+    </article-type>
+    <article-type type="ar">
+      <journal>Nature Clinical Practice Cardiovascular Medicine</journal>
+      <journal>Nature Clinical Practice Endocrinology &amp; Metabolism</journal>
+      <journal>Nature Clinical Practice Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Clinical Practice Nephrology</journal>
+      <journal>Nature Clinical Practice Neurology</journal>
+      <journal>Nature Clinical Practice Oncology</journal>
+      <journal>Nature Clinical Practice Rheumatology</journal>
+      <journal>Nature Clinical Practice Urology</journal>
+    </article-type>
+    <article-type type="ars">
+      <journal>Nature</journal>
+    </article-type>
+    <article-type type="as">
+      <journal/>
+    </article-type>
+    <article-type type="askb">
+      <journal>Scientific American</journal>
+      <journal>Scientific American Mind</journal>
+    </article-type>
+    <article-type type="aske">
+      <journal>Scientific American</journal>
+    </article-type>
+    <article-type type="ate">
+      <journal/>
+    </article-type>
+    <article-type type="au">
+      <journal>Nature</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Reports Climate Change</journal>
+    </article-type>
+    <article-type type="aub">
+      <journal>Nature</journal>
+    </article-type>
+    <article-type type="ba">
+      <journal/>
+    </article-type>
+    <article-type type="bb">
+      <journal/>
+    </article-type>
+    <article-type type="bc">
+      <journal/>
+    </article-type>
+    <article-type type="bca">
+      <journal/>
+    </article-type>
+    <article-type type="beingg">
+      <journal/>
+    </article-type>
+    <article-type type="bio">
+      <journal/>
+    </article-type>
+    <article-type type="biov">
+      <journal/>
+    </article-type>
+    <article-type type="bkstory">
+      <journal/>
+    </article-type>
+    <article-type type="blog">
+      <journal/>
+    </article-type>
+    <article-type type="bn">
+      <journal/>
+    </article-type>
+    <article-type type="bnf">
+      <journal/>
+    </article-type>
+    <article-type type="bo">
+      <journal/>
+    </article-type>
+    <article-type type="boo">
+      <journal/>
+    </article-type>
+    <article-type type="br">
+      <journal/>
+    </article-type>
+    <article-type type="brf">
+      <journal/>
+    </article-type>
+    <article-type type="brn">
+      <journal/>
+    </article-type>
+    <article-type type="bru">
+      <journal/>
+    </article-type>
+    <article-type type="bks">
+      <journal/>
+    </article-type>
+    <article-type type="bsn">
+      <journal/>
+    </article-type>
+    <article-type type="buyg">
+      <journal/>
+    </article-type>
+    <article-type type="cal">
+      <journal/>
+    </article-type>
+    <article-type type="car">
+      <journal/>
+    </article-type>
+    <article-type type="careersqa">
+      <journal/>
+    </article-type>
+    <article-type type="case">
+      <journal/>
+    </article-type>
+    <article-type type="casefv">
+      <journal/>
+    </article-type>
+    <article-type type="categtxt">
+      <journal/>
+    </article-type>
+    <article-type type="cc">
+      <journal/>
+    </article-type>
+    <article-type type="cg">
+      <journal>British Dental Journal</journal>
+      <journal>Molecular Systems Biology</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Chemistry</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Clinical Practice Cardiovascular Medicine</journal>
+      <journal>Nature Clinical Practice Endocrinology &amp; Metabolism</journal>
+      <journal>Nature Clinical Practice Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Clinical Practice Nephrology</journal>
+      <journal>Nature Clinical Practice Neurology</journal>
+      <journal>Nature Clinical Practice Oncology</journal>
+      <journal>Nature Clinical Practice Rheumatology</journal>
+      <journal>Nature Clinical Practice Urology</journal>
+      <journal>Nature Communications</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature New Biology</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Physical Science</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Reviews Immunology</journal>
+      <journal>Nature Reviews Microbiology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Reviews Neuroscience</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>The EMBO Journal</journal>
+    </article-type>
+    <article-type type="cm">
+      <journal/>
+    </article-type>
+    <article-type type="cn">
+      <journal/>
+    </article-type>
+    <article-type type="cna">
+      <journal/>
+    </article-type>
+    <article-type type="clin">
+      <journal/>
+    </article-type>
+    <article-type type="clinadv">
+      <journal/>
+    </article-type>
+    <article-type type="clincon">
+      <journal/>
+    </article-type>
+    <article-type type="clinimg">
+      <journal/>
+    </article-type>
+    <article-type type="clintechnq">
+      <journal/>
+    </article-type>
+    <article-type type="clnimg">
+      <journal/>
+    </article-type>
+    <article-type type="clinres">
+      <journal/>
+    </article-type>
+    <article-type type="clncon">
+      <journal/>
+    </article-type>
+    <article-type type="cme">
+      <journal/>
+    </article-type>
+    <article-type type="col">
+      <journal/>
+    </article-type>
+    <article-type type="com">
+      <journal/>
+    </article-type>
+    <article-type type="compbio">
+      <journal/>
+    </article-type>
+    <article-type type="conc">
+      <journal/>
+    </article-type>
+    <article-type type="conf">
+      <journal/>
+    </article-type>
+    <article-type type="confa">
+      <journal/>
+    </article-type>
+    <article-type type="conred">
+      <journal/>
+    </article-type>
+    <article-type type="couch">
+      <journal/>
+    </article-type>
+    <article-type type="cprot">
+      <journal/>
+    </article-type>
+    <article-type type="cr">
+      <journal/>
+    </article-type>
+    <article-type type="critmass">
+      <journal/>
+    </article-type>
+    <article-type type="crsswrd">
+      <journal/>
+    </article-type>
+    <article-type type="cs">
+      <journal/>
+    </article-type>
+    <article-type type="cstory">
+      <journal>Science-Business eXchange</journal>
+    </article-type>
+    <article-type type="cy">
+      <journal/>
+    </article-type>
+    <article-type type="db">
+      <journal/>
+    </article-type>
+    <article-type type="dept">
+      <journal/>
+    </article-type>
+    <article-type type="diary">
+      <journal/>
+    </article-type>
+    <article-type type="digest">
+      <journal/>
+    </article-type>
+    <article-type type="dplat">
+      <journal/>
+    </article-type>
+    <article-type type="dtech">
+      <journal>Science-Business eXchange</journal>
+    </article-type>
+    <article-type type="dther">
+      <journal>Science-Business eXchange</journal>
+    </article-type>
+    <article-type type="dw">
+      <journal/>
+    </article-type>
+    <article-type type="ecot">
+      <journal/>
+    </article-type>
+    <article-type type="ecr">
+      <journal/>
+    </article-type>
+    <article-type type="ed">
+      <journal/>
+    </article-type>
+    <article-type type="edfv">
+      <journal/>
+    </article-type>
+    <article-type type="edin">
+      <journal/>
+    </article-type>
+    <article-type type="eds">
+      <journal/>
+    </article-type>
+    <article-type type="edu">
+      <journal/>
+    </article-type>
+    <article-type type="egame">
+      <journal/>
+    </article-type>
+    <article-type type="el">
+      <journal/>
+    </article-type>
+    <article-type type="emr">
+      <journal/>
+    </article-type>
+    <article-type type="eng">
+      <journal/>
+    </article-type>
+    <article-type type="er">
+      <journal/>
+    </article-type>
+    <article-type type="erp">
+      <journal/>
+    </article-type>
+    <article-type type="essaycon">
+      <journal/>
+    </article-type>
+    <article-type type="ethicsw">
+      <journal/>
+    </article-type>
+    <article-type type="essay">
+      <journal/>
+    </article-type>
+    <article-type type="ewr">
+      <journal/>
+    </article-type>
+    <article-type type="fa">
+      <journal/>
+    </article-type>
+    <article-type type="faf">
+      <journal/>
+    </article-type>
+    <article-type type="faq">
+      <journal/>
+    </article-type>
+    <article-type type="fd">
+      <journal/>
+    </article-type>
+    <article-type type="fe">
+      <journal>British Dental Journal</journal>
+      <journal>Lab Animal</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Chemistry</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature India</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Middle East</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Reports Climate Change</journal>
+      <journal>Nature Reports Stem Cells</journal>
+      <journal>Scientific American</journal>
+      <journal>Scientific American Mind</journal>
+      <journal>Scientific American Time</journal>
+      <journal>Vital</journal>
+    </article-type>
+    <article-type type="fep">
+      <journal/>
+    </article-type>
+    <article-type type="fn">
+      <journal/>
+    </article-type>
+    <article-type type="fno">
+      <journal/>
+    </article-type>
+    <article-type type="focus">
+      <journal/>
+    </article-type>
+    <article-type type="focusrev">
+      <journal/>
+    </article-type>
+    <article-type type="fof">
+      <journal/>
+    </article-type>
+    <article-type type="forum">
+      <journal/>
+    </article-type>
+    <article-type type="fpln">
+      <journal/>
+    </article-type>
+    <article-type type="fqc">
+      <journal/>
+    </article-type>
+    <article-type type="fr">
+      <journal/>
+    </article-type>
+    <article-type type="fromed">
+      <journal/>
+    </article-type>
+    <article-type type="frontl">
+      <journal/>
+    </article-type>
+    <article-type type="ftf">
+      <journal/>
+    </article-type>
+    <article-type type="ftw">
+      <journal/>
+    </article-type>
+    <article-type type="fut">
+      <journal/>
+    </article-type>
+    <article-type type="futsol">
+      <journal/>
+    </article-type>
+    <article-type type="gen">
+      <journal/>
+    </article-type>
+    <article-type type="getact">
+      <journal/>
+    </article-type>
+    <article-type type="gu">
+      <journal/>
+    </article-type>
+    <article-type type="gus">
+      <journal/>
+    </article-type>
+    <article-type type="gw">
+      <journal/>
+    </article-type>
+    <article-type type="hc">
+      <journal/>
+    </article-type>
+    <article-type type="headg">
+      <journal/>
+    </article-type>
+    <article-type type="headl">
+      <journal/>
+    </article-type>
+    <article-type type="hh">
+      <journal/>
+    </article-type>
+    <article-type type="hn">
+      <journal/>
+    </article-type>
+    <article-type type="hor">
+      <journal/>
+    </article-type>
+    <article-type type="hp">
+      <journal/>
+    </article-type>
+    <article-type type="hrn">
+      <journal/>
+    </article-type>
+    <article-type type="hs">
+      <journal/>
+    </article-type>
+    <article-type type="highlts">
+      <journal/>
+    </article-type>
+    <article-type type="ht">
+      <journal/>
+    </article-type>
+    <article-type type="hyp">
+      <journal/>
+    </article-type>
+    <article-type type="hyst">
+      <journal/>
+    </article-type>
+    <article-type type="ib">
+      <journal/>
+    </article-type>
+    <article-type type="illus">
+      <journal/>
+    </article-type>
+    <article-type type="in">
+      <journal/>
+    </article-type>
+    <article-type type="indp">
+      <journal/>
+    </article-type>
+    <article-type type="insight">
+      <journal/>
+    </article-type>
+    <article-type type="insit">
+      <journal/>
+    </article-type>
+    <article-type type="iniss">
+      <journal/>
+    </article-type>
+    <article-type type="insp">
+      <journal/>
+    </article-type>
+    <article-type type="intvw">
+      <journal/>
+    </article-type>
+    <article-type type="is">
+      <journal/>
+    </article-type>
+    <article-type type="itp">
+      <journal/>
+    </article-type>
+    <article-type type="iye">
+      <journal/>
+    </article-type>
+    <article-type type="japnf">
+      <journal/>
+    </article-type>
+    <article-type type="japau">
+      <journal/>
+    </article-type>
+    <article-type type="japlnf">
+      <journal/>
+    </article-type>
+    <article-type type="japmuse">
+      <journal/>
+    </article-type>
+    <article-type type="japnw">
+      <journal/>
+    </article-type>
+    <article-type type="japsi">
+      <journal/>
+    </article-type>
+    <article-type type="japsn">
+      <journal/>
+    </article-type>
+    <article-type type="jcb">
+      <journal/>
+    </article-type>
+    <article-type type="jr">
+      <journal/>
+    </article-type>
+    <article-type type="le">
+      <journal>British Dental Journal</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Scientific American</journal>
+      <journal>Scientific American Mind</journal>
+      <journal>Vital</journal>
+    </article-type>
+    <article-type type="lfln">
+      <journal/>
+    </article-type>
+    <article-type type="livg">
+      <journal/>
+    </article-type>
+    <article-type type="lstwrd">
+      <journal/>
+    </article-type>
+    <article-type type="lt">
+      <journal/>
+    </article-type>
+    <article-type type="ma">
+      <journal/>
+    </article-type>
+    <article-type type="mark">
+      <journal/>
+    </article-type>
+    <article-type type="marw">
+      <journal/>
+    </article-type>
+    <article-type type="medrv">
+      <journal/>
+    </article-type>
+    <article-type type="meetteam">
+      <journal/>
+    </article-type>
+    <article-type type="memrv">
+      <journal/>
+    </article-type>
+    <article-type type="mgt">
+      <journal/>
+    </article-type>
+    <article-type type="minirv">
+      <journal/>
+    </article-type>
+    <article-type type="misc">
+      <journal/>
+    </article-type>
+    <article-type type="mp">
+      <journal/>
+    </article-type>
+    <article-type type="mr">
+      <journal/>
+    </article-type>
+    <article-type type="mt">
+      <journal/>
+    </article-type>
+    <article-type type="mtp">
+      <journal/>
+    </article-type>
+    <article-type type="multr">
+      <journal/>
+    </article-type>
+    <article-type type="na">
+      <journal/>
+    </article-type>
+    <article-type type="naturejobs">
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Digest</journal>
+      <journal>NatureJobs</journal>
+    </article-type>
+    <article-type type="natview">
+      <journal/>
+    </article-type>
+    <article-type type="nb">
+      <journal/>
+    </article-type>
+    <article-type type="nbr">
+      <journal/>
+    </article-type>
+    <article-type type="nbri">
+      <journal/>
+    </article-type>
+    <article-type type="nemr">
+      <journal/>
+    </article-type>
+    <article-type type="neuro">
+      <journal/>
+    </article-type>
+    <article-type type="ngal">
+      <journal/>
+    </article-type>
+    <article-type type="nj">
+      <journal/>
+    </article-type>
+    <article-type type="nv">
+      <journal>Molecular Systems Biology</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Chemistry</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Reviews Cardiology</journal>
+      <journal>Nature Reviews Clinical Oncology</journal>
+      <journal>Nature Reviews Endocrinology</journal>
+      <journal>Nature Reviews Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Reviews Gastroenterology and Hepatology</journal>
+      <journal>Nature Reviews Nephrology</journal>
+      <journal>Nature Reviews Neurology</journal>
+      <journal>Nature Reviews Rheumatology</journal>
+      <journal>Nature Reviews Urology</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Nature Structural Biology</journal>
+    </article-type>
+    <article-type type="nvqa">
+      <journal/>
+    </article-type>
+    <article-type type="mktana">
+      <journal/>
+    </article-type>
+    <article-type type="nm">
+      <journal/>
+    </article-type>
+    <article-type type="nmr">
+      <journal/>
+    </article-type>
+    <article-type type="nobellr">
+      <journal/>
+    </article-type>
+    <article-type type="np">
+      <journal/>
+    </article-type>
+    <article-type type="nscan">
+      <journal/>
+    </article-type>
+    <article-type type="nt">
+      <journal/>
+    </article-type>
+    <article-type type="nv">
+      <journal/>
+    </article-type>
+    <article-type type="nvb">
+      <journal/>
+    </article-type>
+    <article-type type="nvf">
+      <journal/>
+    </article-type>
+    <article-type type="nvfv">
+      <journal/>
+    </article-type>
+    <article-type type="nw">
+      <journal/>
+    </article-type>
+    <article-type type="nf">
+      <journal/>
+    </article-type>
+    <article-type type="ob">
+      <journal/>
+    </article-type>
+    <article-type type="onbr">
+      <journal/>
+    </article-type>
+    <article-type type="onyrft">
+      <journal/>
+    </article-type>
+    <article-type type="op">
+      <journal/>
+    </article-type>
+    <article-type type="opcom">
+      <journal/>
+    </article-type>
+    <article-type type="out">
+      <journal/>
+    </article-type>
+    <article-type type="outlab">
+      <journal/>
+    </article-type>
+    <article-type type="ov">
+      <journal/>
+    </article-type>
+    <article-type type="pa">
+      <journal/>
+    </article-type>
+    <article-type type="pe">
+      <journal/>
+    </article-type>
+    <article-type type="pefv">
+      <journal/>
+    </article-type>
+    <article-type type="phot">
+      <journal/>
+    </article-type>
+    <article-type type="">
+      <journal/>
+    </article-type>
+    <article-type type="pi">
+      <journal/>
+    </article-type>
+    <article-type type="pl">
+      <journal/>
+    </article-type>
+    <article-type type="pn">
+      <journal/>
+    </article-type>
+    <article-type type="pod">
+      <journal/>
+    </article-type>
+    <article-type type="polw">
+      <journal/>
+    </article-type>
+    <article-type type="ppi">
+      <journal/>
+    </article-type>
+    <article-type type="ppro">
+      <journal/>
+    </article-type>
+    <article-type type="ppt">
+      <journal/>
+    </article-type>
+    <article-type type="prac">
+      <journal/>
+    </article-type>
+    <article-type type="pr">
+      <journal/>
+    </article-type>
+    <article-type type="prf">
+      <journal/>
+    </article-type>
+    <article-type type="prhl">
+      <journal/>
+    </article-type>
+    <article-type type="primer">
+      <journal/>
+    </article-type>
+    <article-type type="pro">
+      <journal/>
+    </article-type>
+    <article-type type="prog">
+      <journal/>
+    </article-type>
+    <article-type type="proscstory">
+      <journal/>
+    </article-type>
+    <article-type type="prosdplat">
+      <journal/>
+    </article-type>
+    <article-type type="prosmark">
+      <journal/>
+    </article-type>
+    <article-type type="prosppi">
+      <journal/>
+    </article-type>
+    <article-type type="prostmech">
+      <journal/>
+    </article-type>
+    <article-type type="prostnotes">
+      <journal/>
+    </article-type>
+    <article-type type="prostools">
+      <journal/>
+    </article-type>
+    <article-type type="prot">
+      <journal/>
+    </article-type>
+    <article-type type="prv">
+      <journal/>
+    </article-type>
+    <article-type type="puzzle">
+      <journal/>
+    </article-type>
+    <article-type type="pw">
+      <journal/>
+    </article-type>
+    <article-type type="qa">
+      <journal/>
+    </article-type>
+    <article-type type="ra">
+      <journal/>
+    </article-type>
+    <article-type type="rcom">
+      <journal/>
+    </article-type>
+    <article-type type="rd">
+      <journal/>
+    </article-type>
+    <article-type type="re">
+      <journal>British Dental Journal</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Scientific American</journal>
+    </article-type>
+    <article-type type="recom">
+      <journal/>
+    </article-type>
+    <article-type type="reflect">
+      <journal/>
+    </article-type>
+    <article-type type="rep">
+      <journal/>
+    </article-type>
+    <article-type type="reply">
+      <journal/>
+    </article-type>
+    <article-type type="ret">
+      <journal/>
+    </article-type>
+    <article-type type="revrec">
+      <journal/>
+    </article-type>
+    <article-type type="rhighlts">
+      <journal>Functional Glycomics</journal>
+      <journal>Lipidomics Gateway</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Chemistry</journal>
+      <journal>Nature China</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Clinical Practice Cardiovascular Medicine</journal>
+      <journal>Nature Clinical Practice Endocrinology &amp; Metabolism</journal>
+      <journal>Nature Clinical Practice Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Clinical Practice Nephrology</journal>
+      <journal>Nature Clinical Practice Neurology</journal>
+      <journal>Nature Clinical Practice Oncology</journal>
+      <journal>Nature Clinical Practice Rheumatology</journal>
+      <journal>Nature Clinical Practice Urology</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature India</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Middle East</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature News</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Reports Climate Change</journal>
+      <journal>Nature Reports Stem Cells</journal>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Cardiology</journal>
+      <journal>Nature Reviews Clinical Oncology</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Endocrinology</journal>
+      <journal>Nature Reviews Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Reviews Immunology</journal>
+      <journal>Nature Reviews Microbiology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Reviews Nephrology</journal>
+      <journal>Nature Reviews Neurology</journal>
+      <journal>Nature Reviews Neuroscience</journal>
+      <journal>Nature Reviews Rheumatology</journal>
+      <journal>Nature Reviews Urology</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>PSI Structural Genomics Knowledgebase</journal>
+      <journal>Structural Genomics Update</journal>
+    </article-type>
+    <article-type type="rl">
+      <journal/>
+    </article-type>
+    <article-type type="rlet">
+      <journal/>
+    </article-type>
+    <article-type type="rn">
+      <journal/>
+    </article-type>
+    <article-type type="rnote">
+      <journal/>
+    </article-type>
+    <article-type type="rolem">
+      <journal/>
+    </article-type>
+    <article-type type="rr">
+      <journal/>
+    </article-type>
+    <article-type type="rs">
+      <journal/>
+    </article-type>
+    <article-type type="rsrc">
+      <journal/>
+    </article-type>
+    <article-type type="rv">
+      <journal>BoneKEy Reports</journal>
+      <journal>British Dental Journal</journal>
+      <journal>EMBO reports</journal>
+      <journal>Molecular Systems Biology</journal>
+      <journal>Nature</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Chemistry</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Clinical Practice Cardiovascular Medicine</journal>
+      <journal>Nature Clinical Practice Endocrinology &amp; Metabolism</journal>
+      <journal>Nature Clinical Practice Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Clinical Practice Nephrology</journal>
+      <journal>Nature Clinical Practice Neurology</journal>
+      <journal>Nature Clinical Practice Oncology</journal>
+      <journal>Nature Clinical Practice Rheumatology</journal>
+      <journal>Nature Clinical Practice Urology</journal>
+      <journal>Nature Communications</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Cardiology</journal>
+      <journal>Nature Reviews Clinical Oncology</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Endocrinology</journal>
+      <journal>Nature Reviews Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Reviews Immunology</journal>
+      <journal>Nature Reviews Microbiology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Reviews Nephrology</journal>
+      <journal>Nature Reviews Neurology</journal>
+      <journal>Nature Reviews Neuroscience</journal>
+      <journal>Nature Reviews Rheumatology</journal>
+      <journal>Nature Reviews Urology</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Scientific American</journal>
+      <journal>Scientific American Mind</journal>
+      <journal>The EMBO Journal</journal>
+      <journal>Vital</journal>
+    </article-type>
+    <article-type type="rvfv">
+      <journal/>
+    </article-type>
+    <article-type type="ru">
+      <journal/>
+    </article-type>
+    <article-type type="sb">
+      <journal/>
+    </article-type>
+    <article-type type="sc">
+      <journal/>
+    </article-type>
+    <article-type type="sciampe">
+      <journal/>
+    </article-type>
+    <article-type type="scn">
+      <journal/>
+    </article-type>
+    <article-type type="sevendays">
+      <journal/>
+    </article-type>
+    <article-type type="sf">
+      <journal/>
+    </article-type>
+    <article-type type="si">
+      <journal/>
+    </article-type>
+    <article-type type="sim">
+      <journal/>
+    </article-type>
+    <article-type type="skep">
+      <journal/>
+    </article-type>
+    <article-type type="snaps">
+      <journal/>
+    </article-type>
+    <article-type type="sp">
+      <journal/>
+    </article-type>
+    <article-type type="spfwd">
+      <journal/>
+    </article-type>
+    <article-type type="spot">
+      <journal/>
+    </article-type>
+    <article-type type="sprep">
+      <journal/>
+    </article-type>
+    <article-type type="strle">
+      <journal/>
+    </article-type>
+    <article-type type="stw">
+      <journal/>
+    </article-type>
+    <article-type type="ss">
+      <journal/>
+    </article-type>
+    <article-type type="sr">
+      <journal/>
+    </article-type>
+    <article-type type="su">
+      <journal/>
+    </article-type>
+    <article-type type="susdev">
+      <journal/>
+    </article-type>
+    <article-type type="swr">
+      <journal/>
+    </article-type>
+    <article-type type="syn">
+      <journal/>
+    </article-type>
+    <article-type type="talk">
+      <journal/>
+    </article-type>
+    <article-type type="tech">
+      <journal/>
+    </article-type>
+    <article-type type="techn">
+      <journal/>
+    </article-type>
+    <article-type type="tenv">
+      <journal/>
+    </article-type>
+    <article-type type="tf">
+      <journal/>
+    </article-type>
+    <article-type type="thes">
+      <journal/>
+    </article-type>
+    <article-type type="th">
+      <journal/>
+    </article-type>
+    <article-type type="thinkb">
+      <journal/>
+    </article-type>
+    <article-type type="thismo">
+      <journal/>
+    </article-type>
+    <article-type type="thk">
+      <journal/>
+    </article-type>
+    <article-type type="thtr">
+      <journal/>
+    </article-type>
+    <article-type type="timeln">
+      <journal/>
+    </article-type>
+    <article-type type="tmat">
+      <journal/>
+    </article-type>
+    <article-type type="tmech">
+      <journal>Science-Business eXchange</journal>
+    </article-type>
+    <article-type type="tn">
+      <journal/>
+    </article-type>
+    <article-type type="tnotes">
+      <journal/>
+    </article-type>
+    <article-type type="tools">
+      <journal/>
+    </article-type>
+    <article-type type="tr">
+      <journal/>
+    </article-type>
+    <article-type type="trialw">
+      <journal/>
+    </article-type>
+    <article-type type="tt">
+      <journal/>
+    </article-type>
+    <article-type type="turnp">
+      <journal/>
+    </article-type>
+    <article-type type="tvr">
+      <journal/>
+    </article-type>
+    <article-type type="upd">
+      <journal/>
+    </article-type>
+    <article-type type="upfrnt">
+      <journal/>
+    </article-type>
+    <article-type type="view">
+      <journal/>
+    </article-type>
+    <article-type type="vitupd">
+      <journal/>
+    </article-type>
+    <article-type type="vp">
+      <journal/>
+    </article-type>
+    <article-type type="vpt">
+      <journal/>
+    </article-type>
+    <article-type type="vr">
+      <journal/>
+    </article-type>
+    <article-type type="wk">
+      <journal/>
+    </article-type>
+    <article-type type="woh">
+      <journal/>
+    </article-type>
+  </article-types>
 </allowed-values>

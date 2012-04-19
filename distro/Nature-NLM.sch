@@ -36,7 +36,7 @@
   
   <pattern>
     <rule context="article/@article-type" role="error"><!--Is the article-type valid?-->
-      <assert  id="article2" test="contains($allowed-values/journal[@title=$journal-title]/article-types,.) or not($allowed-values/journal[@title=$journal-title])">Unexpected root article type (<value-of select="."/>) for <value-of select="$journal-title"/>.</assert>
+      <assert  id="article2" test="$journal-title = $allowed-values/article-types/article-type[@type=$article-type]/journal or not($journal-title) or not($products[descendant::dc:title=$journal-title])">Unexpected root article type (<value-of select="."/>) for <value-of select="$journal-title"/>.</assert>
     </rule>
   </pattern>
   
@@ -64,7 +64,12 @@
   
   <pattern>
     <rule context="journal-meta" role="error"><!--Journal title exists-->
-      <assert id="jmeta2" test="descendant::journal-title-group/journal-title">Journal title is missing from the journal metadata section. Other rules are based on having a correct journal title and therefore will not be run. Please resubmit this file when the title has been added.</assert>
+      <assert id="jmeta2a" test="descendant::journal-title-group/journal-title">Journal title is missing from the journal metadata section. Other rules are based on having a correct journal title and therefore will not be run. Please resubmit this file when the title has been added.</assert>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="journal-title-group[1]" role="error"><!--only one journal-title-group-->
+      <report id="jmeta2b" test="following-sibling::journal-title-group">Only one journal-title-group should be used for NPG content.</report>
     </rule>
   </pattern>
   
@@ -191,14 +196,12 @@
   
   <pattern><!--Rules around expected attribute values of pub-date, and only one of each type-->
     <rule context="pub-date" role="error">
-      <assert id="pubdate0a" test="@pub-type">"pub-date" element should have attribute "pub-type" declared. Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert>
-    </rule>
+      <assert id="pubdate0a" test="@pub-type">"pub-date" element should have attribute "pub-type" declared. Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert></rule>
     <rule context="pub-date/@pub-type" role="error">
       <assert id="pubdate0b" test=". = $allowed-values/pub-types/pub-type">Unexpected value for "pub-type" attribute on "pub-date" element (<value-of select="."/>). Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert>
     </rule>
   </pattern>
- 
-  <pattern><!--... and only one of each type-->
+  <pattern>
     <rule context="pub-date" role="error">
       <report id="pubdate0c" test="@pub-type=./preceding-sibling::pub-date/@pub-type">There should only be one instance of the "pub-date" element with "pub-type" attribute value of "<value-of select="@pub-type"/>". Please check with NPG Editorial Production.</report>
     </rule>
