@@ -197,8 +197,7 @@
   <pattern><!--Rules around expected attribute values of pub-date, and only one of each type -->
 	<rule context="pub-date" role="error">
 		<let name="pubType" value ="@pub-type" />
-		<assert id="pubdate0a" test="$allowed-values/pub-types/pub-type[. eq $pubType]">"pub-date" element should have attribute "pub-type" and the Allowed values are: issue-date, aop, collection, epub, epreprint and embargo.
-			Please check with NPG Editorial Production.</assert>
+		<assert id="pubdate0a" test="$allowed-values/pub-types/pub-type[. eq $pubType]">"pub-date" element should have attribute "pub-type" and the Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert>
 	</rule>
 </pattern>
   <pattern>
@@ -275,13 +274,13 @@
   <pattern><!--Rules around expected attribute values of date-->
     <rule context="history/date" role="error">
       <let name="dateType" value="@date-type" />
-      <assert id="histdate0b" test="$allowed-values/date-types/date-type[. eq $dateType]">"date" element must have attribute "date-type" declared. The allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
+      <assert id="histdate0a" test="$allowed-values/date-types/date-type[. eq $dateType]">"date" element must have attribute "date-type" declared. The allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
     </rule>
   </pattern>
   
   <pattern><!--... and only one of each type-->
     <rule context="history/date" role="error">
-      <report id="histdate0c" test="@date-type=./preceding-sibling::date/@date-type">There should only be one instance of the "date" element with "date-type" attribute value of "<value-of select="@date-type"/>". Please check with NPG Editorial Production.</report>
+      <report id="histdate0b" test="@date-type=./preceding-sibling::date/@date-type">There should only be one instance of the "date" element with "date-type" attribute value of "<value-of select="@date-type"/>". Please check with NPG Editorial Production.</report>
     </rule>
   </pattern>
   
