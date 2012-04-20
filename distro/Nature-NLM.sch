@@ -194,16 +194,16 @@
   
   <!-- **** Publication date **** -->
   
-  <pattern><!--Rules around expected attribute values of pub-date, and only one of each type-->
-    <rule context="pub-date" role="error">
-      <assert id="pubdate0a" test="@pub-type">"pub-date" element should have attribute "pub-type" declared. Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert></rule>
-    <rule context="pub-date/@pub-type" role="error">
-      <assert id="pubdate0b" test=". = $allowed-values/pub-types/pub-type">Unexpected value for "pub-type" attribute on "pub-date" element (<value-of select="."/>). Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert>
-    </rule>
-  </pattern>
+  <pattern><!--Rules around expected attribute values of pub-date, and only one of each type -->
+	<rule context="pub-date" role="error">
+		<let name="pubType" value ="@pub-type" />
+		<assert id="pubdate0a" test="$allowed-values/pub-types/pub-type[. eq $pubType]">"pub-date" element should have attribute "pub-type" and the Allowed values are: issue-date, aop, collection, epub, epreprint and embargo.
+			Please check with NPG Editorial Production.</assert>
+	</rule>
+</pattern>
   <pattern>
     <rule context="pub-date" role="error">
-      <report id="pubdate0c" test="@pub-type=./preceding-sibling::pub-date/@pub-type">There should only be one instance of the "pub-date" element with "pub-type" attribute value of "<value-of select="@pub-type"/>". Please check with NPG Editorial Production.</report>
+      <report id="pubdate0b" test="@pub-type=./preceding-sibling::pub-date/@pub-type">There should only be one instance of the "pub-date" element with "pub-type" attribute value of "<value-of select="@pub-type"/>". Please check with NPG Editorial Production.</report>
     </rule>
   </pattern>
   
@@ -274,10 +274,8 @@
 
   <pattern><!--Rules around expected attribute values of date-->
     <rule context="history/date" role="error">
-      <assert id="histdate0a" test="@date-type">"date" element should have attribute "date-type" declared. Allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
-    </rule>
-    <rule context="history/date/@date-type" role="error">
-      <assert id="histdate0b" test=". = $allowed-values/date-types/date-type">Unexpected value for "date-type" attribute on "date" element (<value-of select="."/>). Allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
+      <let name="dateType" value="@date-type" />
+      <assert id="histdate0b" test="$allowed-values/date-types/date-type[. eq $dateType]">"date" element must have attribute "date-type" declared. The allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
     </rule>
   </pattern>
   
