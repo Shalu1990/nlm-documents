@@ -67,7 +67,7 @@
 							<version>${project.version}</version>
 							<packaging>zip</packaging>
 							<file>deploy/schema-package.zip</file>
-							<url>scp://test-fs.nature.com/usr/fs/Web/NLM</url>
+							<url>scp://65.199.186.108/usr/fs/Web/NLM</url>
 							<repositoryId>test-fs</repositoryId>
 						</configuration>
 					</plugin>
@@ -89,7 +89,7 @@
 							<version>${project.version}</version>
 							<packaging>zip</packaging>
 							<file>deploy/schema-package.zip</file>
-							<url>scp://staging-fs.nature.com/usr/fs/Web/NLM</url>
+							<url>scp://65.199.186.243/usr/fs/Web/NLM</url>
 							<repositoryId>staging-fs</repositoryId>
 						</configuration>
 					</plugin>
