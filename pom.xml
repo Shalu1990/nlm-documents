@@ -50,13 +50,13 @@
 
 		</plugins>
 	</build>
-
+   <!--
 	<profiles>
 		<profile>
 			<id>test</id>
 			<build>
 				<plugins>
-					<!-- Deploy to test-fs -->
+					
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-deploy-plugin</artifactId>
@@ -78,7 +78,7 @@
 			<id>staging</id>
 			<build>
 				<plugins>
-					<!-- Deploy to staging-fs -->
+					
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-deploy-plugin</artifactId>
@@ -97,4 +97,5 @@
 			</build>
 		</profile>
 	</profiles>
+	-->
 </project>
