@@ -1,28 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>nlm-pipeline</groupId>
-	<artifactId>validation-pipeline</artifactId>
+    <artifactId>validation-pipeline</artifactId>
+    <version>1.0.0</version>
 	<packaging>pom</packaging>
-	<version>1.0.0</version>
-	<name>validation-pipeline</name>
-
-
+	<name>Validation Pipeline</name>
 	<build>
-
-		<extensions>
-
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-ssh</artifactId>
-				<version>1.0-beta-6</version>
-			</extension>
+		 <extensions>
+		 <extension>
+			<groupId>org.apache.maven.wagon</groupId>
+			 <artifactId>wagon-ssh</artifactId>
+			 <version>1.0-beta-6</version>
+		  </extension>
 		</extensions>
-
 		<plugins>
 
-
 			<!-- Packaging schema -->
-
 
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
@@ -46,17 +40,15 @@
 				</executions>
 			</plugin>
 
-
-
 		</plugins>
 	</build>
-
+   
 	<profiles>
 		<profile>
 			<id>test</id>
 			<build>
 				<plugins>
-					<!-- Deploy to test-fs -->
+					
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-deploy-plugin</artifactId>
@@ -67,7 +59,7 @@
 							<version>${project.version}</version>
 							<packaging>zip</packaging>
 							<file>deploy/schema-package.zip</file>
-							<url>scp://65.199.186.108/usr/fs/Web/NLM</url>
+							<url>scp://test-fs.nature.com/usr/fs/Web/NLM</url>
 							<repositoryId>test-fs</repositoryId>
 						</configuration>
 					</plugin>
@@ -78,7 +70,7 @@
 			<id>staging</id>
 			<build>
 				<plugins>
-					<!-- Deploy to staging-fs -->
+					
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-deploy-plugin</artifactId>
@@ -89,7 +81,7 @@
 							<version>${project.version}</version>
 							<packaging>zip</packaging>
 							<file>deploy/schema-package.zip</file>
-							<url>scp://65.199.186.243/usr/fs/Web/NLM</url>
+							<url>scp://staging-fs.nature.com/usr/fs/Web/NLM</url>
 							<repositoryId>staging-fs</repositoryId>
 						</configuration>
 					</plugin>
@@ -97,4 +89,5 @@
 			</build>
 		</profile>
 	</profiles>
+
 </project>
