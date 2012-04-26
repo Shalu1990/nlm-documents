@@ -35,14 +35,15 @@
   </pattern>
   
   <pattern>
-    <rule context="article/@article-type" role="error"><!--Is the article-type valid?-->
-      <assert  id="article2" test="$journal-title = $allowed-values/article-types/article-type[@type=$article-type]/journal or not($journal-title) or not($products[descendant::dc:title=$journal-title])">Unexpected root article type (<value-of select="."/>) for <value-of select="$journal-title"/>.</assert>
+    <rule context="article[@article-type]" role="error"><!--Is the article-type valid?-->
+      <assert  id="article2" test="$journal-title = $allowed-values/article-types/article-type[@type=$article-type]/journal or not($journal-title) or not($products[descendant::dc:title=$journal-title])">Unexpected root article type (<value-of select="$article-type"/>) for <value-of select="$journal-title"/>.</assert>
     </rule>
   </pattern>
   
   <pattern>
-    <rule context="article[@xml:lang]/@xml:lang" role="error"><!--If @xml:lang exists, does it have an allowed value-->
-      <assert  id="article3" test=". = $allowed-values/languages/language">Unexpected language "<value-of select="."/>" declared on root article element. Expected values are "en" (English), "de" (German) and "ja" (Japanese/Kanji).</assert>
+    <rule context="article[@xml:lang]" role="error"><!--If @xml:lang exists, does it have an allowed value-->
+      <let name="lang" value="@xml:lang"></let>
+      <assert  id="article3" test="$allowed-values/languages/language[.=$lang]">Unexpected language (<value-of select="$lang"/>) declared on root article element. Expected values are "en" (English), "de" (German) and "ja" (Japanese/Kanji).</assert>
     </rule>
   </pattern>
   
@@ -76,7 +77,14 @@
   <pattern>
     <rule context="journal-title-group" role="error"><!--Are the journal title and id valid and do they match each other?-->
       <assert id="jmeta3a" test="not(descendant::journal-title) or $products[descendant::dc:title=$journal-title]">Journal titles must be from the prescribed list of journal names. "<value-of select="$journal-title"/>" is not on this list - check spelling, spacing of words or use of the ampersand. Other rules are based on having a correct journal title and therefore will not be run. Please resubmit this file when the title has been corrected.</assert>
-      <assert id="jmeta3b" test="$products[descendant::terms:pcode=$journal-id]">Journal id is incorrect. For <value-of select="$journal-title"/>, it should be: <value-of select="$products//*[child::dc:title=$journal-title]/terms:pcode"/>. Other rules are based on having a correct journal id and therefore will not be run. Please resubmit this file when the journal id has been corrected.</assert>
+      </rule>
+    </pattern>
+  <pattern>
+    <rule context="journal-title-group" role="error">
+      <assert id="jmeta3b" test="$products[descendant::terms:pcode=$journal-id]">Journal id is incorrect. For <value-of select="$journal-title"/>, it should be: <value-of select="$products//*[child::dc:title=$journal-title]/terms:pcode"/>. Other rules are based on having a correct journal id and therefore will not be run. Please resubmit this file when the journal id has been corrected.</assert></rule>
+    </pattern>
+  <pattern>
+    <rule context="journal-title-group" role="error">
       <assert id="jmeta3c" test="$journal-id=$products//*[child::dc:title=$journal-title]/terms:pcode or not($products[descendant::dc:title=$journal-title]) or not($products[descendant::terms:pcode=$journal-id])">Journal id (<value-of select="$journal-id"/>) does not match journal title: <value-of select="$journal-title"/>. Check which is the correct value.</assert>
     </rule>
   </pattern>
@@ -90,6 +98,10 @@
   <pattern>
     <rule context="journal-meta/issn" role="error"><!--Correct attribute value inserted; ISSN matches expected syntax-->
       <assert id="jmeta5a" test="@pub-type='ppub' or @pub-type='epub'">ISSN should have attribute pub-type="ppub" for print or pub-type="epub" for electronic publication.</assert>
+      </rule>
+    </pattern>
+  <pattern>
+    <rule context="journal-meta/issn" role="error">
       <let name="issn" value="concat('http://ns.nature.com/publications/',.)"/>
       <assert id="jmeta5b" test="not($journal-title) or not($products[descendant::dc:title=$journal-title]) or $products//*[child::dc:title=$journal-title][terms:hasPublication[@rdf:resource=$issn]]">Unexpected ISSN value for <value-of select="$journal-title"/> (<value-of select="."/>)</assert>
     </rule>
@@ -131,6 +143,10 @@
   <pattern>
     <rule context="article-meta" role="error"><!--Two article ids, one doi and one publisher-id-->
       <assert id="ameta1a" test="article-id[@pub-id-type='doi'] and article-id[@pub-id-type='publisher-id']">Article metadata should contain at least two "article-id" elements, one with attribute pub-id-type="doi" and one with attribute pub-id-type="publisher-id".</assert>
+      </rule>
+    </pattern>
+  <pattern>
+    <rule context="article-meta" role="error">
       <assert id="ameta1b" test="article-categories">Article metadata should include an "article-categories" element.</assert>
     </rule>
   </pattern>
@@ -140,6 +156,10 @@
   <pattern><!--Does article categories contain "category" information and does it match article/@article-type?-->
     <rule context="article-categories" role="error">
       <assert id="ameta2a" test="subj-group[@subj-group-type='category']">Article categories should contain a "subj-group" element with attribute "subj-group-type='category'". The value of the child "subject" element should be the same as the main article-type attribute: <value-of select="$article-type"/>.</assert>
+    </rule>
+    </pattern>
+  <pattern>
+    <rule context="article-categories" role="error">
       <assert id="ameta2b" test="subj-group[@subj-group-type='category']/subject = $article-type or not($article-type) or not(subj-group[@subj-group-type='category']/subject)">Subject catgory (<value-of select="subj-group[@subj-group-type='category']/subject"/>) does not match root article type (<value-of select="$article-type"/>)</assert>
     </rule>
   </pattern>
@@ -185,7 +205,15 @@
   <pattern>
     <rule context="title-group/article-title/styled-content" role="error"><!--correct attributes used on styled-content element-->
       <report id="arttitle3a" test="@specific-use">Unnecessary use of "specific-use" attribute on "styled-content" element in "article-title".</report>
+      </rule>
+    </pattern>
+  <pattern>
+    <rule context="title-group/article-title/styled-content" role="error">
       <report id="arttitle3b" test="@style">Unnecessary use of "style" attribute on "styled-content" element in "article-title".</report>
+      </rule>
+    </pattern>
+  <pattern>
+    <rule context="title-group/article-title/styled-content" role="error">
       <assert id="arttitle3c" test="@style-type='hide'">The "styled-content" element in "article-title" should have attribute "style-type='hide'". If the correct element has been used here, add the required attribute.</assert>
     </rule>
   </pattern>
@@ -194,22 +222,34 @@
   
   <!-- **** Publication date **** -->
   
-  <pattern><!--Rules around expected attribute values of pub-date, and only one of each type -->
-	<rule context="pub-date" role="error">
-		<let name="pubType" value ="@pub-type" />
-		<assert id="pubdate0a" test="$allowed-values/pub-types/pub-type[. eq $pubType]">"pub-date" element should have attribute "pub-type" and the Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert>
-	</rule>
-</pattern>
+  <pattern><!--Rules around expected attribute values of pub-date, and only one of each type-->
+    <rule context="pub-date" role="error">
+      <assert id="pubdate0a" test="@pub-type">"pub-date" element should have attribute "pub-type" declared. Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert></rule>
+    </pattern>
+  <pattern>
+    <rule context="pub-date[@pub-type]" role="error">
+      <let name="pubType" value="@pub-type"></let>
+      <assert id="pubdate0b" test="$allowed-values/pub-types/pub-type[.=$pubType]">Unexpected value for "pub-type" attribute on "pub-date" element (<value-of select="$pubType"/>). Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert>
+    </rule>
+  </pattern>
   <pattern>
     <rule context="pub-date" role="error">
-      <report id="pubdate0b" test="@pub-type=./preceding-sibling::pub-date/@pub-type">There should only be one instance of the "pub-date" element with "pub-type" attribute value of "<value-of select="@pub-type"/>". Please check with NPG Editorial Production.</report>
+      <report id="pubdate0c" test="@pub-type=./preceding-sibling::pub-date/@pub-type">There should only be one instance of the "pub-date" element with "pub-type" attribute value of "<value-of select="@pub-type"/>". Please check with NPG Editorial Production.</report>
     </rule>
   </pattern>
   
   <pattern><!--Valid values for year, month and day-->
     <rule context="pub-date" role="error">
       <assert id="pubdate1a" test="not(year) or matches(year, '^(19|20)[0-9]{2}$')">Invalid year value: <value-of select="year"/>. It should be a 4-digit number starting with 19 or 20.</assert>
+      </rule>
+    </pattern>
+  <pattern>
+    <rule context="pub-date" role="error">
       <assert id="pubdate1b" test="not(month) or matches(month, '^((0[1-9])|(1[0-2]))$')">Invalid month value: <value-of select="month"/>. It should be a 2-digit number between 01 and 12.</assert>
+      </rule>
+    </pattern>
+  <pattern>
+    <rule context="pub-date" role="error">
       <assert id="pubdate1c" test="not(day) or matches(day, '^(0[1-9]|[12][0-9]|3[01])$')">Invalid day value: <value-of select="day"/>. It should be a 2-digit number between 01 and 31.</assert>
     </rule>
   </pattern> 
@@ -237,6 +277,10 @@
   <pattern>
     <rule context="volume[parent::article-meta] | issue[parent::article-meta] | fpage[parent::article-meta] | lpage[parent::article-meta] | page-count[@count='0'][parent::article-meta]" role="error">
       <assert id="artinfo1a" test="normalize-space(.) or *">Empty "<name/>" element should not be used - please delete.</assert>
+    </rule>
+    </pattern>
+  <pattern>
+    <rule context="volume[parent::article-meta] | issue[parent::article-meta] | fpage[parent::article-meta] | lpage[parent::article-meta] | page-count[@count='0'][parent::article-meta]" role="error">
       <assert id="artinfo1b" test="not(@content-type)">Do not use "content-type" attribute on "<name/>" within article metadata.</assert>
     </rule>
   </pattern>
@@ -251,6 +295,8 @@
     <rule context="fpage[normalize-space(.) or *][parent::article-meta]" role="error">
       <assert id="artinfo3a" test="following-sibling::lpage and following-sibling::counts/page-count">As "fpage" is used, we also expect "lpage" and "counts"/"page-count" elements to be used in article metadata.</assert>
     </rule>
+  </pattern>
+  <pattern>
     <rule context="counts[page-count]" role="error">
       <assert id="artinfo3b" test="preceding-sibling::fpage">As "page-count" is used, we also expect "fpage" and "lpage" elements to be used in article metadata. Please check if "page-count" should have been used.</assert>
     </rule>
@@ -273,21 +319,34 @@
 
   <pattern><!--Rules around expected attribute values of date-->
     <rule context="history/date" role="error">
+      <assert id="histdate0a" test="@date-type">"date" element should have attribute "date-type" declared. Allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="history/date[@date-type]" role="error">
       <let name="dateType" value="@date-type" />
-      <assert id="histdate0a" test="$allowed-values/date-types/date-type[. eq $dateType]">"date" element must have attribute "date-type" declared. The allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
+      <assert id="histdate0b" test="$allowed-values/date-types/date-type[.=$dateType]">Unexpected value for "date-type" attribute on "date" element (<value-of select="$dateType"/>). Allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
     </rule>
   </pattern>
   
   <pattern><!--... and only one of each type-->
     <rule context="history/date" role="error">
-      <report id="histdate0b" test="@date-type=./preceding-sibling::date/@date-type">There should only be one instance of the "date" element with "date-type" attribute value of "<value-of select="@date-type"/>". Please check with NPG Editorial Production.</report>
+      <report id="histdate0c" test="@date-type=./preceding-sibling::date/@date-type">There should only be one instance of the "date" element with "date-type" attribute value of "<value-of select="@date-type"/>". Please check with NPG Editorial Production.</report>
     </rule>
   </pattern>
   
   <pattern><!--Valid values for year, month and day-->
     <rule context="history/date" role="error">
       <assert id="histdate1a" test="not(year) or matches(year, '^(19|20)[0-9]{2}$')">Invalid year value: <value-of select="year"/>. It should be a 4-digit number starting with 19 or 20.</assert>
+      </rule>
+  </pattern>
+  <pattern>
+    <rule context="history/date" role="error">
       <assert id="histdate1b" test="not(month) or matches(month, '^((0[1-9])|(1[0-2]))$')">Invalid month value: <value-of select="month"/>. It should be a 2-digit number between 01 and 12.</assert>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="history/date" role="error">
       <assert id="histdate1c" test="not(day) or matches(day, '^(0[1-9]|[12][0-9]|3[01])$')">Invalid day value: <value-of select="day"/>. It should be a 2-digit number between 01 and 31.</assert>
     </rule>
   </pattern> 
@@ -321,6 +380,10 @@
   <pattern>
     <rule context="permissions"><!--permissions and expected children exist-->
       <assert id="copy1b" test="copyright-year">Permissions should include the copyright year.</assert>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="permissions">
       <assert id="copy1c" test="copyright-holder">Permissions should include the copyright holder: <value-of select="$allowed-values/journal[@title=$journal-title]/copyright-holder"/>.</assert>
     </rule>
   </pattern>
