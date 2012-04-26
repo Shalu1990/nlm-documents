@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD Journal Publishing with OASIS Tables v3.0 20080202//EN" "journalpub-oasis3.dtd">
+<article article-type="letter" dtd-version="3.0" xml:lang="eng" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:oasis="http://docs.oasis-open.org/ns/oasis-exchange/table">
+    <front>
+        <journal-meta>
+            <journal-id journal-id-type="publisher">nnano</journal-id>
+            <journal-title-group>
+                <journal-title>Nature Nanotechnology</journal-title>
+            </journal-title-group>
+            <issn pub-type="ppub">1748-3387</issn>
+            <issn pub-type="epub">1748-3395</issn>
+            <publisher>
+                <publisher-name>Nature Publishing Group</publisher-name>
+            </publisher>
+        </journal-meta>
+        <article-meta>
+            <article-id pub-id-type="doi">10.1038/nnano.2009.48</article-id>
+            <article-id pub-id-type="publisher-id">nnano.2009.48</article-id>
+            <article-categories>
+                <subj-group subj-group-type="category">
+                    <subject>le</subject>
+                </subj-group>
+            </article-categories>
+            <title-group>
+                <article-title>Tunnelling readout of hydrogen-bonding-based recognition</article-title>
+            </title-group>
+            <pub-date>
+                <day>01</day>
+                <month>05</month>
+                <year>2009</year>
+            </pub-date>
+            <pub-date pub-type="op">
+                <day>22</day>
+                <month>03</month>
+                <year>2009</year>
+            </pub-date>
+            <volume>4</volume>
+            <issue>5</issue>
+            <fpage>297</fpage>
+            <lpage>301</lpage>
+            <history>
+                <date>
+                    <month>09</month>
+                    <year>2008</year>
+                </date>
+                <date date-type="receied">
+                    <day>12</day>
+                    <month>11</month>
+                    <year>2008</year>
+                </date>
+                <date date-type="">
+                    <day>24</day>
+                    <month>12</month>
+                    <year>2008</year>
+                </date>
+                <date date-type="accepted">
+                    <day>17</day>
+                    <month>02</month>
+                    <year>2009</year>
+                </date>
+           </history>
+            <permissions>
+                <copyright-statement>Copyright &#x00A9; 2009, Rights Managed by Nature Publishing Group</copyright-statement>
+                <copyright-year>2009</copyright-year>
+                <copyright-holder>Nature Publishing Group</copyright-holder>
+            </permissions>
+            <counts>
+                <page-count count="5"/>
+            </counts>
+         </article-meta>
+    </front>
+</article>
