@@ -59,7 +59,7 @@
             >NPG Ontology: Products</dc:title>
         <dc:creator
             >Nature Publishing Group</dc:creator>
-        <owl:versionInfo>1.6.0</owl:versionInfo>
+        <owl:versionInfo>1.5.3</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -1306,8 +1306,7 @@
         <terms:collection>journals_nature</terms:collection>
         <foaf:homepage
             >http://www.nature.com/cgt</foaf:homepage>
-        <terms:npgid>204</terms:npgid>
-        
+        <terms:npgid>204</terms:npgid> 
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/0929-1903"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1476-5500"/>
     </terms:Product>
@@ -2425,7 +2424,6 @@
         <terms:npgid>215</terms:npgid>
         <terms:pcode>hdy</terms:pcode>
 		<terms:hasCoverage rdf:resource="hdy_coverage"/>
-        
         <terms:hasSubProduct rdf:resource="iresp"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/0018-067X"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1365-2540"/>
@@ -2662,7 +2660,7 @@
          <skos:altLabel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Int Groups Adv</skos:altLabel>
         <dc:title>Interest Groups &amp; Advocacy</dc:title>
         <terms:targetDomain>palgrave-journals.com</terms:targetDomain>
-        <terms:npgid>549787 </terms:npgid>
+        <terms:npgid>549787</terms:npgid>
         <terms:pcode>iga</terms:pcode>
         <foaf:homepage>http://www.palgrave-journals.com/iga/index.html</foaf:homepage>
 		<!--<terms:hasCoverage rdf:resource="iga_coverage"/> launches in 2012 -->
@@ -4442,7 +4440,7 @@
         <foaf:homepage
             >http://www.nature.com/msb</foaf:homepage>
         <terms:collection>journals_nature</terms:collection>
-        
+        <terms:hasSubProduct rdf:resource="7stn"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1744-4292"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bioinformatics"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/immunology"/>
@@ -4955,7 +4953,7 @@
         <dc:title
             >Nature Chemistry</dc:title>
         <terms:targetDomain>nature.com</terms:targetDomain>
-        
+        <terms:hasSubProduct rdf:resource="scepc"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1755-4330"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/analytical_chemistry"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/biochemistry"/>
@@ -5122,6 +5120,7 @@
         <terms:targetDomain>nature.com</terms:targetDomain>
         <terms:collection>journals_nature</terms:collection>
         <terms:hasSubProduct rdf:resource="climate"/>
+        <terms:hasSubProduct rdf:resource="climfb"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1758-678X"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1758-6798"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/adaptation"/>
@@ -5975,7 +5974,7 @@
             >http://www.nature.com/ng</foaf:homepage>
         <terms:content>fulltext</terms:content>
         <terms:npgid>30</terms:npgid>
-        
+        <terms:hasSubProduct rdf:resource="frassn"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1061-4036"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1546-1718"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/agricultural_genetics"/>
@@ -6234,7 +6233,7 @@
         <terms:targetDomain>nature.com</terms:targetDomain>
         <terms:pcode>nindia</terms:pcode>
 		<terms:hasCoverage rdf:resource="nindia_coverage"/>
-        
+        <terms:hasSubProduct rdf:resource="indig"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1755-3180"/>
     </owl:Thing>
     
@@ -6570,6 +6569,33 @@
     </terms:Coverage>
     
 
+    <!-- http://ns.nature.com/products/nmiddleeast  -->
+
+    <terms:Product rdf:about="nmiddleeast ">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <skos:altLabel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">nmiddleeast</skos:altLabel>
+        <foaf:homepage>http://www.nature.com/nmiddleeast/index.html</foaf:homepage>
+        <dc:title>Nature Middle East</dc:title>
+        <terms:content>fulltext</terms:content>
+        <terms:npgid>1101</terms:npgid>
+        <terms:collection>journals_nature</terms:collection>
+        <dc:language>en</dc:language>
+        <terms:targetDomain>nature.com</terms:targetDomain>
+        <terms:pcode>nmiddleeast</terms:pcode>
+        <terms:hasCoverage rdf:resource="nmiddleeast_coverage"/>
+        <terms:hasSubProduct rdf:resource="how"/>
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/2042-6046"/>
+    </terms:Product>
+
+    
+    <!-- http://ns.nature.com/products/nmiddleeast_coverage -->
+
+    <owl:Thing rdf:about="nmiddleeast_coverage">
+        <rdf:type rdf:resource="http://ns.nature.com/terms/Coverage"/>
+        <terms:moving>true</terms:moving>
+        <terms:dateStart>2009-08</terms:dateStart>
+    </owl:Thing>
+
 
     <!-- http://ns.nature.com/products/nnano -->
 
@@ -6851,7 +6877,7 @@
             >Nature Protocols</dc:title>
         <terms:collection>journals_nature</terms:collection>
         <terms:targetDomain>nature.com</terms:targetDomain>
-        
+        <terms:hasSubProduct rdf:resource="natprotb"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1750-2799"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1754-2189"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cell_culture"/>
@@ -7499,7 +7525,7 @@
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1471-0048"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/addiction"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/behaviour"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cellular__neuroscience"/>
+        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cellular_neuroscience"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/circadian_rhythms"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cognition"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/computational_neuroscience"/>
@@ -8817,7 +8843,7 @@
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cell_polarity"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cell_signalling"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cells"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cellular__neuroscience"/>
+        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cellular_neuroscience"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cellular_microbiology"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/centromeres"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/channels"/>
@@ -8838,7 +8864,7 @@
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/circadian_rhythms"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/climate_change"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/climate_science"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/co-variation"/>
+        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/co_variation"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/comparative_genomics"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/complement"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/computational_biology"/>
@@ -8876,7 +8902,7 @@
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/epigenetics"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/evolution"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/evolutionary_biology"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/extra-cellular_matrix"/>
+        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/extra_cellular_matrix"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/fibre_optics_and_optical_communications"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/fluid_dynamics"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/fluids"/>
@@ -8898,7 +8924,7 @@
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/genetic_markers"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/genetic_models"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/genetic_polymorphism"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/genetic_recombination_"/>
+        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/genetic_recombination"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/genetic_selection"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/genetic_variation"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/genetics"/>
@@ -13029,6 +13055,13 @@
     </owl:Thing>
     
 
+    <!-- http://ns.nature.com/publications/2042-6046 -->
+
+    <terms:Publication rdf:about="http://ns.nature.com/publications/2042-6046">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <bibo:eissn>2042-6046</bibo:eissn>
+    </terms:Publication>
+    
 
     <!-- http://ns.nature.com/publications/2043-0116 -->
 
@@ -13898,9 +13931,9 @@
     
 
 
-    <!-- http://ns.nature.com/subjects/cellular__neuroscience -->
+    <!-- http://ns.nature.com/subjects/cellular_neuroscience -->
 
-    <owl:Thing rdf:about="http://ns.nature.com/subjects/cellular__neuroscience"/>
+    <owl:Thing rdf:about="http://ns.nature.com/subjects/cellular_neuroscience"/>
     
 
 
@@ -14090,9 +14123,9 @@
     
 
 
-    <!-- http://ns.nature.com/subjects/co-variation -->
+    <!-- http://ns.nature.com/subjects/co_variation -->
 
-    <owl:Thing rdf:about="http://ns.nature.com/subjects/co-variation"/>
+    <owl:Thing rdf:about="http://ns.nature.com/subjects/co_variation"/>
     
 
 
@@ -14612,9 +14645,9 @@
     
 
 
-    <!-- http://ns.nature.com/subjects/extra-cellular_matrix -->
+    <!-- http://ns.nature.com/subjects/extra_cellular_matrix -->
 
-    <owl:Thing rdf:about="http://ns.nature.com/subjects/extra-cellular_matrix"/>
+    <owl:Thing rdf:about="http://ns.nature.com/subjects/extra_cellular_matrix"/>
     
 
 
@@ -14846,9 +14879,9 @@
     
 
 
-    <!-- http://ns.nature.com/subjects/genetic_recombination_ -->
+    <!-- http://ns.nature.com/subjects/genetic_recombination -->
 
-    <owl:Thing rdf:about="http://ns.nature.com/subjects/genetic_recombination_"/>
+    <owl:Thing rdf:about="http://ns.nature.com/subjects/genetic_recombination"/>
     
 
 

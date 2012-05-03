@@ -96,6 +96,18 @@
   </pattern>
   
   <pattern>
+    <rule context="journal-title-group/journal-title[1]" role="error"><!--Only one journal title present-->
+      <report id="jmeta4b" test="following-sibling::journal-title">More than one journal title found. Only one journal title should be used in NPG articles.</report>
+    </rule>
+  </pattern>
+  
+  <pattern>
+    <rule context="journal-title-group/abbrev-journal-title[1]" role="error"><!--Only one journal title present-->
+      <report id="jmeta4c" test="following-sibling::abbrev-journal-title">More than one abbreviated journal title found. Only one abbreviated journal title should be used in NPG articles.</report>
+    </rule>
+  </pattern>
+  
+  <pattern>
     <rule context="journal-meta/issn" role="error"><!--Correct attribute value inserted; ISSN matches expected syntax-->
       <assert id="jmeta5a" test="@pub-type='ppub' or @pub-type='epub'">ISSN should have attribute pub-type="ppub" for print or pub-type="epub" for electronic publication.</assert>
       </rule>

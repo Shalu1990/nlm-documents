@@ -315,9 +315,13 @@ Created - 20120208
       <journal>Scientific American</journal>
     </article-type>
     <article-type type="ac">
-      <journal/>
+      <journal>Business Economics</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Journal of Investigative Dermatology Symposium Proceedings</journal>
+      <journal>Leukemia</journal>
     </article-type>
     <article-type type="add">
+      <journal>Journal of Investigative Dermatology</journal>
       <journal>Nature Physics</journal>
       <journal>Nature Medicine</journal>
       <journal>Nature Cell Biology</journal>
@@ -372,6 +376,35 @@ Created - 20120208
     </article-type>
     <!--Though ML returns BDJ, so this may not be used anymore-->
     <article-type type="an">
+      <journal>American Journal of Gastroenterology</journal>
+      <journal>Bone Marrow Transplantation</journal>
+      <journal>Cancer Gene Therapy</journal>
+      <journal>Cell Death and Differentiation</journal>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
+      <journal>Clinical Pharmacology and Therapeutics</journal>
+      <journal>Comparative Economic Studies</journal>
+      <journal>Contemporary Political Theory</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>Eye</journal>
+      <journal>Gene Therapy</journal>
+      <journal>Genes and Immunity</journal>
+      <journal>Genetics in Medicine</journal>
+      <journal>Heredity</journal>
+      <journal>Immunology and Cell Biology</journal>
+      <journal>Japanese Journal of Human Genetics</journal>
+      <journal>Journal of Banking Regulation</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Human Genetics</journal>
+      <journal>Journal of Human Hypertension</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Journal of Investigative Dermatology Symposium Proceedings</journal>
+      <journal>Journal of Perinatology</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Kidney International</journal>
+      <journal>Leukemia</journal>
+      <journal>Modern Pathology</journal>
+      <journal>Molecular Psychiatry</journal>
       <journal>Nature</journal>
       <journal>Nature Biotechnology</journal>
       <journal>Nature Cell Biology</journal>
@@ -384,6 +417,13 @@ Created - 20120208
       <journal>Nature Reviews Microbiology</journal>
       <journal>Nature Reviews Molecular Cell Biology</journal>
       <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Oncogene</journal>
+      <journal>Pediatric Research</journal>
+      <journal>Place Branding and Public Diplomacy</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The American Journal of Gastroenterology</journal>
+      <journal>The Geneva Papers on Risk and Insurance Theory</journal>
+      <journal>The Journal of Investigative Dermatology</journal>
     </article-type>
     <article-type type="antig">
       <journal>Scientific American</journal>
@@ -394,6 +434,57 @@ Created - 20120208
       <journal>Nature Photonics</journal>
     </article-type>
     <article-type type="ar">
+      <journal>Acta Politica</journal>
+      <journal>American Journal of Hypertension</journal>
+      <journal>Asian Business &amp; Management</journal>
+      <journal>BioSocieties</journal>
+      <journal>British Journal of Cancer</journal>
+      <journal>British Politics</journal>
+      <journal>Business Economics</journal>
+      <journal>Cell Research</journal>
+      <journal>Clinical and Translational Gastroenterology</journal>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
+      <journal>Comparative Economic Studies</journal>
+      <journal>Comparative European Politics</journal>
+      <journal>Contemporary Political Theory</journal>
+      <journal>Crime Prevention and Community Safety</journal>
+      <journal>Development</journal>
+      <journal>Eastern Economic Journal</journal>
+      <journal>Economic &amp; Labour Market Review</journal>
+      <journal>European Journal of Development Research</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>European Journal of Information Systems</journal>
+      <journal>European Political Science</journal>
+      <journal>Eye</journal>
+      <journal>Feminist Review</journal>
+      <journal>French Politics</journal>
+      <journal>Genetics in Medicine</journal>
+      <journal>Higher Education Policy</journal>
+      <journal>International Journal of Disclosure and Governance</journal>
+      <journal>International Journal of Educational Advancement</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Maritime Economics</journal>
+      <journal>International Politics</journal>
+      <journal>Japanese Journal of Human Genetics</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Commercial Biotechnology</journal>
+      <journal>Journal of Database Marketing &amp; Customer Strategy Management</journal>
+      <journal>Journal of Digital Asset Management</journal>
+      <journal>Journal of Direct, Data and Digital Marketing Practice</journal>
+      <journal>Journal of Exposure Science and Environmental Epidemiology</journal>
+      <journal>Journal of Financial Services Marketing</journal>
+      <journal>Journal of International Business Studies</journal>
+      <journal>Journal of International Relations and Development</journal>
+      <journal>Journal of Public Health Policy</journal>
+      <journal>Journal of Revenue and Pricing Management</journal>
+      <journal>Journal of Simulation</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Kidney International</journal>
+      <journal>Knowledge Management Research &amp; Practice</journal>
+      <journal>Laboratory Investigation</journal>
+      <journal>Latino Studies</journal>
+      <journal>Maritime Economics &amp; Logistics</journal>
+      <journal>Mucosal Immunology</journal>
       <journal>Nature Clinical Practice Cardiovascular Medicine</journal>
       <journal>Nature Clinical Practice Endocrinology &amp; Metabolism</journal>
       <journal>Nature Clinical Practice Gastroenterology &amp; Hepatology</journal>
@@ -402,6 +493,28 @@ Created - 20120208
       <journal>Nature Clinical Practice Oncology</journal>
       <journal>Nature Clinical Practice Rheumatology</journal>
       <journal>Nature Clinical Practice Urology</journal>
+      <journal>Obesity</journal>
+      <journal>OR Insight</journal>
+      <journal>Organization Management Journal</journal>
+      <journal>Pediatric Research</journal>
+      <journal>Pensions: An International Journal</journal>
+      <journal>Place Branding and Public Diplomacy</journal>
+      <journal>Polity</journal>
+      <journal>Polymer Journal</journal>
+      <journal>Psychoanalysis, Culture &amp; Society</journal>
+      <journal>Regional Trends</journal>
+      <journal>Risk Management</journal>
+      <journal>Security Journal</journal>
+      <journal>Social Theory &amp; Health</journal>
+      <journal>Social Trends</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The American Journal of Gastroenterology</journal>
+      <journal>The American Journal of Psychoanalysis</journal>
+      <journal>The European Journal of Development Research</journal>
+      <journal>The Geneva Papers on Risk and Insurance Issues and Practice</journal>
+      <journal>The Geneva Risk and Insurance Review</journal>
+      <journal>The Pharmacogenomics Journal</journal>
+      <journal>Urban Design International</journal>
     </article-type>
     <article-type type="ars">
       <journal>Nature</journal>
@@ -428,89 +541,314 @@ Created - 20120208
       <journal>Nature</journal>
     </article-type>
     <article-type type="ba">
-      <journal/>
+      <journal>Nature</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Chemistry</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Reports Climate Change</journal>
     </article-type>
     <article-type type="bb">
-      <journal/>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Medicine</journal>
     </article-type>
     <article-type type="bc">
-      <journal/>
+      <journal>American Journal of Hypertension</journal>
+      <journal>Australian Journal of Experimental Biology and Medical Science</journal>
+      <journal>Cell Research</journal>
+      <journal>Gene Therapy</journal>
+      <journal>Genes and Immunity</journal>
+      <journal>Immunology and Cell Biology</journal>
+      <journal>International Politics</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Revenue and Pricing Management</journal>
+      <journal>Leukemia</journal>
+      <journal>Molecular Therapy</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Pensions: An International Journal</journal>
+      <journal>Psychoanalysis, Culture &amp; Society</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The Journal of Antibiotics</journal>
     </article-type>
     <article-type type="bca">
-      <journal/>
+      <journal>Nature</journal>
     </article-type>
     <article-type type="beingg">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="bio">
-      <journal/>
+      <journal>Bioentrepreneur</journal>
+      <journal>Nature Biotechnology</journal>
     </article-type>
     <article-type type="biov">
       <journal/>
     </article-type>
     <article-type type="bkstory">
-      <journal/>
+      <journal>Nature Geoscience</journal>
     </article-type>
     <article-type type="blog">
-      <journal/>
+      <journal>Nature News</journal>
     </article-type>
     <article-type type="bn">
-      <journal/>
+      <journal>Nature</journal>
+      <journal>Nature Digest</journal>
     </article-type>
     <article-type type="bnf">
-      <journal/>
+      <journal>Nature</journal>
     </article-type>
     <article-type type="bo">
-      <journal/>
+      <journal>Nature</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Neuroscience</journal>
     </article-type>
     <article-type type="boo">
       <journal/>
     </article-type>
     <article-type type="br">
-      <journal/>
+      <journal>Acta Politica</journal>
+      <journal>American Journal of Gastroenterology</journal>
+      <journal>American Journal of Hypertension</journal>
+      <journal>Asian Business &amp; Management</journal>
+      <journal>Asian Journal of Andrology</journal>
+      <journal>Australian Journal of Experimental Biology and Medical Science</journal>
+      <journal>BioSocieties</journal>
+      <journal>Bone Marrow Transplantation</journal>
+      <journal>British Dental Journal</journal>
+      <journal>British Journal of Cancer</journal>
+      <journal>British Politics</journal>
+      <journal>Business Economics</journal>
+      <journal>Cell Death and Differentiation</journal>
+      <journal>Cell Death and Disease</journal>
+      <journal>Clinical Pharmacology and Therapeutics</journal>
+      <journal>Comparative Economic Studies</journal>
+      <journal>Contemporary Political Theory</journal>
+      <journal>Corporate Reputation Review</journal>
+      <journal>Crime Prevention and Community Safety</journal>
+      <journal>Derivatives Use, Trading &amp; Regulation</journal>
+      <journal>Development</journal>
+      <journal>Eastern Economic Journal</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>European Journal of Development Research</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>European Journal of Information Systems</journal>
+      <journal>European Political Science</journal>
+      <journal>Evidence-Based Dentistry</journal>
+      <journal>Eye</journal>
+      <journal>Feminist Review</journal>
+      <journal>French Politics</journal>
+      <journal>Gene Therapy</journal>
+      <journal>Genetics in Medicine</journal>
+      <journal>Heredity</journal>
+      <journal>Higher Education Policy</journal>
+      <journal>Immunology and Cell Biology</journal>
+      <journal>Interactive Marketing</journal>
+      <journal>International Journal of Educational Advancement</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Maritime Economics</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>International Politics</journal>
+      <journal>Japanese Journal of Human Genetics</journal>
+      <journal>Journal of Asset Management</journal>
+      <journal>Journal of Banking Regulation</journal>
+      <journal>Journal of Brand Management</journal>
+      <journal>Journal of Building Appraisal</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Commercial Biotechnology</journal>
+      <journal>Journal of Database Marketing</journal>
+      <journal>Journal of Database Marketing &amp; Customer Strategy Management</journal>
+      <journal>Journal of Derivatives &amp; Hedge Funds</journal>
+      <journal>Journal of Digital Asset Management</journal>
+      <journal>Journal of Direct, Data and Digital Marketing Practice</journal>
+      <journal>Journal of Financial Services Marketing</journal>
+      <journal>Journal of Human Genetics</journal>
+      <journal>Journal of Human Hypertension</journal>
+      <journal>Journal of Information Technology</journal>
+      <journal>Journal of International Business Studies</journal>
+      <journal>Journal of International Relations and Development</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Journal of Perinatology</journal>
+      <journal>Journal of Public Health Policy</journal>
+      <journal>Journal of Retail and Leisure Property</journal>
+      <journal>Journal of Simulation</journal>
+      <journal>Journal of Targeting, Measurement and Analysis for Marketing</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Kidney International</journal>
+      <journal>Knowledge Management Research &amp; Practice</journal>
+      <journal>Latino Studies</journal>
+      <journal>Leukemia</journal>
+      <journal>Maritime Economics &amp; Logistics</journal>
+      <journal>Modern Pathology</journal>
+      <journal>Molecular Therapy</journal>
+      <journal>Nature</journal>
+      <journal>Neuropsychopharmacology</journal>
+      <journal>Obesity</journal>
+      <journal>OR Insight</journal>
+      <journal>Organization Management Journal</journal>
+      <journal>Pensions: An International Journal</journal>
+      <journal>Place Branding and Public Diplomacy</journal>
+      <journal>Population Trends</journal>
+      <journal>Prostate Cancer and Prostatic Diseases</journal>
+      <journal>Psychoanalysis, Culture &amp; Society</journal>
+      <journal>Risk Management</journal>
+      <journal>Scientific American</journal>
+      <journal>Security Journal</journal>
+      <journal>Social Theory &amp; Health</journal>
+      <journal>Spinal Cord</journal>
+      <journal>Subjectivity</journal>
+      <journal>The American Journal of Psychoanalysis</journal>
+      <journal>The CASE International Journal of Educational Advancement</journal>
+      <journal>The European Journal of Development Research</journal>
+      <journal>The Geneva Papers on Risk and Insurance Theory</journal>
+      <journal>The Journal of Antibiotics</journal>
+      <journal>Urban Design International</journal>
     </article-type>
     <article-type type="brf">
       <journal/>
     </article-type>
     <article-type type="brn">
-      <journal/>
+      <journal>Nature Biotechnology</journal>
     </article-type>
     <article-type type="bru">
       <journal/>
     </article-type>
     <article-type type="bks">
-      <journal/>
+      <journal>Lab Animal</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Clinical Practice Nephrology</journal>
+      <journal>Nature Clinical Practice Oncology</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature New Biology</journal>
+      <journal>Nature Physical Science</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="bsn">
-      <journal/>
+      <journal>Nature Photonics</journal>
     </article-type>
     <article-type type="buyg">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="cal">
-      <journal/>
+      <journal>Scientific American</journal>
+      <journal>Scientific American Mind</journal>
     </article-type>
     <article-type type="car">
-      <journal/>
+      <journal>Feminist Review</journal>
+      <journal>Nature Nature Biotechnology</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
     </article-type>
     <article-type type="careersqa">
       <journal/>
     </article-type>
     <article-type type="case">
-      <journal/>
+      <journal>Nature Clinical Practice Cardiovascular Medicine</journal>
+      <journal>Nature Clinical Practice Endocrinology &amp; Metabolism</journal>
+      <journal>Nature Clinical Practice Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Clinical Practice Nephrology</journal>
+      <journal>Nature Clinical Practice Neurology</journal>
+      <journal>Nature Clinical Practice Oncology</journal>
+      <journal>Nature Clinical Practice Rheumatology</journal>
+      <journal>Nature Clinical Practice Urology</journal>
+      <journal>Nature Reviews Cardiology</journal>
+      <journal>Nature Reviews Clinical Oncology</journal>
+      <journal>Nature Reviews Endocrinology</journal>
+      <journal>Nature Reviews Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Reviews Nephrology</journal>
+      <journal>Nature Reviews Neurology</journal>
+      <journal>Nature Reviews Rheumatology</journal>
+      <journal>Nature Reviews Urology</journal>
     </article-type>
     <article-type type="casefv">
       <journal/>
     </article-type>
-    <article-type type="categtxt">
-      <journal/>
-    </article-type>
     <article-type type="cc">
-      <journal/>
+      <journal>British Journal of Cancer</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>Nature Medicine</journal>
+      <journal>The Journal of Investigative Dermatology</journal>
     </article-type>
     <article-type type="cg">
+      <journal>Acta Politica</journal>
+      <journal>American Journal of Hypertension</journal>
+      <journal>Asian Journal of Andrology</journal>
+      <journal>Australian Journal of Experimental Biology and Medical Science</journal>
+      <journal>BioSocieties</journal>
+      <journal>Bone Marrow Transplantation</journal>
       <journal>British Dental Journal</journal>
+      <journal>British Journal of Cancer</journal>
+      <journal>British Politics</journal>
+      <journal>Cancer Gene Therapy</journal>
+      <journal>Cell Death and Differentiation</journal>
+      <journal>Cell Death and Disease</journal>
+      <journal>Cell Research</journal>
+      <journal>Cellular and Molecular Immunology</journal>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
+      <journal>Comparative Economic Studies</journal>
+      <journal>Comparative European Politics</journal>
+      <journal>Contemporary Political Theory</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>European Journal of Development Research</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>European Journal of Information Systems</journal>
+      <journal>European Political Science</journal>
+      <journal>Eye</journal>
+      <journal>Feminist Review</journal>
+      <journal>French Politics</journal>
+      <journal>Gene Therapy</journal>
+      <journal>Genes and Immunity</journal>
+      <journal>Genetics in Medicine</journal>
+      <journal>Heredity</journal>
+      <journal>Hypertension Research</journal>
+      <journal>Immunology and Cell Biology</journal>
+      <journal>International Journal of Disclosure and Governance</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>International Politics</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Direct, Data and Digital Marketing Practice</journal>
+      <journal>Journal of Exposure Science and Environmental Epidemiology</journal>
+      <journal>Journal of Financial Services Marketing</journal>
+      <journal>Journal of Human Genetics</journal>
+      <journal>Journal of Human Hypertension</journal>
+      <journal>Journal of International Business Studies</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Journal of Perinatology</journal>
+      <journal>Journal of Public Health Policy</journal>
+      <journal>Journal of Revenue and Pricing Management</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Kidney International</journal>
+      <journal>Knowledge Management Research &amp; Practice</journal>
+      <journal>Laboratory Investigation</journal>
+      <journal>Leukemia</journal>
+      <journal>Modern Pathology</journal>
+      <journal>Molecular Psychiatry</journal>
       <journal>Molecular Systems Biology</journal>
+      <journal>Molecular Therapy</journal>
+      <journal>Mucosal Immunology</journal>
       <journal>Nature</journal>
       <journal>Nature Biotechnology</journal>
       <journal>Nature Cell Biology</journal>
@@ -547,103 +885,286 @@ Created - 20120208
       <journal>Nature Reviews Neuroscience</journal>
       <journal>Nature Structural &amp; Molecular Biology</journal>
       <journal>Nature Structural Biology</journal>
+      <journal>Neuropsychopharmacology</journal>
+      <journal>Obesity</journal>
+      <journal>Oncogene</journal>
+      <journal>Paraplegia</journal>
+      <journal>Pediatric Research</journal>
+      <journal>Pensions: An International Journal</journal>
+      <journal>Polymer Journal</journal>
+      <journal>Prostate Cancer and Prostatic Diseases</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The American Journal of Gastroenterology</journal>
+      <journal>The American Journal of Psychoanalysis</journal>
       <journal>The EMBO Journal</journal>
+      <journal>The European Journal of Development Research</journal>
+      <journal>The Geneva Papers on Risk and Insurance Issues and Practice</journal>
+      <journal>The ISME Journal</journal>
+      <journal>The Journal of Antibiotics</journal>
+      <journal>The Pharmacogenomics Journal</journal>
+      <journal>Translational Psychiatry</journal>
+      <journal>Urban Design International</journal>
     </article-type>
     <article-type type="cm">
-      <journal/>
+      <journal>BoneKEy-Osteovision</journal>
+      <journal>Cancer Gene Therapy</journal>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
+      <journal>IBMS BoneKEy</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Kidney International</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Reports Stem Cells</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>The Journal of Antibiotics</journal>
     </article-type>
     <article-type type="cn">
-      <journal/>
+      <journal>Genetics in Medicine</journal>
+      <journal>Higher Education Policy</journal>
+      <journal>Molecular Therapy</journal>
     </article-type>
     <article-type type="cna">
       <journal/>
     </article-type>
     <article-type type="clin">
-      <journal/>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="clinadv">
-      <journal/>
+      <journal>Nature Clinical Practice Cardiovascular Medicine</journal>
+      <journal>Nature Clinical Practice Rheumatology</journal>
     </article-type>
     <article-type type="clincon">
-      <journal/>
+      <journal>Nature Clinical Practice Cardiovascular Medicine</journal>
     </article-type>
     <article-type type="clinimg">
-      <journal/>
+      <journal>Nature Clinical Practice Cardiovascular Medicine</journal>
     </article-type>
     <article-type type="clintechnq">
       <journal/>
     </article-type>
     <article-type type="clnimg">
+      <!--Should this be clinimg?-->
       <journal/>
     </article-type>
     <article-type type="clinres">
-      <journal/>
+      <journal>Nature Clinical Practice Cardiovascular Medicine</journal>
     </article-type>
     <article-type type="clncon">
+      <!--Should this be clincon?-->
       <journal/>
     </article-type>
     <article-type type="cme">
       <journal/>
     </article-type>
     <article-type type="col">
-      <journal/>
+      <journal>Lab Animal</journal>
+      <journal>Nature</journal>
+      <journal>Nature News</journal>
     </article-type>
     <article-type type="com">
-      <journal/>
+      <journal>Asian Journal of Andrology</journal>
+      <journal>Nature</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Reviews Immunology</journal>
+      <journal>Nature Reviews Microbiology</journal>
     </article-type>
     <article-type type="compbio">
-      <journal/>
+      <journal>Nature Biotechnology</journal>
     </article-type>
     <article-type type="conc">
-      <journal/>
+      <journal>Nature</journal>
+      <journal>Nature Digest</journal>
     </article-type>
     <article-type type="conf">
-      <journal/>
+      <journal>British Dental Journal</journal>
+      <journal>Nature Reports Stem Cells</journal>
     </article-type>
     <article-type type="confa">
       <journal/>
     </article-type>
     <article-type type="conred">
-      <journal/>
+      <journal>Scientific American</journal>
+      <journal>Scientific American Mind</journal>
     </article-type>
     <article-type type="couch">
       <journal/>
     </article-type>
     <article-type type="cprot">
-      <journal/>
+      <journal>Nature Methods</journal>
     </article-type>
     <article-type type="cr">
-      <journal/>
+      <journal>American Journal of Gastroenterology</journal>
+      <journal>American Journal of Hypertension</journal>
+      <journal>Asian Journal of Andrology</journal>
+      <journal>Bone Marrow Transplantation</journal>
+      <journal>EMBO Reports</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>Eye</journal>
+      <journal>Genetics in Medicine</journal>
+      <journal>Hypertension Research</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>Japanese Journal of Human Genetics</journal>
+      <journal>Journal of Direct, Data and Digital Marketing Practice</journal>
+      <journal>Journal of Human Hypertension</journal>
+      <journal>Journal of Information Technology</journal>
+      <journal>Journal of Perinatology</journal>
+      <journal>Leukemia</journal>
+      <journal>Modern Pathology</journal>
+      <journal>Molecular Systems Biology</journal>
+      <journal>Molecular Therapy</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature New Biology</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Physical Science</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Reports Climate Change</journal>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Cardiology</journal>
+      <journal>Nature Reviews Clinical Oncology</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Endocrinology</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Reviews Immunology</journal>
+      <journal>Nature Reviews Microbiology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Reviews Nephrology</journal>
+      <journal>Nature Reviews Neurology</journal>
+      <journal>Nature Reviews Neuroscience</journal>
+      <journal>Nature Reviews Rheumatology</journal>
+      <journal>Nature Reviews Urology</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Paraplegia</journal>
+      <journal>Prostate Cancer and Prostatic Diseases</journal>
+      <journal>Scientific American</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The American Journal of Gastroenterology</journal>
+      <journal>The Journal of Antibiotics</journal>
     </article-type>
     <article-type type="critmass">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="crsswrd">
       <journal/>
     </article-type>
     <article-type type="cs">
-      <journal/>
+      <journal>American Journal of Hypertension</journal>
+      <journal>British Dental Journal</journal>
+      <journal>British Journal of Cancer</journal>
+      <journal>EMBO Reports</journal>
+      <journal>Eye</journal>
+      <journal>Journal of Brand Management</journal>
+      <journal>Journal of Commercial Biotechnology</journal>
+      <journal>Journal of Database Marketing &amp; Customer Strategy Management</journal>
+      <journal>Journal of Direct, Data and Digital Marketing Practice</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemistry</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature New Biology</journal>
+      <journal>Nature News</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Physical Science</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Cardiology</journal>
+      <journal>Nature Reviews Clinical Oncology</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Endocrinology</journal>
+      <journal>Nature Reviews Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Reviews Microbiology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Reviews Nephrology</journal>
+      <journal>Nature Reviews Neurology</journal>
+      <journal>Nature Reviews Neuroscience</journal>
+      <journal>Nature Reviews Rheumatology</journal>
+      <journal>Nature Reviews Urology</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Place Branding and Public Diplomacy</journal>
+      <journal>United Kingdom Economic Accounts</journal>
     </article-type>
     <article-type type="cstory">
       <journal>Science-Business eXchange</journal>
     </article-type>
     <article-type type="cy">
-      <journal/>
+      <journal>British Journal of Cancer</journal>
+      <journal>Cell Research</journal>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
+      <journal>Eye</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Chemistry</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Reports Climate Change</journal>
+      <journal>Nature Reports Stem Cells</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Scientific American</journal>
+      <journal>Spinal Cord</journal>
     </article-type>
     <article-type type="db">
-      <journal/>
+      <journal>BioSocieties</journal>
+      <journal>British Politics</journal>
+      <journal>European Journal of Development Research</journal>
+      <journal>European Political Science</journal>
+      <journal>Evidence-Based Dentistry</journal>
+      <journal>French Politics</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>International Politics</journal>
+      <journal>Journal of Information Technology</journal>
+      <journal>Social Theory &amp; Health</journal>
+      <journal>The American Journal of Gastroenterology</journal>
     </article-type>
     <article-type type="dept">
-      <journal/>
+      <journal>Lab Animal</journal>
     </article-type>
     <article-type type="diary">
-      <journal/>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="digest">
       <journal/>
     </article-type>
     <article-type type="dplat">
-      <journal/>
+      <journal>Science-Business eXchange</journal>
     </article-type>
     <article-type type="dtech">
       <journal>Science-Business eXchange</journal>
@@ -652,74 +1173,394 @@ Created - 20120208
       <journal>Science-Business eXchange</journal>
     </article-type>
     <article-type type="dw">
-      <journal/>
+      <journal>Nature Reviews Microbiology</journal>
     </article-type>
     <article-type type="ecot">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="ecr">
-      <journal/>
+      <journal>The EMBO Journal</journal>
     </article-type>
     <article-type type="ed">
-      <journal/>
+      <journal>Acta Pharmacologica Sinica</journal>
+      <journal>Acta Politica</journal>
+      <journal>American Journal of Gastroenterology</journal>
+      <journal>American Journal of Hypertension</journal>
+      <journal>Asian Business &amp; Management</journal>
+      <journal>Asian Journal of Andrology</journal>
+      <journal>Australian Journal of Experimental Biology and Medical Science</journal>
+      <journal>BioSocieties</journal>
+      <journal>Bone Marrow Transplantation</journal>
+      <journal>British Dental Journal</journal>
+      <journal>British Journal of Cancer</journal>
+      <journal>British Politics</journal>
+      <journal>Business Economics</journal>
+      <journal>Cancer Gene Therapy</journal>
+      <journal>Cell Death and Differentiation</journal>
+      <journal>Cell Death and Disease</journal>
+      <journal>Cell Research</journal>
+      <journal>Cellular and Molecular Immunology</journal>
+      <journal>Clinical Pharmacology and Therapeutics</journal>
+      <journal>Comparative Economic Studies</journal>
+      <journal>Comparative European Politics</journal>
+      <journal>Contemporary Political Theory</journal>
+      <journal>Corporate Reputation Review</journal>
+      <journal>Crime Prevention and Community Safety</journal>
+      <journal>Derivatives Use, Trading &amp; Regulation</journal>
+      <journal>Development</journal>
+      <journal>EMBO Reports</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>European Journal of Development Research</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>European Journal of Information Systems</journal>
+      <journal>European Political Science</journal>
+      <journal>Evidence-Based Dentistry</journal>
+      <journal>Eye</journal>
+      <journal>Feminist Review</journal>
+      <journal>French Politics</journal>
+      <journal>Gene Therapy</journal>
+      <journal>Genes and Immunity</journal>
+      <journal>Genetics in Medicine</journal>
+      <journal>Heredity</journal>
+      <journal>Higher Education Policy</journal>
+      <journal>Hypertension Research</journal>
+      <journal>Immunology and Cell Biology</journal>
+      <journal>Interactive Marketing</journal>
+      <journal>International Journal of Disclosure and Governance</journal>
+      <journal>International Journal of Educational Advancement</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Maritime Economics</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>International Politics</journal>
+      <journal>Journal of Asset Management</journal>
+      <journal>Journal of Banking Regulation</journal>
+      <journal>Journal of Brand Management</journal>
+      <journal>Journal of Building Appraisal</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Commercial Biotechnology</journal>
+      <journal>Journal of Database Marketing and Customer Strategy Management</journal>
+      <journal>Journal of Derivatives &amp; Hedge Funds</journal>
+      <journal>Journal of Digital Asset Management</journal>
+      <journal>Journal of Direct, Data and Digital Marketing Practice</journal>
+      <journal>Journal of Exposure Science and Environmental Epidemiology</journal>
+      <journal>Journal of Financial Services Marketing</journal>
+      <journal>Journal of Human Genetics</journal>
+      <journal>Journal of Human Hypertension</journal>
+      <journal>Journal of Information Technology</journal>
+      <journal>Journal of Information Technology Teaching Cases</journal>
+      <journal>Journal of International Business Studies</journal>
+      <journal>Journal of International Relations and Development</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Journal of Investigative Dermatology Symposium Proceedings</journal>
+      <journal>Journal of Perinatolog</journal>
+      <journal>Journal of Public Health Policy</journal>
+      <journal>Journal of Retail and Leisure Property</journal>
+      <journal>Journal of Simulation</journal>
+      <journal>Journal of Targeting, Measurement and Analysis for Marketing</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Kidney International</journal>
+      <journal>Kidney International Supplements</journal>
+      <journal>Knowledge Management Research &amp; Practice</journal>
+      <journal>Laboratory Investigation</journal>
+      <journal>Latino Studies</journal>
+      <journal>Leukemia</journal>
+      <journal>Light: Science &amp; Applications</journal>
+      <journal>Maritime Economics &amp; Logistics</journal>
+      <journal>Modern Pathology</journal>
+      <journal>Molecular Psychiatry</journal>
+      <journal>Molecular Systems Biology</journal>
+      <journal>Molecular Therapy</journal>
+      <journal>Molecular Therapy &#x2014; Nucleic Acids</journal>
+      <journal>Mucosal Immunology</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Chemistry</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Clinical Practice Cardiovascular Medicine</journal>
+      <journal>Nature Clinical Practice Endocrinology &amp; Metabolism</journal>
+      <journal>Nature Clinical Practice Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Clinical Practice Nephrology</journal>
+      <journal>Nature Clinical Practice Neurology</journal>
+      <journal>Nature Clinical Practice Oncology</journal>
+      <journal>Nature Clinical Practice Rheumatology</journal>
+      <journal>Nature Clinical Practice Urology</journal>
+      <journal>Nature Communications</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Reports Climate Change</journal>
+      <journal>Nature Reports Stem Cells</journal>
+      <journal>Nature Reviews Cardiology</journal>
+      <journal>Nature Reviews Clinical Oncology</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Endocrinology</journal>
+      <journal>Nature Reviews Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Reviews Immunology</journal>
+      <journal>Nature Reviews Microbiology</journal>
+      <journal>Nature Reviews Nephrology</journal>
+      <journal>Nature Reviews Neurology</journal>
+      <journal>Nature Reviews Rheumatology</journal>
+      <journal>Nature Reviews Urology</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Neuropsychopharmacology</journal>
+      <journal>NPG Asia Materials</journal>
+      <journal>Obesity</journal>
+      <journal>Oncogene</journal>
+      <journal>Oncogenesis</journal>
+      <journal>OR Insight</journal>
+      <journal>Organization Management Journal</journal>
+      <journal>Paraplegia</journal>
+      <journal>Pediatric Research</journal>
+      <journal>Pensions: An International Journal</journal>
+      <journal>Place Branding</journal>
+      <journal>Place Branding and Public Diplomacy</journal>
+      <journal>Polity</journal>
+      <journal>Polymer Journal</journal>
+      <journal>Prostate Cancer and Prostatic Diseases</journal>
+      <journal>Psychoanalysis, Culture &amp; Society</journal>
+      <journal>Risk Management</journal>
+      <journal>Security Journal</journal>
+      <journal>Social Theory &amp; Health</journal>
+      <journal>Spinal Cord</journal>
+      <journal>Subjectivity</journal>
+      <journal>The American Journal of Gastroenterology</journal>
+      <journal>The American Journal of Psychoanalysis</journal>
+      <journal>The CASE International Journal of Educational Advancement</journal>
+      <journal>The EMBO Journal</journal>
+      <journal>The European Journal of Development Research</journal>
+      <journal>The Geneva Papers on Risk and Insurance Issues and Practice</journal>
+      <journal>The Geneva Papers on Risk and Insurance Theory</journal>
+      <journal>The ISME Journal</journal>
+      <journal>The Journal of Antibiotics</journal>
+      <journal>The Journal of Investigative Dermatology</journal>
+      <journal>The Pharmacogenomics Journal</journal>
+      <journal>Translational Psychiatry</journal>
+      <journal>Urban Design International</journal>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="edfv">
       <journal/>
     </article-type>
     <article-type type="edin">
-      <journal/>
+      <journal>The EMBO Journal</journal>
     </article-type>
     <article-type type="eds">
-      <journal/>
+      <journal>Scientific American</journal>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="edu">
-      <journal/>
+      <journal>British Dental Journal</journal>
+      <journal>Genetics in Medicine</journal>
     </article-type>
     <article-type type="egame">
-      <journal/>
+      <journal>Nature Physics</journal>
     </article-type>
     <article-type type="el">
-      <journal/>
+      <journal>Nature Chemical Biology</journal>
     </article-type>
     <article-type type="emr">
-      <journal/>
+      <journal>The EMBO Journal</journal>
     </article-type>
     <article-type type="eng">
-      <journal/>
+      <journal>Nature Digest</journal>
     </article-type>
     <article-type type="er">
-      <journal/>
+      <journal>American Journal of Gastroenterology</journal>
+      <journal>American Journal of Hypertension</journal>
+      <journal>Asian Business &amp; Management</journal>
+      <journal>Asian Journal of Andrology</journal>
+      <journal>Australian Journal of Experimental Biology and Medical Science</journal>
+      <journal>BioSocieties</journal>
+      <journal>Bone Marrow Transplantation</journal>
+      <journal>British Dental Journal</journal>
+      <journal>British Journal of Cancer</journal>
+      <journal>British Politics</journal>
+      <journal>Cancer Gene Therapy</journal>
+      <journal>Cell Death and Differentiation</journal>
+      <journal>Cell Death and Disease</journal>
+      <journal>Cell Research</journal>
+      <journal>Cellular and Molecular Immunology</journal>
+      <journal>Clinical Pharmacology and Therapeutics</journal>
+      <journal>Comparative Economic Studies</journal>
+      <journal>Comparative European Politics</journal>
+      <journal>Contemporary Political Theory</journal>
+      <journal>Crime Prevention and Community Safety</journal>
+      <journal>Development</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>European Journal of Information Systems</journal>
+      <journal>Eye</journal>
+      <journal>Feminist Review</journal>
+      <journal>French Politics</journal>
+      <journal>Gene Therapy</journal>
+      <journal>Genetics in Medicine</journal>
+      <journal>Heredity</journal>
+      <journal>Higher Education Policy</journal>
+      <journal>Hypertension Research</journal>
+      <journal>Immunology and Cell Biology</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>International Politics</journal>
+      <journal>Japanese Journal of Human Genetics</journal>
+      <journal>Journal of Asset Management</journal>
+      <journal>Journal of Brand Management</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Exposure Science and Environmental Epidemiology</journal>
+      <journal>Journal of Human Genetics</journal>
+      <journal>Journal of Human Hypertension</journal>
+      <journal>Journal of International Business Studies</journal>
+      <journal>Journal of International Relations and Development</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Journal of Perinatology</journal>
+      <journal>Journal of Public Health Policy</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Kidney International</journal>
+      <journal>Laboratory Investigation</journal>
+      <journal>Latino Studies</journal>
+      <journal>Leukemia</journal>
+      <journal>Maritime Economics &amp; Logistics</journal>
+      <journal>Modern Pathology</journal>
+      <journal>Molecular Psychiatry</journal>
+      <journal>Molecular Systems Biology</journal>
+      <journal>Molecular Therapy</journal>
+      <journal>Mucosal Immunology</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Chemistry</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Clinical Practice Cardiovascular Medicine</journal>
+      <journal>Nature Clinical Practice Endocrinology &amp; Metabolism</journal>
+      <journal>Nature Clinical Practice Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Clinical Practice Oncology</journal>
+      <journal>Nature Clinical Practice Rheumatology</journal>
+      <journal>Nature Clinical Practice Urology</journal>
+      <journal>Nature Communications</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Reports Climate Change</journal>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Reviews Immunology</journal>
+      <journal>Nature Reviews Microbiology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Reviews Neuroscience</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Neuropsychopharmacology</journal>
+      <journal>NPG Asia Materials</journal>
+      <journal>Obesity</journal>
+      <journal>Oncogene</journal>
+      <journal>Organization Management Journal</journal>
+      <journal>Paraplegia</journal>
+      <journal>Pediatric Research</journal>
+      <journal>Polymer Journal</journal>
+      <journal>Prostate Cancer and Prostatic Diseases</journal>
+      <journal>Psychoanalysis, Culture &amp; Society</journal>
+      <journal>Risk Management</journal>
+      <journal>Security Journal</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The American Journal of Gastroenterology</journal>
+      <journal>The EMBO Journal</journal>
+      <journal>The European Journal of Development Research</journal>
+      <journal>The Geneva Papers on Risk and Insurance Issues and Practice</journal>
+      <journal>The ISME Journal</journal>
+      <journal>The Journal of Antibiotics</journal>
+      <journal>The Journal of Investigative Dermatology</journal>
+      <journal>The Pharmacogenomics Journal</journal>
     </article-type>
     <article-type type="erp">
-      <journal/>
+      <journal>Nature Structural Biology</journal>
     </article-type>
     <article-type type="essaycon">
-      <journal/>
+      <journal>Nature Digest</journal>
     </article-type>
     <article-type type="ethicsw">
       <journal/>
     </article-type>
     <article-type type="essay">
-      <journal/>
+      <journal>Nature</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="ewr">
-      <journal/>
+      <journal>The EMBO Journal</journal>
     </article-type>
     <article-type type="fa">
-      <journal/>
+      <journal>Business Economics</journal>
+      <journal>Cell Migration Gateway</journal>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
+      <journal>Functional Glycomics</journal>
+      <journal>Functional Glycomics Gateway</journal>
+      <journal>Higher Education Policy</journal>
+      <journal>Journal of International Relations and Development</journal>
+      <journal>Kidney International</journal>
+      <journal>Leukemia</journal>
+      <journal>Nature Reports Stem Cells</journal>
+      <journal>Neuroscience Gateway</journal>
+      <journal>Polity</journal>
+      <journal>PSI Structural Genomics Knowledgebase</journal>
+      <journal>Structural Biology KnowledgeBase</journal>
+      <journal>Structural Genomics Update</journal>
+      <journal>The European Journal of Development Research</journal>
     </article-type>
     <article-type type="faf">
-      <journal/>
+      <journal>Scientific American Mind</journal>
     </article-type>
     <article-type type="faq">
-      <journal/>
+      <journal>Nature Reports Stem Cells</journal>
     </article-type>
     <article-type type="fd">
-      <journal/>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Immunology</journal>
+      <journal>Nature Reviews Microbiology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Reviews Neuroscience</journal>
     </article-type>
     <article-type type="fe">
+      <journal>Acta Politica</journal>
       <journal>British Dental Journal</journal>
+      <journal>Cell Research</journal>
+      <journal>Contemporary Political Theory</journal>
+      <journal>Crime Prevention and Community Safety</journal>
+      <journal>Economic &amp; Labour Market Review</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>Health Statistics Quarterly</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Exposure Science and Environmental Epidemiology</journal>
+      <journal>Journal of Perinatology</journal>
+      <journal>Journal of Revenue and Pricing Management</journal>
+      <journal>Knowledge Management Research &amp; Practice</journal>
       <journal>Lab Animal</journal>
+      <journal>Migration Statistics Quarterly</journal>
+      <journal>Molecular Psychiatry</journal>
       <journal>Nature</journal>
       <journal>Nature Biotechnology</journal>
       <journal>Nature Chemical Biology</journal>
@@ -734,46 +1575,63 @@ Created - 20120208
       <journal>Nature Physics</journal>
       <journal>Nature Reports Climate Change</journal>
       <journal>Nature Reports Stem Cells</journal>
+      <journal>Population Trends</journal>
       <journal>Scientific American</journal>
       <journal>Scientific American Mind</journal>
-      <journal>Scientific American Time</journal>
+      <journal>The Geneva Papers on Risk and Insurance Issues and Practice</journal>
+      <journal>The Journal of Investigative Dermatology</journal>
       <journal>Vital</journal>
     </article-type>
     <article-type type="fep">
-      <journal/>
+      <journal>Nature Reports Stem Cells</journal>
     </article-type>
     <article-type type="fn">
-      <journal/>
+      <journal>Nature Biotechnology</journal>
     </article-type>
     <article-type type="fno">
       <journal/>
     </article-type>
     <article-type type="focus">
-      <journal/>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
     </article-type>
     <article-type type="focusrev">
-      <journal/>
+      <journal>Polymer Journal</journal>
+      <journal>The EMBO Journal</journal>
     </article-type>
     <article-type type="fof">
-      <journal/>
+      <journal>Scientific American</journal>
+      <journal>Scientific American Mind</journal>
     </article-type>
     <article-type type="forum">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="fpln">
       <journal/>
     </article-type>
     <article-type type="fqc">
-      <journal/>
+      <journal>The EMBO Journal</journal>
     </article-type>
     <article-type type="fr">
-      <journal/>
+      <journal>American Journal of Hypertension</journal>
+      <journal>Business Economics</journal>
+      <journal>Eye</journal>
+      <journal>Journal of Revenue and Pricing Management</journal>
+      <journal>Molecular Psychiatry</journal>
+      <journal>Nature</journal>
+      <journal>The Pharmacogenomics Journal</journal>
     </article-type>
     <article-type type="fromed">
-      <journal/>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Reviews Immunology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Reviews Neuroscience</journal>
+      <journal>Scientific American</journal>
+      <journal>Scientific American Mind</journal>
     </article-type>
     <article-type type="frontl">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="ftf">
       <journal/>
@@ -782,130 +1640,288 @@ Created - 20120208
       <journal/>
     </article-type>
     <article-type type="fut">
-      <journal/>
+      <journal>Nature</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Physics</journal>
     </article-type>
     <article-type type="futsol">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="gen">
-      <journal/>
+      <journal>British Dental Journal</journal>
     </article-type>
     <article-type type="getact">
-      <journal/>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="gu">
-      <journal/>
+      <journal>Nature Clinical Practice Oncology</journal>
     </article-type>
     <article-type type="gus">
-      <journal/>
+      <journal>Nature Clinical Practice Nephrology</journal>
+      <journal>Nature Clinical Practice Rheumatology</journal>
     </article-type>
     <article-type type="gw">
-      <journal/>
+      <journal>Nature Reviews Microbiology</journal>
     </article-type>
     <article-type type="hc">
-      <journal/>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Methods</journal>
     </article-type>
     <article-type type="headg">
-      <journal/>
+      <journal>Scientific American Mind</journal>
     </article-type>
     <article-type type="headl">
-      <journal/>
+      <journal>Scientific American Mind</journal>
     </article-type>
     <article-type type="hh">
       <journal/>
     </article-type>
     <article-type type="hn">
-      <journal/>
+      <journal>Nature Medicine</journal>
+      <journal>Prostate Cancer and Prostatic Diseases</journal>
     </article-type>
     <article-type type="hor">
-      <journal/>
+      <journal>Nature</journal>
     </article-type>
     <article-type type="hp">
-      <journal/>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Medicine</journal>
     </article-type>
     <article-type type="hrn">
-      <journal/>
+      <journal>Nature Medicine</journal>
     </article-type>
     <article-type type="hs">
-      <journal/>
+      <journal>Nature Structural Biology</journal>
     </article-type>
     <article-type type="highlts">
-      <journal/>
+      <journal>Nature Digest</journal>
+      <journal>Nature Reviews Microbiology</journal>
     </article-type>
     <article-type type="ht">
-      <journal/>
+      <journal>Neuropsychopharmacology</journal>
+      <journal>Obesity</journal>
     </article-type>
     <article-type type="hyp">
-      <journal/>
+      <journal>Molecular Psychiatry</journal>
+      <journal>Nature</journal>
     </article-type>
     <article-type type="hyst">
-      <journal/>
+      <journal>The EMBO Journal</journal>
     </article-type>
     <article-type type="ib">
-      <journal/>
+      <journal>Economic &amp; Labour Market Review</journal>
+      <journal>Health Statistics Quarterly</journal>
+      <journal>Migration Statistics Quarterly</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Reports Stem Cells</journal>
+      <journal>Population Trends</journal>
     </article-type>
     <article-type type="illus">
-      <journal/>
+      <journal>Scientific American Mind</journal>
     </article-type>
     <article-type type="in">
-      <journal/>
+      <journal>Acta Politica</journal>
+      <journal>American Journal of Gastroenterology</journal>
+      <journal>American Journal of Hypertension</journal>
+      <journal>Annual Abstract of Statistics</journal>
+      <journal>BioSocieties</journal>
+      <journal>Bone Marrow Transplantation</journal>
+      <journal>British Journal of Cancer</journal>
+      <journal>Comparative Economic Studies</journal>
+      <journal>Comparative European Politics</journal>
+      <journal>Crime Prevention and Community Safety</journal>
+      <journal>Development</journal>
+      <journal>Eastern Economic Journal</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>European Journal of Development Research</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>European Journal of Information Systems</journal>
+      <journal>Evidence-Based Dentistry</journal>
+      <journal>Eye</journal>
+      <journal>Family Spending</journal>
+      <journal>Feminist Review</journal>
+      <journal>Financial Statistics</journal>
+      <journal>French Politics</journal>
+      <journal>Gene Therapy</journal>
+      <journal>Genetics in Medicine</journal>
+      <journal>Higher Education Policy</journal>
+      <journal>IMF Economic Review</journal>
+      <journal>IMF Staff Papers</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>International Politics</journal>
+      <journal>Journal of Asset Management</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Database Marketing &amp; Customer Strategy Management</journal>
+      <journal>Journal of Human Hypertension</journal>
+      <journal>Journal of Information Technology</journal>
+      <journal>Journal of International Business Studies</journal>
+      <journal>Journal of International Relations and Development</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Journal of Investigative Dermatology Symposium Proceedings</journal>
+      <journal>Journal of Perinatology</journal>
+      <journal>Journal of Public Health Policy</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Kidney International</journal>
+      <journal>Latino Studies</journal>
+      <journal>Leukemia</journal>
+      <journal>Migration Statistics Quarterly</journal>
+      <journal>Modern Pathology</journal>
+      <journal>Molecular Psychiatry</journal>
+      <journal>Monthly Digest of Statistics</journal>
+      <journal>Nature</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Neuropsychopharmacology</journal>
+      <journal>Obesity</journal>
+      <journal>Oncogene</journal>
+      <journal>Organization Management Journal</journal>
+      <journal>Paraplegia</journal>
+      <journal>Pediatric Research</journal>
+      <journal>Polity</journal>
+      <journal>Prostate Cancer and Prostatic Diseases</journal>
+      <journal>Psychoanalysis, Culture &amp; Society</journal>
+      <journal>Regional Trends</journal>
+      <journal>Security Journal</journal>
+      <journal>Social Trends</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The American Journal of Gastroenterology</journal>
+      <journal>The American Journal of Psychoanalysis</journal>
+      <journal>The European Journal of Development Research</journal>
+      <journal>The Geneva Papers on Risk and Insurance</journal>
+      <journal>The Geneva Papers on Risk and Insurance Theory</journal>
+      <journal>The Pharmacogenomics Journal</journal>
+      <journal>United Kingdom Economic Accounts</journal>
+      <journal>Urban Design International</journal>
     </article-type>
     <article-type type="indp">
-      <journal/>
+      <journal>Nature Photonics</journal>
     </article-type>
     <article-type type="insight">
-      <journal/>
+      <journal>Nature</journal>
     </article-type>
     <article-type type="insit">
       <journal/>
     </article-type>
     <article-type type="iniss">
-      <journal/>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Reviews Immunology</journal>
+      <journal>Nature Reviews Microbiology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Reviews Neuroscience</journal>
     </article-type>
     <article-type type="insp">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="intvw">
-      <journal/>
+      <journal>British Dental Journal</journal>
+      <journal>Nature Chemistry</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Reviews Neuroscience</journal>
     </article-type>
     <article-type type="is">
-      <journal/>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
+      <journal>Molecular Therapy</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="itp">
-      <journal/>
+      <journal>Nature Reports Stem Cells</journal>
     </article-type>
     <article-type type="iye">
-      <journal/>
+      <journal>Nature Chemistry</journal>
     </article-type>
     <article-type type="japnf">
-      <journal/>
+      <journal>Nature Digest</journal>
     </article-type>
     <article-type type="japau">
-      <journal/>
+      <journal>Nature Digest</journal>
     </article-type>
     <article-type type="japlnf">
-      <journal/>
+      <journal>Nature Digest</journal>
     </article-type>
     <article-type type="japmuse">
-      <journal/>
+      <journal>Nature Digest</journal>
     </article-type>
     <article-type type="japnw">
-      <journal/>
+      <journal>Nature Digest</journal>
     </article-type>
     <article-type type="japsi">
-      <journal/>
+      <journal>Nature Digest</journal>
     </article-type>
     <article-type type="japsn">
       <journal/>
     </article-type>
     <article-type type="jcb">
-      <journal/>
+      <journal>Nature</journal>
     </article-type>
     <article-type type="jr">
       <journal/>
     </article-type>
     <article-type type="le">
+      <journal>Acta Pharmacologica Sinica</journal>
+      <journal>American Journal of Gastroenterology</journal>
+      <journal>American Journal of Hypertension</journal>
+      <journal>Asian Journal of Andrology</journal>
+      <journal>Blood Cancer Journal</journal>
+      <journal>Bone Marrow Transplantation</journal>
       <journal>British Dental Journal</journal>
+      <journal>British Journal of Cancer</journal>
+      <journal>Cancer Gene Therapy</journal>
+      <journal>Cell Death and Differentiation</journal>
+      <journal>Cell Research</journal>
+      <journal>Clinical and Translational Gastroenterology</journal>
+      <journal>Clinical Pharmacology and Therapeutics</journal>
+      <journal>Comparative Economic Studies</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>Evidence-Based Dentistry</journal>
+      <journal>Eye</journal>
+      <journal>Feminist Review</journal>
+      <journal>Gene Therapy</journal>
+      <journal>Genes and Immunity</journal>
+      <journal>Genetics in Medicine</journal>
+      <journal>Heredity</journal>
+      <journal>Higher Education Policy</journal>
+      <journal>Hypertension Research</journal>
+      <journal>Immunology and Cell Biology</journal>
+      <journal>Interactive Marketing</journal>
+      <journal>International Journal of Disclosure and Governance</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Maritime Economics</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>Japanese Journal of Human Genetics</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Exposure Science and Environmental Epidemiology</journal>
+      <journal>Journal of Human Genetics</journal>
+      <journal>Journal of Human Hypertension</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Journal of Perinatology</journal>
+      <journal>Journal of Public Health Policy</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Kidney International</journal>
+      <journal>Laboratory Investigation</journal>
+      <journal>Leukemia</journal>
+      <journal>Maritime Economics &amp; Logistics</journal>
+      <journal>Modern Pathology</journal>
+      <journal>Molecular Psychiatry</journal>
+      <journal>Molecular Therapy</journal>
+      <journal>Mucosal Immunology</journal>
       <journal>Nature Biotechnology</journal>
       <journal>Nature Cell Biology</journal>
       <journal>Nature Chemical Biology</journal>
@@ -920,66 +1936,141 @@ Created - 20120208
       <journal>Nature Photonics</journal>
       <journal>Nature Physics</journal>
       <journal>Nature Structural Biology</journal>
+      <journal>Neuropsychopharmacology</journal>
+      <journal>Obesity</journal>
+      <journal>Oncogene</journal>
+      <journal>OR Insight</journal>
+      <journal>Paraplegia</journal>
+      <journal>Pediatric Research</journal>
+      <journal>Pensions: An International Journal</journal>
+      <journal>Psychoanalysis, Culture &amp; Society</journal>
       <journal>Scientific American</journal>
       <journal>Scientific American Mind</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The American Journal of Gastroenterology</journal>
+      <journal>The Journal of Antibiotics</journal>
+      <journal>The Journal of Investigative Dermatology</journal>
+      <journal>The Pharmacogenomics Journal</journal>
       <journal>Vital</journal>
     </article-type>
     <article-type type="lfln">
-      <journal/>
+      <journal>Nature</journal>
     </article-type>
     <article-type type="livg">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="lstwrd">
-      <journal/>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="lt">
-      <journal/>
+      <journal>Clinical Pharmacology and Therapeutics</journal>
+      <journal>Nature</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature New Biology</journal>
+      <journal>Nature Physical Science</journal>
     </article-type>
     <article-type type="ma">
-      <journal/>
+      <journal>British Journal of Cancer</journal>
     </article-type>
     <article-type type="mark">
-      <journal/>
+      <journal>Science-Business eXchange</journal>
     </article-type>
     <article-type type="marw">
-      <journal/>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Reports Climate Change</journal>
     </article-type>
     <article-type type="medrv">
-      <journal/>
+      <journal>The EMBO Journal</journal>
     </article-type>
     <article-type type="meetteam">
-      <journal/>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="memrv">
       <journal/>
     </article-type>
     <article-type type="mgt">
-      <journal/>
+      <journal>Nature Biotechnology</journal>
     </article-type>
     <article-type type="minirv">
-      <journal/>
+      <journal>The EMBO Journal</journal>
     </article-type>
     <article-type type="misc">
-      <journal/>
+      <journal>Nature</journal>
+    </article-type>
+    <article-type type="mktana">
+      <journal>Nature Medicine</journal>
+      <journal>Nature Photonics</journal>
     </article-type>
     <article-type type="mp">
-      <journal/>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Nature Genetics</journal>
+      <journal>The Journal of Investigative Dermatology</journal>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="mr">
-      <journal/>
+      <journal>American Journal of Hypertension</journal>
+      <journal>Asian Journal of Andrology</journal>
+      <journal>Blood Cancer Journal</journal>
+      <journal>Bone Marrow Transplantation</journal>
+      <journal>BoneKEy-Osteovision</journal>
+      <journal>British Journal of Cancer</journal>
+      <journal>Cancer Gene Therapy</journal>
+      <journal>Cell Death and Differentiation</journal>
+      <journal>Cell Death and Disease</journal>
+      <journal>Cell Research</journal>
+      <journal>Comparative Economic Studies</journal>
+      <journal>Development</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>Evidence-Based Dentistry</journal>
+      <journal>Gene Therapy</journal>
+      <journal>Genetics in Medicine</journal>
+      <journal>IBMS BoneKEy</journal>
+      <journal>Immunology and Cell Biology</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>Japanese Journal of Human Genetics</journal>
+      <journal>Journal of Exposure Science and Environmental Epidemiology</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Journal of Revenue and Pricing Management</journal>
+      <journal>Kidney International</journal>
+      <journal>Kidney International Supplements</journal>
+      <journal>Laboratory Investigation</journal>
+      <journal>Leukemia</journal>
+      <journal>Molecular Therapy</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Reports Stem Cells</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Neuropsychopharmacology</journal>
+      <journal>Oncogene</journal>
+      <journal>Paraplegia</journal>
+      <journal>Pediatric Research</journal>
+      <journal>Prostate Cancer and Prostatic Diseases</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The American Journal of Gastroenterology</journal>
+      <journal>The American Journal of Psychoanalysis</journal>
+      <journal>The Journal of Antibiotics</journal>
+      <journal>The Pharmacogenomics Journal</journal>
     </article-type>
     <article-type type="mt">
-      <journal/>
+      <journal>Leukemia</journal>
     </article-type>
     <article-type type="mtp">
-      <journal/>
+      <journal>Nature Reports Stem Cells</journal>
     </article-type>
     <article-type type="multr">
       <journal/>
     </article-type>
     <article-type type="na">
-      <journal/>
+      <journal>Nature</journal>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Microbiology</journal>
     </article-type>
     <article-type type="naturejobs">
       <journal>Nature</journal>
@@ -988,30 +2079,77 @@ Created - 20120208
       <journal>NatureJobs</journal>
     </article-type>
     <article-type type="natview">
-      <journal/>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Reviews Immunology</journal>
+      <journal>Nature Reviews Microbiology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Reviews Neuroscience</journal>
     </article-type>
     <article-type type="nb">
-      <journal/>
+      <journal>British Journal of Cancer</journal>
+      <journal>Nature</journal>
     </article-type>
     <article-type type="nbr">
-      <journal/>
+      <journal>Nature</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature New Biology</journal>
+      <journal>Nature News</journal>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="nbri">
       <journal/>
     </article-type>
     <article-type type="nemr">
-      <journal/>
+      <journal>The EMBO Journal</journal>
     </article-type>
     <article-type type="neuro">
-      <journal/>
+      <journal>Neuroscience Gateway</journal>
+    </article-type>
+    <article-type type="nf">
+      <journal>Kidney International</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature News</journal>
+      <journal>Nature Reports Climate Change</journal>
+      <journal>Nature Reports Stem Cells</journal>
     </article-type>
     <article-type type="ngal">
-      <journal/>
+      <journal>Nature Digest</journal>
     </article-type>
     <article-type type="nj">
+      <journal>Nature</journal>
+    </article-type>
+    <article-type type="nm">
+      <journal>Nature</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Medicine</journal>
+    </article-type>
+    <article-type type="nmr">
       <journal/>
     </article-type>
+    <article-type type="nobellr">
+      <journal/>
+    </article-type>
+    <article-type type="np">
+      <journal>Nature</journal>
+    </article-type>
+    <article-type type="nscan">
+      <journal>Scientific American</journal>
+    </article-type>
+    <article-type type="nt">
+      <journal>Nature Genetics</journal>
+      <journal>Nature Medicine</journal>
+    </article-type>
     <article-type type="nv">
+      <journal>American Journal of Hypertension</journal>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
       <journal>Molecular Systems Biology</journal>
       <journal>Nature</journal>
       <journal>Nature Biotechnology</journal>
@@ -1042,131 +2180,336 @@ Created - 20120208
       <journal>Nature Structural &amp; Molecular Biology</journal>
       <journal>Nature Structural Biology</journal>
     </article-type>
-    <article-type type="nvqa">
-      <journal/>
-    </article-type>
-    <article-type type="mktana">
-      <journal/>
-    </article-type>
-    <article-type type="nm">
-      <journal/>
-    </article-type>
-    <article-type type="nmr">
-      <journal/>
-    </article-type>
-    <article-type type="nobellr">
-      <journal/>
-    </article-type>
-    <article-type type="np">
-      <journal/>
-    </article-type>
-    <article-type type="nscan">
-      <journal/>
-    </article-type>
-    <article-type type="nt">
-      <journal/>
-    </article-type>
-    <article-type type="nv">
-      <journal/>
-    </article-type>
     <article-type type="nvb">
       <journal/>
     </article-type>
     <article-type type="nvf">
-      <journal/>
+      <journal>Nature</journal>
     </article-type>
     <article-type type="nvfv">
       <journal/>
     </article-type>
-    <article-type type="nw">
-      <journal/>
+    <article-type type="nvqa">
+      <journal>Nature</journal>
+      <journal>Nature Digest</journal>
     </article-type>
-    <article-type type="nf">
-      <journal/>
+    <article-type type="nw">
+      <journal>British Dental Journal</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature India</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Middle East</journal>
+      <journal>Nature New Biology</journal>
+      <journal>Nature News</journal>
+      <journal>Nature Physical Science</journal>
+      <journal>Nature Reports Stem Cells</journal>
+      <journal>Structural Genomics Update</journal>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="ob">
-      <journal/>
+      <journal>American Journal of Hypertension</journal>
+      <journal>Asian Journal of Andrology</journal>
+      <journal>Australian Journal of Experimental Biology and Medical Science</journal>
+      <journal>Bone Marrow Transplantation</journal>
+      <journal>British Dental Journal</journal>
+      <journal>British Journal of Cancer</journal>
+      <journal>Cell Death and Differentiation</journal>
+      <journal>Cellular and Molecular Immunology</journal>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
+      <journal>Development</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>European Political Science</journal>
+      <journal>Eye</journal>
+      <journal>Feminist Review</journal>
+      <journal>Heredity</journal>
+      <journal>Immunology and Cell Biology</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>Japanese Journal of Human Genetics</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Commercial Biotechnology</journal>
+      <journal>Journal of Human Genetics</journal>
+      <journal>Journal of Human Hypertension</journal>
+      <journal>Journal of Information Technology</journal>
+      <journal>Journal of International Business Studies</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Journal of Public Health Policy</journal>
+      <journal>Journal of Targeting, Measurement and Analysis for Marketing</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Kidney International</journal>
+      <journal>Laboratory Investigation</journal>
+      <journal>Leukemia</journal>
+      <journal>Nature</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Neuropsychopharmacology</journal>
+      <journal>Obesity</journal>
+      <journal>Oncogene</journal>
+      <journal>Paraplegia</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The Journal of Antibiotics</journal>
+      <journal>The Journal of Investigative Dermatology</journal>
     </article-type>
     <article-type type="onbr">
       <journal/>
     </article-type>
     <article-type type="onyrft">
-      <journal/>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="op">
-      <journal/>
+      <journal>American Journal of Hypertension</journal>
+      <journal>Asian Journal of Andrology</journal>
+      <journal>British Dental Journal</journal>
+      <journal>European Journal of Information Systems</journal>
+      <journal>Evidence-Based Dentistry</journal>
+      <journal>Interactive Marketing</journal>
+      <journal>Journal of Banking Regulation</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Commercial Biotechnology</journal>
+      <journal>Journal of Database Marketing &amp; Customer Strategy Management</journal>
+      <journal>Journal of Direct, Data and Digital Marketing Practice</journal>
+      <journal>Journal of Targeting, Measurement and Analysis for Marketing</journal>
+      <journal>Nature Nature Biotechnology Nature Digest Nature Medicine</journal>
+      <journal>Pensions: An International Journal</journal>
+      <journal>Place Branding</journal>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="opcom">
-      <journal/>
+      <journal>Nature Biotechnology</journal>
     </article-type>
     <article-type type="out">
-      <journal/>
+      <journal>Nature</journal>
+      <journal>Nature Digest</journal>
     </article-type>
     <article-type type="outlab">
-      <journal/>
+      <journal>Nature Photonics</journal>
     </article-type>
     <article-type type="ov">
-      <journal/>
+      <journal>British Journal of Cancer</journal>
+      <journal>Comparative Economic Studies</journal>
+      <journal>Genetics in Medicine</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
     </article-type>
     <article-type type="pa">
-      <journal/>
+      <journal>Bone Marrow Transplantation</journal>
+      <journal>British Journal of Cancer</journal>
+      <journal>British Politics</journal>
+      <journal>Cell Death and Differentiation</journal>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
+      <journal>Comparative Economic Studies</journal>
+      <journal>Comparative European Politics</journal>
+      <journal>Corporate Reputation Review</journal>
+      <journal>Derivatives Use, Trading &amp; Regulation</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>European Journal of Information Systems</journal>
+      <journal>European Political Science</journal>
+      <journal>Eye</journal>
+      <journal>Feminist Review</journal>
+      <journal>Gene Therapy</journal>
+      <journal>Higher Education Policy</journal>
+      <journal>Interactive Marketing</journal>
+      <journal>International Journal of Disclosure and Governance</journal>
+      <journal>International Journal of Educational Advancement</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>International Politics</journal>
+      <journal>Journal of Asset Management</journal>
+      <journal>Journal of Banking Regulation</journal>
+      <journal>Journal of Brand Management</journal>
+      <journal>Journal of Building Appraisal</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Commercial Biotechnology</journal>
+      <journal>Journal of Database Marketing</journal>
+      <journal>Journal of Database Marketing &amp; Customer Strategy Management</journal>
+      <journal>Journal of Derivatives &amp; Hedge Funds</journal>
+      <journal>Journal of Digital Asset Management</journal>
+      <journal>Journal of Direct, Data and Digital Marketing Practice</journal>
+      <journal>Journal of Financial Services Marketing</journal>
+      <journal>Journal of Information Technology</journal>
+      <journal>Journal of International Business Studies</journal>
+      <journal>Journal of Retail and Leisure Property</journal>
+      <journal>Journal of Targeting, Measurement and Analysis for Marketing</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Knowledge Management Research &amp; Practice</journal>
+      <journal>Latino Studies</journal>
+      <journal>Oncogene</journal>
+      <journal>Pensions: An International Journal</journal>
+      <journal>Place Branding</journal>
+      <journal>Place Branding and Public Diplomacy</journal>
+      <journal>Prostate Cancer and Prostatic Diseases</journal>
+      <journal>Risk Management</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The American Journal of Gastroenterology</journal>
+      <journal>The CASE International Journal of Educational Advancement</journal>
+      <journal>The Geneva Papers on Risk and Insurance Issues and Practice</journal>
+      <journal>The Pharmacogenomics Journal</journal>
     </article-type>
     <article-type type="pe">
-      <journal/>
+      <journal>Acta Pharmacologica Sinica</journal>
+      <journal>Asian Business &amp; Management</journal>
+      <journal>Asian Journal of Andrology</journal>
+      <journal>BoneKEy-Osteovision</journal>
+      <journal>Bone Marrow Transplantation</journal>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
+      <journal>Eye</journal>
+      <journal>Gene Therapy</journal>
+      <journal>IBMS BoneKEy</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>International Politics</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of International Business Studies</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Journal of Perinatology</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Laboratory Investigation</journal>
+      <journal>Latino Studies</journal>
+      <journal>Maritime Economics &amp; Logistics</journal>
+      <journal>Molecular Systems Biology</journal>
+      <journal>Molecular Psychiatry</journal>
+      <journal>Molecular Therapy</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Chemistry</journal>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature Physics</journal>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Cardiology</journal>
+      <journal>Nature Reviews Clinical Oncology</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Endocrinology</journal>
+      <journal>Nature Reviews Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Reviews Immunology</journal>
+      <journal>Nature Reviews Microbiology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Reviews Nephrology</journal>
+      <journal>Nature Reviews Neurology</journal>
+      <journal>Nature Reviews Neuroscience</journal>
+      <journal>Nature Reviews Rheumatology</journal>
+      <journal>Nature Reviews Urology</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Neuropsychopharmacology</journal>
+      <journal>Obesity</journal>
+      <journal>Pensions: An International Journal</journal>
+      <journal>Scientific American</journal>
+      <journal>Scientific American Mind</journal>
+      <journal>The ISME Journal</journal>
+      <journal>The Journal of Investigative Dermatology</journal>
+      <journal>The Pharmacogenomics Journal</journal>
+      <journal>Translational Psychiatry</journal>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="pefv">
       <journal/>
     </article-type>
     <article-type type="phot">
-      <journal/>
-    </article-type>
-    <article-type type="">
-      <journal/>
+      <journal>Nature Photonics</journal>
     </article-type>
     <article-type type="pi">
-      <journal/>
+      <journal>Economic &amp; Labour Market Review</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Pensions: An International Journal</journal>
     </article-type>
     <article-type type="pl">
-      <journal/>
+      <journal>British Dental Journal</journal>
+      <journal>Economic &amp; Labour Market Review</journal>
+      <journal>Social Trends</journal>
     </article-type>
     <article-type type="pn">
-      <journal/>
+      <journal>British Dental Journal</journal>
+      <journal>International Journal of Educational Advancement</journal>
+      <journal>Journal of Direct, Data and Digital Marketing Practice</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Psychoanalysis, Culture &amp; Society</journal>
+      <journal>The American Journal of Psychoanalysis</journal>
     </article-type>
     <article-type type="pod">
       <journal/>
     </article-type>
     <article-type type="polw">
-      <journal/>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Reports Climate Change</journal>
     </article-type>
     <article-type type="ppi">
-      <journal/>
+      <journal>Science-Business eXchange</journal>
     </article-type>
     <article-type type="ppro">
-      <journal/>
+      <journal>Lab Animal</journal>
     </article-type>
     <article-type type="ppt">
-      <journal/>
+      <journal>Nature Clinical Practice Cardiovascular Medicine</journal>
+      <journal>Nature Clinical Practice Endocrinology &amp; Metabolism</journal>
+      <journal>Nature Clinical Practice Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Clinical Practice Nephrology</journal>
+      <journal>Nature Clinical Practice Neurology</journal>
+      <journal>Nature Clinical Practice Oncology</journal>
+      <journal>Nature Clinical Practice Rheumatology</journal>
+      <journal>Nature Clinical Practice Urology</journal>
     </article-type>
     <article-type type="prac">
-      <journal/>
+      <journal>British Dental Journal</journal>
     </article-type>
     <article-type type="pr">
-      <journal/>
+      <journal>Acta Pharmacologica Sinica</journal>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>Journal of Investigative Dermatology Symposium Proceedings</journal>
+      <journal>Journal of Perinatology</journal>
+      <journal>Journal of Retail and Leisure Property</journal>
+      <journal>Nature</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Reviews Immunology</journal>
+      <journal>Nature Reviews Microbiology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Reviews Neuroscience</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Obesity</journal>
+      <journal>The Journal of Investigative Dermatology</journal>
     </article-type>
     <article-type type="prf">
-      <journal/>
+      <journal>Nature Photonics</journal>
     </article-type>
     <article-type type="prhl">
-      <journal/>
+      <journal>Nature Photonics</journal>
     </article-type>
     <article-type type="primer">
-      <journal/>
+      <journal>NCI-Nature Pathway Interaction Database</journal>
     </article-type>
     <article-type type="pro">
-      <journal/>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Reports Stem Cells</journal>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="prog">
-      <journal/>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Photonics</journal>
+      <journal>Nature Physics</journal>
     </article-type>
     <article-type type="proscstory">
       <journal/>
@@ -1181,60 +2524,174 @@ Created - 20120208
       <journal/>
     </article-type>
     <article-type type="prostmech">
-      <journal/>
+      <journal>Science-Business eXchange</journal>
     </article-type>
     <article-type type="prostnotes">
       <journal/>
     </article-type>
     <article-type type="prostools">
-      <journal/>
+      <journal>Science-Business eXchange</journal>
     </article-type>
     <article-type type="prot">
-      <journal/>
+      <journal>Nature Methods</journal>
+      <journal>Nature Protocols</journal>
     </article-type>
     <article-type type="prv">
-      <journal/>
+      <journal>Nature Structural Biology</journal>
     </article-type>
     <article-type type="puzzle">
-      <journal/>
+      <journal>Scientific American</journal>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="pw">
       <journal/>
     </article-type>
     <article-type type="qa">
-      <journal/>
+      <journal>Evidence-Based Dentistry</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Reports Climate Change</journal>
+      <journal>Nature Reports Stem Cells</journal>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="ra">
-      <journal/>
+      <journal>British Journal of Cancer</journal>
+      <journal>Cell Research</journal>
+      <journal>Cellular and Molecular Immunology</journal>
+      <journal>Comparative Economic Studies</journal>
+      <journal>Corporate Reputation Review</journal>
+      <journal>Crime Prevention and Community Safety</journal>
+      <journal>Development</journal>
+      <journal>European Journal of Information Systems</journal>
+      <journal>European Political Science</journal>
+      <journal>Evidence-Based Dentistry</journal>
+      <journal>French Politics</journal>
+      <journal>Gene Therapy</journal>
+      <journal>Heredity</journal>
+      <journal>Immunology and Cell Biology</journal>
+      <journal>Interactive Marketing</journal>
+      <journal>International Journal of Disclosure and Governance</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Politics</journal>
+      <journal>Japanese Journal of Human Genetics</journal>
+      <journal>Journal of Building Appraisal</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Database Marketing &amp; Customer Strategy Management</journal>
+      <journal>Journal of Direct Data and Digital Marketing Practice</journal>
+      <journal>Journal of Exposure Science and Environmental Epidemiology</journal>
+      <journal>Journal of Financial Services Marketing</journal>
+      <journal>Journal of Information Technology</journal>
+      <journal>Journal of Investigative Dermatology Symposium Proceedings</journal>
+      <journal>Journal of Revenue and Pricing Management</journal>
+      <journal>Kidney International</journal>
+      <journal>Knowledge Management Research &amp; Practice</journal>
+      <journal>Laboratory Investigation</journal>
+      <journal>Molecular Therapy</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Physics</journal>
+      <journal>Obesity</journal>
+      <journal>Risk Management</journal>
+      <journal>Security Journal</journal>
     </article-type>
     <article-type type="rcom">
-      <journal/>
+      <journal>British Dental Journal</journal>
     </article-type>
     <article-type type="rd">
-      <journal/>
+      <journal>American Journal of Gastroenterology</journal>
+      <journal>Cell Research</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Perinatology</journal>
+      <journal>Kidney International</journal>
+      <journal>Leukemia</journal>
+      <journal>Molecular Psychiatry</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Pediatric Research</journal>
+      <journal>Polymer Journal</journal>
     </article-type>
     <article-type type="re">
+      <journal>American Journal of Hypertension</journal>
+      <journal>BioSocieties</journal>
+      <journal>Bone Marrow Transplantation</journal>
       <journal>British Dental Journal</journal>
+      <journal>British Journal of Cancer</journal>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
+      <journal>Comparative European Politics</journal>
+      <journal>Corporate Reputation Review</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>European Journal of Information Systems</journal>
+      <journal>Evidence-Based Dentistry</journal>
+      <journal>Eye</journal>
+      <journal>Feminist Review</journal>
+      <journal>International Journal of Disclosure and Governance</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Human Hypertension</journal>
+      <journal>Journal of International Relations and Development</journal>
+      <journal>Journal of Perinatology</journal>
+      <journal>Laboratory Investigation</journal>
+      <journal>Modern Pathology</journal>
       <journal>Nature Biotechnology</journal>
+      <journal>Neuropsychopharmacology</journal>
+      <journal>Oncogene</journal>
+      <journal>Paraplegia</journal>
       <journal>Scientific American</journal>
+      <journal>Social Theory &amp; Health</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The Journal of Investigative Dermatology</journal>
     </article-type>
     <article-type type="recom">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="reflect">
       <journal/>
     </article-type>
     <article-type type="rep">
-      <journal/>
+      <journal>Cancer Gene Therapy</journal>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>International Journal of Oral Science</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Latino Studies</journal>
+      <journal>Leukemia</journal>
+      <journal>Molecular Systems Biology</journal>
+      <journal>Paraplegia</journal>
+      <journal>Psychoanalysis, Culture &amp; Society</journal>
+      <journal>Spinal Cord</journal>
     </article-type>
     <article-type type="reply">
-      <journal/>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Reviews Cancer</journal>
+      <journal>Nature Reviews Clinical Oncology</journal>
+      <journal>Nature Reviews Drug Discovery</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Reviews Immunology</journal>
+      <journal>Nature Reviews Microbiology</journal>
+      <journal>Nature Reviews Molecular Cell Biology</journal>
+      <journal>Nature Reviews Neuroscience</journal>
     </article-type>
     <article-type type="ret">
-      <journal/>
+      <journal>Cell Research</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Geoscience</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>The EMBO Journal</journal>
     </article-type>
     <article-type type="revrec">
-      <journal/>
+      <journal>Scientific American</journal>
+      <journal>Scientific American Mind</journal>
     </article-type>
     <article-type type="rhighlts">
       <journal>Functional Glycomics</journal>
@@ -1289,34 +2746,121 @@ Created - 20120208
       <journal>Structural Genomics Update</journal>
     </article-type>
     <article-type type="rl">
-      <journal/>
+      <journal>Cancer Gene Therapy</journal>
+      <journal>Journal of Human Hypertension</journal>
     </article-type>
     <article-type type="rlet">
-      <journal/>
+      <journal>British Dental Journal</journal>
     </article-type>
     <article-type type="rn">
-      <journal/>
+      <journal>Journal of International Business Studies</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Materials</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Pediatric Research</journal>
+      <journal>Prostate Cancer and Prostatic Diseases</journal>
+      <journal>Spinal Cord</journal>
     </article-type>
     <article-type type="rnote">
-      <journal/>
+      <journal>British Politics</journal>
+      <journal>Crime Prevention and Community Safety</journal>
+      <journal>European Journal of Information Systems</journal>
+      <journal>French Politics</journal>
+      <journal>Lab Animal</journal>
+      <journal>Journal of International Business Studies</journal>
+      <journal>Organization Management Journal</journal>
     </article-type>
     <article-type type="rolem">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="rr">
-      <journal/>
+      <journal>Bone Marrow Transplantation</journal>
+      <journal>European Journal of Information Systems</journal>
+      <journal>Nature Biotechnology</journal>
     </article-type>
     <article-type type="rs">
-      <journal/>
+      <journal>International Journal of Obesity</journal>
+      <journal>Laboratory Investigation</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Immunology</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Methods</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature Reviews Genetics</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Scientific American</journal>
+      <journal>The American Journal of Gastroenterology</journal>
     </article-type>
     <article-type type="rsrc">
       <journal/>
     </article-type>
+    <article-type type="ru">
+      <journal>Kidney International</journal>
+      <journal>Molecular Therapy</journal>
+      <journal>Nature Immunology</journal>
+    </article-type>
     <article-type type="rv">
+      <journal>Acta Pharmacologica Sinica</journal>
+      <journal>Acta Politica</journal>
+      <journal>Asian Journal of Andrology</journal>
+      <journal>Blood Cancer Journal</journal>
+      <journal>Bone Marrow Transplantation</journal>
       <journal>BoneKEy Reports</journal>
       <journal>British Dental Journal</journal>
+      <journal>British Journal of Cancer</journal>
+      <journal>British Politics</journal>
+      <journal>Cancer Gene Therapy</journal>
+      <journal>Cell Death and Differentiation</journal>
+      <journal>Cell Death and Disease</journal>
+      <journal>Cell Research</journal>
+      <journal>Cellular and Molecular Immunology</journal>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
+      <journal>Comparative European Politics</journal>
+      <journal>Contemporary Political Theory</journal>
+      <journal>Economic &amp; Labour Market Review</journal>
       <journal>EMBO reports</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>European Political Science</journal>
+      <journal>Evidence-Based Dentistry</journal>
+      <journal>Eye</journal>
+      <journal>French Politics</journal>
+      <journal>Gene Therapy</journal>
+      <journal>Genes and Immunity</journal>
+      <journal>Genetics in Medicine</journal>
+      <journal>Health Statistics Quarterly</journal>
+      <journal>Heredity</journal>
+      <journal>Hypertension Research</journal>
+      <journal>Immunology and Cell Biology</journal>
+      <journal>International Journal of Educational Advancement</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>International Journal of Oral Science</journal>
+      <journal>Journal of Building Appraisal</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Commercial Biotechnology</journal>
+      <journal>Journal of Direct, Data and Digital Marketing Practice</journal>
+      <journal>Journal of Exposure Science and Environmental Epidemiology</journal>
+      <journal>Journal of Human Genetics</journal>
+      <journal>Journal of Human Hypertension</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Journal of Investigative Dermatology Symposium Proceedings</journal>
+      <journal>Journal of Perinatology</journal>
+      <journal>Journal of Public Health Policy</journal>
+      <journal>Journal of Revenue and Pricing Management</journal>
+      <journal>Kidney International</journal>
+      <journal>Kidney International Supplements</journal>
+      <journal>Laboratory Investigation</journal>
+      <journal>Latino Studies</journal>
+      <journal>Leukemia</journal>
+      <journal>Light: Science &amp; Applications</journal>
+      <journal>Modern Pathology</journal>
+      <journal>Molecular Psychiatry</journal>
       <journal>Molecular Systems Biology</journal>
+      <journal>Molecular Therapy</journal>
+      <journal>Molecular Therapy &#x2014; Nucleic Acids</journal>
+      <journal>Mucosal Immunology</journal>
       <journal>Nature</journal>
       <journal>Nature Cell Biology</journal>
       <journal>Nature Chemical Biology</journal>
@@ -1358,76 +2902,172 @@ Created - 20120208
       <journal>Nature Reviews Urology</journal>
       <journal>Nature Structural &amp; Molecular Biology</journal>
       <journal>Nature Structural Biology</journal>
+      <journal>Neuropsychopharmacology</journal>
+      <journal>NPG Asia Materials</journal>
+      <journal>Nutrition and Diabetes</journal>
+      <journal>Obesity</journal>
+      <journal>Oncogene</journal>
+      <journal>Pediatric Research</journal>
+      <journal>Polity</journal>
+      <journal>Polymer Journal</journal>
+      <journal>Population Trends</journal>
+      <journal>Prostate Cancer and Prostatic Diseases</journal>
       <journal>Scientific American</journal>
       <journal>Scientific American Mind</journal>
+      <journal>Social Trends</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The American Journal of Gastroenterology</journal>
       <journal>The EMBO Journal</journal>
+      <journal>The Journal of Antibiotics</journal>
+      <journal>The Pharmacogenomics Journal</journal>
+      <journal>Translational Psychiatry</journal>
       <journal>Vital</journal>
     </article-type>
     <article-type type="rvfv">
       <journal/>
     </article-type>
-    <article-type type="ru">
-      <journal/>
-    </article-type>
     <article-type type="sb">
-      <journal/>
+      <journal>Nature</journal>
+      <journal>The American Journal of Psychoanalysis</journal>
     </article-type>
     <article-type type="sc">
-      <journal/>
+      <journal>Acta Pharmacologica Sinica</journal>
+      <journal>American Journal of Hypertension</journal>
+      <journal>Asian Journal of Andrology</journal>
+      <journal>British Journal of Cancer</journal>
+      <journal>Cancer Gene Therapy</journal>
+      <journal>Cell Research</journal>
+      <journal>Cellular and Molecular Immunology</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>Gene Therapy</journal>
+      <journal>Genes and Immunity</journal>
+      <journal>Immunology and Cell Biology</journal>
+      <journal>International Journal of Impotence Research</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>Japanese Journal of Human Genetics</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Human Genetics</journal>
+      <journal>Journal of Investigative Dermatology Symposium Proceedings</journal>
+      <journal>Molecular Therapy</journal>
+      <journal>Nature</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature Structural Biology</journal>
+      <journal>Nutrition and Diabetes</journal>
+      <journal>Obesity</journal>
+      <journal>Oncogene</journal>
+      <journal>Paraplegia</journal>
+      <journal>Pediatric Research</journal>
+      <journal>Polymer Journal</journal>
+      <journal>Prostate Cancer and Prostatic Diseases</journal>
+      <journal>Regional Trends</journal>
+      <journal>Social Trends</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The ISME Journal</journal>
+      <journal>The Journal of Antibiotics</journal>
     </article-type>
     <article-type type="sciampe">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="scn">
       <journal/>
     </article-type>
     <article-type type="sevendays">
-      <journal/>
+      <journal>Nature</journal>
+      <journal>Nature News</journal>
     </article-type>
     <article-type type="sf">
-      <journal/>
+      <journal>British Dental Journal</journal>
+      <journal>International Politics</journal>
+      <journal>Molecular Psychiatry</journal>
+      <journal>Nature Chemical Biology</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature India</journal>
     </article-type>
     <article-type type="si">
-      <journal/>
+      <journal>Clinical Pharmacology &amp; Therapeutics</journal>
     </article-type>
     <article-type type="sim">
-      <journal/>
+      <journal>Nature</journal>
     </article-type>
     <article-type type="skep">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="snaps">
-      <journal/>
+      <journal>Nature Climate Change</journal>
+      <journal>Nature Digest</journal>
     </article-type>
     <article-type type="sp">
-      <journal/>
+      <journal>Australian Journal of Experimental Biology and Medical Science</journal>
+      <journal>Bone Marrow Transplantation</journal>
+      <journal>British Politics</journal>
+      <journal>Business Economics</journal>
+      <journal>Contemporary Political Theory</journal>
+      <journal>Derivatives Use, Trading &amp; Regulation</journal>
+      <journal>European Journal of Development Research</journal>
+      <journal>European Journal of Information Systems</journal>
+      <journal>Immunology and Cell Biology</journal>
+      <journal>International Journal of Educational Advancement</journal>
+      <journal>International Politics</journal>
+      <journal>Journal of Commercial Biotechnology</journal>
+      <journal>Journal of Direct, Data and Digital Marketing Practice</journal>
+      <journal>Journal of Information Technology</journal>
+      <journal>Journal of Perinatology</journal>
+      <journal>Journal of Public Health Policy</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Kidney International</journal>
+      <journal>Leukemia</journal>
+      <journal>Modern Pathology</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Paraplegia</journal>
+      <journal>Place Branding and Public Diplomacy</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The Geneva Papers on Risk and Insurance Issues and Practice</journal>
+      <journal>Urban Design International</journal>
     </article-type>
     <article-type type="spfwd">
-      <journal/>
+      <journal>Nature Medicine Nature Neuroscience</journal>
     </article-type>
     <article-type type="spot">
-      <journal/>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="sprep">
-      <journal/>
+      <journal>Nature</journal>
+      <journal>Nature Digest</journal>
+      <journal>Scientific American</journal>
+    </article-type>
+    <article-type type="sr">
+      <journal>Bone Marrow Transplantation</journal>
+      <journal>Business Economics</journal>
+      <journal>EMBO Reports</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>Genetics in Medicine</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>Journal of Database Marketing &amp; Customer Strategy Management</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Neuropsychopharmacology</journal>
+      <journal>Oncogene</journal>
+      <journal>The EMBO Journal</journal>
+      <journal>The Journal of Investigative Dermatology</journal>
+    </article-type>
+    <article-type type="ss">
+      <journal>EMBO Reports</journal>
+      <journal>Immunology and Cell Biology</journal>
+      <journal>Journal of Investigative Dermatology Symposium Proceedings</journal>
     </article-type>
     <article-type type="strle">
-      <journal/>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="stw">
       <journal/>
     </article-type>
-    <article-type type="ss">
-      <journal/>
-    </article-type>
-    <article-type type="sr">
-      <journal/>
-    </article-type>
     <article-type type="su">
-      <journal/>
+      <journal>British Dental Journal</journal>
+      <journal>Nature Methods</journal>
     </article-type>
     <article-type type="susdev">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="swr">
       <journal/>
@@ -1442,91 +3082,143 @@ Created - 20120208
       <journal/>
     </article-type>
     <article-type type="techn">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="tenv">
       <journal/>
     </article-type>
     <article-type type="tf">
-      <journal/>
-    </article-type>
-    <article-type type="thes">
-      <journal/>
+      <journal>Nature Methods</journal>
     </article-type>
     <article-type type="th">
-      <journal/>
+      <journal>PSI Structural Genomics Knowledgebase</journal>
+      <journal>Structural Genomics Update</journal>
+    </article-type>
+    <article-type type="thes">
+      <journal>Nature Chemistry</journal>
+      <journal>Nature Nanotechnology</journal>
+      <journal>Nature Physics</journal>
     </article-type>
     <article-type type="thinkb">
-      <journal/>
+      <journal>Scientific American Mind</journal>
     </article-type>
     <article-type type="thismo">
-      <journal/>
+      <journal>Nature Methods</journal>
     </article-type>
     <article-type type="thk">
-      <journal/>
+      <journal>British Dental Journal</journal>
     </article-type>
     <article-type type="thtr">
       <journal/>
     </article-type>
     <article-type type="timeln">
-      <journal/>
+      <journal>Nature Medicine</journal>
     </article-type>
     <article-type type="tmat">
-      <journal/>
+      <journal>Nature Clinical Practice Neurology</journal>
     </article-type>
     <article-type type="tmech">
       <journal>Science-Business eXchange</journal>
     </article-type>
     <article-type type="tn">
-      <journal/>
+      <journal>British Dental Journal</journal>
+      <journal>Corporate Reputation Review</journal>
+      <journal>European Journal of Information Systems</journal>
+      <journal>Evidence-Based Dentistry</journal>
+      <journal>Eye</journal>
+      <journal>Gene Therapy</journal>
+      <journal>Journal of Cerebral Blood Flow &amp; Metabolism</journal>
+      <journal>Journal of Direct, Data and Digital Marketing Practice</journal>
+      <journal>Journal of Simulation</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Kidney International</journal>
+      <journal>Psychoanalysis, Culture &amp; Society</journal>
+      <journal>Spinal Cord</journal>
+      <journal>The Journal of Investigative Dermatology</journal>
     </article-type>
     <article-type type="tnotes">
-      <journal/>
+      <journal>Science-Business eXchange</journal>
     </article-type>
     <article-type type="tools">
-      <journal/>
+      <journal>Science-Business eXchange</journal>
     </article-type>
     <article-type type="tr">
-      <journal/>
+      <journal>Bone Marrow Transplantation</journal>
+      <journal>European Journal of Clinical Nutrition</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>International Journal of Obesity</journal>
+      <journal>International Politics</journal>
+      <journal>Journal of Investigative Dermatology</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Laboratory Investigation</journal>
+      <journal>Leukemia</journal>
+      <journal>Nature Cell Biology</journal>
+      <journal>Nature Genetics</journal>
+      <journal>Nature Medicine</journal>
+      <journal>Nature Neuroscience</journal>
+      <journal>Nature Structural &amp; Molecular Biology</journal>
+      <journal>Neuropsychopharmacology</journal>
+      <journal>Oncogene</journal>
     </article-type>
     <article-type type="trialw">
       <journal/>
     </article-type>
     <article-type type="tt">
-      <journal/>
+      <journal>Molecular Therapy</journal>
+      <journal>Nature</journal>
     </article-type>
     <article-type type="turnp">
-      <journal/>
+      <journal>Nature Cell Biology</journal>
     </article-type>
     <article-type type="tvr">
       <journal/>
     </article-type>
     <article-type type="upd">
-      <journal/>
+      <journal>British Dental Journal</journal>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="upfrnt">
-      <journal/>
+      <journal>EMBO Reports</journal>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="view">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="vitupd">
-      <journal/>
+      <journal>Vital</journal>
     </article-type>
     <article-type type="vp">
-      <journal/>
+      <journal>Development</journal>
+      <journal>European Journal of Human Genetics</journal>
+      <journal>Journal of Human Hypertension</journal>
+      <journal>Journal of Information Technology</journal>
+      <journal>Journal of Public Health Policy</journal>
+      <journal>Journal of the Operational Research Society</journal>
+      <journal>Latino Studies</journal>
+      <journal>Nature</journal>
+      <journal>Nature Clinical Practice Cardiovascular Medicine</journal>
+      <journal>Nature Clinical Practice Endocrinology &amp; Metabolism</journal>
+      <journal>Nature Clinical Practice Gastroenterology &amp; Hepatology</journal>
+      <journal>Nature Clinical Practice Nephrology</journal>
+      <journal>Nature Clinical Practice Neurology</journal>
+      <journal>Nature Clinical Practice Oncology</journal>
+      <journal>Nature Clinical Practice Rheumatology</journal>
+      <journal>Nature Clinical Practice Urology</journal>
+      <journal>Prostate Cancer and Prostatic Diseases</journal>
+      <journal>Urban Design International</journal>
     </article-type>
     <article-type type="vpt">
-      <journal/>
+      <journal>British Dental Journal</journal>
     </article-type>
     <article-type type="vr">
-      <journal/>
+      <journal>Nature Genetics</journal>
     </article-type>
     <article-type type="wk">
-      <journal/>
+      <journal>Scientific American</journal>
     </article-type>
     <article-type type="woh">
-      <journal/>
+      <journal>Scientific American</journal>
+      <journal>Scientific American Mind</journal>
     </article-type>
   </article-types>
 </allowed-values>
