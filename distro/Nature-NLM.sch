@@ -265,12 +265,14 @@
       <assert id="pubdate1c" test="not(day) or matches(day, '^(0[1-9]|[12][0-9]|3[01])$')">Invalid day value: <value-of select="day"/>. It should be a 2-digit number between 01 and 31.</assert>
     </rule>
   </pattern>
- 
+ <!--
   <pattern>
     <rule context="pub-date/season" role="error">
       <report id="pubdate1d" test=".">Do not use "season" (<value-of select="."/>) in dates of NPG articles. "Day" and "month" are the only other elements which should be used.</report>
     </rule>
   </pattern> 
+-->
+
  
   <pattern><!--Concatenate year/month/day and check valid if those elements have already passed basic validation checks. This rule adapted from http://regexlib.com, author Michel Chouinard -->
     <rule context="pub-date[matches(year, '^(19|20)[0-9]{2}$') and matches(month, '^((0[1-9])|(1[0-2]))$') and matches(day, '^(0[1-9]|[12][0-9]|3[01])$')]" role="error">
