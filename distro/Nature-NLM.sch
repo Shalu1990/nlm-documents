@@ -75,16 +75,16 @@
   </pattern>
   
   <pattern>
-    <rule context="journal-title-group" role="error"><!--Are the journal title and id valid and do they match each other?-->
+    <rule context="journal-title-group" role="error"><!--Is the journal title valid-->
       <assert id="jmeta3a" test="not(descendant::journal-title) or $products[descendant::dc:title=$journal-title]">Journal titles must be from the prescribed list of journal names. "<value-of select="$journal-title"/>" is not on this list - check spelling, spacing of words or use of the ampersand. Other rules are based on having a correct journal title and therefore will not be run. Please resubmit this file when the title has been corrected.</assert>
       </rule>
     </pattern>
   <pattern>
-    <rule context="journal-title-group" role="error">
-      <assert id="jmeta3b" test="$products[descendant::terms:pcode=$journal-id]">Journal id is incorrect. For <value-of select="$journal-title"/>, it should be: <value-of select="$products//*[child::dc:title=$journal-title]/terms:pcode"/>. Other rules are based on having a correct journal id and therefore will not be run. Please resubmit this file when the journal id has been corrected.</assert></rule>
+    <rule context="journal-title-group" role="error"><!--Is the journal id valid?-->
+      <assert id="jmeta3b" test="$products[descendant::terms:pcode=$journal-id] or not($products[descendant::dc:title=$journal-title])">Journal id is incorrect. For <value-of select="$journal-title"/>, it should be: <value-of select="$products//*[child::dc:title=$journal-title]/terms:pcode"/>. Other rules are based on having a correct journal id and therefore will not be run. Please resubmit this file when the journal id has been corrected.</assert></rule>
     </pattern>
   <pattern>
-    <rule context="journal-title-group" role="error">
+    <rule context="journal-title-group" role="error"><!--Do the journal title and id match each other?-->
       <assert id="jmeta3c" test="$journal-id=$products//*[child::dc:title=$journal-title]/terms:pcode or not($products[descendant::dc:title=$journal-title]) or not($products[descendant::terms:pcode=$journal-id])">Journal id (<value-of select="$journal-id"/>) does not match journal title: <value-of select="$journal-title"/>. Check which is the correct value.</assert>
     </rule>
   </pattern>
