@@ -321,8 +321,8 @@
   
   <pattern>
     <let name="span" value="//article-meta/lpage[normalize-space(.) or *][matches(.,'^[0-9]+$')] - //article-meta/fpage[normalize-space(.) or *][matches(.,'^[0-9]+$')] + 1"/>
-    <rule context="counts/page-count[not(@count='0')][matches(@count,'^[0-9]+$')]">
-      <assert id="artinfo4" test="@count = $span or not($span)">Incorrect value given for "page-count" attribute "count". Expected value is: <value-of select="$span"/>.</assert>
+    <rule context="counts/page-count[matches(@count,'^[0-9]+$')]">
+      <assert id="artinfo4" test="@count = $span or not($span)">Incorrect value given for "page-count" attribute "count" (<value-of select="@count"/>). Expected value is: <value-of select="$span"/>.</assert>
     </rule>
   </pattern>
   
