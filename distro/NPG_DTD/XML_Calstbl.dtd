@@ -1,10 +1,17 @@
 <!-- CALS table DTD fragment -->
 
+<!-- 
+
+2012/05/16 - SCHEMA-63 Modified "table" to add new optional attribute "table-type" with allowed value "suppinfo" 
+                       Made "tabcols" an optional attribute of table-->
+
 <!ENTITY % secur                 "security (u | c | s) 'u'" >
 
 <!ENTITY % shortitle                 " " >
 
 <!ENTITY % titles                 "title %shortitle;" >
+
+<!--2011/07/27 tabl entity is over-ridden by entity declaration in NPG_XML_Article.dtd-->
 
 <!ENTITY % tabl                 "((%titles;)?, tgroup+, tblimg*, slide?)" >
 
@@ -57,6 +64,7 @@
                                 char CDATA #IMPLIED " >
 
 <!-- PD 2010/05/05 Modified table to add new optional attribute "placement" with default value "external" -->
+
 <!ELEMENT table                             (%tabl;)>
 <!ATTLIST table                  tabstyle NMTOKEN #IMPLIED
                                  tocentry %yesorno; "1"
@@ -68,10 +76,11 @@
                                  orient (port | land) #IMPLIED
                                  pgwide %yesorno; #IMPLIED
                                  %bodyatt;
-                                 tabcols CDATA #REQUIRED
+                                 tabcols CDATA #IMPLIED
                                  %secur; 
                                  number CDATA #IMPLIED
-                                 placement (internal | external) "external" >
+                                 placement (internal | external) "external" 
+                                 table-type (suppinfo) #IMPLIED>
 
 <!ELEMENT tbody                             (row+) >
 <!ATTLIST tbody                  valign (top | middle | bottom) "top"
