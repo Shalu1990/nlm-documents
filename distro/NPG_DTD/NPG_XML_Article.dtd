@@ -16,6 +16,10 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2012/05/18 - SCHEMA-65 - Created new optional element "cps" as child of "cpg" to contain copyright statement.
+
+2012/05/18 - SCHEMA-63 - Made "tgroup" optional within "table" and additional changes made to attributes of "table" in XML_Calstbl.dtd.
+
 2012/03/29 - SCHEMA-57 - Added new optional attribute "fig-type" to the element "fig", with allowed value "suppinfo".
 
 2012/03/13 - SCHEMA-56 - Added new element "infographic", optional and repeatable within element "objects" (and also "slideshow").
@@ -838,7 +842,7 @@ DTD Change History (yyyy/mm/dd format)
 <!ENTITY % author "%data; | fnm | snm | suff | ttl | inits">
 <!ENTITY % address "%data; | org | street | cty | co | st | zip | cny | prf">
 
-<!ENTITY % tabl "(title?, caption?, tgroup+, tblimg*, slide?, credit?)" >
+<!ENTITY % tabl "(title?, caption?, tgroup*, tblimg*, slide?, credit?)" >
 
 
 <!-- entities %text; and %data; are synonymous -->
@@ -1028,9 +1032,10 @@ id CDATA #REQUIRED
 <!ATTLIST issn
 type (electronic | print) "print"
 >
-<!ELEMENT cpg (cpy, cpn)>
+<!ELEMENT cpg (cpy, cpn, cps?)>
 <!ELEMENT cpy (#PCDATA)>
 <!ELEMENT cpn (#PCDATA)>
+<!ELEMENT cps (#PCDATA)>
 
 
 <!ELEMENT related-article (%data;)* >
