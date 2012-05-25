@@ -16,6 +16,8 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2012/05/23 - SCHEMA-66 - Made "url" attribute on "ext-media" element optional.
+
 2012/05/18 - SCHEMA-65 - Created new optional element "cps" as child of "cpg" to contain copyright statement.
 
 2012/05/18 - SCHEMA-63 - Made "tgroup" optional within "table" and additional changes made to attributes of "table" in XML_Calstbl.dtd.
@@ -1483,7 +1485,7 @@ level CDATA #REQUIRED
 <!ATTLIST ext-media 
 id ID #IMPLIED 
 type CDATA #REQUIRED 
-url CDATA #REQUIRED 
+url CDATA #IMPLIED 
 > 
 
 <!ELEMENT bkreview (p+)>
