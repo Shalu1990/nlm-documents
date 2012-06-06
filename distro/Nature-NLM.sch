@@ -69,8 +69,8 @@
     </rule>
   </pattern>
   <pattern>
-    <rule context="journal-title-group[1]" role="error"><!--only one journal-title-group-->
-      <report id="jmeta2b" test="following-sibling::journal-title-group">Only one journal-title-group should be used for NPG content.</report>
+    <rule context="journal-title-group" role="error"><!--only one journal-title-group-->
+      <report id="jmeta2b" test="preceding-sibling::journal-title-group">Only one journal-title-group should be used for NPG content.</report>
     </rule>
   </pattern>
   
@@ -91,19 +91,19 @@
   
   <pattern>
     <rule context="journal-subtitle | trans-title-group" role="error"><!--No other children of journal-title-group used-->
-      <report id="jmeta4" test="parent::journal-title-group">Unexpected use of "<name/>" in "journal-title-group". "journal-title-group" should only contain "journal-title".</report>
+      <report id="jmeta4" test="parent::journal-title-group">Unexpected use of "<name/>" in "journal-title-group".</report>
     </rule>
   </pattern>
   
   <pattern>
-    <rule context="journal-title-group/journal-title[1]" role="error"><!--Only one journal title present-->
-      <report id="jmeta4b" test="following-sibling::journal-title">More than one journal title found. Only one journal title should be used in NPG articles.</report>
+    <rule context="journal-title-group/journal-title" role="error"><!--Only one journal title present-->
+      <report id="jmeta4b" test="preceding-sibling::journal-title">More than one journal title found. Only one journal title should be used in NPG articles.</report>
     </rule>
   </pattern>
   
   <pattern>
-    <rule context="journal-title-group/abbrev-journal-title[1]" role="error"><!--Only one journal title present-->
-      <report id="jmeta4c" test="following-sibling::abbrev-journal-title">More than one abbreviated journal title found. Only one abbreviated journal title should be used in NPG articles.</report>
+    <rule context="journal-title-group/abbrev-journal-title" role="error"><!--Only one journal title present-->
+      <report id="jmeta4c" test="preceding-sibling::abbrev-journal-title">More than one abbreviated journal title found. Only one abbreviated journal title should be used in NPG articles.</report>
     </rule>
   </pattern>
   
@@ -428,5 +428,213 @@
   <!--Abstract-->
   
   <!--Keywords-->
+  
+  <!--============================================================================== Back ==================================================================================-->
+
+  <!--Back - top level-->
+  
+  <pattern><!--back - label or title should not be used-->
+    <rule context="back/label | back/title" role="error">
+      <report id="back1" test=".">Do not use "<name/>" at start of "back" matter in NPG content.</report>
+    </rule>
+  </pattern>
+  
+  
+  <!--Acknowledgements-->
+  
+  <pattern><!--ack - zero or one-->
+    <rule context="ack" role="error">
+      <report id="ack1" test="preceding-sibling::ack">There should only be one acknowledgements section in NPG content.</report>
+    </rule>
+  </pattern>
+  
+  <pattern><!--ack - only p as child-->
+    <rule context="ack/*[not(self::p)]" role="error">
+      <report id="ack2" test=".">Acknowledgements should only contain paragraphs in NPG content - do not use "<name/>".</report>
+    </rule>
+  </pattern>
+  
+  <pattern><!--ack - no attributes used-->
+    <rule context="ack/attribute::*">
+      <report id="ack3" test=".">Unnecessary use of "<name/>" attribute on "ack" element.</report>
+    </rule>
+  </pattern>
+  
+  <pattern><!--ack - no attributes used-->
+    <rule context="ack/p/attribute::*">
+      <report id="ack4" test=".">Unnecessary use of "<name/>" attribute on "p" in acknowledgements section.</report>
+    </rule>
+  </pattern>
+  
+  <!--Appendices-->
+  
+  <pattern><!--app-group - zero or one-->
+    <rule context="app-group" role="error">
+      <report id="app1" test="preceding-sibling::app-group">There should only be one appendix grouping in NPG content.</report>
+    </rule>
+  </pattern>
+  <pattern><!--app-group - no children apart from p and app used-->
+    <rule context="app-group/*">
+      <assert id="app2a" test="self::p or self::app">Only "p" and "app" should be used in "app-group". Do not use "<name/>".</assert>
+    </rule>
+  </pattern>
+  <pattern><!--app-group - no attributes used-->
+    <rule context="app-group/attribute::*">
+      <report id="app2b" test=".">Unnecessary use of "<name/>" attribute on "app-group" element.</report>
+    </rule>
+  </pattern>
+  <pattern><!--app-group - no attributes on p used-->
+    <rule context="app-group/p/attribute::*">
+      <report id="app3" test=".">Unnecessary use of "<name/>" attribute on "p" in appendix.</report>
+    </rule>
+  </pattern>
+  <pattern><!--app - no attributes used-->
+    <rule context="app/attribute::*">
+      <report id="app4" test=".">Unnecessary use of "<name/>" attribute on "app" element.</report>
+    </rule>
+  </pattern>
+  <pattern><!--app/title - no attributes used-->
+    <rule context="app/title/attribute::*">
+      <report id="app5" test=".">Unnecessary use of "<name/>" attribute on "title" element in appendix.</report>
+    </rule>
+  </pattern>
+  <pattern><!--app - no attributes on p used-->
+    <rule context="app/p/attribute::*">
+      <report id="app6" test=".">Unnecessary use of "<name/>" attribute on "p" in appendix.</report>
+    </rule>
+  </pattern>
+  
+  <!--Biographies/Author information-->
+
+  <pattern><!--bio - zero or one-->
+    <rule context="back/bio" role="error">
+      <report id="bio1" test="preceding-sibling::bio">There should only be one "bio" (author information section) in "back" in NPG content.</report>
+    </rule>
+  </pattern>
+  <pattern><!--bio - only p as child-->
+    <rule context="back/bio/*[not(self::p)]" role="error">
+      <report id="bio2" test=".">"bio" (author information section) in "back" in NPG content should only contain paragraphs - do not use "<name/>".</report>
+    </rule>
+  </pattern>
+  <pattern><!--bio - no attributes used-->
+    <rule context="back/bio">
+      <report id="bio3" test="@content-type or @id or @rid or @specific-use or @xlink:actuate or @xlink:href or @xlink:role or @xlink:show or @xlink:title">Do not use attributes on "bio" element.</report>
+    </rule>
+  </pattern>
+  <pattern><!--p in bio - no attributes used-->
+    <rule context="back/bio/p">
+      <report id="bio4" test="attribute::*">Do not use attributes on paragraphs in "bio" section.</report>
+    </rule>
+  </pattern>
+  
+  <!--Footnote groups-->
+  
+  <pattern><!--fn-group - label or title should not be used-->
+    <rule context="back/fn-group/label | back/fn-group/title" role="error">
+      <report id="back-fn1" test=".">Do not use "<name/>" at start of footnote group in "back" matter in NPG content.</report>
+    </rule>
+  </pattern>
+  
+  <pattern><!--fn-group - @content-type stated-->
+    <rule context="back/fn-group" role="error">
+      <assert id="back2a" test="@content-type">Footnote groups in back matter in NPG content should have 'content-type' attribute stated. Allowed values are "endnotes" or "footnotes".</assert>
+    </rule>
+  </pattern>
+  <pattern><!--fn-group - @content-type allowed-->
+    <rule context="back/fn-group" role="error">
+      <assert id="back2b" test="not(@content-type) or @content-type='endnotes' or @content-type='footnotes'">Allowed values for 'content-type' attribute on "fn-group" are "endnotes" or "footnotes".</assert>
+    </rule>
+  </pattern>
+  <pattern><!--fn-group - no id or specific-use attribute-->
+    <rule context="back/fn-group/@id | back/fn-group/@specific-use" role="error">
+      <report id="back2c" test=".">Do not use "<name/>" attribute on "fn-group" in back matter.</report>
+    </rule>
+  </pattern>
+
+  <pattern><!--fn - no label-->
+    <rule context="back/fn-group/fn/label" role="error">
+      <report id="back3" test=".">Do not use "label" in footnotes in back matter - any symbols should be included at the start of the footnote text.</report>
+    </rule>
+  </pattern>
+
+  <pattern><!--endnotes - fn-type="other"-->
+    <rule context="back/fn-group[@content-type='endnotes']/fn" role="error">
+      <assert id="back4a" test="@fn-type='other'">"fn" within endnotes should have attribute fn-type="other".</assert>
+    </rule>
+  </pattern>
+  <pattern><!--endnotes - id and symbol attributes not necessary-->
+    <rule context="back/fn-group[@content-type='endnotes']/fn/@id | back/fn-group[@content-type='endnotes']/fn/@symbol" role="error">
+      <report id="back4b" test=".">'<name/>' attribute is not necessary on endnotes.</report>
+    </rule>
+  </pattern>
+  
+  <pattern><!--footnotes - @id used-->
+    <rule context="back/fn-group[@content-type='footnotes']/fn" role="error">
+      <assert id="back5a" test="@id">"fn" within footnotes section should have attribute 'id' declared. Expected syntax is "fn" followed by a number.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--footnotes - @id has required syntax-->
+    <rule context="back/fn-group[@content-type='footnotes']/fn" role="error">
+      <assert id="back5b" test="not(@id) or matches(@id,'^fn[0-9]+$')">Unexpected 'id' syntax found (<value-of select="@id"/>). Footnote ids should be "fn" followed by a number.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--footnotes - id and symbol attributes not necessary-->
+    <rule context="back/fn-group[@content-type='footnotes']/fn/@fn-type | back/fn-group[@content-type='footnotes']/fn/@symbol" role="error">
+      <report id="back5c" test=".">'<name/>' attribute is not necessary on footnotes.</report>
+    </rule>
+  </pattern>
+
+  <!--Notes - used to model accesgrp-->
+  <pattern><!--notes - zero or one-->
+    <rule context="back/notes" role="error">
+      <report id="notes1" test="preceding-sibling::notes">There should only be one "notes" (accession group) in "back" in NPG content.</report>
+    </rule>
+  </pattern>
+  <pattern><!--notes - @notes-type="database-links"-->
+    <rule context="back/notes" role="error">
+      <assert id="notes2a" test="@notes-type='database-links'">Notes should have attribute @notes-type="database-links".</assert>
+    </rule>
+  </pattern>
+  <pattern><!--notes - no id or specific-use attribute-->
+    <rule context="back/notes/@id | back/notes/@specific-use" role="error">
+      <report id="notes2b" test=".">Do not use "<name/>" attribute on "notes" in back matter.</report>
+    </rule>
+  </pattern>
+  
+  <pattern><!--para in notes - only one ext-link per para-->
+    <rule context="back/notes/p">
+      <report id="notes3a" test="count(ext-link) gt 1">Take a new paragraph for each "ext-link" in the database link (notes) section.</report>
+    </rule>
+  </pattern>
+  <pattern><!--para in notes - no attributes used-->
+    <rule context="back/notes/p">
+      <report id="notes3b" test="attribute::*">Do not use attributes on paragraphs in the database link (notes) section.</report>
+    </rule>
+  </pattern>
+  
+  <pattern><!--notes ext-link - @ext-link-type used-->
+    <rule context="back/notes/p/ext-link">
+      <assert id="notes4a" test="@ext-link-type">External links to databases should have 'ext-link-type' attribute stated. Allowed values are "genbank" or "pdb".</assert>
+    </rule>
+  </pattern>
+  <pattern><!--notes ext-link - @ext-link-type allowed-->
+    <rule context="back/notes/p/ext-link" role="error">
+      <assert id="notes4b" test="not(@ext-link-type) or @ext-link-type='genbank' or @ext-link-type='pdb'">Allowed values for 'ext-link-type' attribute on "ext-link" in notes section are "genbank" or "pdb".</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--notes ext-link - @ext-link-type allowed-->
+    <rule context="back/notes/p/ext-link" role="error">
+      <assert id="notes4c" test="@xlink:href">External database links should have attribute 'xlink:href' declared.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--notes ext-link - @ext-link-type allowed-->
+    <rule context="back/notes/p/ext-link" role="error">
+      <assert id="notes4d" test="not(@xlink:href) or @xlink:href=.">'xlink:href' should be equal to the link text (<value-of select="."/>).</assert>
+    </rule>
+  </pattern>
+  
+  <!-- ====================== Ref-list = Bibliography ======================-->
+  
   
 </schema>
