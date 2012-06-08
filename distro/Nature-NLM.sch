@@ -70,7 +70,7 @@
   </pattern>
   <pattern>
     <rule context="journal-title-group" role="error"><!--only one journal-title-group-->
-      <report id="jmeta2b" test="preceding-sibling::journal-title-group">Only one journal-title-group should be used for NPG content.</report>
+      <report id="jmeta2b" test="preceding-sibling::journal-title-group">Only one journal-title-group should be used.</report>
     </rule>
   </pattern>
   
@@ -97,13 +97,13 @@
   
   <pattern>
     <rule context="journal-title-group/journal-title" role="error"><!--Only one journal title present-->
-      <report id="jmeta4b" test="preceding-sibling::journal-title">More than one journal title found. Only one journal title should be used in NPG articles.</report>
+      <report id="jmeta4b" test="preceding-sibling::journal-title">More than one journal title found. Only one journal title should be used.</report>
     </rule>
   </pattern>
   
   <pattern>
     <rule context="journal-title-group/abbrev-journal-title" role="error"><!--Only one journal title present-->
-      <report id="jmeta4c" test="preceding-sibling::abbrev-journal-title">More than one abbreviated journal title found. Only one abbreviated journal title should be used in NPG articles.</report>
+      <report id="jmeta4c" test="preceding-sibling::abbrev-journal-title">More than one abbreviated journal title found. Only one abbreviated journal title should be used.</report>
     </rule>
   </pattern>
   
@@ -133,7 +133,7 @@
   
   <pattern>
     <rule context="publisher" role="error">
-      <report id="jmeta7b" test="publisher-loc">Do not use "publisher-loc" element in publisher information. This is not necessary for NPG articles.</report>
+      <report id="jmeta7b" test="publisher-loc">Do not use "publisher-loc" element in publisher information.</report>
     </rule>
   </pattern>
   
@@ -267,7 +267,7 @@
   </pattern>
   <pattern>
     <rule context="pub-date/season" role="error">
-      <report id="pubdate1d" test=".">Do not use "season" (<value-of select="."/>) in dates of NPG articles. "Day" and "month" are the only other elements which should be used.</report>
+      <report id="pubdate1d" test=".">Do not use "season" (<value-of select="."/>). "Day" and "month" are the only other elements which should be used.</report>
     </rule>
   </pattern> 
   
@@ -328,7 +328,7 @@
   
   <pattern>
     <rule context="fig-count | table-count | equation-count | ref-count | word-count" role="error">
-      <report id="artinfo5" test="parent::counts">Unexpected use of "<name/>" element. Please delete - not necessary in NPG articles.</report>
+      <report id="artinfo5" test="parent::counts">Unexpected use of "<name/>" element - please delete.</report>
     </rule>
   </pattern>
   
@@ -369,7 +369,7 @@
   </pattern>
   <pattern>
     <rule context="history/date/season" role="error">
-      <report id="histdate1d" test=".">Do not use "season" (<value-of select="."/>) in dates of NPG articles. "Day" and "month" are the only other elements which should be used.</report>
+      <report id="histdate1d" test=".">Do not use "season" (<value-of select="."/>). "Day" and "month" are the only other elements which should be used.</report>
     </rule>
   </pattern>
   
@@ -429,13 +429,209 @@
   
   <!--Keywords-->
   
+  <!--============================================================================== Body ==================================================================================-->
+  
+  <!--Sections-->
+  <pattern><!--sec - sec-type or specific-use attribute used-->
+    <rule context="sec" role="error">
+      <assert id="sec1a" test="@sec-type or @specific-use">"sec" should have "sec-type" or "specific-use" attribute.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--sec - sec-type or specific-use attribute used-->
+    <rule context="sec" role="error">
+      <report id="sec1b" test="@sec-type and @specific-use">"sec" should only use one "sec-type" or "specific-use" attribute, not both.</report>
+    </rule>
+  </pattern>
+  <pattern><!--sec - id and xml:lang attributes not used-->
+    <rule context="sec/@id | sec/@xml:lang" role="error">
+      <report id="sec1c" test=".">Do not use "<name/>" attribute on "sec".</report>
+    </rule>
+  </pattern>
+  
+  <pattern><!--sec - sec-type is valid-->
+    <rule context="sec[@sec-type]" role="error">
+      <let name="secType" value="@sec-type"></let>
+      <assert id="sec2a" test="$allowed-values/sec-types/sec-type[.=$secType]">Unexpected value for "sec-type" attribute (<value-of select="$secType"/>). Allowed values are: materials, procedures. </assert>
+    </rule>
+  </pattern>
+  <pattern><!--sec/@specific-use - follows expected syntax-->
+    <rule context="sec[@specific-use]" role="error">
+      <assert id="sec2b" test="matches(@specific-use,'^heading-level-[0-9]+$')">The "specific-use" attribute on "sec" (<value-of select="@specific-use"/>) should be used to show the section heading level. It should be "heading-level-" followed by a number.</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--sec/@specific-use="heading-level-1" is a child of body-->
+    <rule context="sec[@specific-use='heading-level-1']" role="error">
+      <assert id="sec3a" test="parent::body">Section heading level 1 should be a child of body - check nesting and "specific-use" attribute values.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--sec/@specific-use="heading-level-2" is a child of sec heading level 1-->
+    <rule context="sec[@specific-use='heading-level-2']" role="error">
+      <assert id="sec3b" test="parent::sec/@specific-use='heading-level-1'">Section heading level 2 should be a child of section heading level 1 - check nesting and "specific-use" attribute values.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--sec/@specific-use="heading-level-3" is a child of sec heading level 2-->
+    <rule context="sec[@specific-use='heading-level-3']" role="error">
+      <assert id="sec3c" test="parent::sec/@specific-use='heading-level-2'">Section heading level 3 should be a child of section heading level 2 - check nesting and "specific-use" attribute values.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--sec/@specific-use="heading-level-4" is a child of sec heading level 3-->
+    <rule context="sec[@specific-use='heading-level-4']" role="error">
+      <assert id="sec3d" test="parent::sec/@specific-use='heading-level-3'">Section heading level 4 should be a child of section heading level 3 - check nesting and "specific-use" attribute values.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--sec/@specific-use="heading-level-5" is a child of sec heading level 4-->
+    <rule context="sec[@specific-use='heading-level-5']" role="error">
+      <assert id="sec3e" test="parent::sec/@specific-use='heading-level-4'">Section heading level 5 should be a child of section heading level 4 - check nesting and "specific-use" attribute values.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--sec/@specific-use="heading-level-6" is a child of sec heading level 5-->
+    <rule context="sec[@specific-use='heading-level-6']" role="error">
+      <assert id="sec3f" test="parent::sec/@specific-use='heading-level-5'">Section heading level 6 should be a child of section heading level 5 - check nesting and "specific-use" attribute values.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--sec/@specific-use="heading-level-7" is a child of sec heading level 6-->
+    <rule context="sec[@specific-use='heading-level-7']" role="error">
+      <assert id="sec3g" test="parent::sec/@specific-use='heading-level-6'">Section heading level 7 should be a child of section heading level 6 - check nesting and "specific-use" attribute values.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--sec/@specific-use="heading-level-8" is a child of sec heading level 7-->
+    <rule context="sec[@specific-use='heading-level-8']" role="error">
+      <assert id="sec3h" test="parent::sec/@specific-use='heading-level-7'">Section heading level 8 should be a child of section heading level 7 - check nesting and "specific-use" attribute values.</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--sec - sec-type or specific-use attribute used-->
+    <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/boxed-text | sec/chem-struct-wrap | sec/fig | sec/fig-group | sec/graphic | sec/media | sec/preformat | sec/supplementary-material | sec/table-wrap | sec/table-wrap-group | sec/disp-formula | sec/disp-formula-group | sec/def-list | sec/text-math | sec/mml:math | sec/related-article | sec/related-object | sec/disp-quote | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list" role="error">
+      <report id="sec4" test=".">Children of "sec" should only be "title", "p" or "sec" - do not use "<name/>".</report>
+    </rule>
+  </pattern>
+  
+  <!--Lists-->
+  
+  <pattern><!--List - id attribute used for regular lists-->
+    <rule context="list[not(@list-content or @list-type='materials' or @list-type='procedure-group')]" role="error">
+      <assert id="list1" test="@id">An "id" attribute should be used on regular "list" elements.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--List is not block-level, i.e. is a child of p or list-item [unless used for interview/quiz, materials/procedures]-->
+    <rule context="list[not(@list-content or @list-type='materials' or @list-type='procedure-group')]" role="error">
+      <assert id="list2a" test="parent::p or parent::list-item">Regular lists should be enclosed in paragraphs or other lists.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--List - no unnecessary attributes-->
+    <rule context="list/@continued-from | list/@prefix-word | list/@specific-use" role="error">
+      <report id="list2b" test=".">Do not use "<name/>" attribute on "list" element.</report>
+    </rule>
+  </pattern>
+  <pattern><!--List-item - no id attribute-->
+    <rule context="list-item" role="error">
+      <report id="list2c" test="@id">Do not use "id" attribute on "list-item" element.</report>
+    </rule>
+  </pattern>
+  
+  <pattern><!--List - list-type attribute stated (apart from interview/quizzes)-->
+    <rule context="list[not(@list-content)]" role="error">
+      <assert id="list3a" test="@list-type">Use "list-type" attribute to show type of list used. Allowed values are: bullet, number, lcletter, ucletter, lcroman and ucroman.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--list-type attribute is valid-->
+    <rule context="list[not(ancestor::sec/@sec-type) and ancestor::sec/@specific-use][@list-type]" role="error">
+      <let name="listType" value="@list-type"/>
+      <assert id="list3b" test="$allowed-values/list-types/list-type[.=$listType]">Unexpected value for "list-type" attribute (<value-of select="$listType"/>). Allowed values are: bullet, number, lcletter, ucletter, lcroman and ucroman. </assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--List-item - no labels needed-->
+    <rule context="list-item" role="error">
+      <report id="list4" test="label">Do not use "label" element in "list-item".</report>
+    </rule>
+  </pattern>
+  
+  <!--Interviews-->
+  
+  <pattern><!--Interview is block-level, i.e. not a child of p or list-item-->
+    <rule context="list[@list-content='interview']" role="error">
+      <assert id="int1a" test="not(parent::p or parent::list-item)">Interviews should be modelled as block-level lists and should not be enclosed in paragraphs or other lists.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--Interview does not have an id-->
+    <rule context="list[@list-content='interview']" role="error">
+      <assert id="int1b" test="not(@id)">The "id" attribute is not necessary on interviews.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--Interview does not have @list-type-->
+    <rule context="list[@list-content='interview']" role="error">
+      <assert id="int1c" test="not(@list-type)">The "list-type" attribute is not necessary on interviews.</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--Interview has list-items containing one question and one answer-->
+    <rule context="list[@list-content='interview']/list-item" role="error">
+      <assert id="int2" test="count(list[@list-content='question'])=1 and count(list[@list-content='answer'])=1">Interview list-items should contain one question and one answer.</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--Question and answer lists only used in interview or quiz-->
+    <rule context="list[@list-content='question']" role="error">
+      <assert id="intquiz1" test="ancestor::list/@list-content='interview' or ancestor::list/@list-content='quiz'">Question lists (list-content="question") should only be used in interviews or quizzes.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--Question and answer lists only used in interview or quiz-->
+    <rule context="list[@list-content='answer']" role="error">
+      <assert id="intquiz2" test="ancestor::list/@list-content='interview' or ancestor::list/@list-content='quiz'">Answer lists (list-content="answer") should only be used in interviews or quizzes.</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--Interview is block-level, i.e. not a child of p or list-item-->
+    <rule context="list[@list-content='quiz']" role="error">
+      <assert id="quiz1a" test="not(parent::p or parent::list-item)">Quizzes should be modelled as block-level lists and should not be enclosed in paragraphs or other lists.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--Interview does not have an id-->
+    <rule context="list[@list-content='quiz']" role="error">
+      <assert id="quiz1b" test="not(@id)">The "id" attribute is not necessary on quizzes.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--Interview does not have @list-type-->
+    <rule context="list[@list-content='quiz']" role="error">
+      <assert id="quiz1c" test="not(@list-type)">The "list-type" attribute is not necessary on quizzes.</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--Interview has list-items containing one question and one answer-->
+    <rule context="list[@list-content='quiz']/list-item" role="error">
+      <assert id="quiz2" test="count(list[@list-content='question'])=1 and count(list[@list-content='answer'])=1">Quiz list-items should contain one question and one answer.</assert>
+    </rule>
+  </pattern>
+  
+  <!--Paragraphs-->
+  
+  <pattern><!--content-type attribute is valid-->
+    <rule context="p[not(ancestor::sec/@sec-type)][@content-type]" role="error">
+      <let name="contentType" value="@content-type"/>
+      <assert id="para1a" test="$allowed-values/content-types/content-type[.=$contentType]">Unexpected value for "content-type" attribute (<value-of select="$contentType"/>). Allowed values are: cross-head, dateline and greeting. </assert>
+    </rule>
+  </pattern>
+  <pattern><!--p - no unnecessary attributes-->
+    <rule context="p/@id | p/@specific-use | p/@xml:lang" role="error">
+      <report id="para1b" test=".">Do not use "<name/>" attribute on "list" element.</report>
+    </rule>
+  </pattern>
+  
+  <pattern><!--dateline para in correct place-->
+    <rule context="body//p[@content-type='dateline']" role="error">
+      <assert id="para2" test="not(preceding-sibling::p)">Dateline paragraphs should only appear as the first element in "body", or directly following a section "title".</assert>
+    </rule>
+  </pattern>
+  
   <!--============================================================================== Back ==================================================================================-->
 
   <!--Back - top level-->
   
   <pattern><!--back - label or title should not be used-->
     <rule context="back/label | back/title" role="error">
-      <report id="back1" test=".">Do not use "<name/>" at start of "back" matter in NPG content.</report>
+      <report id="back1" test=".">Do not use "<name/>" at start of "back" matter.</report>
     </rule>
   </pattern>
   
@@ -444,13 +640,13 @@
   
   <pattern><!--ack - zero or one-->
     <rule context="ack" role="error">
-      <report id="ack1" test="preceding-sibling::ack">There should only be one acknowledgements section in NPG content.</report>
+      <report id="ack1" test="preceding-sibling::ack">There should only be one acknowledgements section.</report>
     </rule>
   </pattern>
   
   <pattern><!--ack - only p as child-->
     <rule context="ack/*[not(self::p)]" role="error">
-      <report id="ack2" test=".">Acknowledgements should only contain paragraphs in NPG content - do not use "<name/>".</report>
+      <report id="ack2" test=".">Acknowledgements should only contain paragraphs - do not use "<name/>".</report>
     </rule>
   </pattern>
   
@@ -470,7 +666,7 @@
   
   <pattern><!--app-group - zero or one-->
     <rule context="app-group" role="error">
-      <report id="app1" test="preceding-sibling::app-group">There should only be one appendix grouping in NPG content.</report>
+      <report id="app1" test="preceding-sibling::app-group">There should only be one appendix grouping.</report>
     </rule>
   </pattern>
   <pattern><!--app-group - no children apart from p and app used-->
@@ -508,12 +704,12 @@
 
   <pattern><!--bio - zero or one-->
     <rule context="back/bio" role="error">
-      <report id="bio1" test="preceding-sibling::bio">There should only be one "bio" (author information section) in "back" in NPG content.</report>
+      <report id="bio1" test="preceding-sibling::bio">There should only be one "bio" (author information section) in "back".</report>
     </rule>
   </pattern>
   <pattern><!--bio - only p as child-->
     <rule context="back/bio/*[not(self::p)]" role="error">
-      <report id="bio2" test=".">"bio" (author information section) in "back" in NPG content should only contain paragraphs - do not use "<name/>".</report>
+      <report id="bio2" test=".">"bio" (author information section) in "back" should only contain paragraphs - do not use "<name/>".</report>
     </rule>
   </pattern>
   <pattern><!--bio - no attributes used-->
@@ -531,13 +727,13 @@
   
   <pattern><!--fn-group - label or title should not be used-->
     <rule context="back/fn-group/label | back/fn-group/title" role="error">
-      <report id="back-fn1" test=".">Do not use "<name/>" at start of footnote group in "back" matter in NPG content.</report>
+      <report id="back-fn1" test=".">Do not use "<name/>" at start of footnote group in "back" matter.</report>
     </rule>
   </pattern>
   
   <pattern><!--fn-group - @content-type stated-->
     <rule context="back/fn-group" role="error">
-      <assert id="back2a" test="@content-type">Footnote groups in back matter in NPG content should have 'content-type' attribute stated. Allowed values are "endnotes" or "footnotes".</assert>
+      <assert id="back2a" test="@content-type">Footnote groups in back matter should have 'content-type' attribute stated. Allowed values are "endnotes" or "footnotes".</assert>
     </rule>
   </pattern>
   <pattern><!--fn-group - @content-type allowed-->
@@ -587,7 +783,7 @@
   <!--Notes - used to model accesgrp-->
   <pattern><!--notes - zero or one-->
     <rule context="back/notes" role="error">
-      <report id="notes1" test="preceding-sibling::notes">There should only be one "notes" (accession group) in "back" in NPG content.</report>
+      <report id="notes1" test="preceding-sibling::notes">There should only be one "notes" (accession group) in "back".</report>
     </rule>
   </pattern>
   <pattern><!--notes - @notes-type="database-links"-->

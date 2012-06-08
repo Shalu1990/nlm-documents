@@ -43,7 +43,6 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
 
 
  <!-- http://ns.nature.com/terms/hasMeshTerm -->
@@ -9294,7 +9293,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>1041</terms:code>
       <skos:prefLabel>Applied mathematics</skos:prefLabel>
-      <skos:broader rdf:resource="subject_group_maths_and_computing"/>
+      <skos:broader rdf:resource="mathematics_and_computing"/>
       <skos:description>Applied mathematics is a branch of mathematics that concerns itself with mathematical methods that are typically used in science, engineering, business, and industry. The term "applied mathematics" also describes the professional specialty in which mathematicians work on practical problems; as a profession focused on practical problems, applied mathematics focuses on the formulation and study of mathematical models.</skos:description>
    </terms:Subject>
    
@@ -9580,7 +9579,7 @@
       <terms:code>30</terms:code>
       <skos:prefLabel>Arts</skos:prefLabel>
       <skos:broader rdf:resource="culture"/>
-      <skos:description>The arts are a vast subdivision of culture, composed of many creative endeavors and disciplines. It is a broader term than "art", which as a description of a field usually means only the visual arts.The arts encompass visual arts, literary arts and the performing arts – music, theatre, dance and film, among others.</skos:description>
+      <skos:description>The arts are a vast subdivision of culture, composed of many creative endeavors and disciplines. It is a broader term than "art", which as a description of a field usually means only the visual arts.The arts encompass visual arts, literary arts and the performing arts &#x2013; music, theatre, dance and film, among others.</skos:description>
       <skos:altLabel>Art</skos:altLabel>
       <terms:hasMeshTerm rdf:resource="http://ns.nature.com/mesh-terms/D001154"/>
    </terms:Subject>
@@ -9662,7 +9661,7 @@
       <skos:altLabel>Chondrite</skos:altLabel>
       <skos:altLabel>Meteorites</skos:altLabel>
       <skos:altLabel>Meteorite</skos:altLabel>
-      <skos:altLabel>Edgeworth–Kuiper belt</skos:altLabel>
+      <skos:altLabel>Edgeworth&#x2013;Kuiper belt</skos:altLabel>
       <terms:hasMeshTerm rdf:resource="http://ns.nature.com/mesh-terms/D018543,D019110"/>
    </terms:Subject>
    
@@ -11870,7 +11869,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>2295</terms:code>
-      <skos:prefLabel>Biomaterials – cells</skos:prefLabel>
+      <skos:prefLabel>Biomaterials &#x2013; cells</skos:prefLabel>
       <skos:broader rdf:resource="biomaterials"/>
       <skos:description>A single unit for electrolysis or conversion of chemical into electric energy, usually consisting of a container with electrodes and an electrolyte.</skos:description>
    </terms:Subject>
@@ -11883,7 +11882,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>1754</terms:code>
-      <skos:prefLabel>Biomaterials – proteins</skos:prefLabel>
+      <skos:prefLabel>Biomaterials &#x2013; proteins</skos:prefLabel>
       <skos:broader rdf:resource="biomaterials"/>
       <skos:description>Linear  POLYPEPTIDES that are synthesized on RIBOSOMES and may be further modified, crosslinked, cleaved, or assembled into complex proteins with several subunits. The specific sequence of AMINO ACIDS determines the shape the polypeptide will take, during PROTEIN FOLDING, and the function of the protein.</skos:description>
       <skos:altLabel>Proteins</skos:altLabel>
@@ -11902,7 +11901,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>1866</terms:code>
-      <skos:prefLabel>Biomaterials – vaccines</skos:prefLabel>
+      <skos:prefLabel>Biomaterials &#x2013; vaccines</skos:prefLabel>
       <skos:broader rdf:resource="biomaterials"/>
       <skos:description>Suspensions of killed or attenuated microorganisms (bacteria, viruses, fungi, protozoa, or rickettsiae), antigenic proteins derived from them, or synthetic constructs, administered for the prevention, amelioration, or treatment of infectious and other diseases.</skos:description>
       <skos:altLabel>Vaccines</skos:altLabel>
@@ -12444,7 +12443,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>1341</terms:code>
-      <skos:prefLabel>Blood–brain barrier</skos:prefLabel>
+      <skos:prefLabel>Blood&#x2013;brain barrier</skos:prefLabel>
       <skos:broader rdf:resource="neuroscience"/>
       <skos:description>Specialized non-fenestrated tightly-joined ENDOTHELIAL CELLS with TIGHT JUNCTIONS that form a transport barrier for certain substances between the cerebral capillaries and the BRAIN tissue.</skos:description>
       <skos:altLabel>Blood-Brain Barrier</skos:altLabel>
@@ -12689,7 +12688,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>817</terms:code>
-      <skos:prefLabel>Bone remodelling – central control</skos:prefLabel>
+      <skos:prefLabel>Bone remodelling &#x2013; central control</skos:prefLabel>
       <skos:broader rdf:resource="bone_remodelling"/>
       <skos:description>Bone remodelling - central control is a type of bone remodelling that is under the regulation of the central nervous system.</skos:description>
    </terms:Subject>
@@ -12702,7 +12701,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>816</terms:code>
-      <skos:prefLabel>Bone remodelling – targeted remodelling</skos:prefLabel>
+      <skos:prefLabel>Bone remodelling &#x2013; targeted remodelling</skos:prefLabel>
       <skos:broader rdf:resource="bone_remodelling"/>
       <skos:description>Targeted remodelling- is a type of bone remodelling that is under the regulation of the bone cells in response to Microdamage.</skos:description>
    </terms:Subject>
@@ -12870,13 +12869,13 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>2634</terms:code>
-      <skos:prefLabel>Brain–machine interface</skos:prefLabel>
+      <skos:prefLabel>Brain&#x2013;machine interface</skos:prefLabel>
       <skos:broader rdf:resource="motor_control"/>
-      <skos:description>A brain–machine interface (BMI) is a direct communication pathway between the brain and an external device. BCIs are often directed at assisting, augmenting, or repairing human cognitive or sensory-motor functions.</skos:description>
-      <skos:altLabel>brain–computer interface (BCI)</skos:altLabel>
+      <skos:description>A brain&#x2013;machine interface (BMI) is a direct communication pathway between the brain and an external device. BCIs are often directed at assisting, augmenting, or repairing human cognitive or sensory-motor functions.</skos:description>
+      <skos:altLabel>brain&#x2013;computer interface (BCI)</skos:altLabel>
       <skos:altLabel>mind-machine interface (MMI)</skos:altLabel>
       <skos:altLabel>direct neural interface</skos:altLabel>
-      <skos:altLabel>brain–machine interface (BMI)</skos:altLabel>
+      <skos:altLabel>brain&#x2013;machine interface (BMI)</skos:altLabel>
    </terms:Subject>
    
 
@@ -12954,7 +12953,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>66</terms:code>
       <skos:prefLabel>Business</skos:prefLabel>
-      <skos:broader rdf:resource="subject_group_business_and_industry"/>
+      <skos:broader rdf:resource="business_and_industry"/>
       <skos:description>The interchange of goods or commodities, especially on a large scale, between different countries or between populations within the same country. It includes trade (the buying, selling, or exchanging of commodities, whether wholesale or retail) and business (the purchase and sale of goods to make a profit). (From Random House Unabridged Dictionary, 2d ed, p411, p2005  &amp;  p283)</skos:description>
       <skos:altLabel>Commerce</skos:altLabel>
       <skos:altLabel>Commerces</skos:altLabel>
@@ -12974,9 +12973,9 @@
    
 
 
-<!-- http://ns.nature.com/subjects/subject_group_business_and_industry -->
+<!-- http://ns.nature.com/subjects/business_and_industry -->
 
-<terms:Subject rdf:about="subject_group_business_and_industry">
+<terms:Subject rdf:about="business_and_industry">
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>703</terms:code>
@@ -14191,7 +14190,7 @@
       <skos:description>The termination of the cell's ability to carry out vital functions such as metabolism, growth, reproduction, responsiveness, and adaptability. Immune Response is the alteration in the reactivity of an organisms immune system in response to an antigen, in vertebrates, this may involve antibody production, induction of cell-mediated immunity, complement activation or development of immunological tolerance. A bodily defense reaction that recognizes an invading substance (an antigen: such as a virus or fungus or bacteria or transplanted organ) and produces antibodies specific against that antigen.An immune system response due to the presence of a particular foreign antigen, such as bacteria, fungi or virus.</skos:description>
       <skos:altLabel>Cell Death</skos:altLabel>
       <skos:altLabel>Death, Cell</skos:altLabel>
-      <skos:altLabel>Immune response </skos:altLabel>
+      <skos:altLabel>Immune response</skos:altLabel>
       <terms:hasMeshTerm rdf:resource="http://ns.nature.com/mesh-terms/D016923"/>
    </terms:Subject>
    
@@ -14656,7 +14655,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>1065</terms:code>
-      <skos:prefLabel>Cell–particle interactions</skos:prefLabel>
+      <skos:prefLabel>Cell&#x2013;particle interactions</skos:prefLabel>
       <skos:broader rdf:resource="nanotoxicology"/>
       <skos:description>Nanoparticles such as titania, zirconia, silver, diamonds, iron oxides, carbon nanotubes, and biodegradable polymers have been studied in diagnosis and treatment. Nanoparticles are considered a primary vehicle for targeted therapies because they can pass biological barriers and enter and distribute within cells by energy-dependent pathwaysMany of these nanoparticles may have toxic effects on cells. Cell-particle interactions implies the interactions between nanoparticles and cells.</skos:description>
    </terms:Subject>
@@ -14980,21 +14979,21 @@
       <skos:prefLabel>Checkpoints</skos:prefLabel>
       <skos:broader rdf:resource="cell_division"/>
       <skos:description>Regulatory signaling systems that control the progression through the CELL CYCLE. They ensure that the cell has completed, in the correct order and without mistakes, all the processes required to replicate the GENOME and CYTOPLASM, and divide them equally between two daughter cells. If cells sense they have not completed these processes or that the environment does not have the nutrients and growth hormones in place to proceed, then the cells are restrained (or "arrested") until the processes are completed and growth conditions are suitable.</skos:description>
-      <skos:altLabel>Cell Cycle Checkpoint </skos:altLabel>
-      <skos:altLabel>Checkpoint, Cell Cycle </skos:altLabel>
-      <skos:altLabel>Checkpoints, Cell Cycle </skos:altLabel>
-      <skos:altLabel>Cell Cycle Control </skos:altLabel>
-      <skos:altLabel>Cell Cycle Controls </skos:altLabel>
-      <skos:altLabel>Control, Cell Cycle </skos:altLabel>
-      <skos:altLabel>Controls, Cell Cycle </skos:altLabel>
-      <skos:altLabel>Cell Cycle Transition Points </skos:altLabel>
-      <skos:altLabel>Cell Cycle-Transition Points </skos:altLabel>
-      <skos:altLabel>Cell Cycle-Transition Point </skos:altLabel>
-      <skos:altLabel>Cycle-Transition Point, Cell </skos:altLabel>
-      <skos:altLabel>Point, Cell Cycle-Transition </skos:altLabel>
-      <skos:altLabel>Cell Cycle Arrest </skos:altLabel>
-      <skos:altLabel>Arrest, Cell Cycle </skos:altLabel>
-      <skos:altLabel>Arrests, Cell Cycle </skos:altLabel>
+      <skos:altLabel>Cell Cycle Checkpoint</skos:altLabel>
+      <skos:altLabel>Checkpoint, Cell Cycle</skos:altLabel>
+      <skos:altLabel>Checkpoints, Cell Cycle</skos:altLabel>
+      <skos:altLabel>Cell Cycle Control</skos:altLabel>
+      <skos:altLabel>Cell Cycle Controls</skos:altLabel>
+      <skos:altLabel>Control, Cell Cycle</skos:altLabel>
+      <skos:altLabel>Controls, Cell Cycle</skos:altLabel>
+      <skos:altLabel>Cell Cycle Transition Points</skos:altLabel>
+      <skos:altLabel>Cell Cycle-Transition Points</skos:altLabel>
+      <skos:altLabel>Cell Cycle-Transition Point</skos:altLabel>
+      <skos:altLabel>Cycle-Transition Point, Cell</skos:altLabel>
+      <skos:altLabel>Point, Cell Cycle-Transition</skos:altLabel>
+      <skos:altLabel>Cell Cycle Arrest</skos:altLabel>
+      <skos:altLabel>Arrest, Cell Cycle</skos:altLabel>
+      <skos:altLabel>Arrests, Cell Cycle</skos:altLabel>
       <skos:altLabel>Cell Cycle Arrests</skos:altLabel>
       <terms:hasMeshTerm rdf:resource="http://ns.nature.com/mesh-terms/D059447"/>
    </terms:Subject>
@@ -16201,7 +16200,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>106</terms:code>
       <skos:prefLabel>Climate sciences</skos:prefLabel>
-      <skos:broader rdf:resource="subject_group_earth_and_environmental_sciences"/>
+      <skos:broader rdf:resource="earth_and_environmental_sciences"/>
       <skos:description>Climate sciences (Climatology) is the study of climate, scientifically defined as weather conditions averaged over a period of time,and is a branch of the atmospheric sciences.</skos:description>
    </terms:Subject>
    
@@ -16649,7 +16648,7 @@
       <terms:code>2334</terms:code>
       <skos:prefLabel>Collective cell migration</skos:prefLabel>
       <skos:broader rdf:resource="cell_migration"/>
-      <skos:description>Collective migration is a basic mechanism of cell translocation during morphogenesis, wound repair and cancer invasion. Collective movement requires cells to retain cell–cell contacts, exhibit group polarization with defined front-rear asymmetry, and consequently move as one multicellular unit.</skos:description>
+      <skos:description>Collective migration is a basic mechanism of cell translocation during morphogenesis, wound repair and cancer invasion. Collective movement requires cells to retain cell&#x2013;cell contacts, exhibit group polarization with defined front-rear asymmetry, and consequently move as one multicellular unit.</skos:description>
    </terms:Subject>
    
 
@@ -17228,7 +17227,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>1042</terms:code>
       <skos:prefLabel>Computational science</skos:prefLabel>
-      <skos:broader rdf:resource="subject_group_maths_and_computing"/>
+      <skos:broader rdf:resource="mathematics_and_computing"/>
       <skos:description>A field of biology concerned with the development of techniques for the collection and manipulation of biological data, and the use of such data to make biological discoveries or predictions. This field encompasses all computational methods and theories applicable to MOLECULAR BIOLOGY and areas of computer-based techniques for solving biological problems including manipulation of models and datasets.</skos:description>
       <skos:altLabel>Computational Biology</skos:altLabel>
       <skos:altLabel>Biology, Computational</skos:altLabel>
@@ -17278,7 +17277,7 @@
       <skos:description>A computer model is a computer program, or network of computers, that attempts to simulate an abstract model of a particular system.</skos:description>
       <skos:altLabel>Computer simulation</skos:altLabel>
       <skos:altLabel>computer model</skos:altLabel>
-      <skos:altLabel>computational model </skos:altLabel>
+      <skos:altLabel>computational model</skos:altLabel>
    </terms:Subject>
    
 
@@ -17291,10 +17290,10 @@
       <terms:code>117</terms:code>
       <skos:prefLabel>Computer science</skos:prefLabel>
       <skos:broader rdf:resource="systems_biology"/>
-      <skos:broader rdf:resource="subject_group_maths_and_computing"/>
+      <skos:broader rdf:resource="mathematics_and_computing"/>
       <skos:description>Computer science designates the scientific and mathematical approach in computing.</skos:description>
       <skos:altLabel>Computer science</skos:altLabel>
-      <skos:altLabel>computing science </skos:altLabel>
+      <skos:altLabel>computing science</skos:altLabel>
    </terms:Subject>
    
 
@@ -20223,9 +20222,9 @@
    
 
 
-<!-- http://ns.nature.com/subjects/subject_group_subject_group_earth_and_environmental_sciences -->
+<!-- http://ns.nature.com/subjects/earth_and_environmental_sciences -->
 
-<terms:Subject rdf:about="subject_group_earth_and_environmental_sciences">
+<terms:Subject rdf:about="earth_and_environmental_sciences">
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>704</terms:code>
@@ -20351,7 +20350,7 @@
       <terms:code>158</terms:code>
       <skos:prefLabel>Ecology</skos:prefLabel>
       <skos:broader rdf:resource="biological_sciences"/>
-      <skos:broader rdf:resource="subject_group_earth_and_environmental_sciences"/>
+      <skos:broader rdf:resource="earth_and_environmental_sciences"/>
       <skos:description>The branch of science concerned with the interrelationship of organisms and their ENVIRONMENT, especi ally as manifested by natural cycles and rhythms, community development and structure, interactions between different kinds of organisms, geographic distributions, and population alterations. (Webster's, 3d ed)</skos:description>
       <skos:altLabel>Ecologies</skos:altLabel>
       <skos:altLabel>Environmental Science</skos:altLabel>
@@ -20571,7 +20570,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>1448</terms:code>
-      <skos:prefLabel>Electrocardiography – EKG</skos:prefLabel>
+      <skos:prefLabel>Electrocardiography &#x2013; EKG</skos:prefLabel>
       <skos:broader rdf:resource="electrophysiology"/>
       <skos:description>Recording of the moment-to-moment electromotive forces of the HEART as projected onto various sites on the body's surface, delineated as a scalar function of time. The recording is monitored by a tracing on slow moving chart paper or by observing it on a cardioscope, which is a CATHODE RAY TUBE DISPLAY.</skos:description>
       <skos:altLabel>Electrocardiography</skos:altLabel>
@@ -20638,7 +20637,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>1450</terms:code>
-      <skos:prefLabel>Electroencephalography – EEG</skos:prefLabel>
+      <skos:prefLabel>Electroencephalography &#x2013; EEG</skos:prefLabel>
       <skos:broader rdf:resource="electrophysiology"/>
       <skos:broader rdf:resource="electrodiagnosis"/>
       <skos:description>Recording of electric currents developed in the brain by means of electrodes applied to the scalp, to the surface of the brain, or placed within the substance of the brain.</skos:description>
@@ -20657,7 +20656,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>1451</terms:code>
-      <skos:prefLabel>Electromyography – EMG</skos:prefLabel>
+      <skos:prefLabel>Electromyography &#x2013; EMG</skos:prefLabel>
       <skos:broader rdf:resource="electrophysiology"/>
       <skos:broader rdf:resource="electrodiagnosis"/>
       <skos:description>Recording of the changes in electric potential of muscle by means of surface or needle electrodes.</skos:description>
@@ -21425,7 +21424,7 @@
       <terms:code>166</terms:code>
       <skos:prefLabel>Engineering</skos:prefLabel>
       <skos:broader rdf:resource="physical_sciences"/>
-      <skos:broader rdf:resource="subject_group_business_and_industry"/>
+      <skos:broader rdf:resource="business_and_industry"/>
       <skos:description>The practical application of physical, mechanical, and mathematical principles. (Stedman, 25th ed)</skos:description>
       <skos:altLabel>Engineerings</skos:altLabel>
       <terms:hasMeshTerm rdf:resource="http://ns.nature.com/mesh-terms/D004738"/>
@@ -21589,7 +21588,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>172</terms:code>
       <skos:prefLabel>Environmental sciences</skos:prefLabel>
-      <skos:broader rdf:resource="subject_group_earth_and_environmental_sciences"/>
+      <skos:broader rdf:resource="earth_and_environmental_sciences"/>
       <skos:description>The branch of science concerned with the interrelationship of organisms and their ENVIRONMENT, especi ally as manifested by natural cycles and rhythms, community development and structure, interactions between different kinds of organisms, geographic distributions, and population alterations. (Webster's, 3d ed)</skos:description>
       <skos:altLabel>Ecologies</skos:altLabel>
       <skos:altLabel>Environmental Science</skos:altLabel>
@@ -21896,7 +21895,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>2176</terms:code>
-      <skos:prefLabel>Epithelial–mesenchymal transition</skos:prefLabel>
+      <skos:prefLabel>Epithelial&#x2013;mesenchymal transition</skos:prefLabel>
       <skos:broader rdf:resource="cell_migration"/>
       <skos:broader rdf:resource="embryogenesis"/>
       <skos:broader rdf:resource="morphogenesis"/>
@@ -23540,7 +23539,7 @@
       <skos:prefLabel>Functional genomics</skos:prefLabel>
       <skos:broader rdf:resource="biotechnology"/>
       <skos:broader rdf:resource="genetics"/>
-      <skos:description>Functional genomics is a field of molecular biology that attempts to make use of the vast wealth of data produced by genomic projects (such as genome sequencing projects) to describe gene (and protein) functions and interactions. Unlike genomics and proteomics, functional genomics focuses on the dynamic aspects such as gene transcription, translation, and protein–protein interactions, as opposed to the static aspects of the genomic information such as DNA sequence or structures.</skos:description>
+      <skos:description>Functional genomics is a field of molecular biology that attempts to make use of the vast wealth of data produced by genomic projects (such as genome sequencing projects) to describe gene (and protein) functions and interactions. Unlike genomics and proteomics, functional genomics focuses on the dynamic aspects such as gene transcription, translation, and protein&#x2013;protein interactions, as opposed to the static aspects of the genomic information such as DNA sequence or structures.</skos:description>
    </terms:Subject>
    
 
@@ -23573,13 +23572,13 @@
       <skos:altLabel>MRI, Functional</skos:altLabel>
       <skos:altLabel>Functional MRI</skos:altLabel>
       <skos:altLabel>Functional MRIs</skos:altLabel>
-      <skos:altLabel>MRIs, Functional </skos:altLabel>
+      <skos:altLabel>MRIs, Functional</skos:altLabel>
       <skos:altLabel>Magnetic Resonance Imaging, Functional</skos:altLabel>
       <skos:altLabel>Imaging, Chemical Shift</skos:altLabel>
-      <skos:altLabel>Chemical Shift Imagings </skos:altLabel>
+      <skos:altLabel>Chemical Shift Imagings</skos:altLabel>
       <skos:altLabel>Imagings, Chemical Shift</skos:altLabel>
       <skos:altLabel>Shift Imaging, Chemical</skos:altLabel>
-      <skos:altLabel>Shift Imagings, Chemical </skos:altLabel>
+      <skos:altLabel>Shift Imagings, Chemical</skos:altLabel>
       <skos:altLabel>Chemical Shift Imaging</skos:altLabel>
       <terms:hasMeshTerm rdf:resource="http://ns.nature.com/mesh-terms/D008279"/>
    </terms:Subject>
@@ -23781,7 +23780,7 @@
       <terms:code>193</terms:code>
       <skos:prefLabel>Fungi</skos:prefLabel>
       <skos:broader rdf:resource="microbiology"/>
-      <skos:description>A kingdom of eukaryotic, heterotrophic organisms that live parasitically as saprobes, including MUSHROOMS; YEASTS; smuts, molds, etc. They reproduce either sexually or asexually, and have life cycles that range from simple to complex. Filamentous fungi, commonly known as molds, refer to those that grow as multicellular colonies.      Multicellular fungi that are commonly referred to as molds, containing branching tubular structures (HYPHAE) that form a mass of intertwining strands (MYCELIUM).</skos:description>
+      <skos:description>A kingdom of eukaryotic, heterotrophic organisms that live parasitically as saprobes, including MUSHROOMS; YEASTS; smuts, molds, etc. They reproduce either sexually or asexually, and have life cycles that range from simple to complex. Filamentous fungi, commonly known as molds, refer to those that grow as multicellular colonies. Multicellular fungi that are commonly referred to as molds, containing branching tubular structures (HYPHAE) that form a mass of intertwining strands (MYCELIUM).</skos:description>
       <skos:altLabel>Fungi</skos:altLabel>
       <skos:altLabel>Fungus</skos:altLabel>
       <skos:altLabel>Fungi, Filamentous</skos:altLabel>
@@ -25223,7 +25222,7 @@
       <terms:code>2690</terms:code>
       <skos:prefLabel>Genomic engineering</skos:prefLabel>
       <skos:broader rdf:resource="systems_biology"/>
-      <skos:description>Genome engineering refers to the strategies and techniques developed in recent years for the targeted, specific modification of the genetic information – or genome – of living organisms.</skos:description>
+      <skos:description>Genome engineering refers to the strategies and techniques developed in recent years for the targeted, specific modification of the genetic information &#x2013; or genome &#x2013; of living organisms.</skos:description>
    </terms:Subject>
    
 
@@ -25512,7 +25511,7 @@
       <skos:broader rdf:resource="planetary_science"/>
       <skos:description>Gaint planet is a large planet that is not primarily composed of rock or other solid matter. There are four gas giants in the Solar System: Jupiter, Saturn, Uranus, and Neptune. Many extrasolar gas giants have been identified orbiting other stars.</skos:description>
       <skos:altLabel>Jovian planet</skos:altLabel>
-      <skos:altLabel>gas giant </skos:altLabel>
+      <skos:altLabel>gas giant</skos:altLabel>
    </terms:Subject>
    
 
@@ -28783,7 +28782,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>253</terms:code>
       <skos:prefLabel>Industry</skos:prefLabel>
-      <skos:broader rdf:resource="subject_group_business_and_industry"/>
+      <skos:broader rdf:resource="business_and_industry"/>
       <skos:description>The aggregate of manufacturing or technically productive enterprises in a particular field, often named after its principle product, as "the automobile industry", "the steel indus try". It includes the ownership and management of companies, factories, industrial plants, etc. (From Random House Unabridged Dictionary, 2d ed)</skos:description>
       <skos:altLabel>Industries</skos:altLabel>
       <skos:altLabel>Tertiary Sector</skos:altLabel>
@@ -29006,7 +29005,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>258</terms:code>
       <skos:prefLabel>Information technology</skos:prefLabel>
-      <skos:broader rdf:resource="subject_group_maths_and_computing"/>
+      <skos:broader rdf:resource="mathematics_and_computing"/>
       <skos:description>Information technology (IT) is concerned with technology to treat information. The acquisition, processing, storage and dissemination of vocal, pictorial, textual and numerical information by a microelectronics-based combination of computing and telecommunications are its main fields.</skos:description>
    </terms:Subject>
    
@@ -29080,7 +29079,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>2602</terms:code>
-      <skos:prefLabel>Inhibition–excitation balance</skos:prefLabel>
+      <skos:prefLabel>Inhibition&#x2013;excitation balance</skos:prefLabel>
       <skos:broader rdf:resource="neuronal_physiology"/>
       <skos:description>The relative contributions of excitatory and inhibitory synaptic inputs corresponding to some neuronal event, such as oscillation or response evoked by sensory stimulation.</skos:description>
    </terms:Subject>
@@ -29347,7 +29346,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>270</terms:code>
       <skos:prefLabel>Intellectual-property rights</skos:prefLabel>
-      <skos:broader rdf:resource="subject_group_business_and_industry"/>
+      <skos:broader rdf:resource="business_and_industry"/>
       <skos:broader rdf:resource="scientific_community"/>
       <skos:description>Property, such as patents, trademarks, and copyright, that results from creative effort. The Patent and Copyright Clause (Art. 1, Sec. 8, cl. 8) of the United States Constitution provides for promoting the progress of science and useful arts by securing for limited times to authors and inventors, the exclusive right to their respective writings and discoveries. (From Black's Law Dictionary, 5th ed, p1014)</skos:description>
       <terms:hasMeshTerm rdf:resource="http://ns.nature.com/mesh-terms/D018973"/>
@@ -29355,13 +29354,13 @@
    
 
 
-<!-- http://ns.nature.com/subjects/intelligence_ -->
+<!-- http://ns.nature.com/subjects/intelligence -->
 
-<terms:Subject rdf:about="intelligence_">
+<terms:Subject rdf:about="intelligence">
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>1579</terms:code>
-      <skos:prefLabel>Intelligence </skos:prefLabel>
+      <skos:prefLabel>Intelligence</skos:prefLabel>
       <skos:broader rdf:resource="cognitive_neuroscience"/>
       <skos:description>The ability to learn and to deal with new situations and to deal effectively with tasks involving abstractions.</skos:description>
       <skos:altLabel>Intelligence</skos:altLabel>
@@ -31094,7 +31093,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>2188</terms:code>
-      <skos:prefLabel>Liquid–liquid extraction</skos:prefLabel>
+      <skos:prefLabel>Liquid&#x2013;liquid extraction</skos:prefLabel>
       <skos:broader rdf:resource="analytical_biochemistry"/>
       <skos:description>The removal of a soluble component from a liquid mixture by contact with a second liquid, immiscible with the carrier liquid, in which the component is preferentially soluble.</skos:description>
       <skos:altLabel>Liquid Phase Extraction</skos:altLabel>
@@ -31996,13 +31995,13 @@
       <skos:altLabel>MRI, Functional</skos:altLabel>
       <skos:altLabel>Functional MRI</skos:altLabel>
       <skos:altLabel>Functional MRIs</skos:altLabel>
-      <skos:altLabel>MRIs, Functional </skos:altLabel>
+      <skos:altLabel>MRIs, Functional</skos:altLabel>
       <skos:altLabel>Magnetic Resonance Imaging, Functional</skos:altLabel>
       <skos:altLabel>Imaging, Chemical Shift</skos:altLabel>
-      <skos:altLabel>Chemical Shift Imagings </skos:altLabel>
+      <skos:altLabel>Chemical Shift Imagings</skos:altLabel>
       <skos:altLabel>Imagings, Chemical Shift</skos:altLabel>
       <skos:altLabel>Shift Imaging, Chemical</skos:altLabel>
-      <skos:altLabel>Shift Imagings, Chemical </skos:altLabel>
+      <skos:altLabel>Shift Imagings, Chemical</skos:altLabel>
       <skos:altLabel>Chemical Shift Imaging</skos:altLabel>
       <terms:hasMeshTerm rdf:resource="http://ns.nature.com/mesh-terms/D008279"/>
    </terms:Subject>
@@ -32371,9 +32370,9 @@
    
 
 
-<!-- http://ns.nature.com/subjects/subject_group_maths_and_computing -->
+<!-- http://ns.nature.com/subjects/mathematics_and_computing -->
 
-<terms:Subject rdf:about="subject_group_maths_and_computing">
+<terms:Subject rdf:about="mathematics_and_computing">
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>705</terms:code>
@@ -33394,7 +33393,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>921</terms:code>
-      <skos:prefLabel>Metal–organic frameworks</skos:prefLabel>
+      <skos:prefLabel>Metal&#x2013;organic frameworks</skos:prefLabel>
       <skos:broader rdf:resource="materials_chemistry"/>
       <skos:broader rdf:resource="materials_for_energy_and_catalysis"/>
       <skos:description>Metal-Organic Frameworks are crystalline compounds consisting of metal ions or clusters coordinated to often rigid organic molecules to form one-, two-, or three-dimensional structures that can be porous.</skos:description>
@@ -34089,7 +34088,7 @@
       <terms:code>2758</terms:code>
       <skos:prefLabel>Minimal change disease</skos:prefLabel>
       <skos:broader rdf:resource="glomerular_diseases"/>
-      <skos:description>Minimal Change Disease (also known as Nil Lesions or Nil Disease (lipoid nephrosis)) is a disease of the kidney that causes nephrotic syndrome and usually affects children (peak incidence at 2–3 years of age).</skos:description>
+      <skos:description>Minimal Change Disease (also known as Nil Lesions or Nil Disease (lipoid nephrosis)) is a disease of the kidney that causes nephrotic syndrome and usually affects children (peak incidence at 2&#x2013;3 years of age).</skos:description>
    </terms:Subject>
    
 
@@ -34300,7 +34299,7 @@
       <skos:prefLabel>Mode-locked lasers</skos:prefLabel>
       <skos:broader rdf:resource="lasers_leds_and_light_sources"/>
       <skos:description>Laser can be made to produce pulses of light of extremely short duration, on the order of picoseconds (10-12 s) or femtoseconds (10-15 s).The basis of the technique is to induce a fixed phase relationship between the modes of the laser's resonant cavity. The laser is then said to be phase-locked or mode-locked.</skos:description>
-      <skos:altLabel>phase-locked </skos:altLabel>
+      <skos:altLabel>phase-locked</skos:altLabel>
    </terms:Subject>
    
 
@@ -34802,7 +34801,7 @@
       <terms:code>1660</terms:code>
       <skos:prefLabel>Morphogenesis</skos:prefLabel>
       <skos:broader rdf:resource="developmental_biology"/>
-      <skos:broader rdf:resource="plant_development"/>
+      <!--<skos:broader rdf:resource="plant_development"/>-->
       <skos:description>The development of anatomical structures to create the form of a single- or multi-cell organism. Morphogenesis provides form changes of a part, parts, or the whole organism.</skos:description>
       <terms:hasMeshTerm rdf:resource="http://ns.nature.com/mesh-terms/D009024"/>
    </terms:Subject>
@@ -35763,7 +35762,7 @@
       <skos:broader rdf:resource="materials_for_optics"/>
       <skos:broader rdf:resource="optical_physics"/>
       <skos:description>Nanophotonics is the study of the behavior of light on the nanometer scale. It is considered as a branch of optical engineering which deals with optics, or the interaction of light with particles or substances, at deeply subwavelength length scales.Plasmonics- Information transfer in nanoscale structures, similar to photonics, by means of surface plasmons, iS referred to as plasmonics.</skos:description>
-      <skos:altLabel>Nano-optics </skos:altLabel>
+      <skos:altLabel>Nano-optics</skos:altLabel>
    </terms:Subject>
    
 
@@ -37025,7 +37024,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>2607</terms:code>
-      <skos:prefLabel>Neuro–vascular interactions</skos:prefLabel>
+      <skos:prefLabel>Neuro&#x2013;vascular interactions</skos:prefLabel>
       <skos:broader rdf:resource="neuroscience"/>
       <skos:description>Neuro vascular interactions is the interaction between the nervous and the vascular elements.</skos:description>
    </terms:Subject>
@@ -37486,7 +37485,7 @@
       <terms:code>2641</terms:code>
       <skos:prefLabel>Non-REM sleep</skos:prefLabel>
       <skos:broader rdf:resource="circadian_rhythms_and_sleep"/>
-      <skos:description>Non-REM sleep is, collectively, sleep stages 1–3, previously known as stages 1–4. there is usually little or no eye movement during this stage. Dreaming is rare during NREM sleep, and muscles are not paralyzed .</skos:description>
+      <skos:description>Non-REM sleep is, collectively, sleep stages 1&#x2013;3, previously known as stages 1&#x2013;4. there is usually little or no eye movement during this stage. Dreaming is rare during NREM sleep, and muscles are not paralyzed .</skos:description>
       <skos:altLabel>Non rapid eye movement</skos:altLabel>
       <skos:altLabel>NREM</skos:altLabel>
    </terms:Subject>
@@ -37742,7 +37741,7 @@
       <skos:prefLabel>Nucleic-acid therapeutics</skos:prefLabel>
       <skos:broader rdf:resource="biotechnology"/>
       <skos:broader rdf:resource="biologics"/>
-      <skos:description>Nucleic Acid Therapeutics focusses on therapeutic applications and drug development using nucleic acids or related compounds to alter gene expression. This involves approches using nucleic acids as therapeutic agents or in modifying nucleic acids for therapeutic purposes including: oligonucleotides, gene modification, aptamers, RNA nanoparticles, and ribozymes.  </skos:description>
+      <skos:description>Nucleic Acid Therapeutics focusses on therapeutic applications and drug development using nucleic acids or related compounds to alter gene expression. This involves approches using nucleic acids as therapeutic agents or in modifying nucleic acids for therapeutic purposes including: oligonucleotides, gene modification, aptamers, RNA nanoparticles, and ribozymes.</skos:description>
    </terms:Subject>
    
 
@@ -38877,7 +38876,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>404</terms:code>
-      <skos:prefLabel>Organic–inorganic nanostructures</skos:prefLabel>
+      <skos:prefLabel>Organic&#x2013;inorganic nanostructures</skos:prefLabel>
       <skos:broader rdf:resource="nanoscale_materials"/>
       <skos:description>Nanomaterials produced by chemical routes (e.g., either electrodeposited or by use of sol-gel materials), nanoparticles deposited by both chemical and electrostatic self-assembly and formed within LB films.</skos:description>
    </terms:Subject>
@@ -41645,7 +41644,7 @@
       <terms:code>445</terms:code>
       <skos:prefLabel>Planetary science</skos:prefLabel>
       <skos:broader rdf:resource="astronomy_and_planetary_science"/>
-      <skos:broader rdf:resource="subject_group_earth_and_environmental_sciences"/>
+      <skos:broader rdf:resource="earth_and_environmental_sciences"/>
       <skos:description>Planetary science (rarely planetology) is the scientific study of planets (including Earth), moons, and planetary systems, in particular those of the Solar System and the processes that form them. It studies objects ranging in size from micrometeoroids to gas giants, aiming to determine their composition, dynamics, formation, interrelations and history. It is a strongly interdisciplinary field, originally growing from astronomy and earth science,but which now incorporates many disciplines, including planetary astronomy, planetary geology (together with geochemistry and geophysics), atmospheric science, oceanography, hydrology, theoretical planetary science, glaciology, and the study of extrasolar planets.Allied disciplines include space physics, when concerned with the effects of the Sun on the bodies of the Solar System, and astrobiology.</skos:description>
       <skos:altLabel>Planetology</skos:altLabel>
    </terms:Subject>
@@ -41933,6 +41932,18 @@
       <terms:hasMeshTerm rdf:resource="http://ns.nature.com/mesh-terms/D008967"/>
    </terms:Subject>
    
+
+
+<!-- http://ns.nature.com/subjects/plant_morphogenesis -->
+
+<terms:Subject rdf:about="plant_morphogenesis">
+      <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+      <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
+      <terms:code>1359</terms:code>
+      <skos:prefLabel>Plant morphogenesis</skos:prefLabel>
+      <skos:broader rdf:resource="plant_development"/>
+   </terms:Subject>
+
 
 
 <!-- http://ns.nature.com/subjects/plant_physiology -->
@@ -42753,7 +42764,7 @@
       <skos:prefLabel>Porous materials</skos:prefLabel>
       <skos:broader rdf:resource="materials_for_energy_and_catalysis"/>
       <skos:description>A porous material is a material containing pores (voids). The skeletal portion of the material is often called the "matrix" or "frame". The pores are typically filled with a fluid (liquid or gas). The skeletal material is usually a solid, but structures like foams are often also usefully analyzed using concept of porous media.</skos:description>
-      <skos:altLabel>porous medium </skos:altLabel>
+      <skos:altLabel>porous medium</skos:altLabel>
    </terms:Subject>
    
 
@@ -43969,9 +43980,9 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>2290</terms:code>
-      <skos:prefLabel>Protein–protein interaction networks</skos:prefLabel>
+      <skos:prefLabel>Protein&#x2013;protein interaction networks</skos:prefLabel>
       <skos:broader rdf:resource="proteomics"/>
-      <skos:description>These are complex biological networks formed through protein–protein interactions that occur when two or more proteins bind together, often to carry out their biological function.</skos:description>
+      <skos:description>These are complex biological networks formed through protein&#x2013;protein interactions that occur when two or more proteins bind together, often to carry out their biological function.</skos:description>
    </terms:Subject>
    
 
@@ -44252,7 +44263,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>2145</terms:code>
-      <skos:prefLabel>Public–private partnerships</skos:prefLabel>
+      <skos:prefLabel>Public&#x2013;private partnerships</skos:prefLabel>
       <skos:broader rdf:resource="business_strategy"/>
       <skos:description>An organizational enterprise between a public sector agency, federal, state or local, and a private sector entity. Skills and assets of each sector are shared to deliver a service or facility for the benefit or use of the general public.</skos:description>
       <skos:altLabel>Public-Private Sector Partnerships</skos:altLabel>
@@ -44303,7 +44314,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>1045</terms:code>
       <skos:prefLabel>Pure mathematics</skos:prefLabel>
-      <skos:broader rdf:resource="subject_group_maths_and_computing"/>
+      <skos:broader rdf:resource="mathematics_and_computing"/>
       <skos:description>The deductive study of shape, quantity, and dependence.  (From McGraw-Hill Dictionary of Scientific and Technical Terms, 6th ed)</skos:description>
       <skos:altLabel>Mathematic</skos:altLabel>
       <terms:hasMeshTerm rdf:resource="http://ns.nature.com/mesh-terms/D008433"/>
@@ -46689,7 +46700,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>1046</terms:code>
       <skos:prefLabel>Scientific data</skos:prefLabel>
-      <skos:broader rdf:resource="subject_group_maths_and_computing"/>
+      <skos:broader rdf:resource="mathematics_and_computing"/>
       <skos:description>A set of scientific information is termed scientific data.</skos:description>
    </terms:Subject>
    
@@ -47601,13 +47612,13 @@
    
 
 
-<!-- http://ns.nature.com/subjects/sjögrens_disease -->
+<!-- http://ns.nature.com/subjects/sjogrens_disease -->
 
-<terms:Subject rdf:about="sjögrens_disease">
+<terms:Subject rdf:about="sjogrens_disease">
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>1810</terms:code>
-      <skos:prefLabel>Sjögren's disease</skos:prefLabel>
+      <skos:prefLabel>Sj&#xf6;gren's disease</skos:prefLabel>
       <skos:broader rdf:resource="connective_tissue_diseases"/>
       <skos:description>Chronic inflammatory and autoimmune disease in which the salivary and lacrimal glands undergo progressive destruction by lymphocytes and plasma cells resulting in decreased production of saliva and tears. The primary form, often called sicca syndrome, involves both KERATOCONJUNCTIVITIS SICCA and XEROSTOMIA. The secondary form includes, in addition, the presence of a connective tissue disease, usually rheumatoid arthritis.</skos:description>
       <skos:altLabel>Sjogren's Syndrome</skos:altLabel>
@@ -47926,7 +47937,7 @@
       <terms:code>521</terms:code>
       <skos:prefLabel>Small RNAs</skos:prefLabel>
       <skos:broader rdf:resource="non_coding_rnas"/>
-      <skos:description>Small non-coding RNAs are typically only ~18–40 nucleotides in length, however their effect on cellular processes is profound. Small RNA has been shown to play critical roles in developmental timing, cell fate, tumor progression, neurogenesis. The term small RNA (sRNA) is often used for short bacterial ncRNAs.</skos:description>
+      <skos:description>Small non-coding RNAs are typically only ~18&#x2013;40 nucleotides in length, however their effect on cellular processes is profound. Small RNA has been shown to play critical roles in developmental timing, cell fate, tumor progression, neurogenesis. The term small RNA (sRNA) is often used for short bacterial ncRNAs.</skos:description>
    </terms:Subject>
    
 
@@ -48066,7 +48077,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>844</terms:code>
       <skos:prefLabel>Social sciences of Earth and environment</skos:prefLabel>
-      <skos:broader rdf:resource="subject_group_earth_and_environmental_sciences"/>
+      <skos:broader rdf:resource="earth_and_environmental_sciences"/>
       <skos:description>Social sciences of Earth and environmental studies human interaction with the environment. It is a broad field of study that includes also the natural environment, built environment, and the sets of relationships between them. While distinct from ecology and environmental science, the field encompasses study in the basic principles of those two fields of learning as well as the associated subjects, such as: ethics, policy, politics, law, economics, philosophy, sociology and other social aspects, planning, pollution control, natural resources, and the interactions of human beings and nature.</skos:description>
    </terms:Subject>
    
@@ -48179,7 +48190,7 @@
       <skos:broader rdf:resource="biological_techniques"/>
       <skos:broader rdf:resource="computational_biology_and_bioinformatics"/>
       <skos:broader rdf:resource="systems_biology"/>
-      <skos:broader rdf:resource="subject_group_maths_and_computing"/>
+      <skos:broader rdf:resource="mathematics_and_computing"/>
       <skos:description>Sequential operating instructions for a particular problem or function to be run on a digital computer.</skos:description>
       <skos:altLabel>Computer Programs</skos:altLabel>
       <skos:altLabel>Computer Program</skos:altLabel>
@@ -48268,7 +48279,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>2151</terms:code>
       <skos:prefLabel>Solid Earth sciences</skos:prefLabel>
-      <skos:broader rdf:resource="subject_group_earth_and_environmental_sciences"/>
+      <skos:broader rdf:resource="earth_and_environmental_sciences"/>
       <skos:description>Fields of science encompassing studies and research from the disciplines of PHYSICS; CHEMISTRY; BIOLOGICAL SCIENCES; and MATHEMATICS; that are related to the planet EARTH. Subfields include atmospheric chemistry; CLIMATOLOGY; ENVIRONMENTAL SCIENCES; GEOGRAPHY; GEOLOGY; geophysics; METEOROLOGY; OCEANOGRAPHY; PALEONTOLOGY; mineralogy; and seismology.</skos:description>
       <skos:altLabel>Science, Earth</skos:altLabel>
       <skos:altLabel>Sciences, Earth</skos:altLabel>
@@ -49041,7 +49052,7 @@
       <skos:prefLabel>Statistical physics, thermodynamics and nonlinear dynamics</skos:prefLabel>
       <skos:broader rdf:resource="other_physics"/>
       <skos:description>Statistical physics is the branch of physics that uses methods of probability theory and statistics, and particularly the mathematical tools for dealing with large populations and approximations, in solving physical problems. Statistical thermodynamics is a branch of physics that applies probability theory, which contains mathematical tools for dealing with large populations, to the study of the thermodynamic behavior of systems composed of a large number of particles. Nonlinear dynamics, study of systems governed by equations in which a small change in one variable can induce a large systematic change; the discipline is more popularly known as chaos.</skos:description>
-      <skos:altLabel>Statistical mechanics </skos:altLabel>
+      <skos:altLabel>Statistical mechanics</skos:altLabel>
    </terms:Subject>
    
 
@@ -49053,7 +49064,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>531</terms:code>
       <skos:prefLabel>Statistics</skos:prefLabel>
-      <skos:broader rdf:resource="subject_group_maths_and_computing"/>
+      <skos:broader rdf:resource="mathematics_and_computing"/>
       <skos:description>Works consisting of presentations of numerical data on particular subjects.</skos:description>
       <terms:hasMeshTerm rdf:resource="http://ns.nature.com/mesh-terms/D020500"/>
    </terms:Subject>
@@ -49089,24 +49100,6 @@
       <skos:altLabel>Colony-Forming Units</skos:altLabel>
       <skos:altLabel>Colony Forming Units</skos:altLabel>
       <terms:hasMeshTerm rdf:resource="http://ns.nature.com/mesh-terms/D013234"/>
-   </terms:Subject>
-   
-
-
-<!-- http://ns.nature.com/subjects/stem_cells_differentiation -->
-
-<terms:Subject rdf:about="stem_cells_differentiation">
-      <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-      <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
-      <terms:code>1359</terms:code>
-      <skos:prefLabel>Stem cells differentiation</skos:prefLabel>
-      <skos:broader rdf:resource="stem_cells"/>
-      <skos:description>Progressive restriction of the developmental potential in stem cells and increasing specialization of function that leads to the formation of specialized cells, tissues, and organs.</skos:description>
-      <skos:altLabel>Cell Differentiation</skos:altLabel>
-      <skos:altLabel>Differentiation, Cell</skos:altLabel>
-      <skos:altLabel>Cell Differentiations</skos:altLabel>
-      <skos:altLabel>Differentiations, Cell</skos:altLabel>
-      <terms:hasMeshTerm rdf:resource="http://ns.nature.com/mesh-terms/D002454"/>
    </terms:Subject>
    
 
@@ -50708,7 +50701,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>559</terms:code>
       <skos:prefLabel>Technology</skos:prefLabel>
-      <skos:broader rdf:resource="subject_group_business_and_industry"/>
+      <skos:broader rdf:resource="business_and_industry"/>
       <skos:description>The application of scientific knowledge to practical purposes in any field. It includes methods, techniques, and instrumentation.</skos:description>
       <skos:altLabel>Industrial Arts</skos:altLabel>
       <skos:altLabel>Arts, Industrial</skos:altLabel>
@@ -53837,7 +53830,7 @@
       <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
       <rdf:type rdf:resource="http://www.w3.org/2004/02/skos/core#Concept"/>
       <terms:code>2557</terms:code>
-      <skos:prefLabel>Virus–host interactions</skos:prefLabel>
+      <skos:prefLabel>Virus&#x2013;host interactions</skos:prefLabel>
       <skos:broader rdf:resource="virology"/>
       <skos:description>Interactions, directly with the host cell macromolecular machinery, to allow virus replication.</skos:description>
    </terms:Subject>
