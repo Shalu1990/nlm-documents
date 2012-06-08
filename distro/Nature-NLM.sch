@@ -443,8 +443,13 @@
     </rule>
   </pattern>
   <pattern><!--sec - id and xml:lang attributes not used-->
-    <rule context="sec/@id | sec/@xml:lang" role="error">
-      <report id="sec1c" test=".">Do not use "<name/>" attribute on "sec".</report>
+    <rule context="sec" role="error">
+      <report id="sec1c" test="@id">Do not use "id" attribute on "sec".</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="sec" role="error">
+      <report id="sec1d" test="@xml:lang">Do not use "xml:lang" attribute on "sec".</report>
     </rule>
   </pattern>
   
@@ -507,6 +512,17 @@
     </rule>
   </pattern>
   
+  <pattern><!--title - no attributes used-->
+    <rule context="title">
+      <report id="title1a" test="@id">Unnecessary use of "id" attribute on "title" element.</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="title">
+      <report id="title1b" test="@content-type">Unnecessary use of "content-type" attribute on "title" element.</report>
+    </rule>
+  </pattern>
+  
   <!--Lists-->
   
   <pattern><!--List - id attribute used for regular lists-->
@@ -520,13 +536,23 @@
     </rule>
   </pattern>
   <pattern><!--List - no unnecessary attributes-->
-    <rule context="list/@continued-from | list/@prefix-word | list/@specific-use" role="error">
-      <report id="list2b" test=".">Do not use "<name/>" attribute on "list" element.</report>
+    <rule context="list" role="error">
+      <report id="list2b" test="@continued-from">Do not use "continued-from" attribute on "list" element.</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="list" role="error">
+      <report id="list2c" test="@prefix-word">Do not use "prefix-word" attribute on "list" element.</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="list" role="error">
+      <report id="list2d" test="@specific-use">Do not use "specific-use" attribute on "list" element.</report>
     </rule>
   </pattern>
   <pattern><!--List-item - no id attribute-->
     <rule context="list-item" role="error">
-      <report id="list2c" test="@id">Do not use "id" attribute on "list-item" element.</report>
+      <report id="list2e" test="@id">Do not use "id" attribute on "list-item" element.</report>
     </rule>
   </pattern>
   
@@ -608,14 +634,24 @@
   <!--Paragraphs-->
   
   <pattern><!--content-type attribute is valid-->
-    <rule context="p[not(ancestor::sec/@sec-type)][@content-type]" role="error">
+    <rule context="p[not(ancestor::sec/@sec-type)][not(ancestor::ack or ancestor::app or ancestor::app-group)][@content-type]" role="error">
       <let name="contentType" value="@content-type"/>
       <assert id="para1a" test="$allowed-values/content-types/content-type[.=$contentType]">Unexpected value for "content-type" attribute (<value-of select="$contentType"/>). Allowed values are: cross-head, dateline and greeting. </assert>
     </rule>
   </pattern>
   <pattern><!--p - no unnecessary attributes-->
-    <rule context="p/@id | p/@specific-use | p/@xml:lang" role="error">
-      <report id="para1b" test=".">Do not use "<name/>" attribute on "list" element.</report>
+    <rule context="p" role="error">
+      <report id="para1b" test="@id">Do not use "id" attribute on "p" element.</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="p" role="error">
+      <report id="para1c" test="@specific-use">Do not use "specific-use" attribute on "p" element.</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="p" role="error">
+      <report id="para1d" test="@xml:lang">Do not use "xml:lang" attribute on "p" element.</report>
     </rule>
   </pattern>
   
@@ -651,14 +687,24 @@
   </pattern>
   
   <pattern><!--ack - no attributes used-->
-    <rule context="ack/attribute::*">
-      <report id="ack3" test=".">Unnecessary use of "<name/>" attribute on "ack" element.</report>
+    <rule context="ack">
+      <report id="ack3a" test="@id">Unnecessary use of "id" attribute on "ack" element.</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="ack">
+      <report id="ack3b" test="@content-type">Unnecessary use of "content-type" attribute on "ack" element.</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="ack">
+      <report id="ack3c" test="@specific-use">Unnecessary use of "specific-use" attribute on "ack" element.</report>
     </rule>
   </pattern>
   
-  <pattern><!--ack - no attributes used-->
-    <rule context="ack/p/attribute::*">
-      <report id="ack4" test=".">Unnecessary use of "<name/>" attribute on "p" in acknowledgements section.</report>
+  <pattern><!--ack/p - no attributes used-->
+    <rule context="ack/p">
+      <report id="ack4" test="@content-type">Unnecessary use of "content-type" attribute on "p" element in acknowledgements.</report>
     </rule>
   </pattern>
   
@@ -669,34 +715,54 @@
       <report id="app1" test="preceding-sibling::app-group">There should only be one appendix grouping.</report>
     </rule>
   </pattern>
+  
   <pattern><!--app-group - no children apart from p and app used-->
     <rule context="app-group/*">
-      <assert id="app2a" test="self::p or self::app">Only "p" and "app" should be used in "app-group". Do not use "<name/>".</assert>
+      <assert id="app2" test="self::p or self::app">Only "p" and "app" should be used in "app-group". Do not use "<name/>".</assert>
     </rule>
   </pattern>
+  
   <pattern><!--app-group - no attributes used-->
-    <rule context="app-group/attribute::*">
-      <report id="app2b" test=".">Unnecessary use of "<name/>" attribute on "app-group" element.</report>
+    <rule context="app-group">
+      <report id="app3a" test="@id">Unnecessary use of "id" attribute on "app-group" element.</report>
     </rule>
   </pattern>
+  <pattern>
+    <rule context="app-group">
+      <report id="app3b" test="@content-type">Unnecessary use of "content-type" attribute on "app-group" element.</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="app-group">
+      <report id="app3c" test="@specific-use">Unnecessary use of "specific-use" attribute on "app-group" element.</report>
+    </rule>
+  </pattern>
+  
   <pattern><!--app-group - no attributes on p used-->
-    <rule context="app-group/p/attribute::*">
-      <report id="app3" test=".">Unnecessary use of "<name/>" attribute on "p" in appendix.</report>
+    <rule context="app-group/p">
+      <report id="app4" test="@content-type">Unnecessary use of "content-type" attribute on "p" in appendix.</report>
     </rule>
   </pattern>
+  
   <pattern><!--app - no attributes used-->
-    <rule context="app/attribute::*">
-      <report id="app4" test=".">Unnecessary use of "<name/>" attribute on "app" element.</report>
+    <rule context="app">
+      <report id="app5a" test="@id">Unnecessary use of "id" attribute on "app" element.</report>
     </rule>
   </pattern>
-  <pattern><!--app/title - no attributes used-->
-    <rule context="app/title/attribute::*">
-      <report id="app5" test=".">Unnecessary use of "<name/>" attribute on "title" element in appendix.</report>
+  <pattern>
+    <rule context="app">
+      <report id="app5b" test="@content-type">Unnecessary use of "content-type" attribute on "app" element.</report>
     </rule>
   </pattern>
+  <pattern>
+    <rule context="app">
+      <report id="app5c" test="@specific-use">Unnecessary use of "specific-use" attribute on "app" element.</report>
+    </rule>
+  </pattern>
+  
   <pattern><!--app - no attributes on p used-->
-    <rule context="app/p/attribute::*">
-      <report id="app6" test=".">Unnecessary use of "<name/>" attribute on "p" in appendix.</report>
+    <rule context="app/p">
+      <report id="app6" test="@content-type">Unnecessary use of "content-type" attribute on "p" in appendix.</report>
     </rule>
   </pattern>
   
@@ -719,7 +785,7 @@
   </pattern>
   <pattern><!--p in bio - no attributes used-->
     <rule context="back/bio/p">
-      <report id="bio4" test="attribute::*">Do not use attributes on paragraphs in "bio" section.</report>
+      <report id="bio4" test="@content-type">Do not use "content-type" attribute on paragraphs in "bio" section.</report>
     </rule>
   </pattern>
   
@@ -733,34 +799,39 @@
   
   <pattern><!--fn-group - @content-type stated-->
     <rule context="back/fn-group" role="error">
-      <assert id="back2a" test="@content-type">Footnote groups in back matter should have 'content-type' attribute stated. Allowed values are "endnotes" or "footnotes".</assert>
+      <assert id="back-fn2a" test="@content-type">Footnote groups in back matter should have 'content-type' attribute stated. Allowed values are "endnotes" or "footnotes".</assert>
     </rule>
   </pattern>
   <pattern><!--fn-group - @content-type allowed-->
     <rule context="back/fn-group" role="error">
-      <assert id="back2b" test="not(@content-type) or @content-type='endnotes' or @content-type='footnotes'">Allowed values for 'content-type' attribute on "fn-group" are "endnotes" or "footnotes".</assert>
+      <assert id="back-fn2b" test="not(@content-type) or @content-type='endnotes' or @content-type='footnotes'">Allowed values for 'content-type' attribute on "fn-group" are "endnotes" or "footnotes".</assert>
     </rule>
   </pattern>
   <pattern><!--fn-group - no id or specific-use attribute-->
-    <rule context="back/fn-group/@id | back/fn-group/@specific-use" role="error">
-      <report id="back2c" test=".">Do not use "<name/>" attribute on "fn-group" in back matter.</report>
+    <rule context="back/fn-group" role="error">
+      <report id="back-fn2c" test="@id">Do not use "id" attribute on "fn-group" in back matter.</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="back/fn-group" role="error">
+      <report id="back-fn2d" test="@specific-use">Do not use "specific-use" attribute on "fn-group" in back matter.</report>
     </rule>
   </pattern>
 
   <pattern><!--fn - no label-->
     <rule context="back/fn-group/fn/label" role="error">
-      <report id="back3" test=".">Do not use "label" in footnotes in back matter - any symbols should be included at the start of the footnote text.</report>
+      <report id="back-fn3" test=".">Do not use "label" in footnotes in back matter - any symbols should be included at the start of the footnote text.</report>
     </rule>
   </pattern>
 
   <pattern><!--endnotes - fn-type="other"-->
     <rule context="back/fn-group[@content-type='endnotes']/fn" role="error">
-      <assert id="back4a" test="@fn-type='other'">"fn" within endnotes should have attribute fn-type="other".</assert>
+      <assert id="back-fn4a" test="@fn-type='other'">"fn" within endnotes should have attribute fn-type="other".</assert>
     </rule>
   </pattern>
   <pattern><!--endnotes - id and symbol attributes not necessary-->
     <rule context="back/fn-group[@content-type='endnotes']/fn/@id | back/fn-group[@content-type='endnotes']/fn/@symbol" role="error">
-      <report id="back4b" test=".">'<name/>' attribute is not necessary on endnotes.</report>
+      <report id="back-fn4b" test=".">'<name/>' attribute is not necessary on endnotes.</report>
     </rule>
   </pattern>
   
@@ -792,8 +863,13 @@
     </rule>
   </pattern>
   <pattern><!--notes - no id or specific-use attribute-->
-    <rule context="back/notes/@id | back/notes/@specific-use" role="error">
-      <report id="notes2b" test=".">Do not use "<name/>" attribute on "notes" in back matter.</report>
+    <rule context="back/notes" role="error">
+      <report id="notes2b" test="@id">Do not use "id" attribute on "notes" in back matter.</report>
+    </rule>
+  </pattern>
+  <pattern><!--notes - no id or specific-use attribute-->
+    <rule context="back/notes" role="error">
+      <report id="notes2c" test="@specific-use">Do not use "specific-use" attribute on "notes" in back matter.</report>
     </rule>
   </pattern>
   
