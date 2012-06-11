@@ -33,6 +33,23 @@ Created - 20120208
     <date-type>accepted</date-type>
     <date-type>misc</date-type>
   </date-types>
+  <sec-types>
+    <sec-type>materials</sec-type>
+    <sec-type>procedure</sec-type>
+  </sec-types>
+  <list-types>
+    <list-type>number</list-type>
+    <list-type>bullet</list-type>
+    <list-type>ucletter</list-type>
+    <list-type>lcletter</list-type>
+    <list-type>ucroman</list-type>
+    <list-type>lcroman</list-type>
+  </list-types>
+  <content-types>
+    <content-type>greeting</content-type>
+    <content-type>cross-head</content-type>
+    <content-type>dateline</content-type>
+  </content-types>
   <states>
     <state fullname="Alabama">AL</state>
     <state fullname="Alaska">AK</state>
@@ -2279,7 +2296,10 @@ Created - 20120208
       <journal>Journal of Database Marketing &amp; Customer Strategy Management</journal>
       <journal>Journal of Direct, Data and Digital Marketing Practice</journal>
       <journal>Journal of Targeting, Measurement and Analysis for Marketing</journal>
-      <journal>Nature Nature Biotechnology Nature Digest Nature Medicine</journal>
+      <journal>Nature</journal>
+      <journal>Nature Biotechnology</journal>
+      <journal>Nature Digest</journal>
+      <journal>Nature Medicine</journal>
       <journal>Pensions: An International Journal</journal>
       <journal>Place Branding</journal>
       <journal>Scientific American</journal>
