@@ -105,7 +105,7 @@
 	 <p>In contrast, mutation of this phosphorylation site had no effect on the level of PPAR<sub>&#x3B3;</sub> agonism in classical transcriptional reporter assays, whether in the presence or absence of rosiglitazone.</p>
 	 <p>However the most striking result was shown in patients taking a TZD agonist, in this case Avandia, in which a decrease in PPAR<sub>&#x3B3;</sub> phosphorylation was significantly correlated with improvement in glucose infusion rate, a measure of insulin sensitivity (<italic>p</italic>=0.001).</p>
 	 <p>&#x201C;This is the most exciting result,&#x201D; said Kliewer. &#x201C;It's a killer figure.&#x201D;</p>
-	 <sec>
+    <sec specific-use="heading-level-1">
 	 <title>Agonizing over mechanism</title>
 	 <p>Spiegelman reached out to Griffin to gain structural insight into how chemically distinct PPAR<sub>&#x3B3;</sub>-agonizing compounds also prevent its phosphorylation. Although all these compounds were known to interact with a large ligand-binding pocket on PPAR<sub>&#x3B3;</sub>, Griffin's laboratory used hydrogen-deuterium exchange mass spectroscopy (HDX-MS) to show that they cause distinct conformational changes in the receptor that could influence subsequent phosphorylation.</p>
 	 <p>&#x201C;We knew from our previous work that partial agonists altered the conformational dynamics of specific regions of PPAR<sub>&#x3B3;</sub> differently from full agonists,&#x201D; Griffin told <italic>SciBX</italic>. &#x201C;We hypothesized that they might affect coactivator recruitment by generating a new interaction surface or by altering post-translational modifications.<xref ref-type="bibr" rid="b6"/> Here we show that one way they may act is by stabilizing the phosphorylated region of the protein in a configuration that is less favorable to CDK<sup>5</sup>.&#x201D;</p>
@@ -116,7 +116,7 @@
 	 <p>&#x201C;We were one of the first companies to demonstrate the promise of selective modulation of PPAR<sub>&#x3B3;</sub>, by demonstrating glucose lowering without any weight gain or edema, even in diabetic patients also taking insulin,&#x201D; said Metabolex CMO David Karpf. &#x201C;The efficacy can be separated from classic PPAR<sub>&#x3B3;</sub> side effects. This paper is a game changer because it suggests agonizing the receptor may not be necessary at all.&#x201D;</p>
 	 <p>Karpf did note that &#x201C;the glycemic efficacy of MBX-102 didn't reach the commercial threshold to enter into a Phase III trial for type 2 diabetes. However, MBX-102 is also an effective uricosuric agent, where its insulin-sensitizing effects may provide an additional benefit for treatment of gout.&#x201D;<xref ref-type="bibr" rid="b7"/></p>
 	 <p>Metabolex is considering doing a Phase II trial in gout or partnering the compound.</p></sec>
-	 <sec>
+    <sec specific-use="heading-level-1">
 	 <title>PPARanoia</title>
 	 <p>Although companies could re-examine compounds that bind PPAR<sub>&#x3B3;</sub> but were dismissed due to a lack of agonism in classical transcriptional reporter assays, the stigma attached to PPAR<sub>&#x3B3;</sub> as a therapeutic target still may dissuade further investigation.</p>
 	 <p>&#x201C;Companies have run away from PPAR<sub>&#x3B3;</sub>, and it will be interesting to see if this reignites their interest,&#x201D; said Kliewer. &#x201C;I believe the stigma surrounding PPAR<sub>&#x3B3;</sub> is unwarranted; it is a validated target with a big market, and it is surprising that many companies have completely left it behind.&#x201D;</p>
@@ -125,9 +125,9 @@
 	 <p>Spiegelman thinks companies are in a good position to take advantage of the findings. &#x201C;The cool thing is that they probably have freezers full of PPAR<sub>&#x3B3;</sub> agonist derivatives,&#x201D; he said. &#x201C;They should be able to reassess what they have already made rather quickly and dial this mechanism in while dialing agonism out.&#x201D;</p>
 	 <p>Future studies from Spiegelman and Griffin will focus on separating the effects of agonism from the effects of inhibiting phosphorylation. The team is developing compounds that block only the CDK<sup>5</sup> phosphorylation site and do not agonize PPAR<sub>&#x3B3;</sub>. They also are developing mice with a mutation at the PPAR<sub>&#x3B3;</sub> phosphorylation site to address its <italic>in vivo</italic> function in metabolism.</p>
 	 <p>Spiegelman said a patent application has been filed covering this work. It is available for licensing.</p></sec>
-	 <sec>
+    <sec specific-use="heading-level-1">
 	 <title>Companies and institutions mentioned</title>
-	 <p><list id="l1">
+	 <p><list id="l1" list-type="bullet">
 	 <list-item><p><ext-link xlink:href="http://www.dana-farber.org/"><bold>Dana-Farber Cancer Institute</bold></ext-link>, Boston, Mass.</p></list-item>
 	 <list-item><p><ext-link xlink:href="http://www.biocentury.com/companies/GlaxoSmithKline_plc?utm_source=1"><bold>GlaxoSmithKline plc</bold></ext-link> (LSE:GSK; NYSE:GSK), London, U.K.</p></list-item>
 	 <list-item><p><ext-link xlink:href="http://hms.harvard.edu/hms/home.asp"><bold>Harvard Medical School</bold></ext-link>, Boston, Mass.</p></list-item>

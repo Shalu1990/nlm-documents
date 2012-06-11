@@ -80,7 +80,7 @@
     <p>Tumor hypoxia is associated with progression to malignancy and cancer relapse&#x2014;making hypoxic tumor cells important, if elusive, drug targets.</p>
     <p>The relationship between tumor compartments was previously thought to be strictly one way: oxygenated cells used most of the available oxygen to produce energy from glucose, leaving hypoxic cells to produce most of their energy via anaerobic fermentation, releasing lactate as a by-product.</p>
     <p>In a paper in the <italic>Journal of Clinical Investigation</italic>, however, researchers demonstrated that the relationship is symbiotic and that the symbiosis can be exploited therapeutically.<xref  ref-type="bibr" rid="b1"/></p>
-    <sec>
+    <sec specific-use="heading-level-1">
         <title>Fuel service</title>
         <p>First, the team found that oxygenated human cervical squamous carcinoma cells could metabolize exogenous lactate. This led to the hypothesis that lactate released by hypoxic cells&#x2014;conventionally viewed as a waste product&#x2014;could actually fuel oxygenated tumor cells.</p>
         <p>To confirm this, the team injected mice bearing squamous cervical carcinoma xenografts with <sup>13</sup>C-labeled lactate, then excised the tumors 30 minutes later. NMR experiments in extracts from those tumors detected <sup>13</sup>C-labeled glutamate, a lactate metabolite, which demonstrated that oxygenated tumor cells could indeed take up and metabolize lactate.</p>
@@ -91,7 +91,7 @@
         <p>Moreover, a combination of &#x3B1;-cyano-4-<sc>L</sc>-hydroxycinnamate treatment and radiation had a synergistic effect on decreasing tumor growth compared with using either treatment alone.</p>
         <p>Lastly, the team confirmed that MCT1 is expressed in the oxygenated compartments of a range of human cancers, including breast, head and neck, colorectal, lung and neuroblastoma tumors. This suggests that the combination of MCT1 inhibition and radiation could have broad clinical applications, said Pierre Sonveaux, an associate professor of pharmacology and therapeutics at the <ext-link xlink:href="http://www.uclouvain.be/"><bold>Universit&#xE9; Catholique de Louvain</bold></ext-link> (UCL) and lead author on the <italic>JCI</italic> paper.</p>
         <p>The research team was led by Olivier Feron, associate professor of pharmacology and therapeutics at UCL, and Mark Dewhirst, professor of radiation oncology and pathology and biomedical engineering at <ext-link xlink:href="http://medschool.duke.edu/"><bold>Duke University Medical Center</bold></ext-link>.</p></sec>
-    <sec>
+    <sec specific-use="heading-level-1">
         <title>Compartmentalized strategy</title>
         <p>Companies contacted by <italic>SciBX</italic> agreed that MCT1 inhibition could be a potent addition to combination therapy, but they wanted to know more about the potential side effects on muscles and neurons.</p>
         <p>Charles Hart, VP of biology at <ext-link xlink:href="http://www.biocentury.com/companies/Threshold_Pharmaceuticals_Inc?utm_source=1"><bold>Threshold Pharmaceuticals Inc.</bold></ext-link>, said the elucidation of a two-way, symbiotic interaction between tumor compartments was &#x201C;a revolutionary, paradigm-shifting idea&#x201D; that could lead researchers to think about cancer differently.</p>
@@ -105,7 +105,7 @@
         <p>Shtivelman added that &#x201C;the strategy of MCT1 inhibition is clearly complementary to the strategies targeting glycolysis in tumors,&#x201D; whether with glycolytic inhibitors such as 2-deoxyglucose or compounds that target enzymes in the glycolytic pathway.<xref ref-type="bibr"  rid="b2"/><disp-quote id="pq2"><p>&#x201C;The strategy of MCT1 inhibition is clearly complementary to the strategies targeting glycolysis in tumors.&#x201D;</p><address><institution>BioNovo Inc.</institution></address><attrib>Emma Shtivelman</attrib></disp-quote></p>
         <p>One potential strategy would be to give an MCT1 inhibitor to switch oxygenated tumor cells to glycolysis, then use a selective inhibitor of glycolysis to kill both the oxygenated and hypoxic cells, Shtivelman said.</p>
         <p>BioNovo's BZL101 is an aqueous extract from the herb <italic>Scutellaria barbata</italic> &#x201C;D. Don&#x201D; of the Lamiaceae family that inhibits glycolysis and selectively induces cell death in tumors. The compound is in a Phase II trial to treat advanced breast cancer and has completed a Phase I trial in pancreatic cancer.</p></sec>
-    <sec>
+    <sec specific-use="heading-level-1">
         <title>Lactate on the mind (and muscle)</title>
         <p>Going forward, Threshold's Hart thought the <italic>JCI</italic> paper provided sufficient proof of concept that MCT1 is a viable drug target&#x2014;assuming that additional experiments demonstrated no major adverse effects on healthy cells.</p>
         <p>Shtivelman said the safety issue needs to be probed, because one potential drawback to MCT1 inhibition is that at least two types of normal tissues&#x2014;skeletal white muscle and red muscle&#x2014;can rely on lactate oxidation for energy production. She added that lactate has also been shown to play a role in the metabolic interactions between neurons and glia.<xref ref-type="bibr" rid="b3"/></p>
@@ -117,7 +117,7 @@
         <p>Sonveaux also noted that patients with exercise intolerance due to ubiquitous <italic>MCT1</italic> deletion have no symptoms while at rest. &#x201C;These patients experience muscle cramps only during <italic>intensive</italic> exercise, and the symptoms are reversible,&#x201D; he said.</p>
         <p>Similarly, he noted that whereas both MCT1 and MCT2 can facilitate lactate transport in neurons, MCT2 has the higher lactate affinity of the two, suggesting that the effects of MCT1 inhibition on neurons might be limited to transient lethargy.</p>
         <p>Finally, Sonveaux said the team that published the <italic>JCI</italic> paper observed no pathological symptoms or gross behavioral changes in mice given &#x3B1;-cyano-4-hydroxycinnamate.</p></sec>
-    <sec>
+    <sec specific-use="heading-level-1">
         <title>Fuel speed ahead</title>
         <p>Sonveaux added that other known MCT1 inhibitors have off-target effects due to poor selectivity for MCT1. But despite its selectivity for MCT1, Sonveaux said &#x3B1;-cyano-4-hydroxycinnamate was not a drug candidate because it is poorly soluble in water. The team is collaborating with chemists to develop more drug-like analogs, he said.</p>
         <p>The team is also designing high throughput screens to identify new MCT1 inhibitors.</p>
@@ -130,9 +130,9 @@
         <p>The group is investigating the molecular and transcriptional mechanisms by which the cell accomplishes this balancing act.</p>
         <p>A small molecule that triggered the same response to lactic acidosis&#x2014;even in the absence of extracellular lactate&#x2014;could be one possible therapeutic application of those ongoing studies, said Chi.</p>
         <p>Coauthor Dewhirst said the findings reported in <italic>PLoS Genetics</italic> are not patented.</p></sec>
-    <sec>
+    <sec specific-use="heading-level-1">
         <title>Companies and institutions mentioned</title>
-        <p><list id="l1">
+        <p><list id="l1" list-type="bullet">
             <list-item><p><ext-link xlink:href="http://www.biocentury.com/companies/BioNovo_Inc?utm_source=1"><bold>BioNovo Inc.</bold></ext-link> (NASDAQ:BNVI), Emeryville, Calif.</p></list-item>
             <list-item><p><ext-link xlink:href="http://medschool.duke.edu/"><bold>Duke University Medical Center</bold></ext-link>, Durham, N.C.</p></list-item>
             <list-item><p><ext-link xlink:href="http://www.ethz.ch/index_EN"><bold>Swiss Federal Institute of Technology</bold></ext-link>, Zurich, Switzerland</p></list-item>
