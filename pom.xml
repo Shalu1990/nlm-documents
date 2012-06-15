@@ -28,7 +28,7 @@
 							<tasks>
 								<zip destfile="${project.basedir}/deploy/schema-package.zip">
 
-									<zipfileset dir="distro/NLM_DTD" prefix="schema" excludes="calabash-1.0.2-94/**, saxon/**, *.bat, *.sh, *.java, *.class " />
+									<zipfileset dir="distro" prefix="schema" excludes="NLM/calabash-1.0.2-94/**, NLM/saxon/**, NLM/*.bat, NLM/*.sh, NLM/*.java, NLM/*.class, NLM/*.BAT " />
 								</zip>
 							</tasks>
 						</configuration>
