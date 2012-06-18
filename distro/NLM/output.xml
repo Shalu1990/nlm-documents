@@ -1,0 +1,10 @@
+<report>
+  <message type="error" code="err:SXXP0003" line="12" column="15">org.xml.sax.SAXParseException:
+    Element type "eissn" must be declared.</message>
+  <message type="error" code="err:SXXP0003" line="16" column="20">org.xml.sax.SAXParseException: The
+    content of element type "journal-meta" must match
+    "(journal-id+,journal-title-group*,issn+,isbn*,publisher?,notes?)".</message>
+  <message id="ameta1b" location="/article[1]/front[1]/article-meta[1]/article-id[2]" line="19"
+    column="46">Article publisher id (scibx.2008.1091) does not match XML filename:
+    file:/C:/work/npg-xml/trunk/distro/test-candidate.xml.</message>
+</report>
