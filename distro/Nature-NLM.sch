@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+* Schematron rules for testing semantic validity of XML files in the NLM DTD submitted to NPG *
+
+Due to the configuration of XSLT templates used in the validation service, attributes cannot be used as the 'context' of a rule.
+
+For example, context="article[@article-type]" will recognise the context as 'article' with an 'article-type' attribute, but context="article/@article-type" will set context as 'article'.
+Use the <let> element to define the attribute if necessary.
+
+-->
 <schema xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
   <title>Schematron rules for NPG content in NLM v3.0</title>
   <ns uri="http://www.w3.org/1998/Math/MathML" prefix="mml"/>
@@ -421,6 +431,12 @@
     <rule context="copyright-holder" role="error">
       <assert id="copy3" test=". = $allowed-values/journal[@title=$journal-title]/copyright-holder or  not($allowed-values/journal[@title=$journal-title])">The copyright-holder for <value-of select="$journal-title"/> should be: <value-of select="$allowed-values/journal[@title=$journal-title]/copyright-holder"/></assert>
     </rule>
+  </pattern>
+
+  <pattern><!--No other elements in copyright-statement-->
+    <rule context="copyright-statement/*" role="error">
+      <report id="copy4" test=".">Do not use "<name/>" element in "copyright-statement" - it should only contain text.</report>
+    </rule>  
   </pattern>
 
   <!--Related article - type and link as expected?-->
