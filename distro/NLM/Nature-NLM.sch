@@ -44,11 +44,11 @@ Use the <let> element to define the attribute if necessary.
     </rule>
   </pattern>
   
-  <pattern>
-    <rule context="article[@article-type]" role="error"><!--Is the article-type valid?-->
+  <!--<pattern>
+    <rule context="article[@article-type]" role="error">Is the article-type valid?
       <assert  id="article2" test="$journal-title = $allowed-values/article-types/article-type[@type=$article-type]/journal or not($journal-title) or not($products[descendant::dc:title=$journal-title])">Unexpected root article type (<value-of select="$article-type"/>) for <value-of select="$journal-title"/>.</assert>
     </rule>
-  </pattern>
+  </pattern>-->
   
   <pattern>
     <rule context="article[@xml:lang]" role="error"><!--If @xml:lang exists, does it have an allowed value-->
