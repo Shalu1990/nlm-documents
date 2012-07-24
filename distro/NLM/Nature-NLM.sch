@@ -27,10 +27,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="journal-title" value="//journal-meta/journal-title-group/journal-title"/>
   <let name="journal-id" value="//journal-meta/journal-id"/>
   <let name="article-type" value="article/@article-type"/>
-  <let name="filename" value="base-uri()"/><!--May not be necessary to declare this - delete if filename not used-->
-  
-  <!--Rules only cover metadata sections at the moment; more rules to be added for body-->
-  
+    
   <!--
     ******************************************************************************************************************************
     Root
@@ -153,13 +150,6 @@ Use the <let> element to define the attribute if necessary.
     </rule>
   </pattern>
   
-  <pattern><!--Does the publisher-name match the copyright-holder?-->
-    <let name="holder" value="//permissions/copyright-holder"></let>
-    <rule context="publisher/publisher-name" role="error">
-      <assert id="jmeta9" test=". = $holder or not($holder) or not($holder=$allowed-values/journal[@title=$journal-title]/copyright-holder)">The publisher-name (<value-of select="."/>) should match the copyright-holder (<value-of select="$holder"/>).</assert>
-    </rule>
-  </pattern>
-
   <!-- ====================================================== Article metadata ================================================== -->
 
   <pattern>
@@ -346,13 +336,13 @@ Use the <let> element to define the attribute if necessary.
 
   <pattern><!--Rules around expected attribute values of date-->
     <rule context="history/date" role="error">
-      <assert id="histdate0a" test="@date-type">"date" element should have attribute "date-type" declared. Allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
+      <assert id="histdate0a" test="@date-type">"date" element should have attribute "date-type" declared. Allowed values are: created, received, rev-recd (revision received), first-decision, accepted and misc. Please check with NPG Editorial Production.</assert>
     </rule>
   </pattern>
   <pattern>
     <rule context="history/date[@date-type]" role="error">
       <let name="dateType" value="@date-type" />
-      <assert id="histdate0b" test="$allowed-values/date-types/date-type[.=$dateType]">Unexpected value for "date-type" attribute on "date" element (<value-of select="$dateType"/>). Allowed values are: created, received, rev-recd (revision received), accepted and misc. Please check with NPG Editorial Production.</assert>
+      <assert id="histdate0b" test="$allowed-values/date-types/date-type[.=$dateType]">Unexpected value for "date-type" attribute on "date" element (<value-of select="$dateType"/>). Allowed values are: created, received, rev-recd (revision received), first-decision, accepted and misc. Please check with NPG Editorial Production.</assert>
     </rule>
   </pattern>
   
@@ -427,11 +417,11 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
 
   
-  <pattern><!--Is the copyright holder correct for the journal?-->
+  <!--<pattern>Is the copyright holder correct for the journal?
     <rule context="copyright-holder" role="error">
       <assert id="copy3" test=". = $allowed-values/journal[@title=$journal-title]/copyright-holder or  not($allowed-values/journal[@title=$journal-title])">The copyright-holder for <value-of select="$journal-title"/> should be: <value-of select="$allowed-values/journal[@title=$journal-title]/copyright-holder"/></assert>
     </rule>
-  </pattern>
+  </pattern>-->
 
   <pattern><!--No other elements in copyright-statement-->
     <rule context="copyright-statement/*" role="error">
@@ -442,6 +432,40 @@ Use the <let> element to define the attribute if necessary.
   <!--Related article - type and link as expected?-->
   
   <!--Abstract-->
+  
+  <pattern><!--valid @abstract-type-->
+    <rule context="abstract[@abstract-type]" role="error">
+      <let name="abstractType" value="@abstract-type"/>
+      <assert id="abs1" test="$allowed-values/abstract-types/abstract-type[.=$abstractType]">Unexpected value for "abstract-type" attribute (<value-of select="$abstractType"/>). Allowed values are: editor, executive-summary, first-paragraph, key-points, standfirst, synopsis, toc, toc-note, web-summary.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--only one of each abstract type used-->
+    <rule context="abstract[not(@abstract-type='editor')]" role="error">
+      <report id="abs2a" test="@abstract-type=./preceding-sibling::abstract/@abstract-type">Only one abstract of type "<value-of select="@abstract-type"/>" should appear in an article.</report>
+    </rule>
+  </pattern>
+  
+  <pattern><!--dateline para in correct place-->
+    <rule context="abstract[p[@content-type='dateline']]" role="error">
+      <assert id="abs3a" test="@abstract-type='web-summary' or @abstract-type='toc'">Dateline paragraphs should only be used in 'web-summary' or 'toc' abstracts.</assert>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="abstract[@abstract-type='web-summary' or @abstract-type='toc']/p[@content-type='dateline']" role="error">
+      <assert id="abs3b" test="not(preceding-sibling::p)">Dateline paragraphs should only appear as the first element in an abstract.</assert>
+    </rule>
+  </pattern>  
+
+  <pattern><!--editor summary specific-use attribute equal to 'aop' or 'issue'-->
+    <rule context="abstract[@abstract-type='editor'][@specific-use]" role="error">
+      <assert id="abs4a" test="@specific-use='aop' or @specific-use='issue'">Unexpected value (<value-of select="@specific-use"/>) for "specific-use" attribute on editor abstracts. Allowed values are "aop" or "issue".</assert>
+    </rule>
+  </pattern>
+  <pattern><!--only one of each specific-use type used in editor summaries-->
+    <rule context="abstract[@abstract-type='editor'][@specific-use]" role="error">
+      <report id="abs4b" test="@specific-use=./preceding-sibling::abstract[@abstract-type='editor']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear in each article.</report>
+    </rule>
+  </pattern>
   
   <!--Keywords-->
   
@@ -472,7 +496,7 @@ Use the <let> element to define the attribute if necessary.
   <pattern><!--sec - sec-type is valid-->
     <rule context="sec[@sec-type]" role="error">
       <let name="secType" value="@sec-type"></let>
-      <assert id="sec2a" test="$allowed-values/sec-types/sec-type[.=$secType]">Unexpected value for "sec-type" attribute (<value-of select="$secType"/>). Allowed values are: materials, procedures. </assert>
+      <assert id="sec2a" test="$allowed-values/sec-types/sec-type[.=$secType]">Unexpected value for "sec-type" attribute (<value-of select="$secType"/>). Allowed values are: materials, procedure. </assert>
     </rule>
   </pattern>
   <pattern><!--sec/@specific-use - follows expected syntax-->
@@ -650,7 +674,7 @@ Use the <let> element to define the attribute if necessary.
   <!--Paragraphs-->
   
   <pattern><!--content-type attribute is valid-->
-    <rule context="p[not(ancestor::sec/@sec-type)][not(ancestor::ack or ancestor::app or ancestor::app-group)][@content-type]" role="error">
+    <rule context="p[not(ancestor::sec/@sec-type)][not(ancestor::ack or ancestor::app or ancestor::app-group or ancestor::boxed-text)][@content-type]" role="error">
       <let name="contentType" value="@content-type"/>
       <assert id="para1a" test="$allowed-values/content-types/content-type[.=$contentType]">Unexpected value for "content-type" attribute (<value-of select="$contentType"/>). Allowed values are: cross-head, dateline and greeting. </assert>
     </rule>

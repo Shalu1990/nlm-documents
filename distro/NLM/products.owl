@@ -946,81 +946,72 @@
         <terms:npgid>1396</terms:npgid>
         <dc:language>en</dc:language>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1940-8692"/>
-
-
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/anatomy"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/autoimmune_diseases"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/biochemistry"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/biological_sciences"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bisphosphonates"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_cancer"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_development"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_imaging"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_metastases"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_quality_and_biomechanics"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_remodelling"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_remodelling_central_control"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_remodelling_targeted_remodelling"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/calcitonin"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/calcium_and_phosphate_metabolic_disorders"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/calcium_and_vitamin_d"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cancer"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cartilage_development"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cell_biology"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cell_signalling"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cells"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/chondrocytes"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/clinical_genetics"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cytokines"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/developmental_biology"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/diagnosis"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/disease_genetics"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/diseases"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/endocrine_system_and_metabolic_diseases"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/endocrinology"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/epidemiology"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/extracellular_signalling_molecules"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/fracture_repair"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/genetics"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/haematological_cancer"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/health_care"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/health_occupations"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/health_sciences"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/immunological_disorders"/>
+   		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/anatomy"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/biochemistry"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/biological_sciences"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bisphosphonates"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_cancer"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_development"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_imaging"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_metastases"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_quality_and_biomechanics"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_remodelling"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_remodelling_central_control"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_remodelling_targeted_remodelling"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/calcitonin"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/calcium_and_phosphate_metabolic_disorders"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/calcium_and_vitamin_d"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cancer"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cartilage_development"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cell_biology"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cell_signalling"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cells"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/chondrocytes"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/clinical_genetics"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cytokines"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/developmental_biology"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/diagnosis"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/disease_genetics"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/diseases"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/endocrine_system_and_metabolic_diseases"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/endocrinology"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/epidemiology"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/extracellular_signalling_molecules"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/fracture_repair"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/haematological_cancer"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/health_care"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/health_occupations"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/health_sciences"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/immunology"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/medical_imaging"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/medical_research"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metabolic_bone_disease"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metabolic_diseases"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metabolic_disorders"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metabolism"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metastases"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/muscle"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/musculoskeletal_system"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/myeloma"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/orthopaedics"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoarthritis"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoblasts"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoclasts"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteocytes"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteogenesis_imperfecta"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteopetrosis"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoporosis"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/pagets_disease"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/parathyroid_hormone"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/pathogenesis"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/physiology"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/proteins"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/public_health"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/rheumatic_diseases"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/rheumatoid_arthritis"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/steroid_hormones"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/study_design"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/therapeutics"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/transcription_factors"/>
-
-
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/medical_imaging"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metabolic_bone_disease"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metabolic_disorders"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metastases"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/muscle"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/musculoskeletal_system"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/myeloma"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/orthopaedics"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoarthritis"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoblasts"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoclasts"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteocytes"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteogenesis_imperfecta"/>
+        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoimmunology"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteopetrosis"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoporosis"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/pagets_disease"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/parathyroid_hormone"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/pathogenesis"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/physiology"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/proteins"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/public_health"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/rheumatic_diseases"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/rheumatoid_arthritis"/>
+        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/stem_cells"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/steroid_hormones"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/therapeutics"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/transcription_factors"/>
     </terms:Product>
     
     <!-- http://ns.nature.com/products/bonekey_coverage-->
@@ -1046,79 +1037,72 @@
         <foaf:homepage>http://www.nature.com/bonekey/index.html</foaf:homepage>
         <terms:content>fulltext</terms:content>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/2047-6396"/>
-
-
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/anatomy"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/autoimmune_diseases"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/biochemistry"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/biological_sciences"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bisphosphonates"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_cancer"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_development"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_imaging"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_metastases"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_quality_and_biomechanics"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_remodelling"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_remodelling_central_control"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_remodelling_targeted_remodelling"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/calcitonin"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/calcium_and_phosphate_metabolic_disorders"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/calcium_and_vitamin_d"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cancer"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cartilage_development"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cell_biology"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cell_signalling"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cells"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/chondrocytes"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/clinical_genetics"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cytokines"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/developmental_biology"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/diagnosis"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/disease_genetics"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/diseases"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/endocrine_system_and_metabolic_diseases"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/endocrinology"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/epidemiology"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/extracellular_signalling_molecules"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/fracture_repair"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/genetics"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/haematological_cancer"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/health_care"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/health_occupations"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/health_sciences"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/immunological_disorders"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/anatomy"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/biochemistry"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/biological_sciences"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bisphosphonates"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_cancer"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_development"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_imaging"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_metastases"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_quality_and_biomechanics"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_remodelling"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_remodelling_central_control"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/bone_remodelling_targeted_remodelling"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/calcitonin"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/calcium_and_phosphate_metabolic_disorders"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/calcium_and_vitamin_d"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cancer"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cartilage_development"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cell_biology"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cell_signalling"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cells"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/chondrocytes"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/clinical_genetics"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cytokines"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/developmental_biology"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/diagnosis"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/disease_genetics"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/diseases"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/endocrine_system_and_metabolic_diseases"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/endocrinology"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/epidemiology"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/extracellular_signalling_molecules"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/fracture_repair"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/haematological_cancer"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/health_care"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/health_occupations"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/health_sciences"/>
         <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/immunology"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/medical_imaging"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/medical_research"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metabolic_bone_disease"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metabolic_diseases"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metabolic_disorders"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metabolism"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metastases"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/muscle"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/musculoskeletal_system"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/myeloma"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/orthopaedics"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoarthritis"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoblasts"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoclasts"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteocytes"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteogenesis_imperfecta"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteopetrosis"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoporosis"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/pagets_disease"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/parathyroid_hormone"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/pathogenesis"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/physiology"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/proteins"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/public_health"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/rheumatic_diseases"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/rheumatoid_arthritis"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/steroid_hormones"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/study_design"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/therapeutics"/>
-        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/transcription_factors"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/medical_imaging"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metabolic_bone_disease"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metabolic_disorders"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/metastases"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/muscle"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/musculoskeletal_system"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/myeloma"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/orthopaedics"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoarthritis"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoblasts"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoclasts"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteocytes"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteogenesis_imperfecta"/>
+        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoimmunology"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteopetrosis"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/osteoporosis"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/pagets_disease"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/parathyroid_hormone"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/pathogenesis"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/physiology"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/proteins"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/public_health"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/rheumatic_diseases"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/rheumatoid_arthritis"/>
+        <ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/stem_cells"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/steroid_hormones"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/therapeutics"/>
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/transcription_factors"/>
 
 
     </owl:Thing>
@@ -1920,6 +1904,38 @@
         <terms:dateStart>2000-07</terms:dateStart>
     </terms:Coverage>
     
+
+    <!-- http://ns.nature.com/products/emi -->
+
+    <owl:Thing rdf:about="emi">
+        <rdf:type rdf:resource="http://ns.nature.com/terms/Product"/>
+        <skos:altLabel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">emi</skos:altLabel>
+        <skos:altLabel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Emerg Microbes Infect</skos:altLabel>
+        <terms:targetDomain>nature.com</terms:targetDomain>
+        <terms:content>fulltext</terms:content>
+        <terms:npgid>549791</terms:npgid>
+        <terms:pcode>emi</terms:pcode>
+        <terms:hasCoverage rdf:resource="emi_coverage"/>
+        <dc:title>Emerging Microbes &amp; Infections</dc:title>
+        <terms:collection>journals_nature</terms:collection>
+        <foaf:homepage>http://www.nature.com/emi/index.html</foaf:homepage>
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/2222-1751"/>
+    </owl:Thing>
+    
+
+
+    <!-- http://ns.nature.com/products/emi_coverage -->
+
+    <owl:Thing rdf:about="emi_coverage">
+        <rdf:type rdf:resource="http://ns.nature.com/terms/Coverage"/>
+        <terms:volumeStart>1</terms:volumeStart>
+        <terms:dateStart>2012-07</terms:dateStart>
+        <terms:issueStart>7</terms:issueStart>
+        <terms:moving>true</terms:moving>
+    </owl:Thing>
+
+
+
 
 
     <!-- http://ns.nature.com/products/emr -->
@@ -6523,7 +6539,7 @@
 		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/single_molecule_fluorescence" />
 		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/single_strand_dna_breaks" />
 		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/sirnas" />
-		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/sjögrens_disease" />
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/sjogrens_disease" />
 		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/skeletal_muscle" />
 		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/skeleton" />
 		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/skin_cancer" />
@@ -12683,7 +12699,7 @@
 		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/single_molecule_fluorescence" />
 		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/single_strand_dna_breaks" />
 		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/sirnas" />
-		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/sjögrens_disease" />
+		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/sjogrens_disease" />
 		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/skeletal_muscle" />
 		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/skeleton" />
 		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/skin_cancer" />
@@ -16797,8 +16813,15 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <bibo:eissn>2162-2531</bibo:eissn>
     </terms:Publication>
+  
     
+    <!-- http://ns.nature.com/publications/2222-1751 -->
 
+    <owl:Thing rdf:about="http://ns.nature.com/publications/2222-1751">
+        <rdf:type rdf:resource="http://ns.nature.com/terms/Publication"/>
+        <dc:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">urn:eissn:2222-1751</dc:identifier>
+        <bibo:eissn>2222-1751</bibo:eissn>
+    </owl:Thing>
 
     
 
@@ -25394,8 +25417,8 @@
         <owl:Thing rdf:about="http://ns.nature.com/subjects/sirnas"/>
    
 
-        <!-- http://ns.nature.com/subjects/sjögrens_disease -->
-        <owl:Thing rdf:about="http://ns.nature.com/subjects/sjögrens_disease"/>
+        <!-- http://ns.nature.com/subjects/sjogrens_disease -->
+        <owl:Thing rdf:about="http://ns.nature.com/subjects/sjogrens_disease"/>
    
 
         <!-- http://ns.nature.com/subjects/skeletal_muscle -->
