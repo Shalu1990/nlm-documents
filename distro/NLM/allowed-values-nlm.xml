@@ -58,6 +58,7 @@ Created - 20120208
     <list-type>lcletter</list-type>
     <list-type>ucroman</list-type>
     <list-type>lcroman</list-type>
+  <list-type>none</list-type>
   </list-types>
   <content-types>
     <content-type>greeting</content-type>
