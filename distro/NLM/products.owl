@@ -355,7 +355,7 @@
         <terms:pcode>abm</terms:pcode>
         <terms:hasCoverage rdf:resource="abm_coverage"/>
         <terms:targetDomain>palgrave-journals.com</terms:targetDomain>
-        <dc:title>Asian Business Management</dc:title>
+        <dc:title>Asian Business &amp; Management</dc:title>
         <terms:content>fulltext</terms:content>
         <terms:npgid>237</terms:npgid>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1472-4782"/>
