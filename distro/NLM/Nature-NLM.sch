@@ -565,11 +565,11 @@ Use the <let> element to define the attribute if necessary.
   
   <!--Lists-->
   
-  <pattern><!--List - id attribute used for regular lists-->
+  <!-- <pattern>List - id attribute used for regular lists. Deprecated as @id is only optional for academic journals
     <rule context="list[not(@list-content or @list-type='materials' or @list-type='procedure-group')]" role="error">
       <assert id="list1" test="@id">An "id" attribute should be used on regular "list" elements.</assert>
     </rule>
-  </pattern>
+  </pattern>-->
   <pattern><!--List is not block-level, i.e. is a child of p or list-item [unless used for interview/quiz, materials/procedures]-->
     <rule context="list[not(@list-content or @list-type='materials' or @list-type='procedure-group')]" role="error">
       <assert id="list2a" test="parent::p or parent::list-item">Regular lists should be enclosed in paragraphs or other lists.</assert>
@@ -598,7 +598,7 @@ Use the <let> element to define the attribute if necessary.
   
   <pattern><!--List - list-type attribute stated (apart from interview/quizzes)-->
     <rule context="list[not(@list-content)]" role="error">
-      <assert id="list3a" test="@list-type">Use "list-type" attribute to show type of list used. Allowed values are: bullet, number, lcletter, ucletter, lcroman and ucroman.</assert>
+      <assert id="list3a" test="@list-type">Use "list-type" attribute to show type of list used. Allowed values are: none, bullet, number, lcletter, ucletter, lcroman and ucroman.</assert>
     </rule>
   </pattern>
   <pattern><!--list-type attribute is valid-->
