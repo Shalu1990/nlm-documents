@@ -13,6 +13,15 @@
 
 <!-- 
 
+07.08.12
+. SCHEMA-72 - Added "editorial-notes" value to the "type" attribute on the "edsumm" element.
+
+04.07.12
+. SCHEMA-70 - Added 'priority', 'id', 'type' (with "npg.subject" as default), 'version' and 'path' attributes to "subject" element. Made 'code' attribute optional. 
+
+28.06.12
+. SCHEMA-68 - Added 'est' (Expressed Sequence Tag Database), 'gss' (Genome Survey Sequence Database), 'pccid' (PubChem Compound), 'pcsid' (PubChem Substance), and 'emdb' (Electron Microscopy Data Bank) values to the "type" attribute on the "accession" element.
+
 06.06.12
 . SCHEMA-67 - Changed all entname attributes to CDATA and added new entref attributes of type IDREF.
             - Added new elements entity-declarations and entity
@@ -1642,7 +1651,13 @@ serieshead?, tochead?, arttype, subarttype?, artcode?, subject*, classification*
 <!ELEMENT	artclass	(%straight-text;)*>
 
 <!ELEMENT 	subject						EMPTY>
-<!ATTLIST	subject			code  %code;      #REQUIRED>
+<!ATTLIST	subject			code  %code;      #IMPLIED
+            priority (1 | 0) "0"
+            id CDATA #IMPLIED
+            type (npg.subject | npg.technique) "npg.subject"
+            version CDATA #IMPLIED
+            path CDATA #IMPLIED
+>
 
 <!ELEMENT	classification	(title-text?)>
 <!ATTLIST	classification
@@ -1996,7 +2011,7 @@ language        %language;      #IMPLIED>
 <!--********************************************************************-->
 
 <!ELEMENT   edsumm                  (title?, p+)>
-<!ATTLIST   edsumm      type 	      (standfirst | regular | research-summary) "regular"
+<!ATTLIST   edsumm      type 	      (standfirst | regular | research-summary | editorial-notes) "regular"
                         publish     (issue | aop) "issue" >
 
 <!ELEMENT   websumm                 (%reftext;)*>
@@ -2758,7 +2773,7 @@ name CDATA #IMPLIED
 
 <!ELEMENT 	accession 		(#PCDATA)>
 <!ATTLIST 	accession
-		type (arrayexpress | bind | biomodels | bioproject | bmrb | ddbj | embl | ena | ensembl | genbank | geo | mgi | nuccore | pcaid | pdb | pride | sra | swiss-prot) "genbank">
+		type (arrayexpress | bind | biomodels | bioproject | bmrb | ddbj | embl | emdb | ena | ensembl | est | genbank | geo | gss | mgi | nuccore | pcaid | pccid | pcsid | pdb | pride | sra | swiss-prot) "genbank">
 
 <!ELEMENT scientific     (%straight-text; | %emphasis;)*>
 <!ATTLIST scientific    id CDATA #IMPLIED
