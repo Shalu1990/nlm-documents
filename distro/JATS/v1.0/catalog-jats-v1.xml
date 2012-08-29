@@ -180,7 +180,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
        - JATS DTD Suite common (shared) modules from external 
             sources (table models, MathML, general entity 
             sets, etc.)                                             -->
-
+<!--
      To set up a system-level catalog, set the xml:base to the
      appropriate URI. To work with relative files (such as in
      Oxygen) deelte the xml:base attribute.                         -->
@@ -309,8 +309,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!--                    JOURNAL PUBLISHING DTD (BLUE)               -->
 <!-- ============================================================== -->
 
-<group xml:base="file:///C:/Work/Tasks/DTDJournal/"
-         prefer="public">
+<group prefer="public">
 
   <public publicId="-//NLM//DTD JATS (Z39.96) Journal Publishing DTD v1.0 20120330//EN"
                uri="JATS-journalpublishing1.dtd"/>
@@ -337,8 +336,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!--                    ARCHIVING AND INTERCHANGE DTD (GREEN)       -->
 <!-- ============================================================== -->
 
-<group xml:base="file:///C:/Work/Tasks/DTDArchiving/"
-         prefer="public">
+<group prefer="public">
 
 
   <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.0 20120330//EN"
@@ -364,8 +362,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!-- ============================================================== -->
 
 
-<group xml:base="file:///C:/Work/Tasks/DTDAuthoring/"
-         prefer="public">
+<group prefer="public">
              
   <public publicId="-//NLM//DTD JATS (Z39.96) Article Authoring DTD v1.0 20120330//EN"
                uri="JATS-articleauthoring1.dtd"/>
@@ -388,8 +385,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!--                    NCBI BOOKSHELF DTDS (PURPLE)                -->
 <!-- ============================================================== -->
 
-<group xml:base="file:///C:/Work/Tasks/DTDBook/"
-         prefer="public">
+<group prefer="public">
 
 <!-- .............................................................. -->
 <!--                    NCBI BOOK DTD                               -->
@@ -441,8 +437,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!--                    ARCHIVING AND INTERCHANGE DTD OASIS DTD     -->
 <!-- ============================================================== -->
 
-<group xml:base="file:///C:/Work/Tasks/DTDArchiving-OASIS/"
-           prefer="public">
+<group prefer="public">
              
 
   <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables v1.0 20120330//EN"
@@ -460,11 +455,10 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!--                    JOURNAL PUBLISHING OASIS DTD                -->
 <!-- ============================================================== -->
 
-<group xml:base="file:///C:/Work/Tasks/DTDPublishing-OASIS/"
-         prefer="public">
+<group prefer="public">
 
   <public publicId="-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables v1.0 20120330//EN"
-               uri="JATS-journalpublishing-oasis1.dtd"/>
+               uri="JATS-journalpublishing-oasis-article1.dtd"/>
                
   <public publicId="-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables DTD-Specific Modules v1.0 20120330//EN"
                uri="JATS-journalpub-oasis-custom-modules1.ent"/>
@@ -480,8 +474,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!--                    MODULAR LIBRARY                             -->
 <!-- ============================================================== -->
 
-<group xml:base="file:///C:/Work/Tasks/Common/"
-         prefer="public">
+<group prefer="public">
 
 <!--                    MODULE OF MODULES                           -->
 
@@ -580,8 +573,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <!--                    CHARACTER-ENTITY SETS USED IN THE SUITE    -->
 <!-- ============================================================= -->
 
-<group xml:base="file:///C:/Work/Entities/"
-         prefer="public">
+<group prefer="public">
 
 <!-- .............................................................. -->
 <!--                    TABLES: XHTML TABLE MODULES                 -->
