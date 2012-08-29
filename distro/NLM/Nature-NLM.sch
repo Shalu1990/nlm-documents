@@ -507,7 +507,7 @@ Use the <let> element to define the attribute if necessary.
   
   <pattern><!--sec/@specific-use="heading-level-1" is a child of body-->
     <rule context="sec[@specific-use='heading-level-1']" role="error">
-      <assert id="sec3a" test="parent::body">Section heading level 1 should be a child of body - check nesting and "specific-use" attribute values.</assert>
+      <assert id="sec3a" test="parent::body|parent::abstract">Section heading level 1 should only be used in body or an abstract - check nesting and "specific-use" attribute values.</assert>
     </rule>
   </pattern>
   <pattern><!--sec/@specific-use="heading-level-2" is a child of sec heading level 1-->
@@ -814,8 +814,8 @@ Use the <let> element to define the attribute if necessary.
     </rule>
   </pattern>
   <pattern><!--bio - only p as child-->
-    <rule context="back/bio/*[not(self::p)]" role="error">
-      <report id="bio2" test=".">"bio" (author information section) in "back" should only contain paragraphs - do not use "<name/>".</report>
+    <rule context="back/bio/*[not(self::p|self::title)]" role="error">
+      <report id="bio2" test=".">"bio" (author information section) in "back" should only contain paragraphs or title - do not use "<name/>".</report>
     </rule>
   </pattern>
   <pattern><!--bio - no attributes used-->
