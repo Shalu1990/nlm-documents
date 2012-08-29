@@ -16,6 +16,16 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2012/08/23 - SCHEMA-77 - Added 'interactive' as possible value of "fig-type" on the element "fig".
+
+2012/08/23 - SCHEMA-76 - Added "accession" as a possible element in %data; Removed "accession" from %entry; "aff" "caff" and "p" in NPG_XML_Article.dtd and from "title" in Calstbl.dtd 
+
+2012/08/23 - SCHEMA-75 - Added 'box-figure' as possible value of "fig-type" on the element "fig".
+
+2012/07/03 - SCHEMA-69 - Created new optional element "article-link" within "pubfm", with required attributes 'link-type' and 'extrefid'.
+
+2012/06/28 - SCHEMA-68 - Added 'est' (Expressed Sequence Tag Database), 'gss' (Genome Survey Sequence Database), 'pccid' (PubChem Compound), 'pcsid' (PubChem Substance), and 'emdb' (Electron Microscopy Data Bank) values to the "type" attribute on the "accession" element. 
+
 2012/05/23 - SCHEMA-66 - Made "url" attribute on "ext-media" element optional.
 
 2012/05/18 - SCHEMA-65 - Created new optional element "cps" as child of "cpg" to contain copyright statement.
@@ -840,7 +850,7 @@ DTD Change History (yyyy/mm/dd format)
 <!ENTITY % textref "ancref | bibrinl | bxr | coder | deflistr | fdr | figr | fnr | fr | illorinl | infographicr | mediar | tablr | compoundr | schemer | ext-mediar | slideshowr | %entityref;">
 <!ENTITY % refs "%emptyref; | %textref;">
 <!ENTITY % links "natlink | sir | cir | url | weblink | xnav | xref">
-<!ENTITY % data "%straight-text; | %fontchng; | %controls; | %refs; | %links; | anchor | email | company | prod | brandname | term | scientific | code">
+<!ENTITY % data "%straight-text; | %fontchng; | %controls; | %refs; | %links; | accession | anchor | email | company | prod | brandname | term | scientific | code">
 <!ENTITY % author "%data; | fnm | snm | suff | ttl | inits">
 <!ENTITY % address "%data; | org | street | cty | co | st | zip | cny | prf">
 
@@ -851,7 +861,7 @@ DTD Change History (yyyy/mm/dd format)
 <!ENTITY % text "%data;">
 
 <!-- entity entry defines the elements allowed within table <entry> element -->
-<!ENTITY % entry "%data; | f | fd | fn | accession">
+<!ENTITY % entry "%data; | f | fd | fn ">
 
 <!-- entity reftxt contains elements used in citations, in <cite> and <bib><reftxt> -->
 <!ENTITY  % reftxt    "%data; | refau | jtl | atl | btl | iid | vid | ppf | ppl | cd | medline | f | fd | refdoi | pubdate | doc-id | article-number | contact">
@@ -941,7 +951,7 @@ guid CDATA #IMPLIED
                 url CDATA #IMPLIED>
 
 
-<!ELEMENT pubfm (jtl, vol?, iss?, idt?, artpubdt?, altlang?, conf?, section?, categ?, categtxt?, subcateg?, subcatxt?, subsubcateg?, subsubcatxt?, arthead?, artsubhead?, pp?, seq?, elocation?, cdn?, (issn+ | isbn), cpg, related-article*, nvid*, xrespond*, xrelate*, errorcor*, suppinfo?, assoc-file*, patent?, chghst?, keywordgrp?, subject*, technique*, article-grouping?, indications*, channel*, subclass*, (careerstage | discipline | region | sector)*, doi?, altdoi*, mtsno?, licence*)>
+<!ELEMENT pubfm (jtl, vol?, iss?, idt?, artpubdt?, altlang?, conf?, section?, categ?, categtxt?, subcateg?, subcatxt?, subsubcateg?, subsubcatxt?, arthead?, artsubhead?, pp?, seq?, elocation?, cdn?, (issn+ | isbn), cpg, related-article*, article-link*, nvid*, xrespond*, xrelate*, errorcor*, suppinfo?, assoc-file*, patent?, chghst?, keywordgrp?, subject*, technique*, article-grouping?, indications*, channel*, subclass*, (careerstage | discipline | region | sector)*, doi?, altdoi*, mtsno?, licence*)>
 
 <!ELEMENT jtl (%data;)*>
 <!ELEMENT vol (#PCDATA)>
@@ -1048,7 +1058,11 @@ type (electronic | print) "print"
   related-article-type (protocol | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol ) #REQUIRED
 >
 
-
+<!ELEMENT article-link EMPTY>
+<!ATTLIST article-link
+  extrefid  CDATA #REQUIRED
+  link-type (recommended) #REQUIRED
+>
 
 <!ELEMENT nvid EMPTY>
 <!ATTLIST nvid
@@ -1256,8 +1270,8 @@ refchar %refchars; #IMPLIED
 rid IDREF #REQUIRED
 refchar %refchars; #IMPLIED
 >
-<!ELEMENT aff (%address; | oid | accession)*>
-<!ELEMENT caff (%address; | coid | accession)*>
+<!ELEMENT aff (%address; | oid)*>
+<!ELEMENT caff (%address; | coid)*>
 <!ELEMENT coid EMPTY>
 <!ATTLIST coid
 id ID #REQUIRED
@@ -1327,7 +1341,7 @@ time CDATA #IMPLIED
 <!ELEMENT chgmade (%data;)*>
 <!ELEMENT chgreason (#PCDATA)>
 <!ELEMENT abs (p+)>
-<!ELEMENT p (%data; | f | fd | dformgrp | cite | contact | accession | list)*>
+<!ELEMENT p (%data; | f | fd | dformgrp | cite | contact | list)*>
 
 <!ELEMENT cite (%reftxt;)*>
 <!ATTLIST cite
@@ -1543,7 +1557,7 @@ type %notation; "bmp"
 entname CDATA #IMPLIED
 entref IDREF #IMPLIED
 file CDATA #IMPLIED
-fig-type (suppinfo) #IMPLIED
+fig-type (box-figure | interactive | suppinfo) #IMPLIED
 >
 
 <!ELEMENT subfig    EMPTY>
@@ -1780,7 +1794,7 @@ categ (genbank | bnl | pdb) #REQUIRED
 <!--"bnl" = Brookhaven National Laboratory; "pdb" = Protein Database-->
 <!ELEMENT accession (%data;)*>
 <!ATTLIST accession
-		type (arrayexpress | bind | biomodels | bioproject | bmrb | ddbj | embl | ena | ensembl | genbank | geo | mgi | nuccore | pcaid | pdb | pride | sra | swiss-prot) "genbank"
+		type (arrayexpress | bind | biomodels | bioproject | bmrb | ddbj | embl | emdb | ena | ensembl | est | genbank | geo | gss | mgi | nuccore | pcaid | pccid | pcsid | pdb | pride | sra | swiss-prot) "genbank"
 status (primary | secondary) "secondary"
 >
 <!-- Used for Company Disclaimers associated with Reviews articles -->

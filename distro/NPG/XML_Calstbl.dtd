@@ -2,6 +2,8 @@
 
 <!-- 
 
+2012/08/23 - SCHEMA-76 - Removed "accession" from "title" element 
+
 2012/05/16 - SCHEMA-63 Modified "table" to add new optional attribute "table-type" with allowed value "suppinfo" 
                        Made "tabcols" an optional attribute of table-->
 
@@ -105,7 +107,7 @@
 <!ATTLIST thead                  valign (top | middle | bottom) "bottom"
                                  %secur; >
 <!-- PD 2010/07/13 Modified title to allow accession element -->
-<!ELEMENT title                     (%text; | f | accession)* >
+<!ELEMENT title                     (%text; | f)* >
 <!ATTLIST title                     %secur; >
 
 <!ELEMENT colspec                             EMPTY >
