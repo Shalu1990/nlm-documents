@@ -1733,7 +1733,7 @@
         <foaf:homepage>http://www.nature.com/ejcn</foaf:homepage>
         <terms:targetDomain>nature.com</terms:targetDomain>
         <terms:content>fulltext</terms:content>
-        <dc:title>European Journal of Clinial Nutrition</dc:title>
+        <dc:title>European Journal of Clinical Nutrition</dc:title>
         
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/0954-3007"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1476-5640"/>
@@ -13353,7 +13353,7 @@
         <terms:targetDomain>nature.com</terms:targetDomain>
         <terms:collection>journals_nature</terms:collection>
         
-        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1471-7511"/>
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1741-7511"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1741-7503"/>
     </owl:Thing>
     
