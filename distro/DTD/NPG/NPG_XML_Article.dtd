@@ -16,6 +16,9 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2012/08/30 - SCHEMA-78 - Added a "datafile-type" attribute to the "datafile" element with values 'figure-data' (default) and 'interactive'.
+                         Removed 'interactive' as possible value of "fig-type" on the element "fig".
+
 2012/08/23 - SCHEMA-77 - Added 'interactive' as possible value of "fig-type" on the element "fig".
 
 2012/08/23 - SCHEMA-76 - Added "accession" as a possible element in %data; Removed "accession" from %entry; "aff" "caff" and "p" in NPG_XML_Article.dtd and from "title" in Calstbl.dtd 
@@ -861,7 +864,7 @@ DTD Change History (yyyy/mm/dd format)
 <!ENTITY % text "%data;">
 
 <!-- entity entry defines the elements allowed within table <entry> element -->
-<!ENTITY % entry "%data; | f | fd | fn ">
+<!ENTITY % entry "%data; | f | fd | fn">
 
 <!-- entity reftxt contains elements used in citations, in <cite> and <bib><reftxt> -->
 <!ENTITY  % reftxt    "%data; | refau | jtl | atl | btl | iid | vid | ppf | ppl | cd | medline | f | fd | refdoi | pubdate | doc-id | article-number | contact">
@@ -1557,7 +1560,7 @@ type %notation; "bmp"
 entname CDATA #IMPLIED
 entref IDREF #IMPLIED
 file CDATA #IMPLIED
-fig-type (box-figure | interactive | suppinfo) #IMPLIED
+fig-type (box-figure | suppinfo) #IMPLIED
 >
 
 <!ELEMENT subfig    EMPTY>
@@ -1571,6 +1574,7 @@ fig-type (box-figure | interactive | suppinfo) #IMPLIED
 
 <!ELEMENT datafile (label?)>
 <!ATTLIST datafile type %figure-data; "xls"
+                    datafile-type (figure-data | interactive) "figure-data" 
                     entname CDATA #IMPLIED
                     entref IDREF #IMPLIED>
 
