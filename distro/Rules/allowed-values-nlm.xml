@@ -49,6 +49,7 @@ Created - 20120208
   </abstract-types>
   <sec-types>
     <sec-type>materials</sec-type>
+    <sec-type>online-methods</sec-type>
     <sec-type>procedure</sec-type>
   </sec-types>
   <list-types>
