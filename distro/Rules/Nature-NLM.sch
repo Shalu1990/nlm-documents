@@ -496,7 +496,7 @@ Use the <let> element to define the attribute if necessary.
   <pattern><!--sec - sec-type is valid-->
     <rule context="sec[@sec-type]" role="error">
       <let name="secType" value="@sec-type"></let>
-      <assert id="sec2a" test="$allowed-values/sec-types/sec-type[.=$secType]">Unexpected value for "sec-type" attribute (<value-of select="$secType"/>). Allowed values are: materials, procedure. </assert>
+      <assert id="sec2a" test="$allowed-values/sec-types/sec-type[.=$secType]">Unexpected value for "sec-type" attribute (<value-of select="$secType"/>). Allowed values are: materials, online-methods, procedure. </assert>
     </rule>
   </pattern>
   <pattern><!--sec/@specific-use - follows expected syntax-->
@@ -512,12 +512,12 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
   <pattern><!--sec/@specific-use="heading-level-2" is a child of sec heading level 1-->
     <rule context="sec[@specific-use='heading-level-2']" role="error">
-      <assert id="sec3b" test="parent::sec/@specific-use='heading-level-1'">Section heading level 2 should be a child of section heading level 1 - check nesting and "specific-use" attribute values.</assert>
+      <assert id="sec3b" test="parent::sec[@specific-use='heading-level-1'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-1']">Section heading level 2 should be a child of section heading level 1 - check nesting and "specific-use" attribute values.</assert>
     </rule>
   </pattern>
   <pattern><!--sec/@specific-use="heading-level-3" is a child of sec heading level 2-->
     <rule context="sec[@specific-use='heading-level-3']" role="error">
-      <assert id="sec3c" test="parent::sec/@specific-use='heading-level-2'">Section heading level 3 should be a child of section heading level 2 - check nesting and "specific-use" attribute values.</assert>
+      <assert id="sec3c" test="parent::sec[@specific-use='heading-level-2'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-2']">Section heading level 3 should be a child of section heading level 2 - check nesting and "specific-use" attribute values.</assert>
     </rule>
   </pattern>
   <pattern><!--sec/@specific-use="heading-level-4" is a child of sec heading level 3-->
