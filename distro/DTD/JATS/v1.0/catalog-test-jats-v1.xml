@@ -69,8 +69,8 @@
 <!--                then please include the following statement    -->
 <!--                as a comment in all of your DTD modules:       -->
 <!--                   "Created from, and fully compatible with,   -->
-<!--                    the NISO Z39.96 Journal Article Tag Suite  -->
-<!--                    (JATS)."                                   -->
+<!--                    the ANSI/NISO Z39.96 Journal Article Tag   -->
+<!--                    Suite (JATS)."                             -->
 <!--                                                               -->
 <!--             2. If you alter one or more modules of the suite, -->
 <!--                then please rename your version and all its    -->
@@ -79,8 +79,8 @@
 <!--                following statement as a comment in all your   -->
 <!--                DTD modules:                                   -->
 <!--                   "Based in part on, but not fully compatible -->
-<!--                    with, the NISO Z39.96 Journal Article Tag  -->
-<!--                    Suite."                                    -->
+<!--                    with, the ANSI/NISO Z39.96 Journal Article -->
+<!--                    Tag Suite (JATS)."                         -->
 <!--                                                               -->
 <!-- ORIGINAL CREATION DATE:                                       -->
 <!--             June 2002                                         -->
@@ -123,9 +123,11 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
      =============================================================
      NISO JATS Version 1.0             (DAL/BTU) v1.0 (2012-xx-xx)
    
-   
-     If approved by the voting members of NISO, this will become the
-     Version 1.0 NISO JATS Z39.96-2012 NISO Standard. 
+     ANSI/NISO Z39.96-2012 (Version 1.0) 
+
+     Details concerning ANSI/NISO Z39.96-2012 JATS-based DTDs, XSDs, 
+     RNGs and supporting documentation are available at
+           http://jats.nlm.nih.gov/1.0/
    
  3 . Replaced OASIS modules to enhance control of OASIS 
      namespace and namespace prefix. (v1.0 20120330//EN")
@@ -179,7 +181,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
        - JATS DTD Suite common (shared) modules
        - JATS DTD Suite common (shared) modules from external 
             sources (table models, MathML, general entity 
-            sets, etc.)                                             -->
+            sets, etc.)                                         
 
      To set up a system-level catalog, set the xml:base to the
      appropriate URI. To work with relative files (such as in
@@ -340,14 +342,13 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
 <group 
          prefer="public">
 
-
-  <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.0 20120330//EN"
+  <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.0 20120330//EN" 
                uri="JATS-archivearticle1.dtd"/>
 
-  <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving DTD-Specific Modules v1.0 20120330//EN"
+  <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving DTD-Specific Modules v1.0 20120330//EN" 
                uri="JATS-archivecustom-modules1.ent"/>
 
-  <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving DTD Customize Classes Module v1.0 20120330//EN"
+  <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving DTD Customize Classes Module v1.0 20120330//EN" 
                uri="JATS-archivecustom-classes1.ent"/>
 
   <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving DTD Customize Mixes Module v1.0 20120330//EN"
@@ -448,7 +449,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
   <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables v1.0 20120330//EN"
                uri="JATS-archive-oasis-article1.dtd"/>
 
-  <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables DTD-Specific Modules v1.0 20120330//EN"
+  <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables  DTD-Specific Modules v1.0 20120330//EN"
                uri="JATS-archive-oasis-custom-modules1.ent"/>
 
   <public publicId="-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables Customize Classes Module v1.0 20120330//EN"
@@ -464,14 +465,73 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
          prefer="public">
 
   <public publicId="-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables v1.0 20120330//EN"
-               uri="JATS-journalpublishing-oasis1.dtd"/>
-               
+               uri="JATS-journalpublishing-oasis-article1.dtd"/>
+ 
   <public publicId="-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables DTD-Specific Modules v1.0 20120330//EN"
                uri="JATS-journalpub-oasis-custom-modules1.ent"/>
 
   <public publicId="-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables Customize Classes v1.0 20120330//EN"
                uri="JATS-journalpub-oasis-custom-classes1.ent"/>
 
+</group>
+
+
+<!-- ============================================================== -->
+<!--                    BITS BOOK INTERCHANGE DTD                   -->
+<!-- ============================================================== -->
+
+<group 
+         prefer="public">
+
+  <public publicId="-//NLM//DTD BITS Book Interchange DTD v0.1 20120710//EN"
+               uri="BITS-book0.dtd"/>
+
+
+  <public publicId="-//NLM//DTD BITS Book Interchange DTD-Specific Modules v0.1 20120710//EN" 
+               uri="BITS-bookcustom-modules0.ent"/>
+
+
+  <public publicId="-//NLM//DTD BITS Book Interchange DTD Customize Classes Module v0.1 20120710//EN" 
+               uri="BITS-bookcustom-classes0.ent"/>
+
+
+  <public publicId="-//NLM//DTD BITS Book Interchange DTD Customize Mixes Module v0.1 20120710//EN"
+               uri="BITS-bookcustom-mixes0.ent"/>
+
+
+  <public publicId="-//NLM//DTD BITS Book Interchange DTD Customize Content and Attributes Module v0.1 20120710//EN" 
+               uri="BITS-bookcustom-models0.ent"/>
+               
+</group>
+
+
+<!-- ============================================================== -->
+<!--                    BITS DTD SUITE                              -->
+<!--                    MODULAR LIBRARY                             -->
+<!-- ============================================================== -->
+
+<group 
+         prefer="public">
+
+
+  <public publicId="-//NLM//DTD BITS Book Metadata Elements Module v0.1 20120710//EN"  
+               uri="BITS-bookmeta0.ent"/> 
+
+  <public publicId="-//NLM//DTD BITS Book Component Elements v0.1 20120710//EN"  
+               uri="BITS-book-part0.ent"/> 
+
+  <public publicId="-//NLM//DTD BITS Structural Table of Contents Module v0.1 20120710//EN"
+               uri="BITS-toc0.ent"/> 
+
+  <public publicId="-//NLM//DTD BITS Structural Index Elements Module v0.1 20120710//EN" 
+               uri="BITS-index0.ent"/> 
+
+  <public publicId="-//NLM//DTD BITS Embedded Index Element Module v0.1 20120710//EN"
+               uri="BITS-embedded-index0.ent"/> 
+
+  <public publicId="-//NLM//DTD BITS Table of Contents and Index Navigation Module v0.1 20120710//EN"
+               uri="BITS-toc-index-nav0.ent"/> 
+ 
 </group>
 
 

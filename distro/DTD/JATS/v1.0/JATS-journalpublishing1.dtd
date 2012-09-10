@@ -1,6 +1,6 @@
 <!-- ============================================================= -->
 <!--  MODULE:    Journal Publishing DTD                            -->
-<!--  VERSION:   NISO JATS 1.0                                     -->
+<!--  VERSION:   ANSI/NISO JATS Version 1.0 (Z39.96-2012)          -->
 <!--  DATE:      March 2012                                        -->
 <!--                                                               -->
 <!-- ============================================================= -->
@@ -23,8 +23,8 @@
 <!-- PURPOSE:    DTD for creation of new journal articles          -->
 <!--                                                               -->
 <!--             The Journal Publishing DTD is an application of   -->
-<!--             the NISO Z39.96 Journal Publishing Tag Set. It    --> 
-<!--             is a subset of the Journal Archiving and          -->
+<!--             the ANSI/NISO Z39.96 Journal Publishing Tag Set.  --> 
+<!--             IT is a subset of the Journal Archiving and       -->
 <!--             Interchange DTD that is optimized for the         -->
 <!--             creation or publishing of existing journal        -->
 <!--             articles and some non-article material such as    -->
@@ -67,8 +67,8 @@
 <!--                then please include the following statement    -->
 <!--                as a comment in all of your DTD modules:       -->
 <!--                   "Created from, and fully compatible with,   -->
-<!--                    the NISO Z39.96 Journal Article Tag Suite  -->
-<!--                    (JATS)."                                   -->
+<!--                    the ANSI/NISO Z39.96 Journal Article Tag   -->
+<!--                    Suite (JATS)."                             -->
 <!--                                                               -->
 <!--             2. If you alter one or more modules of the suite, -->
 <!--                then please rename your version and all its    -->
@@ -77,8 +77,8 @@
 <!--                following statement as a comment in all your   -->
 <!--                DTD modules:                                   -->
 <!--                   "Based in part on, but not fully compatible -->
-<!--                    with, the NISO Z39.96 Journal Article Tag  -->
-<!--                    Suite."                                    -->
+<!--                    with, the ANSI/NISO Z39.96 Journal Article -->
+<!--                    Tag Suite (JATS)."                         -->
 <!--                                                               -->
 <!-- ORIGINAL CREATION DATE:                                       -->
 <!--             February 2003                                     -->
@@ -108,8 +108,11 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
      =============================================================
      NISO JATS Version 1.0             (DAL/BTU) v1.0 (2012-xx-xx)
    
-     If approved by the voting members of NISO, this will become the
-     Version 1.0 NISO JATS Z39.96-2012 NISO Standard. 
+     ANSI/NISO Z39.96-2012 (Version 1.0) 
+
+     Details concerning ANSI/NISO Z39.96-2012 JATS-based DTDs, XSDs, 
+     RNGs and supporting documentation are available at
+           http://jats.nlm.nih.gov/1.0/
    
  11. RELATED OBJECT - Added <related-object> everywhere
      <related-article> was used, including inside 
@@ -177,7 +180,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
      web site at http://dtd.nlm.nih.gov.
 
      Details on version 3.0 are available at
-           http://jats.nlm.nih.gov/3.0.
+           http://dtd.nlm.nih.gov/3.0.
 
   2. Changed default @xml:lang from "EN" from "en" to match latest
      RFC 4646/W3C/IANA Subtag Registry recommendations

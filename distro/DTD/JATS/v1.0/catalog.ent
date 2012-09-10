@@ -7,9 +7,12 @@
 --                                                              --
 --   Change History:                                            --
 --                                                              --
+--   April 2012:                                                --
+--   7. Added BITS Book DTD verison 0.1                         --
+--                                                              --
 --   February 2012:                                             --
 --   6. Replaced OASIS modules to enhance control of OASIS      --
---        namespace and namespace prefix.                       --
+--      namespace and namespace prefix.                         --
 --                           -v1.0 20120330//EN"                --
 --                                                              --
 --   5. All fpis and file names changed for                     --
@@ -46,10 +49,10 @@ PUBLIC  "-//NLM//DTD JATS (Z39.96) NLM Citation v1.0 20120330//EN" "JATS-nlmcita
 --   *********************************************************  --
 
 
---              JOURNAL ARCHIVING AND INTERCHANGE DTD (Green)    --
+--               JOURNAL ARCHIVING AND INTERCHANGE DTD (GREEN)    --
 PUBLIC  "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD v1.0 20120330//EN" "JATS-archivearticle1.dtd"
 
---              JOURNAL ARCHIVING AND INTERCHANGE DTD CUSTOMIZATIONS --
+--               JOURNAL ARCHIVING AND INTERCHANGE DTD CUSTOMIZATIONS --
 
 PUBLIC  "-//NLM//DTD JATS (Z39.96) Journal Archiving DTD-Specific Modules v1.0 20120330//EN" "JATS-archivecustom-modules1.ent"
 PUBLIC  "-//NLM//DTD JATS (Z39.96) Journal Archiving DTD Customize Classes Module v1.0 20120330//EN" "JATS-archivecustom-classes1.ent"
@@ -71,7 +74,28 @@ PUBLIC "-//NLM//DTD JATS (Z39.96) Article Authoring DTD Over-ride Content and At
 
 --   *********************************************************  --
 --                                                              --
---              NCBI BOOK DTD AND BOOK COLLECTION DTD (PURPLE)  --
+--              BITS BOOK INTERCHANGE DTD                       --
+PUBLIC  "-//NLM//DTD BITS Book Interchange DTD v0.1 20120710//EN" "BITS-book0.dtd"
+
+--              BITS BOOK INTERCHANGE DTD CUSTOMIZATIONS        --
+
+PUBLIC  "-//NLM//DTD BITS Book Interchange DTD-Specific Modules v0.1 20120710//EN" "BITS-bookcustom-modules0.ent"
+PUBLIC  "-//NLM//DTD BITS Book Interchange DTD Customize Classes Module v0.1 20120710//EN" "BITS-bookcustom-classes0.ent"
+PUBLIC  "-//NLM//DTD BITS Book Interchange DTD Customize Mixes Module v0.1 20120710//EN" "BITS-bookcustom-mixes0.ent"
+PUBLIC  "-//NLM//DTD BITS Book Interchange DTD Customize Content and Attributes Module v0.1 20120710//EN" "BITS-bookcustom-models0.ent"
+
+--              BITS DTD SUITE MODULES                         --
+
+PUBLIC "-//NLM//DTD BITS Book Metadata Elements Module v0.1 20120710//EN" "BITS-bookmeta0.ent"
+PUBLIC "-//NLM//DTD BITS Book Component Elements v0.1 20120710//EN" "BITS-book-part0.ent"  
+PUBLIC "-//NLM//DTD BITS Structural Table of Contents Module v0.1 20120710//EN" "BITS-toc0.ent"
+PUBLIC "-//NLM//DTD BITS Structural Index Elements Module v0.1 20120710//EN" "BITS-index0.ent"
+PUBLIC "-//NLM//DTD BITS Embedded Index Element Module v0.1 20120710//EN" "BITS-embedded-index0.ent" 
+PUBLIC "-//NLM//DTD BITS Table of Contents and Index Navigation Module v0.1 20120710//EN" "BITS-toc-index-nav0.ent"
+
+--   *********************************************************  --
+--                                                              --
+--              NCBI BOOKSHELF DTD AND BOOK COLLECTION DTD (PURPLE)  --
 PUBLIC  "-//NLM//DTD Book DTD v3.1 20110131//EN" "book.dtd"
 PUBLIC  "-//NLM//DTD NCBI Book Collection DTD v3.1 20110131//EN" "bookcollection3.dtd"
 
@@ -92,9 +116,9 @@ PUBLIC  "-//NLM//DTD NCBI Book DTD Book Component Metadata Elements v3.1 2011013
 --              JOURNAL ARTICLE ARCHIVING OASIS DTD             --
 --              THIS DTD USES BOTH XHTML AND OASIS              --
 --              EXCHANGE CALS TABLE MODEL (prefixed "oasis")    --
-PUBLIC  "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables v1.0 20120330//EN" "JATS-archive-oasis-article1.dtd"
-PUBLIC  "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables DTD-Specific Modules v1.0 20120330//EN" "JATS-archive-oasis-custom-modules1.ent"
-PUBLIC  "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables Customize Classes Module v1.0 20120330//EN" "JATS-archive-oasis-custom-classes1.ent"
+PUBLIC  "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables v1.0 20120330//EN" "JATS-archive-oasis-article1.dtd" 
+PUBLIC  "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables  DTD-Specific Modules v1.0 20120330//EN" "JATS-archive-oasis-custom-modules1.ent" 
+PUBLIC  "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with OASIS Tables Customize Classes Module v1.0 20120330//EN" "JATS-archive-oasis-custom-classes1.ent" 
 
 PUBLIC  "-//NLM//DTD JATS OASIS Table Namespace Module v1.0 20120330//EN" "JATS-oasis-namespace1.ent"
 --                                                              --
@@ -103,7 +127,7 @@ PUBLIC  "-//NLM//DTD JATS OASIS Table Namespace Module v1.0 20120330//EN" "JATS-
 --                                                              --
 
 --              JOURNAL ARTICLE PUBLISHING OASIS DTD             --
-PUBLIC  "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables v1.0 20120330//EN"" "JATS-journalpublishing-oasis1.dtd"
+PUBLIC  "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables v1.0 20120330//EN" "JATS-journalpublishing-oasis-article1.dtd"
 PUBLIC  "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables DTD-Specific Modules v1.0 20120330//EN"" "JATS-journalpub-oasis-custom-modules1.ent" 
 PUBLIC  "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables Customize Classes v1.0 20120330//EN" "JATS-journalpub-oasis-custom-classes1.ent" 
 
@@ -189,6 +213,8 @@ PUBLIC  "-//W3C//ENTITIES Math Alphabets: Open Face for MathML 2.0//EN" "iso9573
 --                                                                     --
 PUBLIC  "-//OASIS//DTD XML Exchange Table Model 19990315//EN" "oasis-exchange.ent"
 PUBLIC  "-//NLM//DTD JATS (Z39.96) Namespaced OASIS XML Table Setup Module v1.0 20120330//EN" "JATS-oasis-tablesetup1.ent"
+PUBLIC  "-//NLM//DTD JATS OASIS Table Namespace Module v1.0 20120330//EN" "JATS-oasis-namespace1.ent"
+
 
 --                                                                           --
 -- ******** END NLM-NCBI PUBLISHING, ARCHIVING, BOOK, AUTHORING CATALOG **** --

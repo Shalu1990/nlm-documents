@@ -1,6 +1,6 @@
 <!-- ============================================================= -->
 <!--  MODULE:    OASIS Table Namespace Module                      -->
-<!--  VERSION:   NISO JATS 1.0                                     -->
+<!--  VERSION:   ANSI/NISO JATS Version 1.0 (Z39.96-2012)          -->
 <!--  DATE:      March 2012                                        -->
 <!--                                                               -->
 <!-- ============================================================= -->
@@ -18,7 +18,7 @@
 <!-- SYSTEM:     OASIS-Table Version of the JATS DTD Suite         -->
 <!--                                                               -->
 <!-- PURPOSE:    Establish the prefix for the OASIS CALS Exchange  -->
-<!--             Table model, typically "oasis" (<oasis:table).    -->
+<!--             Table model, typically "oasis" (<oasis:table>).   -->
 <!--                                                               -->
 <!-- TAG SET SPONSOR                                               -->
 <!--             National Center for Biotechnology                 -->
@@ -52,8 +52,8 @@
 <!--                then please include the following statement    -->
 <!--                as a comment in all of your DTD modules:       -->
 <!--                   "Created from, and fully compatible with,   -->
-<!--                    the NISO Z39.96 Journal Article Tag Suite  -->
-<!--                    (JATS)."                                   -->
+<!--                    the ANSI/NISO Z39.96 Journal Article Tag   -->
+<!--                    Suite (JATS)."                             -->
 <!--                                                               -->
 <!--             2. If you alter one or more modules of the suite, -->
 <!--                then please rename your version and all its    -->
@@ -62,8 +62,8 @@
 <!--                following statement as a comment in all your   -->
 <!--                DTD modules:                                   -->
 <!--                   "Based in part on, but not fully compatible -->
-<!--                    with, the NISO Z39.96 Journal Article Tag  -->
-<!--                    Suite."                                    -->
+<!--                    with, the ANSI/NISO Z39.96 Journal Article -->
+<!--                    Tag Suite (JATS)."                         -->
 <!--                                                               -->
 <!-- ORIGINAL CREATION DATE:                                       -->
 <!--             February 2012                                     -->
@@ -91,6 +91,10 @@
 Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
    
      =============================================================
+
+     Details concerning ANSI/NISO Z39.96-2012 JATS-based DTDs, XSDs, 
+     RNGs and supporting documentation are available at
+           http://jats.nlm.nih.gov/1.0/
                                                                    -->
 
 <!-- ============================================================= -->

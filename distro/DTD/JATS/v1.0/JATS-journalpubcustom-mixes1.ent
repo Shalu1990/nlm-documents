@@ -1,6 +1,6 @@
 <!-- ============================================================= -->
 <!--  MODULE:    Journal Publishing DTD Customize Mixes Module     -->
-<!--  VERSION:   NISO JATS 1.0                                     -->
+<!--  VERSION:   ANSI/NISO JATS Version 1.0 (Z39.96-2012)          -->
 <!--  DATE:      March 2012                                        -->
 <!--                                                               -->
 <!-- ============================================================= -->
@@ -60,8 +60,8 @@ Delivered as file "JATS-journalpubcustom-mixes1.ent"               -->
 <!--                then please include the following statement    -->
 <!--                as a comment in all of your DTD modules:       -->
 <!--                   "Created from, and fully compatible with,   -->
-<!--                    the NISO Z39.96 Journal Article Tag Suite  -->
-<!--                    (JATS)."                                   -->
+<!--                    the ANSI/NISO Z39.96 Journal Article Tag   -->
+<!--                    Suite (JATS)."                             -->
 <!--                                                               -->
 <!--             2. If you alter one or more modules of the suite, -->
 <!--                then please rename your version and all its    -->
@@ -70,8 +70,8 @@ Delivered as file "JATS-journalpubcustom-mixes1.ent"               -->
 <!--                following statement as a comment in all your   -->
 <!--                DTD modules:                                   -->
 <!--                   "Based in part on, but not fully compatible -->
-<!--                    with, the NISO Z39.96 Journal Article Tag  -->
-<!--                    Suite."                                    -->
+<!--                    with, the ANSI/NISO Z39.96 Journal Article -->
+<!--                    Tag Suite (JATS)."                         -->
 <!--                                                               -->
 <!-- ORIGINAL CREATION DATE:                                       -->
 <!--             September 2004                                    -->
@@ -101,8 +101,11 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
      =============================================================
      NISO JATS Version 1.0             (DAL/BTU) v1.0 (2012-xx-xx)
    
-     If approved by the voting members of NISO, this will become the
-     Version 1.0 NISO JATS Z39.96-2012 NISO Standard. 
+     ANSI/NISO Z39.96-2012 (Version 1.0) 
+
+     Details concerning ANSI/NISO Z39.96-2012 JATS-based DTDs, XSDs, 
+     RNGs and supporting documentation are available at
+           http://jats.nlm.nih.gov/1.0/
    
   4. Updated the DTD-version attribute to "1.0" and the formal
      public identifier to the date: "v1.0 20120330//EN".
@@ -138,7 +141,7 @@ Version  Reason/Occasion                   (who) vx.x (yyyy-mm-dd)
      web site at http://dtd.nlm.nih.gov.
 
      Details on version 3.0 are available at
-           http://jats.nlm.nih.gov/3.0.
+           http://dtd.nlm.nih.gov/3.0.
 
   1. Updated public identifier to "v3.0 20080202//EN"              -->
 
