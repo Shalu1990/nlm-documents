@@ -302,17 +302,17 @@ Use the <let> element to define the attribute if necessary.
     </rule>
   </pattern>
   
-  <pattern>
-    <rule context="volume[parent::article-meta] | issue[parent::article-meta] | fpage[parent::article-meta] | lpage[parent::article-meta] | page-count/@count" role="error">
+  <pattern><!--fpage[parent::article-meta] |-->
+    <rule context="volume[parent::article-meta] | issue[parent::article-meta] | lpage[parent::article-meta] | page-count/@count" role="error">
       <assert id="artinfo2" test="not(normalize-space(.) or *) or matches(.,'^[0-9]+$')">Invalid value for "<name/>" (<value-of select="."/>) - this should only contain numerals.</assert>
     </rule>
   </pattern>
   
-  <pattern>
+  <!--<pattern>
     <rule context="fpage[normalize-space(.) or *][parent::article-meta]" role="error">
       <assert id="artinfo3a" test="following-sibling::lpage and following-sibling::counts/page-count">As "fpage" is used, we also expect "lpage" and "counts"/"page-count" elements to be used in article metadata.</assert>
     </rule>
-  </pattern>
+  </pattern>-->
   <pattern>
     <rule context="counts[page-count]" role="error">
       <assert id="artinfo3b" test="preceding-sibling::fpage">As "page-count" is used, we also expect "fpage" and "lpage" elements to be used in article metadata. Please check if "page-count" should have been used.</assert>
@@ -436,11 +436,11 @@ Use the <let> element to define the attribute if necessary.
   <pattern><!--valid @abstract-type-->
     <rule context="abstract[@abstract-type]" role="error">
       <let name="abstractType" value="@abstract-type"/>
-      <assert id="abs1" test="$allowed-values/abstract-types/abstract-type[.=$abstractType]">Unexpected value for "abstract-type" attribute (<value-of select="$abstractType"/>). Allowed values are: editor, executive-summary, first-paragraph, key-points, standfirst, synopsis, toc, toc-note, web-summary.</assert>
+      <assert id="abs1" test="$allowed-values/abstract-types/abstract-type[.=$abstractType]">Unexpected value for "abstract-type" attribute (<value-of select="$abstractType"/>). Allowed values are: editor, editor-standfirst, editorial-notes, executive-summary, first-paragraph, key-points, research-summary, standfirst, synopsis, toc, toc-note, web-summary.</assert>
     </rule>
   </pattern>
   <pattern><!--only one of each abstract type used-->
-    <rule context="abstract[not(@abstract-type='editor')]" role="error">
+    <rule context="abstract[not(@abstract-type='editor' or @abstract-type='editor-standfirst' or @abstract-type='research-summary' or @abstract-type='editorial-notes')]" role="error">
       <report id="abs2a" test="@abstract-type=./preceding-sibling::abstract/@abstract-type">Only one abstract of type "<value-of select="@abstract-type"/>" should appear in an article.</report>
     </rule>
   </pattern>
@@ -457,13 +457,29 @@ Use the <let> element to define the attribute if necessary.
   </pattern>  
 
   <pattern><!--editor summary specific-use attribute equal to 'aop' or 'issue'-->
-    <rule context="abstract[@abstract-type='editor'][@specific-use]" role="error">
+    <rule context="abstract[@abstract-type='editor' or @abstract-type='editor-standfirst' or @abstract-type='research-summary' or @abstract-type='editorial-notes'][@specific-use]" role="error">
       <assert id="abs4a" test="@specific-use='aop' or @specific-use='issue'">Unexpected value (<value-of select="@specific-use"/>) for "specific-use" attribute on editor abstracts. Allowed values are "aop" or "issue".</assert>
     </rule>
   </pattern>
   <pattern><!--only one of each specific-use type used in editor summaries-->
     <rule context="abstract[@abstract-type='editor'][@specific-use]" role="error">
-      <report id="abs4b" test="@specific-use=./preceding-sibling::abstract[@abstract-type='editor']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear in each article.</report>
+      <report id="abs4b" test="@specific-use=./preceding-sibling::abstract[@abstract-type='editor']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear on editor abstract in each article.</report>
+    </rule>
+  </pattern>
+  
+  <pattern>
+    <rule context="abstract[@abstract-type='editor-standfirst'][@specific-use]" role="error">
+      <report id="abs4c" test="@specific-use=./preceding-sibling::abstract[@abstract-type='editor-standfirst']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear on editor-standfirst in each article.</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="abstract[@abstract-type='research-summary'][@specific-use]" role="error">
+      <report id="abs4d" test="@specific-use=./preceding-sibling::abstract[@abstract-type='research-summary']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear on research-summary in each article.</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="abstract[@abstract-type='editorial-notes'][@specific-use]" role="error">
+      <report id="abs4e" test="@specific-use=./preceding-sibling::abstract[@abstract-type='editorial-notes']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear on research-summary in each article.</report>
     </rule>
   </pattern>
   
@@ -507,7 +523,7 @@ Use the <let> element to define the attribute if necessary.
   
   <pattern><!--sec/@specific-use="heading-level-1" is a child of body-->
     <rule context="sec[@specific-use='heading-level-1']" role="error">
-      <assert id="sec3a" test="parent::body|parent::abstract">Section heading level 1 should only be used in body or an abstract - check nesting and "specific-use" attribute values.</assert>
+      <assert id="sec3a" test="parent::body|parent::abstract|parent::app">Section heading level 1 should only be used in body, abstract or app - check nesting and "specific-use" attribute values.</assert>
     </rule>
   </pattern>
   <pattern><!--sec/@specific-use="heading-level-2" is a child of sec heading level 1-->
@@ -785,11 +801,6 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
   
   <pattern><!--app - no attributes used-->
-    <rule context="app">
-      <report id="app5a" test="@id">Unnecessary use of "id" attribute on "app" element.</report>
-    </rule>
-  </pattern>
-  <pattern>
     <rule context="app">
       <report id="app5b" test="@content-type">Unnecessary use of "content-type" attribute on "app" element.</report>
     </rule>
