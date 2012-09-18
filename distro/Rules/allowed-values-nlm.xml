@@ -26,7 +26,7 @@ Created - 20120208
     <pub-type>ppub</pub-type>
     <pub-type>epreprint</pub-type>
     <pub-type>embargo</pub-type>
-  <pub-type>cover-date</pub-type>
+    <pub-type>cover-date</pub-type>
   </pub-types>
   <date-types>
     <date-type>created</date-type>
@@ -41,11 +41,14 @@ Created - 20120208
     <abstract-type>toc</abstract-type>
     <abstract-type>toc-note</abstract-type>
     <abstract-type>editor</abstract-type>
+    <abstract-type>editor-standfirst</abstract-type>
     <abstract-type>synopsis</abstract-type>
     <abstract-type>standfirst</abstract-type>
     <abstract-type>first-paragraph</abstract-type>
     <abstract-type>executive-summary</abstract-type>
     <abstract-type>key-points</abstract-type>
+    <abstract-type>research-summary</abstract-type>
+    <abstract-type>editorial-notes</abstract-type>
   </abstract-types>
   <sec-types>
     <sec-type>materials</sec-type>
@@ -59,7 +62,7 @@ Created - 20120208
     <list-type>lcletter</list-type>
     <list-type>ucroman</list-type>
     <list-type>lcroman</list-type>
-  <list-type>none</list-type>
+    <list-type>none</list-type>
   </list-types>
   <content-types>
     <content-type>greeting</content-type>
