@@ -563,8 +563,8 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
   
   <pattern><!--sec - sec-type or specific-use attribute used-->
-    <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/boxed-text | sec/chem-struct-wrap | sec/fig | sec/fig-group | sec/graphic | sec/media | sec/preformat | sec/supplementary-material | sec/table-wrap | sec/table-wrap-group | sec/disp-formula | sec/disp-formula-group | sec/def-list | sec/text-math | sec/mml:math | sec/related-article | sec/related-object | sec/disp-quote | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list" role="error">
-      <report id="sec4" test=".">Children of "sec" should only be "title", "p" or "sec" - do not use "<name/>".</report>
+    <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/boxed-text | sec/chem-struct-wrap | sec/fig | sec/fig-group | sec/graphic | sec/media | sec/preformat | sec/supplementary-material | sec/table-wrap | sec/table-wrap-group | sec/disp-formula-group | sec/def-list | sec/text-math | sec/mml:math | sec/related-article | sec/related-object | sec/disp-quote | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list" role="error">
+      <report id="sec4" test=".">Children of "sec" should only be "title", "p", "sec" or "disp-formula" - do not use "<name/>".</report>
     </rule>
   </pattern>
   
