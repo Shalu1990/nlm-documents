@@ -16,6 +16,10 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2012/11/15 - SCHEMA-81 - Added new values ("docx", "png" and "xlsx") to %figure-data (used for datafile "type" attribute).
+
+2012/09/26 - SCHEMA-79 - Add new values ("is-protocol-update-to" and "has-protocol-update") to "related-article-type" attribute of "related-article"
+
 2012/08/30 - SCHEMA-78 - Added a "datafile-type" attribute to the "datafile" element with values 'figure-data' (default) and 'interactive'.
                          Removed 'interactive' as possible value of "fig-type" on the element "fig".
 
@@ -25,7 +29,7 @@ DTD Change History (yyyy/mm/dd format)
 
 2012/08/23 - SCHEMA-75 - Added 'box-figure' as possible value of "fig-type" on the element "fig".
 
-2012/07/03 - SCHEMA-69 - Created new optional element "article-link" within "pubfm", with required attributes 'link-type' and 'extrefid'.
+2012/07/03 - SCHEMA-71 - Created new optional element "article-link" within "pubfm", with required attributes 'link-type' and 'extrefid'.
 
 2012/06/28 - SCHEMA-68 - Added 'est' (Expressed Sequence Tag Database), 'gss' (Genome Survey Sequence Database), 'pccid' (PubChem Compound), 'pcsid' (PubChem Substance), and 'emdb' (Electron Microscopy Data Bank) values to the "type" attribute on the "accession" element. 
 
@@ -900,7 +904,7 @@ DTD Change History (yyyy/mm/dd format)
 <!-- The following notation values denote the format of the Supplementary Object or document. If the format is not known at time of conversion, choose "unknown" -->
 <!ENTITY % notation "(avi | bmp | c | cdx | cif | csv | default | doc | docm | docx | dot | eps | exe | gif | htm | html | icb | item | jdx | jpeg | jpg | mol | mov | mp4 | mp3 | mpg | noa | ole | pdb | pdf | pict | png | pps | ppt | pptm | pptx | ps | qt | ra | rtf | rv | sbml | sdf | sif | swf | tar | tex | tgz | tiff | timeline | txt | wav | wmf | wmv | wp | xls | xlsm | xlsx | xml | zip | unknown)">
 
-<!ENTITY % figure-data "(csv | doc | gif | jpeg | jpg | pdf | txt | xls | xml | zip)">
+<!ENTITY % figure-data "(csv | doc | docx | gif | jpeg | jpg | pdf | png | txt | xls | xlsx | xml | zip)">
 
 
 <!ENTITY % tocshow  "tocshow | toconly | notoc" >
@@ -1058,7 +1062,7 @@ type (electronic | print) "print"
   id   ID  #IMPLIED
   extrefid  CDATA #REQUIRED
   extrefid-type (uri | doi | local-path) "doi"
-  related-article-type (protocol | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol ) #REQUIRED
+  related-article-type (protocol | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol | is-protocol-update-to | has-protocol-update) #REQUIRED
 >
 
 <!ELEMENT article-link EMPTY>
