@@ -567,7 +567,7 @@
     <terms:Product rdf:about="ap">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <skos:altLabel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ap</skos:altLabel>
-        <dc:title>Acta Policica</dc:title>
+        <dc:title>Acta Politica</dc:title>
         <terms:targetDomain>palgrave-journals.com</terms:targetDomain>
         <terms:npgid>256</terms:npgid>
         <terms:pcode>ap</terms:pcode>
@@ -1551,6 +1551,33 @@
         <terms:dateStart>1997-07</terms:dateStart>
     </terms:Coverage>
 
+    <!-- http://ns.nature.com/products/cti -->
+
+    <terms:Product rdf:about="cti">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <skos:altLabel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">cti</skos:altLabel>
+        <skos:altLabel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clin Trans Immunol</skos:altLabel>
+        <terms:pcode>cti</terms:pcode>
+        <terms:hasCoverage rdf:resource="cti_coverage"/>
+        <terms:collection>journals_nature</terms:collection>
+        <terms:content>fulltext</terms:content>
+        <dc:title>Clinical &amp; Translational Immunology</dc:title>
+        <terms:npgid>549800</terms:npgid>
+        <terms:targetDomain>nature.com</terms:targetDomain>
+        <foaf:homepage>http://www.nature.com/cti/index.html</foaf:homepage>
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/2050-0068"/>
+    </terms:Product>
+    
+    <!-- http://ns.nature.com/products/cti_coverage-->
+    <terms:Coverage rdf:about="cti_coverage">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <terms:volumeStart>1</terms:volumeStart>
+        <terms:moving>true</terms:moving>
+        <terms:issueStart>11</terms:issueStart>
+        <terms:dateStart>2012-11</terms:dateStart>
+    </terms:Coverage>
+
+
     <!-- http://ns.nature.com/products/dam -->
 
     <terms:Product rdf:about="dam">
@@ -2491,7 +2518,7 @@
         <terms:content>fulltext</terms:content>
         <terms:pcode>hsq</terms:pcode>
         <terms:hasCoverage rdf:resource="hsq_coverage"/>
-        <dc:title>Health Statistics Quarterley</dc:title>
+        <dc:title>Health Statistics Quarterly</dc:title>
         <terms:npgid>279</terms:npgid>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1465-1645"/>
     </owl:Thing>
@@ -3516,7 +3543,7 @@
     <owl:Thing rdf:about="jit">
         <rdf:type rdf:resource="http://ns.nature.com/terms/Product"/>
         <skos:altLabel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">jit</skos:altLabel>
-        <dc:title>Journal of Information Technonogy</dc:title>
+        <dc:title>Journal of Information Technology</dc:title>
         <terms:pcode>jit</terms:pcode>
         <terms:hasCoverage rdf:resource="jit_coverage"/>
         <terms:collection>journals_palgrave</terms:collection>
@@ -3725,7 +3752,7 @@
         <terms:content>fulltext</terms:content>
         <terms:targetDomain>palgrave-journals.com</terms:targetDomain>
         <terms:collection>journals_palgrave</terms:collection>
-        <dc:title>Journal of Targeting, Measuremenat and Analysis for Marketing</dc:title>
+        <dc:title>Journal of Targeting, Measurement and Analysis for Marketing</dc:title>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/0967-3237"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1479-1862"/>
     </terms:Product>
@@ -7112,6 +7139,7 @@
         <terms:targetDomain>nature.com</terms:targetDomain>
         <terms:hasSubProduct rdf:resource="scepc"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1755-4330"/>
+      		<terms:hasPublication rdf:resource="http://ns.nature.com/publications/1755-4349"/>
       		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/analytical_chemistry"/>
       		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/biochemistry"/>
       		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/catalysis"/>
