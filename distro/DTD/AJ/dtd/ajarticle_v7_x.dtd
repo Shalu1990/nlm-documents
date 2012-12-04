@@ -13,6 +13,9 @@
 
 <!-- 
 
+15.11.12
+. SCHEMA-83 - Created new element "related-article" to contain linking information for EJHG Gene Utility articles; it has 'extrefid' and 'related-article-type' attributes.
+
 07.08.12
 . SCHEMA-72 - Added "editorial-notes" value to the "type" attribute on the "edsumm" element.
 
@@ -1310,7 +1313,7 @@ citdoi | cittext | delim" >
 <!--********************************************************************-->
 
 <!ELEMENT 	artfm 			  		(jti, sjti?, issn+, 
-doi, altdoi*, vol?, iss?, issinfo?, isbn*, aopseq?, seq, pp, elocation?, serno?, pubdates, prdates?, chghst?, si?, seealso*, errorcor*, firstpagepdf?, no_pdf?, licence*, branding?)>
+doi, altdoi*, vol?, iss?, issinfo?, isbn*, aopseq?, seq, pp, elocation?, serno?, pubdates, prdates?, chghst?, si?, seealso*, related-article*, errorcor*, firstpagepdf?, no_pdf?, licence*, branding?)>
 
 <!--			  		jti           	journal title
 				  	sjti			journal short title
@@ -1328,6 +1331,7 @@ doi, altdoi*, vol?, iss?, issinfo?, isbn*, aopseq?, seq, pp, elocation?, serno?,
 			       	si		special issues and supplements
 			       	artnote		general article note
 			       	seealso			"see also" article link 
+			       	related-article      "related-article" link for "Clinical Utility Gene Card Update" in EJHG
 			       	no_pdf		No PDF placeholder tag 
 			       	licence	A permanent flag in the XML to indicate it is freely accessible everywhere online;
 			       					optional child element author-paid indicates an author has paid for the article
@@ -1568,6 +1572,12 @@ suped?, supspon?, suptext?)>
 
 <!ELEMENT 	seealso						EMPTY>
 <!ATTLIST 	seealso				extrefid 	CDATA #REQUIRED>
+
+<!ELEMENT related-article EMPTY>
+<!ATTLIST related-article
+  extrefid CDATA #REQUIRED
+  related-article-type (is-update-to) #REQUIRED
+>
 
 <!-- errorcor is used to establish links between "Errata", "Corrections" and
 "Retractions" and the original articles to which they relate. -->
