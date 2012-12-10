@@ -13119,6 +13119,74 @@
     </terms:Product>
     
 
+	<!-- Adding these products for testing purposes -->
+	
+	 <!-- http://ns.nature.com/products/xyzn -->
+
+    <terms:Product rdf:about="xyzn">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <skos:altLabel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xyzn</skos:altLabel>
+        <terms:npgid>1223</terms:npgid>
+        <terms:pcode>xyzn</terms:pcode>
+        <terms:hasCoverage rdf:resource="embor_coverage"/>
+        <dc:title>xyzn Nature products</dc:title>
+        <terms:content>fulltext</terms:content>
+        <terms:targetDomain>nature.com</terms:targetDomain>
+        <terms:collection>journals_nature</terms:collection>
+        <foaf:homepage>http://www.nature.com/xyzn</foaf:homepage>
+        
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1469-221X"/>
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1469-3178"/>
+    </terms:Product>
+    
+    
+     <!-- http://ns.nature.com/products/nphys -->
+
+    <owl:Thing rdf:about="xyza">
+        <rdf:type rdf:resource="http://ns.nature.com/terms/Product"/>
+        <skos:altLabel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xyza</skos:altLabel>
+        <terms:pcode>nphys</terms:pcode>
+        <terms:hasCoverage rdf:resource="nphys_coverage"/>
+        <foaf:homepage>http://www.nature.com/xyza</foaf:homepage>
+        <terms:collection>journals_nature</terms:collection>
+        <terms:targetDomain>nature.com</terms:targetDomain>
+        <terms:content>fulltext</terms:content>
+        <dc:title>Nature Academic</dc:title>
+        <terms:npgid>1224</terms:npgid>
+        
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1745-2473"/>
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1745-2481"/>
+      		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/astronomy_and_astrophysics"/>
+      		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/atomic_and_molecular_physics"/>
+      		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/biophysics"/>
+      		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/chemical_physics"/>
+      		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/cosmology"/>
+      		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/fluid_dynamics"/>
+      		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/information_theory_and_computation"/>
+      		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/materials_science"/>
+      		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/nuclear_physics"/>
+      		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/optical_materials"/>
+      		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/optical_physics"/>
+      		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/other_physics"/>
+      		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/particle_physics"/>
+      		<ontology:hasSubject rdf:resource="http://ns.nature.com/subjects/quantum_physics"/>
+      		
+    </owl:Thing>
+    
+
+	<terms:Product rdf:about="xyzp">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <skos:altLabel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xyzp</skos:altLabel>
+        <terms:collection>journals_palgrave</terms:collection>
+        <terms:pcode>xyzp</terms:pcode>
+        <terms:hasCoverage rdf:resource="sth_coverage"/>
+        <terms:targetDomain>palgrave-journals.com</terms:targetDomain>
+        <terms:content>fulltext</terms:content>
+        <dc:title>Palgrace JATS Testing</dc:title>
+        <terms:npgid>1225</terms:npgid>
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1477-8211"/>
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1477-822X"/>
+    </terms:Product>
 
     <!-- http://ns.nature.com/products/stemcells_coverage -->
 
