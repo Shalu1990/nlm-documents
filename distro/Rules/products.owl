@@ -13121,7 +13121,7 @@
 
 	<!-- Adding these products for testing purposes -->
 	
-	 <!-- http://ns.nature.com/products/xyzn -->
+	 <!-- http://ns.nature.com/products/-n -->
 
     <terms:Product rdf:about="xyzn">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
@@ -13145,7 +13145,7 @@
     <owl:Thing rdf:about="xyza">
         <rdf:type rdf:resource="http://ns.nature.com/terms/Product"/>
         <skos:altLabel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">xyza</skos:altLabel>
-        <terms:pcode>nphys</terms:pcode>
+        <terms:pcode>xyza</terms:pcode>
         <terms:hasCoverage rdf:resource="nphys_coverage"/>
         <foaf:homepage>http://www.nature.com/xyza</foaf:homepage>
         <terms:collection>journals_nature</terms:collection>
