@@ -850,12 +850,12 @@ Use the <let> element to define the attribute if necessary.
   
   <pattern><!--fn-group - @content-type stated-->
     <rule context="back/fn-group" role="error">
-      <assert id="back-fn2a" test="@content-type">Footnote groups in back matter should have 'content-type' attribute stated. Allowed values are "endnotes" or "footnotes".</assert>
+      <assert id="back-fn2a" test="@content-type">Footnote groups in back matter should have 'content-type' attribute stated. Allowed values are "article-notes", "closenotes", "endnotes" or "footnotes".</assert>
     </rule>
   </pattern>
   <pattern><!--fn-group - @content-type allowed-->
     <rule context="back/fn-group" role="error">
-      <assert id="back-fn2b" test="not(@content-type) or @content-type='endnotes' or @content-type='footnotes'">Allowed values for 'content-type' attribute on "fn-group" are "endnotes" or "footnotes".</assert>
+      <assert id="back-fn2b" test="not(@content-type) or @content-type='endnotes' or @content-type='footnotes' or @content-type='closenotes' or @content-type='article-notes'">Allowed values for 'content-type' attribute on "fn-group" are "article-notes", "closenotes", "endnotes" or "footnotes".</assert>
     </rule>
   </pattern>
   <pattern><!--fn-group - no id or specific-use attribute-->
