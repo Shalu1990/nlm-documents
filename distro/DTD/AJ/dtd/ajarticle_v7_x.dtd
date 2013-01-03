@@ -13,6 +13,9 @@
 
 <!-- 
 
+03.01.13
+. SCHEMA-85 - Added %mathtypes to "websumm".
+
 15.11.12
 . SCHEMA-83 - Created new element "related-article" to contain linking information for EJHG Gene Utility articles; it has 'extrefid' and 'related-article-type' attributes.
 
@@ -2024,7 +2027,7 @@ language        %language;      #IMPLIED>
 <!ATTLIST   edsumm      type 	      (standfirst | regular | research-summary | editorial-notes) "regular"
                         publish     (issue | aop) "issue" >
 
-<!ELEMENT   websumm                 (%reftext;)*>
+<!ELEMENT   websumm                 (%reftext; | %mathtypes;)*>
 <!ATTLIST   websumm     type        (toc | regular) "regular" >
 
 <!--********************************************************************-->
