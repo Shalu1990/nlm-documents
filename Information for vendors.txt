@@ -1,0 +1,20 @@
+Information for vendors
+
+This repository contains the documents associated with the migration from in-house DTDs to JATS. All of these files may be updated during the lifetime of the archive conversion project.
+
+1. DTDs can be found as follows:
+
+AJ	\nlm-documents\distro\DTD\AJ\dtd\ajarticle_v7_x.dtd
+NPG	\nlm-documents\distro\DTD\NPG\NPG_XML_Article.dtd
+headerx	\nlm-documents\distro\DTD\headerx\headerx.dtd
+JATS	\nlm-documents\distro\DTD\JATS\v1.0\JATS-journalpublishing-oasis-article1.dtd
+
+2. Schematron rules are as follows:
+
+\nlm-documents\distro\Rules\Nature-NLM.sch
+
+with supporting documents allowed-values-nlm.sch, products.owl and subjects.owl in the same folder
+
+3. Draft tagging guidelines are available as an html file:
+
+\nlm-documents\distro\Rules\nlm_tagging_guidelines.html
