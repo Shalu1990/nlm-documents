@@ -18,3 +18,5 @@ with supporting documents allowed-values-nlm.sch, products.owl and subjects.owl 
 3. Draft tagging guidelines are available as an html file:
 
 \nlm-documents\distro\Rules\nlm_tagging_guidelines.html
+
+4. Samples of articles in NPG, AJ and headerx DTDs, their equivalent JATS versions and pdfs are in \nlm-documents\samples_for_vendors
