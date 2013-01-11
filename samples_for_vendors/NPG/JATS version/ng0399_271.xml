@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables v1.0 20120330//EN" "JATS-journalpublishing-oasis-article1.dtd">
+<!--An example of an article where table footnotes in the NPG version should be moved from final row of tbody to tfoot before transformation takes place-->
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:oasis="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table" article-type="af">
+    <front>
+        <journal-meta>
+            <journal-id journal-id-type="publisher">ng</journal-id>
+            <journal-title-group>
+                <journal-title>Nature Genetics</journal-title>
+            </journal-title-group>
+            <issn pub-type="ppub">1061-4036</issn>
+            <publisher>
+                <publisher-name>Nature Publishing Group</publisher-name>
+            </publisher>
+        </journal-meta>
+        <article-meta>
+            <article-id pub-id-type="publisher-id">ng0399_271</article-id>
+            <article-id pub-id-type="doi">10.1038/6784</article-id>
+            <article-categories>
+                <subj-group subj-group-type="category">
+                    <subject>af</subject>
+                </subj-group>
+            </article-categories>
+            <title-group>
+                <article-title>Mutations in <italic>ATP2A2</italic>, encoding a Ca<sup>2+</sup> pump, cause  Darier disease</article-title>
+            </title-group>
+            <contrib-group>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Sakuntabhai</surname>
+                        <given-names>Anavaj</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a1"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Ruiz-Perez</surname>
+                        <given-names>Victor</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a2"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Carter</surname>
+                        <given-names>Simon</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a2"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Jacobsen</surname>
+                        <given-names>Nick</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a3"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Burge</surname>
+                        <given-names>Susan</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a4"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Monk</surname>
+                        <given-names>Sarah</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a1"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Smith</surname>
+                        <given-names>Melanie</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a2"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Munro</surname>
+                        <given-names>Colin S.</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a5"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>O'Donovan</surname>
+                        <given-names>Michael</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a3"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Craddock</surname>
+                        <given-names>Nick</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a6"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Kucherlapati</surname>
+                        <given-names>Raju</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a7"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Rees</surname>
+                        <given-names>Jonathan L.</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a8"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Owen</surname>
+                        <given-names>Mike</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a3"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Lathrop</surname>
+                        <given-names>G. Mark</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a1"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Monaco</surname>
+                        <given-names>Anthony P.</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a1"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="yes">
+                    <name>
+                        <surname>Strachan</surname>
+                        <given-names>Tom</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a2"/>
+                    <xref ref-type="corresp" rid="c2"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="yes">
+                    <name>
+                        <surname>Hovnanian</surname>
+                        <given-names>Alain</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a1"/>
+                    <xref ref-type="corresp" rid="c1"/>
+                </contrib>
+            </contrib-group>
+            <aff id="a1"><institution>The Wellcome Trust Centre for Human Genetics, University  of Oxford</institution>, <addr-line content-type="city">Oxford</addr-line>, <addr-line content-type="zip">OX3 7BN</addr-line>, <country>UK</country>.</aff>
+            <aff id="a2"><institution>Department of Human Genetics, University of Newcastle  upon Tyne</institution>, <addr-line content-type="zip">NE1 7RU</addr-line>, <country>UK</country>.</aff>
+            <aff id="a3"><institution>Department of Psychological Medicine, University of  Wales College of Medicine</institution>, <addr-line content-type="city">Cardiff</addr-line>, <addr-line content-type="zip">CF4 4XN</addr-line>, <country>  UK</country>.</aff>
+            <aff id="a4"><institution>Department of Dermatology, Churchill Hospital</institution>, <addr-line content-type="city">  Oxford</addr-line>, <addr-line content-type="zip">OX3 7LJ</addr-line>, <country>UK</country>.</aff>
+            <aff id="a5"><institution>Department of Dermatology, Southern General Hospital  </institution>, <addr-line content-type="city">Glasgow</addr-line>, <addr-line content-type="zip">G51 4TF</addr-line>, <country>UK</country>.</aff>
+            <aff id="a6"><institution>Department of Psychiatry, University of Birmingham  </institution>, <addr-line content-type="city">Birmingham</addr-line>, <addr-line content-type="zip">B15 2QZ</addr-line>, <country>UK</country>.</aff>
+            <aff id="a7"><institution>Department of Molecular Genetics, Albert Einstein College  of Medicine</institution>, <addr-line content-type="city">New York</addr-line>, <addr-line content-type="state">New York</addr-line> <addr-line content-type="zip">10461</addr-line>, <country>  USA</country>.</aff>
+            <aff id="a8"><institution>Department of Dermatology, University of Newcastle  upon Tyne</institution>, <addr-line content-type="zip">NE1 7RU</addr-line>, <country>UK</country>.</aff>
+            <author-notes>
+                <corresp id="c1"><email xlink:href="alain.hovnanian@well.ox.ac.uk">alain.hovnanian@well.ox.ac.uk</email></corresp>
+                <corresp id="c2"><email xlink:href="tom.strachan@ncl.ac.uk">tom.strachan@ncl.ac.uk</email></corresp>
+            </author-notes>
+            <pub-date pub-type="issue-date">
+                <month>03</month>
+                <year>1999</year>
+            </pub-date>
+            <volume>21</volume>
+            <issue>3</issue>
+            <fpage>271</fpage>
+            <lpage>277</lpage>
+            <history>
+                <date date-type="received">
+                    <day>30</day>
+                    <month>12</month>
+                    <year>1998</year>
+                </date>
+                <date date-type="accepted">
+                    <day>04</day>
+                    <month>02</month>
+                    <year>1999</year>
+                </date>
+            </history>
+            <permissions>
+                <copyright-year>1999</copyright-year>
+                <copyright-holder>Nature America Inc.</copyright-holder>
+            </permissions>
+            <related-article related-article-type="news-views" ext-link-type="article-id" xlink:role="nvid" xlink:href="ng0399_252"/>
+            <abstract>
+                <p>Darier disease (DD) is an autosomal-dominant skin disorder characterized  by loss of adhesion between epidermal cells (acantholysis) and abnormal keratinization.  Recently we constructed a 2.4-Mb, P1-derived artificial chromosome contig  spanning the DD candidate region on chromosome 12q23-24.1. After screening  several genes that mapped to this region, we identified mutations in the <italic>ATP2A2</italic> gene, which encodes the sarco/endoplasmic reticulum Ca<sup>2+  </sup>-ATPase type 2 isoform (SERCA2) and is highly expressed in keratinocytes.  Thirteen mutations were identified, including frameshift deletions, in-frame  deletions or insertions, splice-site mutations and non-conservative missense  mutations in functional domains. Our results demonstrate that mutations in <italic>ATP2A2</italic> cause DD and disclose a role for this pump in a Ca<sup>2+</sup>-signalling  pathway regulating cell-to-cell adhesion and differentiation of the epidermis.  </p>
+            </abstract>
+            <counts>
+                <page-count count="7"/>
+            </counts>
+        </article-meta>
+    </front>
+    <body>
+        <sec specific-use="heading-level-1">
+            <title>Introduction</title>
+            <p>DD, also known as Darier-White disease and keratosis follicularis (OMIM  124200), is a dominantly inherited skin disorder characterized by warty papules  and plaques in seborrheic areas (central trunk, flexures, scalp and forehead),  palmo-plantar pits and distinctive nail abnormalities<xref ref-type="bibr" rid="b1"/> (<xref ref-type="fig" rid="f1">Fig. 1<italic>a</italic></xref>). The prevalence of the disease has been estimated  at 1 in 55,000. Onset is usually before the third decade, and penetrance is  complete in adults although expressivity is variable<xref ref-type="bibr" rid="b2"/>. Involvement  may be severe, with widespread itchy malodorous crusted plaques, painful erosions,  blistering and mucosal lesions. Secondary infection is common. Sun, heat and  sweating exacerbate the disease. DD never remits, but oral retinoids may reduce  hyperkeratosis. DD has been reported to be associated with neuropsychiatric  abnormalities including mild mental retardation and epilepsy in a few families<xref ref-type="bibr" rid="b1"/>. The typical histological features include focal areas of separation  between suprabasal epidermal cells (acantholysis), suprabasal clefting and  unusual dyskeratosis (abnormal keratinization) with round dyskeratotic keratinocytes  ('corps ronds'; <xref ref-type="fig" rid="f1">Fig. 1<italic>b</italic>,<italic>c</italic></xref>). Electron microscopy  reveals loss of desmosomal attachments, perinuclear aggregations of keratin  filaments and cytoplasmic vacuolization. These observations suggest that molecules  which mediate adhesion between keratinocytes, such as the desmosomal cadherins  (desmogleins and desmocollins) and desmosomal plaque proteins (desmoplakin,  plakoglobin), or intermediate filament proteins might be involved in the loss  of cell-cell adhesion in the epidermis<xref ref-type="bibr" rid="b3"/>. Alternatively, the  defect may lie in a molecule that regulates expression, recruitment, sorting  or association of adhesion molecules.</p>
+            <p>DD has been linked to chromosomal region 12q23-24.1, initially within a  12-cM interval<xref ref-type="bibr" rid="b4 b5"/>. Subsequent linkage studies showed no evidence  for locus heterogeneity, and the size of the critical region was reduced further  to approximately 2 cM (refs <xref ref-type="bibr" rid="b6">6</xref>, <xref ref-type="bibr" rid="b7">7</xref>, <xref ref-type="bibr" rid="b8">8</xref>, <xref ref-type="bibr" rid="b9">9</xref>).  We analysed additional families, refined the DD region to an interval of less  than 1 cM between <italic>D12S1339</italic> and <italic>D12S2263</italic> and constructed a 2.4-Mb  YAC/PAC/BAC (P1-artificial chromosome/bacterial artificial chromosome) contig  spanning the critical genetic interval<xref ref-type="bibr" rid="b10"/>.</p>
+            <p>We identified 12 genes in this interval using a combination of EST database  searching, cDNA selection and sequence analysis of bacterial clones of the  contig (http://gc.bcm.tmc.edu:8088/cgi-bin/seq/bcm-web-tables).  We investigated these genes for expression in keratinocytes before screening  them for mutations in DD patients. One of these genes, <italic>ATP2A2,</italic> encodes  the sarco/endoplasmic reticulum Ca<sup>2+</sup>-ATPase isoform 2 (SERCA2),  a Ca<sup>2+</sup> pump that has a pivotal role in intracellular Ca<sup>  2+</sup> signalling<xref ref-type="bibr" rid="b11"/>. Together with the highly related SERCA1  and SERCA3 isoforms encoded by <italic>ATP2A1</italic> and <italic>ATP2A3</italic>, respectively,  SERCA pumps belong to the large family of P-type cation pumps that couple  ATP hydrolysis with cation transport across membranes. SERCA pumps specifically  maintain low cytosolic Ca<sup>2+</sup> concentrations by actively transporting  Ca<sup>2+</sup> from the cytosol into the sarco/endoplasmic reticulum  lumen<xref ref-type="bibr" rid="b12 b13"/>. <italic>ATP2A2</italic> encodes two alternatively spliced  transcripts, <italic>ATP2A2a</italic> (<italic>HK2</italic>) and <italic>ATP2A2b</italic> (<italic>HK1</italic>),  encoding isoforms SERCA2a and SERCA2b, respectively. SERCA2a and SERCA2b differ  in their carboxy-termini and have distinct tissue-expression patterns<xref ref-type="bibr" rid="b11"/>. SERCA2a is primarily located in heart and slow-twitch skeletal  muscle, whereas SERCA2b is present in smooth muscle and non-muscle tissues<xref ref-type="bibr" rid="b14"/>. <italic>ATP2A2</italic> seemed a good candidate for DD because cytosolic  Ca<sup>2+</sup> is known to have a role in the development of epithelial  junctions and in regulating cell differentiation<xref ref-type="bibr" rid="b15 b16"/>.</p>
+        </sec>
+        <sec specific-use="heading-level-1">
+            <title>Results</title>
+            <sec specific-use="heading-level-2">
+                <title>Identification and mutation testing of putative candidate genes  in the DD region</title>
+                <p>We performed EST database searches, direct cDNA  selection and analysis of genomic sequence on bacterial clones spanning the  critical region. We identified the following: a glycolipid transfer protein  gene; <italic>ATP2A2</italic>; <italic>ARC21 </italic>(also known as <italic>ARP2/3</italic>; encoding actin  polymerization-related protein); a gene related to yeast <italic>FET5</italic> (encoding  an ATP/GTP binding transcription factor); human U79274 (no homology with known  proteins), a gene related to yeast <italic>PEP11</italic> (or <italic>VPS29</italic>; involved  in vacuolar protein sorting); <italic>RPL31</italic> (encoding ribosomal protein L31), <italic>PPM2C</italic> (encoding protein phosphatase 2C); <italic>PPP1CC</italic> (encoding the protein  phosphatase 1 subunit), <italic>RPL29</italic> (encoding cell-surface  heparin-binding protein); AI123295 (similar to cytoskeletal proteins) and <italic>MYL2</italic> (encoding myosin light chain 2). Among these genes, the glycolipid  transfer protein gene and <italic>ATP2A2</italic> were found to be highly expressed  in keratinocytes, as shown by northern-blot analysis, whereas transcripts  of the others were detected only by RT-PCR. The glycolipid transfer protein  gene, <italic>ATP2A2</italic>, <italic>ARC21</italic>, <italic>PEP11</italic>-related gene, <italic>PPM2C</italic>, <italic>PPP1CC</italic> and AI123295 were potential candidate genes on the basis of their  known function or protein similarity. We performed mutation screening on these  genes in DD patients and only identified defects in <italic>ATP2A2</italic>.</p>
+            </sec>
+            <sec specific-use="heading-level-2">
+                <title>Isoforms <italic>ATP2A2a </italic>and <italic>ATP2A2b </italic>are expressed in keratinocytes  </title>
+                <p>We investigated the expression of <italic>ATP2A2a</italic> and <italic>ATP2A2b</italic> transcripts in keratinocytes by hybridizing northern blots containing  keratinocyte RNA with probes <italic>D12S2026</italic> and <italic>D12S1965</italic>, which are  specific for the 3&#xB4; untranslated end of the <italic>ATP2A2a</italic> and <italic>ATP2A2b</italic> isoforms, respectively. Each probe showed a 4.5-kb signal of strong intensity,  indicating that both alternatively spliced transcripts of <italic>ATP2A2</italic> are  expressed at high levels in cultured keratinocytes (<xref ref-type="fig" rid="f2">Fig. 2<italic>a</italic></xref>). The same probes were used to hybridize multiple-tissue northern  blots (<xref ref-type="fig" rid="f2">Fig. 2<italic>b</italic></xref>). The hybridization results showed  that <italic>ATP2A2a</italic> was strongly expressed in heart and skeletal muscle, as  reported previously<xref ref-type="bibr" rid="b11"/>, but also revealed a larger transcript  of approximately 6 kb in brain. This transcript is likely to correspond to  the class 4 <italic>ATP2A2</italic> mRNA previously described as the main splice variant  of <italic>ATP2A2</italic> in brain<xref ref-type="bibr" rid="b17"/>. In contrast, an <italic>ATP2A2b</italic>  transcript of weak intensity was detected in all tissues tested (data not  shown).</p>
+            </sec>
+            <sec specific-use="heading-level-2">
+                <title>Genomic organization of <italic>ATP2A2</italic></title>
+                <p>We used the genomic  sequence generated from PAC 305I20 to determine the intron/exon boundaries  of <italic>ATP2A2</italic>. We compared this sequence with the <italic>ATP2A2</italic> cDNA sequence  using the BLAST2 sequence program from NBCI (<uri xlink:href="http://www.ncbi.nlm.nih.gov/gorf/bl2.html">http://www.ncbi.nlm.nih.gov/gorf/bl2.html</uri>) and identified the position and sequence of all introns of <italic>ATP2A2</italic> (<xref ref-type="table" rid="t1">Table 1</xref>). Of 21 exons, 19 were predicted using  the programs GRAIL2, Genefinder, FGene and Genescan from the NIX program from  HGMP (<uri xlink:href="http://www.hgmp.mrc.ac.uk/NIX/">http://www.hgmp.mrc.ac.uk/NIX/</uri>). The gene spans approximately  76 kb, its smallest intron is 82 bp and its largest intron is 25.097 kb.</p>
+            </sec>
+            <sec specific-use="heading-level-2">
+                <title>Mutations in <italic>ATP2A2</italic></title>
+                <p>Extensive long-range restriction  mapping, involving hybridization of ten different probes from the DD critical  region to PFGE Southern blots of DNA samples from DD patients, showed no evidence  of large-scale rearrangements. We hybridized Southern blots of genomic DNA  from DD patients with cDNA probes spanning the entire <italic>ATP2A2</italic> coding  region, but detected no abnormal restriction fragments. To investigate the  possibility of small-scale <italic>ATP2A2</italic> mutations, we PCR-amplified exonic  sequences from patient cDNA or genomic DNA samples. Initial RT-PCR analyses  identified three families (Ox-F15, Ox-S1 and Ox-F4) in which affected members  gave aberrant-sized products indicative of intra-exonic deletions or insertions  (data not shown). We followed up by comprehensive mutation screening in affected  individuals in various families and sporadic patients using conformation-sensitive  gel electrophoresis (CSGE) or single strand conformation polymorphism (SSCP)  analysis, and subsequent sequencing of aberrant amplification products. We  report 13 different <italic>ATP2A2</italic> mutations in affected individuals (<xref ref-type="table" rid="t2">Table 2</xref>, <xref ref-type="fig" rid="f3">Fig. 3</xref>).</p>
+                <p>These mutations were not detected in over 50 British control individuals,  indicating that these mutations are not likely to be neutral polymorphisms.  The mutations predict aberrant splicing, premature translation termination,  non-conservative missense mutations and an intra-exonic in-frame duplication.  The intra-exonic duplication observed in family Ox-F15, 91ins57, spans nt  35-91 of the cDNA sequence<xref ref-type="bibr" rid="b11"/> and predicts a tandem duplication  of aa V12-L32. Deletions include an in-frame deletion (2102del36) which removes  the sequence encoding aa G701-K712 (<xref ref-type="fig" rid="f3">Fig. 3</xref>), and four  small deletions which occur in various exons and have the potential for producing  a frameshift (<xref ref-type="fig" rid="f3">Fig. 3</xref>). Another deletion, 1418delCA,  which removes the last two nucleotides of exon 11, leads to in-frame skipping  of exon 11 (encoding A430-S473) in patient Ox-F4 (<xref ref-type="fig" rid="f3">Fig. 3</xref>).  A nonsense mutation (Q108X) at the last codon of exon 4 causes in-frame skipping  of exon 4 (encoding V74-Q108) in patient Ox-S1. A splice-site mutation in  NCL-Cx (544+1G&#x2192;A) occurs at the guanine of the conserved GT dinucleotide  in the donor splice site of intron 6, and although lack of access to further  patient samples precluded follow-up at the transcript level, this mutation  probably alters splicing of exon 6 and has a deleterious effect on expression  of <italic>ATP2A2</italic>. Finally, four non-conservative missense mutations were identified:  G23E, T357K, S495L and G749R (<xref ref-type="table" rid="t2">Table 2</xref>). Each of these  missense mutations results in non-conservative amino acid substitutions at  positions highly homologous between species. These changes are likely to affect  gene expression and it is noteworthy that the first of these, G23E, has occurred <italic>de novo</italic> in a sporadic patient, NCL-B11. This affected individual has a  genetically identical twin (as confirmed by typing at a series of highly polymorphic  marker loci used routinely in zygosity testing; data not shown) who, like  the two parents, is unaffected. SSCP analysis of the family members identified  a variant in exon 1 in the affected twin which was absent in the unaffected  twin and both parents (<xref ref-type="fig" rid="f3">Fig. 3<italic>b</italic></xref>). Sequencing revealed  a G&#x2192;A substitution at nt 68 in the affected twin, which changes glycine  23 into glutamic acid (<xref ref-type="fig" rid="f3">Fig. 3<italic>b</italic></xref>). This mutation  (G23E) was absent from the unaffected identical twin and in both parents,  as confirmed by typing for mutant-specific restriction fragments following  the creation of a novel <italic>Alu</italic>I site (data not shown).</p>
+            </sec>
+        </sec>
+        <sec specific-use="heading-level-1">
+            <title>Discussion</title>
+            <p>The cause of DD has eluded clinicians and scientists for many years. Linkage  analysis in affected families mapped the DD locus to chromosome 12q23-24.1.  We refined the critical region to less than 1 cM and identified 12 genes in  the critical region. Seven of these genes were screened for mutations. <italic>ATP2A2</italic>, which is highly expressed in keratinocytes, was found to be mutated  in both inherited and sporadic cases.</p>
+            <p><bold><italic>ATP2A2</italic> mutations disrupt essential functional domains.</bold> The <italic>ATP2A2</italic> mutations that we describe occur in regions encoding domains that  are highly conserved during evolution and are likely to be critical for normal  function of SERCA2. Human SERCA2 exhibits extensive similarity (99-99.6% identity  at the amino acid level) to rabbit, pig, rat and cat SERCA2. All known SERCA2  proteins from different species show 100% homology in the &#x3B2; strand, transmembrane  and stalk domains, and high amino acid conservation in the phosphorylation  (97.8%), ATP-binding (97.7%) and hinge (98.3%) domains (<xref ref-type="fig" rid="f4">Fig.  4</xref>). The deduced amino acid sequence of human SERCA2 is also highly  conserved among the other human SERCA proteins, showing 82 and 76% identity  with SERCA1 and SERCA3, respectively.</p>
+            <p>A structural model of SERCA pumps has been proposed on the basis of their  amino acid sequences, site-directed mutagenesis experiments and modelling  studies<xref ref-type="bibr" rid="b12 b18 b19"/> (<xref ref-type="fig" rid="f4">Fig. 4</xref>). The mutations  that we have described are scattered throughout the gene and alter functional  domains of SERCA2 which have a role in Ca<sup>2+</sup> transport across  the endoplasmic reticulum (ER) membrane (<xref ref-type="fig" rid="f4">Fig. 4</xref>, <xref ref-type="table" rid="t2">Table 2</xref>). Mutations 433delAT, 1220delAT and 2017delC predict  severely truncated proteins missing at least three of the transmembrane domains  M5, M6 and M8, which contain Ca<sup>2+</sup>-binding sites<xref ref-type="bibr" rid="b20"/>.  A fourth frameshift mutation, 2790del8bp, at the C-terminal region of the  molecule alters the transmembrane domains M9 and M10 and may affect anchorage  to the ER membrane. Other defects predict the in-frame insertion or deletion  of large sequences in functional domains that are strongly conserved. The  in-frame insertion 91ins57 affects a region that contains a signal for ER  localization<xref ref-type="bibr" rid="b21"/>. Abnormal splicing resulting from mutations Q108X,  544+1G&#x2192;A and 1418delCA disrupts the first and second transmembrane domains  (M1, M2), the cytoplasmic &#x3B2;-strand domain, including a highly conserved  TGE motif involved in transduction of the energy of ATP hydrolysis to Ca<sup>  2+</sup> transport and the phosphorylation domain. An in-frame deletion  (2102del36) alters the highly conserved hinge region among cation-transport  ATPases. The missense mutations that we have identified predict changes in  the charge and biochemical properties of highly conserved amino acid residues.  The G23E mutation replaces a hydrophobic amino acid residue by an acidic one  in the hydrophobic potential signal-peptide region of the molecule. Mutations  T357K and S495L occur in the phosporylation domain; T357K is located in the  consensus motif ICSDKTGTL<underline underline-style="single">T</underline> near aspartate 351, which undergoes phosphorylation  in all ATPases. G749R introduces a positive charge adjacent to two negatively  charged glutamic acid residues in the stalk 5 segment of the molecule.</p>
+            <p><bold>SERCA2 and cell-to-cell adhesion in the epidermis. </bold>Our results provide  the first evidence that SERCA2 influences adhesion between keratinocytes and  cellular differentiation in the epidermis. Desmosomes are the prime cell-cell  adhesion junctions in the epidermis<xref ref-type="bibr" rid="b22 b23 b24"/>. Their components  include desmosomal cadherins (desmogleins and desmocollins), plaque proteins  (desmoplakins and plakoglobin) and plaque-associated proteins such as plakophilin  1. By analogy with classical cadherins, adhesion is thought to involve homophilic  interactions between extracellular domains of desmosomal cadherins<xref ref-type="bibr" rid="b25"/>.  Recent work suggests that desmoplakins, plakoglobin and plakophilin 1 link  cytoplasmic domains of desmosomal cadherins to the keratin intermediate filaments  network<xref ref-type="bibr" rid="b26"/>. The assembly of desmosomes in epithelial cells <italic>in vitro</italic> is initiated through an increase in the extracellular Ca<sup>  2+</sup> concentration<xref ref-type="bibr" rid="b27 b28"/>, but variations in intracellular  Ca<sup>2+</sup> are also thought to be important in regulating epithelial  cell-to-cell adhesion<xref ref-type="bibr" rid="b24"/>. Consistent with this notion is the  observation that changes in intracellular Ca<sup>2+</sup> concentration  occur at sites of junction assembly of epithelial cells<xref ref-type="bibr" rid="b29"/>. Evidence  for the role of SERCA in the formation of desmosomes has been provided by <italic>in vitro</italic> studies with thapsigargin (TG), a selective inhibitor of the  SERCA pumps. TG blocks reuptake of Ca<sup>2+</sup> from the cytosol, thus  depleting Ca<sup>2+</sup> stores in the ER (ref. <xref ref-type="bibr" rid="b30">30  </xref>). Epithelial cells cultured in the presence of TG show abnormal  intercellular junction formation<xref ref-type="bibr" rid="b15"/>. Treatment with TG delays  the transport of desmoplakin to the plasma membrane, indicating a role for  Ca<sup>2+</sup>-dependent signalling pathway in sorting of desmoplakin<xref ref-type="bibr" rid="b15"/>. Further support for a role of SERCA in protein trafficking comes  from studies in yeast in which mutations in <italic>PMR1 </italic>encoding a Ca<sup>  2+</sup>-ATPase pump, cause release of incompletely processed secretory  proteins from the ER(ref. <xref ref-type="bibr" rid="b31">31</xref>). Partial inhibition  of SERCA pumps with low doses of TG alters the oscillation pattern of Ca<sup>  2+</sup> spikes in the cytosol<xref ref-type="bibr" rid="b32"/>. It is likely that patients  with DD who are heterozygous for a mutated <italic>ATP2A2</italic> allele will have  only partial deficiency of the SERCA2 pump. By analogy with the consequences  of partial inhibition of SERCA pumps <italic>in vitro</italic>, we postulate that DD  patients will exhibit altered Ca<sup>2+</sup> signalling in epidermal  cells, possibly through the alteration of cytosolic Ca<sup>2+</sup> oscillations.  This may trigger a cascade of events involving the phosphorylation of target  proteins, the regulation of gene transcription<xref ref-type="bibr" rid="b16 b33"/> or the  transport of desmosomal proteins to the plasma membrane, resulting in impaired  desmosome assembly or altered anchorage of cytokeratin filaments to the desmosomal  plaque.</p>
+            <p><bold>Proposed mechanism for dominant inheritance. </bold>Mutations in Ca<sup>  2+</sup>-ATPase pumps have been described in two diseases, but unlike DD,  both are recessive. Mutations in <italic>ATP2A1</italic> underlie some forms of Brody  disease, a rare recessive disorder of skeletal muscle in which relaxation  of skeletal muscle is impaired<xref ref-type="bibr" rid="b19 b34"/>. Mutations in <italic>Atp2b2</italic>, encoding a plasma membrane Ca<sup>2+</sup>-ATPase type 2 pump, have  been identified in deafwaddler mice, which are deaf and display vestibular/motor  imbalance<xref ref-type="bibr" rid="b35"/>. We believe that our findings represent the first  description of a dominant phenotype caused by a mutation in a Ca<sup>2+  </sup>-ATPase pump. The mutations in DD patients are family specific and  predict a wide range of defects. They vary from premature termination codons,  which are likely to lead to reduction in mutated <italic>ATP2A2</italic> mRNA through  'nonsense-mediated mRNA decay' as reported for other genes<xref ref-type="bibr" rid="b36"/>,  to polypeptides lacking the sequence encoded by an exon or carrying a single  amino acid substitution. As SERCA does not require oligomerization to provide  a functional channel<xref ref-type="bibr" rid="b37"/>, the mutations are unlikely to have a  dominant-negative effect. We suggest that mutations in <italic>ATP2A2</italic> produce  a dominant DD phenotype through haploinsufficiency. Mutations disrupt important  domains of the molecule and are likely to result in complete or partial loss  of function of the mutated pumps. Compensation by the normal SERCA2 pumps  and by other systems involved in intracellular Ca<sup>2+</sup> homeostasis  is not sufficient in adult skin and results in abnormal Ca<sup>2+</sup>  signalling in the epidermis. Haploinsufficiency of the desmoplakin gene has  recently been reported in dominant striate palmoplantar keratoderma, illustrating  a distinct mechanism involving genetic alteration of a structural desmosomal  component in epidermal diseases<xref ref-type="bibr" rid="b38"/>.</p>
+            <p>Our findings also suggest possible new mechanisms underlying acantholytic  skin disorders such as Hailey-Hailey<xref ref-type="bibr" rid="b39"/> (benign familial pemphigus)  and Grover disease<xref ref-type="bibr" rid="b40"/> (transient acantholytic dermatosis). Further  functional studies are needed to understand the mechanisms by which altered  SERCA2 function leads to epidermal acantholysis and dyskeratosis. Similarly,  such studies could provide insight into the late onset, focal cutaneous distribution,  aggravation by external factors and phenotypic variability of the disease.  The findings described here provide insights into the role of Ca<sup>2+  </sup> signalling in maintaining epidermal integrity.</p>
+        </sec>
+        <sec specific-use="heading-level-1">
+            <title>Methods</title>
+            <sec specific-use="heading-level-2">
+                <title>Patients and families.</title>
+                <p>We studied eight unrelated British  families and five sporadic cases. The diagnosis was established by a dermatologist  (S.B. or C.S.M.) on the basis of clinical examination and was confirmed by  histological examination of a skin biopsy in at least one member of each family.  Diagnostic clinical features included keratotic papules or plaques on the  trunk, a nail dystrophy and/or palmar pits. Family NCL-B11 comprises identical  twins, only one of whom is affected with DD. This study was approved by the  local Ethics Committee. Blood samples and skin biopsies were obtained after  patients had given informed consent.</p>
+            </sec>
+            <sec specific-use="heading-level-2">
+                <title>Mutation analysis.</title>
+                <p>Genomic DNA was extracted from peripheral  blood leucocytes using standard procedures. We designed primers to amplify  all 21 exons and flanking intronic splice sites of <italic>ATP2A2</italic> from genomic  DNA (primer sequences available on request). Alternatively, we extracted total  RNA from immortalized lymphocyte cell lines using Trizol (Life Technologies).  First strand cDNA was synthesized from RNA (5 &#x3BC;g) with Superscript reverse  transcriptase (Life Technologies) and random hexamer primers (Pharmacia Biotech).  We amplified the entire coding sequence of <italic>ATP2A2</italic> cDNA using overlapping  sets of primers (sequence available on request). We carried out PCR reactions  using standard reaction mixes containing magnesium chloride (1.5 mM), except  for the PCR reaction to amplify exon 1, which was supplemented with betane  (2 M). After an initial denaturation step at 94 &#xB0;C for 4 min, 35 cycles  of amplification consisting of 30-60 s at 94 &#xB0;C, 30-60 s at the optimally  determined annealing temperature (51-67 &#xB0;C) and 30-60 s at 72 &#xB0;C were  performed. RT-PCR products were run on 2% agarose gels for detection of splicing  abnormalities. We screened genomic and RT-PCR products for mutations by either  CSGE or SSCP. For CSGE analysis, the formation of heteroduplexes was enhanced  by heating PCR or RT-PCR products to 98 &#xB0;C for 5 min, followed by 68 &#xB0;C  for 1 h. Sample (5 &#x3BC;g) was loaded onto a gel containing 10% polyacrylamide,  15% formamide, 10% ethylene glycol and 0.5% glycerol-tolerant buffer (USB)  and were subjected to electrophoresis at 500 V for 16 h. The gel was stained  with ethidium bromide and visualized under an ultraviolet transilluminator.  SSCP gels consisted of 1&#xD7;MDE solution (FMC), 5% glycerol, 0.6&#xD7;TBE  buffer and were run at 300 V overnight. Following electrophoresis, gels were  fixed in ethanol/acetic acid and stained using silver nitrate, following standard  methods. We sequenced PCR or RT-PCR fragments showing aberrant migration patterns  or extra bands in forward and reverse orientations. PCR or RT-PCR products  that showed a single band on 2% agarose gel were purified directly using a  QIAquick PCR purification kit (Qiagen). PCR or RT-PCR products that showed  more than one band were run in low melting point agarose gel. We separated  and gel-purified the bands using QIAEX gel purification kit (Qiagen). We sequenced  the purified products using the ABI PRISM AmpliTaq-reaction dye terminator  cycle-sequencing kit (PE Applied Biosystems) and an Applied Biosystems model  373A automated sequencer or a Thermosequenase <sup>33</sup>P-ddNTP terminator  cycle sequencing kit (Amersham) according to the manufacturer's instructions.  We subcloned PCR products that showed 'superimposed' sequences into pGEM-T  vector (Promega) or the TA subcloning kit (Invitrogen) and sequenced mutiple  subclones.</p>
+            </sec>
+            <sec specific-use="heading-level-2">
+                <title>Northern-blot analysis.</title>
+                <p>We generated PCR probes specific  for the 3&#xB4; UTR of <italic>ATP2A2a (D12S2026)</italic> and <italic>ATP2A2b (D12S1965)</italic>. After purification using QIAquick PCR purification kit (Qiagen), these  probes were radiolabelled with [<sup>32</sup>P] &#x3B1;dCTP using the  Megaprime DNA labelling system (Amersham) and separated from unincorporated  nucleotides with ProbeQuant G-50 Micro Columns (Pharmacia Biotech). We hybridized  the <italic>ATP2A2a</italic> and <italic>ATP2A2b</italic>-specific probes to human keratinocyte  total RNA (30 &#x3BC;g) northern blots and to multiple-tissue northern blots  (human I, Clontech) in Express-Hyb solution (Clontech), followed by washing  according to the manufacturer's instructions.</p>
+            </sec>
+            <sec specific-use="heading-level-2">
+                <title>GenBank accession numbers.</title>
+                <p>Human: <italic>ATP2A1</italic>, U96781  and P11719; <italic>ATP2A2a</italic>, M23115 and P16614; <italic>ATP2A2b</italic>, M23114 and  P16615; <italic>ATP2A3</italic>, Q93084; <italic>ARC21</italic>, AF006086 and P43490; <italic>RPL31</italic>, X15940 and P12947; <italic>PPM2C</italic>, H73417; <italic>PPP1CC</italic>, X74008 and P36873; <italic>RPL29</italic>, U49083 and P47914; gene similar to cytoskeletal proteins, AI23295; <italic>MYL2</italic>, M21812; PAC 305I20, AC006088. Other species: rabbit <italic>Atp2a2</italic>,  P04192; pig <italic>Atp2a2</italic>, P11606; rat <italic>Atp2a2</italic>, P11508; cat <italic>Atp2a2</italic>, Q00779; pig <italic>GLTP</italic>, P17403; yeast <italic>FET5</italic>, U80218; yeast <italic>PEP11</italic>, P38759; yeast <italic>PMR1</italic>, M25488.</p>
+            </sec>
+        </sec>
+    </body>
+    <back>
+        <ack>
+            <p>We thank the clinicians and the families who participated; R. Cox and E.  Levy for their contribution in the physical mapping and cytogenetic parts  of the project; R. Gibbs for the freely available sequence from the NIH-funded  Human Genome Sequencing effort at the Baylor College of Medicine Human Genome  Sequencing Center (BCM-HGSC); and J. Bell for support and encouragement. A.S.  has a fellowship from the Royal Thai Government and the faculty of Medicine,  Ramathibodi Hospital, Mahidol University; S.M. had a Wellcome Trust prize  studentship; A.P.M. is a Wellcome Principal Research Fellow; A.H. held a Wellcome  Trust and an EC research fellowship. S.C. was supported by a Wellcome Trust  Project Grant awarded to T.S., C.S.M. and J.R.; V.R.-P. holds an EC fellowship.  The work in Cardiff was supported by grants from the Wellcome Trust. N.C.  is a Wellcome Senior Research Fellow.</p>
+        </ack>
+        <ref-list>
+            <title>References</title>
+            <ref id="b1"><mixed-citation publication-type="journal"><string-name><surname>Burge</surname>, <given-names>S.</given-names></string-name> &amp; <string-name><surname>  Wilkinson</surname>, <given-names>D.J.</given-names></string-name> <article-title>Darier-White disease: a review  of the clinical features in 163 patients.</article-title> <source>J. Am. Acad. Dermatol.  </source> <volume>27</volume>, <fpage>40</fpage>&#x2013;<lpage>50</lpage> (<year>1992</year>).</mixed-citation></ref>
+            <ref id="b2"><mixed-citation publication-type="journal"><string-name><surname>Munro</surname>, <given-names>C.S.</given-names></string-name> <article-title>The phenotype of Darier's disease: penetrance and expressivity in adults and  children.</article-title> <source>Br. J. Dermatol.</source> <volume>127</volume>, <fpage>126</fpage>&#x2013;<lpage>  130</lpage> (<year>1992</year>).</mixed-citation></ref>
+            <ref id="b3"><mixed-citation publication-type="journal"><string-name><surname>Burge</surname>, <given-names>S.</given-names></string-name> &amp; <string-name><surname>  Garrod</surname>, <given-names>D.R.</given-names></string-name> <article-title>An immunohistological study of  desmosomes in Darier's disease and Hailey-Hailey disease.</article-title> <source>Br. J.  Dermatol.</source> <volume>124</volume>, <fpage>242</fpage>&#x2013;<lpage>251</lpage> (<year>1991</year>).</mixed-citation></ref>
+            <ref id="b4"><mixed-citation publication-type="journal"><string-name><surname>Craddock</surname>, <given-names>N.</given-names></string-name> <etal/> <article-title>The gene for Darier's disease maps to chromosome 12q23-q24.1.  </article-title> <source>Hum. Mol. Genet.</source> <volume>2</volume>, <fpage>1941</fpage>&#x2013;<lpage>  1943</lpage> (<year>1993</year>).</mixed-citation></ref>
+            <ref id="b5"><mixed-citation publication-type="journal"><string-name><surname>Bashir</surname>, <given-names>R.</given-names></string-name> <etal/> <article-title>Localisation of a gene for Darier's disease.</article-title> <source>Hum.  Mol. Genet.</source> <volume>2</volume>, <fpage>1937</fpage>&#x2013;<lpage>1939</lpage> (<year>1993</year>).</mixed-citation></ref>
+            <ref id="b6"><mixed-citation publication-type="journal"><string-name><surname>Carter</surname>, <given-names>S.A.</given-names></string-name> <etal/> <article-title>Linkage analyses in British pedigrees suggest a single locus  for Darier disease and narrow the location to the interval between D12S105  and D12S129.</article-title> <source>Genomics</source> <volume>24</volume>, <fpage>378</fpage>&#x2013;<lpage>  382</lpage> (<year>1994</year>).</mixed-citation></ref>
+            <ref id="b7"><mixed-citation publication-type="journal"><string-name><surname>Ikeda</surname>, <given-names>S.</given-names></string-name> <etal/> <article-title>Localization of the gene for Darier disease to a 5-cM interval  on chromosome 12q.</article-title> <source>J. Invest. Dermatol.</source> <volume>103</volume>, <fpage>  478</fpage>&#x2013;<lpage>481</lpage> (<year>1994</year>).</mixed-citation></ref>
+            <ref id="b8"><mixed-citation publication-type="journal"><string-name><surname>Parfitt</surname>, <given-names>E.</given-names></string-name> <etal/> <article-title>The gene for Darier's disease maps between D12S78 and D12S79.  </article-title> <source>Hum. Mol. Genet.</source> <volume>3</volume>, <fpage>35</fpage>&#x2013;<lpage>  38</lpage> (<year>1994</year>).</mixed-citation></ref>
+            <ref id="b9"><mixed-citation publication-type="journal"><string-name><surname>Wakem</surname>, <given-names>P.</given-names></string-name> <etal/> <article-title>Localization of the Darier disease gene to a 2-cM portion of  12q23-24.1.</article-title> <source>J. Invest. Dermatol</source> <volume>106</volume>, <fpage>365  </fpage>&#x2013;<lpage>367</lpage> (<year>1996</year>).</mixed-citation></ref>
+            <ref id="b10"><mixed-citation publication-type="journal"><string-name><surname>Monk</surname>, <given-names>S.</given-names></string-name> <etal/> <article-title>Refined genetic mapping of the Darier locus to a &lt;1-cM region  of chromosome 12q24.1, and construction of a complete, high-resolution P1  artificial chromosome/bacterial artificial chromosome contig of the critical  region.</article-title> <source>Am. J. Hum. Genet.</source> <volume>62</volume>, <fpage>890</fpage>&#x2013;<lpage>  903</lpage> (<year>1998</year>).</mixed-citation></ref>
+            <ref id="b11"><mixed-citation publication-type="journal"><string-name><surname>Lytton</surname>, <given-names>J.</given-names></string-name> &amp; <string-name><surname>  MacLennan</surname>, <given-names>D.H.</given-names></string-name> <article-title>Molecular cloning of cDNAs from  human kidney coding for two alternatively spliced products of the cardiac  Ca<sup>2+</sup>-ATPase gene.</article-title> <source>J. Biol. Chem.</source> <volume>263  </volume>, <fpage>15024</fpage>&#x2013;<lpage>15031</lpage> (<year>1988</year>).  </mixed-citation></ref>
+            <ref id="b12"><mixed-citation publication-type="journal"><string-name><surname>MacLennan</surname>, <given-names>D.H.</given-names></string-name>, <string-name><surname>  Brandl</surname>, <given-names>C.J.</given-names></string-name>, <string-name><surname>Korczak</surname>, <given-names>B.  </given-names></string-name> &amp; <string-name><surname>Green</surname>, <given-names>N.M.</given-names></string-name> <article-title>Amino-acid sequence of a Ca<sup>2+</sup> + Mg<sup>2+</sup>-dependent  ATPase from rabbit muscle sarcoplasmic reticulum, deduced from its complementary  sequence.</article-title> <source>Nature</source> <volume>316</volume>, <fpage>696</fpage>&#x2013;<lpage>  700</lpage> (<year>1985</year>).</mixed-citation></ref>
+            <ref id="b13"><mixed-citation publication-type="journal"><string-name><surname>Pozzan</surname>, <given-names>T.</given-names></string-name>, <string-name><surname>  Rizzuto</surname>, <given-names>R.</given-names></string-name>, <string-name><surname>Volpe</surname>, <given-names>P.</given-names></string-name>  &amp; <string-name><surname>Meldolesi</surname>, <given-names>J.</given-names></string-name> <article-title>Molecular and  cellular physiology of intracellular calcium stores.</article-title> <source>Physiol. Rev.  </source> <volume>74</volume>, <fpage>595</fpage>&#x2013;<lpage>636</lpage> (<year>1994</year>).</mixed-citation></ref>
+            <ref id="b14"><mixed-citation publication-type="journal"><string-name><surname>Missiaen</surname>, <given-names>L.</given-names></string-name> <etal/> <article-title>Ca<sup>2+</sup> extrusion across plasma membrane and Ca<sup>  2+</sup> uptake by intracellular stores.</article-title> <source>Pharmacol. Ther.</source> <volume>  50</volume>, <fpage>191</fpage>&#x2013;<lpage>232</lpage> (<year>1991</year>).  </mixed-citation></ref>
+            <ref id="b15"><mixed-citation publication-type="journal"><string-name><surname>Stuart</surname>, <given-names>R.O.</given-names></string-name>, <string-name><surname>  Sun</surname>, <given-names>A.</given-names></string-name>, <string-name><surname>Bush</surname>, <given-names>K.T.</given-names></string-name>  &amp; <string-name><surname>Nigam</surname>, <given-names>S.K.</given-names></string-name> <article-title>Dependence of  epithelial intercellular junction biogenesis on thapsigargin-sensitive intracellular  calcium stores.</article-title> <source>J. Biol. Chem.</source> <volume>271</volume>, <fpage>13636  </fpage>&#x2013;<lpage>13641</lpage> (<year>1996</year>).</mixed-citation></ref>
+            <ref id="b16"><mixed-citation publication-type="journal"><string-name><surname>Berridge</surname>, <given-names>M.J.</given-names></string-name>, <string-name><surname>  Bootman</surname>, <given-names>M.D.</given-names></string-name> &amp; <string-name><surname>Lipp</surname>, <given-names>  P.</given-names></string-name> <article-title>Calcium&#x2014;a life and death signal.</article-title> <source>Nature  </source> <volume>395</volume>, <fpage>645</fpage>&#x2013;<lpage>648</lpage> (<year>1998</year>).</mixed-citation></ref>
+            <ref id="b17"><mixed-citation publication-type="journal"><string-name><surname>Baba-Aissa</surname>, <given-names>F.</given-names></string-name>, <string-name><surname>  Raeymaekers</surname>, <given-names>L.</given-names></string-name>, <string-name><surname>Wuytack</surname>, <given-names>  F.</given-names></string-name>, <string-name><surname>Dode</surname>, <given-names>L.</given-names></string-name> &amp; <string-name><surname>  Casteels</surname>, <given-names>R.</given-names></string-name> <article-title>Distribution and isoform diversity  of the organellar Ca<sup>2+</sup> pumps in the brain.</article-title> <source>Mol.  Chem. Neuropathol.</source> <volume>33</volume>, <fpage>199</fpage>&#x2013;<lpage>208</lpage>  (<year>1998</year>).</mixed-citation></ref>
+            <ref id="b18"><mixed-citation publication-type="journal"><string-name><surname>Brandl</surname>, <given-names>C.J.</given-names></string-name>, <string-name><surname>  Green</surname>, <given-names>N.M.</given-names></string-name>, <string-name><surname>Korczak</surname>, <given-names>B.</given-names></string-name>  &amp; <string-name><surname>MacLennan</surname>, <given-names>D.H.</given-names></string-name> <article-title>Two Ca<sup>  2+</sup> ATPase genes: homologies and mechanistic implications of deduced  amino acid sequences.</article-title> <source>Cell</source> <volume>44</volume>, <fpage>597</fpage>&#x2013;<lpage>  607</lpage> (<year>1986</year>).</mixed-citation></ref>
+            <ref id="b19"><mixed-citation publication-type="journal"><string-name><surname>MacLennan</surname>, <given-names>D.H.</given-names></string-name>, <string-name><surname>  Rice</surname>, <given-names>W.J.</given-names></string-name>, <string-name><surname>Odermatt</surname>, <given-names>A.</given-names></string-name>  &amp; <string-name><surname>Green</surname>, <given-names>N.M.</given-names></string-name> <article-title>Structure-function  relationships in the Ca<sup>2+</sup>-binding and translocation domain  of SERCA1: physiological correlates in Brody disease.</article-title> <source>Acta Physiol.  Scand.</source> <volume>643</volume> (suppl.), <fpage>55</fpage>&#x2013;<lpage>67</lpage> (<year>1998</year>).</mixed-citation></ref>
+            <ref id="b20"><mixed-citation publication-type="journal"><string-name><surname>Clarke</surname>, <given-names>D.M.</given-names></string-name>, <string-name><surname>  Loo</surname>, <given-names>T.W.</given-names></string-name>, <string-name><surname>Inesi</surname>, <given-names>G.</given-names></string-name>  &amp; <string-name><surname>MacLennan</surname>, <given-names>D.H.</given-names></string-name> <article-title>Location of  high affinity Ca<sup>2+</sup>-binding sites within the predicted transmembrane  domain of the sarcoplasmic reticulum Ca<sup>2+</sup>-ATPase.</article-title> <source>  Nature</source> <volume>339</volume>, <fpage>476</fpage>&#x2013;<lpage>478</lpage> (<year>1989</year>).</mixed-citation></ref>
+            <ref id="b21"><mixed-citation publication-type="journal"><string-name><surname>Carafoli</surname>, <given-names>E.</given-names></string-name>, <string-name><surname>  Garcia-Martin</surname>, <given-names>E.</given-names></string-name> &amp; <string-name><surname>Guerini</surname>, <given-names>  D.</given-names></string-name> <article-title>The plasma membrane calcium pump: recent developments  and future perspectives.</article-title> <source>Experientia</source> <volume>52</volume>, <fpage>  1091</fpage>&#x2013;<lpage>1100</lpage> (<year>1996</year>).</mixed-citation></ref>
+            <ref id="b22"><mixed-citation publication-type="journal"><string-name><surname>Burge</surname>, <given-names>S.</given-names></string-name> <article-title>Cohesion in the epidermis.</article-title> <source>Br. J. Dermatol.</source> <volume>131</volume>, <fpage>  153</fpage>&#x2013;<lpage>159</lpage> (<year>1994</year>).</mixed-citation></ref>
+            <ref id="b23"><mixed-citation publication-type="journal"><string-name><surname>Garrod</surname>, <given-names>D.R.</given-names></string-name>, <string-name><surname>  Chidgey</surname>, <given-names>M.A.J.</given-names></string-name> &amp; <string-name><surname>North</surname>, <given-names>  A.J.</given-names></string-name> <article-title>Desmosomes: differentiation, development, dynamics  and disease.</article-title> <source>Curr. Opin. Cell Biol.</source> <volume>8</volume>, <fpage>670  </fpage>&#x2013;<lpage>678</lpage> (<year>1996</year>).</mixed-citation></ref>
+            <ref id="b24"><mixed-citation publication-type="journal"><string-name><surname>Burdett</surname>, <given-names>I.D.J.</given-names></string-name> <article-title>Aspects of the structure and assembly of desmosomes.</article-title> <source>Micron</source> <volume>  29</volume>, <fpage>309</fpage>&#x2013;<lpage>328</lpage> (<year>1998</year>).  </mixed-citation></ref>
+            <ref id="b25"><mixed-citation publication-type="journal"><string-name><surname>Koch</surname>, <given-names>P.J.</given-names></string-name> &amp; <string-name><surname>  Franke</surname>, <given-names>W.W.</given-names></string-name> <article-title>Desmosomal cadherins: another growing  multigene family of adhesion molecules.</article-title> <source>Curr. Opin. Cell Biol.  </source> <volume>6</volume>, <fpage>682</fpage>&#x2013;<lpage>687</lpage> (<year>1994</year>).</mixed-citation></ref>
+            <ref id="b26"><mixed-citation publication-type="journal"><string-name><surname>Smith</surname>, <given-names>E.A.</given-names></string-name> &amp; <string-name><surname>  Fuchs</surname>, <given-names>E.</given-names></string-name> <article-title>Defining the interactions between  intermediate filaments and desmosomes.</article-title> <source>J. Cell Biol.</source> <volume>  141</volume>, <fpage>1229</fpage>&#x2013;<lpage>1241</lpage> (<year>1998</year>).  </mixed-citation></ref>
+            <ref id="b27"><mixed-citation publication-type="journal"><string-name><surname>Watt</surname>, <given-names>F.M.</given-names></string-name>, <string-name><surname>  Mattey</surname>, <given-names>D.L.</given-names></string-name> &amp; <string-name><surname>Garrod</surname>, <given-names>  D.R.</given-names></string-name> <article-title>Calcium-induced reorganization of desmosomal components  in cultured human keratinocytes.</article-title> <source>J. Cell Biol.</source> <volume>99</volume>, <fpage>  2211</fpage>&#x2013;<lpage>2215</lpage> (<year>1984</year>).</mixed-citation></ref>
+            <ref id="b28"><mixed-citation publication-type="journal"><string-name><surname>Duden</surname>, <given-names>R.</given-names></string-name> &amp; <string-name><surname>  Franke</surname>, <given-names>W.W.</given-names></string-name> <article-title>Organization of desmosomal plaque  proteins in cells growing at low calcium concentrations.</article-title> <source>J. Cell  Biol.</source> <volume>107</volume>, <fpage>1049</fpage>&#x2013;<lpage>1063</lpage> (<year>1988</year>).</mixed-citation></ref>
+            <ref id="b29"><mixed-citation publication-type="journal"><string-name><surname>Nigam</surname>, <given-names>S.K.</given-names></string-name>, <string-name><surname>  Rodriguez-Boulan</surname>, <given-names>E.</given-names></string-name> &amp; <string-name><surname>Silver</surname>, <given-names>  R.B.</given-names></string-name> <article-title>Changes in intracellular calcium during the development  of epithelial polarity and junctions.</article-title> <source>Proc. Natl Acad. Sci. USA  </source> <volume>89</volume>, <fpage>6162</fpage>&#x2013;<lpage>6166</lpage> (<year>1992</year>).</mixed-citation></ref>
+            <ref id="b30"><mixed-citation publication-type="journal"><string-name><surname>Lytton</surname>, <given-names>J.</given-names></string-name>, <string-name><surname>  Westlin</surname>, <given-names>M.</given-names></string-name> &amp; <string-name><surname>Hanley</surname>, <given-names>  M.R.</given-names></string-name> <article-title>Thapsigargin inhibits the sarcoplasmic or endoplasmic  reticulum Ca<sup>2+</sup>-ATPase family of calcium pumps.</article-title> <source>  J. Biol. Chem.</source> <volume>266</volume>, <fpage>17067</fpage>&#x2013;<lpage>17071</lpage>  (<year>1991</year>).</mixed-citation></ref>
+            <ref id="b31"><mixed-citation publication-type="journal"><string-name><surname>Rudolph</surname>, <given-names>H.K.</given-names></string-name> <etal/> <article-title>The yeast secretory pathway is perturbed by mutations in PMR1,  a member of a Ca<sup>2+</sup> ATPase family.</article-title> <source>Cell </source><volume>  58</volume>, <fpage>133</fpage>&#x2013;<lpage>145</lpage> (<year>1989</year>).  </mixed-citation></ref>
+            <ref id="b32"><mixed-citation publication-type="journal"><string-name><surname>Petersen</surname>, <given-names>C.C.H.</given-names></string-name>, <string-name><surname>  Petersen</surname>, <given-names>O.H.</given-names></string-name> &amp; <string-name><surname>Berridge</surname>, <given-names>  M.J.</given-names></string-name> <article-title>The role of endoplasmic reticulum calcium pumps during  cytosolic calcium spiking in pancreatic acinar cells.</article-title> <source>J. Biol.  Chem.</source> <volume>268</volume>, <fpage>22262</fpage>&#x2013;<lpage>22264</lpage> (<year>1993</year>).</mixed-citation></ref>
+            <ref id="b33"><mixed-citation publication-type="journal"><string-name><surname>Dolmetsch</surname>, <given-names>R.E.</given-names></string-name>, <string-name><surname>  Xu</surname>, <given-names>K.</given-names></string-name> &amp; <string-name><surname>Lewis</surname>, <given-names>R.S.</given-names></string-name> <article-title>Calcium oscillations increase the efficiency and specificity of gene expression.  </article-title> <source>Nature</source> <volume>392</volume>, <fpage>933</fpage>&#x2013;<lpage>936</lpage>  (<year>1998</year>).</mixed-citation></ref>
+            <ref id="b34"><mixed-citation publication-type="journal"><string-name><surname>Odermatt</surname>, <given-names>A.</given-names></string-name> <etal/> <article-title>Mutations in the gene encoding SERCA1, the fast-twitch skeletal  muscle sarcoplasmic reticulum Ca<sup>2+</sup> ATPase, are associated with  Brody disease.</article-title> <source>Nature Genet.</source> <volume>14</volume>, <fpage>191</fpage>&#x2013;<lpage>  194</lpage> (<year>1996</year>).</mixed-citation></ref>
+            <ref id="b35"><mixed-citation publication-type="journal"><string-name><surname>Street</surname>, <given-names>V.A.</given-names></string-name>, <string-name><surname>  McKee-Johnson</surname>, <given-names>J.W.</given-names></string-name>, <string-name><surname>Fonseca</surname>, <given-names>  R.C.</given-names></string-name>, <string-name><surname>Tempel</surname>, <given-names>B.L.</given-names></string-name> &amp; <string-name><surname>  Noben-Trauth</surname>, <given-names>K.</given-names></string-name> <article-title>Mutations in a plasma membrane  Ca<sup>2+</sup>-ATPase gene cause deafness in deafwaddler mice.</article-title> <source>  Nature Genet.</source> <volume>19</volume>, <fpage>390</fpage>&#x2013;<lpage>394</lpage> (<year>1998</year>).</mixed-citation></ref>
+            <ref id="b36"><mixed-citation publication-type="journal"><string-name><surname>Maquat</surname>, <given-names>L.E.</given-names></string-name> <article-title>When cells stop making sense: effect of non-sense codons on RNA metabolism  in vertebrate cells.</article-title> <source>RNA</source> <volume>1</volume>, <fpage>453</fpage>&#x2013;<lpage>  465</lpage> (<year>1995</year>).</mixed-citation></ref>
+            <ref id="b37"><mixed-citation publication-type="book"><string-name><surname>Lytton</surname>, <given-names>J.</given-names></string-name> &amp; <string-name><surname>  MacLennan</surname>, <given-names>D.H.</given-names></string-name> <article-title>Sarcoplasmic reticulum.</article-title>  in <source>The Heart and Cardiovascular System</source> (ed. Fozzard, H.A.) <fpage>  1203</fpage>&#x2013;<lpage>1211</lpage> (Raven, New York, <year>1992</year>).</mixed-citation></ref>
+            <ref id="b38"><mixed-citation publication-type="journal"><string-name><surname>Keith</surname>, <given-names>D.</given-names></string-name> <etal/> <article-title>Haploinsufficiency of desmoplakin causes a striate subtype of  palmoplantar keratoderma.</article-title> <source>Hum. Mol. Genet.</source> <volume>8</volume>, <fpage>  143</fpage>&#x2013;<lpage>148</lpage> (<year>1999</year>).</mixed-citation></ref>
+            <ref id="b39"><mixed-citation publication-type="journal"><string-name><surname>Hailey</surname>, <given-names>H.</given-names></string-name> &amp; <string-name><surname>  Hailey</surname>, <given-names>H.</given-names></string-name> <article-title>Familial benign chronic pemphigus.  </article-title> <source>Arch. Dermatol.</source> <volume>39</volume>, <fpage>679</fpage>&#x2013;<lpage>  685</lpage> (<year>1939</year>).</mixed-citation></ref>
+            <ref id="b40"><mixed-citation publication-type="journal"><string-name><surname>Grover</surname>, <given-names>R.W.</given-names></string-name> <article-title>Transient acantholytic dermatosis.</article-title> <source>Arch. Dermatol.</source> <volume>  101</volume>, <fpage>426</fpage>&#x2013;<lpage>434</lpage> (<year>1970</year>).  </mixed-citation></ref>
+            <ref id="b41"><mixed-citation publication-type="journal"><string-name><surname>Toyofuku</surname>, <given-names>T.</given-names></string-name>, <string-name><surname>  Kurzydlowski</surname>, <given-names>K.</given-names></string-name>, <string-name><surname>Lytton</surname>, <given-names>  J.</given-names></string-name> &amp; <string-name><surname>MacLennan</surname>, <given-names>D.H.</given-names></string-name> <article-title>The nucleotide binding/hinge domain plays a crucial role in determining isoform-specific  Ca<sup>2+</sup> dependence of organellar Ca<sup>2+</sup>-ATPases.  </article-title> <source>J. Biol. Chem.</source> <volume>267</volume>, <fpage>14490</fpage>&#x2013;<lpage>  14496</lpage> (<year>1992</year>).</mixed-citation></ref>
+        </ref-list>
+        <notes notes-type="database-links">
+            <p><ext-link ext-link-type="genbank" xlink:href="ATP2A1"><italic>ATP2A1</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="U96781">U96781</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="P11719">P11719</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="ATP2A2a"><italic>ATP2A2a</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="M23115">M23115</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="P16614">P16614</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="ATP2A2b"><italic>ATP2A2b</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="M23114">M23114</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="P16615">P16615</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="ATP2A3"><italic>ATP2A3</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="Q93084">Q93084</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="ARC21"><italic>ARC21</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="AF006086">AF006086</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="P43490">P43490</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="RPL31"><italic>RPL31</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="X15940">X15940</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="P12947">P12947</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="PPM2C"><italic>PPM2C</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="H73417">H73417</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="PPP1CC"><italic>PPP1CC</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="X74008">X74008</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="P36873">P36873</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="RPL29"><italic>RPL29</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="U49083">U49083</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="P47914">P47914</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="AI23295">AI23295</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="MYL2"><italic>MYL2</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="M21812">M21812</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="PAC 305I20">PAC 305I20</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="AC006088">AC006088</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="Atp2a2">Atp2a2</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="P04192">P04192</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="Atp2a2"><italic>Atp2a2</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="P11606">P11606</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="Atp2a2"><italic>Atp2a2</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="P11508">P11508</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="Atp2a2"><italic>Atp2a2</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="Q00779">Q00779</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="GLTP"><italic>GLTP</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="P17403">P17403</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="FET5"><italic>FET5</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="U80218">U80218</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="PEP11"><italic>PEP11</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="P38759">P38759</ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="PMR1"><italic>PMR1</italic></ext-link></p>
+            <p><ext-link ext-link-type="genbank" xlink:href="M25488">M25488</ext-link></p>
+        </notes>
+    </back>
+    <floats-group>
+        <fig position="float" id="f1">
+            <caption>
+                <title>Clinical and histological features of Darier disease.</title>
+                <p><bold><italic>a</italic></bold>, Clinical presentation of a patient with DD. Keratotic papules  coalesce to form extensive plaques on the chest. <bold><italic>b</italic></bold>, Histological  section of affected skin showing separation of suprabasal cells ('acantholysis'),  suprabasal cleft and abnormal keratinisation (&#xD7;50). <bold><italic>c</italic></bold>, Higher  power showing acantholytic cells in the suprabasal layer (&#xD7;100).</p>
+            </caption>
+            <graphic position="anchor" xlink:href="ng0399_272a.jpg" mimetype="image" mime-subtype="jpeg"/>
+        </fig>
+        <fig position="float" id="f2">
+            <caption>
+                <title>Tissue expression of the <italic>ATP2A2</italic> transcripts.</title>
+                <p><bold>a</bold>, Northern blots with human keratinocyte total RNA (30 &#x3BC;g) were  hybridized with a PCR product generated with primers for <italic>D12S2026</italic> (specific  for <italic>ATP2A2a</italic>) and <italic>D12S1965</italic> (specific for <italic>ATP2A2b</italic>). <bold>b</bold>, Multiple-tissue northern blot (Clontech) was hybridized with a PCR  product generated with primers for <italic>D12S2026</italic>. Hybridizations with control <italic>GAPDH</italic> probe are shown.</p>
+            </caption>
+            <graphic position="anchor" xlink:href="ng0399_272b.gif" mimetype="image" mime-subtype="gif"/>
+        </fig>
+        <fig position="float" id="f3">
+            <caption>
+                <title>Identification of <italic>ATP2A2</italic> mutations in familial and sporadic  patients with DD.</title>
+                <p><bold><italic>a</italic></bold>, Analysis of familial cases. Affected individuals are indicated  by filled symbols, unaffected individuals by open symbols. The affected status  of first-generation parents in families Ox-F15 and Ox-F11 is unknown. Direct  PCR sequencing of <italic>ATP2A2</italic> mutations from genomic DNA is shown for patients  from families Ox-F15, Ox-F22 and Ox-F4. The presence of a heterozygous insertion  in patient Ox-F15 (91ins57) and heterozygous deletions in patients Ox-F22  (2102del36) and Ox-F4 (1418delCA) results in the superimposition of the normal  and mutant alleles downstream of the mutations. Arrowheads indicate the position  of <italic>ATP2A2</italic> mutations. In patient Ox-F4, sequence analysis of the RT-PCR  product of smaller size obtained with cDNA primers revealed the in-frame skipping  of exon 11 in <italic>ATP2A2</italic>, encoding aa A430-S473. <bold><italic>b</italic></bold>, Analysis of  sporadic cases NCL-A39, NCL-B4 and NCL-B11. NCL-B11 comprises two identical  twins, of which only one is affected. Direct PCR sequencing of genomic DNA  from patients NCL-A39 and NCL-B4 shows the mixture of normal and mutant alleles  downstream of the heterozygous 2-bp deletion (arrows; &#x394;AT433-434 and &#x394;AT1220-1221).  SSCP analysis in family NCL-B11 shows patient-specific SSCP band revealed  with DNA primer set 1. Sequence analysis of <italic>ATP2A2</italic> in patient 4 (affected  twin) shows a <italic>de novo</italic> G&#x2192;A mutation changing glycine 23 into glutamic  acid (G23E). This mutation was absent in the unaffected twin and parents of  patient 4.</p>
+            </caption>
+            <graphic position="anchor" xlink:href="ng0399_274.gif" mimetype="image" mime-subtype="gif"/>
+        </fig>
+        <fig position="float" id="f4">
+            <caption>
+                <title>Model of the human SERCA2 polypeptide and mutations identified in patients  with DD.</title>
+                <p>The predicted secondary structure includes three globular cytoplasmic domains  separated by a stalk sector from the transmembrane part of the molecule. The  cytoplasmic domain contains a &#x3B2;-strand, a phosporylation and an ATP-binding  domain. A hinge region links the ATP-binding domain to stalk sector 5. The  transmembrane region includes ten transmembrane coiled-coil helices, four  of which contain Ca<sup>2+</sup>-binding sites<xref ref-type="bibr" rid="b20"/> (M4, M5,  M6 and M8). <italic>SERCA2</italic> mutations identified in DD patients are indicated.  S1-S5 refer to stalk sectors and M1-M10 refer to transmembrane helices 1-10  (adapted from ref. <xref ref-type="bibr" rid="b40">40</xref>; permission for reproduction  has been obtained from D.H. MacLennan and <italic>J. Biol. Chem</italic>.).</p>
+            </caption>
+            <graphic position="anchor" xlink:href="ng0399_275.gif" mimetype="image" mime-subtype="gif"/>
+        </fig>
+        <table-wrap id="t1">
+            <caption>
+                <title>Intron-exon organization of the <italic>ATP2A2 </italic>coding region</title>
+            </caption>
+            <oasis:table frame="topbot" rowsep="0">
+                <oasis:tgroup cols="6">
+                    <oasis:colspec colname="col1" colwidth="1*"/>
+                    <oasis:colspec colname="col2" colwidth="1*"/>
+                    <oasis:colspec colname="col3" colwidth="1*"/>
+                    <oasis:colspec colname="col4" colwidth="1*"/>
+                    <oasis:colspec colname="col5" colwidth="1*"/>
+                    <oasis:colspec colname="col6" colwidth="1*"/>
+                    <oasis:thead>
+                        <oasis:row>
+                            <oasis:entry>Exon/intron</oasis:entry>
+                            <oasis:entry>Exon length (bp)</oasis:entry>
+                            <oasis:entry>Starting position in cDNA</oasis:entry>
+                            <oasis:entry>Acceptor splice site<sup>a</sup></oasis:entry>
+                            <oasis:entry>Donor splice site<sup>a</sup></oasis:entry>
+                            <oasis:entry>Intron length (bp)</oasis:entry>
+                        </oasis:row>
+                    </oasis:thead>
+                    <oasis:tbody>
+                        <oasis:row>
+                            <oasis:entry>1</oasis:entry>
+                            <oasis:entry>118<sup>b</sup></oasis:entry>
+                            <oasis:entry>1</oasis:entry>
+                            <oasis:entry/>
+                            <oasis:entry>CTCCAACG/gtaggtgcagggcgct</oasis:entry>
+                            <oasis:entry>696</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>2</oasis:entry>
+                            <oasis:entry>18</oasis:entry>
+                            <oasis:entry>119</oasis:entry>
+                            <oasis:entry>tttctacattctacag/AGTTACCG</oasis:entry>
+                            <oasis:entry>TGAAGAAG/gtaatcttaacatgct</oasis:entry>
+                            <oasis:entry>91</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>3</oasis:entry>
+                            <oasis:entry>83</oasis:entry>
+                            <oasis:entry>137</oasis:entry>
+                            <oasis:entry>tgtttgtttcttacag/GAAAAACC</oasis:entry>
+                            <oasis:entry>TATCTTTT/gtaagtataaaaaaat</oasis:entry>
+                            <oasis:entry>9,224</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>4</oasis:entry>
+                            <oasis:entry>105</oasis:entry>
+                            <oasis:entry>220</oasis:entry>
+                            <oasis:entry>gccatttctcttctag/GTTTTGGC</oasis:entry>
+                            <oasis:entry>TATGGCAG/gtaagcaaaaattcct</oasis:entry>
+                            <oasis:entry>4,474</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>5</oasis:entry>
+                            <oasis:entry>139</oasis:entry>
+                            <oasis:entry>325</oasis:entry>
+                            <oasis:entry>gttttcttttatacag/GAAAGAAA</oasis:entry>
+                            <oasis:entry>AATTGCTG/gtgagttgagtttgtc</oasis:entry>
+                            <oasis:entry>25,097</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>6</oasis:entry>
+                            <oasis:entry>81</oasis:entry>
+                            <oasis:entry>464</oasis:entry>
+                            <oasis:entry>tttttctcctaattag/TTGGTGACT</oasis:entry>
+                            <oasis:entry>CTCACAG/gtaaatatgatatatt</oasis:entry>
+                            <oasis:entry>3,317</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>7</oasis:entry>
+                            <oasis:entry>86</oasis:entry>
+                            <oasis:entry>545</oasis:entry>
+                            <oasis:entry>ctcacaacccgcttag/GTGAATCT</oasis:entry>
+                            <oasis:entry>TGTTTTCT/gtaagtactttatgaa</oasis:entry>
+                            <oasis:entry>1,077</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>8</oasis:entry>
+                            <oasis:entry>465</oasis:entry>
+                            <oasis:entry>631</oasis:entry>
+                            <oasis:entry>tctacttctgtcctag/GGTACAAA</oasis:entry>
+                            <oasis:entry>TCTGCAGG/gtaagaggagtaattt</oasis:entry>
+                            <oasis:entry>4,579</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>9</oasis:entry>
+                            <oasis:entry>89</oasis:entry>
+                            <oasis:entry>1,096</oasis:entry>
+                            <oasis:entry>cgctctccccctacag/ATGTTCAT</oasis:entry>
+                            <oasis:entry>GGAGAAGT/gtgagtaaccctcctc</oasis:entry>
+                            <oasis:entry>494</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>10</oasis:entry>
+                            <oasis:entry>103</oasis:entry>
+                            <oasis:entry>1,185</oasis:entry>
+                            <oasis:entry>ttttctctttgggcag/GCATAAAG</oasis:entry>
+                            <oasis:entry>ACAATGAG/gtaagtctcttcataa</oasis:entry>
+                            <oasis:entry>728</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>11</oasis:entry>
+                            <oasis:entry>132</oasis:entry>
+                            <oasis:entry>1,288</oasis:entry>
+                            <oasis:entry>cctttaaccaatacag/GCAAAGG</oasis:entry>
+                            <oasis:entry>GGCAACTCA/gtgagtatttgaacct</oasis:entry>
+                            <oasis:entry>5,137</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>12</oasis:entry>
+                            <oasis:entry>123</oasis:entry>
+                            <oasis:entry>1,420</oasis:entry>
+                            <oasis:entry>tttgttccctttgtag/GTCATTAA</oasis:entry>
+                            <oasis:entry>TTGTGAAG/gcaagtatggcagatt</oasis:entry>
+                            <oasis:entry>99</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>13</oasis:entry>
+                            <oasis:entry>219</oasis:entry>
+                            <oasis:entry>1,543</oasis:entry>
+                            <oasis:entry>tctgtaacatttccag/GGTGCTCC</oasis:entry>
+                            <oasis:entry>AATATGAG/gttagctaatgaaaag</oasis:entry>
+                            <oasis:entry>937</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>14</oasis:entry>
+                            <oasis:entry>336</oasis:entry>
+                            <oasis:entry>1,762</oasis:entry>
+                            <oasis:entry>gatgctcttattttag/ACCAATCT</oasis:entry>
+                            <oasis:entry>CAGCTATG/gtgagcatgtttgaac</oasis:entry>
+                            <oasis:entry>1,233</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>15</oasis:entry>
+                            <oasis:entry>221</oasis:entry>
+                            <oasis:entry>2,098</oasis:entry>
+                            <oasis:entry>ttgctttccctttcag/ACTGGCGA</oasis:entry>
+                            <oasis:entry>GTTGTCTG/gtaggtctctgtgaca</oasis:entry>
+                            <oasis:entry>783</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>16</oasis:entry>
+                            <oasis:entry>203</oasis:entry>
+                            <oasis:entry>2,319</oasis:entry>
+                            <oasis:entry>tcttgattggaaacag/TATTTTCC</oasis:entry>
+                            <oasis:entry>TATTGGCT/gtgagtacaatttttt</oasis:entry>
+                            <oasis:entry>1,451</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>17</oasis:entry>
+                            <oasis:entry>86</oasis:entry>
+                            <oasis:entry>2,522</oasis:entry>
+                            <oasis:entry>ctgtgtttgttcccag/GTTACGTC</oasis:entry>
+                            <oasis:entry>ACCAGCTG/gtactcagtcaccttt</oasis:entry>
+                            <oasis:entry>277</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>18</oasis:entry>
+                            <oasis:entry>134</oasis:entry>
+                            <oasis:entry>2,608</oasis:entry>
+                            <oasis:entry>ttggattttcttgcag/AGTCATTT</oasis:entry>
+                            <oasis:entry>CTCAACAG/gttagtgcaccttcac</oasis:entry>
+                            <oasis:entry>618</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>19</oasis:entry>
+                            <oasis:entry>118</oasis:entry>
+                            <oasis:entry>2,742</oasis:entry>
+                            <oasis:entry>tctccttgctctgcag/CTTGTCCG</oasis:entry>
+                            <oasis:entry>CCTTGCCA/gtaagtggttgggtgg</oasis:entry>
+                            <oasis:entry>82</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>20</oasis:entry>
+                            <oasis:entry>267<sup>c</sup></oasis:entry>
+                            <oasis:entry>2,860</oasis:entry>
+                            <oasis:entry>cttccctgtgtgtcag/CTCATCTT</oasis:entry>
+                            <oasis:entry>GGAACCTG<underline underline-style="single">GT</underline>AAAGAGTGT<sup>d</sup></oasis:entry>
+                            <oasis:entry>12,521</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>21</oasis:entry>
+                            <oasis:entry>11<sup>c</sup></oasis:entry>
+                            <oasis:entry>2,981</oasis:entry>
+                            <oasis:entry>tctctttccttttcag/CAATACTG</oasis:entry>
+                        </oasis:row>
+                    </oasis:tbody>
+                </oasis:tgroup>
+            </oasis:table>
+            <alternatives>
+                <graphic position="anchor" specific-use="show" xlink:href="ng0399_273a.gif" mimetype="image" mime-subtype="gif"/>
+            </alternatives>
+            <table-wrap-foot>
+                <fn id="t1-fna"><p><sup>a</sup>The exonic and intronic sequences are indicated in uppercase  and lowercase letters, respectively.</p></fn>
+                <fn id="t1-fnb"><p><sup>b</sup>All coding sequence.</p></fn>
+                <fn id="t1-fnc"><p><sup>c</sup>Down to stop codon.</p></fn>
+                <fn id="t1-fnd"><p><sup>d</sup>This sequence, located in exon 20, is spliced at a GT cryptic  donor splice (underlined) to generate the <italic>ATP2A2a</italic> isoform by joining  exon 21 to the first 121 nt of exon 20.</p></fn>
+                <fn id="t1-fn0"><p>The <italic>ATP2A2b </italic>isoform contains the entire exon 20 and no exon 21 sequence<sup>  11</sup>.</p></fn>
+            </table-wrap-foot>
+        </table-wrap>
+        <table-wrap id="t2">
+            <caption>
+                <title><italic>ATP2A2</italic> mutations in patients with DD</title>
+            </caption>
+            <oasis:table frame="topbot" rowsep="0">
+                <oasis:tgroup cols="7">
+                    <oasis:colspec colname="col1" colwidth="1*"/>
+                    <oasis:colspec colname="col2" colwidth="1*"/>
+                    <oasis:colspec colname="col3" colwidth="1*"/>
+                    <oasis:colspec colname="col4" colwidth="1*"/>
+                    <oasis:colspec colname="col5" colwidth="1*"/>
+                    <oasis:colspec colname="col6" colwidth="1*"/>
+                    <oasis:colspec colname="col7" colwidth="1*"/>
+                    <oasis:thead>
+                        <oasis:row>
+                            <oasis:entry>Family/patient</oasis:entry>
+                            <oasis:entry>Location</oasis:entry>
+                            <oasis:entry>Mutation<xref ref-type="table-fn" rid="t2-fna">a</xref></oasis:entry>
+                            <oasis:entry>Nucleotide change<xref ref-type="table-fn" rid="t2-fnb">b</xref></oasis:entry>
+                            <oasis:entry>Consequence</oasis:entry>
+                            <oasis:entry>Protein domain</oasis:entry>
+                            <oasis:entry>Verification method</oasis:entry>
+                        </oasis:row>
+                    </oasis:thead>
+                    <oasis:tbody>
+                        <oasis:row>
+                            <oasis:entry>NCL-B11</oasis:entry>
+                            <oasis:entry>exon 1</oasis:entry>
+                            <oasis:entry>G23E</oasis:entry>
+                            <oasis:entry>68G&#x2192;A</oasis:entry>
+                            <oasis:entry>missense</oasis:entry>
+                            <oasis:entry>upstream stalk 1</oasis:entry>
+                            <oasis:entry><italic>Alu</italic>I</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>Ox-F15</oasis:entry>
+                            <oasis:entry>exon 1</oasis:entry>
+                            <oasis:entry>91ins57</oasis:entry>
+                            <oasis:entry>AGAAGC&#x2192;AGA<underline underline-style="single">TGC...AGA</underline>AGC</oasis:entry>
+                            <oasis:entry>in-frame insertion</oasis:entry>
+                            <oasis:entry>upstream stalk 1</oasis:entry>
+                            <oasis:entry>2% agarose gel</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>Ox-S1</oasis:entry>
+                            <oasis:entry>exon 4</oasis:entry>
+                            <oasis:entry>Q108X</oasis:entry>
+                            <oasis:entry>322C&#x2192;T</oasis:entry>
+                            <oasis:entry>in-frame exon skipping</oasis:entry>
+                            <oasis:entry>M1, loop, M2</oasis:entry>
+                            <oasis:entry><italic>Bsp</italic>MI</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>NCL-A39</oasis:entry>
+                            <oasis:entry>exon 5</oasis:entry>
+                            <oasis:entry>433delAT</oasis:entry>
+                            <oasis:entry>GAC<underline underline-style="single">AT</underline>AGT&#x2192;GACAGT</oasis:entry>
+                            <oasis:entry>frameshift (PTC+3 aa)</oasis:entry>
+                            <oasis:entry>&#x3B2; sheet</oasis:entry>
+                            <oasis:entry><italic>Alw</italic>NI</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>NCL-Cx</oasis:entry>
+                            <oasis:entry>intron 6</oasis:entry>
+                            <oasis:entry>544+1g&#x2192;a</oasis:entry>
+                            <oasis:entry>CAGgt&#x2192;CAG<underline underline-style="single">a</underline>t</oasis:entry>
+                            <oasis:entry>altered splicing</oasis:entry>
+                            <oasis:entry>&#x3B2; sheet</oasis:entry>
+                            <oasis:entry>SSCP</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>Ox-F11</oasis:entry>
+                            <oasis:entry>exon 8</oasis:entry>
+                            <oasis:entry>T357K</oasis:entry>
+                            <oasis:entry>1070C&#x2192;A</oasis:entry>
+                            <oasis:entry>missense</oasis:entry>
+                            <oasis:entry>phosphorylation</oasis:entry>
+                            <oasis:entry>CSGE</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>NCL-B4</oasis:entry>
+                            <oasis:entry>exon 10</oasis:entry>
+                            <oasis:entry>1220delAT</oasis:entry>
+                            <oasis:entry>AGT<underline underline-style="single">AT</underline>GAT&#x2192;AGTGAT</oasis:entry>
+                            <oasis:entry>nonsense</oasis:entry>
+                            <oasis:entry>phosphorylation</oasis:entry>
+                            <oasis:entry><italic>Bst</italic>XI, <italic>Xcm</italic>I</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>Ox-F4</oasis:entry>
+                            <oasis:entry>exon 11</oasis:entry>
+                            <oasis:entry>1418delCA</oasis:entry>
+                            <oasis:entry>ACT<underline underline-style="single">CA</underline>gt&#x2192;ACTgt</oasis:entry>
+                            <oasis:entry>in-frame exon skipping</oasis:entry>
+                            <oasis:entry>phosphorylation</oasis:entry>
+                            <oasis:entry><italic>Dde</italic>I</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>Ox-F36</oasis:entry>
+                            <oasis:entry>exon 12</oasis:entry>
+                            <oasis:entry>S495L</oasis:entry>
+                            <oasis:entry>1484C&#x2192;T</oasis:entry>
+                            <oasis:entry>missense</oasis:entry>
+                            <oasis:entry>phosphorylation</oasis:entry>
+                            <oasis:entry>CSGE</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>NCL-B37</oasis:entry>
+                            <oasis:entry>exon 14</oasis:entry>
+                            <oasis:entry>2017delC</oasis:entry>
+                            <oasis:entry>GCC<underline underline-style="single">C</underline>GCT&#x2192;GCCGCT</oasis:entry>
+                            <oasis:entry>frameshift (PTC+14 aa)</oasis:entry>
+                            <oasis:entry>ATP binding</oasis:entry>
+                            <oasis:entry>SSCP</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>Ox-F22</oasis:entry>
+                            <oasis:entry>exon 15</oasis:entry>
+                            <oasis:entry>2102del36</oasis:entry>
+                            <oasis:entry>CTG<underline underline-style="single">GC...AG</underline>CCG&#x2192;CTGCCG</oasis:entry>
+                            <oasis:entry>in-frame deletion</oasis:entry>
+                            <oasis:entry>hinge</oasis:entry>
+                            <oasis:entry><italic>Mbo</italic>II</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>Ox-F19</oasis:entry>
+                            <oasis:entry>exon 15</oasis:entry>
+                            <oasis:entry>G749R</oasis:entry>
+                            <oasis:entry>2245G&#x2192;A</oasis:entry>
+                            <oasis:entry>missense</oasis:entry>
+                            <oasis:entry>stalk 5</oasis:entry>
+                            <oasis:entry>CSGE</oasis:entry>
+                        </oasis:row>
+                        <oasis:row>
+                            <oasis:entry>Ox-F13</oasis:entry>
+                            <oasis:entry>exon 19</oasis:entry>
+                            <oasis:entry>2790del8</oasis:entry>
+                            <oasis:entry>CAT<underline underline-style="single">CTGGCTCG</underline>TGG&#x2192;CATTGG</oasis:entry>
+                            <oasis:entry>frameshift (PTC+47 aa)</oasis:entry>
+                            <oasis:entry>M9</oasis:entry>
+                            <oasis:entry>CSGE</oasis:entry>
+                        </oasis:row>
+                    </oasis:tbody>
+                </oasis:tgroup>
+            </oasis:table>
+            <alternatives>
+                <graphic position="anchor" specific-use="show" xlink:href="ng0399_273b.gif" mimetype="image" mime-subtype="gif"/>
+            </alternatives>
+            <table-wrap-foot>
+                <fn id="t2-fna"><p><sup>a</sup>Numbering of the amino acids refers to the SERCA2a peptide  sequence.</p></fn>
+                <fn id="t2-fnb"><p><sup>b</sup>Numbering of the nucleotides refers to <italic>ATP2A2a</italic> cDNA  sequence, with the first nucleotide of ATG initiation codon as 1.</p></fn>
+                <fn id="t2-fn0"><p>Bases in exons are denoted by uppercase letters; bases in introns by lowercase  letters; and altered bases are underlined.</p></fn>
+                <fn id="t2-fn1"><p>PTC+n aa, premature termination codon at n amino acid downstream of the  mutation; M, transmembrane domain; the TGA stop codon caused by 1220delAT  is boxed.</p></fn>
+            </table-wrap-foot>
+        </table-wrap>
+    </floats-group>
+</article>

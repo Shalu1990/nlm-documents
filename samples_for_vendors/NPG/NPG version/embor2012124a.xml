@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//NPG//DTD XML Article//EN" "NPG_XML_Article.dtd" [
+<!ENTITY illus1 PUBLIC "-//NatureAmerica//FICI embor2012124i1//EN" "embor2012124i1.jpg" NDATA ITEM>
+]>
+<article id="embor2012124" publish="issue">
+<pubfm>
+<jtl>EMBO reports</jtl>
+<vol>13</vol>
+<iss>9</iss>
+<idt>201209</idt>
+<categ id="upfrnt"/>
+<subcateg id="op"/>
+<pp><spn>766</spn><epn>766</epn><cnt>1</cnt></pp>
+<issn type="print">1469-221X</issn>
+<issn type="electronic">1469-3178</issn>
+<cpg><cpy>2012</cpy><cpn>European Molecular Biology Organization</cpn></cpg>
+<subject code="embocode-6"/>
+<subject code="embocode-8"/>
+<doi>10.1038/embor.2012.124</doi></pubfm>
+<fm>
+<atl>Meiotic pairing by non-coding RNA?</atl>
+<aug>
+<au><fnm>Akira</fnm><snm>Yamashita</snm><inits>A</inits><orf rid="a1"/></au>
+<au><fnm>Ryo</fnm><snm>Kariyazono</snm><inits>R</inits><orf rid="a2"/></au>
+<au><fnm>Yoshinori</fnm><snm>Watanabe</snm><inits>Y</inits><orf rid="a2"/></au>
+<aff><oid id="a1"/><org>Laboratory of Gene Function, Department of Human Genome Research, Kazusa DNA Research Institute</org>, <cny>Japan</cny></aff>
+<aff><oid id="a2"/><org>Laboratory of Chromosome Dynamics, Insitute of Molecular and Cellular Biosciences, University of Tokyo</org>, <cny>Japan</cny></aff></aug>
+<hst>
+<pubdate type="aop" year="2012" month="08" day="17"/>
+<pubdate type="iss" year="2012" month="08" day="31"/>
+</hst>
+<edsumm>
+<title></title>
+<p>How are homologous chromosomes identified during meiosis? A report in <i>Science</i> suggests the answer may be non-coding RNAs, but much work remains to be done.</p></edsumm></fm>
+<bdy>
+<p>In sexual reproduction, the double cell division known as meiosis introduces the possibility of genetic variation in offspring. Meiotic division is preceded by homologous chromosomes (homologues) lining up next to each other to form homologous pairs, followed by double-strand break (DSB)-mediated recombination&mdash;steps that are essential for the separation of homologues to opposite poles during the first meiotic division. In meiotic prophase, the clustering of the telomeres around the centrosome on the nuclear envelope induces a polarized chromosome configuration referred to as the &lsquo;bouquet,&rsquo; which might bring homologous pairs into close proximity. However, as telomere clustering itself does not sort out which chromosomes are homologues, other mechanisms for recognizing homologous pairs must exist. A paper by Ding <i>et al</i> &lsqb;<bibrinl rid="b1">1</bibrinl>&rsqb; proposes that a non-coding RNA, encoded by the <i>sme2</i> gene, is crucial in homologue pairing in the fission yeast <i>Schizosaccharomyces pombe</i> (see illustration).</p>
+<p>The <i>sme2</i> gene was originally identified as the gene required for meiotic progression that encodes a polyadenylated non-coding RNA, meiRNA &lsqb;<bibrinl rid="b2">2</bibrinl>&rsqb;. Peculiarly, the <i>sme2</i> gene locus accumulates its transcript meiRNAs and forms a meiosis-specific nuclear dot structure, together with an RNA-binding protein, Mei2&mdash;a master regulator of meiosis &lsqb;<bibrinl rid="b3">3</bibrinl>&rsqb;. The Mei2&ndash;meiRNA complex binds to and sequesters another RNA-binding protein Mmi1, which selectively binds to and eliminates meiotic transcripts that are weakly expressed in mitotic cells. Thus, meiRNAs located at the <i>sme2</i> locus are essential in meiotic progression as they invalidate the negative meiotic regulator Mmi1 (see illustration; &lsqb;<bibrinl rid="b4">4</bibrinl>&rsqb;).<illusr rid="illus1" align="center"/></p>
+<p>During the meiotic phase of <i>S. pombe</i>, the nucleus oscillates back and forth between the cell poles similarly to a moving horse-tail, with the telomeres clustered near the spindle pole body&mdash;the centromere equivalent&mdash;located at the leading edge of the moving nucleus. This &lsquo;horse-tail&rsquo; nuclear movement is essential for promoting homologue pairing &lsqb;<bibrinl rid="b5">5</bibrinl>&rsqb;. In their live-cell observations of Mei2-GFP, Ding and co-workers noticed that Mei2 dots located at the homologous <i>sme2</i> loci pair robustly in the early stages of the horse-tail movement, before most other chromosomal loci are paired &lsqb;<bibrinl rid="b1">1</bibrinl>&rsqb;. When the <i>sme2</i> locus translocates to another chromosomal site, the robust pairing mechanism also transfers to this new site. Inactivation of the promoter in only one <i>sme2</i> locus of a pair of homologues impairs the robust pairing, suggesting that the transcribed meiRNAs must be tethered to homologous loci for pairing &lsqb;<bibrinl rid="b1">1</bibrinl>&rsqb;.</p>
+<p>There are several ways in which RNA molecules could promote pairing. Whilst RNA&ndash;RNA or RNA&ndash;DNA interactions might be involved in the pairing process, there is no evidence to support this, as the RNA interference machinery is dispensable &lsqb;<bibrinl rid="b1">1</bibrinl>&rsqb;. Chromosome pairing, mediated by non-coding RNA, is reminiscent of the mammalian X chromosome inactivation process, in which the inactive centre of an X chromosome transiently pairs, possibly through a <i>de novo</i> assembled RNA&ndash;protein complex &lsqb;<bibrinl rid="b6">6</bibrinl>&rsqb;. Strikingly, Mei2, which is a major component of the meiRNA complex, seems to be dispensable for the robust pairing, because truncated meiRNA lacking the Mei2 binding sequence retains its pairing activity &lsqb;<bibrinl rid="b1">1</bibrinl>&rsqb;. Further identification of components involved in the meiRNA complex seems to be important for the full elucidation of this peculiar pairing mechanism.</p>
+<p>Another major issue to be addressed is the biological significance of this pairing. Although meiRNA is essential in meiotic progression by sequestering the meiotic inhibitor Mmi1, the pairing defect observed in <i>sme2</i> translocation or heterozygous deletion is limited or negligible in the overall chromosome pairing and meiotic progression. This contrasts with the pairing centre identified in <i>Caenorhabditis elegans</i>, the removal of which abolishes the pairing of the whole chromosome &lsqb;<bibrinl rid="b5">5</bibrinl>&rsqb;. Because meiRNA carries numerous copies of the Mmi1-binding sequence &lsqb;<bibrinl rid="b7">7</bibrinl>&rsqb;, it could be argued that the chromosomally assembled meiRNA complex acts primarily as an Mmi1 sequestering factory, and that the agglutination properties of the factory accelerate indirectly the pairing of adjacent chromosomal regions. Thus, to generalize the findings of the meiotic pairing by non-coding RNA, it is certainly important to explore whether similar pairing mechanisms triggered by RNA exist in other chromosomal regions of fission yeast, or in the meoitic chromosomes of other organisms.</p></bdy>
+<bm>
+<objects>
+<illus id="illus1" type="jpeg" entname="illus1"></illus></objects>
+<audecl conflct="no"><explanatory>The authors declare that they have no conflict of interest.</explanatory></audecl>
+<author-info><p>Akira Yamashita is at the Laboratory of Gene Function, Department of Human Genome Research, Kazusa DNA Research Institute, Japan.
+<newline/>Ryo Kariyazono and Yoshinori Watanabe are at the Laboratory of Chromosome Dynamics, Insitute of Molecular and Cellular Biosciences, University of Tokyo, Japan.
+<newline/>E-mail: <email>ywatanabe@iam.u-tokyo.ac.jp</email></p></author-info>
+<bibl style="numero">
+<bib id="b1"><reftxt><refau><snm>Ding</snm> <fnm>DQ</fnm></refau> <i>et al</i> (<cd year="2012">2012</cd>) <jtl>Science</jtl> <vid>336</vid>: <ppf>732</ppf>&ndash;<ppl>736</ppl></reftxt></bib>
+<bib id="b2"><reftxt><refau><snm>Watanabe</snm> <fnm>Y</fnm></refau>, <refau><snm>Yamamoto</snm> <fnm>M</fnm></refau> (<cd year="1994">1994</cd>) <jtl>Cell</jtl> <vid>78</vid>: <ppf>487</ppf>&ndash;<ppl>498</ppl></reftxt></bib>
+<bib id="b3"><reftxt><refau><snm>Yamashita</snm> <fnm>A</fnm></refau> <i>et al</i> (<cd year="1998">1998</cd>) <jtl>Cell</jtl> <vid>95</vid>: <ppf>115</ppf>&ndash;<ppl>123</ppl></reftxt></bib>
+<bib id="b4"><reftxt><refau><snm>Harigaya</snm> <fnm>Y</fnm></refau> <i>et al</i> (<cd year="2006">2006</cd>) <jtl>Nature</jtl> <vid>442</vid>: <ppf>45</ppf>&ndash;<ppl>50</ppl></reftxt></bib>
+<bib id="b5"><reftxt><refau><snm>Hiraoka</snm> <fnm>Y</fnm></refau>, <refau><snm>Dernburg</snm> <fnm>A</fnm></refau> (<cd year="2009">2009</cd>) <jtl>Dev Cell</jtl> <vid>17</vid>: <ppf>598</ppf>&ndash;<ppl>605</ppl></reftxt></bib>
+<bib id="b6"><reftxt><refau><snm>Jeannie</snm> <fnm>TL</fnm></refau> (<cd year="2009">2009</cd>) <jtl>Genes Dev</jtl> <vid>23</vid>: <ppf>1831</ppf>&ndash;<ppl>1842</ppl></reftxt></bib>
+<bib id="b7"><reftxt><refau><snm>Yamashita</snm> <fnm>A</fnm></refau> <i>et al</i> (<cd year="2012">2012</cd>) <jtl>Open Biol</jtl> <vid>2</vid>: <ppf>120014</ppf></reftxt></bib></bibl></bm></article>

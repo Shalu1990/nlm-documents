@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables v1.0 20120330//EN" "JATS-journalpublishing-oasis-article1.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:oasis="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table" article-type="upfrnt">
+    <front>
+        <journal-meta>
+            <journal-id journal-id-type="publisher">embor</journal-id>
+            <journal-title-group>
+                <journal-title>EMBO reports</journal-title>
+            </journal-title-group>
+            <issn pub-type="ppub">1469-221X</issn>
+            <issn pub-type="epub">1469-3178</issn>
+            <publisher>
+                <publisher-name>Nature Publishing Group</publisher-name>
+            </publisher>
+        </journal-meta>
+        <article-meta>
+            <article-id pub-id-type="publisher-id">embor2012124</article-id>
+            <article-id pub-id-type="doi">10.1038/embor.2012.124</article-id>
+            <article-categories>
+                <subj-group subj-group-type="category">
+                    <subject>upfrnt</subject>
+                </subj-group>
+                <subj-group subj-group-type="sub-category">
+                    <subject>op</subject>
+                </subj-group>
+                <subj-group subj-group-type="subject">
+                    <subject>embocode-6</subject>
+                    <subject>embocode-8</subject>
+                </subj-group>
+            </article-categories>
+            <title-group>
+                <article-title>Meiotic pairing by non-coding RNA?</article-title>
+            </title-group>
+            <contrib-group>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Yamashita</surname>
+                        <given-names>Akira</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a1"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Kariyazono</surname>
+                        <given-names>Ryo</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a2"/>
+                </contrib>
+                <contrib contrib-type="author" corresp="no">
+                    <name>
+                        <surname>Watanabe</surname>
+                        <given-names>Yoshinori</given-names>
+                    </name>
+                    <xref ref-type="aff" rid="a2"/>
+                </contrib>
+            </contrib-group>
+            <aff id="a1"><institution>Laboratory of Gene Function, Department of Human Genome Research, Kazusa DNA Research Institute</institution>, <country>Japan</country></aff>
+            <aff id="a2"><institution>Laboratory of Chromosome Dynamics, Insitute of Molecular and Cellular Biosciences, University of Tokyo</institution>, <country>Japan</country></aff>
+            <author-notes>
+                <fn fn-type="conflict"><p>The authors declare that they have no conflict of interest.</p></fn>
+            </author-notes>
+            <pub-date pub-type="issue-date">
+                <month>09</month>
+                <year>2012</year>
+            </pub-date>
+            <pub-date pub-type="aop">
+                <day>17</day>
+                <month>08</month>
+                <year>2012</year>
+            </pub-date>
+            <pub-date pub-type="collection">
+                <day>31</day>
+                <month>08</month>
+                <year>2012</year>
+            </pub-date>
+            <volume>13</volume>
+            <issue>9</issue>
+            <fpage>766</fpage>
+            <lpage>766</lpage>
+            <permissions>
+                <copyright-year>2012</copyright-year>
+                <copyright-holder>European Molecular Biology Organization</copyright-holder>
+            </permissions>
+            <abstract abstract-type="editor" specific-use="issue">
+                <p>How are homologous chromosomes identified during meiosis? A report in <italic>Science</italic> suggests the answer may be non-coding RNAs, but much work remains to be done.</p>
+            </abstract>
+            <counts>
+                <page-count count="1"/>
+            </counts>
+        </article-meta>
+    </front>
+    <body>
+        <p>In sexual reproduction, the double cell division known as meiosis introduces the possibility of genetic variation in offspring. Meiotic division is preceded by homologous chromosomes (homologues) lining up next to each other to form homologous pairs, followed by double-strand break (DSB)-mediated recombination&#x2014;steps that are essential for the separation of homologues to opposite poles during the first meiotic division. In meiotic prophase, the clustering of the telomeres around the centrosome on the nuclear envelope induces a polarized chromosome configuration referred to as the &#x2018;bouquet,&#x2019; which might bring homologous pairs into close proximity. However, as telomere clustering itself does not sort out which chromosomes are homologues, other mechanisms for recognizing homologous pairs must exist. A paper by Ding <italic>et al</italic> [<xref ref-type="bibr" rid="b1">1</xref>] proposes that a non-coding RNA, encoded by the <italic>sme2</italic> gene, is crucial in homologue pairing in the fission yeast <italic>Schizosaccharomyces pombe</italic> (see illustration).</p>
+        <p>The <italic>sme2</italic> gene was originally identified as the gene required for meiotic progression that encodes a polyadenylated non-coding RNA, meiRNA [<xref ref-type="bibr" rid="b2">2</xref>]. Peculiarly, the <italic>sme2</italic> gene locus accumulates its transcript meiRNAs and forms a meiosis-specific nuclear dot structure, together with an RNA-binding protein, Mei2&#x2014;a master regulator of meiosis [<xref ref-type="bibr" rid="b3">3</xref>]. The Mei2&#x2013;meiRNA complex binds to and sequesters another RNA-binding protein Mmi1, which selectively binds to and eliminates meiotic transcripts that are weakly expressed in mitotic cells. Thus, meiRNAs located at the <italic>sme2</italic> locus are essential in meiotic progression as they invalidate the negative meiotic regulator Mmi1 (see illustration; [<xref ref-type="bibr" rid="b4">4</xref>]).<xref ref-type="other" rid="i1"><named-content content-type="image-align">center</named-content></xref></p>
+        <p>During the meiotic phase of <italic>S. pombe</italic>, the nucleus oscillates back and forth between the cell poles similarly to a moving horse-tail, with the telomeres clustered near the spindle pole body&#x2014;the centromere equivalent&#x2014;located at the leading edge of the moving nucleus. This &#x2018;horse-tail&#x2019; nuclear movement is essential for promoting homologue pairing [<xref ref-type="bibr" rid="b5">5</xref>]. In their live-cell observations of Mei2-GFP, Ding and co-workers noticed that Mei2 dots located at the homologous <italic>sme2</italic> loci pair robustly in the early stages of the horse-tail movement, before most other chromosomal loci are paired [<xref ref-type="bibr" rid="b1">1</xref>]. When the <italic>sme2</italic> locus translocates to another chromosomal site, the robust pairing mechanism also transfers to this new site. Inactivation of the promoter in only one <italic>sme2</italic> locus of a pair of homologues impairs the robust pairing, suggesting that the transcribed meiRNAs must be tethered to homologous loci for pairing [<xref ref-type="bibr" rid="b1">1</xref>].</p>
+        <p>There are several ways in which RNA molecules could promote pairing. Whilst RNA&#x2013;RNA or RNA&#x2013;DNA interactions might be involved in the pairing process, there is no evidence to support this, as the RNA interference machinery is dispensable [<xref ref-type="bibr" rid="b1">1</xref>]. Chromosome pairing, mediated by non-coding RNA, is reminiscent of the mammalian X chromosome inactivation process, in which the inactive centre of an X chromosome transiently pairs, possibly through a <italic>de novo</italic> assembled RNA&#x2013;protein complex [<xref ref-type="bibr" rid="b6">6</xref>]. Strikingly, Mei2, which is a major component of the meiRNA complex, seems to be dispensable for the robust pairing, because truncated meiRNA lacking the Mei2 binding sequence retains its pairing activity [<xref ref-type="bibr" rid="b1">1</xref>]. Further identification of components involved in the meiRNA complex seems to be important for the full elucidation of this peculiar pairing mechanism.</p>
+        <p>Another major issue to be addressed is the biological significance of this pairing. Although meiRNA is essential in meiotic progression by sequestering the meiotic inhibitor Mmi1, the pairing defect observed in <italic>sme2</italic> translocation or heterozygous deletion is limited or negligible in the overall chromosome pairing and meiotic progression. This contrasts with the pairing centre identified in <italic>Caenorhabditis elegans</italic>, the removal of which abolishes the pairing of the whole chromosome [<xref ref-type="bibr" rid="b5">5</xref>]. Because meiRNA carries numerous copies of the Mmi1-binding sequence [<xref ref-type="bibr" rid="b7">7</xref>], it could be argued that the chromosomally assembled meiRNA complex acts primarily as an Mmi1 sequestering factory, and that the agglutination properties of the factory accelerate indirectly the pairing of adjacent chromosomal regions. Thus, to generalize the findings of the meiotic pairing by non-coding RNA, it is certainly important to explore whether similar pairing mechanisms triggered by RNA exist in other chromosomal regions of fission yeast, or in the meoitic chromosomes of other organisms.</p>
+    </body>
+    <back>
+        <bio>
+            <p>Akira Yamashita is at the Laboratory of Gene Function, Department of Human Genome Research, Kazusa DNA Research Institute, Japan. Ryo Kariyazono and Yoshinori Watanabe are at the Laboratory of Chromosome Dynamics, Insitute of Molecular and Cellular Biosciences, University of Tokyo, Japan. E-mail: <email xlink:href="ywatanabe@iam.u-tokyo.ac.jp">ywatanabe@iam.u-tokyo.ac.jp</email></p>
+        </bio>
+        <ref-list>
+            <title>References</title>
+            <ref id="b1"><mixed-citation publication-type="journal"><string-name><surname>Ding</surname> <given-names>DQ</given-names></string-name> <etal/> (<year>2012</year>) <source>Science</source> <volume>336</volume>: <fpage>732</fpage>&#x2013;<lpage>736</lpage></mixed-citation></ref>
+            <ref id="b2"><mixed-citation publication-type="journal"><string-name><surname>Watanabe</surname> <given-names>Y</given-names></string-name>, <string-name><surname>Yamamoto</surname> <given-names>M</given-names></string-name> (<year>1994</year>) <source>Cell</source> <volume>78</volume>: <fpage>487</fpage>&#x2013;<lpage>498</lpage></mixed-citation></ref>
+            <ref id="b3"><mixed-citation publication-type="journal"><string-name><surname>Yamashita</surname> <given-names>A</given-names></string-name> <etal/> (<year>1998</year>) <source>Cell</source> <volume>95</volume>: <fpage>115</fpage>&#x2013;<lpage>123</lpage></mixed-citation></ref>
+            <ref id="b4"><mixed-citation publication-type="journal"><string-name><surname>Harigaya</surname> <given-names>Y</given-names></string-name> <etal/> (<year>2006</year>) <source>Nature</source> <volume>442</volume>: <fpage>45</fpage>&#x2013;<lpage>50</lpage></mixed-citation></ref>
+            <ref id="b5"><mixed-citation publication-type="journal"><string-name><surname>Hiraoka</surname> <given-names>Y</given-names></string-name>, <string-name><surname>Dernburg</surname> <given-names>A</given-names></string-name> (<year>2009</year>) <source>Dev Cell</source> <volume>17</volume>: <fpage>598</fpage>&#x2013;<lpage>605</lpage></mixed-citation></ref>
+            <ref id="b6"><mixed-citation publication-type="journal"><string-name><surname>Jeannie</surname> <given-names>TL</given-names></string-name> (<year>2009</year>) <source>Genes Dev</source> <volume>23</volume>: <fpage>1831</fpage>&#x2013;<lpage>1842</lpage></mixed-citation></ref>
+            <ref id="b7"><mixed-citation publication-type="journal"><string-name><surname>Yamashita</surname> <given-names>A</given-names></string-name> <etal/> (<year>2012</year>) <source>Open Biol</source> <volume>2</volume>: <fpage>120014</fpage></mixed-citation></ref>
+        </ref-list>
+    </back>
+    <floats-group>
+        <graphic position="anchor" id="i1" content-type="illustration" xlink:href="embor2012124i1.jpg" mimetype="image" mime-subtype="jpeg"/>
+    </floats-group>
+</article>

@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<!DOCTYPE article PUBLIC "-//NPG//DTD XML Article//EN" "NPG_XML_Article.dtd"[
+<!ENTITY figf1 PUBLIC "-//NatureAmerica//FICI 454711a-f1//EN" "454711a-f1.2.jpg" NDATA ITEM>
+<!ENTITY illus1 PUBLIC "-//NatureAmerica//FICI 454711a-i1//EN" "454711a-i1.0.jpg" NDATA ITEM>
+<!ENTITY tbl1 PUBLIC "-//NatureAmerica//FICI 454711a-t1//EN" "454711a-t1.jpg" NDATA ITEM>
+<!ENTITY tbl2 PUBLIC "-//NatureAmerica//FICI 454711a-t2//EN" "454711a-t2.jpg" NDATA ITEM>
+]>
+<article id="454711a" language="eng" publish="issue" relation="no" origsrc="yes">
+<pubfm>
+<jtl>Nature</jtl>
+<vol>454</vol>
+<iss>7205</iss>
+<idt>20080807</idt>
+<categ id="fe"/>
+<pp><spn>711</spn><epn>715</epn><cnt>5</cnt></pp>
+<issn type="print">0028-0836</issn>
+<issn type="electronic">1476-4687</issn>
+<cpg><cpy>2008</cpy><cpn>Nature Publishing Group</cpn></cpg>
+<doi>10.1038/454711a</doi></pubfm>
+<fm>
+<atl>Moving AHEAD with an international human epigenome project</atl>
+<aug>
+<group display-authors="no">
+<groupttl>The American Association for Cancer Research Human Epigenome Task Force</groupttl>
+<au><fnm>Peter A.</fnm><snm>Jones</snm><inits>P A</inits><orf rid="a1"/></au>
+<au><fnm>Trevor K.</fnm><snm>Archer</snm><inits>T K</inits><orf rid="a2"/></au>
+<au><fnm>Stephen B.</fnm><snm>Baylin</snm><inits>S B</inits><orf rid="a3"/></au>
+<au><fnm>Stephan</fnm><snm>Beck</snm><inits>S</inits><orf rid="a4"/></au>
+<au><fnm>Shelley</fnm><snm>Berger</snm><inits>S</inits><orf rid="a5"/></au>
+<au><fnm>Bradley E.</fnm><snm>Bernstein</snm><inits>B E</inits><orf rid="a6"/></au>
+<au><fnm>John D.</fnm><snm>Carpten</snm><inits>J D</inits><orf rid="a7"/></au>
+<au><fnm>Susan J.</fnm><snm>Clark</snm><inits>S J</inits><orf rid="a8"/></au>
+<au><fnm>Joseph F.</fnm><snm>Costello</snm><inits>J F</inits><orf rid="a9"/></au>
+<au><fnm>Rebecca W.</fnm><snm>Doerge</snm><inits>R W</inits><orf rid="a10"/></au>
+<au><fnm>Manel</fnm><snm>Esteller</snm><inits>M</inits><orf rid="a11"/></au>
+<au><fnm>Andrew P.</fnm><snm>Feinberg</snm><inits>A P</inits><orf rid="a12"/></au>
+<au><fnm>Thomas R.</fnm><snm>Gingeras</snm><inits>T R</inits><orf rid="a13"/></au>
+<au><fnm>John M.</fnm><snm>Greally</snm><inits>J M</inits><orf rid="a14"/></au>
+<au><fnm>Steven</fnm><snm>Henikoff</snm><inits>S</inits><orf rid="a15"/></au>
+<au><fnm>James G.</fnm><snm>Herman</snm><inits>J G</inits><orf rid="a3"/></au>
+<au><fnm>Laurie</fnm><snm>Jackson-Grusby</snm><inits>L</inits><orf rid="a16"/></au>
+<au><fnm>Thomas</fnm><snm>Jenuwein</snm><inits>T</inits><orf rid="a17"/></au>
+<au><fnm>Randy L.</fnm><snm>Jirtle</snm><inits>R L</inits><orf rid="a18"/></au>
+<au><fnm>Young-Joon</fnm><snm>Kim</snm><inits>Y -J</inits><orf rid="a19"/></au>
+<au><fnm>Peter W.</fnm><snm>Laird</snm><inits>P W</inits><orf rid="a1"/></au>
+<au><fnm>Bing</fnm><snm>Lim</snm><inits>B</inits><orf rid="a20"/></au>
+<au><fnm>Robert</fnm><snm>Martienssen</snm><inits>R</inits><orf rid="a21"/></au>
+<au><fnm>Kornelia</fnm><snm>Polyak</snm><inits>K</inits><orf rid="a22"/></au>
+<au><fnm>Henk</fnm><snm>Stunnenberg</snm><inits>H</inits><orf rid="a23"/></au>
+<au><fnm>Thea Dorothy</fnm><snm>Tlsty</snm><inits>T D</inits><orf rid="a24"/></au>
+<au><fnm>Benjamin</fnm><snm>Tycko</snm><inits>B</inits><orf rid="a25"/></au>
+<au><fnm>Toshikazu</fnm><snm>Ushijima</snm><inits>T</inits><orf rid="a26"/></au>
+<au><fnm>Jingde</fnm><snm>Zhu</snm><inits>J</inits><orf rid="a27"/></au>
+</group>
+<group display-authors="no">
+<groupttl>European Union, Network of Excellence, Scientific Advisory Board</groupttl>
+<au><fnm>Vincenzo</fnm><snm>Pirrotta</snm><inits>V</inits><orf rid="a28"/></au>
+<au><fnm>C. David</fnm><snm>Allis</snm><inits>C D</inits><orf rid="a29"/></au>
+<au><fnm>Sarah C.</fnm><snm>Elgin</snm><inits>S C</inits><orf rid="a30"/></au>
+<au><fnm>Peter A.</fnm><snm>Jones</snm><inits>P A</inits><orf rid="a1"/></au>
+<au><fnm>Robert</fnm><snm>Martienssen</snm><inits>R</inits><orf rid="a21"/></au>
+<au><fnm>Jasper</fnm><snm>Rine</snm><inits>J</inits><orf rid="a31"/></au>
+<au><fnm>Carl</fnm><snm>Wu</snm><inits>C</inits><orf rid="a32"/></au></group>
+<aff><oid id="a1"/><org>USC/Norris Comprehensive Cancer Center</org>, <cty>Los Angeles</cty>, <st>California</st> <zip>90089</zip>, <cny>USA</cny></aff>
+<aff><oid id="a2"/><org>NIH&ndash;NIEHS, Research Triangle Park</org>, <cty>North Carolina</cty> <zip>27709</zip>, <cny>USA</cny></aff>
+<aff><oid id="a3"/><org>Johns Hopkins University</org>, <cty>Baltimore</cty>, <st>Maryland</st> <zip>21231</zip>, <cny>USA</cny>.</aff>
+<aff><oid id="a4"/><org>Wellcome Trust Sanger Institute</org>, <cty>Hinxton</cty>, <st>Cambridge</st> <zip>CB10 1SA</zip>, <cny>UK</cny></aff>
+<aff><oid id="a5"/><org>The Wistar Institute</org>, <cty>Philadelphia</cty>, <st>Pennsylvania</st> <zip>19104</zip>, <cny>USA</cny></aff>
+<aff><oid id="a6"/><org>Massachusetts General Hospital</org>, <cty>Charlestown</cty>, <st>Massachusetts</st> <zip>02129</zip>, <cny>USA</cny></aff>
+<aff><oid id="a7"/><org>TGen</org>, <cty>Phoenix</cty>, <st>Arizona</st> <zip>85004</zip>, <cny>USA</cny>.</aff>
+<aff><oid id="a8"/><org>Garvan Institute of Medical Research</org>, <cty>Sydney</cty>, <zip>NSW 2010</zip>, <cny>Australia</cny></aff>
+<aff><oid id="a9"/><org>Department of Neurological Surgery, University of California, San Francisco</org>, <cty>San Francisco</cty>, <st>California</st> <zip>94143</zip>, <cny>USA</cny></aff>
+<aff><oid id="a10"/><org>Purdue University</org>, <cty>West Lafayette</cty>, <st>Indiana</st> <zip>47907</zip>, <cny>USA</cny></aff>
+<aff><oid id="a11"/><org>Spanish National Cancer Center</org>, <cty>Madrid</cty>, <cny>Spain</cny></aff>
+<aff><oid id="a12"/><org>Departments of Medicine, Oncology and Molecular Biology &amp; Genetics, Johns Hopkins University School of Medicine</org>, <cty>Baltimore</cty>, <st>Maryland</st> <zip>21205</zip>, <cny>USA</cny></aff>
+<aff><oid id="a13"/><org>Affymetrix</org>, <cty>Santa Clara</cty>, <st>California</st>, <zip>95051</zip>, <cny>USA</cny></aff>
+<aff><oid id="a14"/><org>Albert Einstein College of Medicine</org>, <cty>Bronx</cty>, <st>New York</st> <zip>10461</zip>, <cny>USA</cny></aff>
+<aff><oid id="a15"/><org>Fred Hutchinson Cancer Research Center</org>, <cty>Seattle</cty>, <st>Washington</st> <zip>98104</zip>, <cny>USA</cny></aff>
+<aff><oid id="a16"/><org>Harvard Medical School</org>, <cty>Boston</cty>, <st>Massachusetts</st> <zip>02115</zip>, <cny>USA</cny></aff>
+<aff><oid id="a17"/><org>Research Institute of Molecular Pathology</org>, <cty>Vienna</cty> <zip>1030</zip>, <cny>Austria</cny></aff>
+<aff><oid id="a18"/><org>Duke University Medical Center</org>, <cty>Durham</cty>, <st>North Carolina</st> <zip>27710</zip>, <cny>USA</cny></aff>
+<aff><oid id="a19"/><org>Yonsei University</org>, <cty>Seoul</cty> <zip>120-719</zip>, <cny>Korea</cny></aff>
+<aff><oid id="a20"/><org>Genome Institute of Singapore</org>, <cny>Singapore</cny> <zip>138672</zip></aff>
+<aff><oid id="a21"/><org>Cold Spring Harbor Laboratory</org>, <cty>Cold Spring Harbor</cty>, <st>New York</st> <zip>11724</zip>, <cny>USA</cny></aff>
+<aff><oid id="a22"/><org>Dana-Farber Cancer Institute</org>, <cty>Boston</cty>, <st>Massachusetts</st> <zip>02115</zip>, <cny>USA</cny></aff>
+<aff><oid id="a23"/><org>Radboud University</org>, <cty>Nijmegen</cty> <zip>6525</zip>, <cny>the Netherlands</cny></aff>
+<aff><oid id="a24"/><org>Department of Pathology, University of California, San Francisco</org>, <cty>San Francisco</cty>, <st>California</st>, <zip>94143</zip>, <cny>USA</cny></aff>
+<aff><oid id="a25"/><org>Columbia University</org>, <cty>New York</cty>, <st>New York</st> <zip>10032</zip>, <cny>USA</cny></aff>
+<aff><oid id="a26"/><org>National Cancer Center Research Institute</org>, <cty>Tokyo</cty> <zip>104-0045</zip>, <cny>Japan</cny></aff>
+<aff><oid id="a27"/><org>Shanghai Cancer Institute</org>, <cty>Shanghai</cty> <zip>200032</zip>, <cny>China</cny></aff>
+<aff><oid id="a28"/><org>Rutgers University</org>, <cty>Piscataway</cty>, <st>New Jersey</st> <zip>08854</zip>, <cny>USA</cny></aff>
+<aff><oid id="a29"/><org>Rockefeller University</org>, <cty>New York</cty>, <st>New York</st> <zip>10021</zip>, <cny>USA</cny></aff>
+<aff><oid id="a30"/><org>Washington University</org>, <cty>Saint Louis</cty>, <st>Missouri</st> <zip>63130</zip>, <cny>USA</cny></aff>
+<aff><oid id="a31"/><org>University of California Berkeley</org>, <cty>Berkeley</cty>, <st>California</st> <zip>94720-3202</zip>, <cny>USA</cny></aff>
+<aff><oid id="a32"/><org>National Cancer Institute</org>, <cty>Bethesda</cty>, <st>Maryland</st> <zip>20892</zip>, <cny>USA</cny></aff>
+<aff><oid id="c1"/><email>jones_p@ccnt.hsc.usc.edu</email></aff></aug>
+<hst>
+<pubdate type="iss" year="2008" month="08" day="06"/></hst>
+<stndfrst>A plan to 'genomicize' epigenomics research and pave the way for breakthroughs in the prevention, diagnosis and treatment of human disease.</stndfrst></fm>
+<bdy>
+<p>It is now possible to define whole epigenomes, representing the totality of epigenetic marks in a given cell type. Epigenetic processes are essential for packaging and interpreting the genome, are fundamental to normal development and are increasingly recognized as being involved in human disease. Epigenetic mechanisms include, among other things, histone modification, positioning of histone variants, nucleosome remodelling, DNA methylation, small and non-coding RNAs (<figr rid="f1">Fig. 1</figr>). These mechanisms interact with transcription factors and other DNA-binding proteins to regulate gene-expression patterns inherited from cell to cell. The patterns underlie embryonic development, differentiation and cell identity, transitions from a stem cell to a committed cell and responses to environmental signals such as hormones, nutrients, stress and damage.</p>
+<p>Although epigenomic changes are heritable in somatic cells, drug treatments could potentially reverse them. This has significant implications for the prevention, diagnosis and treatment of major human diseases and for ageing. Diseases to be targeted could include diabetes, cardiopulmonary diseases, Rett syndrome, other neurological disorders, imprinting disorders, autoimmune diseases and cancer, in which missteps in epigenetic programming have been directly implicated. Indeed, several inhibitors of chromatin-modifying enzymes including histone deacetylase (HDAC) inhibitors and DNA methyltransferase (DNMT) inhibitors have now been approved by the US Food and Drug Administration or are in clinical trials with good prognosis for tumour regression. Epigenetic therapy is now a reality, but to maximize the potential of such therapeutic approaches, it is crucial that there be a more comprehensive characterization of the epigenetic changes that occur during normal development, adult cell renewal and disease, and of the relationships between genetic and epigenetic variation and their impact on health.</p>
+<p>The time is right for a major effort to decode the human epigenome, and we urge the community to join in a coordinated effort in support of the Alliance for the Human Epigenome and Disease (AHEAD) to help solve the problems of cancer and other intractable diseases. Just as the Human Genome Project provided a reference 'normal' sequence for studying human disease, the goal of the AHEAD project is to provide high-resolution reference epigenome maps. These maps would be of great use in basic and applied research, would have an immediate impact on understanding many diseases, and would lead to the discovery of new means to control the diseases. Although the project should have a human focus, it will be essential to use model organisms to obtain mechanistic insights as to the functionality of epigenomic parameters or 'codes'. Studying, genome-wide, the increasing number of interacting epigenetic mechanisms in a spectrum of cell types will involve data generation on a massive scale. An international project would provide the bioinformatics infrastructure needed to ensure that epigenomics research can be integrated with genomic data, and be utilized efficiently to advance the knowledge of human health and disease. Here, we discuss the benefits of the AHEAD framework to coordinate and plan an international Human Epigenome Project.</p>
+<crosshd>Early steps</crosshd>
+<p>Individual investigators have been studying epigenetics for several decades; however, concerted efforts to organize the epigenomics research community are quite recent, and none has sought to engage the community on a broad-based, international level.</p>
+<p>Europe has a strong tradition for epigenetics research that has been recognized by European Union funding programmes and by individual national initiatives. More than &euro;50 million (US&dollar;79 million) has been allocated to networks and consortia that focus on central epigenetic questions such as DNA methylation (HEP, Human Epigenome Project), chromatin profiling (HEROIC, High-Throughput Epigenetic Regulatory Organization In Chromatin), and treatment of neoplastic disease (EPITRON, EPIgenetic Treatment Of Neoplastic Disease). A special function is provided by the Epigenome Network of Excellence (NoE), created by the European Commission in 2004 (see <bxr rid="bx1">Box 1</bxr>).</p>
+<p>In the past few years, there have been several efforts to organize the epigenetics research community in the United States and develop the support and structure for a human epigenome project. A 2004 National Cancer Institute (NCI)-sponsored Epigenetic Mechanisms in Cancer Think Tank concluded that the development of a US human epigenome project of analogous scope to the Human Genome Project should be of the highest priority (<url>http://www.cancer.gov/think-tanks-cancer-biology/page7</url>). This was followed by an NCI workshop in 2005 attended by programme staff from many National Institutes of Health (NIH) institutes. Key recommendations were: 1) comprehensive analysis of reference epigenomes, focused on stem cells and key differentiated lineages that can be modelled experimentally; 2) development of a standardized set of reagents, including monoclonal antibodies and common tissue substrates; and 3) development of a computational infrastructure for data sharing and display that puts epigenetic data in the hands of non-epigenetic investigators<bibr rid="b1"/>.</p>
+<p>The American Association for Cancer Research (AACR) organized a Human Epigenome Workshop in June 2005 and also a follow-up workshop in July 2006 that focused on planning an international project to map a defined number of human epigenomes (<url>http://www.aacr.org/page9673.aspx</url>)<bibr rid="b2"/>. The consensus of workshop participants was that there are compelling reasons from both scientific and public-health perspectives to initiate a human epigenome project that could take full advantage of advances in several existing US and European initiatives.</p>
+<p>On the heels of these workshops, the AACR Human Epigenome Task Force, a cross-disciplinary group of international investigators, was formed to design a strategy and develop a timetable for the implementation of an international Human Epigenome Project. As described below, the task force recommends the formation of AHEAD to coordinate a transdisciplinary, international project to map a defined subset of robust epigenetic markers in a limited number of human tissues at different stages of development and to develop a bioinformatics infrastructure to support the collection of epigenomic data. The efforts of this group will surely be bolstered by the recent and exciting decision of the NIH to fund epigenomics research as an interagency Roadmap initiative.</p>
+<p>Asia, too, has been active in fostering epigenomics research, with a major emphasis placed on disease epigenomes, especially those in liver and gastric cancers. An international meeting, Genome-wide Epigenetics 2005, was held in Tokyo<bibr rid="b3"/>. Scientists from Yonsei University (South Korea), the National Cancer Center (Japan), the Shanghai Cancer Institute (China) and the Genome Institute (Singapore) also organized meetings to facilitate the exchange of information in epigenomics and held their first meeting in Seoul in 2006, followed by another conference in Osaka in 2007. In December 2006, a Japanese Society for Epigenetics was formed. Clearly, Asia is now poised to contribute strongly to global epigenomics research.</p>
+<p>National support for the Human Epigenome Project is also mounting in Australia with the formation of the Australian Alliance for Epigenetics to begin in late 2008. Australian meetings devoted to epigenetics were initiated in 1996 in Heron Island with Susan Clark of the Garvan Institute of Medical Research, Sydney, holding the first workshop on bisulphite sequencing and this has been followed by biannual meetings, the most recent being held in Perth in November 2007 to showcase Australia's strengths in the global epigenetic research arena.</p>
+<crosshd>The scope of AHEAD</crosshd>
+<p>AHEAD would aim to provide reference epigenomes for key cellular states, such as a stem-cell phenotyope, proliferation, differentiation, senescence and stress, using common core specimens from different cell types, and to develop a bioinformatics infrastructure to support the collection and integration of epigenomic data. The precise objectives of such a project still need to be delineated. However, we would almost certainly expect AHEAD to 1) provide complete epigenome maps at very high resolution for important histone modifications across diverse cellular states in both human and mouse; 2) to complete and catalogue epigenome maps of model yeasts (<i>Saccharomyces cerevisiae</i> and <i>S. pombe</i>), plants (<i>Arabidopsis</i> and rice), and animals (<i>Caenorhabditis elegans</i> and <i>Drosophila</i>); 3) to deliver a high resolution DNA methylation map of the entire human genome in defined cell types and a landmark map for transcription start sites of all protein coding genes and a representative number of other features throughout the genome; 4) define non-coding and small RNAs; and 5) to establish a bioinformatics platform including a relational database, website and suite of analytical tools to organize, integrate and display whole epigenomic data on model organisms and humans. AHEAD will develop standardized procedures that assure data quality in the choice of reagents (antibodies), the experimental procedures (a minimal set of biological replicates) and data analysis (appropriate statistical procedures).</p>
+<p>AHEAD would differ from and complement other ongoing projects such as ENCODE (ENCyclopedia Of DNA Elements). The ENCODE project is focused on defining the functional sequences in the genome, whereas AHEAD would define the patterns of epigenetic regulation occurring at those sequences in different cell states. The potential synergies between these two projects in terms of development of innovative molecular and computational techniques would enhance each of them. It would be valuable to coordinate such individual projects in the interests of efficiency and potential scientific insights. Some of these objectives are exemplified by the current efforts on model organisms carried out by the modENCODE (Model Organism ENCyclopedia Of DNA Elements) programme.</p>
+<crosshd>Reference epigenomes</crosshd>
+<p>In a multicellular organism, there are many potential epigenomes that define each cell type and reflect the current and past environments of individual cells. Epigenetic programming may even precede lineage choice and amplify signals from the environment. A major goal of AHEAD would be to map the epigenome in normal tissues and differentiating cells so that they could be compared with disease states, including but not restricted to cancer, that arise in these tissues. Therefore, the selection of which cell types to use and which epigenetic modifications to examine deserves careful consideration. Many environmental factors, such as ageing, hormonal milieu, diet and infection must be taken into account. Emphasis should be placed on comparing embryonic stem cells, adult stem and precursor cells, and related differentiated cells of primary human tissues, with the diseased state.</p>
+<p>The reference systems selected should meet several criteria: 1) cells should be easy to sample in a reproducible fashion (renewable if possible); 2) cell numbers should be sufficient for analyses of DNA methylation and chromatin modifications; 3) cell progenitors should be identified that can be suitably manipulated and harvested in a pure state; 4) where possible, cells should be amenable to tissue reconstruction and three-dimensional model systems; and, of course, 5) systems must provide insight into key differentiation and related disease states. Some examples of suitable systems are given in <tablr rid="t1">Table 1</tablr>.</p>
+<p>Specific modifications to histones often correlate with gene activation or repression &mdash; for example lysine acetylation and trimethylation of lysine 4 of histone H3 (H3K4me3) are permissive for gene activation whereas H3K9me2 and H3K27me3 correlate with transcriptional silencing. Often, activating and repressive histone marks co-exist at gene start sites, reflecting perhaps epigenetic heterogeneity among otherwise similar cells, and it is the balance between these marks that determines gene expression states<bibr rid="b4 b5 b6"/>. Because there are so many chromatin modifications, it may prove challenging to examine all of them in every cell type. We recommend that the initial set of reference epigenomes focus on several of the better understood covalent markers, such as those listed in <tablr rid="t2">Table 2</tablr>, that could be mapped in a 'first pass' project defining reference epigenomes.</p>
+<p>Several high-profile studies, including the human ENCODE maps<bibr rid="b7"/> and genome-wide profiling for histone modifications in mouse and human cells<bibr rid="b8 b9"/>, have been published recently. Although they present valuable first-generation epigenetic maps, these efforts largely focused on transcriptional regulation and functional sequences. We still need to know more about epigenetic control and plasticity in intergenic regions, mechanisms of heritability (<bxr rid="bx2">Box 2</bxr>), the role of repetitive elements, non-coding and small RNAs, and finally how epigenetic marking contributes to chromosome segregation, stress response and transducing signals from the environment.</p>
+<crosshd>Advances in technology</crosshd>
+<p>Our understanding of the epigenome has been transformed in recent years by a succession of technological innovations. Approaches involving microarrays and, most recently, ultra-high-throughput sequencing technology have been applied to map chromatin modifications, cytosine methylation and non-coding RNAs across chromosomes and even entire genomes.</p>
+<p>Genome-scale studies of histone modifications and other aspects of chromatin structure have typically relied on an immunological procedure, chromatin immunoprecipitation, in which specific antibodies are used to enrich chromatin. For example, an antibody against histone H3 acetylated at lysine 9 can be used to isolate genomic regions associated with this activating modification. Isolated DNA is then interrogated by microarray hybridization or by deep sequencing. Microarrays are a well-established readout, particularly suited to studies that require high coverage of a small subset of a given genome (for example, annotated gene promoters). Resolution on the order of the nucleosome (a few hundred bases) can be achieved with sufficiently dense tiling arrays. Recent studies &mdash; several dozen whole mammalian genome data sets have already been reported<bibr rid="b8 b9"/> &mdash; have leveraged emerging ultra-high-throughput sequencing technology to 'deep-sequence' chromatin-immunoprecipitated DNA to generate genome-wide chromatin state maps. This sequencing approach offers potential advantages over arrays in precision, throughput and genome coverage. Notably, sequencing requires orders-of-magnitude less DNA than microarrays, and this enhanced sensitivity should enable studies of primary tissues, disease samples, and other limited cell populations of high biological importance.</p>
+<p>The quality of the data derived from studies relying on chromatin immunoprecipitation depends mainly on the quality of the antibodies used, and there is an essential need for high-titre polyclonal antibodies with high specificity. Standardization of monoclonal antibodies has proven difficult because of low avidity and only limited epitope recognition. Reference maps defined by AHEAD, as well as those already developed from studies in human cells and model organisms, would provide a platform to assess the quality and robustness of modification-specific antibodies.</p>
+<p>Rapid progress has also been made towards characterizing the global distribution of cytosine methylation. Genome-scale assays for detecting this epigenetic modification fall into two general categories. The gold-standard technique for reading out the methylation state of individual cytosines is bisulphite sequencing developed by Clark and Marianne Frommer at the University of Sydney<bibr rid="b10"/>, in which unmethylated cytosines are converted to uracils and read as thymine, while methylated ones are protected from conversion. Although this method yields precise nucleotide-resolution data, bisulphite sequencing is challenging to scale &mdash; regions of interest must be sequenced several times in order for methylation patterns in a given cell type to be appreciated. A recent study showed the potential of combining bisulphite methodology with ultra-high-throughput sequencing by deciphering the entire <i>Arabidopsis</i> 'DNA methylome' at nucleotide resolution<bibr rid="b11"/>. Still, bisulphite studies of the much larger human methylome have thus far been limited to relatively small subsets of genome<bibr rid="b12"/>. For more comprehensive coverage, many investigators have turned to alternative approaches that involve the isolation of methylated (or unmethylated) fractions of genome by methylation-sensitive restriction or immunoprecipitation with a methylcytosine-specific antibody. The isolated fractions are then interrogated on microarrays. Several successes have been described recently using this genome fractionation/microarray approach, including a profile of promoter methylation in human fibroblasts<bibr rid="b13"/> and drafts of the complete <i>Arabidopsis</i> methylome<bibr rid="b14 b15 b16"/>.</p>
+<crosshd>Model organisms</crosshd>
+<p>Model organisms have led the way in understanding epigenetic mechanisms of gene regulation. Position effect variegation, imprinting, transposon silencing, DNA methylation and histone modification were all discovered in model organisms and later found in humans. RNA interference and its role in epigenetics were also first described in model organisms (plants and worms).</p>
+<p>The development of infrastructure to study model-organism epigenomes is under way and is having a major impact on human epigenome research, with hundreds of whole-genome or whole-chromosome profiles of histone modifications and DNA methylation already published in yeast, <i>Arabidopsis</i>, <i>Drosophila</i> and the mouse. Importantly, mutants in epigenetic modification, gene silencing, development and metabolism, as well as disease models, can be readily obtained and manipulated, and will allow the epigenetic pathways that are responsible for controlling genomic output to be determined first in model organisms. Other tools such as lineage-specific green fluorescent protein reporters and tagged histones have been engineered in mouse and <i>Arabidopsis</i>, allowing cell-type specific epigenomic profiles to be determined through cell sorting or immunoprecipitation. It is anticipated that new technologies such as massively parallel sequencing will make the generation of these profiles so straightforward that the limitations will be in the data analysis and the ability to take advantage of such genetic and cell biological tools. Reference epigenomes for several model organisms including <i>S. cerevisiae</i>, <i>Arabidopsis</i>, <i>Drosophila</i>, <i>C. elegans</i>, mouse and others will form an integral part of AHEAD. Clearly, AHEAD would enable coordination and expansion of these projects and rapid translation into human studies.</p>
+<crosshd>Computational challenges</crosshd>
+<p>As a comprehensive human epigenome project will require a strong bioinformatics platform, an early priority of AHEAD would be to establish a central relational database and a web interface to present data to the scientific community. This website would include analytical and statistical tools that could be used dynamically to process data for visualization. It would have tremendous utility for investigators, allowing immediate access to detailed maps for a locus of interest in the same way that the Human Genome Project provides sequence data. By initially focusing on establishing data interoperability, it is hoped that the database, or later versions of it, would allow for the simultaneous display of integrated epigenomic parameters on the entire human genome. In addition, not yet addressed is how the complex system of epigenomic regulation should be treated as a whole: the data could be a powerful resource for the emerging field of systems biology, allowing insights into the stability of the epigenomic networks and how they can be perturbed in disease states.</p>
+<p>The development of these resources would be coordinated with parallel efforts already under way as part of the caBIG (the NIH Cancer Biomedical Informatics Grid) and Cancer Genome Atlas initiatives, among others. These resources could be distributed through the MGED (Microarray Gene Expression Data Society) and the BioConductor (open-source software) organizations. In addition, one could build on the sophisticated approaches of existing genome browsers used for data access and visualization, such as those at University of California, Santa Cruz, and ENSEMBL, to develop innovative means of data representation and web-based data analysis that would be of immense value to and foster collaborations among the scientific community.</p>
+<crosshd>Summary and perspectives</crosshd>
+<p>Dramatic changes in technologies have made AHEAD eminently feasible. Successful coordination of this multifaceted project through an AHEAD International Steering Committee would be essential if rapid progress is to be made, and it will require leadership from many stakeholders at all levels. The major challenges of AHEAD include the initial selection of the most important epigenomic markers, the identification of appropriate, pure cell populations, and the handling and presentation of the data. None of these challenges is insurmountable, and there are enormous potential scientific and public health benefits.</p>
+<p>AHEAD would effectively integrate epigenetics research that is currently being conducted on a piecemeal basis around the world and would pave the way for breakthroughs in understanding normal and pathological processes. This research would offer significant scientific opportunities to maximize translational research to prevent and cure human diseases. The selection of epigenetics as a new NIH Roadmap initiative in the United States and the European Union's Network of Excellence are important in helping establish the infrastructure needed to advance the field. We must now move AHEAD in earnest to achieve the goals of an international Human Epigenome Project.</p>
+<p><b>Author contributions</b></p>
+<p>P.A.J., S.B.B., B.E.B., A.P.F., J.M.G., T.J., R.M., T.U., and V.P., C.D.A., S.C.E., J.R. and C.W. all contributed to this manuscript.</p></bdy>
+<bm>
+<endnote><b>See Tech Feature, <xnav extrefid="454795a">page 795</xnav>.</b></endnote>
+<objects>
+<fig id="f1" type="bmp" entname="figf1">
+<figtl>Epigenetic mechanisms.</figtl>
+<caption><p>The coding and structural information in the base sequence of DNA is organized in chromatin to form multiple epigenomes. DNA cytosine methylation and covalent modifications of the tails of histones and histone variants contribute information to nucleosomal remodelling machines that render genes and non-coding RNAs susceptible to transcription. Transcription factors (not shown) also play a major part in the competence and organization of the epigenome. The AHEAD project will map epigenetic marks in a defined set of epigenomes.</p></caption></fig>
+<illus id="illus1" type="eps" entname="illus1"></illus>
+<table id="t1" tocentry="0" frame="topbot" colsep="0" rowsep="0" orient="port" pgwide="0" tabcols="4">
+<title>Potential reference cell systems for epigenomic analysis</title>
+<tgroup cols="4" colsep="0" rowsep="0" align="center">
+<colspec colnum="1" colname="1" align="left" colwidth="1*"/>
+<colspec colnum="2" colname="2" align="left" colwidth="1*"/>
+<colspec colnum="3" colname="3" align="left" colwidth="1*"/>
+<colspec colnum="4" colname="4" align="left" colwidth="1*"/>
+<thead valign="top">
+<row rowsep="1">
+<entry>Organ system</entry>
+<entry>Tissue progenitor</entry>
+<entry>Differentiated cell</entry>
+<entry>Altered disease state</entry></row></thead>
+<tbody valign="top">
+<row>
+<entry>Embryo</entry>
+<entry>Embryonic stem cells</entry>
+<entry></entry>
+<entry></entry></row>
+<row>
+<entry>Haematopoietic</entry>
+<entry>CD34&plus;</entry>
+<entry>Polymorphonuclear leukocytes, lymphoid, etc.</entry>
+<entry>Acute myelogenous leukemia, Acute lymphoblastic leukemia, Chronic myelogenous leukemia, Myelodysplastic syndrome</entry></row>
+<row>
+<entry>Breast</entry>
+<entry>CD24&plus;and/or CD44&plus;</entry>
+<entry>Myoepithelial, luminal, fibroblasts</entry>
+<entry>Breast cancer</entry></row>
+<row>
+<entry>Liver</entry>
+<entry>Oval cell</entry>
+<entry>Hepatocytes, stromal cells</entry>
+<entry>Cirrhosis, viral disease, Hepatocellular carcinoma</entry></row></tbody></tgroup><tblimg entname="tbl1"/></table>
+<table id="t2" tocentry="0" frame="topbot" colsep="0" rowsep="0" orient="port" pgwide="0" tabcols="2">
+<title>Recommended histone markers with known function to define reference epigenomes</title>
+<tgroup cols="2" colsep="0" rowsep="0" align="center">
+<colspec colnum="1" colname="1" align="left" colwidth="1*"/>
+<colspec colnum="2" colname="2" align="left" colwidth="1*"/>
+<thead valign="top">
+<row rowsep="1">
+<entry>Histone modification</entry>
+<entry>Function</entry></row></thead>
+<tbody valign="top">
+<row>
+<entry>H3K9ac, H4K16ac and H3K4me</entry>
+<entry>Transcriptional 'ON' states</entry></row>
+<row>
+<entry>H3K9me and H3K27me</entry>
+<entry>Transcriptional 'OFF' states</entry></row>
+<row>
+<entry>H3K36me</entry>
+<entry>Elongation; primary transcripts</entry></row>
+<row>
+<entry>H3K9me and HP1</entry>
+<entry>Chromosome organization</entry></row>
+<row>
+<entry>H4K20me and H2BS14ph</entry>
+<entry>Stress/damage response</entry></row>
+</tbody></tgroup><tblimg entname="tbl2"/></table>
+<bx id="bx1">
+<bxtitle>A European success story</bxtitle>
+<p>European researchers in the late 1990s were quick to take up the fast-emerging field of epigenetics, building on early discoveries in X-chromosome inactivation, Polycomb regulation, dosage compensation, imprinting, heterochromatin, DNA methylation, nucleosome modification and RNA interference (RNAi). The Epigenome Network of Excellence (NoE) was created by the European Commission in 2004 with the long-term aim of tackling major epigenetic questions in the post-genomic era. Under the direction of Thomas Jenuwein of the Research Institute of Molecular Pathology in Vienna, assisted by Phil Avner of the Pasteur Institute in Paris and Genevi&egrave;ve Almouzni of the Curie Institute in Paris, the intention was to create a durable structure for epigenetics research in Europe, promoting collaborations, sharing technologies and resources, and training and fostering the development of leaders in the field.</p>
+<p>Now, after four of the five years planned, the NoE includes an original core of 25 members plus 35 associate members and 23 Newly Established Teams (NETs): a total of 83 laboratories from 12 European countries, as well as 350 laboratories worldwide that participate in ongoing activities through the NoE website. Expansion of the NoE resulted in the creation of Associate Members and, most importantly, the NETs. Through the NET programme, talented young European investigators in their first four years of independent research are selected to participate and provided with moderate financial support. The NET programme has been a resounding success and has given a powerful impetus to a cohort of young research talent.</p>
+<p><illusr rid="illus1"/>The NoE programme of activities has promoted a common identity and generated numerous collaborations through training and mobility programmes, workshops, meetings and dissemination of technologies. In 2007 alone, the NoE collectively published some 300 research articles. A major effort has also been made to reach out to the broader community with a scientific website (<url>http://www.epigenome-noe.net</url>), and to the general public, through conferences, newspaper articles, and a public website (<url>http://www.epigenome.eu</url>), where news, information, explanations of the concepts, significance and applications of epigenetic research in lay terms are provided in seven languages. Several NoE members are involved in biotechnology companies and technology transfer has been the subject of NoE workshops.</p>
+<p>These achievements have resulted from a conjunction of circumstance, hard work and the talent assembled by the NoE. Europe is in many respects pre-eminent in the field of epigenetics and the NoE could serve as a model for similar programmes worldwide. But, as its five-year mandate approaches its end, the future of the NoE remains uncertain. The organization, coordination and momentum achieved should be nurtured, supported and exploited to broaden connections with biotechnology, agriculture and particularly with the biochemical and pharmaceutical industries that are such key components of the European technological landscape. With the worldwide interest in epigenetics, this seems an inopportune moment for the European Commission to reduce support for this research and risk losing momentum and brainpower. On the contrary, the opportunity should be seized to forge close links with international efforts such as AHEAD.</p></bx>
+<bx id="bx2">
+<bxtitle>Heritability</bxtitle>
+<p>Epigenetics is often defined as somatically heritable changes in gene expression that do not involve changes in base sequence. DNA methylation patterns are known to be heritable through S phase of the cell cycle, however it has been more difficult to demonstrate mechanisms for the heritability of other chromatin modifications that will be mapped. Also, the abilities of transcription factors to reprogram the epigenome in normal and experimental situations need to be considered. The AHEAD project will help illuminate processes of heritability and reprogramming by providing genome-wide reference maps.</p></bx></objects>
+<ack><p>We gratefully acknowledge Kimberly Sabelko from the AACR for her assistance in editing this manuscript. We also thank the AACR and Margaret Foti for supporting and funding the establishment of the Human Epigenome Task Force.</p></ack>
+<author-info><p>Correspondence and requests for materials should be addressed to P.A.J. (<email>jones_p@ccnt.hsc.usc.edu</email>).</p></author-info>
+<bibl>
+<bib id="b1"><reftxt><refau><snm>Feinberg</snm>, <fnm>A. P.</fnm></refau>, <refau><snm>Jones</snm>, <fnm>P. A.</fnm></refau> &amp; <refau><snm>Ault</snm>, <fnm>G.</fnm></refau> <btl>National Cancer Institute (NCI), Division of Cancer Biology (DCB) Workshop on Defining the Epigenome: Addressing the Value and Scope of a Human Epigenome Project</btl>. <url>http://dcb.nci.nih.gov/Workshoprpt.cfm</url>.</reftxt></bib>
+<bib id="b2"><reftxt><refau><snm>Jones</snm>, <fnm>P. A.</fnm></refau> &amp; <refau><snm>Martienssen</snm>, <fnm>R.</fnm></refau> <jtl>Cancer Res.</jtl> <vid>65</vid>, <ppf>11241</ppf>&ndash;<ppl>11246</ppl> (<cd year="2005">2005</cd>).</reftxt></bib>
+<bib id="b3"><reftxt><refau><snm>Lieb</snm>, <fnm>J. D.</fnm></refau> <i>et al</i>. <jtl>Cytogenet. Genome Res.</jtl> <vid>114</vid>, <ppf>1</ppf>&ndash;<ppl>15</ppl> (<cd year="2006">2006</cd>).</reftxt></bib>
+<bib id="b4"><reftxt><refau><snm>Azuara</snm>, <fnm>V.</fnm></refau> <i>et al</i>. <jtl>Nature Cell Biol.</jtl> <vid>8</vid>, <ppf>532</ppf>&ndash;<ppl>538</ppl> (<cd year="2006">2006</cd>).</reftxt></bib>
+<bib id="b5"><reftxt><refau><snm>Bernstein</snm>, <fnm>B. E.</fnm></refau> <i>et al</i>. <jtl>Cell</jtl> <vid>125</vid>, <ppf>315</ppf>&ndash;<ppl>326</ppl> (<cd year="2006">2006</cd>).</reftxt></bib>
+<bib id="b6"><reftxt><refau><snm>Guenther</snm>, <fnm>M. G.</fnm></refau>, <refau><snm>Levine</snm>, <fnm>S. S.</fnm></refau>, <refau><snm>Boyer</snm>, <fnm>L. A.</fnm></refau>, <refau><snm>Jaenisch</snm>, <fnm>R.</fnm></refau> &amp; <refau><snm>Young</snm>, <fnm>R. A.</fnm></refau> <jtl>Cell</jtl> <vid>130</vid>, <ppf>77</ppf>&ndash;<ppl>88</ppl> (<cd year="2007">2007</cd>).</reftxt></bib>
+<bib id="b7"><reftxt><refau><snm>Birney</snm>, <fnm>E.</fnm></refau> <i>et al</i>. <jtl>Nature</jtl> <vid>447</vid>, <ppf>799</ppf>&ndash;<ppl>816</ppl> (<cd year="2007">2007</cd>).</reftxt></bib>
+<bib id="b8"><reftxt><refau><snm>Barski</snm>, <fnm>A.</fnm></refau> <i>et al</i>. <jtl>Cell</jtl> <vid>129</vid>, <ppf>823</ppf>&ndash;<ppl>837</ppl> (<cd year="2007">2007</cd>).</reftxt></bib>
+<bib id="b9"><reftxt><refau><snm>Mikkelsen</snm>, <fnm>T. S.</fnm></refau> <i>et al</i>. <jtl>Nature</jtl> <vid>448</vid>, <ppf>553</ppf>&ndash;<ppl>560</ppl> (<cd year="2007">2007</cd>).</reftxt></bib>
+<bib id="b10"><reftxt><refau><snm>Clark</snm>, <fnm>S. J.</fnm></refau>, <refau><snm>Harrison</snm>, <fnm>J.</fnm></refau>, <refau><snm>Paul</snm>, <fnm>C. L.</fnm></refau> &amp; <refau><snm>Frommer</snm>, <fnm>M. F.</fnm></refau> <jtl>Nucleic Acids Res.</jtl> <vid>22</vid>, <ppf>2990</ppf>&ndash;<ppl>2997</ppl> (<cd year="1994">1994</cd>).</reftxt></bib>
+<bib id="b11"><reftxt><refau><snm>Cokus</snm>, <fnm>S. J.</fnm></refau> <i>et al</i>. <jtl>Nature</jtl> <vid>452</vid>, <ppf>215</ppf>&ndash;<ppl>219</ppl> (<cd year="2008">2008</cd>).</reftxt></bib>
+<bib id="b12"><reftxt><refau><snm>Eckhardt</snm>, <fnm>F.</fnm></refau> <i>et al</i>. <jtl>Nature Genet.</jtl> <vid>38</vid>, <ppf>1378</ppf>&ndash;<ppl>1385</ppl> (<cd year="2006">2006</cd>).</reftxt></bib>
+<bib id="b13"><reftxt><refau><snm>Weber</snm>, <fnm>M.</fnm></refau> <i>et al</i>. <jtl>Nature Genet.</jtl> <vid>39</vid>, <ppf>457</ppf>&ndash;<ppl>466</ppl> (<cd year="2007">2007</cd>).</reftxt></bib>
+<bib id="b14"><reftxt><refau><snm>Zhang</snm>, <fnm>X.</fnm></refau> <i>et al</i>. <jtl>Cell</jtl> <vid>126</vid>, <ppf>1189</ppf>&ndash;<ppl>1201</ppl> (<cd year="2006">2006</cd>).</reftxt></bib>
+<bib id="b15"><reftxt><refau><snm>Zilberman</snm>, <fnm>D.</fnm></refau>, <refau><snm>Gehring</snm>, <fnm>M.</fnm></refau>, <refau><snm>Tran</snm>, <fnm>R. K.</fnm></refau>, <refau><snm>Ballinger</snm>, <fnm>T.</fnm></refau> &amp; <refau><snm>Henikoff</snm>, <fnm>S.</fnm></refau> <jtl>Nature Genet.</jtl> <vid>39</vid>, <ppf>61</ppf>&ndash;<ppl>69</ppl> (<cd year="2007">2007</cd>).</reftxt></bib>
+<bib id="b16"><reftxt><refau><snm>Vaughn</snm>, <fnm>M. W.</fnm></refau> <i>et al</i>. <jtl>PLoS Biol.</jtl> <vid>5</vid>, <ppf>e174</ppf> (<cd year="2007">2007</cd>).</reftxt></bib></bibl></bm></article>
