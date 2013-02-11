@@ -16,6 +16,14 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2013/02/01 - SCHEMA-90 - Added new optional element "data-citations" as a child of "bm"
+                         Multiple "data-citation" children, which have multiple optional "refau" children 
+                         "data-citation" has required attributes: 'db-name', 'id', 'url', and 'year'; optional attribute 'source' which can take values "existing" or "new"
+
+           - SCHEMA-89 - Added new optional element "auid" as a child of "au", "cau" and %author entity, to allow inclusion of ORCIDs for authors
+
+2013/01/16 - SCHEMA-88 - Add "fav" to allowed values of article 'publish' attribute and pubdate 'type' attribute.
+
 2012/11/15 - SCHEMA-81 - Added new values ("docx", "png" and "xlsx") to %figure-data (used for datafile "type" attribute).
 
 2012/09/26 - SCHEMA-79 - Add new values ("is-protocol-update-to" and "has-protocol-update") to "related-article-type" attribute of "related-article"
@@ -858,7 +866,7 @@ DTD Change History (yyyy/mm/dd format)
 <!ENTITY % refs "%emptyref; | %textref;">
 <!ENTITY % links "natlink | sir | cir | url | weblink | xnav | xref">
 <!ENTITY % data "%straight-text; | %fontchng; | %controls; | %refs; | %links; | accession | anchor | email | company | prod | brandname | term | scientific | code">
-<!ENTITY % author "%data; | fnm | snm | suff | ttl | inits">
+<!ENTITY % author "%data; | fnm | snm | suff | ttl | inits | auid">
 <!ENTITY % address "%data; | org | street | cty | co | st | zip | cny | prf">
 
 <!ENTITY % tabl "(title?, caption?, tgroup*, tblimg*, slide?, credit?)" >
@@ -939,7 +947,7 @@ DTD Change History (yyyy/mm/dd format)
 <!ATTLIST article
 id CDATA #REQUIRED
 language %language; "eng"
-publish (issue | supp | aop | online | nfv | prototype | offline | retired) "issue"
+publish (issue | supp | aop | online | nfv | prototype | offline | retired | fav) "issue"
 relation (yes | no) "no"
 uid-replace CDATA #IMPLIED
 correstype (correspondence | response | reply) #IMPLIED
@@ -1247,7 +1255,7 @@ refchar %refchars; #IMPLIED
 <!-- Added AUFN to be used in situations where information is placed in the AFF section which does not pertain to one more author's affiliations, such as straight PCDATA.  To be used in conjunction with AUFNR which will be where the PCDATA will be housed. -->
 <!ELEMENT auname (%author; | blogref | bio | role)*>
 <!--AUNAME to be used when an author has no affiliation.-->
-<!ELEMENT au (fnm?, snm, autxt?, suff?, ttl?, inits?, orf*, blogref?, aufnr*, audeclr?, role?, bio?, imager?)>
+<!ELEMENT au (fnm?, snm, autxt?, suff?, ttl?, inits?, orf*, auid*, blogref?, aufnr*, audeclr?, role?, bio?, imager?)>
 <!ELEMENT orf EMPTY>
 <!ATTLIST orf
 rid IDREF #REQUIRED
@@ -1271,7 +1279,7 @@ refchar %refchars; #IMPLIED
 
 <!ELEMENT role (%plain-text;)* >
 
-<!ELEMENT cau (fnm?, snm, autxt?, suff?, ttl?, inits?, orf*, corf*, aufnr*, audeclr?, blogref?, role?, bio?, imager?)>
+<!ELEMENT cau (fnm?, snm, autxt?, suff?, ttl?, inits?, orf*, corf*, auid*, aufnr*, audeclr?, blogref?, role?, bio?, imager?)>
 <!ELEMENT corf EMPTY>
 <!ATTLIST corf
 rid IDREF #REQUIRED
@@ -1284,6 +1292,12 @@ refchar %refchars; #IMPLIED
 id ID #REQUIRED
 refchar %refchars; #IMPLIED
 >
+
+<!ELEMENT auid EMPTY>
+<!ATTLIST auid
+    type CDATA #REQUIRED
+    id CDATA #REQUIRED > 
+
 <!ELEMENT replyaug (replyau+, (aff | caff)*)>
 <!ATTLIST replyaug
 rid IDREF #IMPLIED
@@ -1327,7 +1341,7 @@ day CDATA #IMPLIED
 >
 <!ELEMENT pubdate EMPTY>
 <!ATTLIST pubdate
-type (aop | iss | online | nfv | embargo) "iss"
+type (aop | iss | online | nfv | embargo | fav) "iss"
 %dateatt;
 time CDATA #IMPLIED
 hour CDATA #IMPLIED
@@ -1367,7 +1381,7 @@ display (inline | block) "block"
 >
 
 
-<!ELEMENT refau (%data; | fnm | snm | suff | ttl)*>
+<!ELEMENT refau (%data; | fnm | snm | suff | ttl | auid)*>
 <!ELEMENT btl (%data;)*>
 <!ELEMENT iid (%data;)*>
 <!ELEMENT vid (%data;)*>
@@ -1548,7 +1562,7 @@ id ID #REQUIRED
 id ID #IMPLIED
 >
 <!ELEMENT addendum (crosshd?, p+)>
-<!ELEMENT bm (endnote*, objects?, annotations?, accesgrp?, ack?, audecl*, app?, author-info?, bibl?, vita?)>
+<!ELEMENT bm (endnote*, objects?, annotations?, accesgrp?, data-citations?, ack?, audecl*, app?, author-info?, bibl?, vita?)>
 <!ELEMENT endnote (%text; | p)*>
 <!--Floating Elements -->
 <!ELEMENT objects (table | fig | illus | image | infographic | deflist | bx | notes | linkgrp | media | pullquote | scheme | compound | chemimg | ext-media | slideshow)*>
@@ -1811,6 +1825,18 @@ status (primary | secondary) "secondary"
 <!ELEMENT disclsr (cd, p)>
 <!-- Used to contain the address associated with the company disclaimer -->
 <!ELEMENT address (%address;)*>
+
+<!ELEMENT data-citations (data-citation)+>
+
+<!ELEMENT data-citation (refau)*>
+<!ATTLIST data-citation
+db-name CDATA #REQUIRED
+id CDATA #REQUIRED
+url CDATA #IMPLIED
+year CDATA #REQUIRED
+source ( existing | new ) #IMPLIED
+> 
+
 <!ELEMENT ack (p+)>
 <!ELEMENT audecl (explanatory?)>
 <!ATTLIST audecl
