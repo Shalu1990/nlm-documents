@@ -13,6 +13,9 @@
 
 <!-- 
 
+01.02.13
+. SCHEMA-89 - Added new optional element "auid" as a child of "au" to allow inclusion of ORCIDs for authors
+
 03.01.13
 . SCHEMA-85 - Added %mathtypes to "websumm".
 
@@ -1803,8 +1806,7 @@ serieshead?, tochead?, arttype, subarttype?, artcode?, subject*, classification*
 <!--********************************************************************-->
 <!--       Author                                                 	-->
 <!--********************************************************************-->
-<!ELEMENT 	au  		  		((%authors; | orf | oref | auref | 
-	autref | coref | audeclr)*, role?, aui)>
+<!ELEMENT 	au  		  	((%authors; | orf | oref | auref | autref | coref | audeclr | auid)*, role?, aui)>
 <!ATTLIST 	au 	tocshow 	(%tocshow;) 	"tocshow" >
 
 <!--		aui           author names in inverted form-->
@@ -1854,7 +1856,10 @@ serieshead?, tochead?, arttype, subarttype?, artcode?, subject*, classification*
 <!ELEMENT 	audeclr 					(%text;)*>
 <!ATTLIST 		audeclr		rid 		IDREF  #REQUIRED>
 
-
+<!ELEMENT auid EMPTY>
+<!ATTLIST auid
+    type CDATA #REQUIRED
+    id CDATA #REQUIRED > 
 
 <!--********************************************************************-->
 <!--       Corresponding Author                                     	-->
