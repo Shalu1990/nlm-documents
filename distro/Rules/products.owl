@@ -21644,16 +21644,6 @@
     
 
 
-    <!-- http://ns.nature.com/publications/1471-7511 -->
-
-    <terms:Publication rdf:about="http://ns.nature.com/publications/1471-7511">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-        <dc:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">urn:issn:1471-7511</dc:identifier>
-        <bibo:eissn>1471-7511</bibo:eissn>
-    </terms:Publication>
-    
-
-
     <!-- http://ns.nature.com/publications/1472-4782 -->
 
     <owl:Thing rdf:about="http://ns.nature.com/publications/1472-4782">
@@ -22758,6 +22748,15 @@
     
 
 
+    <!-- http://ns.nature.com/publications/1741-7511 -->
+    
+    <terms:Publication rdf:about="http://ns.nature.com/publications/1741-7511">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <dc:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">urn:issn:1741-7511</dc:identifier>
+        <bibo:eissn>1741-7511</bibo:eissn>
+    </terms:Publication>
+    
+    
     <!-- http://ns.nature.com/publications/1742-8262 -->
 
     <terms:Publication rdf:about="http://ns.nature.com/publications/1742-8262">
