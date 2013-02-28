@@ -14,7 +14,7 @@
         <dc:title>NPG Ontology: Subjects</dc:title>
         <dc:description>This ontology models and represents Subject entities from Nature Publishing Group.</dc:description>
         <rdfs:comment>NPG Ontology: Subjects</rdfs:comment>
-        <owl:versionInfo>1.7.2</owl:versionInfo>
+        <owl:versionInfo>1.7.3</owl:versionInfo>
         <dc:creator>Nature Publishing Group</dc:creator>
     </owl:Ontology>
     
