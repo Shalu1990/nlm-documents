@@ -20880,7 +20880,21 @@
         <terms:dateStart>2004-01</terms:dateStart>
     </terms:Coverage>
     
+
+    <!-- Dummy information added for testing new journal -->
+    <!-- http://ns.nature.com/products/scientificdata -->
     
+    <owl:Thing rdf:about="scientificdata">
+        <rdf:type rdf:resource="http://ns.nature.com/terms/Product"/>
+        <terms:content>fulltext</terms:content>
+        <terms:pcode>scientificdata</terms:pcode>
+        <terms:hasCoverage rdf:resource="scientificdata_coverage"/>
+        <terms:collection>journals_nature</terms:collection>
+        <dc:title>Scientific Data</dc:title>
+        <terms:npgid>xxxx</terms:npgid>
+        <terms:targetDomain>nature.com</terms:targetDomain>
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/2044-4052"/><!--Actually issn not known-->
+    </owl:Thing>
     
 
     <!-- http://ns.nature.com/products/sj -->
