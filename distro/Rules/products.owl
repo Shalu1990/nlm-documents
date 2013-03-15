@@ -4375,7 +4375,7 @@
         <terms:content>fulltext</terms:content>
         <terms:collection>journals_nature</terms:collection>
         <foaf:homepage>www.nature.com/mtna</foaf:homepage>
-        <dc:title>Molecular Therapy Nucleic Acids</dc:title>
+        <dc:title>Molecular Therapy &#x2014; Nucleic Acids</dc:title>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/2162-2531"/>
     </terms:Product>
     
