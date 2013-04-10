@@ -20332,12 +20332,12 @@
         <terms:collection>journals_nature</terms:collection>
         <foaf:homepage>http://www.nature.com/pcan</foaf:homepage>
         <terms:npgid>230</terms:npgid>
-        <dc:title>Prostatic Cancer and Prostatic Diseases</dc:title>
+        <dc:title>Prostate Cancer and Prostatic Diseases</dc:title>
         <terms:targetDomain>nature.com</terms:targetDomain>
         <terms:pcode>pcan</terms:pcode>
         <terms:hasCoverage rdf:resource="pcan_coverage"/>
         
-        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/0033-3506"/>
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1365-7852"/>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1476-5608"/>
     </owl:Thing>
     
@@ -24086,12 +24086,12 @@
     
 
 
-    <!-- http://ns.nature.com/publications/0033-3506 -->
+    <!-- http://ns.nature.com/publications/1365-7852 -->
 
-    <owl:Thing rdf:about="http://ns.nature.com/publications/0033-3506">
+    <owl:Thing rdf:about="http://ns.nature.com/publications/1365-7852">
         <rdf:type rdf:resource="http://ns.nature.com/terms/Publication"/>
-        <dc:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">urn:issn:0033-3506</dc:identifier>
-        <bibo:issn>0033-3506</bibo:issn>
+        <dc:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">urn:issn:1365-7852</dc:identifier>
+        <bibo:issn>1365-7852</bibo:issn>
     </owl:Thing>
     
 
