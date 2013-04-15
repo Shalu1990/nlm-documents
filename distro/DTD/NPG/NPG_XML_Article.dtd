@@ -16,6 +16,10 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2013/04/02 - SCHEMA-92 - Added "geneseq" and "proteinseq" as possible elements within entity %data;
+
+           - SCHEMA-91 - Added "tiff" to values for entity %figure-data;
+
 2013/02/01 - SCHEMA-90 - Added new optional element "data-citations" as a child of "bm"
                          Multiple "data-citation" children, which have multiple optional "refau" children 
                          "data-citation" has required attributes: 'db-name', 'id', 'url', and 'year'; optional attribute 'source' which can take values "existing" or "new"
@@ -865,12 +869,11 @@ DTD Change History (yyyy/mm/dd format)
 <!ENTITY % textref "ancref | bibrinl | bxr | coder | deflistr | fdr | figr | fnr | fr | illorinl | infographicr | mediar | tablr | compoundr | schemer | ext-mediar | slideshowr | %entityref;">
 <!ENTITY % refs "%emptyref; | %textref;">
 <!ENTITY % links "natlink | sir | cir | url | weblink | xnav | xref">
-<!ENTITY % data "%straight-text; | %fontchng; | %controls; | %refs; | %links; | accession | anchor | email | company | prod | brandname | term | scientific | code">
+<!ENTITY % data "%straight-text; | %fontchng; | %controls; | %refs; | %links; | accession | anchor | email | company | prod | brandname | term | scientific | code | geneseq | proteinseq">
 <!ENTITY % author "%data; | fnm | snm | suff | ttl | inits | auid">
 <!ENTITY % address "%data; | org | street | cty | co | st | zip | cny | prf">
 
 <!ENTITY % tabl "(title?, caption?, tgroup*, tblimg*, slide?, credit?)" >
-
 
 <!-- entities %text; and %data; are synonymous -->
 <!ENTITY % text "%data;">
@@ -912,7 +915,7 @@ DTD Change History (yyyy/mm/dd format)
 <!-- The following notation values denote the format of the Supplementary Object or document. If the format is not known at time of conversion, choose "unknown" -->
 <!ENTITY % notation "(avi | bmp | c | cdx | cif | csv | default | doc | docm | docx | dot | eps | exe | gif | htm | html | icb | item | jdx | jpeg | jpg | mol | mov | mp4 | mp3 | mpg | noa | ole | pdb | pdf | pict | png | pps | ppt | pptm | pptx | ps | qt | ra | rtf | rv | sbml | sdf | sif | swf | tar | tex | tgz | tiff | timeline | txt | wav | wmf | wmv | wp | xls | xlsm | xlsx | xml | zip | unknown)">
 
-<!ENTITY % figure-data "(csv | doc | docx | gif | jpeg | jpg | pdf | png | txt | xls | xlsx | xml | zip)">
+<!ENTITY % figure-data "(csv | doc | docx | gif | jpeg | jpg | pdf | png | tiff | txt | xls | xlsx | xml | zip)">
 
 
 <!ENTITY % tocshow  "tocshow | toconly | notoc" >
@@ -1063,7 +1066,6 @@ type (electronic | print) "print"
 <!ELEMENT cpy (#PCDATA)>
 <!ELEMENT cpn (#PCDATA)>
 <!ELEMENT cps (#PCDATA)>
-
 
 <!ELEMENT related-article (%data;)* >
 <!ATTLIST related-article
@@ -1570,7 +1572,6 @@ id ID #IMPLIED
 <!ELEMENT slideshow (title?, caption?, (fig | illus | infographic)+) >
 <!ATTLIST slideshow id ID #REQUIRED >
 
-
 <!ELEMENT fig (subfig*, slide?, datafile*, figtl?, caption?, figfn?, credit?)>
 <!ATTLIST fig
 id ID #REQUIRED
@@ -1800,8 +1801,6 @@ filesize CDATA #IMPLIED
     chemspider CDATA #IMPLIED
 >
 
-
-
 <!ELEMENT fn (p+)>
 <!ATTLIST fn
 id ID #REQUIRED
@@ -1819,6 +1818,10 @@ categ (genbank | bnl | pdb) #REQUIRED
 		type (arrayexpress | bind | biomodels | bioproject | bmrb | ddbj | embl | emdb | ena | ensembl | est | genbank | geo | gss | mgi | nuccore | pcaid | pccid | pcsid | pdb | pride | sra | swiss-prot) "genbank"
 status (primary | secondary) "secondary"
 >
+
+<!ELEMENT 	geneseq (%straight-text; | newline | %fontchng;)*>
+<!ELEMENT 	proteinseq (%straight-text; | newline | %fontchng;)*>
+
 <!-- Used for Company Disclaimers associated with Reviews articles -->
 <!ELEMENT disclmr (p+, disclsr, address)>
 <!-- Company Disclosure Information (Copyright statement and disclosure text) -->
