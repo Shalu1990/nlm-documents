@@ -20911,6 +20911,20 @@
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/0000-0000"/>
     </owl:Thing>
     
+    <!-- Dummy information added for Frontiers article -->
+    <!-- http://ns.nature.com/products/fgene -->
+    
+    <owl:Thing rdf:about="fgene">
+        <rdf:type rdf:resource="http://ns.nature.com/terms/Product"/>
+        <terms:content>fulltext</terms:content>
+        <terms:pcode>fgene</terms:pcode>
+        <terms:hasCoverage rdf:resource="fgene_coverage"/>
+        <terms:collection>journals_frontiers</terms:collection>
+        <dc:title>Frontiers in Genetics</dc:title>
+        <terms:npgid>xxxx</terms:npgid>
+        <terms:targetDomain>frontiersin.com</terms:targetDomain>
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/1664-8021"/>
+    </owl:Thing>
 
     <!-- http://ns.nature.com/products/sj -->
 
