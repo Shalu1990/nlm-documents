@@ -20897,15 +20897,15 @@
     </owl:Thing>
     
     <!-- Dummy information added for testing different article types -->
-    <!-- http://ns.nature.com/products/prcy -->
+    <!-- http://ns.nature.com/products/nmstr -->
     
-    <owl:Thing rdf:about="prcy">
+    <owl:Thing rdf:about="nmstr">
         <rdf:type rdf:resource="http://ns.nature.com/terms/Product"/>
         <terms:content>fulltext</terms:content>
-        <terms:pcode>prcy</terms:pcode>
-        <terms:hasCoverage rdf:resource="prcy_coverage"/>
+        <terms:pcode>nmstr</terms:pcode>
+        <terms:hasCoverage rdf:resource="nmstr_coverage"/>
         <terms:collection>journals_nature</terms:collection>
-        <dc:title>Nature Piracy</dc:title>
+        <dc:title>Nature Maestro</dc:title>
         <terms:npgid>xxxx</terms:npgid>
         <terms:targetDomain>nature.com</terms:targetDomain>
         <terms:hasPublication rdf:resource="http://ns.nature.com/publications/0000-0000"/>
