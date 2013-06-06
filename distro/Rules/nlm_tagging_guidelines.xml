@@ -1,848 +1,800 @@
 <?xml version="1.0"?>
-<!DOCTYPE book SYSTEM "file:/C:/Program%20Files/Oxygen%20XML%20Editor%2013/frameworks/docbook/5.0/dtd/docbook.dtd">
+<!DOCTYPE book SYSTEM "file:/C:/Program%20Files%20(x86)/Oxygen%20XML%20Editor%2013/frameworks/docbook/5.0/dtd/docbook.dtd">
 <?xml-stylesheet type="text/css" href="css/docbook-custom.css"?>
 <book>
-  <title>Nature NLM Tagging Guidelines</title>
+  <title>JATS Tagging Guidelines for NPG/Palgrave articles</title>
   <preface>
     <title>Introduction</title>
-    <para>These Tagging Guidelines describe Nature's preferred XML tagging style for journal article submissions in the NLM Journal Publishing DTD v3.0. All deliveries made to Nature must conform to the provisions of this document.</para>
-    <para>The Tagging Guidelines are divided into separate chapters. Each chapter describes separate rules that must be followed when creating Nature-style compliant XML. Many of the rules are related, but none are duplicated from one chapter to another.</para>
+    <para>These Tagging Guidelines describe NPG's preferred XML tagging style for journal article submissions in NISO JATS Journal Publishing DTD. All deliveries made to NPG must conform to the provisions of this document.</para>
+    <para>The Tagging Guidelines are divided into separate chapters. Each chapter describes separate rules that must be followed when creating NPG-style compliant XML. Many of the rules are related, but none are duplicated from one chapter to another.</para>
     <itemizedlist>
       <listitem>
         <para><link linkend="general">General tagging practice</link>: These style rules apply to structured data tagging at a very broad level and include emphasised text, mathematics, and special characters.</para>
       </listitem>
       <listitem>
-        <para><link linkend="objects">Document objects</link>: This chapter describes specific parts of XML documents like figures and author/affiliation relationships. It references specific elements and includes examples of XML tagging.</para>
+        <para><link linkend="objects">Document objects</link>: This chapter describes specific parts of XML documents like figures, tables and author/affiliation relationships. It includes examples of XML tagging.</para>
       </listitem>
-      <listitem><para><link linkend="elements">Elements</link>: This chapter describes style rules for specific XML elements and their attributes. Only elements for which Nature has a style rule are described in this section. Refer to the <link xlink:href="http://dtd.nlm.nih.gov/publishing/tag-library/3.0/index.html">NLM Tag Library</link> for descriptions of all elements available in the DTD.</para></listitem>
-      <listitem><para><link linkend="journals">Journal-specific information</link>: This chapter gives journal-id and copyright statements for specific Nature journals.</para></listitem></itemizedlist>
-    <para>In addition to these chapters, all updates to the Tagging Guidelines will be documented in the [Update History].[* Insert link to this document once created *]</para>
+      <listitem><para><link linkend="elements">Elements</link>: This chapter describes style rules for specific XML elements and their attributes. Only elements for which NPG has a style rule are described in this section. Refer to the <link xlink:href="http://jats.nlm.nih.gov/publishing/tag-library/1.0/index.html">JATS Tag Library</link> for descriptions of all elements available in the DTD.</para></listitem>
+    </itemizedlist>
+    <!--para>In addition to these chapters, all updates to the Tagging Guidelines will be documented in the [Update History].[* Insert link to this document once created *]</para-->
      <simplesect>
         <title>A note on presentation</title>
         <para>Elements are shown within angled brackets. Attributes are preceeded by the @ sign. Both are shown in a monospace font to distinguish them from regular text.</para>
      </simplesect>
      <simplesect>
       <title>Packaging format</title>
-      <para>XML files should be uploaded by the Nature NLM web validation service. Associated files (images, pdfs etc) should continue to be submitted using the current method. This is likely to change in the future with all files submitted through the web service.</para>
+      <para>XML files should be uploaded to the NPG XML Gateway for validation against DTD and Schematron rules. Associated binary files (images, pdfs etc) should continue to be submitted to the ftp site. This is likely to change in the future with all files submitted together to the XML Gateway.</para>
     </simplesect>
-    <simplesect>
-      <title>Media files</title>
-      <para>[*Add requirements once we want all content through the web service*]</para>
-    </simplesect>
-    <simplesect>
+    <!--simplesect>
       <title>Fully-tagged samples</title>
       <para>Fully-tagged articles are available for download. [*Add links to our samples and/or create new ones - perhaps have a download page with DTD and Schematron rules as well*]</para>
-    </simplesect>
+    </simplesect-->
   </preface>
   <chapter xml:id="general">
     <title>General tagging practice</title>
-    <para>The XML should conform to the NLM Journal Publishing DTD, version 3.0 incorporating the Oasis table model. (<link xlink:href="http://dtd.nlm.nih.gov/publishing/3.0/index.html">http://dtd.nlm.nih.gov/publishing/3.0/index.html</link>) [* Change link to our OASIS enabled version of the DTD (downloads page?) *]</para>
-    <para>The complete NLM Tag Library is available on the web: <link xlink:href="http://dtd.nlm.nih.gov/publishing/tag-library/3.0/index.html">http://dtd.nlm.nih.gov/publishing/tag-library/3.0/index.html</link></para>
+    <para>The XML should conform to the JATS Journal Publishing DTD, version 1.0 incorporating the Oasis table model. The DTD is available from the stable ftp site: <link xlink:href="ftp://ftp.ncbi.nih.gov/pub/jats/publishing/1.0/">ftp://ftp.ncbi.nih.gov/pub/jats/publishing/1.0/</link></para>
+    <para>The main module of the DTD we use is JATS-journalpublishing-oasis-article1.dtd. It imports the subordinate modules. For the schema to work, all modules must be in the same directory.</para>
+    <para>The complete JATS Tag Library is available on the web: <link xlink:href="http://jats.nlm.nih.gov/publishing/tag-library/1.0/index.html">http://jats.nlm.nih.gov/publishing/tag-library/1.0/index.html</link></para>
+    <section xml:id="doctype_declaration">
+      <title>DOCTYPE declaration</title>
+      <para>Set the PUBLIC identifier to "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables v1.0 20120330//EN".</para>
+      <para>Set the SYSTEM identifier to "JATS-journalpublishing-oasis-article1.dtd".</para>
+      <programlisting>
+      <![CDATA[<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Publishing DTD with OASIS Tables v1.0 20120330//EN"
+          "JATS-journalpublishing-oasis-article1.dtd">]]></programlisting>
+    </section>
     <section>
       <title>Emphasised text</title>
-      <para>As a rule, use emphasised text markup (<tag>&lt;bold></tag>, <tag>&lt;italic></tag>, <tag>&lt;sc></tag>, etc) only to set off a piece of information. Do not set entire elements in emphasised text. For example, if a <tag>&lt;title></tag> is set completely in boldface, do not tag the <tag>&lt;bold></tag>. However, if a title has a word or some words set in boldface for emphasis, tag those words using <tag>&lt;bold></tag>. Mainly this will apply to <tag>&lt;title></tag>, <tag>&lt;p></tag> in <tag>&lt;abstract></tag>, and <tag>&lt;label></tag>. It might also show up in <tag>&lt;aff></tag> and "special" sections, like <tag>&lt;ack></tag>.</para>
+      <para>As a rule, use emphasised text markup (<tag>&lt;bold></tag>, <tag>&lt;italic></tag>, <tag>&lt;sc></tag>, etc) only to set off a piece of information. Do not set entire elements in emphasised text. For example, if a <tag>&lt;title></tag> is set completely in boldface, do not use the <tag>&lt;bold></tag>. However, if a title has a word or some words set in boldface for emphasis, tag those words using <tag>&lt;bold></tag>. Mainly this will apply to <tag>&lt;title></tag>, <tag>&lt;p></tag> in <tag>&lt;abstract></tag>, <tag>&lt;label></tag> and entries in <tag>&lt;oasis:thead></tag>. It might also show up in <tag>&lt;aff></tag> and "special" sections, like <tag>&lt;ack></tag>.</para>
       <para>[*Insert example - figure title perhaps?*]</para>
-      <para>In addition, it may sometimes be necessary to reverse presentational formats. For example (from <emphasis>Scientific American</emphasis>): <emphasis><emphasis role="bold">Gareth Cook</emphasis> is a Pulitzer Prize–winning journalist at the</emphasis> Boston Globe <emphasis>and editor of the</emphasis> Scientific American Mind <emphasis>neuroscience blog Mind Matters.</emphasis></para>
-      <programlisting>
-        <![CDATA[<aff><bold>Gareth Cook</bold> is a Pulitzer Prize-winning journalist at the 
-            <italic>Boston Globe</italic> and editor of the <italic>Scientific American 
-            Mind</italic> neuroscience blog Mind Matters.</aff>]]></programlisting>
     </section>
     <section>
       <title>Empty elements</title>
-      <para>Do <emphasis role="bold">not</emphasis> use empty elements for the purpose of formatting.</para>
-      <para>All required elements should have content.</para>
+      <para>Do <emphasis role="bold">not</emphasis> use empty elements for the purpose of formatting, except where stated below. All required elements should have content.</para>
     </section>
-    <section>
+    <section xml:id="links">
       <title>Links</title>
-      <para>Tag all links within the document (e.g. tables, figures, display formula) with the <tag>&lt;xref></tag> element and include the appropriate <tag>@ref-type</tag>. See <link linkend="element_xref"><tag>&lt;xref></tag></link>.</para>
+      <para>Tag all internal links within the document (e.g. tables, figures, display formulae) with the <tag>&lt;xref></tag> element and include the appropriate <tag>@ref-type</tag>. See <link linkend="element_xref"><tag>&lt;xref></tag></link>.</para>
+      <para>Tag all links to related articles (e.g. from a correction to the corrected article) with <tag>&lt;related-article></tag> and include the appropriate <tag>@ext-link-type</tag>, <tag>@related-article-type</tag>, and citation information. See <link linkend="element_related-article"><tag>&lt;related-article></tag></link>.</para>
       <para>Tag all external links with <tag>&lt;ext-link></tag> and include the appropriate <tag>@ext-link-type</tag>. See <link linkend="element_ext-link"><tag>&lt;ext-link></tag></link>.</para>
-      <para>Tag all links to related articles (e.g. from a correction to the corrected article) with <tag>&lt;related-article></tag> and include the appropriate <tag>@ext-link-type</tag>, @related-article-type, and citation information. See <link linkend="element_related-article"><tag>&lt;related-article></tag></link>.</para>
       </section>
-    <section>
+    <section xml:id="mathematics">
       <title>Mathematics</title>
-      <para>[*Placeholder for information on required use of MathML.*]</para>
-      <!--<para>Tag all display formulae with MathML markup and capture an image. MathML 2.0 is included in the NLM DTD.</para>
-      <para>Tag an inline formula with MathML markup when it cannot be represented by regular article elements and Unicode characters. [Add definition for what counts as a formula - equals sign and equivalents, not just +, −, / or &#x00D7;] For example,
-        [*give examples*]</para>
+      <para>Tag all display formulae with MathML markup and capture an image. MathML 2.0 is included in the JATS DTD.</para>
+      <para>Tag an inline formula with MathML markup when it cannot be represented by regular article elements and Unicode characters. [Add definition for what counts as a formula - equals sign and equivalents, not just +, −, / or &#x00D7;] For example, [*give examples - nutd201220 inline-formulae*]</para>
       <para>Do not set mathematics as <tag>&lt;tex-math></tag>.</para>
-      <para>Use <tag>&lt;mml:math></tag> to tag mathematical expressions only. Do not use it to tag single characters.</para-->
+      <para>Use <tag>&lt;mml:math></tag> to tag mathematical expressions only. Do not use it to tag single characters.</para>
     </section>
-    <!--<section>
-      <title>Punctuation in references</title>
-      <para>Do not tag trailing and extraneous punctuation for the purpose of formatting. <tag>&lt;element-citation></tag> must be used.</para>
-      <para>See <tag>&lt;ref-list></tag> examples in the Fully-tagged Samples.</para>
-    </section>-->
-    <section>
+    <section xml:id="unicode">
       <title>Use of Unicode</title>
-      <para>Do <emphasis role="bold">not</emphasis> use named character entities within NLM markup, apart from the predefined XML entities (<![CDATA[&lt;]]> for &lt;, <![CDATA[&gt;]]> for &gt;, and <![CDATA[&amp;]]> for &amp;).</para>
-      <para>Tag non-ASCII characters with their Unicode hex number in character entity style (e.g. <![CDATA[&#x00D7;]]> for &#x00D7;).</para>
+      <para>Do <emphasis role="bold">not</emphasis> use named character entities within JATS markup, apart from the predefined XML entities (<![CDATA[&lt;]]> for &lt;, <![CDATA[&gt;]]> for &gt;, and <![CDATA[&amp;]]> for &amp;).</para>
+      <para>Tag non-ASCII characters with their Unicode hex number in character entity style (e.g. <![CDATA[&#xD7;]]> for &#xD7; and <![CDATA[g&#x303;]]> for g&#x303;).</para>
       <para>Do not use values from the Private Use Areas: xE000–xF8FF, xF0000–xFFFFD, and x100000–x10FFFD. Do not use Unicode values designated as control codes. These ranges include but are not limited to x0000–0020, x0080–x009F.</para>
       <para>[*Info from Jude on "unsafe" entities which will require Stix fonts*]</para>
     </section>
-  </chapter>
-  <chapter xml:id="objects">
-    <title>Document objects</title>
-    <para>These Document Objects refer to pieces of the XML documents that define a single concept (author/affiliation relationships, copyright information) and often include several XML elements in their tagging.</para>
-    <sect1 xml:id="object_abstracts">
-      <title>Abstracts</title>
-      <para>Articles may contain multiple abstracts and summaries. Specify <tag>@abstract-type</tag> for summaries which are not a true abstract. See <link linkend="element_abstract"><tag>&lt;abstract></tag></link> for examples.</para>
-    </sect1>
-     <sect1 xml:id="object_accession-groups">
-        <title>Accession groups</title>
-        <para>Accession codes for linking to entries in Genbank and Brookhaven National Laboratory and Protein Data Bank should be set in <tag>&lt;back></tag><tag>&lt;notes></tag> with <tag>@notes-type="database-links"</tag>.</para>
-        <para>Set each code in a separate <tag>&lt;p></tag><tag>&lt;ext-link></tag>. <tag>&lt;ext-link></tag> should declare attributes:
-           <itemizedlist>
-              <listitem><para><tag>@ext-link-type</tag> which can take the values "genbank" or "pdb"</para></listitem>
-              <listitem><para><tag>@xlink:href</tag> which takes the value of the code itself, ignoring any italics</para></listitem></itemizedlist></para>
-        <para>Example:</para>
-        <programlisting><![CDATA[
-        <notes notes-type="database-links">
-          <p><ext-link ext-link-type="genbank" xlink:href="ATP2A1"><italic>ATP2A1</italic></ext-link></p>
-          <p><ext-link ext-link-type="genbank" xlink:href="U96781">U96781</ext-link></p>
-          <p><ext-link ext-link-type="pdb" xlink:href="1JTG">1JTG</ext-link></p>
-          <p><ext-link ext-link-type="pdb" xlink:href="AF482946"><italic>AF482946</italic></ext-link></p>
-        </notes>]]></programlisting>
-     </sect1>
-     <sect1 xml:id="object_article-categories">
-        <title>Article categories</title>
-        <para>Articles may have more than one subject group within <link linkend="element_article-categories"><tag>&lt;article-categories></tag></link>, but every article must have exactly one <tag>&lt;subj-group></tag> with <tag>@subj-group-type="category"</tag>. This value should match the value for the required <tag>@article-type</tag> on the root <tag>&lt;article></tag> element.</para>
-        <para>Articles may also have sub-categories and sub-sub-categories for second and third level article types. These should also be set as <tag>&lt;subj-group></tag> with <tag>@subj-group-type="sub-category"</tag> or <tag>@subj-group-type="sub-sub-category"</tag>.</para>
-        <para>Example:</para>
-        <programlisting><![CDATA[
-        <article-categories>
-          <subj-group subj-group-type="category">
-            <subject>naturejobs</subject>
-          </subj-group>
-          <subj-group subj-group-type="sub-category">
-            <subject>carv</subject>
-          </subj-group>
-          <subj-group subj-group-type="sub-sub-category">
-            <subject>grad</subject>
-          </subj-group>
-        </article-categories>
-        ]]></programlisting>
-       <para>See also <link linkend="element_article-categories"><tag>&lt;article-categories></tag></link>.</para>
-       <sect2>
-         <title>Magazine section headings</title>
-         <para>Example:</para>
-         <programlisting><![CDATA[
-        <subj-group subj-group-type="section">
-          <subject>research</subject>
-        </subj-group>]]></programlisting>
-       </sect2>
-       <sect2>
-         <title>Techniques</title>
-         <para>This is newly-introduced markup to support the techniques ontology, and is currently used in <emphasis>Nature Protocols</emphasis> and <emphasis>Nature Structural &amp; Molecular Biology</emphasis>.</para>
-         <para>Set <tag>&lt;subj-group></tag> with <tag>@subj-group-type="technique"</tag>. Each technique should be set in a separate <tag>&lt;subject></tag> with <tag>@content-type="npg.technique"</tag>.</para>
-         <para>Use <tag>&lt;named-content></tag> for each part of the ontology:</para>
-         <itemizedlist>
-           <listitem><para>content-type="code" for the technique code number</para></listitem>
-           <listitem><para>content-type="version" for the ontology version number, currently 1.7.0</para></listitem>
-           <listitem><para>content-type="id" for the technique id number</para></listitem>
-           <listitem><para>content-type="path" for the full path of the technique number</para></listitem>
-         </itemizedlist>
-         <para>Example:</para>
-         <programlisting><![CDATA[
-        <subj-group subj-group-type="technique">
-          <subject content-type="npg.technique">
-            <named-content content-type="code">64</named-content>
-            <named-content content-type="version">1.7.0</named-content>
-            <named-content content-type="id">11</named-content>
-            <named-content content-type="path">/64/11</named-content>
-          </subject>
-        </subj-group>]]></programlisting>
-       </sect2>
-     </sect1>
-     <sect1 xml:id="object_article-information">
-        <title>Article information</title>
-        <para>Most article information should be tagged in <link linkend="element_article-meta"><tag>&lt;article-meta></tag></link>. Information on the publishing stage and original source status should be set in <link linkend="element_custom-meta-group"><tag>&lt;custom-meta-group></tag></link>.</para>
-     </sect1>
-    <sect1 xml:id="object_article-title">
-      <title>Article title</title>
-      <para>See related element: <link linkend="element_title-group"><tag>&lt;title-group></tag></link></para>
-      <para>The main article title should be marked up as <tag>&lt;article-title></tag>. Do not use <tag>@id</tag>.</para>
-      <para>Do not include emphasis that encompasses an entire title.</para>
-        <sect2>
-           <title>Hidden title</title>
-           <para>Where there is an instruction to not show an article title, wrap title text in <tag>&lt;styled-content></tag> with <tag>@style-type="hidden"</tag>.</para>
-        </sect2>
-        <sect2>
-        <title>Short title</title>
-        <para>An article will sometimes also have a short title. This should be marked as <tag>&lt;alt-title></tag> with <tag>@alt-title-type="short-title"</tag>.</para>
-      </sect2>
-      <sect2>
-        <title>Subtitle</title>
-        <para>Tag only the content of the subtitle in the <tag>&lt;subtitle></tag> tag. <tag>@content-type</tag> should <emphasis role="bold">not</emphasis> be used.</para>
-      </sect2>
-      <sect2>
-        <title>Topics</title>
-        <para>An authored "pretitle" should be marked up as <tag>&lt;subtitle></tag> with <tag>@content-type="topic"</tag>.</para>
-      </sect2>
-      <sect2>
-        <title>Alternative article title</title>
-        <para>Science-Business eXchange may have an alternative article title for the HTML version only. Mark this up using <tag>&lt;alt-title></tag> with <tag>@alt-title-type="alt-title"</tag>, e.g.</para>
-        <programlisting>
-        <![CDATA[<title-group>
-          <article-title>REThinking lung cancer</article-title>
-          <alt-title alt-title-type="alt-title">Targeting RET in lung cancer</alt-title>
-        </title-group>]]>
-        </programlisting>
-      </sect2>
-      <sect2>
-        <title>Footnotes on the title</title>
-         <para>If there is a footnote to the title, put the <tag>&lt;xref></tag> (with <tag>@ref-type="fn"</tag>) in the <tag>&lt;article-title></tag> or <tag>&lt;subtitle></tag> element, and set the <tag>&lt;fn></tag> in the <tag>&lt;fn-group></tag> (with <tag>@content-type="footnotes"</tag>) in <tag>&lt;back></tag>.</para>
-      </sect2>
-    </sect1>
-    <sect1 xml:id="object_article-types">
-      <title>Article types</title>
-       <para>The "article-type" attribute is required on <tag>&lt;article></tag>. See <link linkend="element_article"><tag>&lt;article></tag></link> for details on tagging the attribute. The article type should be provided by the Nature editor, e.g. "cstory" for a cover story. Journals use a range of article types and therefore it is not possible to provide an exhaustive list here.</para>
-       <para>[* Include notes on different article types *]</para>
-       <sect2>
-          <title>Nature jobs (<tag>@article-type="naturejobs"</tag>)</title>
-          <para>These articles may contain one or more Nature codes representing career stage, discipline and sector. These should be set in a separate <tag>&lt;subj-group></tag> for each type with  <tag>@subj-group-type</tag> taking the respective values "career", "discipline" and "sector". They should contain a <tag>&lt;subject></tag> element for each code.</para>
-          <para>These articles may also contain one or more Nature codes representing regional information. Each region should be set in separate <tag>&lt;subj-group></tag> elements with <tag>@subj-group-type="region"</tag>. This element should always contain a <tag>&lt;subject></tag> element with <tag>@content-type="continent"</tag>. It may also contain child <tag>&lt;subject></tag> elements with <tag>@content-type="country"</tag>, <tag>"state"</tag> and <tag>"area"</tag>.</para>
-          <para>Example:</para>
-          <programlisting><![CDATA[
-        <article-categories>
-          <subj-group subj-group-type="career">
-            <subject>nj_c1</subject>
-          </subj-group>
-          <subj-group subj-group-type="discipline">
-            <subject>nj_d2</subject>
-            <subject>nj_d10</subject>
-          </subj-group>
-          <subj-group subj-group-type="region">
-            <subject content-type="continent">na</subject>
-            <subject content-type="country">USA</subject>
-            <subject content-type="state">MA</subject>
-            <subject content-type="area">Boston</subject>
-          </subj-group>
-          <subj-group subj-group-type="sector">
-            <subject>nj_s1</subject>
-          </subj-group>
-        ]]></programlisting>
-       </sect2>
-    </sect1>
-    <sect1 xml:id="object_author-information">
-      <title>Author information</title>
-      <para>Author information should be set in the following order for Nature articles:</para>
-      <orderedlist>
-        <listitem><para><tag>&lt;contrib-group></tag> containing a separate <tag>&lt;contrib></tag> for each author: 
-          <itemizedlist>
-            <listitem><para><tag>&lt;name></tag> &#x2014; required for Nature articles</para></listitem>
-            <listitem><para>possible <tag>&lt;role></tag> element</para></listitem>
-            <listitem><para>possible <tag>&lt;bio></tag> element</para></listitem>
-            <listitem><para>possible <tag>&lt;xref></tag> links to affilation (<tag>@ref-type="aff"</tag>), correspondence info (<tag>@ref-type="corresp"</tag>), author footnotes (<tag>@ref-type="author-notes"</tag>) and/or author declarations (<tag>@ref-type="statement"</tag>)</para></listitem>
-            <listitem><para>each <tag>&lt;contrib></tag> should have <tag>@contrib-type</tag> set to "author" or "editor"</para></listitem>
-            <listitem><para>each <tag>&lt;contrib></tag> should have <tag>@corresp</tag> set to "yes" if correspondence information is given, or "no" when it is not</para></listitem></itemizedlist></para>
-        </listitem>
-        <listitem><para><tag>&lt;aff></tag> &#x2014; each affiliation contained in a separate <tag>&lt;aff></tag> tag with address elements used where possible</para></listitem>
-        <listitem><para><tag>&lt;author-notes></tag> &#x2014; </para></listitem>
-      </orderedlist>
-      <para>Set any label or symbol in the <tag>&lt;label></tag> element. Do not create symbols or labels in the XML if they do not exist in the published article. Follow copy for all punctuation.</para>
-      <para>Example:</para>
-      <programlisting><![CDATA[
-        <contrib-group>
-          <contrib corresp="no" contrib-type="author">
-            <name>
-              <surname>Scott</surname>
-              <given-names>Cameron C</given-names>
-            </name>
-            <xref rid="a1" ref-type="aff"/>
-          </contrib>
-          <contrib corresp="no" contrib-type="author">
-            <name>
-              <surname>Verheije</surname>
-              <given-names>Monique H</given-names>
-            </name>
-            <xref rid="a2" ref-type="aff"/>
-            <xref rid="n1" ref-type="author-notes">*</xref>
-          </contrib>
-          <contrib corresp="yes" contrib-type="author">
-            <name>
-              <surname>Pelkmans</surname>
-              <given-names>Lucas</given-names>
-            </name>
-            <xref rid="c1" ref-type="corresp"/>
-          </contrib>
-          <contrib corresp="no" contrib-type="author">
-            <name>
-              <surname>Titus</surname>
-              <given-names>Sandra</given-names>
-            </name>
-            <xref rid="a1" ref-type="aff"/>
-            <xref rid="ad1" ref-type="statement"/>
-          </contrib>
-        </contrib-group>
-        <aff id="a1"><institution>Biochemistry Department, University of
-            Geneva</institution>, <addr-line content-type="city">Geneva</addr-line>,
-            <country>Switzerland</country></aff>
-        <aff id="a2"><institution>Virology Division, Department of Infectious Diseases and
-            Immunology, Utrecht University</institution>, <addr-line
-            content-type="city">Utrecht</addr-line>, <country>The Netherlands</country></aff>
-        <author-notes>
-          <corresp id="c1">Tel.:+41 44 635 31 23; Fax:+41 44 63 56 830; <email
-              xlink:href="lucas.pelkmans@imls.uzh.ch">lucas.pelkmans@imls.uzh.ch</email>
-              </corresp>
-          <fn id="ad1" fn-type="conflict"><p>for Sandra Titus: The views expressed are those
-              of the author and do not reflect the official position of the Office of Research
-              Integrity, Department of Health and Human Services, or any component
-              thereof.</p></fn>
-          <fn id="n1"><label>*</label><p>Present address: Pathology Division, Department of
-              Pathobiology, Faculty of Veterinary Medicine, Utrecht University, Yalelaan 1,
-              3584 CL, Utrecht, The Netherlands</p></fn>
-        </author-notes>]]></programlisting>
-      <sect2>
-        <title>Collaborative authors</title>
-        <para>Use <tag>&lt;collab></tag> when a group of authors is credited under a single name.</para>
-        <para>Example:</para>
-        <para>[*Add example from ng2127 once transforms will convert the whole thing*]</para>
-      </sect2>
-      <sect2>
-        <title>Contributors</title>
-        <para>Where articles have contributors rather than authors, for example in interviews, use <tag>&lt;contrib-group></tag> with <tag>@content-type="contributor"</tag>.</para>
-        <para><tag>&lt;contrib></tag> should have <tag>@contrib-type</tag> set to "interviewee" or "interviewer".</para>
-        <para>Affiliations should be included in the <tag>&lt;contrib></tag>.</para>
-        <para>Example:</para>
-        <programlisting><![CDATA[
-        <contrib-group content-type="contributor">
-          <contrib contrib-type="interviewer">
-            <name>
-              <surname>Heber</surname>
-              <given-names>Joerg</given-names>
-            </name>
-            <aff>Joerg Heber is a Senior Editor at <institution>Nature Materials</institution>.</aff>
-          </contrib>
-          <contrib contrib-type="interviewee">
-            <name>
-              <surname>Ramshaw</surname>
-              <given-names>Ian</given-names>
-            </name>
-            <bio><p>is a professor and group leader of the Vaccine Immunology Group at the John Curtin
-                School of Medical Research (JCSMR) at the Australian National University (ANU). Ian is
-                Director of the National Centre for Biosecurity, which was established at the ANU in 2006
-                to facilitate greater academic engagement with biosecurity.</p></bio>
-          </contrib>
-        </contrib-group>]]></programlisting>
-      </sect2>
-    </sect1>
-    <sect1 xml:id="object_copyright-information">
-      <title>Copyright Information</title>
-      <para>Tag all copyright information within <tag>&lt;permissions></tag>.</para>
-       <para>Tag the copyright year (usually the current year) in <tag>&lt;copyright-year></tag> whether or not it appears as part of the <tag>&lt;copyright-statement></tag>.</para>
-      <para>Tag the copyright holder in <tag>&lt;copyright-holder></tag>. This will be "Nature Publishing Group" for the majority of our journals. <emphasis>Scientific American</emphasis> and <emphasis>Scientific American Mind</emphasis> should use "Scientific American, Inc.".</para>
-      <para><tag>&lt;copyright-statement></tag> will vary between journals and should reflect the copyright line used in the pdf version of the article. Emphasised text should not be used.</para>
-      <para>Example:</para>
-      <programlisting>
-        <![CDATA[<permissions>
-          <copyright-statement>&#x00A9; 2012 Macmillan Publishers Limited. All rights 
-              reserved.</copyright-statement>
-          <copyright-year>2012</copyright-year>
-          <copyright-holder>Nature Publishing Group</copyright-holder>
-        </permissions>]]></programlisting>
-    </sect1>
-    <sect1 xml:id="object_dates">
-      <title>Dates</title>
-      <para>Within metadata, there are two date elements, <tag>&lt;date></tag> and <tag>&lt;pub-date></tag>. Tag publication dates (issue date, aop etc) in <tag>&lt;pub-date></tag> and history dates (received, accepted etc) in <tag>&lt;date></tag> inside <tag>&lt;history></tag>. The date model is the same for both. It allows parsed date information (<tag>&lt;day></tag>, <tag>&lt;month></tag>, <tag>&lt;season></tag>, <tag>&lt;year></tag>).</para>
-       <para>Do not use 00 or empty elements if values for day, month or year are not known/given.</para>
-       <para>Tag <tag>&lt;day></tag>, <tag>&lt;month></tag>, and <tag>&lt;year></tag> as integers - two digits for day and month (01-12 and 01-31), four digits for years. Do not use <tag>&lt;season></tag> for Nature articles.</para>
-      <para>See <link linkend="element_history"><tag>&lt;history></tag></link> and <link linkend="element_pub-date"><tag>&lt;pub-date></tag></link> for additional information.</para>
-      <para>For examples of using dates inside citations, see References [*add link to ref section*].</para>
-    </sect1>
-    <sect1 xml:id="object_DOCTYPE-declaration">
-    <title>DOCTYPE declaration</title>
-    <para>The root element is <link linkend="element_article"><tag>&lt;article></tag></link>.</para>
-    <para>Set the PUBLIC identifier to "-//NLM//DTD Journal Publishing with OASIS Tables v3.0 20080202//EN".</para>
-    <para>Set the SYSTEM identifier to "journalpub-oasis3.dtd".</para>
-        <programlisting><![CDATA[<!DOCTYPE article PUBLIC "-//NLM//DTD Journal Publishing with OASIS Tables v3.0 
-          20080202//EN" "journalpub-oasis3.dtd">]]></programlisting>
-    </sect1>
-    <sect1 xml:id="object_footnotes">
-      <title>Footnotes</title>
-      <para>Tag author footnotes in <tag>&lt;author-notes></tag>. See <link linkend="object_author-information">Author information</link>.</para>
-      <para>Tag footnotes that apply to the article as a whole in <link linkend="element_fn-group"><tag>&lt;fn-group></tag></link> in <link linkend="element_back"><tag>&lt;back></tag></link>.</para>
-      <para>Information concerning grants, contracts, sponsors, or other funding for the research should be captured in <tag>&lt;funding-group></tag><!--Link-->.</para>
-      <para>Tag table footnotes in <tag>&lt;table-wrap-foot></tag>.</para>
-      <para>See also <link linkend="element_fn"><tag>&lt;fn></tag></link>.</para>
-    </sect1>
-     <sect1 xml:id="object_interviews">
-        <title>Interviews and quizzes</title>
-        <para>Use <tag>&lt;list></tag> with <tag>@list-content</tag> set as "interview" or "quiz". Do not use <tag>@list-type</tag> or <tag>@id</tag>.</para>
-        <para>Each block of a question and answer is contained in a <tag>&lt;list-item></tag>.</para>
-        <para>Each question and answer will be a sub-list with <tag>@list-content</tag> set as "question" or "answer".</para>
-        <para>Example - Interview:</para>
-        <programlisting><![CDATA[
-        <list list-content="interview">
-          <list-item>
-            <list list-content="question">
-              <list-item>
-                <p>If you could list only five markers or transcription factors that people who study skin
-                    stem cells really need to know, what would they be?</p>
-              </list-item>
-            </list>
-            <list list-content="answer">
-              <list-item>
-                <p>Key factors for the hair follicle stem cells are Sox9, Tcf3, K15, CD34 and Lgr5. Key
-                    markers that encompass epidermal and hair follicle stem cells are p63, K14 and K5, but
-                    these proteins are expressed by all keratinocytes with proliferative capacity,
-                    irrespective of whether they are stem cells or transit amplifying cells.</p>
-              </list-item>
-            </list>
-         </list-item>
-         <list-item>
-            <list list-content="question">
-              <list-item>
-                <p>One thing you've done a lot of is marking and following cells. How do you decide what
-                    labels to use?</p>
-              </list-item>
-            </list>
-            <list list-content="answer">
-              <list-item>
-                <p>There is no crystal ball as to how to accomplish this, as you always run the risk of
-                    altering the biology of the protein. You just have to do the controls to test for
-                    preservation of protein function. Let me offer a few examples:</p>
-                <p>If we just want to look at Sox9 expression, but only in cells that express Sox9, then we
-                    would engineer the Sox9 locus to express GFP [green fluorescent protein] under the
-                    control of the Sox9 promoter, so that GFP expression will be exclusive to the cells
-                    that express endogenous Sox9. Here it would be important to use a short-lived GFP, such
-                    that the minute the cell switches off endogenous Sox9 expression, you'll lose GFP
-                    protein.</p>
-              </list-item>
-            </list>
-          </list-item>
-        </list>]]></programlisting>
-        <para>Example - Quiz:</para>
-        <programlisting><![CDATA[
-        <list list-content="quiz">
-          <list-item>
-            <list list-content="question">
-              <list-item>
-                <p>This apparatus, held in London's Science Museum, has some significant purpose &#x2014;
-                    or curiosity value &#x2014; in the history of physics. Can you guess what it is?</p>
-              </list-item>
-            </list>
-            <list list-content="answer">
-              <list-item>
-                <p content-type="cross-head">Last month: Caroline Herschel's telescope</p>
-                <p>This reflecting telescope was built in about 1795 by Sir William Herschel, who gave it
-                    to his sister Caroline. A dedicated assistant to her brother, Caroline was a celebrated
-                    astronomer in her own right, discovering eight comets and three nebulae. She described
-                    vividly the experience of astronomical observing on "star-lit nights on a grass-plot
-                    covered with dew or hoar frost, without a human being near enough to be within
-                    call".</p>
-                <p>Caroline Herschel described the telescope pictured here as looking exactly like the one
-                    used by her brother in the discovery of Uranus. It has a 7-foot octagonal wooden tube
-                    and is operated using pulley ropes and gears. The 6-1/8-inch mirror is made of speculum
-                    metal, an alloy of copper and tin.</p>
-              </list-item>
-            </list>
-         </list-item>
-      </list>]]></programlisting>
-     </sect1>
-    <sect1 xml:id="object_journal-information">
-      <title>Journal information</title>
-      <para>Set complete journal information for each article in <link linkend="element_journal-meta"><tag>&lt;journal-meta></tag></link>.</para>
-    </sect1>
-     <sect1 xml:id="object_link_groups">
-        <title>Link Groups</title>
-        <para>Link Groups to related job adverts and websites should be modelled as <tag>&lt;ref-list></tag> with <tag>@content-type="link-group</tag> within <tag>&lt;back></tag>. Set each link within <tag>&lt;element-citation></tag>.</para>
-        <para>Example:</para>
-        <programlisting><![CDATA[
-        <ref-list content-type="link-group">
-          <title>DATABASES</title>
-          <ref-list>
-            <title>OMIM</title>
-            <ref>
-              <element-citation><ext-link ext-link-type="uri"
-                  xlink:href="http://www.ncbi.nlm.nih.gov/entrez/dispomim.cgi?id=104300">Alzheimer</ext-link>
-              </element-citation>
-            </ref>
-            <ref>
-              <element-citation><ext-link ext-link-type="uri"
-                  xlink:href="http://www.ncbi.nlm.nih.gov/entrez/dispomim.cgi?id=143100">Huntington</ext-link>
-              </element-citation>
-              </ref>
-          </ref-list>
-        </ref-list>
-        <ref-list content-type="link-group">
-          <title>linkout</title>
-          <ref>
-            <element-citation><ext-link ext-link-type="uri" xlink:href="http://www.ibecbarcelona.eu/">IBEC
-                (Institute for Bioengineering of Catalonia)</ext-link></element-citation>
-          </ref>
-          <ref>
-            <element-citation><ext-link ext-link-type="uri" xlink:href="http://www.upf.edu/en/">Pompeu Fabra
-                University</ext-link></element-citation>
-          </ref>
-        </ref-list>]]></programlisting>
-        <para>See also <tag>&lt;element-citation></tag> and <tag>&lt;ext-link></tag>.<!--Links--></para>
-     </sect1>
-     <sect1 xml:id="object_materials-procedures">
-        <title>Materials and Procedures (Nature Protocols)</title>
-        <para>Nature Protocols contains Materials and Procedures sections which should be modelled using <tag>&lt;sec></tag> with <tag>@sec-type="materials"</tag> or <tag>"procedures"</tag> and <tag>&lt;title></tag> taking the value "Materials" or "Procedures". Do not use <tag>@specific-use</tag> for these sections.</para>
-        <para>Subsections of materials and procedures should be modelled using <tag>&lt;list></tag>. <tag>@id</tag> is unnecessary for these lists.</para>
-        <para>These sections may also contain "caution", "critical", "timing" and "trouble" statements. They should be modelled in the following way:</para>
-        <itemizedlist>
-           <listitem><para>caution &#x2014; as <tag>&lt;p></tag> with <tag>@content-type="caution"</tag> within the relevant <tag>&lt;list-item></tag></para></listitem>
-           <listitem><para>critical &#x2014; as a sub-list with <tag>@list-content="critical"</tag></para></listitem>
-           <listitem><para>timing &#x2014; as <tag>&lt;p></tag> with <tag>@content-type="timing"</tag> for the first timing statement. Nested timing statements should be contained in the same <tag>&lt;p></tag> and wrapped in the <tag>&lt;named-content></tag> element also with <tag>@content-type="timing"</tag>, e.g.</para>
-              <programlisting><![CDATA[
-        <p content-type="timing">Protein expression
-          <named-content content-type="timing">Step 1: 2 h</named-content>
-          <named-content content-type="timing">Step 2: 16 h</named-content>
-          <named-content content-type="timing">(S)-4-hydroxy-2-keto-4-(2&#x2032;-pyridyl)butyrate synthesis
-            <named-content content-type="timing">Steps 3&#x2013;4: 8 h</named-content>
-            <named-content content-type="timing">Step 5: 24 h</named-content>
-          </named-content>
-        </p>]]></programlisting>
-           </listitem>
-           <listitem><para>trouble &#x2014; as a sub-list with <tag>@list-content="trouble"</tag>. If the "trouble" statement contains "problem" and "solution" sub-statements set these as further sub-lists with <tag>@list-content="problem"</tag> or <tag>"solution"</tag>, e.g.</para>
-              <programlisting><![CDATA[
-        <list list-content="trouble">
-          <list-item>
-            <list list-content="problem"><list-item><p>Low cell yields for the various cell preparations due
-                to inadvertent loss during centrifugation steps for reasons such as choosing an inappropriate
-                centrifugation speed or discarding wanted fractions.</p></list-item></list>
-            <list list-content="solution"><list-item><p>When performing procedures for the first time, examine
-                aliquots of all fractions under the microscope to become familiar with the expected cell
-                morphologies. At various stages during the preparation, compare cell morphologies to those of
-                the final preparations shown in the top row panels of Figures 2 and 3.</p></list-item></list>
-          </list-item>
-        </list>]]></programlisting>
-           </listitem>
-        </itemizedlist>
-        <sect2>
-           <title>Materials</title>
-           <para>For materials sections, use a <tag>&lt;list></tag> for each "Reagents" and "Equipment" section and set sub-lists for all sub-sections with titles. All lists and sub-lists should have <tag>@list-type="materials"</tag>.</para>
-           <para>Example:</para>
-           <programlisting><![CDATA[
-        <sec sec-type="materials">
-          <title>Materials</title>
-          <list list-type="materials">
-            <title>Reagents</title>
-            <list-item>
-              <p>Mice, neonatal or adult in the resting phase (telogen) of hair growth; athymic nude mice</p>
-              <p content-type="caution">All procedures involving live rodents must conform to National and
-                  Institutional regulations.</p>
-              <list list-content="trouble"><list-item><p>Troubleshooting advice can be found in Table
-                  2.</p></list-item></list>
-            </list-item>
-            <list-item><p>Cells (freshly isolated primary keratinocytes and Fbs)</p></list-item>
-          </list>
-          <list list-type="materials">
-            <title>Equipment</title>
-            <list-item><p>Sterile 50-ml tubes</p></list-item>
-            <list-item><p>Cell strainer 100 &#x00B5;m (BD Falcon)</p></list-item>
-            <list-item><p>Sterile Stender dish, small beaker or crystallizing dish</p></list-item>
-            <list-item><p>Sterile funnel</p></list-item>
-          </list>
-          <list list-type="materials">
-            <title>Reagent setup</title>
-            <list-item>
-              <list list-type="materials">
-                <title>Calcium chloride</title>
-                <list-item><p>Prepare 0.25&#x2013;0.3 M stock solution, filter sterilize, determine actual
-                    calcium concentration by atomic absorption.</p></list-item>
-              </list>
-              <list list-type="materials">
-                <title>DNASE</title>
-                <list-item><p>Prepare 20,000 U ml<sup>&#x2212;1</sup> solution in PBS, sterilize with low
-                    protein binding 0.2-&#x00B5;m filter; store frozen in small aliquots.</p></list-item>
-              </list>
-              <list list-type="materials">
-                <title>Collagenase</title>
-                <list-item><p>Prepare 0.35% (wt/vol) in Fb culture medium, agitate on rocker for 10 min,
-                    centrifuge at 2,800<italic>g</italic> r.p.m. for 10 min, filter sterilize through low
-                    protein-binding filters, first through 0.45 &#x00B5;m with prefilter and then through a
-                    0.2-&#x00B5;m filter; store at 4 &#x00B0;C.</p></list-item>
-              </list>
-           </list-item>
-        </list>
-      </sec>]]></programlisting>
-        </sect2>
-        <sect2>
-           <title>Procedures</title>
-           <para>For procedures sections, use <tag>&lt;list></tag> for each main section and set sub-lists for all sub-sections with titles. All lists and sub-lists should have <tag>@list-content="procedure-group"</tag>.</para>
-           <para>Each step of a procedure should be set as a sub-list with <tag>@list-content="step"</tag>. Steps may be nested.</para>
-           <para>Where a "pause" statement appears, this should be set as a sub-list with <tag>@list-content="pause"</tag>.</para>
-           <para>Example:</para>
-           <programlisting><![CDATA[
-        <sec sec-type="procedure">
-          <title>Procedure</title>
-          <list list-type="procedure-group">
-            <title>Synthesis of 2,2-dithioethyl-4-(2&#x2032;-pyridyl)-4-butyro-&#x03B3;-lactone</title>
-            <list-item>
-              <list list-content="step">
-                <list-item>
-                  <p>Dissolve 400 mg of (<italic>S</italic>)-4-hydroxy-2-keto-4-(2&#x2032;-pyridyl)butyrate
-                      in 6 ml of ethanethiol and 2 ml of concentrated HCl. Stir the mixture for 24 h at room
-                      temperature.</p>
-                  <p content-type="caution">Ethanethiol has a strong stench and is a skin irritant.
-                      Concentrated hydrochloric acid will cause skin burns.</p>
-                  <list list-content="pause"><list-item><p>Reaction can be left stirring
-                      overnight.</p></list-item></list>
-                </list-item>
-              </list>
-              <list list-content="step"><list-item><p>Remove excess ethanethiol by
-                  distillation.</p></list-item></list>
-              <list list-content="step"><list-item><p>Extract the resulting solid three times with 10 ml of
-                  methylene chloride. Combine the organic extracts, wash with water and dry the organic phase
-                  over MgSO<sub>4</sub>. The organic extracts are then concentrated, leaving a yellow
-                  oil.</p></list-item></list>
-              <list list-content="step"><list-item><p>The product is analyzed by chiral gas chromatography
-                  using a chiral Chromopack Chirasil-<sc>L</sc>-Val column (25 &#x00D7; 0.25 m) at a
-                  temperature of 160 &#x00B0;C and a pressure of 15 psi to determine the enantioselectivity.
-                  A racemic product was synthesized as a calibration standard (Box 1).</p>
-              <list list-content="trouble"><list-item><p>Troubleshooting advice can be found in Table
-                  1.</p></list-item></list></list-item></list>
-            </list-item>
-          </list>
-        </sec>]]></programlisting>
-        </sect2>
-     </sect1>
-     <sect1 xml:id="object_references">
-        <title>References</title>
-        <para>A reference list (<tag>&lt;ref-list></tag>) is a series of references (<tag>&lt;ref></tag>). Generally each reference item contains only one citation element. For Nature articles, use <tag>&lt;mixed-citation></tag> for all references, but see <link linkend="object_link_groups">Link Groups</link> for an exception.</para>
-        <para>Example:</para>
-        <programlisting><![CDATA[
+<section xml:id="mimetypes">
+<title>Mimetypes and mime subtypes</title>
+<para>For <tag>&lt;graphic></tag> and <tag>&lt;supplementary-material></tag> use the following values for <tag>@mimetype</tag> and <tag>@mime-subtype</tag>:</para>
+<table>
+<title>Mimetypes and mime subtypes</title>
+<tgroup cols="2">
+<thead>
+<row><entry>Notation</entry><entry>mimetype</entry><entry>mime-subtype</entry></row>
+</thead>
+<tbody>
+  <row><entry>avi</entry><entry>video</entry><entry>x-msvideo</entry></row>
+  <row><entry>bmp</entry><entry>image</entry><entry>bmp</entry></row>
+  <row><entry>c</entry><entry>text</entry><entry>plain</entry></row>
+  <row><entry>c</entry><entry>text</entry><entry>x-c++</entry></row>
+  <row><entry>cdx</entry><entry>chemical</entry><entry>x-cdx</entry></row>
+  <row><entry>cif</entry><entry>chemical</entry><entry>x-cif</entry></row>
+  <row><entry>csv</entry><entry>text</entry><entry>csv</entry></row>
+  <row><entry>doc</entry><entry>application</entry><entry>msword</entry></row>
+  <row><entry>docm</entry><entry>application</entry><entry>vnd.ms-word.document.macroEnabled.12</entry></row>
+  <row><entry>docx</entry><entry>application</entry><entry>vnd.openxmlformats-officedocument.wordprocessingml.document</entry></row>
+  <row><entry>dot</entry><entry>application</entry><entry>msword</entry></row>
+  <row><entry>eps</entry><entry>application</entry><entry>postscript</entry></row>
+  <row><entry>exe</entry><entry>application</entry><entry>octet-stream</entry></row>
+  <row><entry>gif</entry><entry>image</entry><entry>gif</entry></row>
+  <row><entry>htm</entry><entry>text</entry><entry>html</entry></row>
+  <row><entry>html</entry><entry>text</entry><entry>html</entry></row>
+  <row><entry>htmlonly</entry><entry>text</entry><entry>html</entry></row>
+  <row><entry>icb</entry><entry>application</entry><entry>x-molsoft-icb </entry></row>
+  <row><entry>item</entry><entry>-- unknown</entry><entry>-- unknown</entry></row>
+  <row><entry>jdx</entry><entry>chemical</entry><entry>x-jcamp-dx</entry></row>
+  <row><entry>jpeg</entry><entry>image</entry><entry>jpeg</entry></row>
+  <row><entry>jpg</entry><entry>image</entry><entry>jpeg</entry></row>
+  <row><entry>mol</entry><entry>chemical</entry><entry>x-mdl-molfile</entry></row>
+  <row><entry>mov</entry><entry>video</entry><entry>quicktime</entry></row>
+  <row><entry>mp2</entry><entry>audio</entry><entry></entry></row>
+  <row><entry>mp3</entry><entry>audio</entry><entry>mpeg</entry></row>
+  <row><entry>mp4</entry><entry>video</entry><entry>mp4</entry></row>
+  <row><entry>mpg</entry><entry>video</entry><entry>mpeg</entry></row>
+  <row><entry>noa</entry><entry>application</entry><entry>octet-stream</entry></row>
+  <row><entry>ole</entry><entry>application</entry><entry>octet-stream</entry></row>
+  <row><entry>pdb</entry><entry>chemical</entry><entry>x-pdb</entry></row>
+  <row><entry>pdf</entry><entry>application</entry><entry>pdf</entry></row>
+  <row><entry>pict</entry><entry>image</entry><entry>x-pict</entry></row>
+  <row><entry>png</entry><entry>image</entry><entry>png</entry></row>
+  <row><entry>pps</entry><entry>application</entry><entry>vnd.ms-powerpoint</entry></row>
+  <row><entry>ppt</entry><entry>application</entry><entry>vnd.ms-powerpoint</entry></row>
+  <row><entry>pptm</entry><entry>application</entry><entry>vnd.ms-powerpoint.presentation.macroEnabled.12</entry></row>
+  <row><entry>pptx</entry><entry>application</entry><entry>vnd.openxmlformats-officedocument.presentationml.presentation</entry></row>
+  <row><entry>ps</entry><entry>application</entry><entry>postscript</entry></row>
+  <row><entry>qt</entry><entry>video</entry><entry>quicktime</entry></row>
+  <row><entry>ra</entry><entry>audio</entry><entry>vnd.rn-realaudio</entry></row>
+  <row><entry>rtf</entry><entry>application</entry><entry>rtf</entry></row>
+  <row><entry>rv</entry><entry>video</entry><entry>vnd.rn-realvideo</entry></row>
+  <row><entry>sbml</entry><entry>application</entry><entry>sbml+xml</entry></row>
+  <row><entry>sdf</entry><entry>chemical</entry><entry>x-mdl-sdfile</entry></row>
+  <row><entry>sif</entry><entry>text</entry><entry>plain</entry></row>
+  <row><entry>swf</entry><entry>application</entry><entry>x-shockwave-flash</entry></row>
+  <row><entry>tar</entry><entry>application</entry><entry>x-tar</entry></row>
+  <row><entry>tex</entry><entry>application</entry><entry>x-latex</entry></row>
+  <row><entry>textonly</entry><entry>text</entry><entry>plain</entry></row>
+  <row><entry>tgz</entry><entry>application</entry><entry>application/gzip</entry></row>
+  <row><entry>tiff</entry><entry>image</entry><entry>tiff</entry></row>
+  <row><entry>txt</entry><entry>text</entry><entry>plain</entry></row>
+  <row><entry>wav</entry><entry>audio</entry><entry>x-wav</entry></row>
+  <row><entry>wmf</entry><entry>application</entry><entry>x-msmetafile</entry></row>
+  <row><entry>wmv</entry><entry>video</entry><entry>x-ms-wmv</entry></row>
+  <row><entry>wp</entry><entry>application</entry><entry>octet-stream</entry></row>
+  <row><entry>xls</entry><entry>application</entry><entry>vnd.ms-excel</entry></row>
+  <row><entry>xlsm</entry><entry>application</entry><entry>vnd.ms-excel.sheet.macroEnabled.12</entry></row>
+  <row><entry>xlsx</entry><entry>application</entry><entry>vnd.openxmlformats-officedocument.spreadsheetml.sheet</entry></row>
+  <row><entry>xml</entry><entry>application</entry><entry>xml</entry></row>
+  <row><entry>zip</entry><entry>application</entry><entry>x-zip-compressed</entry></row>
+  <row><entry>unknown</entry><entry>-- unknown</entry><entry>-- unknown</entry></row>
+</tbody>
+</tgroup>
+</table>
+</section>
+</chapter>
+<chapter xml:id="objects">
+<title>Document structures</title>
+<para>These Document Objects refer to pieces of the XML documents that define a single concept (author/affiliation relationships, copyright information etc) and often include several XML elements in their tagging.</para>
+<sect1 xml:id="objects_article">
+<title>Article</title>
+<para>See <link xlink:href="element_article"><tag>&lt;article></tag></link> for information on tagging the root <tag>&lt;article></tag> element.</para>
+<para>All articles will contain <tag>&lt;front></tag> and most will contain  <tag>&lt;body></tag>, <tag>&lt;back></tag> and <tag>&lt;floats-group></tag>. More detailed information on these sections is given below.</para>
+<para><tag>&lt;sub-article></tag> may be used occasionally for correspondence and reviews.</para>
+<para>Do not use <tag>&lt;response></tag>.</para>
+</sect1>
+<sect1 xml:id="objects_front">
+<title>Front</title>
+<para><tag>&lt;front></tag> should contain <tag>&lt;journal-meta></tag> and <tag>&lt;article-meta></tag>. Do not use <tag>&lt;notes></tag> in <tag>&lt;front></tag>.</para>
+<sect2 xml:id="objects_journal_metadata">
+<title>Journal metadata</title>
+<para><tag>&lt;journal-meta></tag> contains minimal journal metadata:
+<itemizedlist>
+<listitem><para>pcode/journal id</para></listitem>
+<listitem><para>journal title</para></listitem>
+<listitem><para>ISSN(s), and</para></listitem>
+<listitem><para>publisher name</para></listitem>
+</itemizedlist></para>
+<para>See <link xlink:href="element_journal-id"><tag>&lt;journal-id></tag></link>, <link linkend="element_journal-title-group"><tag>&lt;journal-title-group></tag></link>, <link linkend="element_issn"><tag>&lt;issn></tag></link>, and <link linkend="element_publisher"><tag>&lt;publisher></tag></link>.</para>
+<para>Examples:</para>
+<programlisting><![CDATA[
+     <journal-meta>
+         <journal-id journal-id-type="publisher">nutd</journal-id>
+         <journal-title-group>
+             <journal-title>Nutrition &amp; Diabetes</journal-title>
+         </journal-title-group>
+         <issn pub-type="epub">2044-4052</issn>
+         <publisher>
+            <publisher-name>Nature Publishing Group</publisher-name>
+         </publisher>
+     </journal-meta>
+]]></programlisting>
+  <programlisting><![CDATA[
+     <journal-meta>
+         <journal-id journal-id-type="publisher">sth</journal-id>
+         <journal-title-group>
+             <journal-title>Social Theory and Health</journal-title>
+         </journal-title-group>
+         <issn pub-type="ppub">1477-8211</issn>
+         <issn pub-type="epub">1477-822X</issn>
+         <publisher>
+             <publisher-name>Palgrave Macmillan</publisher-name>
+         </publisher>
+     </journal-meta>
+]]></programlisting>
+<para>Do <emphasis role="bold">not</emphasis> use <tag>&lt;contrib-group></tag>, <tag>&lt;aff></tag>, <tag>&lt;aff-alternatives></tag>, <tag>&lt;issn-l></tag>, <tag>&lt;isbn></tag>, <tag>&lt;notes></tag>, <tag>&lt;self-uri></tag> within <tag>&lt;journal-meta></tag>.</para>
+</sect2>
+<sect2 xml:id="objects_article_metadata">
+<title>Article metadata</title>
+<para></para>
+</sect2>
+</sect1>
+<sect1 xml:id="objects_body">
+<title>Body</title>
+<para></para>
+</sect1>
+<sect1 xml:id="objects_back">
+<title>Back</title>
+  <para></para>
+  <sect2 xml:id="object_references">
+    <title>References</title>
+    <para>A reference list (<tag>&lt;ref-list></tag>) is a series of references (<tag>&lt;ref></tag>). Generally each reference item contains only one citation element. For NPG articles, use <tag>&lt;mixed-citation></tag> for all references<!--, but see <link linkend="object_link_groups">Link Groups</link> for an exception-->.</para>
+    <para>Example:</para>
+    <!--attribute alpha/numero-->
+    <programlisting><![CDATA[
         <ref-list>
-          <title>ORIGINAL RESEARCH PAPERS</title>
-          <ref id="b1">
-            <mixed-citation publication-type="journal"><string-name><surname>Kohrt</surname>, <given-names>H.
-                E.</given-names></string-name> <etal/>. <article-title>Stimulation of natural killer cells with 
-                a CD137-specific antibody enhances trastuzumab efficacy in xenotransplant models of breast
-                cancer</article-title>. <source>J. Clin. Invest.</source> <year>2012</year> <month>02</month> 
-                <day>13</day> (doi: <elocation-id content-type="doi">10.1172/JCI61226</elocation-id>)</mixed-citation>
-          </ref>
-        </ref-list>
-        <ref-list>
-          <title>FURTHER READING</title>
-            <ref id="b2">
-              <mixed-citation publication-type="journal"><string-name><surname>Vanneman</surname>,
-                  <given-names>M.</given-names></string-name> &amp; <string-name><surname>Dranoff</surname>,
-                  <given-names>G.</given-names></string-name> <article-title>Combining immunotherapy and targeted 
-                  therapies in cancer treatment</article-title>. <source>Nature Rev. Cancer</source> 
-                  <volume>12</volume>, <fpage>237</fpage>-<lpage>251</lpage> <elocation-id content-type="doi">
-                  10.1038/nrc3237</elocation-id> (<year>2011</year>)</mixed-citation>
-            </ref>
-            <ref id="b3">
-              <mixed-citation publisher-type="book">&#x201C;<source>Sources of Nitrogen Compounds in the United
-                  States</source>.&#x201D; By <string-name><prefix>Dr.</prefix> <given-names>C. G.</given-names>
-                  <surname>Gilbert</surname></string-name>. (Smithsonian Institution, Washington,
-                  <year>1916</year>.)</mixed-citation>
-            </ref>
+          
         </ref-list>]]></programlisting>
-        <para>See also <tag>&lt;element-citation></tag>, <tag>&lt;ref-list></tag> and <tag>&lt;ref></tag>.</para>
-     </sect1>
-     <sect1 xml:id="object_sections">
-        <title>Sections/Subsections</title>
-        <para>Sections and subsections are identifiable by their titles. If an article does not have a titled opening section, do not set one in the XML.</para>
-        <para>All sections must contain <tag>&lt;title></tag>. Do not use <tag>&lt;label></tag> in Nature articles.</para>
-        <para>Subsections should be nested. However, to mirror Nature's current practice, also set <tag>@specific-use</tag> as "heading-level-#", where # shows the level of nesting. [Once we are publishing directly from NLM, we can deprecate this requirement.]</para>
-        <para>Example:</para>
-        <programlisting><![CDATA[
-        <body>
-          <p>With the ever-increasing importance of clinical effectiveness and audit, the only way of ensuring 
-              the proper undertaking of evidence-based research on a large scale is to standardize methods of
-              measurement.</p>
-          <sec specific-use="heading-level-1">
-            <title>Aim</title>
-            <p>To examine the relationship between ICON and the subjective opinions of patients attending for
-                routine dental care.</p>
-          </sec>
-          <sec specific-use="heading-level-1">
-            <title>Objectives</title>
-            <p>To calibrate examiners to an acceptable level of reliability.</p>
-            <p>To determine the subjective opinions of 11&#x2013;14 and 30&#x2013;40 year olds with respect to
-                aesthetics, function, speech and treatment need.</p>
-          </sec>
-          ...
-        </body>]]></programlisting>
-        <para>See also <link linkend="object_materials-procedures">Materials and Procedures</link>, where <tag>&lt;sec></tag> is used to model alternative section types.</para>
-     </sect1>
-    <!--<sect1 xml:id="object_tables">
-      <title>Tables</title>
-      <para>Tables are the block-level objects that contain tabular material - usually in a <tag>&lt;table-wrap></tag>.</para>
-      <para>Tag all tables that must be displayed in place in the text with <tag>@position="anchor"</tag>. Tag tables that may "float" or appear anywhere in the text without losing meaning with the attribute <tag>@position="float"</tag>.</para>
-      <para>Common characteristics of tables with <tag>@position="float"</tag>:</para>
+    <para>See also <tag>&lt;element-citation></tag>, <tag>&lt;ref-list></tag> and <tag>&lt;ref></tag>.</para>
+  </sect2>
+</sect1>
+<sect1 xml:id="objects_float">
+<title>Floating objects</title>
+<para>All figures, illustrations, tables, boxes and supplementary material should be captured in <tag>&lt;floats-group></tag>.</para>
+<sect2 xml:id="objects_figs">
+<title>Figures</title>
+  <para>Figures are the block-level objects that usually contain an image and are captured using <tag>&lt;fig></tag>.</para>
+  <para>Characteristics of a figure which should be captured within <tag>&lt;floats-group></tag>:</para>
+  <itemizedlist>
+    <listitem><para>It has a label like "Figure 1" or "Graph 2".</para></listitem>
+    <listitem><para>It has a title or caption.</para></listitem>
+    <listitem><para>It is referenced by an <tag>&lt;xref></tag> with <tag>@ref-type="fig"</tag> in the article text.</para></listitem>
+  </itemizedlist>
+  <para>Do not use <tag>&lt;fig-group></tag>.</para>
+  <sect3>
+    <title><tag>&lt;fig></tag></title>
+    <para><tag>&lt;fig></tag> should only contain the following optional child elements: <tag>&lt;label></tag>, <tag>&lt;caption></tag>, <tag>&lt;alternatives></tag>, <tag>&lt;graphic></tag>, and <tag>&lt;attrib></tag>.</para>
+    <para>The <tag>@id</tag> attribute should follow the format of "f" + the label number, e.g. <tag>id="f1"</tag>. Do <emphasis role="bold">not</emphasis> use any other attributes on <tag>&lt;fig></tag>.</para>
+  </sect3>
+  <sect3>
+    <title>Label</title>
+    <para><tag>&lt;label></tag> should only be used if the figure label is not of the standard "Figure" + number format, e.g. "Map 1". See <link linkend="sample_figure_1">Figure sample 1</link>.</para>
+    <para>Do <emphasis role="bold">not</emphasis> use any attributes on <tag>&lt;label></tag>.</para>
+  </sect3>
+  <sect3>
+    <title>Caption</title>
+    <para><tag>&lt;caption></tag> may contain <tag>&lt;title></tag> and/or <tag>&lt;p></tag> child elements. <tag>&lt;p></tag> is used to capture introductory text or key information for the figure).</para>
+    <para>Do <emphasis role="bold">not</emphasis> use any attributes on <tag>&lt;caption></tag> or its child elements.</para>
+  </sect3>
+  <sect3>
+    <title>Images and slides</title>
+    <para>Capture the figure image(s) as <tag>&lt;graphic></tag> elements. If the figure has more than one image, they do <emphasis role="bold">not</emphasis> need to be wrapped in the <tag>&lt;alternatives></tag> tag, unless slide alternatives are also provided See <link linkend="sample_figure_1">Figure samples 1 and 2</link>.</para>
+    <para>Only the main image should be referenced in the XML; do <emphasis role="bold">not</emphasis> include <tag>&lt;graphic></tag> elements for thumbails or other alternative image sizes.</para>
+    <para>Where a slide alternative is provided for an image, capture it as <tag>&lt;supplementary-material></tag> with attribute value <tag>@content-type="slide"</tag>. The <tag>&lt;graphic></tag> and <tag>&lt;supplementary-material></tag> elements must then be wrapped in an <tag>&lt;alternatives></tag> tag. See <link linkend="sample_figure_3">Figure samples 3 and 4</link>.</para>
+    <para>Other required attributes for both images and slides in figures:
       <itemizedlist>
-        <listitem><para>It has a label like "Table 1" or "Table".</para></listitem>
-        <listitem><para>It has a title or caption.</para></listitem>
-        <listitem><para>It is referenced by an <tag>&lt;xref></tag> with <tag>@ref-type="table"</tag>.</para></listitem>
+        <listitem><para>position&#x2014;must be <tag>="anchor"</tag> for all images/slides in tables</para></listitem>
+        <listitem><para>xlink:href&#x2014;image/slide filename, including the extension</para></listitem>
+        <listitem><para>mimetype&#x2014;based on the filename extension. See <link linkend="mimetypes">Mimetypes and mime subtypes</link> for the correct mappings.</para></listitem>
+        <listitem><para>mime-subtype&#x2014;based on the filename extension. See <link linkend="mimetypes">Mimetypes and mime subtypes</link> for the correct mappings.</para></listitem>
       </itemizedlist>
-      <para>If the table has none of these characteristics or is a child of <tag>&lt;boxed-text></tag> or <tag>&lt;app></tag>, set the <tag>@position="anchor"</tag>.</para>
-      <para>Set any tabular material that needs to be displayed in the flow of the text as <tag>&lt;array></tag> in a <tag>&lt;p></tag>.</para>
-      <para>See also Display Object Groups.</para>
-    </sect1>-->
-   </chapter>
+    </para>
+    <para>Do <emphasis role="bold">not</emphasis> use any other attributes on <tag>&lt;graphic></tag> or <tag>&lt;supplementary-material></tag> within a figure.</para>
+    <para>See <link linkend="sample_figure_2">Figure samples 2, 3 and 4</link>.</para>
+  </sect3>
+  <sect3>
+    <title>Attribution</title>
+    <para>Do <emphasis role="bold">not</emphasis> use any attributes on <tag>&lt;attrib></tag> within a figure.</para>
+    <para>See <link linkend="sample_figure_1">Figure sample 1</link>.</para>
+  </sect3>
+  <sect3>
+    <title>Sample tables</title>
+    <sect4 xml:id="sample_figure_1">
+      <title>Figure 1. Basic figure with non-standard label and attribution</title>
+      <programlisting><![CDATA[
+<fig id="f1">
+  <label>Map 1</label>
+  <caption>
+    <title>The Rural/Urban Definition for MSOAs in England</title>
+  </caption>
+  <graphic position="anchor" xlink:href="rt20112f1.gif" mimetype="image" mime-subtype="gif"/>
+  <attrib>Credit: UK Statistics Authority</attrib>
+</fig>]]></programlisting>
+    </sect4>
+    <sect4 xml:id="sample_figure_2">
+      <title>Figure 2. Figure with multiple images</title>
+      <programlisting><![CDATA[
+<fig id="f2">
+  <caption>
+    <p>Schematic illustration for pharmacodynamic modeling (<bold>A</bold>, <bold>B</bold>) and
+        pharmacokinetic&#x2013;pharmacodynamic modeling (<bold>C</bold>, <bold>D</bold>).
+        (<bold>A</bold>) Changes in plasma drug concentration and drug effect over time.
+        (<bold>B</bold>) The difference in the concentration&#x2013;effect relationship between the
+        two time points (t1 and t2) when this relationship is modeled using pharmacodynamic model
+        alone. (<bold>C</bold>) The estimation of effect compartment concentration in
+        pharmacokinetic&#x2013;pharmacodynamic modeling. (<bold>D</bold>) The
+        concentration&#x2013;effect relationship independent of the time point when the data are
+        obtained.
+    </p>
+  </caption>
+  <graphic position="anchor" xlink:href="jcbfm2011180f2a.jpg" mimetype="image" mime-subtype="jpeg"/>
+  <graphic position="anchor" xlink:href="jcbfm2011180f2b.jpg" mimetype="image" mime-subtype="jpeg"/>
+  <graphic position="anchor" xlink:href="jcbfm2011180f2c.jpg" mimetype="image" mime-subtype="jpeg"/>
+  <graphic position="anchor" xlink:href="jcbfm2011180f2d.jpg" mimetype="image" mime-subtype="jpeg"/>
+</fig>]]></programlisting>
+    </sect4>
+    <sect4 xml:id="sample_figure_3">
+      <title>Figure 3. Figure with slide alternative</title>
+      <programlisting><![CDATA[
+<fig id="f1">
+  <caption>
+    <title>Identification of Sema3A as an inhibitory factor of osteoclastdifferentiation.</title>
+    <p><bold>a</bold>, Effect of wild-type (WT) and Opg-deficient (<italic>Tnfrsf11b</italic><sup>&#x2212;/&#x2212;</sup>) calvarial cell-conditioned medium on osteoclast differentiation. MNC, mononuclear cells. <bold>b</bold>, Fractionation of Opg-deficient calvarial cell-conditioned medium by anion-exchange chromatography, and the effect of each fraction on osteoclast differentiation (black bars). <bold>c</bold>, Coomassie brilliant blue-stained SDS&#x2013;PAGE image of fraction 8. M, molecular mass. <bold>d</bold>, List of the identified proteins (that is, more than 300 on the MASCOT score), their theoretical molecular mass, MASCOT score and the number of non-redundant peptides. <bold>e</bold>, Effect of Sema3A treatment on osteoclast differentiation. Error bars (<bold>a</bold>, <bold>b</bold> and <bold>e</bold>) denote mean &#xB1; s.e.m. **<italic>P</italic> &lt; 0.01; ***<italic>P</italic> &lt; 0.005; NS, not significant.</p>
+  </caption>
+  <alternatives>
+    <graphic position="anchor" xlink:href="nature11000-f1.2.jpg" mimetype="image" mime-subtype="jpeg"/>
+    <supplementary-material content-type="slide" position="anchor" xlink:href="nature11000-pf1.ppt"
+        mimetype="application" mime-subtype="vnd.ms-powerpoint"/>
+  </alternatives>
+</fig>]]></programlisting>
+    </sect4>
+    <sect4 xml:id="sample_figure_4">
+      <title>Figure 4. Figure with multiple images and slides</title>
+      <programlisting><![CDATA[
+<fig id="f4">
+  <caption>
+    <p>Heat map and hierarchical clustering of the relative protein abundances. Heat map presents the
+        log<sub>2</sub>(abundance ratio). The plots present the time courses of the relative
+        abundances of the proteins in the three treatment stages relative to the baseline.
+        (<bold>a</bold>) Patient A: Thirty-eight proteins form a group with synchronously changing
+        abundances (see thumbnail 5). (<bold>b</bold>) Patient B: Sixty-five proteins form a group
+        with synchronously changing abundances (see thumbnail 1). (<bold>c</bold>) Patient C:
+        Forty-one proteins form a group with synchronously changing abundances (see thumbnail 4). In
+        addition, there is a second group of 58 proteins with abundances growing dramatically in the
+        &#x2018;off&#x2019; stage (see thumbnail 6). Red&#x2014;upregulated,
+        green&#x2014;downregulated.</p>
+  </caption>
+  <alternatives>
+    <graphic position="anchor" xlink:href="tpj201030f2a.jpg" mimetype="image" mime-subtype="jpeg"/>
+    <supplementary-material content-type="slide" position="anchor" xlink:href="tpj201030-pf2a.ppt"
+        mimetype="application" mime-subtype="vnd.ms-powerpoint"/>
+  </alternatives>
+  <alternatives>
+    <graphic position="anchor" xlink:href="tpj201030f2b.jpg" mimetype="image" mime-subtype="jpeg"/>
+    <supplementary-material content-type="slide" position="anchor" xlink:href="tpj201030-pf2b.ppt"
+        mimetype="application" mime-subtype="vnd.ms-powerpoint"/>
+  </alternatives>
+</fig>]]></programlisting>
+    </sect4>
+  </sect3>
+</sect2>
+  <sect2>
+  <title>Other types of images</title>
+    <sect3>
+    <title>Illustrations</title>
+      <para>More information to be added here.</para>
+    </sect3>
+    <sect3>
+      <title>Infographics</title>
+      <para>More information to be added here.</para>
+    </sect3>
+  </sect2>
+<sect2 xml:id="objects_tables">
+    <title>Tables</title>
+    <para>Tables are block-level objects that contain tabular material and are captured using <tag>&lt;table-wrap></tag>.</para>
+  <para>Characteristics of a table which should be captured within <tag>&lt;floats-group></tag>:</para>
+  <itemizedlist>
+    <listitem><para>It has a label like "Table 1" or "Table D2.1".</para></listitem>
+    <listitem><para>It has a title or caption.</para></listitem>
+    <listitem><para>It is referenced by an <tag>&lt;xref></tag> with <tag>@ref-type="table"</tag> in the article text.</para></listitem>
+  </itemizedlist>
+  <para>Do not use <tag>&lt;table-wrap-group></tag> in NPG articles.</para>
+  <sect3>
+    <title>Table wrapper</title>
+    <para><tag>&lt;table-wrap></tag> should only contain the following optional child elements: <tag>&lt;label></tag>, <tag>&lt;caption></tag>, <tag>&lt;oasis:table></tag>, <tag>&lt;alternatives></tag>, <tag>&lt;graphic></tag>, <tag>&lt;table-wrap-foot></tag>, and <tag>&lt;attrib></tag>.</para>
+    <para>The <tag>@id</tag> attribute should follow the format of "t" + the label number, e.g. id="t1" or id="tD2.1". Do <emphasis role="bold">not</emphasis> use any other attributes on <tag>&lt;table-wrap></tag>.</para>
+    </sect3>
+    <sect3>
+    <title>Label</title>
+    <para><tag>&lt;label></tag> should only be used if the table label is not of the standard "Table" + number format, e.g. "Exhibit 1". See <link linkend="sample_table_1">Table sample 1</link>.</para>
+    <para>Do <emphasis role="bold">not</emphasis> use any attributes on <tag>&lt;label></tag>.</para>
+    </sect3>
+  <sect3>
+    <title>Caption</title>
+    <para><tag>&lt;caption></tag> must contain <tag>&lt;title></tag>.</para>
+    <para>An optional <tag>&lt;p></tag> element may also be used to capture any additional introductory text for the table.</para>
+    <para>Do <emphasis role="bold">not</emphasis> use any attributes on <tag>&lt;caption></tag> or its child elements.</para>
+    </sect3>
+  <sect3>
+    <title>Table body</title>
+    <para>The JATS DTD normally uses the HTML table model. As NPG uses the OASIS CALS model, the "oasis" namespace is required on the table element and all of its descendants.</para>
+    <para>A detailed tag library for the OASIS Open Exchange CALS Table Model can be found at: <link xlink:href="http://dtd.nlm.nih.gov/options/OASIS/tag-library/19990315/index.html">http://dtd.nlm.nih.gov/options/OASIS/tag-library/19990315/index.html</link></para><!--the dtd prefix may change to jats in the future-->
+    <para>A table body may be captured as XML (<tag>&lt;oasis:table></tag>), an image (<tag>&lt;graphic></tag>) and there may also be a slide alternative for the image (<tag>&lt;supplementary-material></tag>). Where two or more of these representations are used, they should be wrapped in an <tag>&lt;alternatives></tag> tag. See <link linkend="sample_table_4">Table samples 4, 5 and 6</link>.</para>
+    <sect4>
+      <title><tag>&lt;oasis:table></tag></title>
+      <para>The <tag>@frame</tag> attribute value should be given. Do <emphasis role="bold">not</emphasis> use any other attributes on <tag>&lt;oasis:table></tag>.</para>
+    </sect4>
+    <sect4>
+      <title><tag>&lt;oasis:tgroup></tag></title>
+      <para>The <tag>@cols</tag> attribute value is required by the DTD. Do <emphasis role="bold">not</emphasis> use any other attributes on <tag>&lt;oasis:tgroup></tag>.</para>
+    </sect4>
+    <sect4>
+      <title><tag>&lt;oasis:colspec></tag></title>
+      <para>Values for the following attributes must be declared: <tag>@colnum</tag>, <tag>@colname</tag>, <tag>@align</tag>.</para>
+      <para>Values may be declared for the following attributes: <tag>@char</tag> (only if <tag>@align="char"</tag>), <tag>@colsep</tag>, <tag>@rowsep</tag>.</para>
+      <para>Do not use <tag>@colwidth</tag> or <tag>@charoff</tag>.</para>
+    </sect4>
+    <sect4>
+      <title><tag>&lt;oasis:thead></tag></title>
+      <para>The <tag>@valign</tag> attribute is only required if it is "top" or "middle". The default value ("bottom") does not need to be stated.</para>
+    </sect4>
+    <sect4>
+      <title><tag>&lt;oasis:tbody></tag></title>
+      <para>The <tag>@valign</tag> attribute is only required if it is "bottom" or "middle". The default value ("top") does not need to be stated.</para>
+    </sect4>
+    <sect4>
+      <title><tag>&lt;oasis:row></tag></title>
+      <para></para>
+    </sect4>
+    <sect4>
+      <title><tag>&lt;oasis:entry></tag></title>
+      <para>An empty <tag>&lt;oasis:entry/></tag> element should be used to show an empty cell.</para>
+      <para><tag>@break</tag> may be used to aid formatting of the output.</para>
+      <para><tag>@namest</tag> and <tag>@nameend</tag> should be used to show where entries span a number of columns. <tag>@align</tag> should also be used if it is different to the value declared in the corresponding <tag>&lt;oasis:colspec></tag></para>
+      <para>Values may also be declared for the following attributes where they are different to the values in the corresponding <tag>&lt;oasis:colspec></tag>: <tag>@align</tag>, <tag>@char</tag>, <tag>@colsep</tag>, <tag>@rowsep</tag>.</para>
+      <para>Do not use <tag>@colwidth</tag> or <tag>@charoff</tag>.</para>
+    </sect4>
+  </sect3>
+  <sect3>
+    <title>Images and slides</title>
+    <para>Where an image file is provided for the table, capture this as <tag>&lt;graphic></tag>. If the image is to be used for display purposes, rather than <tag>&lt;oasis:table></tag>, the attribute value <tag>@specific-use="show"</tag> <emphasis role="bold">must</emphasis> be used.</para>
+    <para>Where a slide alternative is also provided for the table image, capture this as <tag>&lt;supplementary-material></tag> with attribute value <tag>@content-type="slide"</tag>.</para>
+    <para>Other required attributes for both images and slides in tables:
+      <itemizedlist>
+        <listitem><para>position&#x2014;must be <tag>="anchor"</tag> for all images/slides in tables</para></listitem>
+        <listitem><para>xlink:href&#x2014;image/slide filename, including the extension</para></listitem>
+        <listitem><para>mimetype&#x2014;based on the filename extension. See <link linkend="mimetypes">Mimetypes and mime subtypes</link> for the correct mappings.</para></listitem>
+        <listitem><para>mime-subtype&#x2014;based on the filename extension. See <link linkend="mimetypes">Mimetypes and mime subtypes</link> for the correct mappings.</para></listitem>
+      </itemizedlist>
+    </para>
+    <para>Do <emphasis role="bold">not</emphasis> use any other attributes on <tag>&lt;graphic></tag> or <tag>&lt;supplementary-material></tag> within a table.</para>
+    <para>See <link linkend="sample_table_3">Table samples 3, 4, 5 and 6</link>.</para>
+  </sect3>
+  <sect3>
+  <title>Table footer</title>
+    <para><tag>&lt;table-wrap-foot></tag> should only contain <tag>&lt;fn></tag> and/or <tag>&lt;p></tag> child elements.</para>
+    <sect4>
+      <title>Table footnotes</title>
+      <para>Table footnotes should be captured in <tag>&lt;table-wrap-foot></tag>, not as the final row(s) of <tag>&lt;oasis:tbody></tag>.</para>
+      <para>Do not wrap footnotes in the <tag>&lt;fn-group></tag> tag.</para>
+      <para>The footnote should contain a <tag>&lt;label></tag> containing the reference symbol, letter or number.</para>
+      <para>The <tag>@id</tag> attribute should follow the format of "t#-fn#" where "t#" is the table @id and "fn#" represents the order of the footnote in the table, e.g. id="t1-fn2" or id="tD2.1-fn6". Do <emphasis role="bold">not</emphasis> use any other attributes on <tag>&lt;fn></tag> within <tag>&lt;table-wrap-foot></tag>.</para>
+      <para>See <link linkend="sample_table_5">Table samples 5 and 6</link>.</para>
+    </sect4>
+    <sect4>
+      <title>Other footer text</title>
+      <para><tag>&lt;table-wrap-foot></tag> may also contain paragraphs of information about the table that appear after the last row. These should be captured as <tag>&lt;p></tag>.</para>
+      <para>Do <emphasis role="bold">not</emphasis> use any attributes on <tag>&lt;p></tag> within <tag>&lt;table-wrap-foot></tag>.</para>
+      <para>See <link linkend="sample_table_2">Table samples 2</link> and <link linkend="sample_table_5">5</link>.</para>
+    </sect4>
+  </sect3>
+  <sect3>
+    <title>Table attribution</title>
+    <para>Table attribution information should be captured in <tag>&lt;attrib></tag> as a child of <tag>&lt;table-wrap></tag> and not within <tag>&lt;table-wrap-foot></tag>.</para>
+    <para>Do <emphasis role="bold">not</emphasis> use any attributes on <tag>&lt;attrib></tag> within a table.</para>
+    <para>See <link linkend="sample_table_1">Table sample 1</link>.</para>
+  </sect3>
+  <sect3>
+    <title>Sample tables</title>
+    <sect4 xml:id="sample_table_1">
+      <title>Table 1. Basic table with non-standard label and attribution</title>
+      <programlisting><![CDATA[
+<table-wrap id="t1">
+  <label>Appendix Table 1</label>
+  <caption>
+    <title>Primer sets used for quantitative real-time PCR analyses</title>
+  </caption>
+  <oasis:table frame="topbot">
+    <oasis:tgroup cols="3">
+      <oasis:colspec colnum="1" colname="col1" align="left"/>
+      <oasis:colspec colnum="2" colname="col2" align="left"/>
+      <oasis:colspec colnum="3" colname="col3" align="left"/>
+      <oasis:thead>
+        <oasis:row>
+          <oasis:entry>Gene</oasis:entry>
+          <oasis:entry>Forward primer</oasis:entry>
+          <oasis:entry>Reverse primer</oasis:entry>
+        </oasis:row>
+      </oasis:thead>
+      <oasis:tbody>
+        <oasis:row>
+          <oasis:entry>HSP70</oasis:entry>
+          <oasis:entry>5&#x2032;-<named-content content-type="gene-seq">AGGCCAGGGCTGGTATTACT
+                        </named-content>-3&#x2032;</oasis:entry>
+          <oasis:entry>5&#x2032;-<named-content content-type="gene-seq">AATGACCCGAGTTCAGGATG
+                        </named-content>-3&#x2032;</oasis:entry>
+        </oasis:row>
+        <oasis:row>
+          <oasis:entry>HSP32</oasis:entry>
+          <oasis:entry>5&#x2032;-<named-content content-type="gene-seq">CTCACAGATGGCGTCACTTCGTCA
+                        </named-content>-3&#x2032;</oasis:entry>
+          <oasis:entry>5&#x2032;-<named-content content-type="gene-seq">TTGCCAACAGGAAGCTGAGA
+                        </named-content>-3&#x2032;</oasis:entry>
+        </oasis:row>
+      </oasis:tbody>
+    </oasis:tgroup>
+  </oasis:table>
+  <attrib>Taken from <ext-link ext-link-type="uri" xlink:href="http://www.asia-basket.com/team.asp
+                    ?Cntry=South%20Korea&amp;Team=3442&amp;Page=3">Asia-Basket</ext-link></attrib>
+</table-wrap>]]></programlisting>
+    </sect4>
+    <sect4 xml:id="sample_table_2">
+      <title>Table 2. Two table groups, spanning entries and table footer text</title>
+      <programlisting><![CDATA[
+<table-wrap id="t2">
+  <caption>
+    <title>Baseline characteristics of obese and non-obese participants</title>
+  </caption>
+  <oasis:table frame="topbot">
+    <oasis:tgroup cols="5">
+      <oasis:colspec colnum="1" colname="col1" align="left"/>
+      <oasis:colspec colnum="2" colname="col2" align="center"/>
+      <oasis:colspec colnum="3" colname="col3" align="center"/>
+      <oasis:colspec colnum="4" colname="col4" align="char" char="&#xB1;"/>
+      <oasis:colspec colnum="5" colname="col5" align="center"/>
+      <oasis:thead>
+        <oasis:row>
+          <oasis:entry>(A)</oasis:entry>
+          <oasis:entry namest="col2" nameend="col3"/>
+          <oasis:entry namest="col4" nameend="col5"/>
+        </oasis:row>
+        <oasis:row>
+          <oasis:entry/>
+          <oasis:entry align="center" rowsep="1" namest="col2" nameend="col3">Obese; BMI 
+                        &#x2A7E;25 (N=262)</oasis:entry>
+          <oasis:entry align="center" rowsep="1" namest="col4" nameend="col5">Non-obese; BMI 
+                        &lt;25 (N=136)</oasis:entry>
+        </oasis:row>
+        <oasis:row>
+          <oasis:entry/>
+          <oasis:entry><italic>Mean&#xB1;s.d.</italic></oasis:entry>
+          <oasis:entry><italic>Min&#x2013;Max</italic></oasis:entry>
+          <oasis:entry align="center"><italic>Mean&#xB1;s.d.</italic></oasis:entry>
+          <oasis:entry><italic>Min&#x2013;Max</italic></oasis:entry>
+        </oasis:row>
+      </oasis:thead>
+      <oasis:tbody>
+        <oasis:row>
+          <oasis:entry>Age (years)</oasis:entry>
+          <oasis:entry align="char" char="&#xB1;">35&#xB1;10.45</oasis:entry>
+          <oasis:entry>18&#x2013;72</oasis:entry>
+          <oasis:entry>31&#xB1;8.51</oasis:entry>
+          <oasis:entry>18&#x2013;72</oasis:entry>
+        </oasis:row>
+        <oasis:row>
+          <oasis:entry>BW (kg)</oasis:entry>
+          <oasis:entry align="char" char="&#xB1;">93.0&#xB1;22.77</oasis:entry>
+          <oasis:entry>57.6&#x2013;188.5</oasis:entry>
+          <oasis:entry>55.8&#xB1;8.05</oasis:entry>
+          <oasis:entry>41.0&#x2013;77.9</oasis:entry>
+        </oasis:row>
+        ...
+      </oasis:tbody>
+    </oasis:tgroup>
+    <oasis:tgroup cols="3">
+      <oasis:colspec colnum="1" colname="col1" align="left"/>
+      <oasis:colspec colnum="2" colname="col2" align="char" char="("/>
+      <oasis:colspec colnum="3" colname="col3" align="char" char="("/>
+      <oasis:thead>
+        <oasis:row rowsep="1">
+          <oasis:entry>(B)</oasis:entry>
+          <oasis:entry/>
+          <oasis:entry/>
+        </oasis:row>
+        <oasis:row>
+          <oasis:entry/>
+          <oasis:entry align="center">Obese; BMI &#x2A7E;25 (N=262)</oasis:entry>
+          <oasis:entry align="center">Non-obese; BMI &lt;25 (N=136)</oasis:entry>
+        </oasis:row>
+        <oasis:row>
+          <oasis:entry/>
+          <oasis:entry align="center"><italic>Number of patients (%)</italic></oasis:entry>
+          <oasis:entry align="center"><italic>Mean&#xB1;s.d.</italic></oasis:entry>
+        </oasis:row>
+      </oasis:thead>
+      <oasis:tbody>
+        <oasis:row>
+          <oasis:entry>Gender (M/F)</oasis:entry>
+          <oasis:entry>112 (42.7%)/150 (57.3%)</oasis:entry>
+          <oasis:entry>50 (36.8%)/ 86 (63.2%)</oasis:entry>
+        </oasis:row>
+        ...
+      </oasis:tbody>
+    </oasis:tgroup>
+  </oasis:table>
+  <table-wrap-foot>
+    <p>Abbreviations: BMI, body mass index; BW, bodyweight; DBP, diastolic blood pressure; F, female;
+       FPG, fasting plasma glucose; HC, hip circumference; HOMA-IR, homeostasis model assessment for
+       insulin resistance; IGT, impaired glucose tolerance; M, male; MetS, metabolic syndrome;
+       PC-2&#x2009;h, plasma glucose 2&#x2009;h post oral challenge; SBP, systolic blood pressure; TC,
+       total plasma cholesterol; TG, plasma triglycerides; WC, waist circumference; WHR, waist-hip
+       ratio.</p>
+    <p>The mean&#xB1;s.d. is shown for continuous parameters, and the number of patients (%) is shown 
+       for those with metabolic conditions.</p>
+  </table-wrap-foot>
+</table-wrap>]]></programlisting>
+    </sect4>
+    <sect4 xml:id="sample_table_3">
+      <title>Table 3. Image only</title>
+      <programlisting><![CDATA[
+<table-wrap id="t3">
+  <caption>
+    <title>Clinical and laboratory parameters over time for the three patients treated with
+          bortezomib-based regimen (patient 2)</title>
+  </caption>
+  <graphic position="anchor" xlink:href="gim2012110t3.gif" mimetype="image" mime-subtype="gif"
+          specific-use="show"/>
+</table-wrap>]]></programlisting>
+    </sect4>
+    <sect4 xml:id="sample_table_4">
+      <title>Table 4. Image and slide</title>
+      <programlisting><![CDATA[
+<table-wrap id="t4">
+  <caption>
+    <title>Clinical and laboratory parameters over time for the three patients treated with
+          bortezomib-based regimen (patient 3)</title>
+  </caption>
+  <alternatives>
+    <graphic position="anchor" xlink:href="gim2012110t4.gif" mimetype="image" mime-subtype="gif"
+          specific-use="show"/>
+    <supplementary-material content-type="slide" position="anchor" xlink:href="gim2012110-pt4.ppt"
+          mimetype="application" mime-subtype="vnd.ms-powerpoint"></supplementary-material>
+  </alternatives>
+</table-wrap>]]></programlisting>
+    </sect4>
+    <sect4 xml:id="sample_table_5">
+      <title>Table 5. XML and image - image used for display purposes; mix of table footnotes and footer text</title>
+      <programlisting><![CDATA[
+<table-wrap id="t5">
+  <caption>
+    <title>Results of homogeneity tests of statistical artifacts</title>
+  </caption>
+  <alternatives>
+    <oasis:table frame="topbot">
+      <oasis:tgroup cols="5">
+        <oasis:colspec colnum="1" colname="col1" align="left"/>
+        <oasis:colspec colnum="2" colname="col2" align="left"/>
+        <oasis:colspec colnum="3" colname="col3" align="left"/>
+        <oasis:colspec colnum="4" colname="col4" align="left"/>
+        <oasis:colspec colnum="5" colname="col5" align="left"/>
+        <oasis:thead>
+          <oasis:row>
+            <oasis:entry><italic>Statistical artifacts nested in TCE determinants</italic></oasis:entry>
+            <oasis:entry><italic>Mean effect size</italic></oasis:entry>
+            <oasis:entry><italic>Standard error</italic></oasis:entry>
+            <oasis:entry><italic>P-value</italic></oasis:entry>
+            <oasis:entry><italic>Q-value</italic></oasis:entry>
+          </oasis:row>
+        </oasis:thead>
+        <oasis:tbody>
+          <oasis:row>
+            <oasis:entry align="left" namest="col1" nameend="col5"><italic>Advertising intensity
+                    (AI)</italic></oasis:entry>
+          </oasis:row>
+          <oasis:row>
+            <oasis:entry>OBE measure</oasis:entry>
+            <oasis:entry/>
+            <oasis:entry/>
+            <oasis:entry/>
+            <oasis:entry/>
+          </oasis:row>
+          <oasis:row>
+            <oasis:entry>&#x2003;Binary</oasis:entry>
+            <oasis:entry align="char" char=".">0.07</oasis:entry>
+            <oasis:entry align="char" char=".">0.02</oasis:entry>
+            <oasis:entry align="char" char=".">24.21<sup><xref ref-type="table-fn" rid="t5-fn1">a
+                    </xref></sup></oasis:entry>
+            <oasis:entry/>
+          </oasis:row>
+          ...
+        </oasis:tbody>
+      </oasis:tgroup>
+    </oasis:table>
+    <graphic position="anchor" xlink:href="8400106t5.gif" mimetype="image" mime-subtype="gif"
+                    specific-use="show"/>
+  </alternatives>
+  <table-wrap-foot>
+    <fn id="t5-fn1"><label><sup>a</sup></label><p><italic>P</italic>&lt;0.01.</p></fn>
+    <p>Abbreviations: OBE: Operation break-even.</p>
+  </table-wrap-foot>
+</table-wrap>]]></programlisting>
+    </sect4>
+    <sect4 xml:id="sample_table_6">
+      <title>Table 6. XML and image - image <emphasis role="bold">not</emphasis> used for display purposes; table footnotes</title>
+      <programlisting><![CDATA[
+<table-wrap id="t6">
+  <caption>
+    <title>Measurement types and major research questions of meta-analysis samples<sup><xref
+                    ref-type="table-fn" rid="t6-fn1">a</xref></sup></title>
+  </caption>
+  <alternatives>
+    <oasis:table frame="topbot">
+      <oasis:tgroup cols="7">
+        <oasis:colspec colnum="1" colname="col1" align="left"/>
+        <oasis:colspec colnum="2" colname="col2" align="left"/>
+        <oasis:colspec colnum="3" colname="col3" align="left"/>
+        <oasis:colspec colnum="4" colname="col4" align="left"/>
+        <oasis:colspec colnum="5" colname="col5" align="left"/>
+        <oasis:colspec colnum="6" colname="col6" align="left"/>
+        <oasis:colspec colnum="7" colname="col7" align="left"/>
+        <oasis:thead>
+          <oasis:row>
+            <oasis:entry><italic>Sample study</italic></oasis:entry>
+            <oasis:entry><italic>Major research questions</italic></oasis:entry>
+            <oasis:entry><italic>OBE measure</italic></oasis:entry>
+            <oasis:entry align="center" rowsep="1" namest="col4" nameend="col7"><italic>TCE constructs
+                    and measures</italic><sup><xref ref-type="table-fn" rid="t6-fn2">b</xref>, <xref
+                    ref-type="table-fn" rid="t6-fn3">c</xref></sup></oasis:entry>
+          </oasis:row>
+          <oasis:row>
+            <oasis:entry/>
+            <oasis:entry/>
+            <oasis:entry/>
+            <oasis:entry><italic>FR</italic></oasis:entry>
+            <oasis:entry><italic>AS</italic></oasis:entry>
+            <oasis:entry><italic>IU</italic></oasis:entry>
+            <oasis:entry><italic>EU</italic></oasis:entry>
+          </oasis:row>
+        </oasis:thead>
+        <oasis:tbody>
+          <oasis:row>
+            <oasis:entry>Agarwal (1994)</oasis:entry>
+            <oasis:entry>The probability of choosing the joint venture form is expected to be moderated by the firm-specific characteristics as well as by country-specific characteristics.</oasis:entry>
+            <oasis:entry>B</oasis:entry>
+            <oasis:entry/>
+            <oasis:entry/>
+            <oasis:entry>CD (I)</oasis:entry>
+            <oasis:entry>CR (I)</oasis:entry>
+          </oasis:row>
+          ...
+        </oasis:tbody>
+      </oasis:tgroup>
+    </oasis:table>
+    <graphic position="anchor" xlink:href="8400106t6.gif" mimetype="image" mime-subtype="gif"/>
+  </alternatives>
+  <table-wrap-foot>
+    <fn id="t6-fn1"><label><sup>a</sup></label><p>B, binary measure; C, categorical measure; E, equity
+            percentage; F, foreign sales ratio; H, experience in host country; I, composite index; M,
+            multiple measures; N, number of countries; R, ratio; S, surveyed measure; Y, number of
+            years</p></fn>
+    <fn id="t6-fn2"><label><sup>b</sup></label><p>FR, free-riding potential; AS, asset specificity; IU,
+            internal uncertainty; EU, external uncertainty; measure type in parenthesis</p></fn>
+    <fn id="t6-fn3"><label><sup>c</sup></label><p>FR is not a parallel construct of AS, but rather a
+            property of AS</p></fn>
+  </table-wrap-foot>
+</table-wrap>]]></programlisting>
+    </sect4>
+  </sect3>
+    <!--<para>Set any tabular material that needs to be displayed in the flow of the text as <tag>&lt;array></tag> in a <tag>&lt;p></tag>.</para> [I think we should use this element once we're doing JATS only. Will save a lot of the formatting issues we currently have.]-->
+  </sect2>
+<sect2 xml:id="objects_supplementary-material">
+<title>Supplementary information</title>
+  <para>Supplementary items are block-level objects that contain additional information relating to an article and are captured using <tag>&lt;supplementary-material></tag>.</para>
+  <para>Characteristics of supplementary material which should be captured within <tag>&lt;floats-group></tag>:</para>
+  <itemizedlist>
+    <listitem><para>It has a label like "Supplementary Information" or "Supplementary Figures 1&#x2103;12".</para></listitem>
+    <listitem><para>It may have a title or caption.</para></listitem>
+    <listitem><para>It may be referenced by an <tag>&lt;xref></tag> with <tag>@ref-type="supplementary-material"</tag> in the article text.</para></listitem>
+  </itemizedlist>
+</sect2>
+</sect1>
+<sect1 xml:id="objects_sub-article">
+<title>Sub-articles</title>
+<para><tag>&lt;sub-article></tag> is not required for our online academic journals. This section will be expanded upon when we start producing other journals using the JATS DTD.</para><!--Section needs updating-->
+</sect1>
+</chapter>
   <chapter xml:id="elements">
     <title>Elements</title>
-    <para>These XML elements have specific style rules associated with them. This is not a complete list of XML elements included in the NLM Journal Publishing DTD. For guidance using elements not listed here, consult the <link xlink:href="http://dtd.nlm.nih.gov/publishing/tag-library/3.0/index.html">NLM Tag Library</link>.</para>
-    <sect1 xml:id="element_abstract">
-      <title><tag>&lt;abstract></tag></title>
-      <para>Articles may contain more than one abstract. Specify the attribute <tag>@abstract-type</tag> for summaries which are not true abstracts.</para>
-      <para>Capture only the abstract in this tag. Other metadata like copyright information, citation information, and keywords are not part of the abstract.</para>
-      <para>Do not use <tag>&lt;label></tag> or <tag>&lt;sec></tag> elements in Nature content.</para>
-      <itemizedlist>
-        <listitem><para><tag>@abstract-type</tag> not stated &#x2013; use only for a true abstract</para></listitem>
-        <listitem><para><tag>@abstract-type="first-paragraph"</tag> &#x2013; Where the first paragraph of an article is used as an abstract, it should be set as an abstract in <tag>&lt;front></tag> and not as a paragraph in <tag>&lt;body></tag></para></listitem>
-        <listitem><para><tag>@abstract-type="web-summary"</tag> &#x2013; A "web summary" is an article summary, usually an abridged version of the first paragraph, restricted to online delivery. This type of abstract may also contain a child <tag>&lt;p @content-type="dateline"></tag> to show location, see example below</para></listitem>
-        <listitem><para><tag>@abstract-type="toc"</tag> &#x2013; Another type of "web summary" which is restricted to the table of contents for online delivery. This type of abstract may also contain a child <tag>&lt;p @content-type="dateline"></tag> to show location</para></listitem>
-        <listitem><para><tag>@abstract-type="editor"</tag> &#x2013; An "editorial summary" is an article summary restricted to online delivery and is only displayed on the editorial summary page with the associated article(s), and does not appear on the full text article. The <tag>@specific-use</tag> should also be stated, with possible values of "aop" or "issue". This type of abstract may also contain a child <tag>&lt;title></tag> element.</para></listitem>
-        <listitem><para><tag>@abstract-type="synopsis"</tag> &#x2013; A "synopsis" is an article overview, <emphasis role="bold">not</emphasis> a true abstract, restricted to online delivery and is not displayed on the full text article.</para></listitem>
-        <listitem><para><tag>@abstract-type="standfirst"</tag> &#x2013; A "standfirst" is an article summary, <emphasis role="bold">not</emphasis> a true abstract, that appears both in print and online.</para></listitem>
-        <listitem><para><tag>@abstract-type="executive-summary"</tag> &#x2013; An "executive summary" is an article summary, <emphasis role="bold">not</emphasis> a true abstract, restricted to online delivery and used for the Nature Reviews series.</para></listitem>
-        <listitem><para><tag>@abstract-type="key-points"</tag> &#x2013; A "highlights" section is a list of article highlights, restricted to online delivery and is only displayed with the synopsis, and does not appear on the full text article</para></listitem>
-      </itemizedlist>
-      <para>Example showing an article with multiple abstracts:</para>
-      <programlisting>
-        <![CDATA[
-        <abstract abstract-type="editor" specific-use="issue">
-          <title>Microorganisms</title>
-          <p>It is now accepted that microorganisms primarily control iron redox chemistry in most 
-              environments. Under anoxic conditions, Fe(<sc>III</sc>) oxide minerals are reduced by 
-              Fe(<sc>III</sc>)-reducing microorganisms (FRM). The ubiquity of FRM and their phylogenetic 
-              diversity makes this microbial metabolism globally significant. FRM can use both organic 
-              (CO<sub>2</sub>) and inorganic (H<sub>2</sup>) electron donors.</p>
-          <p>&#x2014;The Editors</p>
-        </abstract>
-        <abstract abstract-type="web-summary">
-          <p content-type="dateline">Washington</p>
-          <p>Anaerobic microbial iron oxidation and reduction contributes significantly to soil and 
-              sediment biogeochemistry and mineralogy in anaerobic environments. Here, Weber and colleagues 
-              review the diversity of microorganisms involved in these processes, and the unique biochemical 
-              challenges associated with utilizing an insoluble metal substrate.</p>
-        </abstract>
-        <abstract>
-          <p>Iron (Fe) has long been a recognized physiological requirement for life, yet for many 
-              microorganisms that persist in water, soils and sediments, its role extends well beyond that 
-              of a nutritional necessity.</p>
-        </abstract>]]>
-      </programlisting>
-      <para>attributes:</para>
-      <itemizedlist>
-        <listitem><para>abstract-type &#x2014; see examples above</para></listitem>
-        <listitem><para>id &#x2014; not required for Nature articles</para></listitem>
-        <listitem><para>specific use &#x2014; only required when <tag>@abstract-type="editor"</tag> and takes the value "aop" or "issue"</para></listitem>
-        <listitem><para>xml:lang &#x2014; not required for Nature articles</para></listitem>
-      </itemizedlist>
-    </sect1>
-    <sect1 xml:id="element_ack">
-       <title><tag>&lt;ack></tag></title>
-       <para>The article acknowledgements, where they exist, should be set as multiple <tag>&lt;p></tag> elements in one <tag>&lt;ack></tag> element.</para>
-       <para>Within <tag>&lt;ack></tag>, do <emphasis role="bold">not</emphasis> use <tag>&lt;label></tag>, <tag>&lt;title></tag>, <tag>&lt;sec></tag> or <tag>&lt;ref-list></tag> in Nature articles.</para>
-       <para>Attributes are also unnecessary on <tag>&lt;ack></tag>.</para>
-    </sect1>
-     <sect1 xml:id="element_app-group">
-        <title><tag>&lt;app-group></tag></title>
-        <para></para>
-     </sect1>
-     <sect1 xml:id="element_article">
+    <para>These XML elements have specific style rules associated with them. This is not a complete list of XML elements included in the NISO JATS Journal Publishing DTD. For guidance using elements not listed here, consult the <link xlink:href="http://jats.nlm.nih.gov/publishing/tag-library/1.0/index.html">JATS Tag Library</link>.</para>
+    <sect1 xml:id="element_article">
       <title><tag>&lt;article></tag></title>
-      <para>The root element for all Nature articles.</para>
-      <para>The "article-type" attribute is required, e.g. <tag>@article-type="cstory"</tag>.</para>
+      <para>The root element for all articles.</para>
+      <para>The <tag>@article-type</tag> attribute is required, e.g. <tag>@article-type="le"</tag>. [This is the equivalent of <tag>categ/@id</tag> in our old NPG Article DTD, and <tag>arttype/@arttype</tag> in the AJ DTD.]</para>
       <para>attributes:</para>
       <itemizedlist>
-        <listitem><para>article-type &#x2014; (#REQUIRED)</para></listitem>
-        <listitem><para>xml:lang &#x2014; "en" is the default and does not need to be explicitly stated; use "de" for German and "ja" for Japanese (Kanji)</para></listitem>
-        <listitem><para>xmlns:mml &#x2014; Fixed value "http://www.w3.org/1998/Math/MathML"</para></listitem>
-        <listitem><para>xmlns:oasis &#x2014; Fixed value "http://docs.oasis-open.org/ns/oasis-exchange/table"</para></listitem>
-        <listitem><para>xmlns:xlink &#x2014; Fixed value "http://www.w3.org/1999/xlink"</para></listitem>
+        <listitem><para>article-type&#x2014;(#REQUIRED)</para></listitem>
+        <listitem><para>xml:lang&#x2014;"en" is the default and does not need to be explicitly stated; use "de" for German and "ja" for Japanese (Kanji)</para></listitem>
+        <listitem><para>xmlns:mml&#x2014;Fixed value "http://www.w3.org/1998/Math/MathML"</para></listitem>
+        <listitem><para>xmlns:oasis&#x2014;Fixed value "http://docs.oasis-open.org/ns/oasis-exchange/table"</para></listitem>
+        <listitem><para>xmlns:xlink&#x2014;Fixed value "http://www.w3.org/1999/xlink"</para></listitem>
       </itemizedlist>
-    </sect1>
-    <sect1 xml:id="element_article-categories">
-      <title><tag>&lt;article-categories></tag></title>
-      <para>This is a required element that holds subject and other "sorting" type information about the article.</para>
-      <para>[*Add more detail*]</para>
-       <sect2>
-          <title>Series title</title>
-          <para>Non-subject-based collections of similar articles across multiple issues of a journal should be set as <tag>&lt;series-title></tag> with <tag>@code</tag> declared. Currently, this only applies to <emphasis>EMBO Reports</emphasis> and <emphasis>Scientific American</emphasis>.</para>
-          <para>Example:</para>
-          <programlisting><![CDATA[
-        <article-categories>
-          <subj-group subj-group-type="category">
-            <subject>ss</subject>
-          </subj-group>
-          <series-title content-type="food_science">Science &amp; Society Series on Food and Science</series-title>
-        </article-categories>]]></programlisting>
-       </sect2>
-    </sect1>
-    <sect1 xml:id="element_article-id">
-      <title><tag>&lt;article-id></tag></title>
-      <para>Articles should have at least two article-id elements, containing the unique identifiers assigned to the article. The two expected article-id attribute values are <tag>@pub-id-type="doi"</tag> and <tag>@pub-id-type="publisher-id"</tag>.</para>
-      <para><tag>@pub-id-type="guid"</tag> and <tag>@pub-id-type="alt-doi"</tag> may also be included.</para>
-      <para>Tag only one identifier per <tag>&lt;article-id></tag> element.</para>
-      <para>Example:</para>
-      <programlisting>
-        <![CDATA[<article-id pub-id-type="doi">10.1038/scibx.2010.940</article-id>
-        <article-id pub-id-type="publisher-id">scibx.2010.940</article-id>]]></programlisting>
-      <para>attributes:</para>
-      <itemizedlist>
-        <listitem><para>pub-id-type &#x2014; (#REQUIRED)</para></listitem>
-      </itemizedlist>
-    </sect1>
-    <sect1 xml:id="element_article-meta">
-      <title><tag>&lt;article-meta></tag></title> 
-      <para>Tag all article metadata for each article. All articles must contain <link linkend="element_article-id"><tag>&lt;article-id></tag></link>, <link linkend="element_article-categories"><tag>&lt;article-categories></tag></link>, <link linkend="element_title-group"><tag>&lt;title-group></tag></link>, <link linkend="element_pub-date"><tag>&lt;pub-date></tag></link> and <tag>&lt;permissions></tag> (see <link linkend="object_copyright-information">Copyright Information</link>).</para>
-      <para>Article metadata may also contain <tag>&lt;contrib-group></tag>, <link linkend="element_volume"><tag>&lt;volume></tag></link>, <link linkend="element_issue"><tag>&lt;issue></tag></link>, <link linkend="element_fpage"><tag>&lt;fpage></tag></link>, <link linkend="element_lpage"><tag>&lt;lpage></tag></link>, <link linkend="element_history"><tag>&lt;history></tag></link>, <tag>&lt;related-article></tag>, <link linkend="element_abstract"><tag>&lt;abstract></tag></link> and <tag>&lt;kwd-group></tag>.</para>
-      <para><tag>&lt;custom-meta-group></tag> may also be used for corrections and retractions.</para>
-    </sect1>
-     <sect1 xml:id="element_back">
-        <title><tag>&lt;back></tag></title>
-        <para>The article back contains information that is published with the article but outside of its main narrative flow. Set reference lists, acknowledgments, appendices, author information, and article-level footnotes in the back matter.</para>
-        <para>See <link linkend="element_ack"><tag>&lt;ack></tag></link>, <link linkend="element_app-group"><tag>&lt;app-group></tag></link>, <link linkend="element_bio"><tag>&lt;bio></tag></link>, <link linkend="element_fn-group"><tag>&lt;fn-group></tag></link>, <link linkend="element_glossary"><tag>&lt;glossary></tag></link>, <tag>&lt;ref-list></tag><!--Link--> and <link linkend="object_accession-groups"><tag>&lt;notes></tag></link>.</para>
-        <para>Within <tag>&lt;back></tag>, do <emphasis role="bold">not</emphasis> use <tag>&lt;title></tag>, <tag>&lt;label></tag> or <tag>&lt;sec></tag> in Nature articles.</para>
-     </sect1>
-     <sect1 xml:id="element_bio">
-        <title><tag>&lt;bio></tag></title>
-        <para>Author information, where it exists, should be set as multiple <tag>&lt;p></tag> elements in one <tag>&lt;bio></tag> element.</para>
-        <para>Within <tag>&lt;bio></tag>, do <emphasis role="bold">not</emphasis> use any children apart from <tag>&lt;p></tag> for Nature articles.</para>
-        <para>Attributes should also not be used on <tag>&lt;bio></tag>.</para>
-     </sect1>
-     <sect1 xml:id="element_body">
-        <title><tag>&lt;body></tag></title>
-        <para>Carries all of the article body. It allows <tag>&lt;p></tag> and all block-level objects and then repeating recursive sections (<tag>&lt;sec></tag>).</para>
-        <para>Use <tag>&lt;title></tag> for section titles. Do not just set the section titles in <tag>&lt;bold></tag> or other formatting.</para>
-        <para>Back matter elements, such as <tag>&lt;app-group></tag>, <tag>&lt;glossary></tag> and <tag>&lt;ref-list></tag>, should not appear at the end of <tag>&lt;body></tag>.</para>
-        <para>All figures and tables should be collected in <tag>&lt;floats-group></tag> after <tag>&lt;back></tag>.</para>
-     </sect1>
-     <sect1 xml:id="element_counts">
-        <title><tag>&lt;counts></tag></title>
-        <para>Where values for <link linkend="element_fpage"><tag>&lt;fpage></tag></link> and <link linkend="element_lpage"><tag>&lt;lpage></tag></link> have been included in the article metadata, set the total number of pages in <tag>&lt;counts></tag><tag>&lt;page-count></tag> with <tag>@count</tag> equal to the number of pages.</para>
-        <para>Do not use any other children of <tag>&lt;counts></tag>: <tag>equation-count</tag>, <tag>fig-count</tag>, <tag>ref-count</tag>, <tag>table-count</tag> or <tag>word-count</tag>.</para>
-     </sect1>
-     <sect1 xml:id="element_custom-meta-group">
-        <title><tag>&lt;custom-meta-group></tag></title>
-        <para>Used for capturing article/journal metadata which does not have a specific tag.</para>
-        <itemizedlist>
-           <listitem><para>Publication stage &#x2014; set <tag>&lt;meta-name></tag> as "publish-type"; <tag>&lt;meta-value></tag> has possible values: "supp", "aop", "online", "nfv", "prototype", "offline", "retired" and "issue". However, "issue" is the default value and does not need to be explicitly stated.</para></listitem>
-           <listitem><para>Original source &#x2014; if the article is taken from another journal, set <tag>&lt;meta-name></tag> as "original-source" and <tag>&lt;meta-value></tag> as "no".</para></listitem>
-        </itemizedlist>
-        <para>Example:</para>
-        <programlisting><![CDATA[
-        <custom-meta-group>
-          <custom-meta>
-            <meta-name>publish-type</meta-name>
-            <meta-value>aop</meta-value>
-          </custom-meta>
-          <custom-meta>
-            <meta-name>original-source</meta-name>
-            <meta-value>no</meta-value>
-          </custom-meta>
-        </custom-meta-group>]]></programlisting>
-     </sect1>
-    <sect1 xml:id="element_elocation-id">
-       <title><tag>&lt;elocation-id></tag></title>
-       <para>Page identifier for an article that does not have traditional page numbers. Currently, this should only be used in <emphasis>Bonekey</emphasis> and <emphasis>Scientific Reports</emphasis>.</para>
-    </sect1>
-     <sect1 xml:id="element_email">
-      <title><tag>&lt;email></tag></title>
-      <para>Can contain an email address or the name of a person or organisation. <tag>@xlink:href</tag> should show the email address.</para>
-      <para>Example:</para>
-      <programlisting><![CDATA[
-        <email xlink:href="jiangyan03@263.net">jiangyan03@263.net</email>
-        <email xlink:href="sarah_glenister@scientist.com">Dr Sarah Glenister</email>]]></programlisting>
     </sect1>
     <sect1 xml:id="element_ext-link">
       <title><tag>&lt;ext-link></tag></title>
@@ -850,893 +802,90 @@
       <!--And more blurb-->
       <para>attributes:</para>
       <itemizedlist>
-        <listitem><para><tag>@ext-link-type</tag> &#x2014; set as "uri" for a link to a website (starting with "http:" or "/"); "ftp" for a link to an ftp site [*plus any additional possibilities*] (#REQUIRED)</para></listitem>
-        <listitem><para>xlink:href &#x2014; Holds an identifier of or locator to an object available through or at that resource. (#REQUIRED)</para></listitem>
+        <listitem><para><tag>@ext-link-type</tag>&#x2014;set as "uri" for a link to a website (starting with "http:" or "/"); "ftp" for a link to an ftp site [*plus any additional possibilities*] (#REQUIRED)</para></listitem>
+        <listitem><para><tag>@xlink:href</tag>&#x2014;Holds an identifier of or locator to an object available through or at that resource. (#REQUIRED)</para></listitem>
       </itemizedlist>
-      <para>See also <link linkend="object_accession-groups">Accession Groups</link> and <link linkend="object_link_groups">Link Groups</link>.</para>
+      <!--para>See also <link linkend="objects_accession-groups">Accession Groups</link> and <link linkend="objects_link_groups">Link Groups</link>.</para-->
     </sect1>
-    <sect1 xml:id="element_fn">
-      <title><tag>&lt;fn></tag></title>
-      <para>Do not use <tag>&lt;label></tag> for footnotes in Nature articles; include the reference symbol at the beginning of <tag>&lt;p></tag>.</para>
-      <para>attributes:</para>
-      <itemizedlist><listitem><para>fn-type &#x2014; only required when <tag>&lt;fn></tag> is used to model objects which are not article footnotes, e.g. "other" for endnotes</para></listitem>
-        <listitem><para>id &#x2014; only required when <tag>&lt;fn></tag> is used for article or table footnotes</para></listitem></itemizedlist>
-    </sect1>
-    <sect1 xml:id="element_fn-group">
-      <title><tag>&lt;fn-group></tag></title>
-       <para>Do not use <tag>&lt;label></tag> or <tag>title</tag> for footnote groups in Nature articles.</para>
-    </sect1>
-    <sect1 xml:id="element_fpage">
-       <title><tag>&lt;fpage></tag></title>
-       <para>The first page of the article. See also <link linkend="element_lpage"><tag>&lt;lpage></tag></link> and <link linkend="element_counts"><tag>&lt;counts></tag></link>.</para>
-    </sect1>
-    <sect1 xml:id="element_front">
-      <title><tag>&lt;front></tag></title>
-      <para>Carries all of the article front matter. It allows <link linkend="element_journal-meta"><tag>&lt;journal-meta></tag></link>, <link linkend="element_article-meta"><tag>&lt;article-meta></tag></link>, and <tag>&lt;notes></tag>.</para>
-      <para><link linkend="element_journal-meta"><tag>&lt;journal-meta></tag></link> and <link linkend="element_article-meta"><tag>&lt;article-meta></tag></link> are required.</para>
-      <para>Do not use <tag>&lt;notes></tag> in the front matter. [* Any instances where we do want this? *]</para>
-    </sect1>
-     <sect1 xml:id="element_glossary">
-        <title><tag>&lt;glossary></tag></title>
-        <para>Do <emphasis role="bold">not</emphasis> use <tag>&lt;glossary></tag> in Nature articles.</para>
-     </sect1>
-    <sect1 xml:id="element_history">
-      <title><tag>&lt;history></tag></title>
-       <para>This element is used to contain one or more historical dates relevant to the article. Each <tag>&lt;date></tag> must have a <tag>@date-type</tag>. Articles cannot have more than one <tag>&lt;date></tag> with the same <tag>@date-type</tag>. Tag only one date per <tag>&lt;date></tag> element.</para>
-       <para>Example:</para>
-       <programlisting><![CDATA[
-        <history>
-          <date date-type="created">
-            <month>09</month>
-            <year>2008</year>
-          </date>
-          <date date-type="received">
-            <day>12</day>
-            <month>11</month>
-            <year>2008</year>
-          </date>
-          <date date-type="rev-recd">
-            <day>24</day>
-            <month>12</month>
-            <year>2008</year>
-          </date>
-          <date date-type="accepted">
-            <day>17</day>
-            <month>02</month>
-            <year>2009</year>
-          </date>
-        </history>]]></programlisting>
-       <para>attributes:</para>
-       <itemizedlist><listitem><para>date-type &#x2014; Set as "created", "received", "rev-recd" (revision received), "accepted" or "misc" [*additional info on when "misc" should be used*]. (#REQUIRED)</para></listitem></itemizedlist>
-    </sect1>
-    <sect1 xml:id="element_issn">
-      <title><tag>&lt;issn></tag></title>
-       <para>Contains the ISSN(s) for the journal. Articles must have at least one <tag>&lt;issn></tag>. If a journal has more than one ISSN, include in successive <tag>&lt;issn></tag> tags.</para>
-      <para>attributes:</para>
-      <itemizedlist><listitem><para>pub-type &#x2014; Set as "ppub" for a print ISSN and "epub" for an electronic ISSN. (#REQUIRED)</para></listitem></itemizedlist>
-      <para>See <link linkend="element_journal-meta"><tag>&lt;journal-meta></tag></link> for an example of markup.</para>
-    </sect1>
-     <sect1 xml:id="element_issue">
-        <title><tag>&lt;issue></tag></title>
-        <para>Set issue numbers as an integer only. Do not include the word "issue" or any related abbreviation in the element.</para>
-        <para>If there is no issue number (for example, in an AOP article), do not insert an empty element.</para>
-     </sect1>
-    <sect1 xml:id="element_journal-id">
-      <title><tag>&lt;journal-id></tag></title> 
-      <para>This element usually takes the value of an abbreviated form of the journal title, e.g. scibx for Science-Business eXchange, nneuro for Nature Neuroscience. A full list can be found in the <link linkend="journals">Journal-specific information</link> chapter.</para>  
-      <para>attributes:</para>
-      <itemizedlist><listitem><para>journal-id-type &#x2014; Set as "publisher". (#REQUIRED)</para></listitem></itemizedlist>
-      <para>See <link linkend="element_journal-meta"><tag>&lt;journal-meta></tag></link> for an example of markup.</para>
-   </sect1>
-   <sect1 xml:id="element_journal-meta">
-      <title><tag>&lt;journal-meta></tag></title> 
-      <para>Contains all information about the journal.</para>
-      <para>Requires <link linkend="element_issn"><tag>&lt;issn></tag></link>, <link linkend="element_journal-id"><tag>&lt;journal-id></tag></link>, <link linkend="element_journal-title-group"><tag>&lt;journal-title-group></tag></link>, and <link linkend="element_publisher"><tag>&lt;publisher></tag></link>.</para>
-      <para>Example:</para>
-      <programlisting>
-        <![CDATA[<journal-meta>
-          <journal-id journal-id-type="publisher">scibx</journal-id>
-          <journal-title-group>
-            <journal-title>Science-Business eXchange</journal-title>
-          </journal-title-group>
-          <issn pub-type="epub">1945-3477</issn>
-          <publisher>
-            <publisher-name>Nature Publishing Group</publisher-name>
-          </publisher>
-        </journal-meta>]]></programlisting>
-    </sect1>
-    <sect1 xml:id="element_journal-title-group">
-       <title><tag>&lt;journal-title-group></tag></title> 
-      <para>The complete title of the journal in which the article is published should be contained in the child <tag>&lt;journal-title></tag> element. Do not use <tag>&lt;abbrev-journal-title></tag>, <tag>&lt;journal-subtitle></tag> or <tag>&lt;trans-title-group></tag>.</para>
-      <para>[* Are there any exceptions where we would want to use these tags? *]</para>
-      <para>See <link linkend="element_journal-meta"><tag>&lt;journal-meta></tag></link> for an example of markup.</para>
-    </sect1>
-    <sect1 xml:id="element_kwd-group">
-      <title><tag>&lt;kwd-group</tag></title>
-      <para>Set each keyword in <tag>kwd</tag>. Do not use <tag>&lt;label></tag>, <tag>&lt;title></tag> or <tag>&lt;compound-kwd></tag> in Nature articles.</para>
-      <para>Where a glossary id is given for a particular keyword, set this as <tag>&lt;named-content></tag> with <tag>@content-type="glossid"</tag> and <tag>@specific-use</tag> set as the value of the id.</para>
-      <para>Example:</para>
-      <programlisting><![CDATA[
-        <kwd-group kwd-group-type="author-generated">
-          <kwd>atypical presentation</kwd>
-          <kwd>renal medullary carcinoma</kwd>
-          <kwd><named-content content-type="glossid" specific-use="ncp_2292"/>sickle-cell disease</kwd>
-        </kwd-group>]]></programlisting>
-      <para>attributes:</para>
-      <itemizedlist>
-        <listitem><para>kwd-group-type &#x2014; Set as "author-generated" for keywords created by the author, otherwise do not use.</para></listitem>
-      </itemizedlist>
-    </sect1>
-     <sect1 xml:id="element_license">
-        <title><tag>&lt;license></tag></title> 
-        <para>Contains licence information for the article and is contained in <tag>&lt;permissions></tag>.</para>
-        <para>Atttributes:</para>
-        <itemizedlist>
-           <listitem><para>license-type &#x2014; formed by the permissions model ("by-nc-nd" or "by-nc-sa"), followed by a dash, and the version number</para></listitem>
-           <listitem><para>xlink:title &#x2014; the name of the licence</para></listitem>
-           <listitem><para>xlink:href &#x2014; the url of the licence explanation page</para></listitem>
-        </itemizedlist>
-        <para>Child <tag>&lt;license-p></tag> elements contain any explanatory text and also <tag>&lt;funding-source></tag> with <tag>@source-type</tag> set as "author-paid" or "author-not-paid".</para>
-        <para>Example:</para>
-        <programlisting><![CDATA[
-        <permissions>
-          <copyright-year>2010</copyright-year>
-          <copyright-holder>Nature Publishing Group</copyright-holder>
-          <license license-type="by-nc-sa-3.0" xlink:title="Creative Commons Attribution-Noncommercial-Share Alike 3.0 Licence" xlink:href="http://creativecommons.org/licenses/by-nc-sa/3.0/">
-            <license-p>This is an open-access article distributed under the terms of the Creative Commons Attribution Noncommercial Share Alike 3.0 Unported License, which allows readers to alter, transform, or build upon the article and then distribute the resulting work under the same or similar license to this one. The work must be attributed back to the original author and commercial use is not permitted without specific permission.</license-p>
-            <license-p><funding-source source-type="author-paid"/></license-p>
-          </license>
-        </permissions>]]></programlisting>
-     </sect1>
-     <sect1 xml:id="element_list">
-        <title><tag>&lt;list></tag></title> 
-        <para>A regular <tag>&lt;list></tag> should not have a <tag>&lt;title></tag> in Nature articles. It must have one <tag>&lt;list-item></tag> for each point in the list.</para>
-        <para>Do not use <tag>&lt;list></tag> as a block-level element in Nature articles, it should always be contained within <tag>&lt;p></tag> or <tag>&lt;list-item></tag>.</para>
-        <para><tag>&lt;list></tag> may also be used to model other article objects. See also <link linkend="object_interviews">Interviews and quizzes</link> and <link linkend="object_materials-procedures">Materials and procedures</link>.</para>
-        <para>attributes:</para>
-              <itemizedlist>
-                 <listitem><para>id &#x2014; (#REQUIRED)</para></listitem>
-                 <listitem><para>list-type &#x2014; Allowed values: "bullet", "number", "ucletter", "lcletter", "lcroman" and "ucroman". "bullet" is the default value, but should still be declared for regular lists. (#REQUIRED)</para></listitem>
-                 <listitem><para>prefix-word &#x2014; This is for a word that should prefix the generated label in the list, eg. "Step". Do not use for Nature articles.</para></listitem></itemizedlist>
-     </sect1>
-     <sect1 xml:id="element_list-item">
-        <title><tag>&lt;list-item></tag></title> 
-        <para>Contains exacty one item per tag. Each item may contain multiple <tag>&lt;p></tag> or other block-level elements.</para>
-        <para>Do not use <tag>&lt;label></tag>.</para>
-     </sect1>
-     <sect1 xml:id="element_lpage">
-        <title><tag>&lt;lpage></tag></title>
-        <para>The last page of the article. Include the value even if it is the same as the first page. See also <link linkend="element_fpage"><tag>&lt;fpage></tag></link> and <link linkend="element_counts"><tag>&lt;counts></tag></link>.</para>
-     </sect1>
-     <sect1 xml:id="element_mixed-citation">
-        <title><tag>&lt;mixed-citation></tag></title>
-        <para>Maintain all punctuation from the original copy.</para>
-        <para>Should be used for citations within text and for bibliographic references.</para>
-        <para>Example - inline:</para>
-        <programlisting><![CDATA[
-        <p>Federico Pe&#x00F1;a, the DOE secretary, sacked AUI in May after an internal report criticized management
-            and environmental procedures at the laboratory (see <mixed-citation id="c1"><source>Nature</source> 
-            <volume>387</volume>, <fpage>114</fpage>; <year>1997</year></mixed-citation>).</p>]]></programlisting>
-        <para>Example - bibliographic reference:</para>
-        <para>Insert example here</para>
-        <para>See also <link linkend="object_references">References</link> and <tag>&lt;element-citation></tag>.</para>
-     </sect1>
-    <sect1 xml:id="element_p">
-       <title><tag>&lt;p></tag></title>
-       <para>Paragraph. Contains text of article.</para>
-       <para><tag>@content-type</tag> should only be stated when modelling the following objects:</para>
-       <itemizedlist>
-          <listitem><para><tag>@content-type="cross-head"</tag> &#x2014; Heading text which does not define a section of text</para></listitem>
-          <listitem><para><tag>@content-type="dateline"</tag> &#x2014; City or country where article originates</para></listitem>
-          <listitem><para><tag>@content-type="greeting"</tag> &#x2014; Line at top of letter containing greeting, e.g. "Sir,"</para></listitem>
-          <listitem><para><tag>@content-type="caution"</tag> &#x2014; Procedural caution note (only found in Nature Protocols)</para></listitem>
-          <listitem><para><tag>@content-type="timing"</tag> &#x2014; Step timing (only found in Nature Protocols)</para></listitem>
-       </itemizedlist>
-       <para>Do not use <tag>@id</tag> or <tag>@specific-use</tag>.</para>
-    </sect1>
-     <sect1 xml:id="element_pub-date">
-      <title><tag>&lt;pub-date></tag></title> 
-       <para>Used to contain publication dates relevant to the article. Each <tag>&lt;pub-date></tag> must have a <tag>@pub-type</tag>. Articles cannot have more than one <tag>&lt;pub-date></tag> with the same <tag>@pub-type</tag>. Tag only one publication date per <tag>&lt;pub-date></tag> element.</para>
-       <para>Example:</para>
-       <programlisting><![CDATA[
-        <pub-date pub-type="issue-date">
-          <day>01</day>
-          <month>05</month>
-          <year>2009</year>
-        </pub-date>
-        <pub-date pub-type="aop">
-          <day>22</day>
-          <month>03</month>
-          <year>2009</year>
-        </pub-date>]]></programlisting>
-      <para>attributes:</para>
-      <itemizedlist><listitem><para>pub-type &#x2014; Set as "issue-date" (date of publication of print issue), "aop" (advanced online publication), "collection" [*equivalent of "iss" in Nature - find out what that means*], "epub" (online only journals), "epreprint" or "embargo" [*additional info on those*]. (#REQUIRED)</para></listitem></itemizedlist>
-    </sect1>
-    <sect1 xml:id="element_publisher">
-      <title><tag>&lt;publisher></tag></title>
-      <para>Requires <tag>&lt;publisher-name></tag>. This should be the same text as used in <tag>&lt;copyright-holder></tag>. Refer to <link linkend="object_copyright-information">Copyright information</link>.</para>
-      <para>Do not use <tag>&lt;publisher-loc></tag>.</para>
-      <para>See <link linkend="element_journal-meta"><tag>&lt;journal-meta></tag></link> for an example of markup.</para>
-    </sect1>
+<sect1 xml:id="element_issn">
+<title><tag>&lt;issn></tag></title>
+<para>Contains the ISSN(s) for the journal.</para>
+<para>Articles must have at least one <tag>&lt;issn></tag>.</para>
+<para>If a journal has a print and electronic ISSN, include in successive <tag>&lt;issn></tag> tags.</para>
+<para>attributes:</para>
+<itemizedlist><listitem><para>pub-type&#x2014;Set as "ppub" for a print ISSN and "epub" for an electronic ISSN. (#REQUIRED)</para></listitem></itemizedlist>
+<para>See <link linkend="objects_journal_metadata">Journal metadata</link> for examples of markup.</para>
+</sect1>
+<sect1 xml:id="element_journal-id">
+<title><tag>&lt;journal-id></tag></title> 
+<para>This element takes the value of the journal pcode, e.g. "nutd" for <emphasis>Nutrition &amp; Diabetes</emphasis>, "nneuro" for <emphasis>Nature Neuroscience</emphasis>.</para>
+<para>attributes:</para>
+<itemizedlist><listitem><para>journal-id-type&#x2014;Set as "publisher". (#REQUIRED)</para></listitem></itemizedlist>
+<para>See <link xlink:href="object_journal_metadata">Journal metadata</link> for examples of markup.</para>
+</sect1>
+<sect1 xml:id="element_journal-title-group">
+<title><tag>&lt;journal-title-group></tag></title> 
+<para>The complete title of the journal in which the article is published should be contained in the child <tag>&lt;journal-title></tag> element.</para>
+<para>Do <emphasis role="bold">not</emphasis> use <tag>&lt;abbrev-journal-title></tag>, <tag>&lt;journal-subtitle></tag> or <tag>&lt;trans-title-group></tag>.</para>
+<para>See <link linkend="objects_journal_metadata">Journal metadata</link> for examples of markup.</para>
+</sect1>
+<sect1 xml:id="element_publisher">
+<title><tag>&lt;publisher></tag></title>
+<para>The publisher name ("Nature Publishing Group", "Palgrave Macmillan") should be contained in the child <tag>&lt;publisher-name></tag> element.</para>
+<para>Do <emphasis role="bold">not</emphasis> use <tag>&lt;publisher-loc></tag>.</para>
+<para>See <link linkend="objects_journal_metadata">Journal metadata</link> for examples of markup.</para>
+</sect1>
     <sect1 xml:id="element_related-article">
       <title><tag>&lt;related-article></tag></title>
       <para>Links to related articles [*lots of possible link types - give full explanation when all have been covered*]</para>
       <para>attributes:</para>
     </sect1>
-    <sect1 xml:id="element_subject">
-    <title><tag>&lt;subject></tag></title>
-      <para>Defines the subjects of an article within <link linkend="element_article-categories"><tag>&lt;article-categories></tag></link>. These are often used to indicate the Table of Contents headings for an article.</para>
-      <para>Do not include any <tag>&lt;xref></tag> links within <tag>&lt;subject></tag>. Any article-level footnotes that must be referenced should be referenced from the <tag>&lt;article-title></tag>. </para>
-    </sect1>
-    <sect1 xml:id="element_title-group">
-      <title><tag>&lt;title-group></tag></title>
-       <para>This holds the <tag>&lt;article-title></tag>.</para>
-       <para>It may also contain <tag>&lt;subtitle></tag>, <tag>&lt;alt-title></tag>. Do not use <tag>&lt;fn-group></tag> or <tag>&lt;trans-title-group></tag>.</para>
-       <para>If the article is a book review, see <tag>&lt;article-title></tag> for special rules. [*This text is from PubMed guidelines. Check Nature practice and add information if necessary*]</para>
-    </sect1>
-     <sect1 xml:id="element_volume">
-        <title><tag>&lt;volume></tag></title>
-        <para>Set volume numbers as an integer only. Do not include the word "volume" or any related abbreviation in the element.</para>
-        <para>If there is no volume number (for example, in an AOP article), do insert an empty element.</para>
-     </sect1>
     <sect1 xml:id="element_xref">
       <title><tag>&lt;xref></tag></title>
-       <para>Used to reference objects within the article. Do not include emphasis or punctuation within the element.</para>
-       <para><tag>@rid</tag> may contain multiple id values.</para>
-       <para>Do not wrap <tag>&lt;xref></tag> in <tag>&lt;sup></tag>, Nature CSS stylesheets will handle this.</para>
-          <table>
-             <title>Required values for <tag>@ref-type</tag> [verify against Nature practice - I don't think we assign ids to a lot of these elements]</title>
-             <tgroup cols="4">
-                <thead>
-                   <row>
-                      <entry>Value</entry>
-                      <entry>Meaning</entry>
-                      <entry>Prefix</entry>
-                      <entry>Target Element</entry>
-                   </row>
-                </thead>
-                <tbody>
-                   <row><entry>app</entry><entry>appendix</entry><entry>app</entry><entry><tag>&lt;app></tag></entry></row>
-                   <row><entry>author-notes</entry><entry>footnote to author</entry><entry>fn</entry><entry><tag>&lt;fn></tag></entry></row>
-                   <row><entry>bibr</entry><entry>bibliographic reference</entry><entry>b</entry><entry><tag>&lt;ref></tag></entry></row>
-                   <row><entry>boxed-text</entry><entry>textbox or sidebar</entry><entry>bx</entry><entry><tag>&lt;boxed-text></tag></entry></row>
-                   <row><entry>disp-formula</entry><entry>display formula</entry><entry>fd</entry><entry><tag>&lt;disp-formula></tag></entry></row>
-                   <row><entry>fig</entry><entry>figure</entry><entry>f</entry><entry><tag>&lt;fig></tag></entry></row>
-                   <row><entry>fn</entry><entry>footnote</entry><entry>fn</entry><entry><tag>&lt;fn></tag></entry></row>
-                   <row><entry>list</entry><entry>list</entry><entry>l</entry><entry><tag>&lt;list></tag></entry></row>
-                   <row><entry>sec</entry><entry>section</entry><entry>s</entry><entry><tag>&lt;sec></tag></entry></row>
-                   <row><entry>supplementary-material</entry><entry>supplementary content</entry><entry>S</entry><entry><tag>&lt;supplementary-material></tag></entry></row>
-                   <row><entry>table</entry><entry>table</entry><entry>t</entry><entry><tag>&lt;table-wrap></tag></entry></row>
-                   <row><entry>table-fn</entry><entry>table footnote</entry><entry>t-fn</entry><entry><tag>&lt;fn></tag></entry></row>
-                </tbody>
-             </tgroup>
-          </table>
-       <para>[*Different to NPG practice*] Tag ranges of cross references by including an <tag>&lt;xref></tag> for the first item, an en-dash (&#x2013;), and an <tag>&lt;xref></tag> for the last item.</para>
-       <para>The changes in education level demonstrate the changing attitudes. 1–3</para>
-       <para><![CDATA[<p>The changes in education level demonstrate the changing attitudes.<xref ref-type="bibr" rid="b1">1</xref>–<xref ref-type="bibr" rid="b3">3</xref></p>]]></para>
-       <para><tag>&lt;xref></tag> may be empty or contain text. For example,</para>
-       <programlisting><![CDATA[
+      <para>Used to reference objects within the article. Do not include emphasis or punctuation within the element.</para>
+      <para><tag>@rid</tag> may contain multiple id values.</para>
+      <table>
+        <title>Required values for <tag>@ref-type</tag> [verify against NPG practice - I don't think we assign ids to a lot of these elements]</title>
+        <tgroup cols="4">
+          <thead>
+            <row>
+              <entry>Value</entry>
+              <entry>Meaning</entry>
+              <entry>Prefix</entry>
+              <entry>Target Element</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row><entry>app</entry><entry>appendix</entry><entry>app</entry><entry><tag>&lt;app></tag></entry></row>
+            <row><entry>author-notes</entry><entry>footnote to author</entry><entry>fn</entry><entry><tag>&lt;fn></tag></entry></row>
+            <row><entry>bibr</entry><entry>bibliographic reference</entry><entry>b</entry><entry><tag>&lt;ref></tag></entry></row>
+            <row><entry>boxed-text</entry><entry>textbox or sidebar</entry><entry>bx</entry><entry><tag>&lt;boxed-text></tag></entry></row>
+            <row><entry>disp-formula</entry><entry>display formula</entry><entry>eq</entry><entry><tag>&lt;disp-formula></tag></entry></row>
+            <row><entry>fig</entry><entry>figure</entry><entry>f</entry><entry><tag>&lt;fig></tag></entry></row>
+            <row><entry>fn</entry><entry>footnote</entry><entry>fn</entry><entry><tag>&lt;fn></tag></entry></row>
+            <row><entry>supplementary-material</entry><entry>supplementary content</entry><entry>s</entry><entry><tag>&lt;supplementary-material></tag></entry></row>
+            <row><entry>table</entry><entry>table</entry><entry>t</entry><entry><tag>&lt;table-wrap></tag></entry></row>
+            <row><entry>table-fn</entry><entry>table footnote</entry><entry>t#-fn#</entry><entry><tag>&lt;fn></tag></entry></row>
+          </tbody>
+        </tgroup>
+      </table>
+      <para>[*Different to NPG practice*] Tag ranges of cross references by including an <tag>&lt;xref></tag> for the first item, an en-dash (&#x2013;), and an <tag>&lt;xref></tag> for the last item.</para>
+      <para>The changes in education level demonstrate the changing attitudes. 1–3</para>
+      <para><![CDATA[<p>The changes in education level demonstrate the changing attitudes.<xref ref-type="bibr" rid="b1">1</xref>–<xref ref-type="bibr" rid="b3">3</xref></p>]]></para>
+      <para><tag>&lt;xref></tag> may be empty or contain text. For example,</para>
+      <programlisting><![CDATA[
         <p>In the presented 3D ground-plane cloak, we choose the parameter distribution in the
             <italic>x–z</italic> plane as that for the 2D cloak given in ref. <xref ref-type="bibr" rid="b18">18</xref>.
             Then, we get the full 3D parameter distributions by rotating it around the <i>z</i> axis.
             Comparing with the original designs<xref ref-type="bibr" rid="b14 b15"/>, the 2D ground-plane cloak
             described in reference Ma <i>et al</i>.<xref ref-type="bibr" rid="b18"/> has a much smaller size (about
             four times smaller).]]></programlisting>
-       <para>attributes:</para>
-       <itemizedlist>
-          <listitem><para>ref-type &#x2014; This is the <tag>@id</tag> of the referenced object. (#REQUIRED)</para></listitem>
-          <listitem><para>rid &#x2014; see the table above for allowed values and ID/IDREF prefixes. (#REQUIRED)</para></listitem>
-          <listitem><para>id &#x2014; Do not use.</para></listitem>
-       </itemizedlist>
+      <para>attributes:</para>
+      <itemizedlist>
+        <listitem><para>ref-type&#x2014;This is the <tag>@id</tag> of the referenced object. (#REQUIRED)</para></listitem>
+        <listitem><para>rid&#x2014;see the table above for allowed values and ID/IDREF prefixes. (#REQUIRED)</para></listitem>
+        <listitem><para>id&#x2014;Do not use.</para></listitem>
+      </itemizedlist>
     </sect1>
-  </chapter>
-  <chapter xml:id="journals">
-    <title>Journal-specific information</title>
-    <para>[*Add information for particular journals, e.g. journal-id, copyright-statement, etc*. Delete information for defunct/irrelevant products.]</para>
-    <sect1 xml:id="journal-ids">
-      <table>
-        <title>&#xa0;</title>
-        <tgroup cols="3">
-          <thead>
-            <row>
-              <entry>Journal title</entry>
-              <entry>Journal id/pcode</entry>
-              <entry>Journal abbrev title</entry>
-            </row>
-          </thead>
-          <tbody>
-<row>
-   <entry>Acta Pharmacologica Sinica</entry><entry>aps</entry><entry>acta pharmacol sin</entry>
-</row>
-<row>
-   <entry>Acta Policica</entry><entry>ap</entry><entry></entry>
-</row>
-<row>
-   <entry>American Journal of Psychoanalysis</entry><entry>ajp</entry><entry>am j psychoanal</entry>
-</row>
-<row>
-   <entry>Asian Business Management</entry><entry>abm</entry><entry></entry>
-</row>
-<row>
-   <entry>Asian Journal of Andrology</entry><entry>aja</entry><entry>asian j andol</entry>
-</row>
-<row>
-   <entry>Bioentrepeneur</entry><entry>bioent</entry><entry></entry>
-</row>
-<row>
-   <entry>Blood Cancer Journal</entry><entry>bcj</entry><entry></entry>
-</row>
-<row>
-   <entry>Bone Marrow Transplantation</entry><entry>bmt</entry><entry>bone marrow transplant</entry>
-</row>
-<row>
-   <entry>BoneKEy Reports</entry><entry>bonekeyreports</entry><entry></entry>
-</row>
-<row>
-   <entry>British Dental Journal</entry><entry>bdj</entry><entry>br dent j</entry>
-</row>
-<row>
-   <entry>British Journal of Cancer</entry><entry>bjc</entry><entry>br j cancer</entry>
-</row>
-<row>
-   <entry>British Politics</entry><entry>bp</entry><entry></entry>
-</row>
-<row>
-   <entry>Cancer Gene Therapy</entry><entry>cgt</entry><entry>cancer gene ther</entry>
-</row>
-<row>
-   <entry>Cell Death &amp; Disease</entry><entry>cddis</entry><entry></entry>
-</row>
-<row>
-   <entry>Cell Death and Differentiation</entry><entry>cdd</entry><entry>cell death differ</entry>
-</row>
-<row>
-   <entry>Cell Migration Gateway</entry><entry>cmg_update</entry><entry></entry>
-</row>
-<row>
-   <entry>Cell Research</entry><entry>cr</entry><entry>cell res</entry>
-</row>
-<row>
-   <entry>Cellular &amp; Molecular Immunology</entry><entry>cmi</entry><entry></entry>
-</row>
-<row>
-   <entry>Clinical Pharmacology and Therapeautics</entry><entry>clpt</entry><entry>clin pharmacol ther</entry>
-</row>
-<row>
-   <entry>Comparative Economic Studies</entry><entry>ces</entry><entry></entry>
-</row>
-<row>
-   <entry>Comparative European Politics</entry><entry>cep</entry><entry></entry>
-</row>
-<row>
-   <entry>Contemporary Political Theory</entry><entry>cpt</entry><entry></entry>
-</row>
-<row>
-   <entry>Corporate Reputation Review</entry><entry>crr</entry><entry></entry>
-</row>
-<row>
-   <entry>Crime Prevention and Community Safety</entry><entry>cpcs</entry><entry></entry>
-</row>
-<row>
-   <entry>Development</entry><entry>development</entry><entry>dev</entry>
-</row>
-<row>
-   <entry>EMBO Reports</entry><entry>embor</entry><entry></entry>
-</row>
-<row>
-   <entry>Eastern Economic Journal</entry><entry>eej</entry><entry></entry>
-</row>
-<row>
-   <entry>Economic Labour and Market Review</entry><entry>elmr</entry><entry></entry>
-</row>
-<row>
-   <entry>European Journal of Clinial Nutrition</entry><entry>ejcn</entry><entry>eur j clin nutr</entry>
-</row>
-<row>
-   <entry>European Journal of Human Genetics</entry><entry>ejhg</entry><entry>eur j hum genet</entry>
-</row>
-<row>
-   <entry>European Journal of Information Systems</entry><entry>ejis</entry><entry></entry>
-</row>
-<row>
-   <entry>European Management Review</entry><entry>emr</entry><entry></entry>
-</row>
-<row>
-   <entry>Evidence-Based Dentistry</entry><entry>ebd</entry><entry>eved based dent</entry>
-</row>
-<row>
-   <entry>Eye</entry><entry>eye</entry><entry></entry>
-</row>
-<row>
-   <entry>Feminist Review</entry><entry>fr</entry><entry></entry>
-</row>
-<row>
-   <entry>Financial Statistics</entry><entry>fs</entry><entry></entry>
-</row>
-<row>
-   <entry>French Politics</entry><entry>fp</entry><entry></entry>
-</row>
-<row>
-   <entry>Functional Glycomics Gateway</entry><entry>fg</entry><entry></entry>
-</row>
-<row>
-   <entry>Gene Therapy</entry><entry>gt</entry><entry>gene ther</entry>
-</row>
-<row>
-   <entry>Genes and Immunity</entry><entry>gene</entry><entry>genes immun</entry>
-</row>
-<row>
-   <entry>Genetics in Medicine</entry><entry>gim</entry><entry></entry>
-</row>
-<row>
-   <entry>Health Statistics Quarterley</entry><entry>hsq</entry><entry>health stat q</entry>
-</row>
-<row>
-   <entry>Health Systems</entry><entry>hs</entry><entry>Health Syst</entry>
-</row>
-<row>
-   <entry>Heredity</entry><entry>hdy</entry><entry></entry>
-</row>
-<row>
-   <entry>Higher Education Policy</entry><entry>hep</entry><entry></entry>
-</row>
-<row>
-   <entry>Hypertension Research</entry><entry>hr</entry><entry></entry>
-</row>
-<row>
-   <entry>IBMS BoneKEy</entry><entry>bonekey</entry><entry></entry>
-</row>
-<row>
-   <entry>Immunology and Cell Biology</entry><entry>icb</entry><entry>immunol cell biol</entry>
-</row>
-<row>
-   <entry>Information Visualization</entry><entry>ivs</entry><entry></entry>
-</row>
-<row>
-   <entry>Interest Groups &amp; Advocacy</entry><entry>iga</entry><entry>Int Groups Adv</entry>
-</row>
-<row>
-   <entry>International Abstracts in Operations Research</entry><entry>iaor</entry><entry></entry>
-</row>
-<row>
-   <entry>International Journal of Educational Advancement</entry><entry>ijea</entry><entry></entry>
-</row>
-<row>
-   <entry>International Journal of Impotence Research</entry><entry>ijir</entry><entry>int j impot res</entry>
-</row>
-<row>
-   <entry>International Journal of Obesity</entry><entry>ijo</entry><entry>int j obes</entry>
-</row>
-<row>
-   <entry>International Journal of Obesity Supplements</entry><entry>ijosup</entry><entry></entry>
-</row>
-<row>
-   <entry>International Journal of Oral Science</entry><entry>ijos</entry><entry>Int J Oral Sci</entry>
-</row>
-<row>
-   <entry>International Monetary Fund Staff Papers</entry><entry>imfsp</entry><entry></entry>
-</row>
-<row>
-   <entry>International Politics</entry><entry>ip</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Asset Management</entry><entry>jam</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Banking Regulation</entry><entry>jbr</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Brand Management</entry><entry>bm</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Building Appraisal</entry><entry>jba</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Cerebral Blood Flow &amp; Metabolism</entry><entry>jcbfm</entry><entry>j cereb blood flow metab"</entry>
-</row>
-<row>
-   <entry>Journal of Commercial Biotechnology</entry><entry>jcb</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Database Marketing and Customer Strategy Management</entry><entry>dbm</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Derivatives and Hedge Funds</entry><entry>jdhf</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Digital Asset Management</entry><entry>dam</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Direct, Data and Digital Marketing Practice</entry><entry>dddmp</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Exposure Science and Environmental Epidemiology</entry><entry>jes</entry><entry>j expo sci environ epidiemiol jesee</entry>
-</row>
-<row>
-   <entry>Journal of Financial Services Marketing</entry><entry>fsm</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Generic Medicines</entry><entry>jgm</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Human Genetics</entry><entry>jhg</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Human Hypertension</entry><entry>jhh</entry><entry>j hum hypertens</entry>
-</row>
-<row>
-   <entry>Journal of Information Technonogy</entry><entry>jit</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of International Business Studies</entry><entry>jibs</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of International Relations and Development</entry><entry>jird</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Investigative Dermatlogy Symposium Proceedings</entry><entry>jidsp</entry><entry>j investig dermatol symp proc jid symposium proceeding</entry>
-</row>
-<row>
-   <entry>Journal of Investigative Dermatology</entry><entry>jid</entry><entry>j invest dermatol skinbio</entry>
-</row>
-<row>
-   <entry>Journal of Medical Marketing</entry><entry>jmm</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Perinatology</entry><entry>jp</entry><entry>j perinatol</entry>
-</row>
-<row>
-   <entry>Journal of Public Health Policy</entry><entry>jphp</entry><entry>j public health policy</entry>
-</row>
-<row>
-   <entry>Journal of Retail and Leisure Property</entry><entry>rlp</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Stimulation</entry><entry>jos</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of Targeting, Measuremenat and Analysis for Marketing</entry><entry>jt</entry><entry></entry>
-</row>
-<row>
-   <entry>Journal of the Operational Research Society</entry><entry>jors</entry><entry></entry>
-</row>
-<row>
-   <entry>Kidney International</entry><entry>ki</entry><entry>kidney int</entry>
-</row>
-<row>
-   <entry>Kidney International Supplements</entry><entry>kisup</entry><entry></entry>
-</row>
-<row>
-   <entry>Knowledge Management Research and Practice</entry><entry>kmrp</entry><entry></entry>
-</row>
-<row>
-   <entry>Lab Animal</entry><entry>laban</entry><entry>lab anim labam</entry>
-</row>
-<row>
-   <entry>Laboratory Investigation</entry><entry>labinvest</entry><entry>lab invest</entry>
-</row>
-<row>
-   <entry>Latino Studies</entry><entry>lst</entry><entry></entry>
-</row>
-<row>
-   <entry>Leukemia</entry><entry>leu</entry><entry></entry>
-</row>
-<row>
-   <entry>Leukemia Supplements</entry><entry>leusup</entry><entry></entry>
-</row>
-<row>
-   <entry>Light: Science &amp; Applications</entry><entry>lsa</entry><entry>Light Sci Appl</entry>
-</row>
-<row>
-   <entry>Lipidomics Gateway</entry><entry>lipidmaps</entry><entry></entry>
-</row>
-<row>
-   <entry>Maritime Economics and Logistics</entry><entry>mel</entry><entry></entry>
-</row>
-<row>
-   <entry>Migration Statistics Quarterly Report</entry><entry>msq</entry><entry></entry>
-</row>
-<row>
-   <entry>Modern Pathology</entry><entry>modpathol</entry><entry>mod pathol</entry>
-</row>
-<row>
-   <entry>Molecular Psychiatry</entry><entry>mp</entry><entry>mol psychiatry</entry>
-</row>
-<row>
-   <entry>Molecular Systems Biology</entry><entry>msb</entry><entry>moly syt biol</entry>
-</row>
-<row>
-   <entry>Molecular Therapy</entry><entry>mt</entry><entry>mol ther</entry>
-</row>
-<row>
-   <entry>Molecular Therapy Nucleic Acids</entry><entry>mtna</entry><entry>Mol Ther Nucleic Acids</entry>
-</row>
-<row>
-   <entry>Monthly Digest of Statistics</entry><entry>mds</entry><entry></entry>
-</row>
-<row>
-   <entry>Mucosal Immunology</entry><entry>mi</entry><entry></entry>
-</row>
-<row>
-   <entry>NCI-Nature Pathway Interaction Database</entry><entry>pid</entry><entry></entry>
-</row>
-<row>
-   <entry>NPG Asia Materials</entry><entry>am</entry><entry>NPG Asia Mater</entry>
-</row>
-<row>
-   <entry>Nature</entry><entry>nature</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Biotechnology</entry><entry>nbt</entry><entry>nat biotech</entry>
-</row>
-<row>
-   <entry>Nature Cell Biology</entry><entry>ncb</entry><entry>nat cell biol</entry>
-</row>
-<row>
-   <entry>Nature Chemical Biology</entry><entry>nchembio</entry><entry>nat chem biol</entry>
-</row>
-<row>
-   <entry>Nature Chemistry</entry><entry>nchem</entry><entry>nature chem</entry>
-</row>
-<row>
-   <entry>Nature China</entry><entry>nchina</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Climate Change</entry><entry>nclimate</entry><entry>Nat. Clim. Change</entry>
-</row>
-<row>
-   <entry>Nature Clinical Practice Cardiovascular Medicine</entry><entry>ncpcardio</entry><entry>nat clin pract cardio</entry>
-</row>
-<row>
-   <entry>Nature Clinical Practice Endocrinology &amp; Metabolism</entry><entry>ncpendmet</entry><entry>nat clin pract endocrionol metab</entry>
-</row>
-<row>
-   <entry>Nature Clinical Practice Gastroenterology &amp; Hepatology</entry><entry>ncpgasthep</entry><entry>nat clin pract gastro</entry>
-</row>
-<row>
-   <entry>Nature Clinical Practice Nephrology</entry><entry>ncpneph</entry><entry>nat clin pract neph</entry>
-</row>
-<row>
-   <entry>Nature Clinical Practice Neurology</entry><entry>ncpneuro</entry><entry>nat clin pract neuro</entry>
-</row>
-<row>
-   <entry>Nature Clinical Practice Oncology</entry><entry>ncponc</entry><entry>nat clin pract onc</entry>
-</row>
-<row>
-   <entry>Nature Clinical Practice Rheumatology</entry><entry>ncprheum</entry><entry>nat clin pract rheum</entry>
-</row>
-<row>
-   <entry>Nature Clinical Practice Urology</entry><entry>ncpuro</entry><entry>nat clin pract uro</entry>
-</row>
-<row>
-   <entry>Nature Communications</entry><entry>ncomms</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Digest</entry><entry>ndigest</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Genetics</entry><entry>ng</entry><entry>nat genet</entry>
-</row>
-<row>
-   <entry>Nature Geoscience</entry><entry>ngeo</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Immunology</entry><entry>ni</entry><entry>nat immunol</entry>
-</row>
-<row>
-   <entry>Nature India</entry><entry>nindia</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Jobs</entry><entry>naturejobs</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Materials</entry><entry>nmat</entry><entry>nat mater</entry>
-</row>
-<row>
-   <entry>Nature Medicine</entry><entry>nm</entry><entry>nat med nma</entry>
-</row>
-<row>
-   <entry>Nature Methods</entry><entry>nmeth</entry><entry>nat methods</entry>
-</row>
-<row>
-   <entry>Nature Middle East</entry><entry>nmiddleeast</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Nanotechnology</entry><entry>nnano</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Neuroscience</entry><entry>neuro</entry><entry>nat neurosci</entry>
-</row>
-<row>
-   <entry>Nature News</entry><entry>news</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Photonics</entry><entry>nphoton</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Physics</entry><entry>nphys</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Protocols</entry><entry>nprot</entry><entry>nat protoc</entry>
-</row>
-<row>
-   <entry>Nature Reports Climate Change</entry><entry>climate</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Reports Stem Cells</entry><entry>stemcells</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Reviews Cancer</entry><entry>nrc</entry><entry>nat rev cancer</entry>
-</row>
-<row>
-   <entry>Nature Reviews Cardiology</entry><entry>nrcardio</entry><entry>nrccardio</entry>
-</row>
-<row>
-   <entry>Nature Reviews Clinical Oncology</entry><entry>nrclinonc</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Reviews Drug Discovery</entry><entry>nrd</entry><entry>nat rev drug discov</entry>
-</row>
-<row>
-   <entry>Nature Reviews Endocrinology</entry><entry>nrendo</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Reviews Gastroenterology and Hepatology</entry><entry>nrgastro</entry><entry></entry>
-</row>
-<row>
-   <entry>Nature Reviews Genetics</entry><entry>nrg</entry><entry>nat rev genet</entry>
-</row>
-<row>
-   <entry>Nature Reviews Immunology</entry><entry>nri</entry><entry>nat rev immunol</entry>
-</row>
-<row>
-   <entry>Nature Reviews Microbiology</entry><entry>nrmicro</entry><entry>nat rev microbiol</entry>
-</row>
-<row>
-   <entry>Nature Reviews Molecular Cell Biology</entry><entry>nrm</entry><entry>nat rev mol cell biol</entry>
-</row>
-<row>
-   <entry>Nature Reviews Nephrology</entry><entry>nrneph</entry><entry>nat rev nephrol</entry>
-</row>
-<row>
-   <entry>Nature Reviews Neurology</entry><entry>nrneurol</entry><entry>nat rev neurol</entry>
-</row>
-<row>
-   <entry>Nature Reviews Neuroscience</entry><entry>nrn</entry><entry>nat rev neurosci</entry>
-</row>
-<row>
-   <entry>Nature Reviews Rheumatology</entry><entry>nrrheum</entry><entry>nat rev rheumatol</entry>
-</row>
-<row>
-   <entry>Nature Reviews Urology</entry><entry>nrurol</entry><entry>nat rev urol</entry>
-</row>
-<row>
-   <entry>Nature Structural Biology</entry><entry>nsb</entry><entry>nat struct mol biol nsmb nsmba</entry>
-</row>
-<row>
-   <entry>Nature Structural and Molecular Biology</entry><entry>nsmb</entry><entry>nat struct mol biol nsb nsmba</entry>
-</row>
-<row>
-   <entry>Neuropsychopharmacology</entry><entry>npp</entry><entry></entry>
-</row>
-<row>
-   <entry>Nutrition &amp; Diabetes</entry><entry>nutd</entry><entry></entry>
-</row>
-<row>
-   <entry>Obesity</entry><entry>oby</entry><entry>obesity (silver spring) obesity research</entry>
-</row>
-<row>
-   <entry>Oncogene</entry><entry>onc</entry><entry></entry>
-</row>
-<row>
-   <entry>Oncogenesis</entry><entry>oncsis</entry><entry></entry>
-</row>
-<row>
-   <entry>Organization Management Journal</entry><entry>omj</entry><entry></entry>
-</row>
-<row>
-   <entry>PSI Structural Biology Knowledgebase</entry><entry>sbkb</entry><entry></entry>
-</row>
-<row>
-   <entry>Pediatric Research</entry><entry>pr</entry><entry></entry>
-</row>
-<row>
-   <entry>Pensions: An International Journal</entry><entry>pm</entry><entry></entry>
-</row>
-<row>
-   <entry>Place Branding and Public Diplomacy</entry><entry>pb</entry><entry></entry>
-</row>
-<row>
-   <entry>Polity</entry><entry>polity</entry><entry></entry>
-</row>
-<row>
-   <entry>Polymer Journal</entry><entry>pj</entry><entry></entry>
-</row>
-<row>
-   <entry>Population Trends</entry><entry>pt</entry><entry>popul trends</entry>
-</row>
-<row>
-   <entry>Prostatic Cancer and Prostatic Diseases</entry><entry>pcan</entry><entry>prostate cancer prostatic dis</entry>
-</row>
-<row>
-   <entry>Protein Structure Initiative Structural Genomics Knowledgebase</entry><entry>psiskb</entry><entry></entry>
-</row>
-<row>
-   <entry>Protocol Exchange</entry><entry>prne</entry><entry></entry>
-</row>
-<row>
-   <entry>Psychoanalysis, Culture and Society</entry><entry>pcs</entry><entry></entry>
-</row>
-<row>
-   <entry>Risk Management</entry><entry>rm</entry><entry></entry>
-</row>
-<row>
-   <entry>Science-Business eXchange</entry><entry>scibx</entry><entry></entry>
-</row>
-<row>
-   <entry>Scientific American</entry><entry>scientificamerican</entry><entry></entry>
-</row>
-<row>
-   <entry>Scientific American Mind</entry><entry>scientificamericanmind</entry><entry></entry>
-</row>
-<row>
-   <entry>Scientific Reports</entry><entry>srep</entry><entry>Sci. Rep.</entry>
-</row>
-<row>
-   <entry>Security Journal</entry><entry>sj</entry><entry></entry>
-</row>
-<row>
-   <entry>Social Theory and Health</entry><entry>sth</entry><entry></entry>
-</row>
-<row>
-   <entry>Spinal Cord</entry><entry>sc</entry><entry></entry>
-</row>
-<row>
-   <entry>Subjectivity</entry><entry>sub</entry><entry></entry>
-</row>
-<row>
-   <entry>The American Journal of Gastroenterology</entry><entry>ajg</entry><entry>am j gastroenterol</entry>
-</row>
-<row>
-   <entry>The American Journal of Hypertension</entry><entry>ajh</entry><entry>am j hypertens</entry>
-</row>
-<row>
-   <entry>The EMBO Journal</entry><entry>emboj</entry><entry>embo j</entry>
-</row>
-<row>
-   <entry>The Geneva Papers</entry><entry>gpp</entry><entry></entry>
-</row>
-<row>
-   <entry>The Geneva Risk and Insurance Review</entry><entry>grir</entry><entry></entry>
-</row>
-<row>
-   <entry>The ISME Journal</entry><entry>ismej</entry><entry>isme j</entry>
-</row>
-<row>
-   <entry>The Journal of Antibiotics</entry><entry>ja</entry><entry>j antibiot</entry>
-</row>
-<row>
-   <entry>The Pharmacogenomics Journal</entry><entry>tpj</entry><entry>pharmacogenomics j</entry>
-</row>
-<row>
-   <entry>Toursism and Hospitality Research</entry><entry>thr</entry><entry></entry>
-</row>
-<row>
-   <entry>Translational Psychiatry</entry><entry>tp</entry><entry></entry>
-</row>
-<row>
-   <entry>United Kingdom Economic Accounts</entry><entry>ukea</entry><entry></entry>
-</row>
-<row>
-   <entry>Urban Design International</entry><entry>udi</entry><entry></entry>
-</row>
-<row>
-   <entry>Vital</entry><entry>vital</entry><entry></entry>
-</row>
-          </tbody>
-        </tgroup>
-      </table>
-      
-    </sect1>
-  </chapter>
+</chapter>
 </book>
