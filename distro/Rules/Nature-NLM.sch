@@ -41,12 +41,12 @@ Use the <let> element to define the attribute if necessary.
     </rule>
   </pattern>
   
-  <!--<pattern>
+  <!--pattern>
     <rule context="article[@article-type]" role="error">Is the article-type valid?
       <assert  id="article2" test="$journal-title = $allowed-values/article-types/article-type[@type=$article-type]/journal or not($journal-title) or not($products[descendant::dc:title=$journal-title])">Unexpected root article type (<value-of select="$article-type"/>) for <value-of select="$journal-title"/>.</assert>
     </rule>
-  </pattern>-->
-  
+  </pattern-->
+ 
   <pattern>
     <rule context="article[@xml:lang]" role="error"><!--If @xml:lang exists, does it have an allowed value-->
       <let name="lang" value="@xml:lang"></let>
@@ -150,7 +150,7 @@ Use the <let> element to define the attribute if necessary.
     </rule>
   </pattern>
   
-  <!-- ====================================================== Article metadata ================================================== -->
+<!-- ====================================================== Article metadata ================================================== -->
 
   <pattern>
     <rule context="article-meta" role="error"><!--Two article ids, one doi and one publisher-id-->
@@ -203,8 +203,8 @@ Use the <let> element to define the attribute if necessary.
   
   <!--Article title (title-group)-->
   <pattern>
-    <rule context="fn-group | trans-title-group" role="error"><!--No unexpected children of article title-group used-->
-      <report id="arttitle1" test="parent::title-group">Unexpected use of "<name/>" in article "title-group". "title-group" should only contain "article-title", "subtitle", "alt-title".</report>
+    <rule context="trans-title-group" role="error"><!--No unexpected children of article title-group used-->
+      <report id="arttitle1a" test="parent::title-group">Unexpected use of "trans-title-group" in article "title-group". "title-group" should only contain "article-title", "subtitle", "alt-title" or "fn-group".</report>
     </rule>
   </pattern>
   
@@ -431,7 +431,7 @@ Use the <let> element to define the attribute if necessary.
 
   <!--Related article - type and link as expected?-->
   
-  <!--Abstract-->
+  <!--Abstracts-->
   
   <pattern><!--valid @abstract-type-->
     <rule context="abstract[@abstract-type]" role="error">
@@ -456,7 +456,7 @@ Use the <let> element to define the attribute if necessary.
     </rule>
   </pattern>  
 
-  <pattern><!--editor summary specific-use attribute equal to 'aop' or 'issue'-->
+  <pattern><!--editor summaries specific-use attribute equal to 'aop' or 'issue'-->
     <rule context="abstract[@abstract-type='editor' or @abstract-type='editor-standfirst' or @abstract-type='research-summary' or @abstract-type='editorial-notes'][@specific-use]" role="error">
       <assert id="abs4a" test="@specific-use='aop' or @specific-use='issue'">Unexpected value (<value-of select="@specific-use"/>) for "specific-use" attribute on editor abstracts. Allowed values are "aop" or "issue".</assert>
     </rule>
@@ -466,7 +466,6 @@ Use the <let> element to define the attribute if necessary.
       <report id="abs4b" test="@specific-use=./preceding-sibling::abstract[@abstract-type='editor']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear on editor abstract in each article.</report>
     </rule>
   </pattern>
-  
   <pattern>
     <rule context="abstract[@abstract-type='editor-standfirst'][@specific-use]" role="error">
       <report id="abs4c" test="@specific-use=./preceding-sibling::abstract[@abstract-type='editor-standfirst']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear on editor-standfirst in each article.</report>
@@ -563,8 +562,8 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
   
   <pattern><!--sec - sec-type or specific-use attribute used-->
-    <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/boxed-text | sec/chem-struct-wrap | sec/fig | sec/fig-group | sec/graphic | sec/media | sec/preformat | sec/supplementary-material | sec/table-wrap | sec/table-wrap-group | sec/disp-formula-group | sec/def-list | sec/text-math | sec/mml:math | sec/related-article | sec/related-object | sec/disp-quote | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list" role="error">
-      <report id="sec4" test=".">Children of "sec" should only be "title", "p", "sec" or "disp-formula" - do not use "<name/>".</report>
+    <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/boxed-text | sec/chem-struct-wrap | sec/fig | sec/fig-group | sec/graphic | sec/media |  sec/supplementary-material | sec/table-wrap | sec/table-wrap-group | sec/disp-formula-group | sec/def-list | sec/text-math | sec/mml:math | sec/related-article | sec/related-object | sec/disp-quote | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list" role="error">
+      <report id="sec4" test=".">Children of "sec" should only be "title", "p", "sec", "disp-formula" or "preformat" - do not use "<name/>".</report>
     </rule>
   </pattern>
   
@@ -617,10 +616,10 @@ Use the <let> element to define the attribute if necessary.
       <assert id="list3a" test="@list-type">Use "list-type" attribute to show type of list used. Allowed values are: none, bullet, number, lcletter, ucletter, lcroman and ucroman.</assert>
     </rule>
   </pattern>
-  <pattern><!--list-type attribute is valid-->
+  <pattern><!--list-type attribute is valid--><!--needs work - excludes lists in body when no sec exists; does it work in abstracts?-->
     <rule context="list[not(ancestor::sec/@sec-type) and ancestor::sec/@specific-use][@list-type]" role="error">
       <let name="listType" value="@list-type"/>
-      <assert id="list3b" test="$allowed-values/list-types/list-type[.=$listType]">Unexpected value for "list-type" attribute (<value-of select="$listType"/>). Allowed values are: bullet, number, lcletter, ucletter, lcroman and ucroman. </assert>
+      <assert id="list3b" test="$allowed-values/list-types/list-type[.=$listType]">Unexpected value for "list-type" attribute (<value-of select="$listType"/>). Allowed values are: none, bullet, number, lcletter, ucletter, lcroman and ucroman. </assert>
     </rule>
   </pattern>
   
