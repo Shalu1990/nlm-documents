@@ -2,11 +2,11 @@
 <!DOCTYPE book SYSTEM "file:/C:/Program%20Files%20(x86)/Oxygen%20XML%20Editor%2013/frameworks/docbook/5.0/dtd/docbook.dtd">
 <?xml-stylesheet type="text/css" href="css/docbook-custom.css"?>
 <book>
-  <title>JATS Tagging Guidelines for NPG/Palgrave articles</title>
+  <title>JATS Tagging Instructions for NPG/Palgrave articles</title>
   <preface>
     <title>Introduction</title>
-    <para>These Tagging Guidelines describe NPG's preferred XML tagging style for journal article submissions in NISO JATS Journal Publishing DTD. All deliveries made to NPG must conform to the provisions of this document.</para>
-    <para>The Tagging Guidelines are divided into separate chapters. Each chapter describes separate rules that must be followed when creating NPG-style compliant XML. Many of the rules are related, but none are duplicated from one chapter to another.</para>
+    <para>These Tagging Instructions describe NPG's preferred XML tagging style for journal article submissions in NISO JATS Journal Publishing DTD. All deliveries made to NPG must conform to the provisions of this document.</para>
+    <para>The Tagging Instructions are divided into separate chapters. Each chapter describes separate rules that must be followed when creating NPG-style compliant XML. Many of the rules are related, but none are duplicated from one chapter to another.</para>
     <itemizedlist>
       <listitem>
         <para><link linkend="general">General tagging practice</link>: These style rules apply to structured data tagging at a very broad level and include emphasised text, mathematics, and special characters.</para>
@@ -16,14 +16,14 @@
       </listitem>
       <listitem><para><link linkend="elements">Elements</link>: This chapter describes style rules for specific XML elements and their attributes. Only elements for which NPG has a style rule are described in this section. Refer to the <link xlink:href="http://jats.nlm.nih.gov/publishing/tag-library/1.0/index.html">JATS Tag Library</link> for descriptions of all elements available in the DTD.</para></listitem>
     </itemizedlist>
-    <!--para>In addition to these chapters, all updates to the Tagging Guidelines will be documented in the [Update History].[* Insert link to this document once created *]</para-->
+    <para>In addition to these chapters, all updates to the Tagging Instructions will be documented in the <link linkend="update_history">Update History.</link></para>
      <simplesect>
         <title>A note on presentation</title>
         <para>Elements are shown within angled brackets. Attributes are preceeded by the @ sign. Both are shown in a monospace font to distinguish them from regular text.</para>
      </simplesect>
      <simplesect>
       <title>Packaging format</title>
-      <para>XML files should be uploaded to the NPG XML Gateway for validation against DTD and Schematron rules. Associated binary files (images, pdfs etc) should continue to be submitted to the ftp site. This is likely to change in the future with all files submitted together to the XML Gateway.</para>
+      <para>XML files should be uploaded to the NPG XML Gateway for validation against DTD and Schematron rules. Associated binary files (images, pdfs etc) should be submitted to the ftp site. This is likely to change in the future with all files submitted together to the XML Gateway.</para>
     </simplesect>
     <!--simplesect>
       <title>Fully-tagged samples</title>
@@ -33,7 +33,7 @@
   <chapter xml:id="general">
     <title>General tagging practice</title>
     <para>The XML should conform to the JATS Journal Publishing DTD, version 1.0 incorporating the Oasis table model. The DTD is available from the stable ftp site: <link xlink:href="ftp://ftp.ncbi.nih.gov/pub/jats/publishing/1.0/">ftp://ftp.ncbi.nih.gov/pub/jats/publishing/1.0/</link></para>
-    <para>The main module of the DTD we use is JATS-journalpublishing-oasis-article1.dtd. It imports the subordinate modules. For the schema to work, all modules must be in the same directory.</para>
+    <para>The main module of the DTD we use is "JATS-journalpublishing-oasis-article1.dtd". It imports the subordinate modules. For the schema to work, all modules must be in the same directory.</para>
     <para>The complete JATS Tag Library is available on the web: <link xlink:href="http://jats.nlm.nih.gov/publishing/tag-library/1.0/index.html">http://jats.nlm.nih.gov/publishing/tag-library/1.0/index.html</link></para>
     <section xml:id="doctype_declaration">
       <title>DOCTYPE declaration</title>
@@ -45,8 +45,8 @@
     </section>
     <section>
       <title>Emphasised text</title>
-      <para>As a rule, use emphasised text markup (<tag>&lt;bold></tag>, <tag>&lt;italic></tag>, <tag>&lt;sc></tag>, etc) only to set off a piece of information. Do not set entire elements in emphasised text. For example, if a <tag>&lt;title></tag> is set completely in boldface, do not use the <tag>&lt;bold></tag>. However, if a title has a word or some words set in boldface for emphasis, tag those words using <tag>&lt;bold></tag>. Mainly this will apply to <tag>&lt;title></tag>, <tag>&lt;p></tag> in <tag>&lt;abstract></tag>, <tag>&lt;label></tag> and entries in <tag>&lt;oasis:thead></tag>. It might also show up in <tag>&lt;aff></tag> and "special" sections, like <tag>&lt;ack></tag>.</para>
-      <para>[*Insert example - figure title perhaps?*]</para>
+      <para>As a rule, use emphasised text markup (<tag>&lt;bold></tag>, <tag>&lt;italic></tag>, <tag>&lt;sc></tag>, etc) only to set off a piece of information. Do not set entire elements in emphasised text. For example, if a <tag>&lt;title></tag> is set completely in boldface, do not use the <tag>&lt;bold></tag>. However, if a title has a word or some words set in boldface for emphasis, tag those words using <tag>&lt;bold></tag>. Mainly this will apply to <tag>&lt;title></tag>, <tag>&lt;p></tag> in <tag>&lt;abstract></tag>, <tag>&lt;label></tag> and entries in <tag>&lt;oasis:thead></tag>. It might also appear in <tag>&lt;aff></tag> and "special" sections, like <tag>&lt;ack></tag>.</para>
+      <!--para>[*Insert examples - figure title perhaps?*]</para-->
     </section>
     <section>
       <title>Empty elements</title>
@@ -55,22 +55,22 @@
     <section xml:id="links">
       <title>Links</title>
       <para>Tag all internal links within the document (e.g. tables, figures, display formulae) with the <tag>&lt;xref></tag> element and include the appropriate <tag>@ref-type</tag>. See <link linkend="element_xref"><tag>&lt;xref></tag></link>.</para>
-      <para>Tag all links to related articles (e.g. from a correction to the corrected article) with <tag>&lt;related-article></tag> and include the appropriate <tag>@ext-link-type</tag>, <tag>@related-article-type</tag>, and citation information. See <link linkend="element_related-article"><tag>&lt;related-article></tag></link>.</para>
+      <para>Tag all links to related articles (e.g. from a correction to the corrected article) with <tag>&lt;related-article></tag> and include the appropriate <tag>@related-article-type</tag>, and citation information. See <link linkend="element_related-article"><tag>&lt;related-article></tag></link>.</para>
       <para>Tag all external links with <tag>&lt;ext-link></tag> and include the appropriate <tag>@ext-link-type</tag>. See <link linkend="element_ext-link"><tag>&lt;ext-link></tag></link>.</para>
       </section>
     <section xml:id="mathematics">
       <title>Mathematics</title>
-      <para>Tag all display formulae with MathML markup and capture an image. MathML 2.0 is included in the JATS DTD.</para>
-      <para>Tag an inline formula with MathML markup when it cannot be represented by regular article elements and Unicode characters. [Add definition for what counts as a formula - equals sign and equivalents, not just +, −, / or &#x00D7;] For example, [*give examples - nutd201220 inline-formulae*]</para>
-      <para>Do not set mathematics as <tag>&lt;tex-math></tag>.</para>
+      <para>Tag all display formulae with MathML markup. MathML 2.0 is included in the JATS DTD. Tag an inline formula with MathML markup when it cannot be represented by regular article elements and/or Unicode characters. An image of the formula is not required.</para>
+      <para>Do <emphasis role="bold">not</emphasis> set mathematics as <tag>&lt;tex-math></tag>.</para>
       <para>Use <tag>&lt;mml:math></tag> to tag mathematical expressions only. Do not use it to tag single characters.</para>
+      <para>See <link linkend="objects_formulae">Formulae</link> for sample markup.</para>
     </section>
     <section xml:id="unicode">
       <title>Use of Unicode</title>
       <para>Do <emphasis role="bold">not</emphasis> use named character entities within JATS markup, apart from the predefined XML entities (<![CDATA[&lt;]]> for &lt;, <![CDATA[&gt;]]> for &gt;, and <![CDATA[&amp;]]> for &amp;).</para>
       <para>Tag non-ASCII characters with their Unicode hex number in character entity style (e.g. <![CDATA[&#xD7;]]> for &#xD7; and <![CDATA[g&#x303;]]> for g&#x303;).</para>
       <para>Do not use values from the Private Use Areas: xE000–xF8FF, xF0000–xFFFFD, and x100000–x10FFFD. Do not use Unicode values designated as control codes. These ranges include but are not limited to x0000–0020, x0080–x009F.</para>
-      <para>[*Info from Jude on "unsafe" entities which will require Stix fonts*]</para>
+      <!--para>[*Info from Jude on "unsafe" entities which will require Stix fonts*]</para-->
     </section>
 <section xml:id="mimetypes">
 <title>Mimetypes and mime subtypes</title>
@@ -162,7 +162,7 @@
 </sect1>
 <sect1 xml:id="objects_front">
 <title>Front</title>
-<para><tag>&lt;front></tag> should contain <tag>&lt;journal-meta></tag> and <tag>&lt;article-meta></tag>. Do not use <tag>&lt;notes></tag> in <tag>&lt;front></tag>.</para>
+<para><tag>&lt;front></tag> should contain <tag>&lt;journal-meta></tag> and <tag>&lt;article-meta></tag>. <tag>&lt;notes></tag> may be used in <tag>&lt;front></tag> in a couple of special cases [but should not be used for online-only journals].</para>
 <sect2 xml:id="objects_journal_metadata">
 <title>Journal metadata</title>
 <para><tag>&lt;journal-meta></tag> contains minimal journal metadata:
@@ -185,8 +185,7 @@
             <publisher-name>Nature Publishing Group</publisher-name>
          </publisher>
      </journal-meta>
-]]></programlisting>
-  <programlisting><![CDATA[
+
      <journal-meta>
          <journal-id journal-id-type="publisher">sth</journal-id>
          <journal-title-group>
@@ -197,32 +196,386 @@
          <publisher>
              <publisher-name>Palgrave Macmillan</publisher-name>
          </publisher>
-     </journal-meta>
-]]></programlisting>
-<para>Do <emphasis role="bold">not</emphasis> use <tag>&lt;contrib-group></tag>, <tag>&lt;aff></tag>, <tag>&lt;aff-alternatives></tag>, <tag>&lt;issn-l></tag>, <tag>&lt;isbn></tag>, <tag>&lt;notes></tag>, <tag>&lt;self-uri></tag> within <tag>&lt;journal-meta></tag>.</para>
+     </journal-meta>]]></programlisting>
+<para>Do <emphasis role="bold">not</emphasis> use <tag>&lt;contrib-group></tag>, <tag>&lt;aff></tag>, <tag>&lt;aff-alternatives></tag>, <tag>&lt;issn-l></tag>, <tag>&lt;isbn></tag>, <tag>&lt;notes></tag>, or <tag>&lt;self-uri></tag> within <tag>&lt;journal-meta></tag>.</para>
 </sect2>
 <sect2 xml:id="objects_article_metadata">
 <title>Article metadata</title>
-<para></para>
+  <para>The following information is given in the order that it should appear in  <tag>&lt;article-meta></tag>.</para>
+<sect3>
+  <title>Article ids</title>
+  <para>NPG/Palgrave articles should all have two <tag>&lt;article-id></tag>s:</para>
+  <itemizedlist>
+    <listitem><para><tag>@pub-id-type="publisher-id"</tag>&#x2014;the article filename</para></listitem>
+    <listitem><para><tag>@pub-id-type="doi"</tag>&#x2014;the full article DOI</para></listitem>
+  </itemizedlist>
+  <para>Example:</para>
+  <programlisting><![CDATA[
+     <article-id pub-id-type="publisher-id">nutd201113</article-id>
+     <article-id pub-id-type="doi">10.1038/nutd.2011.13</article-id>]]></programlisting>
+</sect3>
+  <sect3>
+    <title>Article heading and category</title>
+    <para>NPG/Palgrave articles should all have <tag>&lt;article-categories></tag>.</para>
+    <para>The article heading (e.g. "Original Article", "Short Communication", "Corrigendum") and category information should be captured within <tag>&lt;subj-group subj-group-type="article-heading"></tag> and child element <tag>&lt;subject content-type="article-heading"></tag>.</para>
+    <para>The article category code (which is also the main <tag>&lt;article> @article-type</tag> code) should be captured within <tag>&lt;subj-group subj-group-type="category"></tag> and child element <tag>&lt;subject></tag> with no attributes.</para>
+    <para>Do not use <tag>&lt;series-text></tag> or <tag>&lt;series-title</tag> in <tag>&lt;article-categories></tag></para>
+    <para>Example:</para>
+    <programlisting><![CDATA[
+     <article-categories>
+       <subj-group subj-group-type="article-heading">
+         <subject content-type="article-heading">Original Article</subject>
+       </subj-group>
+       <subj-group subj-group-type="category">
+         <subject>oa</subject>
+       </subj-group>
+     </article-categories>]]></programlisting>
+  </sect3>
+  <sect3>
+    <title>Article title</title>
+    <para>The required <tag>&lt;title-group></tag> element should not contain <tag>&lt;trans-title-group></tag>. Examples will be given of when other child elements can be used.</para>
+    <para>If an article has a running title, <tag>&lt;alt-title alt-title-type="running-title"></tag> should be used.</para>
+    <para>Example:</para>
+    <programlisting><![CDATA[
+     <article-title>Serum adiponectin level is not only decreased in metabolic syndrome but also in
+         borderline metabolic abnormalities</article-title>
+     <alt-title alt-title-type="running-title">Adiponectin and borderline abnormalities</alt-title>]]></programlisting>
+  </sect3>
+  <sect3 xml:id="object_contributors">
+    <title>Contributors and affiliations</title>
+    <para>All NPG/Palgrave articles should have <tag>&lt;contrib-group></tag> to capture the article authors. <tag>&lt;contrib-group></tag> should only contain one or more <tag>&lt;contrib></tag>, do not use any other child elements.</para>
+    <para>Each <tag>&lt;contrib></tag> should have <tag>@contrib-type</tag> (with values "author" or "editor") and <tag>@corresp</tag> (with values "yes" or "no").</para>
+    <para>Each <tag>&lt;contrib></tag> should also contain an <tag>&lt;xref></tag> to their affiliation details (except for correction articles where this is not required).</para>
+    <para>If a contributor has <tag>@corresp="yes"</tag> then an <tag>&lt;xref></tag> to the correspondence information should be also be given.</para>
+    <para><tag>&lt;xref></tag> should also be used for links to other notes about the authors, e.g. equal contribution information.</para>
+    <para>The affilations should be gathered together as separate <tag>&lt;aff></tag> elements after <tag>&lt;contrib-group></tag> and not included as a child element of <tag>&lt;contrib></tag>. Affiliations are not required for correction articles.</para>
+    <para>Examples:</para>
+    <programlisting><![CDATA[
+     <contrib-group>
+       <contrib contrib-type="author" corresp="yes">
+         <name>
+           <surname>Newton</surname>
+           <given-names>R L</given-names>
+           <suffix>Jr</suffix>
+         </name>
+         <xref ref-type="aff" rid="a1"/>
+         <xref ref-type="corresp" rid="c1"/>
+       </contrib>
+       <contrib contrib-type="author" corresp="no">
+         <name>
+           <surname>Caron-Jobin</surname>
+           <given-names>M</given-names>
+         </name>
+         <xref ref-type="aff" rid="a1"/>
+         <xref ref-type="aff" rid="a2"/>
+         <xref ref-type="author-notes" rid="n1">
+           <sup>6</sup>
+         </xref>
+       </contrib>
+     </contrib-group>
+     <aff id="a1"><institution>Endocrinology and Genomics, Laval University</institution>, <addr-line
+         content-type="city">Qu&#xE9;bec City</addr-line>, <addr-line content-type="state">Qu&#xE9;bec
+         </addr-line>, <country>Canada</country></aff>
+     <aff id="a2"><institution>Physical Check up Center, Sumitomo Hospital</institution>, <addr-line
+         content-type="city">Osaka</addr-line>, <country>Japan</country></aff>]]></programlisting>
+    <para>See <link linkend="element_xref"><tag>&lt;xref></tag></link> for further information on marking up author-related links.</para>
+  </sect3>
+  <sect3>
+    <title>Author notes</title>
+    <para><tag>&lt;author-notes></tag> contains correspondence information, any conflict of interest statement, author contribution information and any other author-related notes (e.g. equal contribution information).</para>
+    <para><tag>&lt;author-notes></tag> are not required for correction articles.</para>
+    <para>Do not use <tag>&lt;title></tag>, <tag>&lt;label></tag> or <tag>&lt;p></tag> in <tag>&lt;author-notes></tag>.</para>
+    <sect4>
+    <title>Correspondence information</title>
+      <para>Details of the address and email of a corresponding author should be contained in <tag>&lt;corresp></tag> and not in <tag>&lt;fn fn-type="corresp"></tag>.</para>
+      <para>Each <tag>&lt;corresp></tag> should have an <tag>@id</tag> which should follow the format of "c" + number.</para>
+      <para>Where the author's name/title is given at the beginning of the address, mark this up as <tag>&lt;named-content content-type="author"></tag> </para>
+      <para>Example:</para>
+      <programlisting><![CDATA[
+     <corresp id="c1"><named-content content-type="author">Professor W-S Choi</named-content>,
+         <institution>Department of Family Medicine, Seoul St Mary&#x2019;s Hospital, College of
+         Medicine, The Catholic University of Korea</institution>, <addr-line content-type="street">505
+         Banpo-Dong, Seocho-Gu</addr-line>, <addr-line content-type="city">Seoul</addr-line> <addr-line
+         content-type="zip">137-701</addr-line>, <country>Korea</country>. E-mail: <email
+         xlink:href="kolpos@naver.com">kolpos@naver.com</email></corresp>]]></programlisting>
+    </sect4>
+    <sect4>
+      <title>Conflict of interest statement</title>
+      <para>Where a conflict of interest statement is given, it should be captured as <tag>&lt;fn @fn-type="conflict"></tag> in <tag>&lt;author-notes></tag> and not as a section in <tag>&lt;back></tag>.</para>
+      <para><tag>&lt;fn></tag> should also have <tag>@specific-use</tag> with values "no-conflict" (where there is no conflict) or "conflict" (where there is a conflict). "conflict" should also be used even if only one author has declared it.</para>
+      <para>Examples:</para>
+      <programlisting><![CDATA[
+     <fn fn-type="conflict" specific-use="no-conflict"><p>The authors declare no conflict of
+         interest.</p></fn>
+         
+     <fn fn-type="conflict" specific-use="conflict"><p>RJS has received grant support from Zafgen and
+         Ethicon Endo-Surgery. RJS also currently has stock/stock options with Zafgen and consults for
+         Zafgen, Eli Lilly and Ethicon Endo-Surgeries. DAS has received grant support from Ethicon Endo-
+         Surgery, Roche, Mannkind, and Pfizer. The other authors declare no conflict of interest.</p></fn>]]></programlisting>
+    </sect4>
+    <sect4>
+      <title>Contribution information</title>
+      <para>Where author contribution information is given, it should be captured as <tag>&lt;fn @fn-type="con"></tag> in <tag>&lt;author-notes></tag> and not as a section in <tag>&lt;back></tag> or <tag>&lt;ack></tag>.</para>
+      <para>Example:</para>
+      <programlisting><![CDATA[
+     <fn fn-type="con"><p>Dr E Shyong Tai and Dr Jeannette Lee helped in the conception and design the
+         study. Dr Chin Meng Khoo, Maudrene Tan and Wu Yi helped conduct the literature review, data
+         analysis and preparation of the text. Dr Daniel Wai and Dr Subramaniam Tavintharan helped in the
+         final approval of the manuscript.</p></fn>]]></programlisting>
+    </sect4>
+    <sect4>
+      <title>Other types of author notes</title>
+      <para>Any other types of author notes (e.g. equal contribution information, current address) should be captured as <tag>&lt;fn></tag> without <tag>@fn-type</tag> in <tag>&lt;author-notes></tag>. </para>
+      <para>Each <tag>&lt;fn></tag> should have an <tag>@id</tag> which should follow the format of "n" + number.</para>
+      <para><tag>&lt;label></tag> should be used as the number/symbol used cannot be derived from the <tag>@id</tag>.</para>
+      <para>Example:</para>
+      <programlisting><![CDATA[
+     <fn id="n1"><label><sup>6</sup></label><p>These authors contributed equally to this work.</p></fn>]]></programlisting>
+    </sect4>
+  </sect3>
+  <sect3>
+    <title>Publication dates</title>
+    <para>For online only journals only two <tag>&lt;pub-date></tag>s are required:</para>
+    <itemizedlist>
+      <listitem><para><tag>@pub-type="epub"</tag>&#x2014;the online publishing date of the article. This should have <tag>&lt;day></tag>, <tag>&lt;month></tag> and <tag>&lt;year></tag> child elements.</para></listitem>
+      <listitem><para><tag>@pub-type="cover-date"</tag>&#x2014;the cover date of the equivalent print issue. For online only journals this means the <tag>&lt;month></tag> and <tag>&lt;year></tag> of publication.</para></listitem>
+    </itemizedlist>
+    <para>Example:</para>
+    <programlisting><![CDATA[
+     <pub-date pub-type="epub">
+       <day>30</day>
+       <month>01</month>
+       <year>2012</year>
+     </pub-date>
+     <pub-date pub-type="cover-date">
+       <month>01</month>
+       <year>2012</year>
+     </pub-date>]]></programlisting>
+  </sect3>
+  <sect3>
+    <title>Volume, issue and page information</title>
+    <para></para>
+    <para>Example:</para>
+    <programlisting><![CDATA[
+     <volume>2</volume>
+     <issue seq="23">1</issue>
+     <fpage>e23</fpage>]]></programlisting>
+  </sect3>
+  <sect3>
+    <title>Historical dates</title>
+    <para>All NPG/Palgrave articles (except correction articles) should have <tag>&lt;history></tag>, capturing the received, revised and accepted dates of an article manuscript.</para>
+    <para><tag>&lt;date> @date-type</tag> values should be:</para>
+    <itemizedlist>
+      <listitem><para><tag>"received"</tag>&#x2014;the date the article was received (REQUIRED)</para></listitem>
+      <listitem><para>"rev-recd"&#x2014;the date the article was received (optional, but may be more than one)</para></listitem>
+      <listitem><para>"accepted"&#x2014;the date the article was accepted (REQUIRED)</para></listitem>
+    </itemizedlist>
+    <para>Example:</para>
+    <programlisting><![CDATA[
+     <history>
+       <date date-type="received">
+         <day>27</day>
+         <month>07</month>
+         <year>2010</year>
+       </date>
+       <date date-type="rev-recd">
+         <day>27</day>
+         <month>08</month>
+         <year>2010</year>
+       </date>
+       <date date-type="accepted">
+         <day>05</day>
+         <month>09</month>
+         <year>2010</year>
+       </date>
+     </history>]]></programlisting>
+  </sect3>
+  <sect3>
+    <title>Copyright and permissions</title>
+    <para>All NPG/Palgrave articles should have <tag>&lt;copyright-year></tag> and <tag>&lt;copyright-holder></tag> information.</para>
+    <para>If an article is "open access" <tag>&lt;license></tag> information should also be given.</para>
+    <para>Example:</para>
+    <programlisting><![CDATA[
+     <permissions>
+       <copyright-year>2011</copyright-year>
+       <copyright-holder>Macmillan Publishers Limited</copyright-holder>
+       <license license-type="by-nc-nd-3.0" xlink:href="http://creativecommons.org/licenses/by-nc-nd/
+           3.0/" xlink:title="http://creativecommons.org/licenses/by-nc-nd/3.0/">
+         <license-p>This work is licensed under the Creative Commons Attribution-NonCommercial-No
+         Derivative Works 3.0 Unported License. To view a copy of this license, visit http://creative
+         commons.org/licenses/by-nc-nd/3.0/<funding-source source-type="author-paid"/></license-p>
+       </license>
+     </permissions>]]></programlisting>
+    <para>Correction articles should not contain license information as they are provided free of charge.</para>
+  </sect3>
+  <sect3>
+    <title>Correction articles</title>
+    <para>Correction articles (addendum, correction, corrigendum, erratum and retraction) should provide a link back to the corrected article using <tag>&lt;related-article></tag>.</para>
+    <para>See <link linkend="element_related-article"><tag>&lt;related-article></tag></link> for further information.</para>
+  </sect3>
+  <sect3>
+    <title>Abstracts</title>
+    <para>Do <emphasis role="bold">not</emphasis> use <tag>&lt;label></tag> or <tag>&lt;title></tag> as a child of <tag>&lt;abstract></tag>.</para>
+    <para>Subsections within abstracts should be captured as <tag>&lt;sec specific-use="heading-level-1"></tag> and <tag>&lt;title></tag>, not <tag>&lt;p>&lt;bold></tag>.</para>
+    <para>Example:</para>
+    <programlisting><![CDATA[
+     <abstract>
+       <sec specific-use="heading-level-1">
+         <title>Background:</title>
+         <p>Cannabinoid type-1 (CB1) receptor inverse agonists improve type 2 diabetes and dyslipidaemia
+             but were discontinued due to adverse psychiatric effects. &#x394;<sup>9</sup>-Tetrahydro
+             cannabivarin (THCV) is a neutral CB1 antagonist producing hypophagia and body weight
+             reduction in lean mice. We investigated its effects in dietary-induced (DIO) and genetically
+             (<italic>ob/ob</italic>) obese mice.</p>
+       </sec>
+       <sec specific-use="heading-level-1">
+         <title>Methods:</title>
+         <p>We performed two dose-ranging studies in DIO mice; study 1: 0.3, 1, 2.5, 5 and 12.5&#x2009;mg
+             &#x2009;kg<sup>&#x2212;1</sup>, oral twice daily for 30 days and study 2: 0.1, 0.5, 2.5 and
+             12.5&#x2009;mg&#x2009;kg<sup>&#x2212;1</sup>, oral, once daily for 45 days. One pilot (study
+             3: 0.3 and 3&#x2009;mg&#x2009;kg<sup>&#x2212;1</sup>, oral, once daily) and one full dose-
+             ranging (study 4: 0.1, 0.5, 2.5 and 12.5&#x2009;mg&#x2009;kg<sup>&#x2212;1</sup>, oral, once
+             daily) studies in <italic>ob/ob</italic> mice for 30 days. The CB1 inverse agonist, AM251,
+             oral, 10&#x2009;mg&#x2009;kg<sup>&#x2212;1</sup> once daily or 5&#x2009;mg&#x2009;kg<sup>
+             &#x2212;1</sup> twice daily was used as the positive control. Cumulative food and water
+             intake, body weight gain, energy expenditure, glucose and insulin levels (fasting or during
+             oral glucose tolerance tests), plasma high-density lipoprotein and total cholesterol, and
+             liver triglycerides were measured. HL-5 hepatocytes or C<sub>2</sub>C<sub>12</sub> myotubes
+             made insulin-resistant with chronic insulin or palmitic acid were treated with 0, 1, 3 and
+             10&#x2009;&#x3BC;<sc>M</sc> THCV or AM251.</p>
+       </sec>
+       <sec specific-use="heading-level-1">
+         <title>Results:</title>
+         <p>THCV did not significantly affect food intake or body weight gain in any of the studies, but
+             produced an early and transient increase in energy expenditure. It dose-dependently reduced
+             glucose intolerance in <italic>ob/ob</italic> mice and improved glucose tolerance and increased
+             insulin sensitivity in DIO mice, without consistently affecting plasma lipids. THCV also
+             restored insulin signalling in insulin-resistant hepatocytes and myotubes.</p>
+       </sec>
+       <sec specific-use="heading-level-1">
+         <title>Conclusions:</title>
+         <p>THCV is a new potential treatment against obesity-associated glucose intolerance with
+             pharmacology different from that of CB1 inverse agonists/antagonists.</p>
+       </sec>
+      </abstract>]]></programlisting>
+  </sect3>
+  <sect3>
+    <title>Keywords</title>
+    <para>Any article keywords should appear after the abstract.</para>
+    <para>Example:</para>
+    <programlisting><![CDATA[
+     <kwd-group>
+       <kwd>cannabinoid</kwd>
+       <kwd>DIO mice</kwd>
+       <kwd><italic>ob/ob</italic> mice</kwd>
+       <kwd>insulin sensitivity</kwd>
+       <kwd>energy balance</kwd>
+     </kwd-group>]]></programlisting>
+  </sect3>
+  <sect3>
+    <title>Publication status</title>
+    <para>All NPG/Palgrave articles should have a record of the publication status of the article. This is captured using <tag>&lt;custom-meta-group></tag> <tag>&lt;custom-meta-group></tag>.</para>
+    <para><tag>&lt;meta-name></tag> will be "publish-type". <tag>&lt;meta-value></tag> can take the following values:</para>
+    <itemizedlist>
+      <listitem><para>"online"&#x2014;for all articles published in online-only journals (<emphasis>NPG Asia Materials</emphasis>, <emphasis>Blood Cancer Journal</emphasis>, <emphasis>Cell Death &amp; Disease</emphasis>, <emphasis>Clinical and Translational Gastroenterology</emphasis>, <emphasis>Clinical &amp; Translational Immunology</emphasis>, <emphasis>Emerging Microbes &amp; Infections</emphasis>, <emphasis>Experimental &amp; Molecular Medicine</emphasis>, <emphasis>Light: Science &amp; Applications</emphasis>, <emphasis>Molecular Therapy &#x2013; Nucleic Acids</emphasis>, <emphasis>Nutrition &amp; Diabetes</emphasis>, <emphasis>Oncogenesis</emphasis>, <emphasis>CPT: Pharmacometrics &amp; Systems Pharmacology</emphasis>, <emphasis>Translational Psychiatry</emphasis>)</para></listitem>
+      <listitem><para>"fav"&#x2014;final author version/author-ms</para></listitem>
+      <listitem><para>"nfv"&#x2014;near final version</para></listitem>
+      <listitem><para>"aop"&#x2014;aop version of an article</para></listitem>
+      <listitem><para>"issue"&#x2014;final issue version of an article</para></listitem>
+    </itemizedlist>
+    <para>Example:</para>
+    <programlisting><![CDATA[
+     <custom-meta-group>
+       <custom-meta>
+         <meta-name>publish-type</meta-name>
+         <meta-value>online</meta-value>
+       </custom-meta>
+     </custom-meta-group>]]></programlisting>
+  </sect3>
 </sect2>
 </sect1>
 <sect1 xml:id="objects_body">
 <title>Body</title>
-<para></para>
+<sect2 xml:id="objects_lists">
+<title>Lists</title>
+  <para>For NPG/Palgrave article <tag>&lt;list></tag> should always be contained in <tag>&lt;p></tag> and should not be a block-level element.</para>
+  <para>Do <emphasis role="bold">not</emphasis> use <tag>&lt;label></tag> or <tag>&lt;title></tag> in <tag>&lt;list></tag>.</para>
+  <para><tag>&lt;list></tag> should have <tag>@list-type</tag> which can take the values "number", "bullet", "ucletter", "lcletter", "ucroman", "lcroman" or "none".</para>
+  <para>Do <emphasis role="bold">not</emphasis> use any other attributes on <tag>&lt;list></tag>.</para>
+  <para>Do <emphasis role="bold">not</emphasis> use <tag>&lt;label></tag> in <tag>&lt;list-item></tag>, as this symbol will be generated from the <tag>@list-type</tag> value. Do <emphasis role="bold">not</emphasis> use any attributes on <tag>&lt;list-item></tag>.</para>
+</sect2>
+  <sect2 xml:id="objects_formulae">
+  <title>Formulae</title>
+    <sect3>
+      <title>Display formulae</title>
+      <para>Display formulae may be contained in <tag>&lt;p></tag> or be block-level elements outside <tag>&lt;p></tag>.</para>
+      <para><tag>@id</tag> should only be used where the equation is numbered in the manuscript.</para>
+      <para>Example:</para>
+      <programlisting><![CDATA[
+     <p>From these signal intensities, the relative fat content of the liver was calculated as follows:
+         <disp-formula><mml:math overflow="scroll"><mml:mi>F</mml:mi><mml:mo>=</mml:mo><mml:mrow><mml:mo
+         stretchy="false">(</mml:mo><mml:msup><mml:mi>S</mml:mi><mml:mo>+</mml:mo></mml:msup><mml:mo>
+         &#x2212;</mml:mo><mml:msup><mml:mi>S</mml:mi><mml:mo>&#x2212;</mml:mo></mml:msup><mml:mo 
+         stretchy="false">)</mml:mo></mml:mrow><mml:mo stretchy="false">/</mml:mo><mml:mrow><mml:mo
+         stretchy="false">(</mml:mo><mml:mn>1.7</mml:mn><mml:msup><mml:mi>S</mml:mi><mml:mo>+</mml:mo>
+         </mml:msup><mml:mo>&#x2212;</mml:mo><mml:mn>0.3</mml:mn><mml:msup><mml:mi>S</mml:mi><mml:mo>
+         &#x2212;</mml:mo></mml:msup><mml:mo stretchy="false">)</mml:mo></mml:mrow></mml:math></disp-formula>
+         where the water content of the liver is assumed to be 70%.</p>]]></programlisting>
+      <para>Where an equation is numbered, use <tag>&lt;mml:mtable></tag> with the label captured as the first cell of <tag>&lt;mml:mlabeledtr</tag>.</para>
+      <para>Example:</para>
+      <programlisting><![CDATA[
+     <p>Finally, the %BF can be determined using the derived equations, such as the one by Siri for 
+         the general population.</p>
+     <disp-formula id="eq3"><mml:math><mml:mtable><mml:mlabeledtr><mml:mtd><mml:mtext>(3)</mml:mtext>
+         </mml:mtd><mml:mtd><mml:mi mathvariant="normal">% BF</mml:mi><mml:mo>=</mml:mo><mml:mn>495
+         </mml:mn><mml:mo stretchy="false">/</mml:mo><mml:msub><mml:mrow><mml:mi>D</mml:mi></mml:mrow>
+         <mml:mrow><mml:mi mathvariant="normal">b</mml:mi></mml:mrow></mml:msub><mml:mo>&#x2212;</mml:mo>
+         <mml:mn>450</mml:mn></mml:mtd></mml:mlabeledtr></mml:mtable></mml:math></disp-formula>]]></programlisting>
+    </sect3>
+    <sect3>
+      <title>Inline formulae</title>
+      <para>Do not use <tag>@id</tag> for inline formulae.</para>
+      <para>Example:</para>
+      <programlisting><![CDATA[
+     As VAS scores are confined to the interval (0,100), the scores were transformed (if 
+         <italic>X</italic><sub><italic>i</italic></sub> denote the scores, then <inline-formula>
+         <mml:math><mml:msub><mml:mi>Y</mml:mi><mml:mi>i</mml:mi></mml:msub><mml:mo>=</mml:mo><mml:mo>
+         arcsin</mml:mo><mml:msqrt><mml:msub><mml:mi>X</mml:mi><mml:mi>i</mml:mi></mml:msub>
+         <mml:mo>/</mml:mo><mml:mn>100</mml:mn></mml:msqrt></mml:math></inline-formula>).]]></programlisting>
+    </sect3>
+  </sect2>
 </sect1>
 <sect1 xml:id="objects_back">
 <title>Back</title>
   <para></para>
   <sect2 xml:id="object_references">
     <title>References</title>
-    <para>A reference list (<tag>&lt;ref-list></tag>) is a series of references (<tag>&lt;ref></tag>). Generally each reference item contains only one citation element. For NPG articles, use <tag>&lt;mixed-citation></tag> for all references<!--, but see <link linkend="object_link_groups">Link Groups</link> for an exception-->.</para>
+    <para>A reference list (<tag>&lt;ref-list></tag>) is a series of references (<tag>&lt;ref></tag>). Generally each reference item contains only one citation element. As we currently have no standard style for punctuation in our journals, use <tag>&lt;mixed-citation></tag> for all references and retain punctuation.<!--, but see <link linkend="object_link_groups">Link Groups</link> for an exception-->.</para>
+    <para><tag>&lt;ref-list></tag> should have <tag>@specific-use</tag> which takes the value "numero" (for numbered references) or "alpha" (for an alphabetical listing).</para>
+    <para>All <tag>&lt;ref></tag> elements should have an <tag>@id</tag> which should follow the format of "b" + number. Do not use <tag>&lt;label></tag>.</para>
+    <para><tag>&lt;mixed-citation></tag> should have <tag>@publication-type</tag> which can take the value "journal", "book" or "other" (e.g. meeting reports, websites).</para>
+    <para>Where a reference has been written by a committee or other collaboration, use <tag>&lt;collab collab-type="corporate-author"></tag>.</para>
+    <para>Do not use <tag>&lt;comment</tag> to mark-up text which does not require another element.</para>
     <para>Example:</para>
-    <!--attribute alpha/numero-->
     <programlisting><![CDATA[
-        <ref-list>
-          
+        <ref-list specific-use="numero">
+          ...
+          <ref id="b10"><mixed-citation publication-type="journal"><collab collab-type="corporate-author">
+              Committee to Evaluate Diagnostic Standards for Metabolic Syndrome</collab>. <article-title>
+              Definition and the diagnostic standard for metabolic syndrome</article-title>. <source>Nippon
+              Naika Gakkai Zasshi</source> <year>2005</year>; <volume>94</volume>: <fpage>794</fpage>&#x2013;
+              <lpage>809</lpage> (article in Japanese).</mixed-citation></ref>
+          <ref id="b11"><mixed-citation publication-type="book"><string-name><surname>Christie</surname>
+              <given-names>WW</given-names></string-name>. <source>Lipid Analysis: Isolation, Separation,
+              Identification, and Structural Analysis of Lipids</source>, 3rd edn. <publisher-name>The Oily
+              Press: Bridgwater</publisher-name>, <year>2003</year>.</mixed-citation></ref>
+          <ref id="b38"><mixed-citation publication-type="other"><string-name><surname>Hoe</surname>
+              <given-names>Y</given-names></string-name> Singapore's adult diabetes rate at 12-year high.
+              (Internet) 2010 (cited 26 November 2010). <ext-link xlink:href="http://www.channelnewsasia.com/
+              stories/singaporelocalnews/view/1095709/1/.html" ext-link-type="url">http://www.channelnews
+              asia.com/stories/singaporelocalnews/view/1095709/1/.html</ext-link>. (accessed 26 July 2012).
+              </mixed-citation></ref>
         </ref-list>]]></programlisting>
-    <para>See also <tag>&lt;element-citation></tag>, <tag>&lt;ref-list></tag> and <tag>&lt;ref></tag>.</para>
   </sect2>
 </sect1>
 <sect1 xml:id="objects_float">
@@ -316,7 +669,16 @@
 <fig id="f1">
   <caption>
     <title>Identification of Sema3A as an inhibitory factor of osteoclastdifferentiation.</title>
-    <p><bold>a</bold>, Effect of wild-type (WT) and Opg-deficient (<italic>Tnfrsf11b</italic><sup>&#x2212;/&#x2212;</sup>) calvarial cell-conditioned medium on osteoclast differentiation. MNC, mononuclear cells. <bold>b</bold>, Fractionation of Opg-deficient calvarial cell-conditioned medium by anion-exchange chromatography, and the effect of each fraction on osteoclast differentiation (black bars). <bold>c</bold>, Coomassie brilliant blue-stained SDS&#x2013;PAGE image of fraction 8. M, molecular mass. <bold>d</bold>, List of the identified proteins (that is, more than 300 on the MASCOT score), their theoretical molecular mass, MASCOT score and the number of non-redundant peptides. <bold>e</bold>, Effect of Sema3A treatment on osteoclast differentiation. Error bars (<bold>a</bold>, <bold>b</bold> and <bold>e</bold>) denote mean &#xB1; s.e.m. **<italic>P</italic> &lt; 0.01; ***<italic>P</italic> &lt; 0.005; NS, not significant.</p>
+    <p><bold>a</bold>, Effect of wild-type (WT) and Opg-deficient (<italic>Tnfrsf11b</italic><sup>
+        &#x2212;/&#x2212;</sup>) calvarial cell-conditioned medium on osteoclast differentiation. MNC,
+        mononuclear cells. <bold>b</bold>, Fractionation of Opg-deficient calvarial cell-conditioned medium
+        by anion-exchange chromatography, and the effect of each fraction on osteoclast differentiation
+        (black bars). <bold>c</bold>, Coomassie brilliant blue-stained SDS&#x2013;PAGE image of fraction 8.
+        M, molecular mass. <bold>d</bold>, List of the identified proteins (that is, more than 300 on the
+        MASCOT score), their theoretical molecular mass, MASCOT score and the number of non-redundant
+        peptides. <bold>e</bold>, Effect of Sema3A treatment on osteoclast differentiation. Error bars
+        (<bold>a</bold>, <bold>b</bold> and <bold>e</bold>) denote mean &#xB1; s.e.m. **<italic>P</italic>
+        &lt; 0.01; ***<italic>P</italic> &lt; 0.005; NS, not significant.</p>
   </caption>
   <alternatives>
     <graphic position="anchor" xlink:href="nature11000-f1.2.jpg" mimetype="image" mime-subtype="jpeg"/>
@@ -511,7 +873,7 @@
       </oasis:tbody>
     </oasis:tgroup>
   </oasis:table>
-  <attrib>Taken from <ext-link ext-link-type="uri" xlink:href="http://www.asia-basket.com/team.asp
+  <attrib>Taken from <ext-link ext-link-type="url" xlink:href="http://www.asia-basket.com/team.asp
                     ?Cntry=South%20Korea&amp;Team=3442&amp;Page=3">Asia-Basket</ext-link></attrib>
 </table-wrap>]]></programlisting>
     </sect4>
@@ -767,12 +1129,61 @@
 <sect2 xml:id="objects_supplementary-material">
 <title>Supplementary information</title>
   <para>Supplementary items are block-level objects that contain additional information relating to an article and are captured using <tag>&lt;supplementary-material></tag>.</para>
-  <para>Characteristics of supplementary material which should be captured within <tag>&lt;floats-group></tag>:</para>
+  <para>Characteristics of supplementary material which should be captured at the end of <tag>&lt;floats-group></tag>:</para>
   <itemizedlist>
-    <listitem><para>It has a label like "Supplementary Information" or "Supplementary Figures 1&#x2103;12".</para></listitem>
-    <listitem><para>It may have a title or caption.</para></listitem>
+    <listitem><para>It has a title like "Supplementary Information" or "Supplementary Figures 1&#x2103;12".</para></listitem>
+    <listitem><para>It may also have a legend or description.</para></listitem>
     <listitem><para>It may be referenced by an <tag>&lt;xref></tag> with <tag>@ref-type="supplementary-material"</tag> in the article text.</para></listitem>
   </itemizedlist>
+  <para>The only allowed child of <tag>&lt;supplementary-material></tag> is <tag>&lt;caption></tag>. <tag>&lt;caption></tag> must always contain <tag>&lt;title></tag> and may also contain <tag>&lt;p></tag> to contain the legend/description). Do <emphasis role="bold">not</emphasis> use any other possible child elements of <tag>&lt;supplementary-material></tag>.</para>
+  <para>Required attributes for supplementary material:
+    <itemizedlist>
+      <listitem><para>id&#x2014;should follow the format of "s" + number, e.g. id="s1", id="s2" etc</para></listitem>
+      <listitem><para>content-type&#x2014;takes the values "image", "document", "archive", "text", "movie" or "other" as follows:
+        <table>
+        <title>Supplementary material content types</title>
+          <tgroup cols="2">
+            <thead>
+              <row><entry>content type</entry><entry>file extensions</entry></row>
+            </thead>
+            <tbody>
+              <row><entry>image</entry><entry>eps, gif, jpg, jpeg, bmp, png, pict, ps, tiff, wmf</entry></row>
+              <row><entry>document</entry><entry>doc, docx, pdf, pps, ppt, pptx, xls, xlsx</entry></row>
+              <row><entry>archive</entry><entry>tar, tgz, zip</entry></row>
+              <row><entry>text</entry><entry>c, csv, htm, html, rtf, txt, xml</entry></row>
+              <row><entry>movie</entry><entry>aiff, au, avi, midi, mov, mp2, mp3, mp4, mpa, mpg, noa, qt, ra, ram, rv, swf, wav, wmv</entry></row>
+              <row><entry>other</entry><entry>cif, exe, pdb, sdf, sif</entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </para></listitem>
+      <listitem><para>xlink:href&#x2014;filename, including the extension</para></listitem>
+      <listitem><para>mimetype&#x2014;based on the filename extension. See <link linkend="mimetypes">Mimetypes and mime subtypes</link> for the correct mappings.</para></listitem>
+      <listitem><para>mime-subtype&#x2014;based on the filename extension. See <link linkend="mimetypes">Mimetypes and mime subtypes</link> for the correct mappings.</para></listitem>
+    </itemizedlist>
+  </para>
+  <para>Examples:</para>
+  <programlisting><![CDATA[
+     <supplementary-material id="s1" content-type="document" xlink:href="nutd20104x1.pdf"
+         mimetype="application" mime-subtype="pdf"><caption><title>Supplementary Method</title>
+         </caption></supplementary-material>
+     <supplementary-material id="s2" content-type="document" xlink:href="nutd20104x2.pdf" 
+         mimetype="application" mime-subtype="pdf"><caption><title>Supplementary Figure 1</title>
+         </caption></supplementary-material>
+     <supplementary-material id="s3" content-type="image" xlink:href="nutd20104x3.jpg" mimetype="image"
+         mime-subtype="jpeg"><caption><title>Supplementary Figure 2</title></caption>
+         </supplementary-material>
+     <supplementary-material id="s4" content-type="document" xlink:href="nutd20104x4.pdf"
+         mimetype="application" mime-subtype="pdf"><caption><title>Supplementary Table 1</title>
+         </caption></supplementary-material>
+     <supplementary-material id="s5" content-type="movie" xlink:href="nutd20104x5.mov" mimetype="video"
+         mime-subtype="quicktime"><caption><title>Supplementary Movie</title></caption>
+         </supplementary-material>
+     <supplementary-material id="s6" content-type="archive" xlink:href="nutd20104x6.zip"
+         mimetype="application" mime-subtype="x-zip-compressed"><caption><title>Supplementary
+         Data</title><p>This data was recorded during Experiment 2.</p></caption></supplementary-material>
+     <supplementary-material id="s7" content-type="text" xlink:href="nutd20104x7.csv" mimetype="text"
+         mime-subtype="csv"><caption><title>Data Record</title></caption></supplementary-material>]]></programlisting>
 </sect2>
 </sect1>
 <sect1 xml:id="objects_sub-article">
@@ -786,7 +1197,7 @@
     <sect1 xml:id="element_article">
       <title><tag>&lt;article></tag></title>
       <para>The root element for all articles.</para>
-      <para>The <tag>@article-type</tag> attribute is required, e.g. <tag>@article-type="le"</tag>. [This is the equivalent of <tag>categ/@id</tag> in our old NPG Article DTD, and <tag>arttype/@arttype</tag> in the AJ DTD.]</para>
+      <para>The <tag>@article-type</tag> attribute is required, e.g. <tag>@article-type="oa"</tag>. [This is the equivalent of <tag>categ/@id</tag> in the NPG Article DTD, and <tag>arttype/@arttype</tag> in the AJ DTD.]</para>
       <para>attributes:</para>
       <itemizedlist>
         <listitem><para>article-type&#x2014;(#REQUIRED)</para></listitem>
@@ -799,12 +1210,16 @@
     <sect1 xml:id="element_ext-link">
       <title><tag>&lt;ext-link></tag></title>
       <para>Used to tag link information to objects outside of the article. The text may be a repeat of the content in the <tag>@xlink:href</tag> or it may be different.</para>
-      <!--And more blurb-->
-      <para>attributes:</para>
+      <para>Required attributes:</para>
       <itemizedlist>
-        <listitem><para><tag>@ext-link-type</tag>&#x2014;set as "uri" for a link to a website (starting with "http:" or "/"); "ftp" for a link to an ftp site [*plus any additional possibilities*] (#REQUIRED)</para></listitem>
-        <listitem><para><tag>@xlink:href</tag>&#x2014;Holds an identifier of or locator to an object available through or at that resource. (#REQUIRED)</para></listitem>
+        <listitem><para><tag>@xlink:href</tag>&#x2014;Holds an identifier of or locator to an object available through or at that resource.</para></listitem>
+        <listitem><para><tag>@ext-link-type</tag>&#x2014;set as "url" for a link to a website (starting with "http:" or "/"); "ftp" for a link to an ftp site</para></listitem>
       </itemizedlist>
+      <para>Example:</para>
+      <programlisting><![CDATA[
+     <p>Analyses were performed off-line using the National Institutes of Health program, Image J
+         (<ext-link xlink:href="http://rsbweb.nih.gov/ij" ext-link-type="url">http://rsbweb.nih.gov/ij
+         </ext-link>).]]></programlisting>
       <!--para>See also <link linkend="objects_accession-groups">Accession Groups</link> and <link linkend="objects_link_groups">Link Groups</link>.</para-->
     </sect1>
 <sect1 xml:id="element_issn">
@@ -837,15 +1252,20 @@
 </sect1>
     <sect1 xml:id="element_related-article">
       <title><tag>&lt;related-article></tag></title>
-      <para>Links to related articles [*lots of possible link types - give full explanation when all have been covered*]</para>
-      <para>attributes:</para>
+      <para>Links to related articles (for example, articles which have had a corrigendum).</para>
+      <para>Required attributes:</para>
+      <itemizedlist>
+        <listitem><para>related-article-type&#x2014;takes the value "is-erratum-to", "is-correction-to", "is-retraction-to", "is-addendum-to" or "is-corrigendum-to"</para></listitem>
+        <listitem><para>xlink:href&#x2014;the doi for the referenced article</para></listitem>
+      </itemizedlist>
+      <para>Example:</para>
+      <programlisting><![CDATA[<related-article related-article-type="is-corrigendum-to" xlink:href="10.1038/nutd.2012.8"/>]]></programlisting>
     </sect1>
     <sect1 xml:id="element_xref">
       <title><tag>&lt;xref></tag></title>
       <para>Used to reference objects within the article. Do not include emphasis or punctuation within the element.</para>
-      <para><tag>@rid</tag> may contain multiple id values.</para>
       <table>
-        <title>Required values for <tag>@ref-type</tag> [verify against NPG practice - I don't think we assign ids to a lot of these elements]</title>
+        <title>Required values for <tag>@ref-type</tag></title>
         <tgroup cols="4">
           <thead>
             <row>
@@ -856,36 +1276,68 @@
             </row>
           </thead>
           <tbody>
-            <row><entry>app</entry><entry>appendix</entry><entry>app</entry><entry><tag>&lt;app></tag></entry></row>
-            <row><entry>author-notes</entry><entry>footnote to author</entry><entry>fn</entry><entry><tag>&lt;fn></tag></entry></row>
+            <!--row><entry>app</entry><entry>appendix</entry><entry>app</entry><entry><tag>&lt;app></tag></entry></row-->
+            <row><entry>aff</entry><entry>author affiliation</entry><entry>a</entry><entry><tag>&lt;aff></tag></entry></row>
+            <row><entry>author-notes</entry><entry>footnote to author</entry><entry>n</entry><entry><tag>&lt;fn></tag></entry></row>
             <row><entry>bibr</entry><entry>bibliographic reference</entry><entry>b</entry><entry><tag>&lt;ref></tag></entry></row>
-            <row><entry>boxed-text</entry><entry>textbox or sidebar</entry><entry>bx</entry><entry><tag>&lt;boxed-text></tag></entry></row>
+            <!--row><entry>boxed-text</entry><entry>textbox or sidebar</entry><entry>bx</entry><entry><tag>&lt;boxed-text></tag></entry></row-->
+            <row><entry>corresp</entry><entry>author correspondence information</entry><entry>c</entry><entry><tag>&lt;corresp></tag></entry></row>
             <row><entry>disp-formula</entry><entry>display formula</entry><entry>eq</entry><entry><tag>&lt;disp-formula></tag></entry></row>
             <row><entry>fig</entry><entry>figure</entry><entry>f</entry><entry><tag>&lt;fig></tag></entry></row>
-            <row><entry>fn</entry><entry>footnote</entry><entry>fn</entry><entry><tag>&lt;fn></tag></entry></row>
+            <!--row><entry>fn</entry><entry>footnote</entry><entry>fn</entry><entry><tag>&lt;fn></tag></entry></row-->
             <row><entry>supplementary-material</entry><entry>supplementary content</entry><entry>s</entry><entry><tag>&lt;supplementary-material></tag></entry></row>
             <row><entry>table</entry><entry>table</entry><entry>t</entry><entry><tag>&lt;table-wrap></tag></entry></row>
             <row><entry>table-fn</entry><entry>table footnote</entry><entry>t#-fn#</entry><entry><tag>&lt;fn></tag></entry></row>
           </tbody>
         </tgroup>
       </table>
-      <para>[*Different to NPG practice*] Tag ranges of cross references by including an <tag>&lt;xref></tag> for the first item, an en-dash (&#x2013;), and an <tag>&lt;xref></tag> for the last item.</para>
-      <para>The changes in education level demonstrate the changing attitudes. 1–3</para>
-      <para><![CDATA[<p>The changes in education level demonstrate the changing attitudes.<xref ref-type="bibr" rid="b1">1</xref>–<xref ref-type="bibr" rid="b3">3</xref></p>]]></para>
-      <para><tag>&lt;xref></tag> may be empty or contain text. For example,</para>
-      <programlisting><![CDATA[
-        <p>In the presented 3D ground-plane cloak, we choose the parameter distribution in the
-            <italic>x–z</italic> plane as that for the 2D cloak given in ref. <xref ref-type="bibr" rid="b18">18</xref>.
-            Then, we get the full 3D parameter distributions by rotating it around the <i>z</i> axis.
-            Comparing with the original designs<xref ref-type="bibr" rid="b14 b15"/>, the 2D ground-plane cloak
-            described in reference Ma <i>et al</i>.<xref ref-type="bibr" rid="b18"/> has a much smaller size (about
-            four times smaller).]]></programlisting>
       <para>attributes:</para>
       <itemizedlist>
         <listitem><para>ref-type&#x2014;This is the <tag>@id</tag> of the referenced object. (#REQUIRED)</para></listitem>
         <listitem><para>rid&#x2014;see the table above for allowed values and ID/IDREF prefixes. (#REQUIRED)</para></listitem>
         <listitem><para>id&#x2014;Do not use.</para></listitem>
       </itemizedlist>
+      <sect2>
+      <title>Author affiliation, correspondence and notes</title>
+        <para>Where <tag>&lt;xref></tag> is used to link to affiliation [<tag>@ref-type="aff"</tag>] and correspondence [<tag>@ref-type="corresp"</tag>] information, it should be empty as the link numbering can be derived from the <tag>@id</tag>s.</para>
+        <para>Where <tag>&lt;xref></tag> is used to link to author notes [<tag>@ref-type="author-notes"</tag>] (e.g. equal contribution or current address information), it should contain the superscript number or symbol used in the manuscript.</para>
+        <para>See <link linkend="object_contributors">Contributors and affiliations</link> for example markup.</para>
+      </sect2>
+      <sect2>
+        <title>Bibliographic references</title>
+        <para>Where <tag>&lt;xref></tag> is used to link to bibliographic references, it should always contain the text for the link (i.e. not be empty).</para>
+        <para>Where a range of references are given in the text, <tag>@rid</tag> should contain multiple values, but the text of <tag>&lt;xref></tag> will just contain the range itself.</para>
+        <table>
+          <title>Example markup for <tag>&lt;xref></tag> to bibliographic references</title>
+          <tgroup cols="2">
+            <thead>
+              <row>
+                <entry>Manuscript text</entry>
+                <entry>XML markup</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row><entry>text,<superscript>1</superscript></entry><entry><tag>text,&lt;sup>&lt;xref ref-type="bibr" rid="b1">1&lt;/xref></tag></entry></row>
+              <row><entry>text,<superscript>10,12,19</superscript></entry><entry><tag>text,&lt;sup>&lt;xref ref-type="bibr" rid="b10">10&lt;/xref>,&lt;xref ref-type="bibr" rid="b12">12&lt;/xref>,&lt;xref ref-type="bibr" rid="b19">19&lt;/xref>&lt;/sup></tag></entry></row>
+              <row><entry>text<superscript>14&#x2013;16</superscript></entry><entry><tag>text&lt;sup>&lt;xref ref-type="bibr" rid="b14 b15 b16">14&amp;#x02013;16&lt;/xref>&lt;/sup></tag></entry></row>
+              <row><entry>text)<superscript>9,21–24</superscript>,</entry><entry><tag>text)&lt;sup>&lt;xref ref-type="bibr" rid="b9">9&lt;/xref>,&lt;xref ref-type="bibr" rid="b21 b22 b23 b24">21&#x2013;24&lt;/xref>&lt;/sup>,</tag></entry></row>
+              <row><entry>(Ronco <emphasis>et al</emphasis>, 2007; Siebers <emphasis>et al</emphasis>, 2009).</entry><entry><tag>(&lt;xref ref-type="bibr" rid="b10">Ronco &lt;italic>et al&lt;/italic>, 2007&lt;/xref>; &lt;xref ref-type="bibr" rid="b13">Siebers &lt;italic>et al&lt;/italic>, 2009&lt;/xref>)</tag></entry></row>
+              <row><entry>text [7]</entry><entry><tag>text [&lt;xref ref-type="bibr" rid="b7">7&lt;/xref>]</tag></entry></row>
+              <row><entry>text [9,10]</entry><entry><tag>text [&lt;xref ref-type="bibr" rid="b9">9&lt;/xref>,&lt;xref ref-type="bibr" rid="b10">10&lt;/xref>]</tag></entry></row>
+              <row><entry>text [8–10]</entry><entry><tag>text [&lt;xref ref-type="bibr" rid="b8 b9 b10">8&#x02013;10&lt;/xref>]</tag></entry></row>
+            </tbody>
+          </tgroup>
+        </table>
+      </sect2>
+      <sect2>
+        <title>Table footnotes</title>
+        <para>Where <tag>&lt;xref></tag> is used to link to table footnotes, it should always contain the label for the link (i.e. not be empty).</para>
+        <para>See <link linkend="sample_table_5">table samples 5</link> and <link linkend="sample_table_6">6</link> for example markup of <tag>&lt;xref ref-type="table-fn"></tag>.</para>
+      </sect2>
     </sect1>
 </chapter>
+  <chapter xml:id="update_history">
+    <title>Update History</title>
+    <para>2013-060-19 Draft version v0.8 released to cover elements required in NUTD.</para>
+  </chapter>
 </book>
