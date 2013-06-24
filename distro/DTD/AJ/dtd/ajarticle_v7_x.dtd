@@ -13,6 +13,10 @@
 
 <!-- 
 
+21.06.13
+. HUBXML-12 - Added "wmv" to NOTATION types and "wmv" to %format; parameter entity set.
+. HUBXML-10 - Add new optional element "technique" to support the technique ontology
+
 01.02.13
 . SCHEMA-89 - Added new optional element "auid" as a child of "au" to allow inclusion of ORCIDs for authors
 
@@ -1042,6 +1046,7 @@ SYSTEM  ajarticle_v7_x.dtd
 <!NOTATION txt SYSTEM "">   <!-- Text document -->
 <!NOTATION wav SYSTEM "">   <!--waveform audio file format -->
 <!NOTATION wmf SYSTEM "">   <!--   ?     -->
+<!NOTATION wmv SYSTEM "">   <!-- Windows media video -->
 <!NOTATION xls SYSTEM "">   <!-- Excel spreadsheet -->
 <!NOTATION xlsx SYSTEM "">   <!-- Excel spreadsheet -->
 <!NOTATION xml SYSTEM "">   <!-- extensible markup language -->
@@ -1083,7 +1088,7 @@ SYSTEM  ajarticle_v7_x.dtd
 <!ENTITY % plain-text "%straight-text; | %emphasis; | %fontfamily; | %fontattr; | %zwidth;">
 
 <!-- common file format extensions        -->
-<!ENTITY % format    	"aiff | applet | asf | asp | au | avi | bmp | class | csv | doc | docx | eps | gif | html | htmlonly | java | jpeg | js | ma | mb | midi | mlonly | mov | mp2 | mp3 | mp4 | mpa | mpeg | nb | ole | pict | pdf | png | pps | ppt | ps | ra | ram | sgml | svg | texonly | tiff | txt | wav | wmf | xls | xlsx | xml | zip">
+<!ENTITY % format    	"aiff | applet | asf | asp | au | avi | bmp | class | csv | doc | docx | eps | gif | html | htmlonly | java | jpeg | js | ma | mb | midi | mlonly | mov | mp2 | mp3 | mp4 | mpa | mpeg | nb | ole | pict | pdf | png | pps | ppt | ps | ra | ram | sgml | svg | texonly | tiff | txt | wav | wmf | wmv | xls | xlsx | xml | zip">
 
 <!--********************************************************************-->
 <!--       % mathtypes for Math                                  		-->
@@ -1630,7 +1635,7 @@ suped?, supspon?, suptext?)>
 <!--********************************************************************-->
 
 <!ELEMENT	placeholder	(arthead*, artsubhead*, 
-serieshead?, tochead?, arttype, subarttype?, artcode?, subject*, classification*, origlang?, intro?, inbrief?, absseq?, atlgrp, review*, aug?, contributors?, tocnote?, seriesnote?, artnote*, refjnl?)>
+serieshead?, tochead?, arttype, subarttype?, artcode?, subject*, technique*, classification*, origlang?, intro?, inbrief?, absseq?, atlgrp, review*, aug?, contributors?, tocnote?, seriesnote?, artnote*, refjnl?)>
 
 
 <!--		arthead 		article heading 
@@ -1673,6 +1678,16 @@ serieshead?, tochead?, arttype, subarttype?, artcode?, subject*, classification*
             type (npg.subject | npg.technique) "npg.subject"
             version CDATA #IMPLIED
             path CDATA #IMPLIED
+>
+
+<!ELEMENT technique  (#PCDATA)*>
+<!ATTLIST technique
+         code CDATA #IMPLIED
+         priority (1 | 0) "0"
+         id CDATA #IMPLIED
+         type (npg.technique) "npg.technique"
+         version CDATA #IMPLIED
+         path CDATA #IMPLIED
 >
 
 <!ELEMENT	classification	(title-text?)>
