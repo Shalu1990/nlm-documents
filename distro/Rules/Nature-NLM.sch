@@ -9,8 +9,8 @@ For example, context="article[@article-type]" will recognise the context as 'art
 Use the <let> element to define the attribute if necessary.
 
 -->
-<schema xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
-  <title>Schematron rules for NPG content in NLM v3.0</title>
+<schema xmlns="http://purl.oclc.org/dsdl/schematron" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" queryBinding="xslt2">
+  <title>Schematron rules for NPG content in JATS v1.0</title>
   <ns uri="http://www.w3.org/1998/Math/MathML" prefix="mml"/>
   <ns uri="http://docs.oasis-open.org/ns/oasis-exchange/table" prefix="oasis"/>
   <ns uri="http://www.w3.org/1999/xlink" prefix="xlink"/>
@@ -23,9 +23,21 @@ Use the <let> element to define the attribute if necessary.
   <ns uri="http://purl.org/dc/elements/1.1/" prefix="dc"/><!--Namespace for Ontologies document-->
   <ns uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#" prefix="rdf"/><!--Namespace for Ontologies document-->
   
+  <ns prefix="functx" uri="http://www.functx.com" /><!--Regularly used values throughout rules-->
+  <xsl:function name="functx:substring-after-last" as="xs:string" xmlns:functx="http://www.functx.com" >
+    <xsl:param name="arg" as="xs:string?"/> 
+    <xsl:param name="delim" as="xs:string"/> 
+    <xsl:sequence select="replace ($arg,concat('^.*',functx:escape-for-regex($delim)),'')"/>
+  </xsl:function>
+  
+  <xsl:function name="functx:escape-for-regex" as="xs:string" xmlns:functx="http://www.functx.com" >
+    <xsl:param name="arg" as="xs:string?"/> 
+    <xsl:sequence select="replace($arg,'(\.|\[|\]|\\|\||\-|\^|\$|\?|\*|\+|\{|\}|\(|\))','\\$1')"/>
+  </xsl:function>
+  
   <!--Regularly used values throughout rules-->
   <let name="journal-title" value="//journal-meta/journal-title-group/journal-title"/>
-  <let name="journal-id" value="//journal-meta/journal-id"/>
+  <let name="pcode" value="//journal-meta/journal-id"/>
   <let name="article-type" value="article/@article-type"/>
     
   <!--
@@ -88,11 +100,11 @@ Use the <let> element to define the attribute if necessary.
     </pattern>
   <pattern>
     <rule context="journal-title-group" role="error"><!--Is the journal id valid?-->
-      <assert id="jmeta3b" test="$products[descendant::terms:pcode=$journal-id] or not($products[descendant::dc:title=$journal-title])">Journal id is incorrect. For <value-of select="$journal-title"/>, it should be: <value-of select="$products//*[child::dc:title=$journal-title]/terms:pcode"/>. Other rules are based on having a correct journal id and therefore will not be run. Please resubmit this file when the journal id has been corrected.</assert></rule>
+      <assert id="jmeta3b" test="$products[descendant::terms:pcode=$pcode] or not($products[descendant::dc:title=$journal-title])">Journal id is incorrect. For <value-of select="$journal-title"/>, it should be: <value-of select="$products//*[child::dc:title=$journal-title]/terms:pcode"/>. Other rules are based on having a correct journal id and therefore will not be run. Please resubmit this file when the journal id has been corrected.</assert></rule>
     </pattern>
   <pattern>
     <rule context="journal-title-group" role="error"><!--Do the journal title and id match each other?-->
-      <assert id="jmeta3c" test="$journal-id=$products//*[child::dc:title=$journal-title]/terms:pcode or not($products[descendant::dc:title=$journal-title]) or not($products[descendant::terms:pcode=$journal-id])">Journal id (<value-of select="$journal-id"/>) does not match journal title: <value-of select="$journal-title"/>. Check which is the correct value.</assert>
+      <assert id="jmeta3c" test="$pcode=$products//*[child::dc:title=$journal-title]/terms:pcode or not($products[descendant::dc:title=$journal-title]) or not($products[descendant::terms:pcode=$pcode])">Journal id (<value-of select="$pcode"/>) does not match journal title: <value-of select="$journal-title"/>. Check which is the correct value.</assert>
     </rule>
   </pattern>
   
@@ -958,5 +970,13 @@ Use the <let> element to define the attribute if necessary.
   
   <!-- ====================== Ref-list = Bibliography ======================-->
   
+  
+<pattern><!--Rule to test @content-type has correct value based on file extension-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][@content-type][contains(@xlink:href,'.')]" role="error">
+      <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+      <let name="content-type" value="if ($extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx') then 'document' else if ($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf') then 'image' else if ($extension='tar' or $extension='tgz' or $extension='zip') then 'archive' else if ($extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml') then 'text' else if ($extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv') then 'movie' else if ($extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif') then 'other' else ()"/>
+      <assert id="supp3b" test="@content-type=$content-type">For supplementary material files with extension "<value-of select="$extension"/>", the content-type attribute should have the value "<value-of select="$content-type"/>", not "<value-of select="@content-type"/>".</assert>
+    </rule>
+  </pattern>
   
 </schema>
