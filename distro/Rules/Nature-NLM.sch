@@ -972,10 +972,275 @@ Use the <let> element to define the attribute if necessary.
   
   
 <pattern><!--Rule to test @content-type has correct value based on file extension-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')]" role="error">
+      <report id="supp1a" test="*[not(self::caption)]">Only "caption" should be used as a child of "supplementary-material" - do not use "<value-of select="local-name(*)"/>".</report>
+    </rule>
+  </pattern>
+  
+<pattern><!--supplementary-material - caption must contain title-->
+    <rule context="floats-group/supplementary-material/caption" role="error">
+      <assert id="supp1b" test="title">Supplementary-material "caption" must contain "title".</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--supplementary-material - must have an @id-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')]" role="error">
+      <assert id="supp2a" test="@id">Missing 'id' attribute - "supplementary-material" should have an 'id' of the form "s"+number.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--supplementary-material - @id must be correct format-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][@id]" role="error">
+      <assert id="supp2b" test="matches(@id,'^s[0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "supplementary-material" 'id' attribute should be of the form "s"+number.</assert>
+    </rule>
+  </pattern>
+  
+  
+  <pattern><!--supplementary-material - must have an @content-type-->
+    <rule context="floats-group/supplementary-material[not(@xlink:href or contains(@xlink:href,'.'))]" role="error">
+      <assert id="supp3a" test="@content-type">Missing 'content-type' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--supplementary-material - must have a @content-type; when @xlink:href is invalid, point to Tagging instructions-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]" role="error">
+      <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+      <report id="supp3b" test="not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif') and not(@content-type)">Missing 'content-type' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</report>
+    </rule>
+  </pattern>
+  <pattern><!--supplementary-material - must have a @content-type; when @xlink:href exists (and is valid) gives value that should be used-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]" role="error">
+      <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+      <let name="content-type" value="if ($extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx') then 'document'
+        else if ($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf') then 'image'
+        else if ($extension='tar' or $extension='tgz' or $extension='zip') then 'archive'
+        else if ($extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml') then 'text'
+        else if ($extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv') then 'movie'
+        else if ($extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif') then 'other'
+        else ()"/>
+      <assert id="supp3c" test="@mimetype or not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif')">Missing 'content-type' attribute on "supplementary-material". For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$content-type"/>".</assert>
+    </rule>
+  </pattern>
+  <pattern><!--value used for @content-type is correct based on file extension (includes test for valid extension)-->
     <rule context="floats-group/supplementary-material[not(@content-type='external-media')][@content-type][contains(@xlink:href,'.')]" role="error">
       <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
-      <let name="content-type" value="if ($extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx') then 'document' else if ($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf') then 'image' else if ($extension='tar' or $extension='tgz' or $extension='zip') then 'archive' else if ($extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml') then 'text' else if ($extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv') then 'movie' else if ($extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif') then 'other' else ()"/>
-      <assert id="supp3b" test="@content-type=$content-type">For supplementary material files with extension "<value-of select="$extension"/>", the content-type attribute should have the value "<value-of select="$content-type"/>", not "<value-of select="@content-type"/>".</assert>
+      <let name="content-type" value="if ($extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx') then 'document'
+        else if ($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf') then 'image'
+        else if ($extension='tar' or $extension='tgz' or $extension='zip') then 'archive'
+        else if ($extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml') then 'text'
+        else if ($extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv') then 'movie'
+        else if ($extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif') then 'other'
+        else ()"/>
+      <assert id="supp3d" test="@content-type=$content-type or not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif')">For supplementary material files with extension "<value-of select="$extension"/>", the content-type attribute should have the value "<value-of select="$content-type"/>" (not "<value-of select="@content-type"/>").</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--supplementary-material - must have an @id-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')]" role="error">
+      <assert id="supp4a" test="@xlink:href">Missing 'xlink:href' attribute on "supplementary-material". The 'xlink:href' should contain the filename (including extension) of the item of supplementary information. Do not include any path information.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--@xlink:href does not contain filepath info-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][@xlink:href]" role="error">
+      <report id="supp4b" test="contains(@xlink:href,'/')">Do not include filepath information for supplementary material files "<value-of select="@xlink:href"/>".</report>
+    </rule>
+  </pattern>
+  <pattern><!--@xlink:href contains a '.' and therefore may have an extension-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][@xlink:href]" role="error">
+      <assert id="supp4c" test="contains(@xlink:href,'.')">Supplementary-material 'xlink:href' value ("<value-of select="@xlink:href"/>") should contain the file extension (e.g. jpg, doc, etc).</assert>
+    </rule>
+  </pattern>
+  <pattern><!--@xlink:href has valid file extension-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]" role="error">
+      <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+      <assert id="supp4d" test="$extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif'">Unexpected file extension value ("<value-of select="$extension"/>") in supplementary material '@xlink:href' attribute - please check.</assert>
+    </rule>
+  </pattern>
+  
+  
+  <pattern><!--supplementary-material - must have a @mimetype; when @xlink:href does not exist, point to Tagging instructions-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][not(@xlink:href or contains(@xlink:href,'.'))]" role="error">
+      <assert id="supp5a" test="@mimetype">Missing 'mimetype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</assert>
+    </rule>
+  </pattern>
+  <pattern><!--supplementary-material - must have a @mimetype; when @xlink:href is invalid, point to Tagging instructions-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]" role="error">
+      <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+      <report id="supp5b" test="not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif') and not(@mimetype)">Missing 'mimetype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</report>
+    </rule>
+  </pattern>
+  <pattern><!--supplementary-material - must have a @mimetype; when @xlink:href exists (and is valid) gives value that should be used-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]" role="error">
+      <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+      <let name="mimetype" value="if ($extension='doc' or $extension='docx' or $extension='eps' or $extension='exe' or $extension='noa' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='ps' or $extension='rtf' or $extension='swf' or $extension='tar' or $extension='tgz' or $extension='wmf' or $extension='xls' or $extension='xlsx' or $extension='xml' or $extension='zip') then 'application'
+        else if ($extension='mp2' or $extension='mp3' or $extension='ra' or $extension='wav') then 'audio'
+        else if ($extension='cif' or $extension='pdb' or $extension='sdf') then 'chemical'
+        else if ($extension='bmp' or $extension='gif' or $extension='jpeg' or $extension='jpg' or $extension='pict' or $extension='png' or $extension='tiff') then 'image'
+        else if ($extension='c' or  $extension='csv' or $extension='htm' or $extension='html' or $extension='sif' or $extension='txt') then 'text'
+        else if ($extension='avi' or $extension='mov' or $extension='mp4' or $extension='mpg' or $extension='qt' or $extension='rv' or $extension='wmv') then 'video'
+        else ()"/>
+      <assert id="supp5c" test="@mimetype or not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif')">Missing 'mimetype' attribute on "supplementary-material". For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$mimetype"/>".</assert>
+    </rule>
+  </pattern>
+  <pattern><!--value used for @mimetype is correct based on file extension (includes test for valid extension)-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][@mimetype][contains(@xlink:href,'.')]" role="error">
+      <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+      <let name="mimetype" value="if ($extension='doc' or $extension='docx' or $extension='eps' or $extension='exe' or $extension='noa' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='ps' or $extension='rtf' or $extension='swf' or $extension='tar' or $extension='tgz' or $extension='wmf' or $extension='xls' or $extension='xlsx' or $extension='xml' or $extension='zip') then 'application'
+        else if ($extension='mp2' or $extension='mp3' or $extension='ra' or $extension='wav') then 'audio'
+        else if ($extension='cif' or $extension='pdb' or $extension='sdf') then 'chemical'
+        else if ($extension='bmp' or $extension='gif' or $extension='jpeg' or $extension='jpg' or $extension='pict' or $extension='png' or $extension='tiff') then 'image'
+        else if ($extension='c' or  $extension='csv' or $extension='htm' or $extension='html' or $extension='sif' or $extension='txt') then 'text'
+        else if ($extension='avi' or $extension='mov' or $extension='mp4' or $extension='mpg' or $extension='qt' or $extension='rv' or $extension='wmv') then 'video'
+        else ()"/>
+      <assert id="supp5d" test="@mimetype=$mimetype or not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif')">For supplementary material files with extension "<value-of select="$extension"/>", the mimetype attribute should have the value "<value-of select="$mimetype"/>" (not "<value-of select="@mimetype"/>").</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--supplementary-material - must have a @mime-subtype; when @xlink:href does not exist or is invalid, point to Tagging instructions-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][not(@xlink:href or contains(@xlink:href,'.'))]" role="error">
+      <assert id="supp6a" test="@mime-subtype">Missing 'mimetype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--supplementary-material - must have a @mime-subtype; when @xlink:href exists (and is invalid) points to Tagging instructions-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]" role="error">
+      <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+      <report id="supp6b" test="not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif') and not(@mime-subtype)">Missing 'mime-subtype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value based.</report>
+    </rule>
+  </pattern>
+  <pattern><!--supplementary-material - must have a @mime-subtype; when @xlink:href exists (and is valid) gives value that should be used-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]" role="error">
+      <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+      <let name="mime-subtype" value="if ($extension='tgz') then 'application/gzip'
+        else if ($extension='bmp') then 'bmp'
+        else if ($extension='csv') then 'csv'
+        else if ($extension='gif') then 'gif'
+        else if ($extension='htm' or $extension='html') then 'html'
+        else if ($extension='jpeg' or $extension='jpg') then 'jpeg'
+        else if ($extension='mp4' or $extension='mp2' or $extension='mp3' or $extension='mpg') then 'mpeg'
+        else if ($extension='doc' or $extension='dot') then 'msword'
+        else if ($extension='exe' or $extension='noa' or $extension='ole' or $extension='wp') then 'octet-stream'
+        else if ($extension='pdf') then 'pdf'
+        else if ($extension='c' or $extension='sif' or $extension='txt') then 'plain'
+        else if ($extension='png') then 'png'
+        else if ($extension='eps' or $extension='ps') then 'postscript'
+        else if ($extension='mov' or $extension='qt') then 'quicktime'
+        else if ($extension='rtf') then 'rtf'
+        else if ($extension='sbml') then 'sbml+xml'
+        else if ($extension='tiff') then 'tiff'
+        else if ($extension='xls') then 'vnd.ms-excel'
+        else if ($extension='xlsm') then 'vnd.ms-excel.sheet.macroEnabled.12'
+        else if ($extension='pps' or $extension='ppt') then 'vnd.ms-powerpoint'
+        else if ($extension='pptm') then 'vnd.ms-powerpoint.presentation.macroEnabled.12'
+        else if ($extension='docm') then 'vnd.ms-word.document.macroEnabled.12'
+        else if ($extension='pptx') then 'vnd.openxmlformats-officedocument.presentationml.presentation'
+        else if ($extension='xlsx') then 'vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        else if ($extension='docx') then 'vnd.openxmlformats-officedocument.wordprocessingml.document'
+        else if ($extension='ra') then 'vnd.rn-realaudio'
+        else if ($extension='rv') then 'vnd.rn-realvideo'
+        else if ($extension='cdx') then 'x-cdx'
+        else if ($extension='cif') then 'x-cif'
+        else if ($extension='jdx') then 'x-jcamp-dx'
+        else if ($extension='tex') then 'x-latex'
+        else if ($extension='mol') then 'x-mdl-molfile'
+        else if ($extension='sdf') then 'x-mdl-sdfile'
+        else if ($extension='xml') then 'xml'
+        else if ($extension='wmf') then 'x-msmetafile'
+        else if ($extension='avi') then 'x-msvideo'
+        else if ($extension='wmv') then 'x-ms-wmv'
+        else if ($extension='pdb') then 'x-pdb'
+        else if ($extension='pict') then 'x-pict'
+        else if ($extension='swf') then 'x-shockwave-flash'
+        else if ($extension='tar') then 'x-tar'
+        else if ($extension='wav') then 'x-wav'
+        else if ($extension='zip') then 'x-zip-compressed'
+        else ()"/>
+      <assert id="supp6c" test="@mime-subtype or not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif')">Missing 'mime-subtype' attribute on "supplementary-material". For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$mime-subtype"/>".</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--value used for @mimetype is correct based on file extension (includes test for valid extension)-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][@mime-subtype][contains(@xlink:href,'.')]" role="error">
+      <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+      <let name="mime-subtype" value="if ($extension='tgz') then 'application/gzip'
+        else if ($extension='bmp') then 'bmp'
+        else if ($extension='csv') then 'csv'
+        else if ($extension='gif') then 'gif'
+        else if ($extension='htm' or $extension='html') then 'html'
+        else if ($extension='jpeg' or $extension='jpg') then 'jpeg'
+        else if ($extension='mp4' or $extension='mp2' or $extension='mp3' or $extension='mpg') then 'mpeg'
+        else if ($extension='doc' or $extension='dot') then 'msword'
+        else if ($extension='exe' or $extension='noa' or $extension='ole' or $extension='wp') then 'octet-stream'
+        else if ($extension='pdf') then 'pdf'
+        else if ($extension='c' or $extension='sif' or $extension='txt') then 'plain'
+        else if ($extension='png') then 'png'
+        else if ($extension='eps' or $extension='ps') then 'postscript'
+        else if ($extension='mov' or $extension='qt') then 'quicktime'
+        else if ($extension='rtf') then 'rtf'
+        else if ($extension='sbml') then 'sbml+xml'
+        else if ($extension='tiff') then 'tiff'
+        else if ($extension='xls') then 'vnd.ms-excel'
+        else if ($extension='xlsm') then 'vnd.ms-excel.sheet.macroEnabled.12'
+        else if ($extension='pps' or $extension='ppt') then 'vnd.ms-powerpoint'
+        else if ($extension='pptm') then 'vnd.ms-powerpoint.presentation.macroEnabled.12'
+        else if ($extension='docm') then 'vnd.ms-word.document.macroEnabled.12'
+        else if ($extension='pptx') then 'vnd.openxmlformats-officedocument.presentationml.presentation'
+        else if ($extension='xlsx') then 'vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        else if ($extension='docx') then 'vnd.openxmlformats-officedocument.wordprocessingml.document'
+        else if ($extension='ra') then 'vnd.rn-realaudio'
+        else if ($extension='rv') then 'vnd.rn-realvideo'
+        else if ($extension='cdx') then 'x-cdx'
+        else if ($extension='cif') then 'x-cif'
+        else if ($extension='jdx') then 'x-jcamp-dx'
+        else if ($extension='tex') then 'x-latex'
+        else if ($extension='mol') then 'x-mdl-molfile'
+        else if ($extension='sdf') then 'x-mdl-sdfile'
+        else if ($extension='xml') then 'xml'
+        else if ($extension='wmf') then 'x-msmetafile'
+        else if ($extension='avi') then 'x-msvideo'
+        else if ($extension='wmv') then 'x-ms-wmv'
+        else if ($extension='pdb') then 'x-pdb'
+        else if ($extension='pict') then 'x-pict'
+        else if ($extension='swf') then 'x-shockwave-flash'
+        else if ($extension='tar') then 'x-tar'
+        else if ($extension='wav') then 'x-wav'
+        else if ($extension='zip') then 'x-zip-compressed'
+        else ()"/>
+      <assert id="supp6d" test="@mime-subtype=$mime-subtype or not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif')">For supplementary material files with extension "<value-of select="$extension"/>", the mime-subtype attribute should have the value "<value-of select="$mime-subtype"/>" (not "<value-of select="@mime-subtype"/>").</assert>
+    </rule>
+  </pattern>
+  
+  <pattern><!--no other attributes used on supplementary-material-->
+    <rule context="floats-group/supplementary-material" role="error">
+      <report id="supp7a" test="@specific-use" role="error">Do not use "specific-use" attribute on "supplementary-material".</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="floats-group/supplementary-material" role="error">
+      <report id="supp7b" test="@xlink:actuate" role="error">Do not use "xlink:actuate" attribute on "supplementary-material".</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="floats-group/supplementary-material" role="error">
+      <report id="supp7c" test="@xlink:role" role="error">Do not use "xlink:role" attribute on "supplementary-material".</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="floats-group/supplementary-material" role="error">
+      <report id="supp7d" test="@xlink:show" role="error">Do not use "xlink:show" attribute on "supplementary-material".</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="floats-group/supplementary-material" role="error">
+      <report id="supp7e" test="@xlink:title" role="error">Do not use "xlink:title" attribute on "supplementary-material".</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="floats-group/supplementary-material" role="error">
+      <report id="supp7f" test="@xlink:type" role="error">Do not use "xlink:type" attribute on "supplementary-material".</report>
+    </rule>
+  </pattern>
+  <pattern>
+    <rule context="floats-group/supplementary-material" role="error">
+      <report id="supp7g" test="@xml:lang" role="error">Do not use "xml:lang" attribute on "supplementary-material".</report>
     </rule>
   </pattern>
   
