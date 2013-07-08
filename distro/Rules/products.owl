@@ -22272,7 +22272,7 @@
 <terms:pcode>nmstr</terms:pcode>
 <terms:hasCoverage rdf:resource="nmstr_coverage"/>
 <terms:collection>journals_nature</terms:collection>
-<dc:title>Nature Maestro</dc:title>
+<dc:title>npj Maestro</dc:title>
 <terms:npgid>xxxx</terms:npgid>
 <terms:targetDomain>nature.com</terms:targetDomain>
 <terms:hasPublication rdf:resource="http://ns.nature.com/publications/0000-0000"/>
