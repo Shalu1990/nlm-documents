@@ -26941,6 +26941,18 @@
 <bibo:eissn>1753-965X</bibo:eissn>
 </terms:Publication>
 <!-- http://ns.nature.com/publications/1754-2189 -->
+<owl:Thing rdf:about="http://ns.nature.com/publications/1357-0927">
+        <rdf:type rdf:resource="http://ns.nature.com/terms/Publication"/>
+        <dc:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">urn:issn:1357-0927</dc:identifier>
+        <bibo:issn>1357-0927</bibo:issn>
+    </owl:Thing>
+    <!-- http://ns.nature.com/publications/1753-965X for old values of jdhf-->
+    <terms:Publication rdf:about="http://ns.nature.com/publications/1747-4426">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <dc:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">urn:issn:1747-4426</dc:identifier>
+        <bibo:eissn>1747-4426</bibo:eissn>
+    </terms:Publication>
+<!-- http://ns.nature.com/publications/1754-2189 -->
 <terms:Publication rdf:about="http://ns.nature.com/publications/1754-2189">
 <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
 <bibo:issn>1754-2189</bibo:issn>
