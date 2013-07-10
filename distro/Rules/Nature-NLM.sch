@@ -447,19 +447,19 @@ Use the <let> element to define the attribute if necessary.
                  test="@specific-use=./preceding-sibling::abstract[@abstract-type='editorial-notes']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear on research-summary in each article.</report>
       </rule>
   </pattern>
-   <pattern>
-      <rule context="article-meta" role="error">
+   <pattern><!--update $derived-status with all Frontiers titles if they are converted to JATS-->
+    <rule context="article-meta" role="error">
          <let name="derived-status"
-              value="if ($pcode='am' or $pcode='bcj' or $pcode='cddis' or $pcode='ctg' or $pcode='cti' or $pcode='emi' or $pcode='emm' or $pcode='las' or $pcode='mtna' or $pcode='nutd' or $pcode='oncsis' or $pcode='psp' or $pcode='tp' or $pcode='ncomms' or $pcode='srep') then 'online'       else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'       else if (ancestor::article-meta/pub-date[@pub-type='aop'] and not(ancestor::article/body)) then 'author-ms'       else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'       else 'issue'"/>
+              value="if ($pcode='am' or $pcode='bcj' or $pcode='cddis' or $pcode='ctg' or $pcode='cti' or $pcode='emi' or $pcode='emm' or $pcode='las' or $pcode='mtna' or $pcode='nutd' or $pcode='oncsis' or $pcode='psp' or $pcode='tp' or $pcode='nmstr' or $pcode='sdata' or $pcode='fgene' or $pcode='ncomms' or $pcode='srep' or $pcode='msb' or $pcode='scibx') then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop'] and not(ancestor::article/body)) then 'author-ms'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else 'issue'"/>
          <assert id="custom1" test="custom-meta-group/custom-meta[meta-name='publish-type']">All articles should contain publication status information at the end of "article-metadata". Insert "custom-meta-group/custom-meta" with "meta-name". For this journal and publication status, "meta-value" should be "<value-of select="$derived-status"/>".</assert>
       </rule>
   </pattern>
-   <pattern>
-      <rule context="article-meta/custom-meta-group/custom-meta[meta-name='publish-type']"
+   <pattern><!--update $derived-status with all Frontiers titles if they are converted to JATS-->
+    <rule context="article-meta/custom-meta-group/custom-meta[meta-name='publish-type']"
             role="error">
          <let name="status" value="meta-value"/>
          <let name="derived-status"
-              value="if ($pcode='am' or $pcode='bcj' or $pcode='cddis' or $pcode='ctg' or $pcode='cti' or $pcode='emi' or $pcode='emm' or $pcode='las' or $pcode='mtna' or $pcode='nutd' or $pcode='oncsis' or $pcode='psp' or $pcode='tp' or $pcode='ncomms' or $pcode='srep' or $pcode='msb' or $pcode='scibx') then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop'] and not(ancestor::article/body)) then 'author-ms'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else 'issue'"/>
+              value="if ($pcode='am' or $pcode='bcj' or $pcode='cddis' or $pcode='ctg' or $pcode='cti' or $pcode='emi' or $pcode='emm' or $pcode='las' or $pcode='mtna' or $pcode='nutd' or $pcode='oncsis' or $pcode='psp' or $pcode='tp' or $pcode='nmstr' or $pcode='sdata' or $pcode='fgene' or $pcode='ncomms' or $pcode='srep' or $pcode='msb' or $pcode='scibx') then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop'] and not(ancestor::article/body)) then 'author-ms'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else 'issue'"/>
          <assert id="custom2" test="$status = $derived-status">Unexpected value for "publish-type" (<value-of select="$status"/>). Expected value for this journal and publication status is "<value-of select="$derived-status"/>".</assert>
       </rule>
   </pattern>
