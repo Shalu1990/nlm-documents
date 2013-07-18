@@ -290,7 +290,9 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--fpage[parent::article-meta] |-->
     <rule context="volume[parent::article-meta] | issue[parent::article-meta] | lpage[parent::article-meta] | page-count/@count"
             role="error">
-         <assert id="artinfo2" test="not(normalize-space(.) or *) or matches(.,'^S?[0-9]+$')">Invalid value for "<name/>" (<value-of select="."/>) - this may start with a capital S, but otherwise should only contain numerals.</assert>
+         <let name="value" value="replace(.,'test','')"/>
+         <assert id="artinfo2"
+                 test="not(normalize-space($value) or *) or matches($value,'^S?[0-9]+$')">Invalid value for "<name/>" (<value-of select="."/>) - this may start with a capital S, but otherwise should only contain numerals.</assert>
       </rule>
   </pattern>
    <pattern>
