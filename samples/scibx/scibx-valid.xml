@@ -5,7 +5,6 @@
     <journal-meta>
         <journal-id journal-id-type="publisher">scibx</journal-id>
         <journal-title-group><journal-title>Science-Business eXchange</journal-title></journal-title-group>
-        <issn pub-type="ppub">1945-3477</issn>
         <issn pub-type="epub">1945-3477</issn>
         <publisher><publisher-name>Nature Publishing Group</publisher-name></publisher>
     </journal-meta>
@@ -36,7 +35,7 @@
                 <role>Staff Writer</role>
             </contrib>
         </contrib-group>
-        <pub-date pub-type="issue-date">
+        <pub-date pub-type="cover-date">
             <day>12</day>
             <month>08</month>
             <year>2010</year>
@@ -74,6 +73,7 @@
 				<kwd>Takeda Pharmaceutical Co. Ltd.</kwd>
             <kwd>The University of Texas Southwestern Medical Center at Dallas</kwd>
         </kwd-group>
+        <custom-meta-group><custom-meta><meta-name>publish-type</meta-name><meta-value>online</meta-value></custom-meta></custom-meta-group>
     </article-meta>
 </front>
 <body>
@@ -233,7 +233,7 @@
                         <oasis:entry><ext-link xlink:href="http://www.biocentury.com/companies/Metabolex_Inc?utm_source=1"><bold>Metabolex Inc.</bold></ext-link></oasis:entry>
                         <oasis:entry>MBX-102</oasis:entry>
                         <oasis:entry>Non-TZD</oasis:entry>
-                        <oasis:entry>Not applicable<xref ref-type="fn" rid="t1-fn1"><sup>A</sup></xref></oasis:entry>
+                        <oasis:entry>Not applicable<xref ref-type="table-fn" rid="t1-fn1"><sup>A</sup></xref></oasis:entry>
                     </oasis:row>                    
                 </oasis:tbody></oasis:tgroup>
         </oasis:table>
@@ -242,7 +242,7 @@
             <media content-type="powerpoint-slide" xlink:href="scibx.2010.940-T1.ppt" mimetype="application/vnd.ms-powerpoint" mime-subtype="ppt" />
         </alternatives>
         <table-wrap-foot>
-            <fn id="t1-fn1"><p><sup>A</sup>No longer in development for diabetes.</p></fn>
+            <fn id="t1-fn1"><label>A</label><p>No longer in development for diabetes.</p></fn>
         </table-wrap-foot>
     </table-wrap>
     
