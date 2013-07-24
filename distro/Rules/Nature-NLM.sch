@@ -582,14 +582,14 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--List - list-type attribute stated (apart from interview/quizzes)-->
     <rule context="list[not(@list-content)]" role="error">
-         <assert id="list3a" test="@list-type">Use "list-type" attribute to show type of list used. Allowed values are: none, bullet, number, lcletter, ucletter, lcroman and ucroman.</assert>
+         <assert id="list3a" test="@list-type">Use "list-type" attribute to show type of list used. Allowed values are: none, bullet, number, lcletter, ucletter, lcroman and ucroman for unbracketed labels. Use number-paren, lcletter-paren and roman-paren for labels in parentheses.</assert>
       </rule>
   </pattern>
    <pattern><!--list-type attribute is valid--><!--needs work - excludes lists in body when no sec exists; does it work in abstracts?-->
     <rule context="list[not(ancestor::sec/@sec-type) and ancestor::sec/@specific-use][@list-type]"
             role="error">
          <let name="listType" value="@list-type"/>
-         <assert id="list3b" test="$allowed-values/list-types/list-type[.=$listType]">Unexpected value for "list-type" attribute (<value-of select="$listType"/>). Allowed values are: none, bullet, number, lcletter, ucletter, lcroman and ucroman. </assert>
+         <assert id="list3b" test="$allowed-values/list-types/list-type[.=$listType]">Unexpected value for "list-type" attribute (<value-of select="$listType"/>). Allowed values are: none, bullet, number, lcletter, ucletter, lcroman and ucroman for unbracketed labels. Use number-paren, lcletter-paren and roman-paren for labels in parentheses.</assert>
       </rule>
   </pattern>
    <pattern><!--List-item - no labels needed-->
@@ -913,6 +913,11 @@ Use the <let> element to define the attribute if necessary.
             <assert id="tab10c" test="not($sup-fn) or not($sup-link) or $sup-link=$sup-fn">Mismatch on linking text: "<value-of select="$sup-link"/>" in table, but "<value-of select="$sup-fn"/>" in footnote. Please check that correct footnote has been linked to.</assert>
         </rule>
     </pattern>
+   <pattern>
+      <rule context="fig/graphic" role="error">
+        <report id="fig1" test="@xlink:href='' or @mimetype='' or @mime-subtype=''">Graphic attribute values 'xlink:href', 'mimetype' and 'mime-subtype' should be used and not be empty - please check that entity declarations have been converted correctly before transformation.</report>
+      </rule>
+   </pattern>
    <pattern><!--supplementary-material - only caption allowed as a child-->
     <rule context="floats-group/supplementary-material[not(@content-type='external-media')]"
             role="error">
@@ -933,7 +938,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--supplementary-material - @id must be correct format-->
     <rule context="floats-group/supplementary-material[not(@content-type='external-media')][@id]"
             role="error">
-         <assert id="supp2b" test="matches(@id,'^s[0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "supplementary-material" 'id' attribute should be of the form "s"+number.</assert>
+         <assert id="supp2b" test="matches(@id,'^s[0-9]+$')">Invalid 'id' value ("<value-of select="@id"/>"). "supplementary-material" 'id' attribute should be of the form "s"+number.</assert>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have an @content-type-->
