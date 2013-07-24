@@ -2,7 +2,7 @@
 <!--
 *******************************************************************************
 *
-This allowed values file is for use with the NLM Schematron rules file.
+This allowed values file is for use with the JATS Schematron rules file.
 
 It contains the allowed values of elements and attributes for each journal that are not covered by the current Ontology files.
 
@@ -49,6 +49,7 @@ Created - 20120208
     <abstract-type>key-points</abstract-type>
     <abstract-type>research-summary</abstract-type>
     <abstract-type>editorial-notes</abstract-type>
+    <abstract-type>in-brief</abstract-type>
   </abstract-types>
   <sec-types>
     <sec-type>materials</sec-type>
@@ -62,6 +63,9 @@ Created - 20120208
     <list-type>lcletter</list-type>
     <list-type>ucroman</list-type>
     <list-type>lcroman</list-type>
+    <list-type>number-paren</list-type>
+    <list-type>lcletter-paren</list-type>
+    <list-type>lcroman-paren</list-type>
     <list-type>none</list-type>
   </list-types>
   <content-types>
@@ -69,278 +73,4 @@ Created - 20120208
     <content-type>cross-head</content-type>
     <content-type>dateline</content-type>
   </content-types>
-  <states>
-    <state fullname="Alabama">AL</state>
-    <state fullname="Alaska">AK</state>
-    <state fullname="Arizona">AZ</state>
-    <state fullname="Arkansas">AR</state>
-    <state fullname="California">CA</state>
-    <state fullname="Colorado">CO</state>
-    <state fullname="Connecticut">CT</state>
-    <state fullname="Delaware">DE</state>
-    <state fullname="Florida">FL</state>
-    <state fullname="Georgia">GA</state>
-    <state fullname="Hawaii">HI</state>
-    <state fullname="Idaho">ID</state>
-    <state fullname="Illinois">IL</state>
-    <state fullname="Indiana">IN</state>
-    <state fullname="Iowa">IA</state>
-    <state fullname="Kansas">KS</state>
-    <state fullname="Kentucky">KY</state>
-    <state fullname="Louisiana">LA</state>
-    <state fullname="Maine">ME</state>
-    <state fullname="Maryland">MD</state>
-    <state fullname="Massachusetts">MA</state>
-    <state fullname="Michigan">MI</state>
-    <state fullname="Minnesota">MN</state>
-    <state fullname="Mississippi">MS</state>
-    <state fullname="Missouri">MO</state>
-    <state fullname="Montana">MT</state>
-    <state fullname="Nebraska">NE</state>
-    <state fullname="Nevada">NV</state>
-    <state fullname="New Hampshire">NH</state>
-    <state fullname="New Jersey">NJ</state>
-    <state fullname="New Mexico">NM</state>
-    <state fullname="New York">NY</state>
-    <state fullname="North Carolina">NC</state>
-    <state fullname="North Dakota">ND</state>
-    <state fullname="Ohio">OH</state>
-    <state fullname="Oklahoma">OK</state>
-    <state fullname="Oregon">OR</state>
-    <state fullname="Pennsylvania">PA</state>
-    <state fullname="Rhode Island">RI</state>
-    <state fullname="South Carolina">SC</state>
-    <state fullname="South Dakota">SD</state>
-    <state fullname="Tennessee">TN</state>
-    <state fullname="Texas">TX</state>
-    <state fullname="Utah">UT</state>
-    <state fullname="Vermont">VT</state>
-    <state fullname="Virginia">VA</state>
-    <state fullname="Washington">WA</state>
-    <state fullname="West Virginia">WV</state>
-    <state fullname="Wisconsin">WI</state>
-    <state fullname="Wyoming">WY</state>
-  </states>
-  <journal title="Application Notes">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="British Dental Journal">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Bioentrepreneur">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="BoneKEy-Osteovision">
-    <copyright-holder>International Bone and Mineral Society</copyright-holder>
-  </journal>
-  <journal title="BoneKEy Reports">
-    <copyright-holder>International Bone &amp; Mineral Society</copyright-holder>
-  </journal>
-  <journal title="British Dental Journal">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Cell Migration Gateway">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="EMBO reports">
-    <copyright-holder>European Molecular Biology Organization</copyright-holder>
-  </journal>
-  <journal title="Functional Glycomics">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Functional Glycomics Gateway">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="GI Motility online">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="IBMS BoneKEy">
-    <copyright-holder>International Bone &amp; Mineral Society</copyright-holder>
-  </journal>
-  <journal title="Lab Animal">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Molecular Systems Biology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Biotechnology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Cell Biology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Chemical Biology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Chemistry">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature China">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Climate Change">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Clinical Practice Cardiovascular Medicine">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Clinical Practice Endocrinology &amp; Metabolism">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Clinical Practice Gastroenterology &amp; Hepatology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Clinical Practice Nephrology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Clinical Practice Neurology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Clinical Practice Oncology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Clinical Practice Rheumatology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Clinical Practice Urology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Communications">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Digest">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Genetics">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Geoscience">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Immunology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature India">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Materials">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Medicine">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Methods">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Middle East">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Nanotechnology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Neuroscience">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature News">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Photonics">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Physics">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Protocols">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reports Climate Change">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reports Stem Cells">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Cancer">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Cardiology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Clinical Oncology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Drug Discovery">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Endocrinology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Gastroenterology &amp; Hepatology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Genetics">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Immunology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Microbiology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Molecular Cell Biology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Nephrology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Neurology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Neuroscience">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Rheumatology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Reviews Urology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Structural &amp; Molecular Biology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Nature Structural Biology">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Neuroscience Gateway">
-    <copyright-holder>Allen Brain Atlas</copyright-holder>
-  </journal>
-  <journal title="PSI Structural Genomics Knowledgebase">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Science-Business eXchange">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Scientific American">
-    <copyright-holder>Scientific American, Inc.</copyright-holder>
-  </journal>
-  <journal title="Scientific American Mind">
-    <copyright-holder>Scientific American, Inc.</copyright-holder>
-  </journal>
-  <journal title="Scientific Reports">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Structural Biology KnowledgeBase">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Structural Genomics Update">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="The EMBO Journal">
-    <copyright-holder>Nature Publishing Group</copyright-holder>
-  </journal>
-  <journal title="Vital">
-    <copyright-holder>British Dental Association</copyright-holder>
-  </journal>
 </allowed-values>
