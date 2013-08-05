@@ -22279,6 +22279,32 @@
 </owl:Thing>
 <!-- Dummy information added for Frontiers article -->
 <!-- http://ns.nature.com/products/fgene -->
+<owl:Thing rdf:about="hortres">
+        <rdf:type rdf:resource="http://ns.nature.com/terms/Product"/>
+        <terms:content>fulltext</terms:content>
+        <terms:pcode>hortres</terms:pcode>
+        <terms:hasCoverage rdf:resource="nmstr_coverage"/>
+        <terms:collection>journals_nature</terms:collection>
+        <dc:title>Horticultural Research</dc:title>
+        <terms:npgid>xxxx</terms:npgid>
+        <terms:targetDomain>nature.com</terms:targetDomain>
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/2052-7276"/>
+    </owl:Thing>
+    <!-- Information added for MT Methods - 2013/08/05 -->
+    <!-- http://ns.nature.com/products/mtm -->
+    <owl:Thing rdf:about="mtm">
+        <rdf:type rdf:resource="http://ns.nature.com/terms/Product"/>
+        <terms:content>fulltext</terms:content>
+        <terms:pcode>mtm</terms:pcode>
+        <terms:hasCoverage rdf:resource="nmstr_coverage"/>
+        <terms:collection>journals_nature</terms:collection>
+        <dc:title>Molecular Therapy &#x2014; Methods &amp; Clinical Development</dc:title>
+        <terms:npgid>xxxx</terms:npgid>
+        <terms:targetDomain>nature.com</terms:targetDomain>
+        <terms:hasPublication rdf:resource="http://ns.nature.com/publications/2329-0501"/>
+    </owl:Thing>
+<!-- Dummy information added for Frontiers article -->
+<!-- http://ns.nature.com/products/fgene -->
 <owl:Thing rdf:about="fgene">
 <rdf:type rdf:resource="http://ns.nature.com/terms/Product"/>
 <terms:content>fulltext</terms:content>
@@ -27352,6 +27378,20 @@
         <rdf:type rdf:resource="http://ns.nature.com/terms/Publication"/>
         <dc:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">urn:eissn:2052-4463</dc:identifier>
         <bibo:eissn>2052-4463</bibo:eissn>
+    </owl:Thing>
+    <!--Dummy info for fgene and nmstr-->
+    <!-- http://ns.nature.com/publications/1664-8021 -->
+    <owl:Thing rdf:about="http://ns.nature.com/publications/2052-7276">
+        <rdf:type rdf:resource="http://ns.nature.com/terms/Publication"/>
+        <dc:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">urn:eissn:2052-7276</dc:identifier>
+        <bibo:eissn>2052-7276</bibo:eissn>
+    </owl:Thing>
+    <!--info for mtm-->
+    <!-- http://ns.nature.com/publications/2329-0501 -->
+    <owl:Thing rdf:about="http://ns.nature.com/publications/2329-0501">
+        <rdf:type rdf:resource="http://ns.nature.com/terms/Publication"/>
+        <dc:identifier rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">urn:eissn:2329-0501</dc:identifier>
+        <bibo:eissn>2329-0501</bibo:eissn>
     </owl:Thing>
     <!--Dummy info for fgene and nmstr-->
     <!-- http://ns.nature.com/publications/1664-8021 -->
