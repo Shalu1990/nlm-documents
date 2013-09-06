@@ -1,0 +1,4403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products created="2009-10-01" modified="" version="1.7.5">
+    <product pcode="bostblog" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/bostblog.xml">
+        <description>
+            <title>Boston Blog</title>
+            <homePage>http://blogs.nature.com/boston/</homePage>
+        </description>
+        <coverage moving="true">
+            <date start="2006-06"/>
+        </coverage>
+    </product>
+    <product pcode="ncpneuro" npgid="123" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ncpneuro.xml">
+        <references>
+            <reference type="replacedby" pcode="nrneurol"/>
+        </references>
+        <description>
+            <title>Nature Clinical Practice Neurology</title>
+            <issn type="print">1745-834X</issn>
+            <issn type="electronic">1745-8358</issn>
+            <homePage>http://www.nature.com/ncpneuro</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat clin pract neuro</synonym>
+            <synonym>ncpneuro</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2005-11" end="2009-03"/>
+            <volume start="1" end="5"/>
+            <issue start="1" end="3"/>
+        </coverage>
+    </product>
+    <product pcode="biosoc" npgid="1082" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/biosoc.xml">
+        <description>
+            <title>BioSocieties</title>
+            <issn type="print">1745-8552</issn>
+            <issn type="electronic">1745-8560</issn>
+            <homePage>http://www.palgrave-journals.com/biosoc/</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>biosoc</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2006-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="cmi" npgid="1352" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/cmi.xml">
+        <description>
+            <title>Cellular &amp; Molecular Immunology</title>
+            <issn type="print">1672-7681</issn>
+            <issn type="electronic">2042-0226</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>cmi</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2008-02"/>
+            <volume start="5"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="gt" npgid="214" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/gt.xml">
+        <description>
+            <title>Gene Therapy</title>
+            <issn type="print">0969-7128</issn>
+            <issn type="electronic">1476-5462</issn>
+            <homePage>http://www.nature.com/gt</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>gene ther</synonym>
+            <synonym>gt</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1997-01"/>
+            <volume start="4"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="pj" npgid="1061" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/pj.xml">
+        <description>
+            <title>Polymer Journal</title>
+            <issn type="print">0032-3896</issn>
+            <issn type="electronic">1349-0540</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>pj</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2006-01"/>
+            <volume start="38"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jdg" npgid="293" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jdg.xml">
+        <description>
+            <title>International Journal of Disclosure and Governance</title>
+            <issn type="print">1741-3591</issn>
+            <issn type="electronic">1746-6539</issn>
+            <homePage>http://www.palgrave-journals.com/jdg/</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jdg</synonym>
+            <synonym>Int J Discl Gov</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2003-12"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="mtm" npgid="549821" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/mtm.xml">
+        <description>
+            <title>Molecular Therapy &#x2014; Methods &amp; Clinical Development</title>
+            <issn type="electronic">2329-0501</issn>
+            <homePage>http://www.nature.com/mtm/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>Mol Ther Methods Clin Dev</synonym>
+            <synonym>mtm</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2013"/>
+            <volume start=""/>
+            <issue start=""/>
+        </coverage>
+    </product>
+    <product pcode="nsb" npgid="60" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nsb.xml">
+        <references>
+            <reference type="replacedby" pcode="nsmb"/>
+        </references>
+        <description>
+            <title>Nature Structural Biology</title>
+            <issn type="print">1072-8368</issn>
+            <homePage>http://www.nature.com/nsb</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat struct mol biol</synonym>
+            <synonym>nsb</synonym>
+            <synonym>nsmb</synonym>
+            <synonym>nsmba</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="1994-01" end="2003-12"/>
+            <volume start="1" end="10"/>
+            <issue start="1" end="12"/>
+        </coverage>
+    </product>
+    <product pcode="polity" npgid="272" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/polity.xml">
+        <description>
+            <title>Polity</title>
+            <issn type="print">0032-3497</issn>
+            <issn type="electronic">1744-1684</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>polity</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-02"/>
+            <volume start="37"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nrneph" npgid="981" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrneph.xml">
+        <references>
+            <reference type="replaces" pcode="ncpneph"/>
+        </references>
+        <description>
+            <title>Nature Reviews Nephrology</title>
+            <issn type="print">1759-5061</issn>
+            <issn type="electronic">1759-507X</issn>
+            <homePage>http://www.nature.com/nrneph</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat rev nephrol</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-11"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nrneurol" npgid="985" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrneurol.xml">
+        <references>
+            <reference type="replaces" pcode="ncpneuro"/>
+        </references>
+        <description>
+            <title>Nature Reviews Neurology</title>
+            <issn type="print">1759-4758</issn>
+            <issn type="electronic">1759-4766</issn>
+            <homePage>http://www.nature.com/nrneurol</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat rev neurol</synonym>
+            <synonym>nrneurol</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-11"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="hep" npgid="244" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/hep.xml">
+        <description>
+            <title>Higher Education Policy</title>
+            <issn type="print">0952-8733</issn>
+            <issn type="electronic">1740-3863</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>hep</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1988-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="how" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/how.xml">
+        <description>
+            <title>House of Wisdom</title>
+            <homePage>http://blogs.nature.com/houseofwisdom/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2010-02"/>
+        </coverage>
+    </product>
+    <product pcode="mi" npgid="929" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/mi.xml">
+        <description>
+            <title>Mucosal Immunology</title>
+            <issn type="print">1933-0219</issn>
+            <issn type="electronic">1935-3456</issn>
+            <homePage>http://www.nature.com/mi</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>mi</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2008-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="sbkb" npgid="1375" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/sbkb.xml">
+        <references>
+            <reference type="replaces" pcode="psiskb"/>
+        </references>
+        <description>
+            <title>PSI Structural Biology Knowledgebase</title>
+            <issn type="print">2041-8442</issn>
+            <homePage>http://www.sbkb.org/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2010-09"/>
+        </coverage>
+    </product>
+    <product pcode="embor" npgid="236" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/embor.xml">
+        <description>
+            <title>EMBO reports</title>
+            <issn type="print">1469-221X</issn>
+            <issn type="electronic">1469-3178</issn>
+            <homePage>http://www.nature.com/embor</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>embor</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-07"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="fg" npgid="127" collection="external_gateway" content="listings"
+        xml:base="/ns.nature.com/products/fg.xml">
+        <description>
+            <title>Functional Glycomics Gateway</title>
+            <issn type="electronic">1752-184X</issn>
+            <homePage>http://www.functionalglycomics.org/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>fg</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2006-10"/>
+        </coverage>
+    </product>
+    <product pcode="news" npgid="117" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/news.xml">
+        <references>
+            <reference type="product" pcode="nature"/>
+        </references>
+        <description>
+            <title>Nature News</title>
+            <issn type="electronic">1744-7933</issn>
+            <homePage>http://www.nature.com/news</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="1998-07"/>
+        </coverage>
+    </product>
+    <product pcode="ejcn" npgid="208" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ejcn.xml">
+        <description>
+            <title>European Journal of Clinical Nutrition</title>
+            <issn type="print">0954-3007</issn>
+            <issn type="electronic">1476-5640</issn>
+            <homePage>http://www.nature.com/ejcn</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ejcn</synonym>
+            <synonym>eur j clin nutr</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1997-01"/>
+            <volume start="51"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jhh" npgid="221" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/jhh.xml">
+        <description>
+            <title>Journal of Human Hypertension</title>
+            <issn type="print">0950-9240</issn>
+            <issn type="electronic">1476-5527</issn>
+            <homePage>http://www.nature.com/jhh</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>j hum hypertens</synonym>
+            <synonym>jhh</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1997-01"/>
+            <volume start="11"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nchembio" npgid="119" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nchembio.xml">
+        <description>
+            <title>Nature Chemical Biology</title>
+            <issn type="print">1552-4450</issn>
+            <issn type="electronic">1552-4469</issn>
+            <homePage>http://www.nature.com/nchembio</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat chem biol</synonym>
+            <synonym>nchembio</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-06"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nindia" npgid="933" collection="journals_nature" content="repurposed"
+        xml:base="/ns.nature.com/products/nindia.xml">
+        <references>
+            <reference type="subproduct" pcode="indig"/>
+        </references>
+        <description>
+            <title>Nature India</title>
+            <issn type="electronic">1755-3180</issn>
+            <homePage>http://www.nature.com/nindia</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nindia</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-05"/>
+        </coverage>
+    </product>
+    <product pcode="hr" npgid="954" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/hr.xml">
+        <description>
+            <title>Hypertension Research</title>
+            <issn type="print">0916-9636</issn>
+            <issn type="electronic">1348-4214</issn>
+            <homePage>http://www.nature.com/hr</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>hr</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-01"/>
+            <volume start="28"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ncpgasthep" npgid="109" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ncpgasthep.xml">
+        <references>
+            <reference type="replacedby" pcode="nrgastro"/>
+        </references>
+        <description>
+            <title>Nature Clinical Practice Gastroenterology &amp; Hepatology</title>
+            <issn type="print">1743-4378</issn>
+            <issn type="electronic">1743-4386</issn>
+            <homePage>http://www.nature.com/nrgastro</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat clin pract gastro</synonym>
+            <synonym>ncpgasthep</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2004-11" end="2009-03"/>
+            <volume start="1" end="6"/>
+            <issue start="1" end="3"/>
+        </coverage>
+    </product>
+    <product pcode="ap" npgid="256" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/ap.xml">
+        <description>
+            <title>Acta Politica</title>
+            <issn type="print">0001-6810</issn>
+            <issn type="electronic">1741-1416</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ap</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2003-06"/>
+            <volume start="38"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ejhg" npgid="209" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ejhg.xml">
+        <description>
+            <title>European Journal of Human Genetics</title>
+            <issn type="print">1018-4813</issn>
+            <issn type="electronic">1476-5438</issn>
+            <homePage>http://www.nature.com/ejhg</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ejhg</synonym>
+            <synonym>eur j hum genet</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1998-01"/>
+            <volume start="6"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jma" npgid="549803" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jma.xml">
+        <description>
+            <title>Journal of Marketing Analytics</title>
+            <issn type="print">2050-3318</issn>
+            <issn type="electronic">2050-3326</issn>
+            <homePage>http://www.palgrave-journals.com/jma/</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jma</synonym>
+            <synonym>J Market Anal</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2013-02"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nphoton" npgid="314" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nphoton.xml">
+        <description>
+            <title>Nature Photonics</title>
+            <issn type="print">1749-4885</issn>
+            <issn type="electronic">1749-4893</issn>
+            <homePage>http://www.nature.com/nphoton</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nphoton</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2007-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jidsp" npgid="290" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/jidsp.xml">
+        <description>
+            <title>Journal of Investigative Dermatology Symposium Proceedings</title>
+            <issn type="print">1087-0024</issn>
+            <issn type="electronic">1529-1774</issn>
+            <homePage>http://www.nature.com/jidsp</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>j investig dermatol symp proc</synonym>
+            <synonym>jid symposium proceeding</synonym>
+            <synonym>jidsp</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-09"/>
+            <volume start="4"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="dutr" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/dutr.xml">
+        <references>
+            <reference type="replacedby" pcode="jdhf"/>
+        </references>
+        <description>
+            <title>Derivatives Use, Trading &amp; Regulation</title>
+            <issn type="print">1357-0927</issn>
+            <issn type="electronic">1747-4426</issn>
+            <homePage>http://www.palgrave-journals.com/dutr/</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>dutr</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2005-06" end="2007-02"/>
+            <volume start="1" end="4"/>
+            <issue start="11" end="12"/>
+        </coverage>
+    </product>
+    <product pcode="ijo" npgid="218" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ijo.xml">
+        <description>
+            <title>International Journal of Obesity</title>
+            <issn type="print">0307-0565</issn>
+            <issn type="electronic">1476-5497</issn>
+            <homePage>http://www.nature.com/ijo</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ijo</synonym>
+            <synonym>int j obes</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1997-01"/>
+            <volume start="21"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nbt" npgid="40" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nbt.xml">
+        <description>
+            <title>Nature Biotechnology</title>
+            <issn type="print">1087-0156</issn>
+            <issn type="electronic">1546-1696</issn>
+            <homePage>http://www.nature.com/nbt</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat biotech</synonym>
+            <synonym>nbt</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1983-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jid" npgid="282" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/jid.xml">
+        <description>
+            <title>Journal of Investigative Dermatology</title>
+            <issn type="print">0022-202X</issn>
+            <issn type="electronic">1523-1747</issn>
+            <homePage>http://www.nature.com/jid</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>j invest dermatol</synonym>
+            <synonym>jid</synonym>
+            <synonym>skinbio</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1938-02"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="msb" npgid="269" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/msb.xml">
+        <references>
+            <reference type="subproduct" pcode="7stn"/>
+        </references>
+        <description>
+            <title>Molecular Systems Biology</title>
+            <issn type="electronic">1744-4292</issn>
+            <homePage>http://www.nature.com/msb</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>moly syt biol</synonym>
+            <synonym>msb</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ncpneph" npgid="121" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ncpneph.xml">
+        <references>
+            <reference type="replacedby" pcode="nrneph"/>
+        </references>
+        <description>
+            <title>Nature Clinical Practice Nephrology</title>
+            <issn type="print">1745-8323</issn>
+            <issn type="electronic">1745-8331</issn>
+            <homePage>http://www.nature.com/nrneph</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat clin pract neph</synonym>
+            <synonym>ncpneph</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2005-11" end="2009-03"/>
+            <volume start="1" end="5"/>
+            <issue start="1" end="3"/>
+        </coverage>
+    </product>
+    <product pcode="gim" npgid="1384" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/gim.xml">
+        <description>
+            <title>Genetics in Medicine</title>
+            <issn type="print">1098-3600</issn>
+            <issn type="electronic">1530-0366</issn>
+            <homePage>http://www.nature.com/gim/index.html</homePage>
+        </description>
+        <synonyms>
+            <synonym>Genet Med</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1998-11"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ces" npgid="239" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/ces.xml">
+        <description>
+            <title>Comparative Economic Studies</title>
+            <issn type="print">0888-7233</issn>
+            <issn type="electronic">1478-3320</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ces</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1991-04"/>
+            <volume start="33"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="psp" npgid="549788" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/psp.xml">
+        <description>
+            <title>CPT: Pharmacometrics &amp; Systems Pharmacology</title>
+            <issn type="electronic">2163-8306</issn>
+            <homePage>http://www.nature.com/psp/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>psp</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2012-09"/>
+            <volume start="1"/>
+            <issue start="9"/>
+        </coverage>
+    </product>
+    <product pcode="afcs" npgid="904" collection="crawled_content" content="fulltext"
+        xml:base="/ns.nature.com/products/afcs.xml">
+        <description>
+            <title>Signaling Gateway</title>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>sg</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2002-01" end="2011-03"/>
+        </coverage>
+    </product>
+    <product pcode="oncsis" npgid="1380" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/oncsis.xml">
+        <description>
+            <title>Oncogenesis</title>
+            <issn type="electronic">2157-9024</issn>
+            <homePage>http://www.nature.com/oncsis/index.html</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>oncsis</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2012-02"/>
+        </coverage>
+    </product>
+    <product pcode="cpt" npgid="240" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/cpt.xml">
+        <description>
+            <title>Contemporary Political Theory</title>
+            <issn type="print">1470-8914</issn>
+            <issn type="electronic">1476-9336</issn>
+            <homePage>http://www.palgrave-journals.com/cpt/index.html</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>cpt</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1980-01"/>
+            <volume start="27"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="pcan" npgid="230" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/pcan.xml">
+        <description>
+            <title>Prostate Cancer and Prostatic Diseases</title>
+            <issn type="print">1365-7852</issn>
+            <issn type="electronic">1476-5608</issn>
+            <homePage>http://www.nature.com/pcan</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>pcan</synonym>
+            <synonym>prostate cancer prostatic dis</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1997-09"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nrn" npgid="104" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrn.xml">
+        <description>
+            <title>Nature Reviews Neuroscience</title>
+            <issn type="print">1471-003X</issn>
+            <issn type="electronic">1471-0048</issn>
+            <homePage>http://www.nature.com/nrn</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat rev neurosci</synonym>
+            <synonym>nrn</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-10"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ng" npgid="30" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ng.xml">
+        <references>
+            <reference type="subproduct" pcode="frassn"/>
+        </references>
+        <description>
+            <title>Nature Genetics</title>
+            <issn type="print">1061-4036</issn>
+            <issn type="electronic">1546-1718</issn>
+            <homePage>http://www.nature.com/ng</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat genet</synonym>
+            <synonym>ng</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1992-04"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nnano" npgid="313" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nnano.xml">
+        <description>
+            <title>Nature Nanotechnology</title>
+            <issn type="print">1748-3387</issn>
+            <issn type="electronic">1748-3395</issn>
+            <homePage>http://www.nature.com/nnano</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nnano</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2006-10"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="cdd" npgid="203" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/cdd.xml">
+        <description>
+            <title>Cell Death and Differentiation</title>
+            <issn type="print">1350-9047</issn>
+            <issn type="electronic">1476-5403</issn>
+            <homePage>http://www.nature.com/cdd</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>cdd</synonym>
+            <synonym>cell death differ</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1997-01"/>
+            <volume start="4"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="bioent" npgid="906" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/bioent.xml">
+        <description>
+            <title>Bioentrepeneur</title>
+            <issn type="electronic">1542-6572</issn>
+            <homePage>http://www.nature.com/bioent/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>bioent</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2003-01"/>
+        </coverage>
+    </product>
+    <product pcode="pr" npgid="1385" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/pr.xml">
+        <description>
+            <title>Pediatric Research</title>
+            <issn type="print">0031-3998</issn>
+            <issn type="electronic">1530-0447</issn>
+            <homePage>http://www.nature.com/pr</homePage>
+        </description>
+        <synonyms>
+            <synonym>Pediatr Res</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1967-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nchina" npgid="319" collection="journals_nature" content="repurposed"
+        xml:base="/ns.nature.com/products/nchina.xml">
+        <description>
+            <title>Nature China</title>
+            <issn type="electronic">1751-5793</issn>
+            <homePage>http://www.nature.com/nchina</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nchina</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2007-01"/>
+        </coverage>
+    </product>
+    <product pcode="tpj" npgid="234" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/tpj.xml">
+        <description>
+            <title>The Pharmacogenomics Journal</title>
+            <issn type="print">1470-269X</issn>
+            <issn type="electronic">1473-1150</issn>
+            <homePage>http://www.nature.com/tpj</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>pharmacogenomics j</synonym>
+            <synonym>tpj</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2001-06"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ip" npgid="255" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/ip.xml">
+        <description>
+            <title>International Politics</title>
+            <issn type="print">1384-5748</issn>
+            <issn type="electronic">1740-3898</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ip</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-09"/>
+            <volume start="37"/>
+            <issue start="3"/>
+        </coverage>
+    </product>
+    <product pcode="nutd" npgid="1352" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nutd.xml">
+        <description>
+            <title>Nutrition &amp; Diabetes</title>
+            <issn type="electronic">2044-4052</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2011-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jird" npgid="266" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jird.xml">
+        <description>
+            <title>Journal of International Relations and Development</title>
+            <issn type="print">1408-6980</issn>
+            <issn type="electronic">1581-1980</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jird</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2004-04"/>
+            <volume start="7"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="vital" npgid="261" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/vital.xml">
+        <description>
+            <title>Vital</title>
+            <issn type="electronic">1741-7511</issn>
+            <issn type="print">1741-7503</issn>
+            <homePage>http://www.nature.com/vital</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>vital</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2003-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="trasec" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/trasec.xml">
+        <description>
+            <title>Trade Secrets</title>
+            <homePage>http://blogs.nature.com/trade_secrets/</homePage>
+        </description>
+        <coverage moving="true">
+            <date start="2011-02"/>
+        </coverage>
+    </product>
+    <product pcode="ni" npgid="97" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ni.xml">
+        <description>
+            <title>Nature Immunology</title>
+            <issn type="print">1529-2908</issn>
+            <issn type="electronic">1529-2916</issn>
+            <homePage>http://www.nature.com/ni</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat immunol</synonym>
+            <synonym>ni</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-07"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="iresp" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/iresp.xml">
+        <references>
+            <reference type="product" pcode="hdy"/>
+        </references>
+        <description>
+            <title>Inherently Responsive</title>
+            <homePage>http://blogs.nature.com/inherentlyresponsive</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="false">
+            <date start="2007-03" end="2008-10"/>
+        </coverage>
+    </product>
+    <product pcode="pt" npgid="280" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/pt.xml">
+        <description>
+            <title>Population Trends</title>
+            <issn type="print">0307-4463</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>popul trends</synonym>
+            <synonym>pt</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2009-03"/>
+            <volume start="135"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="eej" npgid="938" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/eej.xml">
+        <description>
+            <title>Eastern Economic Journal</title>
+            <issn type="print">0094-5056</issn>
+            <issn type="electronic">1939-4632</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>eej</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2007-01"/>
+            <volume start="33"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="bp" npgid="285" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/bp.xml">
+        <description>
+            <title>British Politics</title>
+            <issn type="print">1746-918X</issn>
+            <issn type="electronic">1746-9198</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>bp</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2006-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="scientificamericanmind" npgid="1321" collection="journals_nature"
+        content="fulltext" xml:base="/ns.nature.com/products/scientificamericanmind.xml">
+        <description>
+            <title>Scientific American Mind</title>
+            <issn type="print">1555-2284</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>scientificamericanmind</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2004-01"/>
+            <volume start="14"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="leu" npgid="225" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/leu.xml">
+        <description>
+            <title>Leukemia</title>
+            <issn type="print">0887-6924</issn>
+            <issn type="electronic">1476-5551</issn>
+            <homePage>http://www.nature.com/leu</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>leu</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1997-01"/>
+            <volume start="11"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nrcardio" npgid="980" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrcardio.xml">
+        <references>
+            <reference type="replaces" pcode="ncpcardio"/>
+        </references>
+        <description>
+            <title>Nature Reviews Cardiology</title>
+            <issn type="print">1759-5002</issn>
+            <issn type="electronic">1759-5010</issn>
+            <homePage>http://www.nature.com/nrcardio</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nrccardio</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2004-11"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="stemcells" npgid="927" collection="journals_nature" content="listings"
+        xml:base="/ns.nature.com/products/stemcells.xml">
+        <description>
+            <title>Nature Reports Stem Cells</title>
+            <issn type="electronic">1754-8705</issn>
+            <homePage>http://www.nature.com/stemcells/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>stemcells</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2007-06" end="2009-10"/>
+        </coverage>
+    </product>
+    <product pcode="bcj" npgid="1373" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/bcj.xml">
+        <description>
+            <title>Blood Cancer Journal</title>
+            <issn type="print">2044-5385</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2011-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jcb" npgid="299" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jcb.xml">
+        <description>
+            <title>Journal of Commercial Biotechnology</title>
+            <issn type="print">1462-8732</issn>
+            <issn type="electronic">1478-565X</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jcb</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2002-09"/>
+            <volume start="9"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="methag" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/methag.xml">
+        <references>
+            <reference type="product" pcode="nmeth"/>
+        </references>
+        <description>
+            <title>Methagora</title>
+            <homePage>http://blogs.nature.com/methagora</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2006-10"/>
+        </coverage>
+    </product>
+    <product pcode="apot" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/apot.xml">
+        <description>
+            <title>Action Potential</title>
+            <homePage>http://blogs.nature.com/actionpotential</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2005-11"/>
+        </coverage>
+    </product>
+    <product pcode="ajh" npgid="935" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ajh.xml">
+        <description>
+            <title>The American Journal of Hypertension</title>
+            <issn type="print">0895-7061</issn>
+            <issn type="electronic">1941-7225</issn>
+            <homePage>http://www.nature.com/ajh</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ajh</synonym>
+            <synonym>am j hypertens</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1995-01"/>
+            <volume start="8"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="thr" npgid="318" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/thr.xml">
+        <description>
+            <title>Tourism and Hospitality Research</title>
+            <issn type="print">1467-3584</issn>
+            <issn type="electronic">1742-9692</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>thr</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2004-03" end="2011-04"/>
+            <volume start="5" end="11"/>
+            <issue start="1" end="2"/>
+        </coverage>
+    </product>
+    <product pcode="ijos" npgid="1395" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ijos.xml">
+        <description>
+            <title>International Journal of Oral Science</title>
+            <issn type="print">1674-2818</issn>
+            <issn type="electronic">2049-3169</issn>
+            <homePage>http://www.nature.com/ijos/index.html</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ijos</synonym>
+            <synonym>Int J Oral Sci</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2009-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="kmrp" npgid="250" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/kmrp.xml">
+        <description>
+            <title>Knowledge Management Research and Practice</title>
+            <issn type="print">1477-8238</issn>
+            <issn type="electronic">1477-8246</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>kmrp</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2003-07"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="omj" npgid="940" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/omj.xml">
+        <description>
+            <title>Organization Management Journal</title>
+            <issn type="electronic">1541-6518</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>omj</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2004-05"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ukea" npgid="324" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/ukea.xml">
+        <description>
+            <title>United Kingdom Economic Accounts</title>
+            <issn type="print">1350-4401</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ukea</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2009-04"/>
+            <volume start="65"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="clpt" npgid="316" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/clpt.xml">
+        <description>
+            <title>Clinical Pharmacology &amp; Therapeutics</title>
+            <issn type="print">0009-9236</issn>
+            <issn type="electronic">1532-6535</issn>
+            <homePage>http://www.nature.com/clpt/index.html</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>clin pharmacol ther</synonym>
+            <synonym>clpt</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1980-01"/>
+            <volume start="27"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nm" npgid="99" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nm.xml">
+        <references>
+            <reference type="subproduct" pcode="spofm"/>
+        </references>
+        <description>
+            <title>Nature Medicine</title>
+            <issn type="print">1078-8956</issn>
+            <issn type="electronic">1546-170X</issn>
+            <homePage>http://www.nature.com/nm</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat med</synonym>
+            <synonym>nm</synonym>
+            <synonym>nma</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1995-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ejdr" npgid="959" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/ejdr.xml">
+        <description>
+            <title>The European Journal of Development Research</title>
+            <issn type="print">0957-8811</issn>
+            <issn type="electronic">1743-9728</issn>
+            <homePage>http://www.palgrave-journals.com/ejdr/</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ejdr</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1989-06"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="indig" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/indig.xml">
+        <references>
+            <reference type="product" pcode="nindia"/>
+        </references>
+        <description>
+            <title>Indigenus</title>
+            <homePage>http://blogs.nature.com/indigenus/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-12"/>
+        </coverage>
+    </product>
+    <product pcode="smemes" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/smemes.xml">
+        <description>
+            <title>Of Schemes and Memes Blog</title>
+            <homePage>http://blogs.nature.com/ofschemesandmemes</homePage>
+        </description>
+        <coverage moving="true">
+            <date start="2009-11"/>
+        </coverage>
+    </product>
+    <product pcode="nrmicro" npgid="257" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrmicro.xml">
+        <description>
+            <title>Nature Reviews Microbiology</title>
+            <issn type="print">1740-1526</issn>
+            <issn type="electronic">1740-1534</issn>
+            <homePage>http://www.nature.com/nrmicro</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat rev microbiol</synonym>
+            <synonym>nrmicro</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2003-10"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="elmr" npgid="326" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/elmr.xml">
+        <description>
+            <title>Economic &amp; Labour Market Review</title>
+            <issn type="print">1751-8326</issn>
+            <homePage>http://www.palgrave-journals.com/elmr/</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>elmr</synonym>
+            <synonym>Econ Lab Market Rev</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2007-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jp" npgid="224" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/jp.xml">
+        <description>
+            <title>Journal of Perinatology</title>
+            <issn type="print">0743-8346</issn>
+            <issn type="electronic">1476-5543</issn>
+            <homePage>http://www.nature.com/jp</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>j perinatol</synonym>
+            <synonym>jp</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-01"/>
+            <volume start="19"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="njc" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/njc.xml">
+        <description>
+            <title>Nature's Journal Club</title>
+            <homePage>http://blogs.nature.com/journalclub</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="false">
+            <date start="2006-11" end="2010-09"/>
+        </coverage>
+    </product>
+    <product pcode="ngeo" npgid="185" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ngeo.xml">
+        <description>
+            <title>Nature Geoscience</title>
+            <issn type="print">1752-0894</issn>
+            <issn type="electronic">1752-0908</issn>
+            <homePage>http://www.nature.com/ngeo</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ngeo</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2008-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="eye" npgid="211" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/eye.xml">
+        <description>
+            <title>Eye</title>
+            <issn type="print">0950-222X</issn>
+            <issn type="electronic">1476-5454</issn>
+            <homePage>http://www.nature.com/eye</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2002-01"/>
+            <volume start="16"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nrurol" npgid="986" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrurol.xml">
+        <references>
+            <reference type="replaces" pcode="ncpuro"/>
+        </references>
+        <description>
+            <title>Nature Reviews Urology</title>
+            <issn type="print">1759-4812</issn>
+            <issn type="electronic">1759-4820</issn>
+            <homePage>http://www.nature.com/nrurol</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat rev urol</synonym>
+            <synonym>nrurol</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2004-11"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="fs" npgid="276" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/fs.xml">
+        <description>
+            <title>Financial Statistics</title>
+            <issn type="print">0015-203X</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>fs</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2009-01"/>
+            <volume start="561"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="njobsb" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/njobsb.xml">
+        <description>
+            <title>Nature Jobs Blog</title>
+            <homePage>http://blogs.nature.com/naturejobs/</homePage>
+        </description>
+        <coverage moving="true">
+            <date start="2011-01"/>
+        </coverage>
+    </product>
+    <product pcode="dam" npgid="301" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/dam.xml">
+        <description>
+            <title>Journal of Digital Asset Management</title>
+            <issn type="print">1743-6540</issn>
+            <issn type="electronic">1743-6559</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>dam</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2005-01" end="2010-12"/>
+            <volume start="1" end="6"/>
+            <issue start="1" end="6"/>
+        </coverage>
+    </product>
+    <product pcode="ptop" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ptop.xml">
+        <description>
+            <title>Peer-to-Peer</title>
+            <homePage>http://blogs.nature.com/peer-to-peer/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="false">
+            <date start="2006-06" end="2011-04"/>
+        </coverage>
+    </product>
+    <product pcode="natnet" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/natnet.xml">
+        <description>
+            <title>Nature Network</title>
+            <homePage>http://network.nature.com</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-04"/>
+        </coverage>
+    </product>
+    <product pcode="icb" npgid="320" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/icb.xml">
+        <description>
+            <title>Immunology and Cell Biology</title>
+            <issn type="print">0818-9641</issn>
+            <issn type="electronic">1440-1711</issn>
+            <homePage>http://www.nature.com/icb</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>icb</synonym>
+            <synonym>immunol cell biol</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1924-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jmm" npgid="305" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jmm.xml">
+        <description>
+            <title>Journal of Medical Marketing</title>
+            <issn type="print">1745-7904</issn>
+            <issn type="electronic">1745-7914</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jmm</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2001-07" end="2011-02"/>
+            <volume start="1" end="11"/>
+            <issue start="1" end="1"/>
+        </coverage>
+    </product>
+    <product pcode="crr" npgid="291" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/crr.xml">
+        <description>
+            <title>Corporate Reputation Review</title>
+            <issn type="print">1363-3589</issn>
+            <issn type="electronic">1479-1889</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>crr</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1997-07"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jphp" npgid="274" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jphp.xml">
+        <description>
+            <title>Journal of Public Health Policy</title>
+            <issn type="print">0197-5897</issn>
+            <issn type="electronic">1745-655X</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>j public health policy</synonym>
+            <synonym>jphp</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1980-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="climfb" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/climfb.xml">
+        <description>
+            <title>Climate Feedback</title>
+            <homePage>http://blogs.nature.com/climatefeedback/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-04"/>
+        </coverage>
+    </product>
+    <product pcode="iga" npgid="549787" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/iga.xml">
+        <description>
+            <title>Interest Groups &amp; Advocacy</title>
+            <issn type="print">2047-7414</issn>
+            <issn type="electronic">2047-7422</issn>
+            <homePage>http://www.palgrave-journals.com/iga/index.html</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>iga</synonym>
+            <synonym>Int Groups Adv</synonym>
+        </synonyms>
+    </product>
+    <product pcode="jdhf" npgid="932" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jdhf.xml">
+        <references>
+            <reference type="replaces" pcode="dutr"/>
+        </references>
+        <description>
+            <title>Journal of Derivatives and Hedge Funds</title>
+            <issn type="print">1753-9641</issn>
+            <issn type="electronic">1753-965X</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jdhf</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-06"/>
+            <volume start="11"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nsmb" npgid="6" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nsmb.xml">
+        <references>
+            <reference type="replaces" pcode="nsb"/>
+        </references>
+        <description>
+            <title>Nature Structural and Molecular Biology</title>
+            <issn type="electronic">1545-9985</issn>
+            <issn type="print">1545-9993</issn>
+            <homePage>http://www.nature.com/nsmb</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat struct mol biol</synonym>
+            <synonym>nsb</synonym>
+            <synonym>nsmb</synonym>
+            <synonym>nsmba</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1994-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="bdj" npgid="201" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/bdj.xml">
+        <description>
+            <title>British Dental Journal</title>
+            <issn type="print">0007-0610</issn>
+            <issn type="electronic">1476-5373</issn>
+            <homePage>http://www.nature.com/bdj</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>bdj</synonym>
+            <synonym>br dent j</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-01"/>
+            <volume start="186"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ja01" npgid="258" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ja01.xml">
+        <references>
+            <reference type="product" pcode="nature"/>
+        </references>
+        <description>
+            <title>Nature archive: 1987-1996</title>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="false">
+            <date start="1987-01" end="1996-12"/>
+            <volume start="325" end="384"/>
+            <issue start="6099" end="6610"/>
+        </coverage>
+    </product>
+    <product pcode="jt" npgid="308" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jt.xml">
+        <description>
+            <title>Journal of Targeting, Measurement and Analysis for Marketing</title>
+            <issn type="print">0967-3237</issn>
+            <issn type="electronic">1479-1862</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jt</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-08"/>
+            <volume start="9"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="sj" npgid="287" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/sj.xml">
+        <description>
+            <title>Security Journal</title>
+            <issn type="print">0955-1662</issn>
+            <issn type="electronic">1743-4645</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>sj</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-01"/>
+            <volume start="12"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jors" npgid="249" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jors.xml">
+        <description>
+            <title>Journal of the Operational Research Society</title>
+            <issn type="print">0160-5682</issn>
+            <issn type="electronic">1476-9360</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jors</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1950-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="cr" npgid="284" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/cr.xml">
+        <description>
+            <title>Cell Research</title>
+            <issn type="print">1001-0602</issn>
+            <issn type="electronic">1748-7838</issn>
+            <homePage>http://www.nature.com/cr</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>cell res</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-03"/>
+            <volume start="9"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nrc" npgid="105" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrc.xml">
+        <description>
+            <title>Nature Reviews Cancer</title>
+            <issn type="print">1474-175X</issn>
+            <issn type="electronic">1474-1768</issn>
+            <homePage>http://www.nature.com/nrc</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat rev cancer</synonym>
+            <synonym>nrc</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2001-10"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jes" npgid="312" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/jes.xml">
+        <description>
+            <title>Journal of Exposure Science and Environmental Epidemiology</title>
+            <issn type="electronic">1476-5519</issn>
+            <issn type="print">1559-0631</issn>
+            <homePage>http://www.nature.com/jes</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>j expo sci environ epidiemiol</synonym>
+            <synonym>jes</synonym>
+            <synonym>jesee</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-02"/>
+            <volume start="9"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+<!--Added info for superseded journal title jea--><product collection="journals_nature" content="fulltext" npgid="312" pcode="jes">
+        <description>
+            <title>Journal of Exposure Analysis and Environmental Epidemiology</title>
+            <issn type="print">1053-4245</issn>
+            <issn type="electronic">1476-5519</issn>
+            <homePage>http://www.nature.com/jes</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+    </product>
+    
+    <product pcode="bonekey" npgid="1396" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/bonekey.xml">
+        <description>
+            <title>IBMS BoneKEy</title>
+            <issn type="electronic">1940-8692</issn>
+            <homePage>http://www.nature.com/bonekey/index.html</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2004-05"/>
+            <volume start="1"/>
+            <issue start="5"/>
+        </coverage>
+    </product>
+    <product pcode="nrclinonc" npgid="982" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrclinonc.xml">
+        <references>
+            <reference type="replaces" pcode="ncponc"/>
+        </references>
+        <description>
+            <title>Nature Reviews Clinical Oncology</title>
+            <issn type="print">1759-4774</issn>
+            <issn type="electronic">1759-4782</issn>
+            <homePage>http://www.nature.com/nrclinonc</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nrclinonc</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2004-11"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="eps" npgid="273" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/eps.xml">
+        <description>
+            <title>European Political Science</title>
+            <issn type="print">1680-4333</issn>
+            <issn type="electronic">1682-0983</issn>
+            <homePage>http://www.palgrave-journals.com/eps/</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>eps</synonym>
+            <synonym>Eur Polit Sci</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2001-09"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="7stn" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/7stn.xml">
+        <description>
+            <title>The Seven Stones</title>
+            <homePage>http://blogs.nature.com/sevenstones</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-01"/>
+        </coverage>
+    </product>
+    <product pcode="ori" npgid="965" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/ori.xml">
+        <description>
+            <title>OR Insight</title>
+            <issn type="print">0953-5543</issn>
+            <homePage>http://www.palgrave-journals.com/ori/</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ori</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1988-04"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="mel" npgid="246" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/mel.xml">
+        <description>
+            <title>Maritime Economics and Logistics</title>
+            <issn type="print">1479-2931</issn>
+            <issn type="electronic">1479-294X</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>mel</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-07"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ajp" npgid="325" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/ajp.xml">
+        <description>
+            <title>American Journal of Psychoanalysis</title>
+            <issn type="print">0002-9548</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ajp</synonym>
+            <synonym>am j psychoanal</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2007-02"/>
+            <volume start="67"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ja03" npgid="941" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ja03.xml">
+        <references>
+            <reference type="product" pcode="nature"/>
+        </references>
+        <description>
+            <title>Nature archive: 1869-1949</title>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="false">
+            <date start="1869-11" end="1949-12"/>
+            <volume start="1" end="164"/>
+            <issue start="1" end="4183"/>
+        </coverage>
+    </product>
+    <product pcode="pmed" npgid="1080" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/pmed.xml">
+        <description>
+            <title>postmedieval: a journal of medieval cultural studies</title>
+            <issn type="print">2040-5960</issn>
+            <issn type="electronic">2040-5979</issn>
+            <homePage>http://www.palgrave-journals.com/pmed/</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>pmed</synonym>
+            <synonym>Postmedieval</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2010-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="dddmp" npgid="302" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/dddmp.xml">
+        <description>
+            <title>Journal of Direct, Data and Digital Marketing Practice</title>
+            <issn type="print">1746-0166</issn>
+            <issn type="electronic">1746-0174</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>dddmp</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-07"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="cmg_update" npgid="600" collection="external_gateway" content="fulltext"
+        xml:base="/ns.nature.com/products/cmg_update.xml">
+        <description>
+            <title>Cell Migration Gateway</title>
+            <issn type="electronic">1747-7883</issn>
+            <homePage>http://www.cellmigration.org/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>cmg_update</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-06"/>
+        </coverage>
+    </product>
+    <product pcode="ncprheum" npgid="124" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ncprheum.xml">
+        <references>
+            <reference type="replacedby" pcode="nrrheum"/>
+        </references>
+        <description>
+            <title>Nature Clinical Practice Rheumatology</title>
+            <issn type="print">1745-8382</issn>
+            <issn type="electronic">1745-8390</issn>
+            <homePage>http://www.nature.com/nrclinonc</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat clin pract rheum</synonym>
+            <synonym>ncprheum</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2005-11" end="2009-03"/>
+            <volume start="1" end="5"/>
+            <issue start="1" end="3"/>
+        </coverage>
+    </product>
+    <product pcode="scibx" npgid="942" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/scibx.xml">
+        <description>
+            <title>Science-Business eXchange</title>
+            <issn type="electronic">1945-3477</issn>
+            <homePage>http://www.nature.com/scibx</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>scibx</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2008-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="hsq" npgid="279" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/hsq.xml">
+        <description>
+            <title>Health Statistics Quarterly</title>
+            <issn type="print">1465-1645</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>health stat q</synonym>
+            <synonym>hsq</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2009-02"/>
+            <volume start="41"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jit" npgid="267" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jit.xml">
+        <description>
+            <title>Journal of Information Technology</title>
+            <issn type="print">0268-3962</issn>
+            <issn type="electronic">1466-4437</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jit</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1986-02"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ja" npgid="950" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ja.xml">
+        <description>
+            <title>The Journal of Antibiotics</title>
+            <issn type="print">0021-8820</issn>
+            <issn type="electronic">1881-1469</issn>
+            <homePage>http://www.nature.com/ja</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>j antibiot</synonym>
+            <synonym>ja</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-01"/>
+            <volume start="58"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jbr" npgid="296" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jbr.xml">
+        <description>
+            <title>Journal of Banking Regulation</title>
+            <issn type="print">1745-6452</issn>
+            <issn type="electronic">1750-2071</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jbr</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2001-08"/>
+            <volume start="3"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="be" npgid="963" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/be.xml">
+        <description>
+            <title>Business Economics</title>
+            <issn type="print">0007-666X</issn>
+            <issn type="electronic">1554-432X</issn>
+            <homePage>http://www.palgrave-journals.com/be/</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>be</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-01"/>
+            <volume start="40"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="dbm" npgid="300" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/dbm.xml">
+        <description>
+            <title>Journal of Database Marketing and Customer Strategy Management</title>
+            <issn type="print">1741-2439</issn>
+            <issn type="electronic">1741-2447</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>dbm</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-08"/>
+            <volume start="8"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ipr" npgid="549806" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/ipr.xml">
+        <description>
+            <title>International Politics Reviews</title>
+            <issn type="print">2050-2982</issn>
+            <issn type="electronic">2050-2990</issn>
+            <homePage>http://www.palgrave-journals.com/ipr/</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ipr</synonym>
+            <synonym>Int Polit Rev</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2013-06"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="emr" npgid="263" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/emr.xml">
+        <description>
+            <title>European Management Review</title>
+            <issn type="print">1740-4754</issn>
+            <issn type="electronic">1740-4762</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>emr</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2004-03" end="2010-12"/>
+            <volume start="1" end="7"/>
+            <issue start="1" end="4"/>
+        </coverage>
+    </product>
+    <product pcode="neuro" npgid="38" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/neuro.xml">
+        <description>
+            <title>Nature Neuroscience</title>
+            <issn type="print">1097-6256</issn>
+            <issn type="electronic">1546-1726</issn>
+            <homePage>http://www.nature.com/neuro</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat neurosci</synonym>
+            <synonym>neuro</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1998-05"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ijosup" npgid="1383" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ijosup.xml">
+        <description>
+            <title>International Journal of Obesity Supplements</title>
+            <issn type="print">2046-2166</issn>
+            <issn type="electronic">2046-2174</issn>
+            <homePage>http://www.nature.com/ijosup/</homePage>
+        </description>
+        <coverage moving="true">
+            <date start="2011-09"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ejis" npgid="241" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/ejis.xml">
+        <description>
+            <title>European Journal of Information Systems</title>
+            <issn type="print">0960-085X</issn>
+            <issn type="electronic">1476-9344</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ejis</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1991-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nrg" npgid="102" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrg.xml">
+        <description>
+            <title>Nature Reviews Genetics</title>
+            <issn type="print">1471-0056</issn>
+            <issn type="electronic">1471-0064</issn>
+            <homePage>http://www.nature.com/nrg</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat rev genet</synonym>
+            <synonym>nrg</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-10"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nphys" npgid="120" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nphys.xml">
+        <description>
+            <title>Nature Physics</title>
+            <issn type="print">1745-2473</issn>
+            <issn type="electronic">1745-2481</issn>
+            <homePage>http://www.nature.com/nphys</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nphys</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-10"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="pid" npgid="607" collection="crawled_content" content="fulltext"
+        xml:base="/ns.nature.com/products/pid.xml">
+        <description>
+            <title>NCI-Nature Pathway Interaction Database</title>
+            <issn type="print">1752-5519</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>pid</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2006-11"/>
+        </coverage>
+    </product>
+    <product pcode="ijea" npgid="294" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/ijea.xml">
+        <description>
+            <title>International Journal of Educational Advancement</title>
+            <issn type="print">1744-6503</issn>
+            <issn type="electronic">1744-6511</issn>
+            <homePage>http://www.palgrave-journals.com/ijea/index.html</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ijea</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2003-06" end="2011-04"/>
+            <volume start="4" end="10"/>
+            <issue start="1" end="4"/>
+        </coverage>
+    </product>
+    <product pcode="labinvest" npgid="262" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/labinvest.xml">
+        <description>
+            <title>Laboratory Investigation</title>
+            <issn type="print">0023-6837</issn>
+            <issn type="electronic">1530-0307</issn>
+            <homePage>http://www.nature.com/labinvest</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>lab invest</synonym>
+            <synonym>labinvest</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-01"/>
+            <volume start="80"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ncponc" npgid="110" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ncponc.xml">
+        <references>
+            <reference type="replacedby" pcode="nrclinonc"/>
+        </references>
+        <description>
+            <title>Nature Clinical Practice Oncology</title>
+            <issn type="print">1743-4254</issn>
+            <issn type="electronic">1743-4262</issn>
+            <homePage>http://www.nature.com/nrclinonc</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat clin pract onc</synonym>
+            <synonym>ncponc</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2004-11" end="2009-03"/>
+            <volume start="1" end="6"/>
+            <issue start="1" end="3"/>
+        </coverage>
+    </product>
+    <product pcode="pcs" npgid="265" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/pcs.xml">
+        <description>
+            <title>Psychoanalysis, Culture and Society</title>
+            <issn type="print">1088-0763</issn>
+            <issn type="electronic">1543-3390</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>pcs</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2004-03"/>
+            <volume start="9"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="am" npgid="1387" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/am.xml">
+        <description>
+            <title>NPG Asia Materials</title>
+            <issn type="print">1884-4049</issn>
+            <issn type="electronic">1884-4057</issn>
+            <homePage>http://www.nature.com/am/index.html</homePage>
+        </description>
+        <synonyms>
+            <synonym>NPG Asia Mater</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2009-07"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jcbfm" npgid="270" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/jcbfm.xml">
+        <description>
+            <title>Journal of Cerebral Blood Flow &amp; Metabolism</title>
+            <issn type="print">0271-678X</issn>
+            <issn type="electronic">1559-7016</issn>
+            <homePage>http://www.nature.com/jcbfm</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>j cereb blood flow metab"</synonym>
+            <synonym>jcbfm</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1996-01"/>
+            <volume start="16"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="gimo" npgid="604" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/gimo.xml">
+        <description>
+            <title>GI Motility online</title>
+            <homePage>http://www.nature.com/gimo/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>gimo</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-06"/>
+        </coverage>
+    </product>
+    <product pcode="cddis" npgid="1316" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/cddis.xml">
+        <description>
+            <title>Cell Death &amp; Disease</title>
+            <issn type="electronic">2041-4889</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>cddis</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2010-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nchem" npgid="945" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nchem.xml">
+        <references>
+            <reference type="subproduct" pcode="scepc"/>
+        </references>
+        <description>
+            <title>Nature Chemistry</title>
+            <issn type="print">1755-4330</issn>
+            <issn type="electronic">1755-4349</issn>
+            <homePage>http://www.nature.com/nchem</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nature chem</synonym>
+            <synonym>nchem</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2009-04"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nri" npgid="106" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nri.xml">
+        <description>
+            <title>Nature Reviews Immunology</title>
+            <issn type="print">1474-1733</issn>
+            <issn type="electronic">1474-1741</issn>
+            <homePage>http://www.nature.com/nri</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat rev immunol</synonym>
+            <synonym>nri</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2001-10"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jgm" npgid="304" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jgm.xml">
+        <description>
+            <title>Journal of Generic Medicines</title>
+            <issn type="print">1741-1343</issn>
+            <issn type="electronic">1741-7090</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jgm</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2003-10" end="2011-01"/>
+            <volume start="1" end="8"/>
+            <issue start="1" end="1"/>
+        </coverage>
+    </product>
+    <product pcode="nnewsb" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nnewsb.xml">
+        <references>
+            <reference type="product" pcode="news"/>
+        </references>
+        <description>
+            <title>Nature News Blog</title>
+            <homePage>http://blogs.nature.com/news</homePage>
+        </description>
+        <coverage moving="true">
+            <date start="2007-09"/>
+        </coverage>
+    </product>
+    <product pcode="jhg" npgid="953" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/jhg.xml">
+        <description>
+            <title>Journal of Human Genetics</title>
+            <issn type="print">1434-5161</issn>
+            <issn type="electronic">1435-232X</issn>
+            <homePage>http://www.nature.com/jhg</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jhg</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1998-02"/>
+            <volume start="43"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="bjc" npgid="491" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/bjc.xml">
+        <description>
+            <title>British Journal of Cancer</title>
+            <issn type="print">0007-0920</issn>
+            <issn type="electronic">1532-1827</issn>
+            <homePage>http://www.nature.com/bjc</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>bjc</synonym>
+            <synonym>br j cancer</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1998-01"/>
+            <volume start="79"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="cep" npgid="238" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/cep.xml">
+        <description>
+            <title>Comparative European Politics</title>
+            <issn type="electronic">1470-388X</issn>
+            <issn type="print">1472-4790</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>cep</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2003-04"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="pm" npgid="309" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/pm.xml">
+        <description>
+            <title>Pensions: An International Journal</title>
+            <issn type="print">1478-5315</issn>
+            <issn type="electronic">1750-208X</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>pm</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-09"/>
+            <volume start="5"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nature" npgid="1" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nature.xml">
+        <references>
+            <reference type="subproduct" pcode="ja01"/>
+            <reference type="subproduct" pcode="ja02"/>
+            <reference type="subproduct" pcode="ja03"/>
+            <reference type="subproduct" pcode="news"/>
+        </references>
+        <description>
+            <title>Nature</title>
+            <issn type="print">0028-0836</issn>
+            <issn type="electronic">1476-4687</issn>
+            <homePage>http://www.nature.com/nature</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="1869-11"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nasc" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nasc.xml">
+        <description>
+            <title>Nascent</title>
+            <homePage>http://blogs.nature.com/nascent</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="false">
+            <date start="2005-11" end="2010-02"/>
+        </coverage>
+    </product>
+    <product pcode="ncpcardio" npgid="108" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ncpcardio.xml">
+        <references>
+            <reference type="replacedby" pcode="nrcardio"/>
+        </references>
+        <description>
+            <title>Nature Clinical Practice Cardiovascular Medicine</title>
+            <issn type="print">1743-4297</issn>
+            <issn type="electronic">1743-4300</issn>
+            <homePage>http://www.nature.com/nrcardio</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat clin pract cardio</synonym>
+            <synonym>ncpcardio</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2004-11" end="2009-03"/>
+            <volume start="1" end="6"/>
+            <issue start="1" end="3"/>
+        </coverage>
+    </product>
+    <product pcode="cpcs" npgid="289" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/cpcs.xml">
+        <description>
+            <title>Crime Prevention and Community Safety</title>
+            <issn type="print">1460-3780</issn>
+            <issn type="electronic">1743-4629</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>cpcs</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="fsm" npgid="303" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/fsm.xml">
+        <description>
+            <title>Journal of Financial Services Marketing</title>
+            <issn type="print">1363-0539</issn>
+            <issn type="electronic">1479-1846</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>fsm</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-09"/>
+            <volume start="5"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="modpathol" npgid="259" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/modpathol.xml">
+        <description>
+            <title>Modern Pathology</title>
+            <issn type="print">0893-3952</issn>
+            <issn type="electronic">1530-0285</issn>
+            <homePage>http://www.nature.com/modpathol</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>mod pathol</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-01"/>
+            <volume start="13"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ismej" npgid="321" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ismej.xml">
+        <description>
+            <title>The ISME Journal</title>
+            <issn type="print">1751-7362</issn>
+            <issn type="electronic">1751-7370</issn>
+            <homePage>http://www.nature.com/ismej</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>isme j</synonym>
+            <synonym>ismej</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2007-05"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jba" npgid="298" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jba.xml">
+        <description>
+            <title>Journal of Building Appraisal</title>
+            <issn type="print">1742-8262</issn>
+            <issn type="electronic">1744-9545</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jba</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-02"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="hs" npgid="1394" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/hs.xml">
+        <description>
+            <title>Health Systems</title>
+            <issn type="print">2047-6965</issn>
+            <issn type="electronic">2047-6973</issn>
+            <homePage>http://www.palgrave-journals.com/hs/index.html</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>Health Syst</synonym>
+        </synonyms>
+    </product>
+    <product pcode="aja" npgid="951" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/aja.xml">
+        <description>
+            <title>Asian Journal of Andrology</title>
+            <issn type="print">1008-682X</issn>
+            <issn type="electronic">1745-7262</issn>
+            <homePage>http://www.nature.com/aja</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>aja</synonym>
+            <synonym>asian j andol</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-03"/>
+            <volume start="7"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="hdy" npgid="215" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/hdy.xml">
+        <references>
+            <reference type="subproduct" pcode="iresp"/>
+        </references>
+        <description>
+            <title>Heredity</title>
+            <issn type="print">0018-067X</issn>
+            <issn type="electronic">1365-2540</issn>
+            <homePage>http://www.nature.com/hdy</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>hdy</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1947-07"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nrgastro" npgid="984" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrgastro.xml">
+        <references>
+            <reference type="replaces" pcode="ncpgasthep"/>
+        </references>
+        <description>
+            <title>Nature Reviews Gastroenterology and Hepatology</title>
+            <issn type="print">1759-5045</issn>
+            <issn type="electronic">1759-5053</issn>
+            <homePage>http://www.nature.com/nrgastro</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nrgastro</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2004-11"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="oby" npgid="934" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/oby.xml">
+        <description>
+            <title>Obesity</title>
+            <issn type="print">1930-7381</issn>
+            <issn type="electronic">1930-739X</issn>
+            <homePage>http://www.nature.com/oby</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>obesity (silver spring)</synonym>
+            <synonym>obesity research</synonym>
+            <synonym>oby</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-01"/>
+            <volume start="8"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="lst" npgid="251" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/lst.xml">
+        <description>
+            <title>Latino Studies</title>
+            <issn type="print">1476-3435</issn>
+            <issn type="electronic">1476-3443</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>lst</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2003-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="omics" npgid="601" collection="crawled_content" content="fulltext"
+        xml:base="/ns.nature.com/products/omics.xml">
+        <description>
+            <title>Omics Gateway</title>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>omics</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2005-10" end="2011-07"/>
+        </coverage>
+    </product>
+    <product pcode="nrm" npgid="103" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrm.xml">
+        <description>
+            <title>Nature Reviews Molecular Cell Biology</title>
+            <issn type="print">1471-0072</issn>
+            <issn type="electronic">1471-0080</issn>
+            <homePage>http://www.nature.com/nrm</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat rev mol cell biol</synonym>
+            <synonym>nrm</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-10"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="grir" npgid="944" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/grir.xml">
+        <description>
+            <title>The Geneva Risk and Insurance Review</title>
+            <issn type="print">1554-964X</issn>
+            <issn type="electronic">1554-9658</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>grir</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1976-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nprot" npgid="315" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nprot.xml">
+        <references>
+            <reference type="subproduct" pcode="natprotb"/>
+        </references>
+        <description>
+            <title>Nature Protocols</title>
+            <issn type="electronic">1750-2799</issn>
+            <issn type="print">1754-2189</issn>
+            <homePage>http://www.nature.com/nprot</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat protoc</synonym>
+            <synonym>nprot</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2006-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="gpp" npgid="271" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/gpp.xml">
+        <description>
+            <title>The Geneva Papers</title>
+            <issn type="print">1018-5895</issn>
+            <issn type="electronic">1468-0440</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>gpp</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1976-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="leusup" npgid="1374" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/leusup.xml">
+        <description>
+            <title>Leukemia Supplements</title>
+            <issn type="print">2044-5210</issn>
+            <issn type="electronic">2044-5229</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2011-08"/>
+        </coverage>
+    </product>
+    <product pcode="app_notes" npgid="283" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/app_notes.xml">
+        <description>
+            <title>Nature Methods Application Notes</title>
+            <homePage>http://www.nature.com/app_notes/nmeth/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>app_notes</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2006-01"/>
+        </coverage>
+    </product>
+    <product pcode="bm" npgid="297" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/bm.xml">
+        <description>
+            <title>Journal of Brand Management</title>
+            <issn type="print">1350-231X</issn>
+            <issn type="electronic">1479-1803</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>bm</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-09"/>
+            <volume start="8"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nrepaf" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrepaf.xml">
+        <description>
+            <title>Nature Reports Avian Flu</title>
+            <homePage>http://blogs.nature.com/reports/avianflu</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+    </product>
+    <product pcode="mtna" npgid="1393" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/mtna.xml">
+        <description>
+            <title>Molecular Therapy &#x2014; Nucleic Acids</title>
+            <issn type="electronic">2162-2531</issn>
+            <homePage>www.nature.com/mtna</homePage>
+        </description>
+        <synonyms>
+            <synonym>Mol Ther Nucleic Acids</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2012-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nmeth" npgid="112" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nmeth.xml">
+        <references>
+            <reference type="subproduct" pcode="methag"/>
+        </references>
+        <description>
+            <title>Nature Methods</title>
+            <issn type="print">1548-7091</issn>
+            <issn type="electronic">1548-7105</issn>
+            <homePage>http://www.nature.com/nmeth</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat methods</synonym>
+            <synonym>nmeth</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2004-10"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="tp" npgid="1381" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/tp.xml">
+        <description>
+            <title>Translational Psychiatry</title>
+            <issn type="electronic">2158-3188</issn>
+            <homePage>http://www.nature.com/tp</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>tp</synonym>
+            <synonym>Transl Psychiatry</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2011-04"/>
+            <volume start="1"/>
+            <issue start="4"/>
+        </coverage>
+    </product>
+    <product pcode="iaor" npgid="245" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/iaor.xml">
+        <description>
+            <title>International Abstracts in Operations Research</title>
+            <issn type="print">0020-580X</issn>
+            <issn type="electronic">1476-9352</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>iaor</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1988-01"/>
+            <volume start="39"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="prne" npgid="1379" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/prne.xml">
+        <description>
+            <title>Protocol Exchange</title>
+            <issn type="print">2043-0116</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>Prot Exch</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2006-01"/>
+        </coverage>
+    </product>
+    <product pcode="ebd" npgid="207" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ebd.xml">
+        <description>
+            <title>Evidence-Based Dentistry</title>
+            <issn type="print">1462-0049</issn>
+            <issn type="electronic">1476-5446</issn>
+            <homePage>http://www.nature.com/ebd</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ebd</synonym>
+            <synonym>eved based dent</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1998-11"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="climate" npgid="925" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/climate.xml">
+        <references>
+            <reference type="product" pcode="nclimate"/>
+        </references>
+        <description>
+            <title>Nature Reports Climate Change</title>
+            <issn type="electronic">1753-9315</issn>
+            <homePage>http://www.nature.com/climate</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>climate</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2007-06"/>
+        </coverage>
+    </product>
+    <product pcode="nycblog" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nycblog.xml">
+        <description>
+            <title>New York Blog</title>
+            <homePage>http://blogs.nature.com/nyc/</homePage>
+        </description>
+        <coverage moving="true">
+            <date start="2009-01"/>
+        </coverage>
+    </product>
+    <product pcode="ndigest" npgid="126" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ndigest.xml">
+        <description>
+            <title>Nature Digest</title>
+            <issn type="print">1880-0556</issn>
+            <homePage>http://www.nature.com/ndigest</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ndigest</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2004-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="bio2007" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/bio2007.xml">
+        <description>
+            <title>nature@BIO 2007</title>
+            <homePage>http://blogs.nature.com/biotech/bio2007</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+    </product>
+    <product pcode="nmiddleeast" npgid="1101" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nmiddleeast.xml">
+        <references>
+            <reference type="subproduct" pcode="how"/>
+        </references>
+        <description>
+            <title>Nature Middle East</title>
+            <issn type="electronic">2042-6046</issn>
+            <homePage>http://www.nature.com/nmiddleeast/index.html</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nmiddleeast</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2009-08"/>
+        </coverage>
+    </product>
+    <product pcode="soapsci" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/soapsci.xml">
+        <description>
+            <title>Soapbox Science</title>
+            <homePage>http://blogs.nature.com/soapboxscience/</homePage>
+        </description>
+        <coverage moving="true">
+            <date start="2010-09"/>
+        </coverage>
+    </product>
+    <product pcode="lsa" npgid="549786" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/lsa.xml">
+        <description>
+            <title>Light: Science &amp; Applications</title>
+            <issn type="electronic">2047-7538</issn>
+            <homePage>http://www.nature.com/lsa/index.html</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>Light Sci Appl</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2012-03"/>
+        </coverage>
+    </product>
+    <product pcode="ncomms" npgid="1075" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ncomms.xml">
+        <description>
+            <title>Nature Communications</title>
+            <issn type="electronic">2041-1723</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ncomms</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2010-04"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ncpuro" npgid="111" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ncpuro.xml">
+        <references>
+            <reference type="replacedby" pcode="nrurol"/>
+        </references>
+        <description>
+            <title>Nature Clinical Practice Urology</title>
+            <issn type="print">1743-4270</issn>
+            <issn type="electronic">1743-4289</issn>
+            <homePage>http://www.nature.com/nrclinonc</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat clin pract uro</synonym>
+            <synonym>ncpuro</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2004-11" end="2009-03"/>
+            <volume start="1" end="6"/>
+            <issue start="1" end="3"/>
+        </coverage>
+    </product>
+    <product pcode="niche" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/niche.xml">
+        <description>
+            <title>The Niche</title>
+            <homePage>http://blogs.nature.com/theniche</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="false">
+            <date start="2008-03" end="2009-10"/>
+        </coverage>
+    </product>
+    <product pcode="mp" npgid="227" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/mp.xml">
+        <description>
+            <title>Molecular Psychiatry</title>
+            <issn type="print">1359-4184</issn>
+            <issn type="electronic">1476-5578</issn>
+            <homePage>http://www.nature.com/mp</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>mol psychiatry</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1997-01"/>
+            <volume start="2"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ajcs" npgid="549799" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/ajcs.xml">
+        <description>
+            <title>American Journal of Cultural Sociology</title>
+            <issn type="print">2049-7121</issn>
+            <issn type="electronic">2049-7113</issn>
+            <homePage>http://www.palgrave-journals.com/ajcs/</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ajcs</synonym>
+            <synonym>Am J Cult Socio</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2013-02"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="bonekeyreports" npgid="1397" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/bonekeyreports.xml">
+        <description>
+            <title>BoneKEy Reports</title>
+            <issn type="electronic">2047-6396</issn>
+            <homePage>http://www.nature.com/bonekey/index.html</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2012-02"/>
+            <volume start="1"/>
+            <issue start="2"/>
+        </coverage>
+    </product>
+    <product pcode="naut" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/naut.xml">
+        <description>
+            <title>Nautilus</title>
+            <homePage>http://blogs.nature.com/nautilus/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="false">
+            <date start="2007-03" end="2011-04"/>
+        </coverage>
+    </product>
+    <product pcode="jam" npgid="295" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jam.xml">
+        <description>
+            <title>Journal of Asset Management</title>
+            <issn type="print">1470-8272</issn>
+            <issn type="electronic">1479-179X</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jam</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-07"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="lipidmaps" npgid="1070" collection="crawled_content" content="fulltext"
+        xml:base="/ns.nature.com/products/lipidmaps.xml">
+        <description>
+            <title>Lipidomics Gateway</title>
+            <issn type="print">2040-3453</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>lipidmaps</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2009-05"/>
+        </coverage>
+    </product>
+    <product pcode="ajg" npgid="946" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ajg.xml">
+        <description>
+            <title>The American Journal of Gastroenterology</title>
+            <issn type="print">0002-9270</issn>
+            <issn type="electronic">1572-0241</issn>
+            <homePage>http://www.nature.com/ajg</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ajg</synonym>
+            <synonym>am j gastroenterol</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1998-01"/>
+            <volume start="93"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="sc" npgid="232" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/sc.xml">
+        <description>
+            <title>Spinal Cord</title>
+            <issn type="print">1362-4393</issn>
+            <issn type="electronic">1476-5624</issn>
+            <homePage>http://www.nature.com/sc</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>sc</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1997-01"/>
+            <volume start="35"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nclimate" npgid="964" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nclimate.xml">
+        <references>
+            <reference type="subproduct" pcode="climate"/>
+            <reference type="subproduct" pcode="climfb"/>
+        </references>
+        <description>
+            <title>Nature Climate Change</title>
+            <issn type="print">1758-678X</issn>
+            <issn type="electronic">1758-6798</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>Nat. Clim. Change</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2011-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nisc" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nisc.xml">
+        <description>
+            <title>Nature Insight Stem Cells</title>
+            <homePage>http://blogs.nature.com/nature/insightstemcells</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+    </product>
+    <product pcode="itf" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/itf.xml">
+        <description>
+            <title>In The Field</title>
+            <homePage>http://blogs.nature.com/inthefield</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="false">
+            <date start="2006-01" end="2011-08"/>
+        </coverage>
+    </product>
+    <product pcode="spofm" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/spofm.xml">
+        <references>
+            <reference type="product" pcode="nm"/>
+        </references>
+        <description>
+            <title>Spoonful of Medicine</title>
+            <homePage>http://blogs.nature.com/spoonful</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2006-12"/>
+        </coverage>
+    </product>
+    <product pcode="onc" npgid="229" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/onc.xml">
+        <description>
+            <title>Oncogene</title>
+            <issn type="print">0950-9232</issn>
+            <issn type="electronic">1476-5594</issn>
+            <homePage>http://www.nature.com/onc</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>onc</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1997-01-09"/>
+            <volume start="14"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="jos" npgid="286" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jos.xml">
+        <description>
+            <title>Journal of Stimulation</title>
+            <issn type="print">1747-7778</issn>
+            <issn type="electronic">1747-7786</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jos</synonym>
+            <synonym>J Simulation</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2006-12"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="kisup" npgid="1378" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/kisup.xml">
+        <description>
+            <title>Kidney International Supplements</title>
+            <issn type="electronic">2157-1716</issn>
+            <issn type="print">2157-1724</issn>
+            <homePage>http://www.nature.com/kisup/index.html</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>kisup</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2011-05"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="fp" npgid="242" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/fp.xml">
+        <description>
+            <title>French Politics</title>
+            <issn type="print">1476-3419</issn>
+            <issn type="electronic">1476-3427</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>fp</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2003-02"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="scientificamerican" npgid="1320" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/scientificamerican.xml">
+        <description>
+            <title>Scientific American</title>
+            <issn type="print">0036-8733</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>scientificamerican</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1860-07"/>
+            <volume start="3"/>
+            <issue start="2"/>
+        </coverage>
+    </product>
+    <product pcode="laban" npgid="501" collection="lab_animal" content="fulltext"
+        xml:base="/ns.nature.com/products/laban.xml">
+        <description>
+            <title>Lab Animal</title>
+            <issn type="print">0093-7355</issn>
+            <issn type="electronic">1548-4475</issn>
+            <targetDomain>labanimal.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>lab anim</synonym>
+            <synonym>labam</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2003-01"/>
+            <volume start="32"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="sth" npgid="252" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/sth.xml">
+        <description>
+            <title>Social Theory and Health</title>
+            <issn type="print">1477-8211</issn>
+            <issn type="electronic">1477-822X</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>sth</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2003-04"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nmat" npgid="41" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nmat.xml">
+        <description>
+            <title>Nature Materials</title>
+            <issn type="print">1476-1122</issn>
+            <issn type="electronic">1476-4660</issn>
+            <homePage>http://www.nature.com/nmat</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat mater</synonym>
+            <synonym>nmat</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2002-09"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="sub" npgid="939" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/sub.xml">
+        <description>
+            <title>Subjectivity</title>
+            <issn type="print">1755-6341</issn>
+            <issn type="electronic">1755-635X</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>sub</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2010-03"/>
+            <volume start="3"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="emi" npgid="549791" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/emi.xml">
+        <description>
+            <title>Emerging Microbes &amp; Infections</title>
+            <issn type="electronic">2222-1751</issn>
+            <homePage>http://www.nature.com/emi/index.html</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>emi</synonym>
+            <synonym>Emerg Microbes Infect</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2012-07"/>
+            <volume start="1"/>
+            <issue start="7"/>
+        </coverage>
+    </product>
+    <product pcode="abm" npgid="237" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/abm.xml">
+        <description>
+            <title>Asian Business &amp; Management</title>
+            <issn type="print">1472-4782</issn>
+            <issn type="electronic">1476-9328</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>abm</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2002-05"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ki" npgid="281" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ki.xml">
+        <description>
+            <title>Kidney International</title>
+            <issn type="print">0085-2538</issn>
+            <issn type="electronic">1523-1755</issn>
+            <homePage>http://www.nature.com/ki</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ki</synonym>
+            <synonym>kidney int</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1972-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="psiskb" npgid="958" collection="crawled_content" content="fulltext"
+        xml:base="/ns.nature.com/products/psiskb.xml">
+        <references>
+            <reference type="replacedby" pcode="sbkb"/>
+        </references>
+        <description>
+            <title>Protein Structure Initiative Structural Genomics Knowledgebase</title>
+            <issn type="print">1758-1338</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>psiskb</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2008-09" end="2010-08"/>
+        </coverage>
+    </product>
+    <product pcode="mt" npgid="317" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/mt.xml">
+        <description>
+            <title>Molecular Therapy</title>
+            <issn type="print">1525-0016</issn>
+            <issn type="electronic">1525-0024</issn>
+            <homePage>http://www.nature.com/mt</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>mol ther</synonym>
+            <synonym>mt</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="scepc" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/scepc.xml">
+        <description>
+            <title>The Sceptical Chymist</title>
+            <homePage>http://blogs.nature.com/thescepticalchymist</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2006-03"/>
+        </coverage>
+    </product>
+    <product pcode="fr" npgid="243" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/fr.xml">
+        <description>
+            <title>Feminist Review</title>
+            <issn type="print">0141-7789</issn>
+            <issn type="electronic">1466-4380</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>fr</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1979-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="pb" npgid="310" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/pb.xml">
+        <description>
+            <title>Place Branding and Public Diplomacy</title>
+            <issn type="print">1744-0696</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>pb</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2004-11"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ivs" npgid="247" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/ivs.xml">
+        <description>
+            <title>Information Visualization</title>
+            <issn type="print">1473-8716</issn>
+            <issn type="electronic">1473-8724</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ivs</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2002-03" end="2011-04"/>
+            <volume start="1" end="10"/>
+            <issue start="1" end="2"/>
+        </coverage>
+    </product>
+    <product pcode="aps" npgid="952" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/aps.xml">
+        <description>
+            <title>Acta Pharmacologica Sinica</title>
+            <issn type="print">1671-4083</issn>
+            <issn type="electronic">1745-7254</issn>
+            <homePage>http://www.nature.com/aps</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>acta pharmacol sin</synonym>
+            <synonym>aps</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-01"/>
+            <volume start="26"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="rm" npgid="288" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/rm.xml">
+        <description>
+            <title>Risk Management</title>
+            <issn type="print">1460-3799</issn>
+            <issn type="electronic">1743-4637</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>rm</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="bmt" npgid="202" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/bmt.xml">
+        <description>
+            <title>Bone Marrow Transplantation</title>
+            <issn type="print">0268-3369</issn>
+            <issn type="electronic">1476-5365</issn>
+            <homePage>http://www.nature.com/bmt</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>bmt</synonym>
+            <synonym>bone marrow transplant</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1997-01"/>
+            <volume start="19"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="naturejobs" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/naturejobs.xml">
+        <description>
+            <title>Nature Jobs</title>
+            <issn type="print">1476-461X</issn>
+            <homePage>http://www.nature.com/naturejobs</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="1999-11"/>
+        </coverage>
+    </product>
+    <product pcode="jibs" npgid="248" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/jibs.xml">
+        <description>
+            <title>Journal of International Business Studies</title>
+            <issn type="print">0047-2506</issn>
+            <issn type="electronic">1478-6990</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>jibs</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1970-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ncb" npgid="46" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ncb.xml">
+        <description>
+            <title>Nature Cell Biology</title>
+            <issn type="print">1465-7392</issn>
+            <issn type="electronic">1476-4679</issn>
+            <homePage>http://www.nature.com/ncb</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat cell biol</synonym>
+            <synonym>ncb</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-05"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ncpendmet" npgid="122" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ncpendmet.xml">
+        <references>
+            <reference type="replacedby" pcode="nrendo"/>
+        </references>
+        <description>
+            <title>Nature Clinical Practice Endocrinology &amp; Metabolism</title>
+            <issn type="print">1745-8366</issn>
+            <issn type="electronic">1745-8374</issn>
+            <homePage>http://www.nature.com/nrendot</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat clin pract endocrionol metab</synonym>
+            <synonym>ncpendmet</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2005-11" end="2009-03"/>
+            <volume start="1" end="5"/>
+            <issue start="1" end="3"/>
+        </coverage>
+    </product>
+    <product pcode="gene" npgid="213" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/gene.xml">
+        <description>
+            <title>Genes and Immunity</title>
+            <issn type="print">1466-4879</issn>
+            <issn type="electronic">1476-5470</issn>
+            <homePage>http://www.nature.com/gene</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>gene</synonym>
+            <synonym>genes immun</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-09"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="tfl" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/tfl.xml">
+        <description>
+            <title>The Front Line</title>
+            <homePage>http://blogs.nature.com/nrc/thefrontline/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+    </product>
+    <product pcode="emm" npgid="549801" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/emm.xml">
+        <description>
+            <title>Experimental &amp; Molecular Medicine</title>
+            <issn type="print">1226-3613</issn>
+            <issn type="electronic">2092-6413</issn>
+            <homePage>http://www.nature.com/emm/index.html</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>emm</synonym>
+            <synonym>Exp Mol Med</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2013-01"/>
+            <volume start="45"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="emboj" npgid="260" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/emboj.xml">
+        <description>
+            <title>The EMBO Journal</title>
+            <issn type="print">0261-4189</issn>
+            <issn type="electronic">1460-2075</issn>
+            <homePage>http://www.nature.com/emboj</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>embo j</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1997-01"/>
+            <volume start="16"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="rnai" npgid="947" collection="nature_gateway" content="listings"
+        xml:base="/ns.nature.com/products/rnai.xml">
+        <description>
+            <title>RNAi Gateway</title>
+            <homePage>http://www.nature.com/rnai/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>rnai</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1998-01"/>
+        </coverage>
+    </product>
+    <product pcode="ctg" npgid="1349" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ctg.xml">
+        <description>
+            <title>Clinical and Translational Gastroenterology</title>
+            <issn type="print">2155-384X</issn>
+            <homePage>http://www.nature.com/ctg/index.html</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ctg</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2010-10"/>
+            <volume start="1"/>
+            <issue start="10"/>
+        </coverage>
+    </product>
+    <product pcode="imfsp" npgid="924" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/imfsp.xml">
+        <description>
+            <title>International Monetary Fund Staff Papers</title>
+            <issn type="print">1020-7635</issn>
+            <issn type="electronic">1564-5150</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>imfsp</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2007-05" end="2010-06"/>
+            <volume start="54" end="57"/>
+            <issue start="1" end="2"/>
+        </coverage>
+    </product>
+    <product pcode="nrrheum" npgid="983" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrrheum.xml">
+        <references>
+            <reference type="replaces" pcode="ncprheum"/>
+        </references>
+        <description>
+            <title>Nature Reviews Rheumatology</title>
+            <issn type="print">1759-4790</issn>
+            <issn type="electronic">1759-4804</issn>
+            <homePage>http://www.nature.com/nrrheum</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat rev rheumatol</synonym>
+            <synonym>nrrheum</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-11"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="srep" npgid="1377" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/srep.xml">
+        <description>
+            <title>Scientific Reports</title>
+            <issn type="electronic">2045-2322</issn>
+            <homePage>http://www.nature.com/srep/index.html</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>Sci. Rep.</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2011-04"/>
+        </coverage>
+    </product>
+    <product pcode="udi" npgid="253" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/udi.xml">
+        <description>
+            <title>Urban Design International</title>
+            <issn type="print">1357-5317</issn>
+            <issn type="electronic">1468-4519</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>udi</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1996-03"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="advertising" npgid="129" collection="crawled_content" content="fulltext"
+        xml:base="/ns.nature.com/products/advertising.xml">
+        <description>
+            <title>advertising@npg</title>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>advertising</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2007-01"/>
+        </coverage>
+    </product>
+    <product pcode="cgt" npgid="204" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/cgt.xml">
+        <description>
+            <title>Cancer Gene Therapy</title>
+            <issn type="print">0929-1903</issn>
+            <issn type="electronic">1476-5500</issn>
+            <homePage>http://www.nature.com/cgt</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>cancer gene ther</synonym>
+            <synonym>cgt</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-01"/>
+            <volume start="6"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ja02" npgid="268" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ja02.xml">
+        <references>
+            <reference type="product" pcode="nature"/>
+        </references>
+        <description>
+            <title>Nature archive: 1950-1986</title>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="false">
+            <date start="1950-01" end="1986-12"/>
+            <volume start="165" end="324"/>
+            <issue start="4184" end="6098"/>
+        </coverage>
+    </product>
+    <product pcode="frassn" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/frassn.xml">
+        <description>
+            <title>Free Association</title>
+            <homePage>http://blogs.nature.com/freeassociation</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2005-11"/>
+        </coverage>
+    </product>
+    <product pcode="npp" npgid="254" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/npp.xml">
+        <description>
+            <title>Neuropsychopharmacology</title>
+            <issn type="print">0893-133X</issn>
+            <issn type="electronic">1740-634X</issn>
+            <homePage>http://www.nature.com/npp</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>npp</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1994-11"/>
+            <volume start="11"/>
+            <issue start="3"/>
+        </coverage>
+    </product>
+    <product pcode="nrd" npgid="107" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrd.xml">
+        <description>
+            <title>Nature Reviews Drug Discovery</title>
+            <issn type="print">1474-1776</issn>
+            <issn type="electronic">1474-1784</issn>
+            <homePage>http://www.nature.com/nrd</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nat rev drug discov</synonym>
+            <synonym>nrd</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2002-01"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="ijir" npgid="216" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/ijir.xml">
+        <description>
+            <title>International Journal of Impotence Research</title>
+            <issn type="print">0955-9930</issn>
+            <issn type="electronic">1476-5489</issn>
+            <homePage>http://www.nature.com/ijir</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>ijir</synonym>
+            <synonym>int j impot res</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1997-03"/>
+            <volume start="9"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="development" npgid="264" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/development.xml">
+        <description>
+            <title>Development</title>
+            <issn type="print">1011-6370</issn>
+            <issn type="electronic">1461-7072</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>dev</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="1999-03"/>
+            <volume start="42"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="natprotb" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/natprotb.xml">
+        <description>
+            <title>Stepwise</title>
+            <homePage>http://blogs.nature.com/stepwise/</homePage>
+        </description>
+        <coverage moving="true">
+            <date start="2010-05"/>
+        </coverage>
+    </product>
+    <product pcode="cti" npgid="549800" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/cti.xml">
+        <description>
+            <title>Clinical &amp; Translational Immunology</title>
+            <issn type="electronic">2050-0068</issn>
+            <homePage>http://www.nature.com/cti/index.html</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>cti</synonym>
+            <synonym>Clin Trans Immunol</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2012-11"/>
+            <volume start="1"/>
+            <issue start="11"/>
+        </coverage>
+    </product>
+    <product pcode="npre" npgid="130" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/npre.xml">
+        <description>
+            <title>Nature Precedings</title>
+            <homePage>http://precedings.nature.com</homePage>
+            <targetDomain>precedings.nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>npre</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2006-11"/>
+        </coverage>
+    </product>
+    <product pcode="rpm" npgid="307" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/rpm.xml">
+        <description>
+            <title>Journal of Revenue &amp; Pricing Management</title>
+            <issn type="print">1476-6930</issn>
+            <issn type="electronic">1477-657X</issn>
+            <homePage>http://www.palgrave-journals.com/rpm/</homePage>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>rpm</synonym>
+            <synonym>J Revenue Pricing Manag</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2002-05"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nraf" npgid="926" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nraf.xml">
+        <description>
+            <title>Nature Reports Avian Flu</title>
+            <homePage>http://www.nature.com/avianflu/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nraf</synonym>
+        </synonyms>
+        <coverage moving="false">
+            <date start="2005-05" end="2009-02"/>
+        </coverage>
+    </product>
+    <product pcode="hortres" npgid="549822" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/hortres.xml">
+        <description>
+            <title>Horticulture Research</title>
+            <issn type="electronic">2052-7276</issn>
+            <homePage>http://www.nature.com/hortres/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>hortres</synonym>
+            <synonym>Hortic. Res.</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2014"/>
+        </coverage>
+    </product>
+    <product pcode="msq" npgid="1382" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/msq.xml">
+        <description>
+            <title>Migration Statistics Quarterly Report</title>
+            <issn type="electronic">2050-8544</issn>
+            <homePage>http://www.palgrave-journals.com/msq/index.html</homePage>
+        </description>
+        <coverage moving="true">
+            <date start="2011-02"/>
+            <volume start="8"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="sdata" npgid="549823" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/sdata.xml">
+        <description>
+            <title>Scientific Data</title>
+            <issn type="electronic">2052-4463</issn>
+            <homePage>http://www.nature.com/scientificdata/</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>sdata</synonym>
+            <synonym>Sci. Data</synonym>
+        </synonyms>
+        <coverage moving="true"/>
+    </product>
+    <product pcode="lonblog" collection="blogs_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/lonblog.xml">
+        <description>
+            <title>London Blog</title>
+            <homePage>http://blogs.nature.com/london/</homePage>
+        </description>
+        <coverage moving="true">
+            <date start="2007-03"/>
+        </coverage>
+    </product>
+    <product pcode="mds" npgid="278" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/mds.xml">
+        <description>
+            <title>Monthly Digest of Statistics</title>
+            <issn type="print">0308-6666</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>mds</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2009-01"/>
+            <volume start="757"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="rlp" npgid="306" collection="journals_palgrave" content="fulltext"
+        xml:base="/ns.nature.com/products/rlp.xml">
+        <description>
+            <title>Journal of Retail and Leisure Property</title>
+            <issn type="print">1479-1110</issn>
+            <issn type="electronic">1750-2098</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>rlp</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2000-11"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="nrendo" npgid="979" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/nrendo.xml">
+        <references>
+            <reference type="replaces" pcode="ncpendmet"/>
+        </references>
+        <description>
+            <title>Nature Reviews Endocrinology</title>
+            <issn type="print">1759-5029</issn>
+            <issn type="electronic">1759-5037</issn>
+            <homePage>http://www.nature.com/nrendo</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>nrendo</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2005-11"/>
+            <volume start="1"/>
+            <issue start="1"/>
+        </coverage>
+    </product>
+<!--Dummy products: nmstr, xyza, xyzn, xyzp-->
+    <product collection="journals_nature" content="fulltext" pcode="nmstr">
+        <description>
+            <title>npj Maestro</title>
+            <issn type="electronic">0000-0000</issn>
+            <homePage>http://www.nature.com/nmstr</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+    </product>
+    
+    <product collection="journals_nature" content="fulltext" pcode="xyza">
+        <description>
+            <title>Nature Academic</title>
+            <issn type="print">1745-2473</issn>
+            <issn type="electronic">1745-2481</issn>
+            <homePage>http://www.nature.com/xyza</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+    </product>
+    
+    <product collection="journals_nature" content="fulltext" pcode="xyzn">
+        <description>
+            <title>xyzn Nature products</title>
+            <issn type="print">1469-221X</issn>
+            <issn type="electronic">1469-3178</issn>
+            <homePage>http://www.nature.com/xyzn</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+    </product>
+    
+    <product collection="journals_palgrave" content="fulltext" pcode="xyzp">
+        <description>
+            <title>Palgrace JATS Testing</title>
+            <issn type="print">1477-8211</issn>
+            <issn type="electronic">1477-822X</issn>
+            <homePage>http://www.nature.com/xyzp</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+    </product>
+    
+</products>
