@@ -20,8 +20,7 @@ Use the <let> element to define the attribute if necessary.
    <!--Points at document containing information on journal titles, ids and DOIs-->
 
   <let name="products" value="document('products.xml')"/>
-  <!--<let name="subjects" value="document('subjects.owl')/skos:concept"/>
-  <ns uri="http://ns.nature.com/subjects/" prefix="skos"/>Namespace for Ontologies document-->
+  <!--<let name="subjects" value="document('subjects.xml')"/>-->
   <ns prefix="functx" uri="http://www.functx.com"/>
    <!--extended XPath functions from Priscilla Walmsley-->
   <xsl:function xmlns:functx="http://www.functx.com" name="functx:substring-after-last"
@@ -39,7 +38,7 @@ Use the <let> element to define the attribute if necessary.
   
   <!--Regularly used values throughout rules-->
   <let name="journal-title" value="//journal-meta/journal-title-group/journal-title"/>
-  <let name="pcode" value="//journal-meta/journal-id[@journal-id-type='publisher']"/>
+  <let name="pcode" value="//journal-meta/journal-id"/>
   <let name="article-type" value="article/@article-type"/>
     
    <pattern>
