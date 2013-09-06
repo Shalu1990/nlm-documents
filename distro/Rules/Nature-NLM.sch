@@ -19,18 +19,8 @@ Use the <let> element to define the attribute if necessary.
         value="document( 'allowed-values-nlm.xml' )/allowed-values"/>
    <!--Points at document containing information on journal titles, ids and DOIs-->
 
-  <let name="products" value="document('products.owl')"/>
-  <!--<let name="subjects" value="document('subjects.owl')/skos:concept"/>
-  <ns uri="http://ns.nature.com/subjects/" prefix="skos"/>Namespace for Ontologies document-->
-  <ns uri="http://ns.nature.com/terms/" prefix="terms"/>
-   <!--Namespace for Ontologies document-->
-  <ns uri="http://purl.org/dc/elements/1.1/" prefix="dc"/>
-   <!--Namespace for Ontologies document-->
-  <ns uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#" prefix="rdf"/>
-   <!--Namespace for Ontologies document-->
-  <ns uri="http://purl.org/ontology/bibo/" prefix="bibo"/>
-   <!--Namespace for Ontologies document-->
-  
+  <let name="products" value="document('products.xml')"/>
+  <!--<let name="subjects" value="document('subjects.xml')"/>-->
   <ns prefix="functx" uri="http://www.functx.com"/>
    <!--extended XPath functions from Priscilla Walmsley-->
   <xsl:function xmlns:functx="http://www.functx.com" name="functx:substring-after-last"
@@ -91,19 +81,19 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="journal-title-group" role="error"><!--Is the journal title valid-->
       <assert id="jmeta3a"
-                 test="not(descendant::journal-title) or $products[descendant::dc:title=$journal-title]">Journal titles must be from the prescribed list of journal names. "<value-of select="$journal-title"/>" is not on this list - check spelling, spacing of words or use of the ampersand. Other rules are based on having a correct journal title and therefore will not be run. Please resubmit this file when the title has been corrected.</assert>
+                 test="not(descendant::journal-title) or $products[descendant::title=$journal-title]">Journal titles must be from the prescribed list of journal names. "<value-of select="$journal-title"/>" is not on this list - check spelling, spacing of words or use of the ampersand. Other rules are based on having a correct journal title and therefore will not be run. Please resubmit this file when the title has been corrected.</assert>
       </rule>
     </pattern>
    <pattern>
       <rule context="journal-title-group" role="error"><!--Is the journal id valid?-->
       <assert id="jmeta3b"
-                 test="$products[descendant::terms:pcode=$pcode] or not($products[descendant::dc:title=$journal-title])">Journal id is incorrect. For <value-of select="$journal-title"/>, it should be: <value-of select="$products//*[child::dc:title=$journal-title]/terms:pcode"/>. Other rules are based on having a correct journal id and therefore will not be run. Please resubmit this file when the journal id has been corrected.</assert>
+                 test="$products[descendant::product/@pcode=$pcode] or not($products[descendant::title=$journal-title])">Journal id is incorrect. For <value-of select="$journal-title"/>, it should be: <value-of select="$products//product[descendant::title=$journal-title]/@pcode"/>. Other rules are based on having a correct journal id and therefore will not be run. Please resubmit this file when the journal id has been corrected.</assert>
       </rule>
     </pattern>
    <pattern>
       <rule context="journal-title-group" role="error"><!--Do the journal title and id match each other?-->
       <assert id="jmeta3c"
-                 test="$pcode=$products//*[child::dc:title=$journal-title]/terms:pcode or not($products[descendant::dc:title=$journal-title]) or not($products[descendant::terms:pcode=$pcode])">Journal id (<value-of select="$pcode"/>) does not match journal title: <value-of select="$journal-title"/>. Check which is the correct value.</assert>
+                 test="$pcode=$products//product[descendant::title=$journal-title]/@pcode or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode])">Journal id (<value-of select="$pcode"/>) does not match journal title: <value-of select="$journal-title"/>. Check which is the correct value.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -127,30 +117,47 @@ Use the <let> element to define the attribute if necessary.
                  test="@pub-type='ppub' or @pub-type='epub' or @pub-type='supplement'">ISSN should have attribute pub-type="ppub" for print, pub-type="epub" for electronic publication, or pub-type="supplement" where an additional ISSN has been created for a supplement.</assert>
       </rule>
   </pattern>
-   <pattern><!--ISSN is correct for journal-->
-    <rule context="journal-meta/issn[not(@pub-type='supplement')]" role="error">
-         <let name="issn" value="concat('http://ns.nature.com/publications/',.)"/>
-         <assert id="jmeta5b"
-                 test="not($journal-title) or not($products[descendant::dc:title=$journal-title]) or $products//*[child::dc:title=$journal-title][terms:hasPublication[@rdf:resource=$issn]]">Unexpected ISSN value (pub-type="<value-of select="@pub-type"/>") for <value-of select="$journal-title"/> (<value-of select="."/>)</assert>
-      </rule>
-  </pattern>
-   <pattern><!--ISSN ppub matches a print issn in ontology-->
+   <pattern><!--ISSN ppub declared in XML has equivalent print issn in ontology-->
     <rule context="journal-meta/issn[@pub-type='ppub']" role="error">
-         <let name="issn" value="concat('http://ns.nature.com/publications/',.)"/>
-         <assert id="jmeta5c"
-                 test="not($journal-title) or not($products[descendant::dc:title=$journal-title]) or not($products//*[child::dc:title=$journal-title][terms:hasPublication[@rdf:resource=$issn]]) or .=$products//bibo:issn">ISSN (pub-type="ppub") <value-of select="."/> is valid for this journal, but is not listed as the print ISSN. Change 'pub-type' attribute to "epub".</assert>
+         <assert id="jmeta5b1a"
+                 test="not($journal-title) or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode]) or $products/descendant::product[@pcode=$pcode]//issn[@type='print']">Print ISSN given in XML, but <value-of select="$journal-title"/> is online only. Only an electronic ISSN should be given.</assert>
+         </rule>
+  </pattern>
+   <pattern><!--Journal with print issn in ontology has ISSN ppub declared in XML-->
+    <rule context="journal-meta[not($pcode='am')]" role="error">
+         <assert id="jmeta5b1b"
+                 test="not($journal-title) or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode]) or not($products/descendant::product[@pcode=$pcode]//issn[@type='print']) or issn[@pub-type='ppub']">
+            <value-of select="$journal-title"/> should have print ISSN (<value-of select="$products/descendant::product[@pcode=$pcode]//issn[@type='print']"/>).</assert>
+         </rule>
+  </pattern>
+   <pattern><!--ISSN ppub matches print issn in ontology-->
+    <rule context="journal-meta/issn[@pub-type='ppub']" role="error">
+         <assert id="jmeta5b2"
+                 test="not($journal-title) or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode]) or not($products/descendant::product[@pcode=$pcode]//issn[@type='print']) or .=$products/descendant::product[@pcode=$pcode]//issn[@type='print']">Incorrect print ISSN (<value-of select="."/>) for <value-of select="$journal-title"/>. Expected value is: <value-of select="$products/descendant::product[@pcode=$pcode]//issn[@type='print']"/>.</assert>
+         </rule>
+  </pattern>
+   <pattern><!--ISSN epub declared in XML has equivalent eissn in ontology-->
+    <rule context="journal-meta/issn[@pub-type='epub']" role="error">
+         <assert id="jmeta5c1a"
+                 test="not($journal-title) or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode]) or $products/descendant::product[@pcode=$pcode]//issn[@type='electronic']">Electronic ISSN given in XML, but <value-of select="$journal-title"/> is print only. Only a print ISSN should be given.</assert>
       </rule>
   </pattern>
-   <pattern><!--ISSN epub matches an electronic issn in ontology-->
+   <pattern><!--Journal with eissn in ontology has ISSN epub declared in XML-->
+    <rule context="journal-meta" role="error">
+         <assert id="jmeta5c1b"
+                 test="not($journal-title) or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode]) or not($products/descendant::product[@pcode=$pcode]//issn[@type='electronic']) or issn[@pub-type='epub']">
+            <value-of select="$journal-title"/> should have eISSN (<value-of select="$products/descendant::product[@pcode=$pcode]//issn[@type='electronic']"/>).</assert>
+      </rule>
+  </pattern>
+   <pattern><!--ISSN ppub matches print issn in ontology-->
     <rule context="journal-meta/issn[@pub-type='epub']" role="error">
-         <let name="issn" value="concat('http://ns.nature.com/publications/',.)"/>
-         <assert id="jmeta5d"
-                 test="not($journal-title) or not($products[descendant::dc:title=$journal-title]) or not($products//*[child::dc:title=$journal-title][terms:hasPublication[@rdf:resource=$issn]]) or .=$products//bibo:eissn">ISSN (pub-type="epub") <value-of select="."/> is valid for this journal, but is not listed as the electronic ISSN. Change 'pub-type' attribute to "ppub".</assert>
+         <assert id="jmeta5c2"
+                 test="not($journal-title) or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode]) or not($products/descendant::product[@pcode=$pcode]//issn[@type='electronic']) or .=$products/descendant::product[@pcode=$pcode]//issn[@type='electronic']">Incorrect electronic ISSN (<value-of select="."/>) for <value-of select="$journal-title"/>. Expected value is: <value-of select="$products/descendant::product[@pcode=$pcode]//issn[@type='electronic']"/>.</assert>
       </rule>
   </pattern>
    <pattern><!--Only one of each issn pub-type used-->
     <rule context="journal-meta/issn" role="error">
-         <report id="jmeta5e" test="@pub-type=./preceding-sibling::issn/@pub-type">There should only be one instance of each "issn" element with "pub-type" attribute value of "<value-of select="@pub-type"/>".</report>
+         <report id="jmeta5d" test="@pub-type=./preceding-sibling::issn/@pub-type">There should only be one instance of each "issn" element with "pub-type" attribute value of "<value-of select="@pub-type"/>".</report>
       </rule>
   </pattern>
    <pattern>
@@ -452,7 +459,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--update $derived-status with all Frontiers titles if they are converted to JATS-->
     <rule context="article-meta" role="error">
          <let name="derived-status"
-              value="if ($pcode='am' or $pcode='bcj' or $pcode='cddis' or $pcode='ctg' or $pcode='cti' or $pcode='emi' or $pcode='emm' or $pcode='las' or $pcode='mtna' or $pcode='nutd' or $pcode='oncsis' or $pcode='psp' or $pcode='tp' or $pcode='nmstr' or $pcode='sdata' or $pcode='fgene' or $pcode='ncomms' or $pcode='srep' or $pcode='msb' or $pcode='scibx') then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop'] and not(ancestor::article/body)) then 'author-ms'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else 'issue'"/>
+              value="if ($pcode='am' or $pcode='bcj' or $pcode='cddis' or $pcode='ctg' or $pcode='cti' or $pcode='emi' or $pcode='emm' or $pcode='las' or $pcode='mtna' or $pcode='nutd' or $pcode='oncsis' or $pcode='psp' or $pcode='tp' or $pcode='nmstr' or $pcode='sdata' or $pcode='fgene' or $pcode='ncomms' or $pcode='srep' or $pcode='msb' or $pcode='scibx' or $pcode='hortres' or $pcode='mtm') then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop'] and not(ancestor::article/body)) then 'author-ms'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else 'issue'"/>
          <assert id="custom1" test="custom-meta-group/custom-meta[meta-name='publish-type']">All articles should contain publication status information at the end of "article-metadata". Insert "custom-meta-group/custom-meta" with "meta-name". For this journal and publication status, "meta-value" should be "<value-of select="$derived-status"/>".</assert>
       </rule>
   </pattern>
@@ -461,7 +468,7 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="status" value="meta-value"/>
          <let name="derived-status"
-              value="if ($pcode='am' or $pcode='bcj' or $pcode='cddis' or $pcode='ctg' or $pcode='cti' or $pcode='emi' or $pcode='emm' or $pcode='las' or $pcode='mtna' or $pcode='nutd' or $pcode='oncsis' or $pcode='psp' or $pcode='tp' or $pcode='nmstr' or $pcode='sdata' or $pcode='fgene' or $pcode='ncomms' or $pcode='srep' or $pcode='msb' or $pcode='scibx') then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop'] and not(ancestor::article/body)) then 'author-ms'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else 'issue'"/>
+             value="if ($pcode='am' or $pcode='bcj' or $pcode='cddis' or $pcode='ctg' or $pcode='cti' or $pcode='emi' or $pcode='emm' or $pcode='las' or $pcode='mtna' or $pcode='nutd' or $pcode='oncsis' or $pcode='psp' or $pcode='tp' or $pcode='nmstr' or $pcode='sdata' or $pcode='fgene' or $pcode='ncomms' or $pcode='srep' or $pcode='msb' or $pcode='scibx' or $pcode='hortres' or $pcode='mtm') then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop'] and not(ancestor::article/body)) then 'author-ms'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else 'issue'"/>
          <assert id="custom2" test="$status = $derived-status">Unexpected value for "publish-type" (<value-of select="$status"/>). Expected value for this journal and publication status is "<value-of select="$derived-status"/>".</assert>
       </rule>
   </pattern>
