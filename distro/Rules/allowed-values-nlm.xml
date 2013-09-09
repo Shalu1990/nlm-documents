@@ -4,7 +4,7 @@
 *
 This allowed values file is for use with the JATS Schematron rules file.
 
-It contains the allowed values of elements and attributes for each journal that are not covered by the current Ontology files.
+It contains the allowed values for attributes not restricted by the JATS DTD.
 
 Created - 20120208
 *
@@ -36,6 +36,26 @@ Created - 20120208
     <date-type>accepted</date-type>
     <date-type>misc</date-type>
   </date-types>
+  <related-article-types>
+    <related-article-type>has-protocol-to</related-article-type>
+    <related-article-type>has-protocol-update-to</related-article-type>
+    <related-article-type>is-addendum-to</related-article-type>
+    <related-article-type>is-comment-to</related-article-type>
+    <related-article-type>is-correction-to</related-article-type>
+    <related-article-type>is-corrigendum-to</related-article-type>
+    <related-article-type>is-erratum-to</related-article-type>
+    <related-article-type>is-news-and-views-to</related-article-type>
+    <related-article-type>is-protocol-to</related-article-type>
+    <related-article-type>is-protocol-update-to</related-article-type>
+    <related-article-type>is-related-to</related-article-type>
+    <related-article-type>is-research-highlight-to</related-article-type>
+    <related-article-type>is-response-to</related-article-type>
+    <related-article-type>is-retraction-to</related-article-type>
+    <related-article-type>is-update-to</related-article-type>
+    <related-article-type>protocol</related-article-type>
+    <related-article-type>see-also</related-article-type>
+    <related-article-type>original-article</related-article-type>
+  </related-article-types>
   <abstract-types>
     <abstract-type>web-summary</abstract-type>
     <abstract-type>toc</abstract-type>

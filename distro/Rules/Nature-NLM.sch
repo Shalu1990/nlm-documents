@@ -87,7 +87,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="journal-title-group" role="error"><!--Is the journal id valid?-->
       <assert id="jmeta3b"
-                 test="$products[descendant::product/@pcode=$pcode] or not($products[descendant::title=$journal-title])">Journal id is incorrect. For <value-of select="$journal-title"/>, it should be: <value-of select="$products//product[descendant::title=$journal-title]/@pcode"/>. Other rules are based on having a correct journal id and therefore will not be run. Please resubmit this file when the journal id has been corrected.</assert>
+                 test="$products[descendant::product/@pcode=$pcode] or not($products[descendant::title=$journal-title])">Journal id is incorrect (<value-of select="$pcode"/>). For <value-of select="$journal-title"/>, it should be: <value-of select="$products//product[descendant::title=$journal-title]/@pcode"/>. Other rules are based on having a correct journal id and therefore will not be run. Please resubmit this file when the journal id has been corrected.</assert>
       </rule>
     </pattern>
    <pattern>
@@ -387,7 +387,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern>
       <rule context="permissions">
-         <assert id="copy1c" test="copyright-holder">Permissions should include the copyright holder: <value-of select="$allowed-values/journal[@title=$journal-title]/copyright-holder"/>.</assert>
+         <assert id="copy1c" test="copyright-holder">Permissions should include the copyright holder.</assert>
       </rule>
   </pattern>
    <pattern><!--Is the copyright year valid?-->
@@ -398,6 +398,30 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--No other elements in copyright-statement-->
     <rule context="copyright-statement/*" role="error">
          <report id="copy4" test=".">Do not use "<name/>" element in "copyright-statement" - it should only contain text.</report>
+      </rule>  
+  </pattern>
+   <pattern><!--Related-article with a link should have @ext-link-type-->
+    <rule context="article-meta/related-article[@xlink:href]" role="error">
+         <assert id="relart1a" test="@ext-link-type">"related-article" element of type '<value-of select="@related-article-type"/>' should also have 'ext-link-type' attribute.</assert>
+      </rule>  
+  </pattern>
+   <pattern><!--Related-article should have @xlink:href-->
+    <rule context="article-meta/related-article[not(@related-article-type='original-article') and @ext-link-type]"
+            role="error">
+         <assert id="relart1b" test="@xlink:href">"related-article" element of type '<value-of select="@related-article-type"/>' should have 'xlink:href' attribute.</assert>
+      </rule>  
+  </pattern>
+   <pattern><!--Bi directional articles should have @xlink:href and @ext-link-type-->
+    <rule context="article-meta/related-article[not(@related-article-type='original-article') and not(@ext-link-type)]"
+            role="error">
+         <assert id="relart1c" test="@xlink:href">"related-article" element of type '<value-of select="@related-article-type"/>' should have 'xlink:href' and 'ext-link-type' attributes.</assert>
+      </rule>  
+  </pattern>
+   <pattern><!--Bi directional articles should have @xlink:href and @ext-link-type-->
+    <rule context="article-meta/related-article" role="error">
+         <let name="relatedArticleType" value="@related-article-type"/>
+         <assert id="relart2"
+                 test="$allowed-values/related-article-types/related-article-type[.=$relatedArticleType]">"related-article" element has incorrect 'related-article-type' value (<value-of select="@related-article-type"/>). Allowed values are: is-addendum-to, is-comment-to, is-correction-to, is-corrigendum-to, is-erratum-to, is-news-and-views-to, is-protocol-to, is-protocol-update-to, is-related-to, is-research-highlight-to, is-response-to, is-retraction-to, is-update-to</assert>
       </rule>  
   </pattern>
    <pattern><!--valid @abstract-type-->
