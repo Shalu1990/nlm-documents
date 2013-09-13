@@ -20,7 +20,7 @@ Use the <let> element to define the attribute if necessary.
    <!--Points at document containing information on journal titles, ids and DOIs-->
 
   <let name="products" value="document('products.xml')"/>
-  <!--<let name="subjects" value="document('subjects.xml')"/>-->
+  <let name="subjects" value="document('subjects.xml')"/>
   <ns prefix="functx" uri="http://www.functx.com"/>
    <!--extended XPath functions from Priscilla Walmsley-->
   <xsl:function xmlns:functx="http://www.functx.com" name="functx:substring-after-last"
@@ -36,14 +36,23 @@ Use the <let> element to define the attribute if necessary.
       <xsl:sequence select="replace($arg,'(\.|\[|\]|\\|\||\-|\^|\$|\?|\*|\+|\{|\}|\(|\))','\\$1')"/>
   </xsl:function>
   
+  <xsl:function xmlns:functx="http://www.functx.com" name="functx:substring-before-last"
+                 as="xs:string">
+      <xsl:param name="arg" as="xs:string?"/> 
+      <xsl:param name="delim" as="xs:string"/> 
+      <xsl:sequence select="if (matches($arg, functx:escape-for-regex($delim)))       then replace($arg,concat('^(.*)', functx:escape-for-regex($delim),'.*'),'$1')       else ''"/>
+  </xsl:function>
+  
   <!--Regularly used values throughout rules-->
   <let name="journal-title" value="//journal-meta/journal-title-group/journal-title"/>
   <let name="pcode" value="//journal-meta/journal-id"/>
   <let name="article-type" value="article/@article-type"/>
+  <let name="article-id"
+        value="article/front/article-meta/article-id[@pub-id-type='publisher-id']"/>
     
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
-      <assert id="article1" test="@article-type">All articles should have an article-type attribute on "article". The value should be the same as the information contained in the subject element with attribute content-type="article-type".</assert>
+      <assert id="article1" test="@article-type">All articles should have an article-type attribute on "article". The value should be the same as the information contained in the "subject" element with attribute subj-group-type="category".</assert>
       </rule>
   </pattern>
    <pattern>
@@ -204,6 +213,12 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
+      <rule context="article-meta/volume-id | article-meta/volume-series | article-meta/issue-id | article-meta/issue-title | article-meta/issue-part"
+            role="error"><!--Unexpected elements in article-meta-->
+      <report id="ameta4" test=".">Do not use the "<name/>" element in "article-meta".</report>
+      </rule>
+  </pattern>
+   <pattern>
       <rule context="trans-title-group" role="error"><!--No unexpected children of article title-group used-->
       <report id="arttitle1a" test="parent::title-group">Unexpected use of "trans-title-group" in article "title-group". "title-group" should only contain "article-title", "subtitle", "alt-title" or "fn-group".</report>
       </rule>
@@ -236,7 +251,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="pub-date[@pub-type]" role="error">
          <let name="pubType" value="@pub-type"/>
-         <assert id="pubdate0b" test="$allowed-values/pub-types/pub-type[.=$pubType]">Unexpected value for "pub-type" attribute on "pub-date" element (<value-of select="$pubType"/>). Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert>
+         <assert id="pubdate0b" test="$allowed-values/pub-types/pub-type[.=$pubType]">Unexpected value for "pub-type" attribute on "pub-date" element (<value-of select="$pubType"/>). Allowed values are: cover-date, aop, collection, epub, epreprint and ppub. Please check with Editorial Production.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -483,8 +498,9 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--update $derived-status with all Frontiers titles if they are converted to JATS-->
     <rule context="article-meta" role="error">
          <let name="derived-status"
-              value="if ($pcode='am' or $pcode='bcj' or $pcode='cddis' or $pcode='ctg' or $pcode='cti' or $pcode='emi' or $pcode='emm' or $pcode='las' or $pcode='mtna' or $pcode='nutd' or $pcode='oncsis' or $pcode='psp' or $pcode='tp' or $pcode='nmstr' or $pcode='sdata' or $pcode='fgene' or $pcode='ncomms' or $pcode='srep' or $pcode='msb' or $pcode='scibx' or $pcode='hortres' or $pcode='mtm') then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop'] and not(ancestor::article/body)) then 'author-ms'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else 'issue'"/>
-         <assert id="custom1" test="custom-meta-group/custom-meta[meta-name='publish-type']">All articles should contain publication status information at the end of "article-metadata". Insert "custom-meta-group/custom-meta" with "meta-name". For this journal and publication status, "meta-value" should be "<value-of select="$derived-status"/>".</assert>
+              value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|hortres|lsa|msb|mtm|mtna|ncomms|nmstr|nutd|oncsis|psp|scibx|sdata|srep|tp)$')) then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop'] and not(ancestor::article/body)) then 'author-ms'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else 'issue'"/>
+         <assert id="custom1"
+                 test="not($products[descendant::product/@pcode=$pcode]) or custom-meta-group/custom-meta[meta-name='publish-type']">All articles should contain publication status information at the end of "article-metadata". Insert "custom-meta-group/custom-meta" with "meta-name". For this journal and publication status, "meta-value" should be "<value-of select="$derived-status"/>".</assert>
       </rule>
   </pattern>
    <pattern><!--update $derived-status with all Frontiers titles if they are converted to JATS-->
@@ -492,11 +508,217 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="status" value="meta-value"/>
          <let name="derived-status"
-             value="if ($pcode='am' or $pcode='bcj' or $pcode='cddis' or $pcode='ctg' or $pcode='cti' or $pcode='emi' or $pcode='emm' or $pcode='las' or $pcode='mtna' or $pcode='nutd' or $pcode='oncsis' or $pcode='psp' or $pcode='tp' or $pcode='nmstr' or $pcode='sdata' or $pcode='fgene' or $pcode='ncomms' or $pcode='srep' or $pcode='msb' or $pcode='scibx' or $pcode='hortres' or $pcode='mtm') then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop'] and not(ancestor::article/body)) then 'author-ms'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else 'issue'"/>
-         <assert id="custom2" test="$status = $derived-status">Unexpected value for "publish-type" (<value-of select="$status"/>). Expected value for this journal and publication status is "<value-of select="$derived-status"/>".</assert>
+              value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|hortres|lsa|msb|mtm|mtna|ncomms|nmstr|nutd|oncsis|psp|scibx|sdata|srep|tp)$')) then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop'] and not(ancestor::article/body)) then 'author-ms'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else 'issue'"/>
+         <assert id="custom2"
+                 test="not($products[descendant::product/@pcode=$pcode]) or $status=$derived-status">Unexpected value for "publish-type" (<value-of select="$status"/>). Expected value for this journal and publication status is "<value-of select="$derived-status"/>".</assert>
       </rule>
   </pattern>
-   <pattern><!--sec - sec-type or specific-use attribute used-->
+      <pattern>
+      <rule context="article-meta/custom-meta-group/custom-meta[meta-name='publish-type'][1]"
+            role="error">
+         <report id="custom2b" test="following-sibling::custom-meta[meta-name='publish-type']">'publish-type' should only be used once in "custom-meta".</report>
+      </rule>
+  </pattern>
+   <pattern><!--new OA AJs with restricted article types-->
+    <rule context="article[matches($pcode,'^(mtm|hortres)$')]" role="error">
+         <assert id="oa-aj1"
+                 test="matches($article-type,'^(add|af|bc|cg|com|cr|cs|ed|er|mr|nv|prot|ret|rv)$')">Invalid article-type used (<value-of select="$article-type"/>). Article types for "<value-of select="$journal-title"/>" are restricted to: 'add' (Addendum), 'af' (Article), 'bc' (Brief Communication), 'cg' (Corrigendum), 'com' (Comment), 'cr' (Correspondence), 'cs' (Correction), 'ed' (Editorial), 'er' (Erratum), 'mr' (Meeting Report), 'nv' (News and Views), 'prot' (Protocol), 'ret' (Retraction), 'rv' (Review Article and Mini Review)</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres)$')]/front/article-meta"
+            role="error">
+         <assert id="oa-aj2a" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres)$')]/front/article-meta/issue | article[matches($pcode,'^(nmstr|mtm|hortres)$')]/front/article-meta/fpage | article[matches($pcode,'^(nmstr|mtm|hortres)$')]/front/article-meta/lpage"
+            role="error">
+         <report id="oa-aj2b" test=".">"<name/>" should not be used in "<value-of select="$journal-title"/>".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres)$')]/front/article-meta"
+            role="error">
+         <assert id="oa-aj2c" test="elocation-id">An "elocation-id" should be used in "<value-of select="$journal-title"/>".</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres)$')]/front/article-meta/elocation-id"
+            role="error">
+         <assert id="oa-aj2d" test="matches(.,'^[1-9][0-9]*$')">"elocation-id" in "<value-of select="$journal-title"/>" should be a numerical value only (with no leading zeros), not "<value-of select="."/>".</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$')) and not(matches($article-type,'^(add|cg|cs|er|ret)$'))]/front/article-meta/permissions"
+            role="error">
+         <assert id="oa-aj3" test="license">"<value-of select="$journal-title"/>" should contain "license", which gives details of the Open Access license being used. Please contact Editorial Production for this information.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//article-meta/article-id[@pub-id-type='publisher-id']"
+            role="error">
+         <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
+         <report id="oa-aj4a1" test="$derivedPcode=''">Article-id, with attribute pub-id-type='publisher-id' (<value-of select="."/>), should start with the pcode/journal-id. Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//article-meta/article-id[@pub-id-type='publisher-id']"
+            role="error">
+         <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
+         <report id="oa-aj4a2"
+                 test="not($pcode=$derivedPcode) and ($derivedPcode ne '' and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article id (<value-of select="."/>) should start with the pcode/journal-id (<value-of select="$pcode"/>) not "<value-of select="$derivedPcode"/>". Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//article-meta/article-id[@pub-id-type='publisher-id']"
+            role="error">
+         <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
+         <report id="oa-aj4a3"
+                 test="not(matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$')) and ($derivedPcode ne '' and $pcode=$derivedPcode)">Article id after the "<value-of select="$pcode"/>" pcode (<value-of select="$numericValue"/>) should have format year + number of article (without additional letters or leading zeros). Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//article-meta/article-id[@pub-id-type='publisher-id']"
+            role="error">
+         <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
+         <report id="oa-aj4a4"
+                 test="$derivedPcode ne '' and not($pcode=$derivedPcode) and not(matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article id (<value-of select="."/>) should have format pcode + year + number of article (without additional letters or leading zeros). Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//article-meta/article-id[@pub-id-type='publisher-id']"
+            role="error">
+         <let name="filename"
+              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
+         <assert id="oa-aj4b"
+                 test=".=$filename or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article id (<value-of select="."/>) does not match article filename (<value-of select="$filename"/>) - please check which is correct. Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//article-meta/article-id[@pub-id-type='doi']"
+            role="error">
+         <let name="filename"
+              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
+         <let name="derivedDoi"
+              value="concat('10.1038/',$derivedPcode,'.',substring($numericValue,1,4),'.',substring($numericValue,5))"/>
+         <assert id="oa-aj5"
+                 test=".=$derivedDoi or not($article-id=$filename) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article DOI (<value-of select="."/>) does not match the expected value based on the article id (<value-of select="$derivedDoi"/>).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//fig//graphic[@xlink:href]"
+            role="error">
+         <let name="filename"
+              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
+         <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="fig-number" value="replace(replace($fig-image,$article-id,''),'-','')"/>
+         <assert id="oa-aj6a"
+                 test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^f[1-9][0-9]*[a-z]?$') or not($article-id=$filename) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for figure image (<value-of select="$fig-image"/>). Expected format is "<value-of select="$article-id"/>"+"f"+number (and following letters, if figure has multiple images).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//fig//supplementary-material[@content-type='slide'][@xlink:href]"
+            role="error">
+         <let name="filename"
+              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
+         <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="fig-number" value="replace(replace($fig-image,$article-id,''),'-','')"/>
+         <assert id="oa-aj6b"
+                 test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^pf[1-9][0-9]*[a-z]?$') or not($article-id=$filename) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for figure slide (<value-of select="$fig-image"/>). Expected format is "<value-of select="$article-id"/>"+"pf"+number (and following letters, if figure has multiple slides).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//table-wrap//graphic[@xlink:href]"
+            role="error">
+         <let name="filename"
+              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
+         <let name="tab-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="tab-number" value="replace(replace($tab-image,$article-id,''),'-','')"/>
+         <assert id="oa-aj7a"
+                 test="starts-with($tab-image,concat($article-id,'-')) and matches($tab-number,'^t[1-9][0-9]*?$') or not($article-id=$filename) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for table image (<value-of select="$tab-image"/>). Expected format is "<value-of select="$article-id"/>"+"t"+number.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
+            role="error">
+         <let name="filename"
+              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
+         <let name="tab-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="tab-number" value="replace(replace($tab-image,$article-id,''),'-','')"/>
+         <assert id="oa-aj7b"
+                 test="starts-with($tab-image,concat($article-id,'-')) and matches($tab-number,'^pt[1-9][0-9]*?$') or not($article-id=$filename) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for table slide (<value-of select="$tab-image"/>). Expected format is "<value-of select="$article-id"/>"+"pt"+number.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//floats-group/graphic[@content-type='illustration'][@xlink:href]"
+            role="error">
+         <let name="filename"
+              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
+         <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="ill-number" value="replace(replace($ill-image,$article-id,''),'-','')"/>
+         <assert id="oa-aj8"
+                 test="starts-with($ill-image,concat($article-id,'-')) and matches($ill-number,'^i[1-9][0-9]*?$') or not($article-id=$filename) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for illustration (<value-of select="$ill-image"/>). Expected format is "<value-of select="$article-id"/>"+"i"+number.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//floats-group/supplementary-material[@xlink:href]"
+            role="error">
+         <let name="filename"
+              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
+         <let name="supp-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="supp-number" value="replace(replace($supp-image,$article-id,''),'-','')"/>
+         <assert id="oa-aj9"
+                 test="starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,'^s[1-9][0-9]*?$') or not($article-id=$filename) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for supplementary information (<value-of select="$supp-image"/>). Expected format is "<value-of select="$article-id"/>"+"s"+number.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[matches($pcode,'^(mtm|hortres)$')]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+         <let name="derivedUri" value="concat('data:,npg.subject:',.)"/>
+         <assert id="oa-aj10a" test="$derivedUri = $subjects//subject/@uri">Subject path (<value-of select="."/>) is not recognized by the subject ontology. Please check the information supplied by Editorial Production.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[matches($pcode,'^(mtm|hortres)$')]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+         <let name="derivedUri" value="concat('data:,npg.subject:',.)"/>
+         <assert id="oa-aj10b"
+                 test="$subjects//subject[@uri/.=$derivedUri]//reference[@pcode=$pcode] or not($derivedUri = $subjects//subject/@uri)">Subject path (<value-of select="."/> - <value-of select="$subjects//subject[@uri/.=$derivedUri]/@name"/>) is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by Editorial Production.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[matches($pcode,'^(mtm|hortres)$')]//subject[@content-type='npg.subject']/named-content[@content-type='id']">
+         <let name="path" value="following-sibling::named-content[@content-type='path']"/>
+         <let name="derivedUri" value="concat('data:,npg.subject:',$path)"/>
+         <let name="derivedId" value="functx:substring-after-last($path,'/')"/>
+         <assert id="oa-aj10c"
+                 test=".=$derivedId or not($subjects//subject[@uri/.=$derivedUri]//reference[@pcode=$pcode]) or not($derivedUri = $subjects//subject/@uri)">Subject 'id' (<value-of select="."/>) does not match the final part of subject 'path' (<value-of select="$derivedId"/>). Please check the information supplied by Editorial Production.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="author-notes/fn[@fn-type='conflict']/p" role="error">
+         <assert id="conflict1" test="normalize-space(.) or *">Empty "conflict of interest" statement used. Please add text of the statement as used in the pdf.</assert>
+      </rule>
+  </pattern>
+  <pattern><!--sec - sec-type or specific-use attribute used-->
     <rule context="sec" role="error">
          <assert id="sec1a" test="@sec-type or @specific-use">"sec" should have "sec-type" or "specific-use" attribute.</assert>
       </rule>
@@ -983,7 +1205,7 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <report id="supp3b"
-                 test="not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif') and not(@content-type)">Missing 'content-type' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</report>
+                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) and not(@content-type)">Missing 'content-type' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</report>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @content-type; when @xlink:href exists (and is valid) gives value that should be used-->
@@ -991,9 +1213,9 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <let name="content-type"
-              value="if ($extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx') then 'document'         else if ($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf') then 'image'         else if ($extension='tar' or $extension='tgz' or $extension='zip') then 'archive'         else if ($extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml') then 'text'         else if ($extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv') then 'movie'         else if ($extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif') then 'other'         else ()"/>
+              value="if (matches($extension,'^(doc|docx|pdf|pps|ppt|pptx|xls|xlsx)$')) then 'document'         else if (matches($extension,'^(eps|gif|jpg|bmp|png|pict|ps|tiff|wmf)$')) then 'image'         else if (matches($extension,'^(tar|tgz|zip)$')) then 'archive'         else if (matches($extension,'^(c|csv|htm|html|rtf|txt|xml)$')) then 'text'         else if (matches($extension,'^(aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv)$')) then 'movie'         else if (matches($extension,'^(cif|exe|pdb|sdf|sif)$')) then 'other'         else ()"/>
          <assert id="supp3c"
-                 test="@mimetype or not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif')">Missing 'content-type' attribute on "supplementary-material". For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$content-type"/>".</assert>
+                 test="@content-type or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">Missing 'content-type' attribute on "supplementary-material". For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$content-type"/>".</assert>
       </rule>
   </pattern>
    <pattern><!--value used for @content-type is correct based on file extension (includes test for valid extension)-->
@@ -1001,9 +1223,9 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <let name="content-type"
-              value="if ($extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx') then 'document'         else if ($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf') then 'image'         else if ($extension='tar' or $extension='tgz' or $extension='zip') then 'archive'         else if ($extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml') then 'text'         else if ($extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv') then 'movie'         else if ($extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif') then 'other'         else ()"/>
+              value="if (matches($extension,'^(doc|docx|pdf|pps|ppt|pptx|xls|xlsx)$')) then 'document'         else if (matches($extension,'^(eps|gif|jpg|bmp|png|pict|ps|tiff|wmf)$')) then 'image'         else if (matches($extension,'^(tar|tgz|zip)$')) then 'archive'         else if (matches($extension,'^(c|csv|htm|html|rtf|txt|xml)$')) then 'text'         else if (matches($extension,'^(aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv)$')) then 'movie'         else if (matches($extension,'^(cif|exe|pdb|sdf|sif)$')) then 'other'         else ()"/>
          <assert id="supp3d"
-                 test="@content-type=$content-type or not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif')">For supplementary material files with extension "<value-of select="$extension"/>", the content-type attribute should have the value "<value-of select="$content-type"/>" (not "<value-of select="@content-type"/>").</assert>
+                 test="@content-type=$content-type or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">For supplementary material files with extension "<value-of select="$extension"/>", the content-type attribute should have the value "<value-of select="$content-type"/>" (not "<value-of select="@content-type"/>").</assert>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have an @id-->
@@ -1029,7 +1251,7 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <assert id="supp4d"
-                 test="$extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif'">Unexpected file extension value ("<value-of select="$extension"/>") in supplementary material '@xlink:href' attribute - please check.</assert>
+                 test="matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')">Unexpected file extension value ("<value-of select="$extension"/>") in supplementary material '@xlink:href' attribute - please check.</assert>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mimetype; when @xlink:href does not exist, point to Tagging instructions-->
@@ -1043,7 +1265,7 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <report id="supp5b"
-                 test="not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif') and not(@mimetype)">Missing 'mimetype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</report>
+                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) and not(@mimetype)">Missing 'mimetype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</report>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mimetype; when @xlink:href exists (and is valid) gives value that should be used-->
@@ -1051,9 +1273,9 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <let name="mimetype"
-              value="if ($extension='doc' or $extension='docx' or $extension='eps' or $extension='exe' or $extension='noa' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='ps' or $extension='rtf' or $extension='swf' or $extension='tar' or $extension='tgz' or $extension='wmf' or $extension='xls' or $extension='xlsx' or $extension='xml' or $extension='zip') then 'application'         else if ($extension='mp2' or $extension='mp3' or $extension='ra' or $extension='wav') then 'audio'         else if ($extension='cif' or $extension='pdb' or $extension='sdf') then 'chemical'         else if ($extension='bmp' or $extension='gif' or $extension='jpeg' or $extension='jpg' or $extension='pict' or $extension='png' or $extension='tiff') then 'image'         else if ($extension='c' or  $extension='csv' or $extension='htm' or $extension='html' or $extension='sif' or $extension='txt') then 'text'         else if ($extension='avi' or $extension='mov' or $extension='mp4' or $extension='mpg' or $extension='qt' or $extension='rv' or $extension='wmv') then 'video'         else ()"/>
+              value="if (matches($extension,'^(doc|docx|eps|exe|noa|pdf|pps|ppt|pptx|ps|rtf|swf|tar|tgz|wmf|xls|xlsx|xml|zip)$')) then 'application'         else if (matches($extension,'^(mp2|mp3|ra|wav)$')) then 'audio'         else if (matches($extension,'^(cif|pdb|sdf)$')) then 'chemical'         else if (matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$')) then 'image'         else if (matches($extension,'^(c|csv|htm|html|sif|txt)$')) then 'text'         else if (matches($extension,'^(avi|mov|mp4|mpg|qt|rv|wmv)$')) then 'video'         else ()"/>
          <assert id="supp5c"
-                 test="@mimetype or not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif')">Missing 'mimetype' attribute on "supplementary-material". For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$mimetype"/>".</assert>
+                 test="@mimetype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">Missing 'mimetype' attribute on "supplementary-material". For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$mimetype"/>".</assert>
       </rule>
   </pattern>
    <pattern><!--value used for @mimetype is correct based on file extension (includes test for valid extension)-->
@@ -1061,9 +1283,9 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <let name="mimetype"
-              value="if ($extension='doc' or $extension='docx' or $extension='eps' or $extension='exe' or $extension='noa' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='ps' or $extension='rtf' or $extension='swf' or $extension='tar' or $extension='tgz' or $extension='wmf' or $extension='xls' or $extension='xlsx' or $extension='xml' or $extension='zip') then 'application'         else if ($extension='mp2' or $extension='mp3' or $extension='ra' or $extension='wav') then 'audio'         else if ($extension='cif' or $extension='pdb' or $extension='sdf') then 'chemical'         else if ($extension='bmp' or $extension='gif' or $extension='jpeg' or $extension='jpg' or $extension='pict' or $extension='png' or $extension='tiff') then 'image'         else if ($extension='c' or  $extension='csv' or $extension='htm' or $extension='html' or $extension='sif' or $extension='txt') then 'text'         else if ($extension='avi' or $extension='mov' or $extension='mp4' or $extension='mpg' or $extension='qt' or $extension='rv' or $extension='wmv') then 'video'         else ()"/>
+              value="if (matches($extension,'^(doc|docx|eps|exe|noa|pdf|pps|ppt|pptx|ps|rtf|swf|tar|tgz|wmf|xls|xlsx|xml|zip)$')) then 'application'         else if (matches($extension,'^(mp2|mp3|ra|wav)$')) then 'audio'         else if (matches($extension,'^(cif|pdb|sdf)$')) then 'chemical'         else if (matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$')) then 'image'         else if (matches($extension,'^(c|csv|htm|html|sif|txt)$')) then 'text'         else if (matches($extension,'^(avi|mov|mp4|mpg|qt|rv|wmv)$')) then 'video'         else ()"/>
          <assert id="supp5d"
-                 test="@mimetype=$mimetype or not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif')">For supplementary material files with extension "<value-of select="$extension"/>", the mimetype attribute should have the value "<value-of select="$mimetype"/>" (not "<value-of select="@mimetype"/>").</assert>
+                 test="@mimetype=$mimetype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">For supplementary material files with extension "<value-of select="$extension"/>", the mimetype attribute should have the value "<value-of select="$mimetype"/>" (not "<value-of select="@mimetype"/>").</assert>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mime-subtype; when @xlink:href does not exist or is invalid, point to Tagging instructions-->
@@ -1077,7 +1299,7 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <report id="supp6b"
-                 test="not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif') and not(@mime-subtype)">Missing 'mime-subtype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value based.</report>
+                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) and not(@mime-subtype)">Missing 'mime-subtype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value based.</report>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mime-subtype; when @xlink:href exists (and is valid) gives value that should be used-->
@@ -1087,7 +1309,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="mime-subtype"
               value="if ($extension='tgz') then 'application/gzip'         else if ($extension='bmp') then 'bmp'         else if ($extension='csv') then 'csv'         else if ($extension='gif') then 'gif'         else if ($extension='htm' or $extension='html') then 'html'         else if ($extension='jpeg' or $extension='jpg') then 'jpeg'         else if ($extension='mp4' or $extension='mp2' or $extension='mp3' or $extension='mpg') then 'mpeg'         else if ($extension='doc' or $extension='dot') then 'msword'         else if ($extension='exe' or $extension='noa' or $extension='ole' or $extension='wp') then 'octet-stream'         else if ($extension='pdf') then 'pdf'         else if ($extension='c' or $extension='sif' or $extension='txt') then 'plain'         else if ($extension='png') then 'png'         else if ($extension='eps' or $extension='ps') then 'postscript'         else if ($extension='mov' or $extension='qt') then 'quicktime'         else if ($extension='rtf') then 'rtf'         else if ($extension='sbml') then 'sbml+xml'         else if ($extension='tiff') then 'tiff'         else if ($extension='xls') then 'vnd.ms-excel'         else if ($extension='xlsm') then 'vnd.ms-excel.sheet.macroEnabled.12'         else if ($extension='pps' or $extension='ppt') then 'vnd.ms-powerpoint'         else if ($extension='pptm') then 'vnd.ms-powerpoint.presentation.macroEnabled.12'         else if ($extension='docm') then 'vnd.ms-word.document.macroEnabled.12'         else if ($extension='pptx') then 'vnd.openxmlformats-officedocument.presentationml.presentation'         else if ($extension='xlsx') then 'vnd.openxmlformats-officedocument.spreadsheetml.sheet'         else if ($extension='docx') then 'vnd.openxmlformats-officedocument.wordprocessingml.document'         else if ($extension='ra') then 'vnd.rn-realaudio'         else if ($extension='rv') then 'vnd.rn-realvideo'         else if ($extension='cdx') then 'x-cdx'         else if ($extension='cif') then 'x-cif'         else if ($extension='jdx') then 'x-jcamp-dx'         else if ($extension='tex') then 'x-latex'         else if ($extension='mol') then 'x-mdl-molfile'         else if ($extension='sdf') then 'x-mdl-sdfile'         else if ($extension='xml') then 'xml'         else if ($extension='wmf') then 'x-msmetafile'         else if ($extension='avi') then 'x-msvideo'         else if ($extension='wmv') then 'x-ms-wmv'         else if ($extension='pdb') then 'x-pdb'         else if ($extension='pict') then 'x-pict'         else if ($extension='swf') then 'x-shockwave-flash'         else if ($extension='tar') then 'x-tar'         else if ($extension='wav') then 'x-wav'         else if ($extension='zip') then 'x-zip-compressed'         else ()"/>
          <assert id="supp6c"
-                 test="@mime-subtype or not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif')">Missing 'mime-subtype' attribute on "supplementary-material". For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$mime-subtype"/>".</assert>
+                 test="@mime-subtype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">Missing 'mime-subtype' attribute on "supplementary-material". For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$mime-subtype"/>".</assert>
       </rule>
   </pattern>
    <pattern><!--value used for @mimetype is correct based on file extension (includes test for valid extension)-->
@@ -1097,7 +1319,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="mime-subtype"
               value="if ($extension='tgz') then 'application/gzip'         else if ($extension='bmp') then 'bmp'         else if ($extension='csv') then 'csv'         else if ($extension='gif') then 'gif'         else if ($extension='htm' or $extension='html') then 'html'         else if ($extension='jpeg' or $extension='jpg') then 'jpeg'         else if ($extension='mp4' or $extension='mp2' or $extension='mp3' or $extension='mpg') then 'mpeg'         else if ($extension='doc' or $extension='dot') then 'msword'         else if ($extension='exe' or $extension='noa' or $extension='ole' or $extension='wp') then 'octet-stream'         else if ($extension='pdf') then 'pdf'         else if ($extension='c' or $extension='sif' or $extension='txt') then 'plain'         else if ($extension='png') then 'png'         else if ($extension='eps' or $extension='ps') then 'postscript'         else if ($extension='mov' or $extension='qt') then 'quicktime'         else if ($extension='rtf') then 'rtf'         else if ($extension='sbml') then 'sbml+xml'         else if ($extension='tiff') then 'tiff'         else if ($extension='xls') then 'vnd.ms-excel'         else if ($extension='xlsm') then 'vnd.ms-excel.sheet.macroEnabled.12'         else if ($extension='pps' or $extension='ppt') then 'vnd.ms-powerpoint'         else if ($extension='pptm') then 'vnd.ms-powerpoint.presentation.macroEnabled.12'         else if ($extension='docm') then 'vnd.ms-word.document.macroEnabled.12'         else if ($extension='pptx') then 'vnd.openxmlformats-officedocument.presentationml.presentation'         else if ($extension='xlsx') then 'vnd.openxmlformats-officedocument.spreadsheetml.sheet'         else if ($extension='docx') then 'vnd.openxmlformats-officedocument.wordprocessingml.document'         else if ($extension='ra') then 'vnd.rn-realaudio'         else if ($extension='rv') then 'vnd.rn-realvideo'         else if ($extension='cdx') then 'x-cdx'         else if ($extension='cif') then 'x-cif'         else if ($extension='jdx') then 'x-jcamp-dx'         else if ($extension='tex') then 'x-latex'         else if ($extension='mol') then 'x-mdl-molfile'         else if ($extension='sdf') then 'x-mdl-sdfile'         else if ($extension='xml') then 'xml'         else if ($extension='wmf') then 'x-msmetafile'         else if ($extension='avi') then 'x-msvideo'         else if ($extension='wmv') then 'x-ms-wmv'         else if ($extension='pdb') then 'x-pdb'         else if ($extension='pict') then 'x-pict'         else if ($extension='swf') then 'x-shockwave-flash'         else if ($extension='tar') then 'x-tar'         else if ($extension='wav') then 'x-wav'         else if ($extension='zip') then 'x-zip-compressed'         else ()"/>
          <assert id="supp6d"
-                 test="@mime-subtype=$mime-subtype or not($extension='eps' or $extension='gif' or $extension='jpg' or $extension='jpeg' or $extension='bmp' or $extension='png' or $extension='pict' or $extension='ps' or $extension='tiff' or $extension='wmf' or $extension='doc' or $extension='docx' or $extension='pdf' or $extension='pps' or $extension='ppt' or $extension='pptx' or $extension='xls' or $extension='xlsx' or $extension='tar' or $extension='tgz' or $extension='zip' or $extension='c' or $extension='csv' or $extension='htm' or $extension='html' or $extension='rtf' or $extension='txt' or $extension='xml' or $extension='aiff' or $extension='au' or $extension='avi' or $extension='midi' or $extension='mov' or $extension='mp2' or $extension='mp3' or $extension='mp4' or $extension='mpa' or $extension='mpg' or $extension='noa' or $extension='qt' or $extension='ra' or $extension='ram' or $extension='rv' or $extension='swf' or $extension='wav' or $extension='wmv' or $extension='cif' or $extension='exe' or $extension='pdb' or $extension='sdf' or $extension='sif')">For supplementary material files with extension "<value-of select="$extension"/>", the mime-subtype attribute should have the value "<value-of select="$mime-subtype"/>" (not "<value-of select="@mime-subtype"/>").</assert>
+                 test="@mime-subtype=$mime-subtype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">For supplementary material files with extension "<value-of select="$extension"/>", the mime-subtype attribute should have the value "<value-of select="$mime-subtype"/>" (not "<value-of select="@mime-subtype"/>").</assert>
       </rule>
   </pattern>
    <pattern><!--no other attributes used on supplementary-material-->
