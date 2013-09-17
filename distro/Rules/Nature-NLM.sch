@@ -590,17 +590,6 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//article-meta/article-id[@pub-id-type='publisher-id']"
-            role="error">
-         <let name="filename"
-              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
-         <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
-         <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
-         <assert id="oa-aj4b"
-                 test=".=$filename or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article id (<value-of select="."/>) does not match article filename (<value-of select="$filename"/>) - please check which is correct. Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</assert>
-      </rule>
-  </pattern>
-   <pattern>
       <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//article-meta/article-id[@pub-id-type='doi']"
             role="error">
          <let name="filename"
