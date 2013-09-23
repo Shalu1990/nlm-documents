@@ -45,7 +45,7 @@ Use the <let> element to define the attribute if necessary.
   
   <!--Regularly used values throughout rules-->
   <let name="journal-title" value="//journal-meta/journal-title-group/journal-title"/>
-  <let name="pcode" value="//journal-meta/journal-id"/>
+  <let name="pcode" value="//journal-meta/journal-id[1]"/>
   <let name="article-type" value="article/@article-type"/>
   <let name="article-id"
         value="article/front/article-meta/article-id[@pub-id-type='publisher-id']"/>
