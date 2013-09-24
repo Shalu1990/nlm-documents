@@ -79,7 +79,8 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern>
       <rule context="journal-meta" role="error"><!--Journal title exists-->
-      <assert id="jmeta2a" test="descendant::journal-title-group/journal-title">Journal title is missing from the journal metadata section. Other rules are based on having a correct journal title and therefore will not be run. Please resubmit this file when the title has been added.</assert>
+      <assert id="jmeta2a"
+                 test="descendant::journal-title-group/journal-title and not($journal-title='')">Journal title is missing from the journal metadata section. Other rules are based on having a correct journal title and therefore will not be run. Please resubmit this file when the title has been added.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -88,19 +89,19 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="journal-title-group" role="error"><!--Is the journal title valid-->
+      <rule context="journal-title-group[not($journal-title='')]" role="error"><!--Is the journal title valid-->
       <assert id="jmeta3a"
                  test="not(descendant::journal-title) or $products[descendant::title=$journal-title]">Journal titles must be from the prescribed list of journal names. "<value-of select="$journal-title"/>" is not on this list - check spelling, spacing of words or use of the ampersand. Other rules are based on having a correct journal title and therefore will not be run. Please resubmit this file when the title has been corrected.</assert>
       </rule>
     </pattern>
    <pattern>
-      <rule context="journal-title-group" role="error"><!--Is the journal id valid?-->
+      <rule context="journal-title-group[not($journal-title='')]" role="error"><!--Is the journal id valid?-->
       <assert id="jmeta3b"
                  test="$products[descendant::product/@pcode=$pcode] or not($products[descendant::title=$journal-title])">Journal id is incorrect (<value-of select="$pcode"/>). For <value-of select="$journal-title"/>, it should be: <value-of select="$products//product[descendant::title=$journal-title]/@pcode"/>. Other rules are based on having a correct journal id and therefore will not be run. Please resubmit this file when the journal id has been corrected.</assert>
       </rule>
     </pattern>
    <pattern>
-      <rule context="journal-title-group" role="error"><!--Do the journal title and id match each other?-->
+      <rule context="journal-title-group[not($journal-title='')]" role="error"><!--Do the journal title and id match each other?-->
       <assert id="jmeta3c"
                  test="$pcode=$products//product[descendant::title=$journal-title]/@pcode or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode])">Journal id (<value-of select="$pcode"/>) does not match journal title: <value-of select="$journal-title"/>. Check which is the correct value.</assert>
       </rule>
