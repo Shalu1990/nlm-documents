@@ -1348,4 +1348,79 @@ Use the <let> element to define the attribute if necessary.
          <report id="supp7g" test="@xml:lang" role="error">Do not use "xml:lang" attribute on "supplementary-material".</report>
       </rule>
   </pattern>
+<pattern><!--no empty xrefs for some ref-types-->
+    <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|fig|supplementary-material|table|table-fn)$')]"
+            role="error">
+         <let name="ref-type" value="@ref-type"/>
+         <assert id="xref1" test="normalize-space(.) or *">"xref" with ref-type="<value-of select="$ref-type"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--Multiple rid values only allowed in bibrefs-->
+    <rule context="xref[not(@ref-type='bibr')]" role="error">
+         <let name="ref-type" value="@ref-type"/>
+         <report id="xref2" test="contains(@rid,' ')">"xref" with ref-type="<value-of select="$ref-type"/>" should only contain one 'rid' value (<value-of select="."/>). Please split into separate "xref" elements.</report>
+      </rule>
+  </pattern>
+   <pattern><!--compare single bib rid with text as long as text is numeric (i.e. excludes references which have author names)-->
+    <rule context="xref[@ref-type='bibr' and not(contains(@rid,' ')) and not(.='') and matches(.,'^[1-9][0-9]?[0-9]?$')]"
+            role="error">
+         <assert id="xref3a" test="matches(.,replace(@rid,'b',''))">Mismatch in bibref: rid="<value-of select="@rid"/>" but text is "<value-of select="."/>".</assert>
+      </rule>
+  </pattern>
+   <pattern><!--multiple @rids should not be used where citation is author name-->
+    <rule context="xref[@ref-type='bibr' and contains(@rid,' ')]" role="error">
+         <report id="xref3b" test="matches(.,'[a-z]')">Multiple bibref rid values should only be used in numeric reference lists, not when author names are used. Please split into separate "xref" elements.</report>
+      </rule>
+  </pattern>
+   <pattern><!--xref/@ref-type="bibr", @rid should not be to two values-->
+    <rule context="xref[@ref-type='bibr' and contains(@rid,' ') and not(.='') and not(matches(.,'[a-z]'))]"
+            role="error">
+         <report id="xref3c" test="count(tokenize(@rid, '\W+')[. != '']) eq 2">Bibrefs should be to a single reference or a range of three or more references. See Tagging Instructions for examples.</report>
+      </rule>
+  </pattern>
+   <pattern><!--compare multiple bib rids with text-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'–')]"
+            role="error"><!--find multiple bibrefs, text must contain a dash (i.e. is a range)-->
+      <let name="first" value="xs:integer(substring-before(.,'–'))"/>
+         <!--find start of range-->
+      <let name="last" value="xs:integer(substring-after(.,'–'))"/>
+         <!--find end of range-->
+      <let name="range" value="$last - $first + 1"/>
+         <!--find number of refs in the range-->
+      <let name="derivedRid" value="for $j in $first to $last return concat('b',$j)"/>
+         <!--generate expected sequence of rid values-->
+      <let name="normalizedRid" value="tokenize(@rid,'\W+')"/>
+         <!--turn rid into a sequence for comparison purposes-->
+      <assert id="xref3d"
+                 test="every $i in 1 to $range satisfies $derivedRid[$i]=$normalizedRid[$i]">xref with ref-type="bibr" range <value-of select="."/> has non-matching multiple rids (<value-of select="@rid"/>). See Tagging Instructions for examples.</assert>
+         <!--if any pair does not match, then test will fail-->
+    </rule>
+  </pattern>
+   <pattern><!--multiple rids not allowed for non-ranges-->
+    <rule context="xref[@ref-type='bibr'  and (count(tokenize(@rid, '\W+')[. != '']) gt 2) and not(.='') and not(matches(.,'[a-z]'))]"
+            role="error">
+         <report id="xref3e" test="contains(.,',')">Multiple rid values should only be used to a range of three or more references. See Tagging Instructions for examples.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="floats-group/fig[not(@fig-type='cover-image')][@id]" role="error"><!--All figures should be referenced in the text-->
+      <let name="id" value="@id"/>
+         <assert id="xref4a"
+                 test="ancestor::article//xref[@ref-type='fig' and matches(@rid,$id)]">Figure <value-of select="replace($id,'f','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Figure <value-of select="replace($id,'f','')"/>, please contact Editorial Production.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="floats-group/table-wrap[@id]" role="error"><!--All tables should be referenced in the text-->
+      <let name="id" value="@id"/>
+         <assert id="xref4b"
+                 test="ancestor::article//xref[@ref-type='table' and matches(@rid,$id)]">Table <value-of select="replace($id,'t','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Table <value-of select="replace($id,'t','')"/>, please contact Editorial Production.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="floats-group/graphic[@content-type='illustration'][@id]" role="error"><!--All tables should be referenced in the text-->
+      <let name="id" value="@id"/>
+         <assert id="xref4c"
+                 test="ancestor::article//xref[@ref-type='other' and matches(@rid,$id)]">Illustration <value-of select="replace($id,'i','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location.</assert>
+      </rule>
+  </pattern>
 </schema>
