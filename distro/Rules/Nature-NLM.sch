@@ -1218,7 +1218,7 @@ Use the <let> element to define the attribute if necessary.
                  test="@content-type=$content-type or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">For supplementary material files with extension "<value-of select="$extension"/>", the content-type attribute should have the value "<value-of select="$content-type"/>" (not "<value-of select="@content-type"/>").</assert>
       </rule>
   </pattern>
-   <pattern><!--supplementary-material - must have an @id-->
+   <pattern><!--supplementary-material - must have an @xlink:href-->
     <rule context="floats-group/supplementary-material[not(@content-type='external-media')]"
             role="error">
          <assert id="supp4a" test="@xlink:href">Missing 'xlink:href' attribute on "supplementary-material". The 'xlink:href' should contain the filename (including extension) of the item of supplementary information. Do not include any path information.</assert>
@@ -1352,7 +1352,7 @@ Use the <let> element to define the attribute if necessary.
     <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|fig|supplementary-material|table|table-fn)$')]"
             role="error">
          <let name="ref-type" value="@ref-type"/>
-         <assert id="xref1" test="normalize-space(.) or *">"xref" with ref-type="<value-of select="$ref-type"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
+         <assert id="xref1" test="normalize-space(.) or *">"xref" with ref-type="<value-of select="$ref-type"/>" and rid="<value-of select="@rid"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
       </rule>
   </pattern>
    <pattern><!--Multiple rid values only allowed in bibrefs-->
