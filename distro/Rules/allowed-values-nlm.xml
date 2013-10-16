@@ -21,6 +21,7 @@ Created - 20120208
   <pub-types>
     <pub-type>issue-date</pub-type>
     <pub-type>aop</pub-type>
+    <pub-type>fav</pub-type>
     <pub-type>collection</pub-type>
     <pub-type>epub</pub-type>
     <pub-type>ppub</pub-type>
@@ -43,6 +44,8 @@ Created - 20120208
     <related-article-type>is-comment-to</related-article-type>
     <related-article-type>is-correction-to</related-article-type>
     <related-article-type>is-corrigendum-to</related-article-type>
+    <related-article-type>is-data-descriptor-to</related-article-type>
+    <related-article-type>has-data-descriptor</related-article-type>
     <related-article-type>is-erratum-to</related-article-type>
     <related-article-type>is-news-and-views-to</related-article-type>
     <related-article-type>is-protocol-to</related-article-type>
