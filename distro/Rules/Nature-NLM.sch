@@ -13,7 +13,8 @@ Use the <let> element to define the attribute if necessary.
         queryBinding="xslt2">
   <title>Schematron rules for NPG content in JATS v1.0</title>
   <ns uri="http://www.w3.org/1998/Math/MathML" prefix="mml"/>
-  <ns uri="http://docs.oasis-open.org/ns/oasis-exchange/table" prefix="oasis"/>
+  <ns uri="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table"
+       prefix="oasis"/>
   <ns uri="http://www.w3.org/1999/xlink" prefix="xlink"/>
   <let name="allowed-values"
         value="document( 'allowed-values-nlm.xml' )/allowed-values"/>
@@ -1209,7 +1210,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--value used for @content-type is correct based on file extension (includes test for valid extension)-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][@content-type][contains(@xlink:href,'.')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='isa-tab')][@content-type][contains(@xlink:href,'.')]"
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <let name="content-type"
@@ -1410,7 +1411,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="floats-group/table-wrap[@id]" role="error"><!--All tables should be referenced in the text-->
+      <rule context="floats-group/table-wrap[@id][not($pcode='sdata')]" role="error"><!--All tables should be referenced in the text-->
       <let name="id" value="@id"/>
          <assert id="xref4b"
                  test="ancestor::article//xref[@ref-type='table' and matches(@rid,$id)]">Table <value-of select="replace($id,'t','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Table <value-of select="replace($id,'t','')"/>, please contact Editorial Production.</assert>
