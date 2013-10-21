@@ -172,7 +172,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="journal-meta/contrib-group | journal-meta/aff | journal-meta/aff-alternatives | journal-meta/issn-l | journal-meta/isbn | journal-meta/notes | journal-meta/self-uri"
+      <rule context="journal-meta/contrib-group | journal-meta/aff | journal-meta/aff-alternatives | journal-meta/isbn | journal-meta/notes | journal-meta/self-uri"
             role="error"><!--Unexpected elements in journal-meta-->
       <report id="jmeta6" test=".">Do not use the "<name/>" element in "journal-meta".</report>
       </rule>
@@ -215,12 +215,6 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article-meta/volume-id | article-meta/volume-series | article-meta/issue-id | article-meta/issue-title | article-meta/issue-part"
-            role="error"><!--Unexpected elements in article-meta-->
-      <report id="ameta4" test=".">Do not use the "<name/>" element in "article-meta".</report>
-      </rule>
-  </pattern>
-   <pattern>
       <rule context="trans-title-group" role="error"><!--No unexpected children of article title-group used-->
       <report id="arttitle1a" test="parent::title-group">Unexpected use of "trans-title-group" in article "title-group". "title-group" should only contain "article-title", "subtitle", "alt-title" or "fn-group".</report>
       </rule>
@@ -247,18 +241,18 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--Rules around expected attribute values of pub-date, and only one of each type-->
     <rule context="pub-date" role="error">
-         <assert id="pubdate0a" test="@pub-type">"pub-date" element should have attribute "pub-type" declared. Allowed values are: issue-date, aop, collection, epub, epreprint and embargo. Please check with NPG Editorial Production.</assert>
+         <assert id="pubdate0a" test="@pub-type">"pub-date" element should have attribute "pub-type" declared. Allowed values are: cover-date, aop, collection, epub, epreprint, fav (final author version or author-ms) and ppub. Please check with NPG.</assert>
       </rule>
     </pattern>
    <pattern>
       <rule context="pub-date[@pub-type]" role="error">
          <let name="pubType" value="@pub-type"/>
-         <assert id="pubdate0b" test="$allowed-values/pub-types/pub-type[.=$pubType]">Unexpected value for "pub-type" attribute on "pub-date" element (<value-of select="$pubType"/>). Allowed values are: cover-date, aop, collection, epub, epreprint and ppub. Please check with Editorial Production.</assert>
+         <assert id="pubdate0b" test="$allowed-values/pub-types/pub-type[.=$pubType]">Unexpected value for "pub-type" attribute on "pub-date" element (<value-of select="$pubType"/>). Allowed values are: cover-date, aop, collection, epub, epreprint, fav (final author version or author-ms) and ppub. Please check with NPG.</assert>
       </rule>
   </pattern>
    <pattern>
       <rule context="pub-date" role="error">
-         <report id="pubdate0c" test="@pub-type=./preceding-sibling::pub-date/@pub-type">There should only be one instance of the "pub-date" element with "pub-type" attribute value of "<value-of select="@pub-type"/>". Please check with NPG Editorial Production.</report>
+         <report id="pubdate0c" test="@pub-type=./preceding-sibling::pub-date/@pub-type">There should only be one instance of the "pub-date" element with "pub-type" attribute value of "<value-of select="@pub-type"/>". Please check with NPG.</report>
       </rule>
   </pattern>
    <pattern><!--Valid values for year, month and day-->
@@ -339,19 +333,19 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--Rules around expected attribute values of date-->
     <rule context="history/date" role="error">
-         <assert id="histdate0a" test="@date-type">"date" element should have attribute "date-type" declared. Allowed values are: created, received, rev-recd (revision received), first-decision, accepted and misc. Please check with NPG Editorial Production.</assert>
+         <assert id="histdate0a" test="@date-type">"date" element should have attribute "date-type" declared. Allowed values are: created, received, rev-recd (revision received), first-decision, accepted and misc. Please check with NPG.</assert>
       </rule>
   </pattern>
    <pattern>
       <rule context="history/date[@date-type]" role="error">
          <let name="dateType" value="@date-type"/>
-         <assert id="histdate0b" test="$allowed-values/date-types/date-type[.=$dateType]">Unexpected value for "date-type" attribute on "date" element (<value-of select="$dateType"/>). Allowed values are: created, received, rev-recd (revision received), first-decision, accepted and misc. Please check with NPG Editorial Production.</assert>
+         <assert id="histdate0b" test="$allowed-values/date-types/date-type[.=$dateType]">Unexpected value for "date-type" attribute on "date" element (<value-of select="$dateType"/>). Allowed values are: created, received, rev-recd (revision received), first-decision, accepted and misc. Please check with NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--... and only one of each type-->
     <rule context="history/date" role="error">
          <report id="histdate0c"
-                 test="@date-type[not(.='rev-recd')]=./preceding-sibling::date/@date-type">There should only be one instance of the "date" element with "date-type" attribute value of "<value-of select="@date-type"/>". Please check with NPG Editorial Production.</report>
+                 test="@date-type[not(.='rev-recd')]=./preceding-sibling::date/@date-type">There should only be one instance of the "date" element with "date-type" attribute value of "<value-of select="@date-type"/>". Please check with NPG.</report>
       </rule>
   </pattern>
    <pattern><!--Valid values for year, month and day-->
@@ -500,7 +494,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--update $derived-status with all Frontiers titles if they are converted to JATS-->
     <rule context="article-meta" role="error">
          <let name="derived-status"
-              value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|hortres|lsa|msb|mtm|mtna|ncomms|nmstr|nutd|oncsis|psp|scibx|sdata|srep|tp)$')) then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop'] and not(ancestor::article/body)) then 'author-ms'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else 'issue'"/>
+              value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|hortres|lsa|msb|mtm|mtna|ncomms|nmstr|nutd|oncsis|psp|scibx|sdata|srep|tp)$')) then 'online'         else if (pub-date[@pub-type='epub']) then 'issue'         else if (pub-date[@pub-type='aop']) then 'aop'         else if (pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/>
          <assert id="custom1"
                  test="not($products[descendant::product/@pcode=$pcode]) or custom-meta-group/custom-meta[meta-name='publish-type']">All articles should contain publication status information at the end of "article-metadata". Insert "custom-meta-group/custom-meta" with "meta-name". For this journal and publication status, "meta-value" should be "<value-of select="$derived-status"/>".</assert>
       </rule>
@@ -510,7 +504,7 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="status" value="meta-value"/>
          <let name="derived-status"
-              value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|hortres|lsa|msb|mtm|mtna|ncomms|nmstr|nutd|oncsis|psp|scibx|sdata|srep|tp)$')) then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop'] and not(ancestor::article/body)) then 'author-ms'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else 'issue'"/>
+              value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|hortres|lsa|msb|mtm|mtna|ncomms|nmstr|nutd|oncsis|psp|scibx|sdata|srep|tp)$')) then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else if (ancestor::article-meta/pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/>
          <assert id="custom2"
                  test="not($products[descendant::product/@pcode=$pcode]) or $status=$derived-status">Unexpected value for "publish-type" (<value-of select="$status"/>). Expected value for this journal and publication status is "<value-of select="$derived-status"/>".</assert>
       </rule>
@@ -554,7 +548,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="article[(matches($pcode,'^(mtm|hortres)$')) and not(matches($article-type,'^(add|cg|cs|er|ret)$'))]/front/article-meta/permissions"
             role="error">
-         <assert id="oa-aj3" test="license">"<value-of select="$journal-title"/>" should contain "license", which gives details of the Open Access license being used. Please contact Editorial Production for this information.</assert>
+         <assert id="oa-aj3" test="license">"<value-of select="$journal-title"/>" should contain "license", which gives details of the Open Access license being used. Please contact NPG for this information.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -594,105 +588,98 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//article-meta/article-id[@pub-id-type='doi']"
             role="error">
-         <let name="filename"
-              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="derivedDoi"
               value="concat('10.1038/',$derivedPcode,'.',substring($numericValue,1,4),'.',substring($numericValue,5))"/>
          <assert id="oa-aj5"
-                 test=".=$derivedDoi or not($article-id=$filename) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article DOI (<value-of select="."/>) does not match the expected value based on the article id (<value-of select="$derivedDoi"/>).</assert>
+                 test=".=$derivedDoi or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article DOI (<value-of select="."/>) does not match the expected value based on the article id (<value-of select="$derivedDoi"/>).</assert>
       </rule>
   </pattern>
    <pattern>
       <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//fig//graphic[@xlink:href]"
             role="error">
-         <let name="filename"
-              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
          <let name="fig-number" value="replace(replace($fig-image,$article-id,''),'-','')"/>
          <assert id="oa-aj6a"
-                 test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^f[1-9][0-9]*[a-z]?$') or not($article-id=$filename) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for figure image (<value-of select="$fig-image"/>). Expected format is "<value-of select="$article-id"/>"+"f"+number (and following letters, if figure has multiple images).</assert>
+                 test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^f[1-9][0-9]*[a-z]?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for figure image (<value-of select="$fig-image"/>). Expected format is "<value-of select="$article-id"/>"+"f"+number (and following letters, if figure has multiple images).</assert>
       </rule>
   </pattern>
    <pattern>
       <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//fig//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
-         <let name="filename"
-              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
          <let name="fig-number" value="replace(replace($fig-image,$article-id,''),'-','')"/>
          <assert id="oa-aj6b"
-                 test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^pf[1-9][0-9]*[a-z]?$') or not($article-id=$filename) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for figure slide (<value-of select="$fig-image"/>). Expected format is "<value-of select="$article-id"/>"+"pf"+number (and following letters, if figure has multiple slides).</assert>
+                 test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^pf[1-9][0-9]*[a-z]?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for figure slide (<value-of select="$fig-image"/>). Expected format is "<value-of select="$article-id"/>"+"pf"+number (and following letters, if figure has multiple slides).</assert>
       </rule>
   </pattern>
    <pattern>
       <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//table-wrap//graphic[@xlink:href]"
             role="error">
-         <let name="filename"
-              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="tab-image" value="substring-before(@xlink:href,'.')"/>
          <let name="tab-number" value="replace(replace($tab-image,$article-id,''),'-','')"/>
          <assert id="oa-aj7a"
-                 test="starts-with($tab-image,concat($article-id,'-')) and matches($tab-number,'^t[1-9][0-9]*?$') or not($article-id=$filename) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for table image (<value-of select="$tab-image"/>). Expected format is "<value-of select="$article-id"/>"+"t"+number.</assert>
+                 test="starts-with($tab-image,concat($article-id,'-')) and matches($tab-number,'^t[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for table image (<value-of select="$tab-image"/>). Expected format is "<value-of select="$article-id"/>"+"t"+number.</assert>
       </rule>
   </pattern>
    <pattern>
       <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
-         <let name="filename"
-              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="tab-image" value="substring-before(@xlink:href,'.')"/>
          <let name="tab-number" value="replace(replace($tab-image,$article-id,''),'-','')"/>
          <assert id="oa-aj7b"
-                 test="starts-with($tab-image,concat($article-id,'-')) and matches($tab-number,'^pt[1-9][0-9]*?$') or not($article-id=$filename) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for table slide (<value-of select="$tab-image"/>). Expected format is "<value-of select="$article-id"/>"+"pt"+number.</assert>
+                 test="starts-with($tab-image,concat($article-id,'-')) and matches($tab-number,'^pt[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for table slide (<value-of select="$tab-image"/>). Expected format is "<value-of select="$article-id"/>"+"pt"+number.</assert>
       </rule>
   </pattern>
    <pattern>
       <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//floats-group/graphic[@content-type='illustration'][@xlink:href]"
             role="error">
-         <let name="filename"
-              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
          <let name="ill-number" value="replace(replace($ill-image,$article-id,''),'-','')"/>
          <assert id="oa-aj8"
-                 test="starts-with($ill-image,concat($article-id,'-')) and matches($ill-number,'^i[1-9][0-9]*?$') or not($article-id=$filename) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for illustration (<value-of select="$ill-image"/>). Expected format is "<value-of select="$article-id"/>"+"i"+number.</assert>
+                 test="starts-with($ill-image,concat($article-id,'-')) and matches($ill-number,'^i[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for illustration (<value-of select="$ill-image"/>). Expected format is "<value-of select="$article-id"/>"+"i"+number.</assert>
       </rule>
   </pattern>
    <pattern>
       <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres)$'))]//floats-group/supplementary-material[@xlink:href]"
             role="error">
-         <let name="filename"
-              value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/>
+         <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="supp-image" value="substring-before(@xlink:href,'.')"/>
          <let name="supp-number" value="replace(replace($supp-image,$article-id,''),'-','')"/>
          <assert id="oa-aj9"
-                 test="starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,'^s[1-9][0-9]*?$') or not($article-id=$filename) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for supplementary information (<value-of select="$supp-image"/>). Expected format is "<value-of select="$article-id"/>"+"s"+number.</assert>
+                 test="starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,'^s[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for supplementary information (<value-of select="$supp-image"/>). Expected format is "<value-of select="$article-id"/>"+"s"+number.</assert>
       </rule>
   </pattern>
    <pattern>
       <rule context="article[matches($pcode,'^(mtm|hortres)$')]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <let name="derivedUri" value="concat('data:,npg.subject:',.)"/>
-         <assert id="oa-aj10a" test="$derivedUri = $subjects//subject/@uri">Subject path (<value-of select="."/>) is not recognized by the subject ontology. Please check the information supplied by Editorial Production.</assert>
+         <assert id="oa-aj10a" test="$derivedUri = $subjects//subject/@uri">Subject path (<value-of select="."/>) is not recognized by the subject ontology. Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern>
       <rule context="article[matches($pcode,'^(mtm|hortres)$')]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <let name="derivedUri" value="concat('data:,npg.subject:',.)"/>
          <assert id="oa-aj10b"
-                 test="$subjects//subject[@uri/.=$derivedUri]//reference[@pcode=$pcode] or not($derivedUri = $subjects//subject/@uri)">Subject path (<value-of select="."/> - <value-of select="$subjects//subject[@uri/.=$derivedUri]/@name"/>) is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by Editorial Production.</assert>
+                 test="$subjects//subject[@uri/.=$derivedUri]//reference[@pcode=$pcode] or not($derivedUri = $subjects//subject/@uri)">Subject path (<value-of select="."/> - <value-of select="$subjects//subject[@uri/.=$derivedUri]/@name"/>) is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -701,15 +688,137 @@ Use the <let> element to define the attribute if necessary.
          <let name="derivedUri" value="concat('data:,npg.subject:',$path)"/>
          <let name="derivedId" value="functx:substring-after-last($path,'/')"/>
          <assert id="oa-aj10c"
-                 test=".=$derivedId or not($subjects//subject[@uri/.=$derivedUri]//reference[@pcode=$pcode]) or not($derivedUri = $subjects//subject/@uri)">Subject 'id' (<value-of select="."/>) does not match the final part of subject 'path' (<value-of select="$derivedId"/>). Please check the information supplied by Editorial Production.</assert>
+                 test=".=$derivedId or not($subjects//subject[@uri/.=$derivedUri]//reference[@pcode=$pcode]) or not($derivedUri = $subjects//subject/@uri)">Subject 'id' (<value-of select="."/>) does not match the final part of subject 'path' (<value-of select="$derivedId"/>). Please check the information supplied by NPG.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--Only one author email per corresp element-->
+    <rule context="corresp[count(email) gt 1][matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]"
+            role="error">
+         <report id="maestro1" test=".">Corresponding author information should only contain one email address. Please split "corresp" with id='<value-of select="parent::corresp/@id"/>' into separate "corresp" elements - one for each corresponding author. You will also need to update the equivalent "xref" elements with the new 'rid' values.</report>
       </rule>
   </pattern>
    <pattern>
-      <rule context="author-notes/fn[@fn-type='conflict']/p" role="error">
+      <rule context="contrib-group[not(@content-type='contributor')]/contrib/xref"
+            role="error"><!--Contrib xref should have @ref-type-->
+      <assert id="contrib1a" test="@ref-type">Contributor "xref" should have a 'ref-type' attribute. The allowed values are "aff" (for links to affilation information), "corresp" (for correspondence information) and "author-notes" for any other notes.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="contrib/xref" role="error"><!--Contrib xref should have @rid-->
+      <assert id="contrib1b" test="@rid">Contributor "xref" should have an 'rid' attribute.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="contrib/xref[@ref-type]" role="error"><!--Contrib xref ref-type should have allowed value-->
+        <assert id="contrib1c"
+                 test="matches(@ref-type,'^(aff|corresp|author-notes|statement)$')">Unexpected value for contributor "xref" 'ref-type' attribute (<value-of select="@ref-type"/>). The allowed values are "aff" (for links to affilation information), "corresp" (for correspondence information) and "author-notes" for any other notes.</assert>
+      </rule>
+    </pattern>
+   <pattern>
+      <rule context="front//aff" role="error"><!--should be a child of article-meta-->
+      <assert id="aff1" test="parent::article-meta">"aff" element should be a direct child of "article-meta" after "contrib-group" - not a child of "<value-of select="name(parent::*)"/>".</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[@ref-type='aff']" role="error"><!--xref/@ref-type='aff' should be empty-->
+      <report id="aff2a" test="matches(.,replace(@rid,'a',''))">Do not use text in "xref" element with ref-type="aff" - these values can be auto-generated from the ids.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="aff/label" role="error"><!--aff should not contain label-->
+      <report id="aff2b" test="matches(.,replace(parent::aff/@id,'a',''))">Do not use "label" in "aff" element - these values can be auto-generated from the ids.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="aff" role="error"><!--Affiliation information should have id-->
+      <assert id="aff3a" test="@id">Missing 'id' attribute - "aff" should have an 'id' of the form "a"+number.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="aff[@id]" role="error"><!--Affiliation id in required format-->
+      <assert id="aff3b" test="matches(@id,'^a[0-9]+$')">Invalid 'id' value ("<value-of select="@id"/>"). "aff" 'id' attribute should be of the form "a"+number. Also, update the values in any linking "xref" elements.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="addr-line[not(parent::address)]" role="error">
+         <assert id="aff10a" test="@content-type">"addr-line" should have a 'content-type' attribute. Allowed values are: street, city, state, and zip.</assert>
+      </rule>
+    </pattern>
+   <pattern>
+      <rule context="addr-line[@content-type]" role="error">
+         <assert id="aff10b" test="matches(@content-type,'^(street|city|state|zip)$')">Unexpected value for "addr-line" 'content-type' attribute (<value-of select="@content-type"/>). Allowed values are: street, city, state, and zip.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="corresp" role="error"><!--Correspondence information should have id-->
+        <assert id="corres1a" test="@id">Missing 'id' attribute - "corresp" should have an 'id' of the form "c"+number.</assert>
+      </rule>
+    </pattern>
+   <pattern>
+      <rule context="corresp[@id]" role="error"><!--Correspondence id in required format-->
+      <assert id="corres1b" test="matches(@id,'^c[0-9]+$')">Invalid 'id' value ("<value-of select="@id"/>"). "corresp" 'id' attribute should be of the form "c"+number.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="corresp[@id][named-content/@content-type='author']" role="error"><!--Correspondence information given, but no corresponding author in contrib list-->
+      <let name="id" value="@id"/>
+         <assert id="corres1c1" test="ancestor::article//xref[@ref-type='corresp'][@rid=$id]">Corresponding author information has been given for <value-of select="named-content[@content-type='author']"/>, but no link has been added to the contrib information. For the corresponding "contrib" element, change 'corresp' attribute to "yes" and insert an "xref" link with attributes ref-type="corresp" and rid="<value-of select="@id"/>".</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="corresp[@id][not(named-content/@content-type='author')]" role="error"><!--Correspondence information given, but no corresponding author in contrib list-->
+      <let name="id" value="@id"/>
+         <assert id="corres1c2" test="ancestor::article//xref[@ref-type='corresp'][@rid=$id]">Corresponding author information has been given, but no contributor has been linked. Please add linking information to the relevant "contrib" element - change 'corresp' attribute to "yes" and insert an "xref" link with attributes ref-type="corresp" and rid="<value-of select="@id"/>"</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[@ref-type='corresp'][parent::contrib/@contrib-type='author']"
+            role="error"><!--Correspondence information given, but no corresponding author in contrib list-->
+      <assert id="corres1d" test="parent::contrib[@corresp='yes']">Contributor has an "xref" link to correspondence information (ref-type="corresp"), but has not been identified as a corresponding author (corresp="yes").</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="contrib[@corresp='yes']" role="error"><!--Correspondence information given, but no corresponding author in contrib list-->
+      <assert id="corres1e" test="xref[@ref-type='corresp']">Contributor has been identified as a corresponding author (corresp="yes"), but no "xref" link (ref-type="corresp") has been given.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="corresp[count(email) gt 1]/named-content[@content-type='author'][not(matches($pcode,'^(nmstr|mtm|hortres|sdata)$'))]"
+            role="error"><!--Only one author email per corresp element-->
+      <report id="corres2" test="contains(.,' or ')">Corresponding author information should only contain one email address. Please split "corresp" with id='<value-of select="parent::corresp/@id"/>' into separate "corresp" elements - one for each corresponding author. You will also need to update the equivalent "xref" elements with the new 'rid' values.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="author-notes/fn[@fn-type='conflict']/p" role="error"><!--Conflict of interest statement should not be empty - common in NPG titles. I assume XBuilder auto-generates it-->
          <assert id="conflict1" test="normalize-space(.) or *">Empty "conflict of interest" statement used. Please add text of the statement as used in the pdf.</assert>
       </rule>
   </pattern>
-  <pattern><!--sec - sec-type or specific-use attribute used-->
+  <pattern>
+      <rule context="author-notes/fn[@fn-type='conflict']" role="error"><!--Conflict of interest statement should not have an id-->
+      <report id="conflict2a" test="@id">'id' is not required on conflict of interest statements - please delete.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="author-notes/fn[@fn-type='conflict']" role="error"><!--Conflict of interest statement should have @specific-use-->
+      <assert id="conflict2b" test="@specific-use">Conflict of interest statements should have 'specific-use' attribute taking the value "conflict" or "no-conflict". "no-conflict" should only be used when none of the authors have a conflict.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="author-notes/fn[@fn-type='conflict'][@specific-use]" role="error"><!--Conflict of interest statement @specific-use has allowed values-->
+      <assert id="conflict2c" test="matches(@specific-use,'^(conflict|no-conflict)$')">Conflict of interest statement 'specific-use' attribute should take the value "conflict" or "no-conflict", not <value-of select="@specific-use"/>. "no-conflict" should only be used when none of the authors have a conflict.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="author-notes/fn[not(@fn-type)]" role="error"><!--author notes should have an id-->
+      <assert id="aunote1a" test="@id">Missing 'id' attribute on author note - "fn" should have an 'id' of the form "n"+number.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="author-notes/fn[not(@fn-type)][@id]" role="error"><!--author notes id in required format-->
+      <assert id="aunote1b" test="matches(@id,'^n[0-9]+$')">Invalid 'id' value ("<value-of select="@id"/>"). "author-notes/fn" 'id' attribute should be of the form "n"+number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--sec - sec-type or specific-use attribute used-->
     <rule context="sec" role="error">
          <assert id="sec1a" test="@sec-type or @specific-use">"sec" should have "sec-type" or "specific-use" attribute.</assert>
       </rule>
@@ -796,6 +905,11 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="title">
          <report id="title1b" test="@content-type">Unnecessary use of "content-type" attribute on "title" element.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="sec/title">
+         <assert id="title1c" test="normalize-space(.) or *">Do not use empty section "title" for formatting purposes.</assert>
       </rule>
   </pattern>
    <pattern><!--List is not block-level, i.e. is a child of p or list-item [unless used for interview/quiz, materials/procedures]-->
@@ -920,6 +1034,102 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--dateline para in correct place-->
     <rule context="body//p[@content-type='dateline']" role="error">
          <assert id="para2" test="not(preceding-sibling::p)">Dateline paragraphs should only appear as the first element in "body", or directly following a section "title".</assert>
+      </rule>
+  </pattern>
+   <pattern><!--no empty xrefs for some ref-types-->
+    <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|fig|supplementary-material|table-fn)$')]"
+            role="error">
+         <let name="ref-type" value="@ref-type"/>
+         <assert id="xref1" test="normalize-space(.) or *">"xref" with ref-type="<value-of select="$ref-type"/>" and rid="<value-of select="@rid"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--Multiple rid values only allowed in bibrefs-->
+    <rule context="xref[not(@ref-type='bibr')]" role="error">
+         <let name="ref-type" value="@ref-type"/>
+         <report id="xref2" test="contains(@rid,' ')">"xref" with ref-type="<value-of select="$ref-type"/>" should only contain one 'rid' value (<value-of select="."/>). Please split into separate "xref" elements.</report>
+      </rule>
+  </pattern>
+   <pattern><!--compare single bib rid with text as long as text is numeric (i.e. excludes references which have author names)-->
+    <rule context="xref[@ref-type='bibr' and not(contains(@rid,' ')) and not(.='') and matches(.,'^[1-9][0-9]?[0-9]?$')]"
+            role="error">
+         <assert id="xref3a" test="matches(.,replace(@rid,'b',''))">Mismatch in bibref: rid="<value-of select="@rid"/>" but text is "<value-of select="."/>".</assert>
+      </rule>
+  </pattern>
+   <pattern><!--multiple @rids should not be used where citation is author name-->
+    <rule context="xref[@ref-type='bibr' and contains(@rid,' ')]" role="error">
+         <report id="xref3b" test="matches(.,'[a-z]')">Multiple bibref rid values should only be used in numeric reference lists, not when author names are used. Please split into separate "xref" elements.</report>
+      </rule>
+  </pattern>
+   <pattern><!--xref/@ref-type="bibr", @rid should not be to two values-->
+    <rule context="xref[@ref-type='bibr' and contains(@rid,' ') and not(.='') and not(matches(.,'[a-z]'))]"
+            role="error">
+         <report id="xref3c" test="count(tokenize(@rid, '\W+')[. != '']) eq 2">Bibrefs should be to a single reference or a range of three or more references. See Tagging Instructions for examples.</report>
+      </rule>
+  </pattern>
+   <pattern><!--compare multiple bib rids with text-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'–')]"
+            role="error"><!--find multiple bibrefs, text must contain a dash (i.e. is a range)-->
+      <let name="first" value="xs:integer(substring-before(.,'–'))"/>
+         <!--find start of range-->
+      <let name="last" value="xs:integer(substring-after(.,'–'))"/>
+         <!--find end of range-->
+      <let name="range" value="$last - $first + 1"/>
+         <!--find number of refs in the range-->
+      <let name="derivedRid" value="for $j in $first to $last return concat('b',$j)"/>
+         <!--generate expected sequence of rid values-->
+      <let name="normalizedRid" value="tokenize(@rid,'\W+')"/>
+         <!--turn rid into a sequence for comparison purposes-->
+      <assert id="xref3d"
+                 test="every $i in 1 to $range satisfies $derivedRid[$i]=$normalizedRid[$i]">xref with ref-type="bibr" range <value-of select="."/> has non-matching multiple rids (<value-of select="@rid"/>). See Tagging Instructions for examples.</assert>
+         <!--if any pair does not match, then test will fail-->
+    </rule>
+  </pattern>
+   <pattern><!--multiple rids not allowed for non-ranges-->
+    <rule context="xref[@ref-type='bibr'  and (count(tokenize(@rid, '\W+')[. != '']) gt 2) and not(.='') and not(matches(.,'[a-z]'))]"
+            role="error">
+         <report id="xref3e" test="contains(.,',')">Multiple rid values should only be used to a range of three or more references. See Tagging Instructions for examples.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="floats-group/fig[not(@fig-type='cover-image')][@id]" role="error"><!--All figures should be referenced in the text-->
+      <let name="id" value="@id"/>
+         <assert id="xref4a"
+                 test="ancestor::article//xref[@ref-type='fig' and matches(@rid,$id)]">Figure <value-of select="replace($id,'f','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Figure <value-of select="replace($id,'f','')"/>, please contact NPG.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="floats-group/table-wrap[@id][not($pcode='sdata')]" role="error"><!--All tables should be referenced in the text-->
+      <let name="id" value="@id"/>
+         <assert id="xref4b"
+                 test="ancestor::article//xref[@ref-type='table' and matches(@rid,$id)]">Table <value-of select="replace($id,'t','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Table <value-of select="replace($id,'t','')"/>, please contact NPG.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="floats-group/graphic[@content-type='illustration'][@id]" role="error"><!--All tables should be referenced in the text-->
+      <let name="id" value="@id"/>
+         <assert id="xref4c"
+                 test="ancestor::article//xref[@ref-type='other' and matches(@rid,$id)]">Illustration <value-of select="replace($id,'i','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--elements which should have two child elements-->
+    <rule context="mml:mfrac|mml:mroot|mml:msub|mml:msup|mml:munder|mml:mover"
+            role="error">
+         <assert id="form1a" test="count(*)=2">The MathML "<value-of select="local-name()"/>" element should have two children, not <value-of select="count(*)"/>.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--elements which should have three child elements-->
+    <rule context="mml:munderover|mml:msubsup" role="error">
+         <assert id="form1b" test="count(*)=3">The MathML "<value-of select="local-name()"/>" element should have three children not <value-of select="count(*)"/>.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--equation with @id has used mtable to mark up the formulae content-->
+    <rule context="disp-formula[@id]/mml:math">
+         <assert id="form2a" test="count(*)=1 and mml:mtable">Where an equation is numbered in the pdf, the whole expression should be captured using "mml:mtable". The label should captured as the first cell of "mml:mlabeledtr". If the equation is not numbered in the pdf, delete the 'id' attribute.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--do not use @display on mml:math-->
+    <rule context="mml:math[@display]">
+         <report id="form3" test=".">Do not use 'display' attribute on "mml:math". If the formulae is inline, then use "inline-formula" as the parent element, otherwise use "disp-formula".</report>
       </rule>
   </pattern>
    <pattern><!--back - label or title should not be used-->
@@ -1135,6 +1345,37 @@ Use the <let> element to define the attribute if necessary.
          <assert id="notes4d" test="not(@xlink:href) or @xlink:href=.">'xlink:href' should be equal to the link text (<value-of select="."/>).</assert>
       </rule>
   </pattern>
+   <pattern><!--elements not allowed as children of mixed-citation-->
+    <rule context="ref/mixed-citation/alternatives|ref/mixed-citation/chem-struct|ref/mixed-citation/conf-date|ref/mixed-citation/conf-loc|ref/mixed-citation/conf-name|ref/mixed-citation/conf-sponsor|ref/mixed-citation/date|ref/mixed-citation/date-in-citation|ref/mixed-citation/inline-graphic|ref/mixed-citation/institution|ref/mixed-citation/label|ref/mixed-citation/name|ref/mixed-citation/name-alternatives|ref/mixed-citation/person-group|ref/mixed-citation/private-char|ref/mixed-citation/role|ref/mixed-citation/series|ref/mixed-citation/size|ref/mixed-citation/supplement"
+            role="error">
+         <report id="disallowed2" test=".">Do not use "<name/>" element in "mixed-citation" in NPG/Palgrave articles.</report>
+      </rule>
+  </pattern>
+   <pattern><!--no brackets in year-->
+    <rule context="ref/mixed-citation/year" role="error">
+         <report id="punct1a" test="starts-with(.,'(') or ends-with(.,')')">Do not include parentheses in the "year" element in citations in NPG/Palgrave articles.</report>
+      </rule>
+  </pattern>
+   <pattern><!--elocation-id should have @content-type in citations-->
+    <rule context="ref/mixed-citation/elocation-id" role="error">
+         <assert id="eloc1a" test="@content-type">"elocation-id" should have a 'content-type' attribute when used in citations. Allowed values are "doi" and "article-number". If the reference is to an ISBN or ISSN, then use "isbn" or "issn" elements instead.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--elocation-id should only be used for doi and article number, not issn or isbn-->
+    <rule context="ref/mixed-citation/elocation-id[@content-type]" role="error">
+         <assert id="eloc1b" test="@content-type='doi' or @content-type='article-number'">"elocation-id" 'content-type' attribute in citations only has allowed values of "doi" or "article-number". If the reference is to an ISBN or ISSN, then use "isbn" or "issn" elements instead on the number only (the text 'ISBN' or 'ISSN' should remain outside the element).</assert>
+      </rule>
+  </pattern>
+   <pattern><!--elocation-id should not contain text 'doi'-->
+    <rule context="ref/mixed-citation/elocation-id[@content-type='doi']" role="error">
+         <report id="eloc1c" test="starts-with(.,'doi')">"elocation-id" should contain the DOI value only - move the text 'doi' and any punctuation to be outside the "doi" element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--isbn should not contain text 'ISBN'-->
+    <rule context="ref/mixed-citation/isbn" role="error">
+         <report id="isbn1" test="starts-with(.,'ISBN')">"isbn" should contain the ISBN value only - move the text 'ISBN' and any punctuation to be outside the "isbn" element.</report>
+      </rule>
+  </pattern>
    <pattern>
       <rule context="table-wrap-foot/fn" role="error">
         <let name="id" value="@id"/>
@@ -1158,10 +1399,201 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern>
-      <rule context="fig/graphic" role="error">
-        <report id="fig1" test="@xlink:href='' or @mimetype='' or @mime-subtype=''">Graphic attribute values 'xlink:href', 'mimetype' and 'mime-subtype' should be used and not be empty - please check that entity declarations have been converted correctly before transformation.</report>
+      <rule context="oasis:entry[@namest and @nameend]">
+        <assert id="tab11a" test="@align">Spanning table entries should also have an 'align' attribute.</assert>
       </rule>
    </pattern>
+   <pattern>
+        <rule context="oasis:entry[@nameend]">
+            <assert id="tab11b" test="@namest">Table entry has 'nameend' attribute (<value-of select="@nameend"/>), but there is no 'namest' attribute. Spanning entries should have both these attributes; non-spanning entries should have neither.</assert>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="oasis:entry[@namest]">
+            <assert id="tab11c" test="@nameend">Table entry has 'namest' attribute (<value-of select="@namest"/>), but there is no 'nameend' attribute. Spanning entries should have both these attributes; non-spanning entries should have neither.</assert>
+        </rule>
+    </pattern>
+   <pattern>
+      <rule context="fig//graphic" role="error">
+        <report id="fig1a" test="@xlink:href='' or @mimetype='' or @mime-subtype=''">Graphic attribute values 'xlink:href', 'mimetype' and 'mime-subtype' should be used and not be empty - please check that entity declarations have been converted correctly before transformation.</report>
+      </rule>
+   </pattern>
+   <pattern>
+        <rule context="fig-group" role="error">
+            <report id="fig1b" test=".">Do not use "fig-group" in NPG/Palgrave articles. Figures should be captured as direct children of "floats-group".</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="fig" role="error">
+            <assert id="fig1c" test="parent::floats-group or parent::fig-group">"fig" should be only be a child of "floats-group" in NPG/Palgrave articles - not "<value-of select="local-name(parent::*)"/>".</assert>
+        </rule>
+    </pattern>
+   <pattern><!--fig - allowed children only: add other possibilities!!!!!!!!!!!!!!-->
+        <rule context="fig/alt-text | fig/long-desc | fig/email | fig/ext-link | fig/uri | fig/disp-formula | fig/disp-formula-group | fig/chem-struct-wrap | fig/disp-quote | fig/speech | fig/statement | fig/verse-group | fig/table-wrap | fig/p | fig/def-list | fig/list | fig/array | fig/media | fig/preformat | fig/permissions"
+            role="error">
+            <report id="fig2a" test=".">Do not use "<name/>" as a child of "fig". Refer to Tagging Instructions for sample markup.</report>
+        </rule>
+    </pattern>
+   <pattern><!--fig - caption must not be empty-->
+        <rule context="fig/caption" role="error">
+            <assert id="fig2b" test="normalize-space(.) or *">Figure "caption" should not be empty.</assert>
+        </rule>
+    </pattern>
+   <pattern><!--fig - caption must not have attributes-->
+        <rule context="fig/caption" role="error">
+            <report id="fig2c" test="@content-type or @id or @specific-use or @style or @xml:lang">Do not use attributes on figure "caption".</report>
+        </rule>
+    </pattern>
+   <pattern><!--fig - label must not have attributes-->
+        <rule context="fig/label" role="error">
+            <report id="fig2d" test="@alt or @xml:lang">Do not use attributes on figure "label".</report>
+        </rule>
+    </pattern>
+   <pattern><!--fig - label not necessary if text is of form "Figure 1" etc-->
+        <rule context="fig[matches(@id,'^f[A-Z]?[0-9]+$')]/label" role="error">
+            <let name="derivedLabel" value="concat('Figure ',translate(parent::fig/@id,'f',''))"/>
+            <report id="fig2e" test=".=$derivedLabel">Figure "label" is not necessary when text is of the standard format "<value-of select="$derivedLabel"/>" - please delete.</report>
+        </rule>
+    </pattern>
+   <pattern><!--fig - must have an @id-->
+        <rule context="fig[not(@fig-type='cover-image')]" role="error">
+            <assert id="fig3a" test="@id">Missing 'id' attribute - "fig" should have an 'id' of the form "f"+number.</assert>
+        </rule>
+    </pattern>
+   <pattern><!--fig - @id must be correct format-->
+        <rule context="fig[@id]" role="error">
+            <assert id="fig3b" test="matches(@id,'^f[A-Z]?[0-9]+$')">Invalid 'id' value ("<value-of select="@id"/>"). "fig" 'id' attribute should be of the form "f"+number.</assert>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="fig" role="error">
+            <report id="fig3c" test="@specific-use" role="error">Do not use "specific-use" attribute on "fig".</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="fig" role="error">
+            <report id="fig3d" test="@xml:lang" role="error">Do not use "xml:lang" attribute on "fig".</report>
+        </rule>
+    </pattern>
+   <pattern><!--fig - must have an @xlink:href-->
+        <rule context="fig//graphic" role="error">
+            <assert id="fig4a" test="@xlink:href">Missing 'xlink:href' attribute on figure "graphic". The 'xlink:href' should contain the filename (including extension) of the item of graphic. Do not include any path information.</assert>
+        </rule>
+    </pattern>
+   <pattern><!--@xlink:href does not contain filepath info-->
+        <rule context="fig//graphic[@xlink:href]" role="error">
+            <report id="fig4b" test="contains(@xlink:href,'/')">Do not include filepath information for figure graphic files "<value-of select="@xlink:href"/>".</report>
+        </rule>
+    </pattern>
+   <pattern><!--@xlink:href contains a '.' and therefore may have an extension-->
+        <rule context="fig//graphic[@xlink:href]" role="error">
+            <assert id="fig4c" test="contains(@xlink:href,'.')">Figure graphic 'xlink:href' value ("<value-of select="@xlink:href"/>") should contain the file extension (e.g. jpg, gif, etc).</assert>
+        </rule>
+    </pattern>
+   <pattern><!--@xlink:href has valid file extension - check allowed image extensions-->
+        <rule context="fig//graphic[@xlink:href]" role="error">
+            <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+            <assert id="fig4d"
+                 test="matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')">Unexpected file extension value ("<value-of select="$extension"/>") in figure "graphic" '@xlink:href' attribute - please check.</assert>
+        </rule>
+    </pattern>
+   <pattern><!--fig graphic - must have a @mimetype; when @xlink:href does not exist, point to Tagging instructions-->
+        <rule context="fig//graphic[not(@xlink:href or contains(@xlink:href,'.'))]"
+            role="error">
+            <assert id="fig5a" test="@mimetype">Missing 'mimetype' attribute on figure "graphic". Refer to Tagging Instructions for correct value.</assert>
+        </rule>
+    </pattern>
+   <pattern><!--fig graphic - must have a @mimetype; when @xlink:href is invalid, point to Tagging instructions-->
+        <rule context="fig//graphic[contains(@xlink:href,'.')]" role="error">
+            <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+            <report id="fig5b"
+                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) and not(@mimetype)">Missing 'mimetype' attribute on figure "graphic". Refer to Tagging Instructions for correct value.</report>
+        </rule>
+    </pattern>
+   <pattern><!--fig graphic - must have a @mimetype; when @xlink:href exists (and is valid) gives value that should be used-->
+        <rule context="fig//graphic[contains(@xlink:href,'.')]" role="error">
+            <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+            <let name="mimetype"
+              value="if (matches($extension,'^(doc|docx|eps|exe|noa|pdf|pps|ppt|pptx|ps|rtf|swf|tar|tgz|wmf|xls|xlsx|xml|zip)$')) then 'application'                 else if (matches($extension,'^(mp2|mp3|ra|wav)$')) then 'audio'                 else if (matches($extension,'^(cif|pdb|sdf)$')) then 'chemical'                 else if (matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$')) then 'image'                 else if (matches($extension,'^(c|csv|htm|html|sif|txt)$')) then 'text'                 else if (matches($extension,'^(avi|mov|mp4|mpg|qt|rv|wmv)$')) then 'video'                 else ()"/>
+            <assert id="fig5c"
+                 test="@mimetype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">Missing 'mimetype' attribute on figure "graphic". For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$mimetype"/>".</assert>
+        </rule>
+    </pattern>
+   <pattern><!--value used for @mimetype is correct based on file extension (includes test for valid extension)-->
+        <rule context="fig//graphic[@mimetype][contains(@xlink:href,'.')]" role="error">
+            <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+            <let name="mimetype"
+              value="if (matches($extension,'^(doc|docx|eps|exe|noa|pdf|pps|ppt|pptx|ps|rtf|swf|tar|tgz|wmf|xls|xlsx|xml|zip)$')) then 'application'                 else if (matches($extension,'^(mp2|mp3|ra|wav)$')) then 'audio'                 else if (matches($extension,'^(cif|pdb|sdf)$')) then 'chemical'                 else if (matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$')) then 'image'                 else if (matches($extension,'^(c|csv|htm|html|sif|txt)$')) then 'text'                 else if (matches($extension,'^(avi|mov|mp4|mpg|qt|rv|wmv)$')) then 'video'                 else ()"/>
+            <assert id="fig5d"
+                 test="@mimetype=$mimetype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">For figure graphics with extension "<value-of select="$extension"/>", the mimetype attribute should have the value "<value-of select="$mimetype"/>" (not "<value-of select="@mimetype"/>").</assert>
+        </rule>
+    </pattern>
+   <pattern><!--fig graphic - must have a @mime-subtype; when @xlink:href does not exist or is invalid, point to Tagging instructions-->
+        <rule context="fig//graphic[not(@xlink:href or contains(@xlink:href,'.'))]"
+            role="error">
+            <assert id="fig6a" test="@mime-subtype">Missing 'mime-subtype' attribute on figure "graphic". Refer to Tagging Instructions for correct value.</assert>
+        </rule>
+    </pattern>
+   <pattern><!--fig graphic - must have a @mime-subtype; when @xlink:href exists (and is invalid) points to Tagging instructions-->
+        <rule context="fig//graphic[contains(@xlink:href,'.')]" role="error">
+            <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+            <report id="fig6b"
+                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) and not(@mime-subtype)">Missing 'mime-subtype' attribute on figure "graphic". Refer to Tagging Instructions for correct value based.</report>
+        </rule>
+    </pattern>
+   <pattern><!--fig - must have a @mime-subtype; when @xlink:href exists (and is valid) gives value that should be used-->
+        <rule context="fig//graphic[contains(@xlink:href,'.')]" role="error">
+            <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+            <let name="mime-subtype"
+              value="if ($extension='tgz') then 'application/gzip'                 else if ($extension='bmp') then 'bmp'                 else if ($extension='csv') then 'csv'                 else if ($extension='gif') then 'gif'                 else if ($extension='htm' or $extension='html') then 'html'                 else if ($extension='jpeg' or $extension='jpg') then 'jpeg'                 else if ($extension='mp4' or $extension='mp2' or $extension='mp3' or $extension='mpg') then 'mpeg'                 else if ($extension='doc' or $extension='dot') then 'msword'                 else if ($extension='exe' or $extension='noa' or $extension='ole' or $extension='wp') then 'octet-stream'                 else if ($extension='pdf') then 'pdf'                 else if ($extension='c' or $extension='sif' or $extension='txt') then 'plain'                 else if ($extension='png') then 'png'                 else if ($extension='eps' or $extension='ps') then 'postscript'                 else if ($extension='mov' or $extension='qt') then 'quicktime'                 else if ($extension='rtf') then 'rtf'                 else if ($extension='sbml') then 'sbml+xml'                 else if ($extension='tiff') then 'tiff'                 else if ($extension='xls') then 'vnd.ms-excel'                 else if ($extension='xlsm') then 'vnd.ms-excel.sheet.macroEnabled.12'                 else if ($extension='pps' or $extension='ppt') then 'vnd.ms-powerpoint'                 else if ($extension='pptm') then 'vnd.ms-powerpoint.presentation.macroEnabled.12'                 else if ($extension='docm') then 'vnd.ms-word.document.macroEnabled.12'                 else if ($extension='pptx') then 'vnd.openxmlformats-officedocument.presentationml.presentation'                 else if ($extension='xlsx') then 'vnd.openxmlformats-officedocument.spreadsheetml.sheet'                 else if ($extension='docx') then 'vnd.openxmlformats-officedocument.wordprocessingml.document'                 else if ($extension='ra') then 'vnd.rn-realaudio'                 else if ($extension='rv') then 'vnd.rn-realvideo'                 else if ($extension='cdx') then 'x-cdx'                 else if ($extension='cif') then 'x-cif'                 else if ($extension='jdx') then 'x-jcamp-dx'                 else if ($extension='tex') then 'x-latex'                 else if ($extension='mol') then 'x-mdl-molfile'                 else if ($extension='sdf') then 'x-mdl-sdfile'                 else if ($extension='xml') then 'xml'                 else if ($extension='wmf') then 'x-msmetafile'                 else if ($extension='avi') then 'x-msvideo'                 else if ($extension='wmv') then 'x-ms-wmv'                 else if ($extension='pdb') then 'x-pdb'                 else if ($extension='pict') then 'x-pict'                 else if ($extension='swf') then 'x-shockwave-flash'                 else if ($extension='tar') then 'x-tar'                 else if ($extension='wav') then 'x-wav'                 else if ($extension='zip') then 'x-zip-compressed'                 else ()"/>
+            <assert id="fig6c"
+                 test="@mime-subtype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">Missing 'mime-subtype' attribute on figure "graphic". For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$mime-subtype"/>".</assert>
+        </rule>
+    </pattern>
+   <pattern><!--value used for @mimetype is correct based on file extension (includes test for valid extension)-->
+        <rule context="fig//graphic[@mime-subtype][contains(@xlink:href,'.')]" role="error">
+            <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+            <let name="mime-subtype"
+              value="if ($extension='tgz') then 'application/gzip'                 else if ($extension='bmp') then 'bmp'                 else if ($extension='csv') then 'csv'                 else if ($extension='gif') then 'gif'                 else if ($extension='htm' or $extension='html') then 'html'                 else if ($extension='jpeg' or $extension='jpg') then 'jpeg'                 else if ($extension='mp4' or $extension='mp2' or $extension='mp3' or $extension='mpg') then 'mpeg'                 else if ($extension='doc' or $extension='dot') then 'msword'                 else if ($extension='exe' or $extension='noa' or $extension='ole' or $extension='wp') then 'octet-stream'                 else if ($extension='pdf') then 'pdf'                 else if ($extension='c' or $extension='sif' or $extension='txt') then 'plain'                 else if ($extension='png') then 'png'                 else if ($extension='eps' or $extension='ps') then 'postscript'                 else if ($extension='mov' or $extension='qt') then 'quicktime'                 else if ($extension='rtf') then 'rtf'                 else if ($extension='sbml') then 'sbml+xml'                 else if ($extension='tiff') then 'tiff'                 else if ($extension='xls') then 'vnd.ms-excel'                 else if ($extension='xlsm') then 'vnd.ms-excel.sheet.macroEnabled.12'                 else if ($extension='pps' or $extension='ppt') then 'vnd.ms-powerpoint'                 else if ($extension='pptm') then 'vnd.ms-powerpoint.presentation.macroEnabled.12'                 else if ($extension='docm') then 'vnd.ms-word.document.macroEnabled.12'                 else if ($extension='pptx') then 'vnd.openxmlformats-officedocument.presentationml.presentation'                 else if ($extension='xlsx') then 'vnd.openxmlformats-officedocument.spreadsheetml.sheet'                 else if ($extension='docx') then 'vnd.openxmlformats-officedocument.wordprocessingml.document'                 else if ($extension='ra') then 'vnd.rn-realaudio'                 else if ($extension='rv') then 'vnd.rn-realvideo'                 else if ($extension='cdx') then 'x-cdx'                 else if ($extension='cif') then 'x-cif'                 else if ($extension='jdx') then 'x-jcamp-dx'                 else if ($extension='tex') then 'x-latex'                 else if ($extension='mol') then 'x-mdl-molfile'                 else if ($extension='sdf') then 'x-mdl-sdfile'                 else if ($extension='xml') then 'xml'                 else if ($extension='wmf') then 'x-msmetafile'                 else if ($extension='avi') then 'x-msvideo'                 else if ($extension='wmv') then 'x-ms-wmv'                 else if ($extension='pdb') then 'x-pdb'                 else if ($extension='pict') then 'x-pict'                 else if ($extension='swf') then 'x-shockwave-flash'                 else if ($extension='tar') then 'x-tar'                 else if ($extension='wav') then 'x-wav'                 else if ($extension='zip') then 'x-zip-compressed'                 else ()"/>
+            <assert id="fig6d"
+                 test="@mime-subtype=$mime-subtype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">For figure graphics with extension "<value-of select="$extension"/>", the 'mime-subtype' attribute should have the value "<value-of select="$mime-subtype"/>" (not "<value-of select="@mime-subtype"/>").</assert>
+        </rule>
+    </pattern>
+   <pattern><!--no other attributes used on supplementary-material - check what's allowed for fig graphics!!!!!!!!!!!!!!!!!!!-->
+        <rule context="fig//graphic" role="error">
+            <report id="fig7a" test="@specific-use" role="error">Do not use "specific-use" attribute on figure "graphic".</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="fig//graphic" role="error">
+            <report id="fig7b" test="@xlink:actuate" role="error">Do not use "xlink:actuate" attribute on figure "graphic".</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="fig//graphic[not(@content-type='external-media')]" role="error">
+            <report id="fig7c" test="@xlink:role" role="error">Do not use "xlink:role" attribute on figure "graphic".</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="fig//graphic" role="error">
+            <report id="fig7d" test="@xlink:show" role="error">Do not use "xlink:show" attribute on figure "graphic".</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="fig//graphic" role="error">
+            <report id="fig7e" test="@xlink:title" role="error">Do not use "xlink:title" attribute on figure "graphic".</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="fig//graphic" role="error">
+            <report id="fig7f" test="@xlink:type" role="error">Do not use "xlink:type" attribute on figure "graphic".</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="fig//graphic" role="error">
+            <report id="fig7g" test="@xml:lang" role="error">Do not use "xml:lang" attribute on figure "graphic".</report>
+        </rule>
+    </pattern>
    <pattern><!--supplementary-material - only caption allowed as a child-->
     <rule context="floats-group/supplementary-material[not(@content-type='external-media')]"
             role="error">
@@ -1349,79 +1781,10 @@ Use the <let> element to define the attribute if necessary.
          <report id="supp7g" test="@xml:lang" role="error">Do not use "xml:lang" attribute on "supplementary-material".</report>
       </rule>
   </pattern>
-<pattern><!--no empty xrefs for some ref-types-->
-    <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|fig|supplementary-material|table|table-fn)$')]"
+<pattern><!--elements not allowed in NPG JATS content-->
+    <rule context="abbrev | annotation | collab-alternatives | comment | gov | issn-l | issue-id | issue-part | issue-title | milestone-end | milestone-start | object-id |  page-range | part-title | patent | pub-id | roman | std | trans-source | volume-id | volume-series"
             role="error">
-         <let name="ref-type" value="@ref-type"/>
-         <assert id="xref1" test="normalize-space(.) or *">"xref" with ref-type="<value-of select="$ref-type"/>" and rid="<value-of select="@rid"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
-      </rule>
+         <report id="disallowed1" test=".">Do not use "<name/>" element in NPG/Palgrave articles.</report>
+         </rule>
   </pattern>
-   <pattern><!--Multiple rid values only allowed in bibrefs-->
-    <rule context="xref[not(@ref-type='bibr')]" role="error">
-         <let name="ref-type" value="@ref-type"/>
-         <report id="xref2" test="contains(@rid,' ')">"xref" with ref-type="<value-of select="$ref-type"/>" should only contain one 'rid' value (<value-of select="."/>). Please split into separate "xref" elements.</report>
-      </rule>
-  </pattern>
-   <pattern><!--compare single bib rid with text as long as text is numeric (i.e. excludes references which have author names)-->
-    <rule context="xref[@ref-type='bibr' and not(contains(@rid,' ')) and not(.='') and matches(.,'^[1-9][0-9]?[0-9]?$')]"
-            role="error">
-         <assert id="xref3a" test="matches(.,replace(@rid,'b',''))">Mismatch in bibref: rid="<value-of select="@rid"/>" but text is "<value-of select="."/>".</assert>
-      </rule>
-  </pattern>
-   <pattern><!--multiple @rids should not be used where citation is author name-->
-    <rule context="xref[@ref-type='bibr' and contains(@rid,' ')]" role="error">
-         <report id="xref3b" test="matches(.,'[a-z]')">Multiple bibref rid values should only be used in numeric reference lists, not when author names are used. Please split into separate "xref" elements.</report>
-      </rule>
-  </pattern>
-   <pattern><!--xref/@ref-type="bibr", @rid should not be to two values-->
-    <rule context="xref[@ref-type='bibr' and contains(@rid,' ') and not(.='') and not(matches(.,'[a-z]'))]"
-            role="error">
-         <report id="xref3c" test="count(tokenize(@rid, '\W+')[. != '']) eq 2">Bibrefs should be to a single reference or a range of three or more references. See Tagging Instructions for examples.</report>
-      </rule>
-  </pattern>
-   <pattern><!--compare multiple bib rids with text-->
-    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'–')]"
-            role="error"><!--find multiple bibrefs, text must contain a dash (i.e. is a range)-->
-      <let name="first" value="xs:integer(substring-before(.,'–'))"/>
-         <!--find start of range-->
-      <let name="last" value="xs:integer(substring-after(.,'–'))"/>
-         <!--find end of range-->
-      <let name="range" value="$last - $first + 1"/>
-         <!--find number of refs in the range-->
-      <let name="derivedRid" value="for $j in $first to $last return concat('b',$j)"/>
-         <!--generate expected sequence of rid values-->
-      <let name="normalizedRid" value="tokenize(@rid,'\W+')"/>
-         <!--turn rid into a sequence for comparison purposes-->
-      <assert id="xref3d"
-                 test="every $i in 1 to $range satisfies $derivedRid[$i]=$normalizedRid[$i]">xref with ref-type="bibr" range <value-of select="."/> has non-matching multiple rids (<value-of select="@rid"/>). See Tagging Instructions for examples.</assert>
-         <!--if any pair does not match, then test will fail-->
-    </rule>
-  </pattern>
-   <pattern><!--multiple rids not allowed for non-ranges-->
-    <rule context="xref[@ref-type='bibr'  and (count(tokenize(@rid, '\W+')[. != '']) gt 2) and not(.='') and not(matches(.,'[a-z]'))]"
-            role="error">
-         <report id="xref3e" test="contains(.,',')">Multiple rid values should only be used to a range of three or more references. See Tagging Instructions for examples.</report>
-      </rule>
-  </pattern>
-   <pattern>
-      <rule context="floats-group/fig[not(@fig-type='cover-image')][@id]" role="error"><!--All figures should be referenced in the text-->
-      <let name="id" value="@id"/>
-         <assert id="xref4a"
-                 test="ancestor::article//xref[@ref-type='fig' and matches(@rid,$id)]">Figure <value-of select="replace($id,'f','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Figure <value-of select="replace($id,'f','')"/>, please contact Editorial Production.</assert>
-      </rule>
-  </pattern>
-   <pattern>
-      <rule context="floats-group/table-wrap[@id][not($pcode='sdata')]" role="error"><!--All tables should be referenced in the text-->
-      <let name="id" value="@id"/>
-         <assert id="xref4b"
-                 test="ancestor::article//xref[@ref-type='table' and matches(@rid,$id)]">Table <value-of select="replace($id,'t','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Table <value-of select="replace($id,'t','')"/>, please contact Editorial Production.</assert>
-      </rule>
-  </pattern>
-   <pattern>
-      <rule context="floats-group/graphic[@content-type='illustration'][@id]" role="error"><!--All tables should be referenced in the text-->
-      <let name="id" value="@id"/>
-         <assert id="xref4c"
-                 test="ancestor::article//xref[@ref-type='other' and matches(@rid,$id)]">Illustration <value-of select="replace($id,'i','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location.</assert>
-      </rule>
-  </pattern>
-</schema>
+   </schema>
