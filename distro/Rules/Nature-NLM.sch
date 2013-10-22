@@ -829,7 +829,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--sec - id and xml:lang attributes not used-->
-    <rule context="sec" role="error">
+    <rule context="sec[not(matches($pcode,'^sdata$'))]" role="error">
          <report id="sec1c" test="@id">Do not use "id" attribute on "sec".</report>
       </rule>
   </pattern>
