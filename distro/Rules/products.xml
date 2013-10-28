@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<products created="2009-10-01" modified="" version="1.7.5">
+<products created="2009-10-01" modified="" version="1.7.7">
     <product pcode="bostblog" collection="blogs_nature" content="fulltext"
         xml:base="/ns.nature.com/products/bostblog.xml">
         <description>
@@ -32,6 +32,18 @@
             <issue start="1" end="3"/>
         </coverage>
     </product>
+    <product pcode="fnmol" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fnmol.xml">
+        <description>
+            <title>Frontiers in Molecular Neuroscience</title>
+            <issn type="electronic">1662-5099</issn>
+            <homePage>http://www.frontiersin.org/Molecular_Neuroscience</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
+        </coverage>
+    </product>
     <product pcode="biosoc" npgid="1082" collection="journals_palgrave" content="fulltext"
         xml:base="/ns.nature.com/products/biosoc.xml">
         <description>
@@ -50,12 +62,24 @@
             <issue start="1"/>
         </coverage>
     </product>
+    <product pcode="fphys" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fphys.xml">
+        <description>
+            <title>Frontiers in Physiology</title>
+            <issn type="electronic">1664-042X</issn>
+            <homePage>http://www.frontiersin.org/Physiology</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2009-12-11"/>
+        </coverage>
+    </product>
     <product pcode="cmi" npgid="1352" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/cmi.xml">
         <description>
             <title>Cellular &amp; Molecular Immunology</title>
             <issn type="print">1672-7681</issn>
-            <issn type="electronic">2042-0226</issn>
+            <issn type="electronic">2042-0226</issn><!--missing from main ontology-->
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
@@ -113,9 +137,9 @@
             <targetDomain>palgrave-journals.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>jdg</synonym>
             <synonym>Int J Discl Gov</synonym>
-        </synonyms>
+            <synonym>jdg</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2003-12"/>
             <volume start="1"/>
@@ -125,7 +149,7 @@
     <product pcode="mtm" npgid="549821" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/mtm.xml">
         <description>
-            <title>Molecular Therapy &#x2014; Methods &amp; Clinical Development</title>
+            <title>Molecular Therapy &#x2014; Methods &amp; Clinical Development</title><!--hyphen in main ontology-->
             <issn type="electronic">2329-0501</issn>
             <homePage>http://www.nature.com/mtm/</homePage>
             <targetDomain>nature.com</targetDomain>
@@ -136,8 +160,18 @@
         </synonyms>
         <coverage moving="true">
             <date start="2013"/>
-            <volume start=""/>
-            <issue start=""/>
+            </coverage>
+    </product>
+    <product pcode="fnene" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fnene.xml">
+        <description>
+            <title>Frontiers in Neuroenergetics</title>
+            <issn type="electronic">1662-6427</issn>
+            <homePage>http://www.frontiersin.org/Neuroenergetics</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
         </coverage>
     </product>
     <product pcode="nsb" npgid="60" collection="journals_nature" content="fulltext"
@@ -178,6 +212,18 @@
             <date start="2005-02"/>
             <volume start="37"/>
             <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="fchem" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fchem.xml">
+        <description>
+            <title>Frontiers in Chemistry</title>
+            <issn type="electronic">2296-2646</issn>
+            <homePage>http://www.frontiersin.org/Chemistry</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2013-01-25"/>
         </coverage>
     </product>
     <product pcode="nrneph" npgid="981" collection="journals_nature" content="fulltext"
@@ -240,6 +286,18 @@
             <issue start="1"/>
         </coverage>
     </product>
+    <product pcode="fneng" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fneng.xml">
+        <description>
+            <title>Frontiers in Neuroengineering</title>
+            <issn type="electronic">1662-6443</issn>
+            <homePage>http://www.frontiersin.org/Neuroengineering</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
+        </coverage>
+    </product>
     <product pcode="how" collection="blogs_nature" content="fulltext"
         xml:base="/ns.nature.com/products/how.xml">
         <description>
@@ -287,7 +345,7 @@
     <product pcode="embor" npgid="236" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/embor.xml">
         <description>
-            <title>EMBO reports</title>
+            <title>EMBO reports</title><!--uppercase R in main ontology-->
             <issn type="print">1469-221X</issn>
             <issn type="electronic">1469-3178</issn>
             <homePage>http://www.nature.com/embor</homePage>
@@ -493,9 +551,9 @@
             <targetDomain>palgrave-journals.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>jma</synonym>
             <synonym>J Market Anal</synonym>
-        </synonyms>
+            <synonym>jma</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2013-02"/>
             <volume start="1"/>
@@ -546,7 +604,7 @@
             <reference type="replacedby" pcode="jdhf"/>
         </references>
         <description>
-            <title>Derivatives Use, Trading &amp; Regulation</title>
+            <title>Derivatives Use, Trading &amp; Regulation</title><!--Added ISSNs for dutr-->
             <issn type="print">1357-0927</issn>
             <issn type="electronic">1747-4426</issn>
             <homePage>http://www.palgrave-journals.com/dutr/</homePage>
@@ -580,6 +638,11 @@
             <issue start="1"/>
         </coverage>
     </product>
+    <product pcode="blogs" xml:base="/ns.nature.com/products/blogs.xml">
+        <description>
+            <title/>
+        </description>
+    </product>
     <product pcode="nbt" npgid="40" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/nbt.xml">
         <description>
@@ -597,6 +660,18 @@
             <date start="1983-03"/>
             <volume start="1"/>
             <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="fphy" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fphy.xml">
+        <description>
+            <title>Frontiers in Physics</title>
+            <issn type="electronic">2296-424X</issn>
+            <homePage>http://www.frontiersin.org/Physics</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2013-05-24"/>
         </coverage>
     </product>
     <product pcode="jid" npgid="282" collection="journals_nature" content="fulltext"
@@ -617,6 +692,18 @@
             <date start="1938-02"/>
             <volume start="1"/>
             <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="fninf" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fninf.xml">
+        <description>
+            <title>Frontiers in Neuroinformatics</title>
+            <issn type="electronic">1662-5196</issn>
+            <homePage>http://www.frontiersin.org/Neuroinformatics</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
         </coverage>
     </product>
     <product pcode="msb" npgid="269" collection="journals_nature" content="fulltext"
@@ -973,8 +1060,8 @@
         xml:base="/ns.nature.com/products/vital.xml">
         <description>
             <title>Vital</title>
-            <issn type="electronic">1741-7511</issn>
             <issn type="print">1741-7503</issn>
+            <issn type="electronic">1741-7511</issn>
             <homePage>http://www.nature.com/vital</homePage>
             <targetDomain>nature.com</targetDomain>
         </description>
@@ -1016,6 +1103,18 @@
             <issue start="1"/>
         </coverage>
     </product>
+    <product pcode="fphar" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fphar.xml">
+        <description>
+            <title>Frontiers in Pharmacology</title>
+            <issn type="electronic">1663-9812</issn>
+            <homePage>http://www.frontiersin.org/Pharmacology</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2009-12-11"/>
+        </coverage>
+    </product>
     <product pcode="iresp" collection="blogs_nature" content="fulltext"
         xml:base="/ns.nature.com/products/iresp.xml">
         <references>
@@ -1028,6 +1127,18 @@
         </description>
         <coverage moving="false">
             <date start="2007-03" end="2008-10"/>
+        </coverage>
+    </product>
+    <product pcode="fimmu" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fimmu.xml">
+        <description>
+            <title>Frontiers in Immunology</title>
+            <issn type="electronic">1664-3224</issn>
+            <homePage>http://www.frontiersin.org/Immunology</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2010-10-28"/>
         </coverage>
     </product>
     <product pcode="pt" npgid="280" collection="journals_palgrave" content="fulltext"
@@ -1206,6 +1317,18 @@
             <date start="2005-11"/>
         </coverage>
     </product>
+    <product pcode="fcimb" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fcimb.xml">
+        <description>
+            <title>Frontiers in Cellular and Infection Microbiology</title>
+            <issn type="electronic">2235-2988</issn>
+            <homePage>http://www.frontiersin.org/Cellular_and_Infection_Microbiology</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2010-04-27"/>
+        </coverage>
+    </product>
     <product pcode="ajh" npgid="935" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/ajh.xml">
         <description>
@@ -1252,9 +1375,9 @@
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>ijos</synonym>
             <synonym>Int J Oral Sci</synonym>
-        </synonyms>
+            <synonym>ijos</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2009-03"/>
             <volume start="1"/>
@@ -1352,6 +1475,18 @@
             <issue start="1"/>
         </coverage>
     </product>
+    <product pcode="fnbot" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fnbot.xml">
+        <description>
+            <title>Frontiers in Neurorobotics</title>
+            <issn type="electronic">1662-5218</issn>
+            <homePage>http://www.frontiersin.org/Neurorobotics</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
+        </coverage>
+    </product>
     <product pcode="ejdr" npgid="959" collection="journals_palgrave" content="fulltext"
         xml:base="/ns.nature.com/products/ejdr.xml">
         <description>
@@ -1394,6 +1529,18 @@
             <date start="2009-11"/>
         </coverage>
     </product>
+    <product pcode="fmicb" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fmicb.xml">
+        <description>
+            <title>Frontiers in Microbiology</title>
+            <issn type="electronic">1664-302X</issn>
+            <homePage>http://www.frontiersin.org/Microbiology</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2010-07-19"/>
+        </coverage>
+    </product>
     <product pcode="nrmicro" npgid="257" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/nrmicro.xml">
         <description>
@@ -1422,9 +1569,9 @@
             <targetDomain>palgrave-journals.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>elmr</synonym>
             <synonym>Econ Lab Market Rev</synonym>
-        </synonyms>
+            <synonym>elmr</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2007-01"/>
             <volume start="1"/>
@@ -1461,6 +1608,18 @@
             <date start="2006-11" end="2010-09"/>
         </coverage>
     </product>
+    <product pcode="fnevo" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fnevo.xml">
+        <description>
+            <title>Frontiers in Evolutionary Neuroscience</title>
+            <issn type="electronic">1663-070X</issn>
+            <homePage>http://www.frontiersin.org/Evolutionary_Neuroscience</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
+        </coverage>
+    </product>
     <product pcode="ngeo" npgid="185" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/ngeo.xml">
         <description>
@@ -1477,6 +1636,18 @@
             <date start="2008-01"/>
             <volume start="1"/>
             <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="fncir" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fncir.xml">
+        <description>
+            <title>Frontiers in Neural Circuits</title>
+            <issn type="electronic">1662-5110</issn>
+            <homePage>http://www.frontiersin.org/Neural_Circuits</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
         </coverage>
     </product>
     <product pcode="eye" npgid="211" collection="journals_nature" content="fulltext"
@@ -1514,6 +1685,30 @@
             <date start="2004-11"/>
             <volume start="1"/>
             <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="fnana" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fnana.xml">
+        <description>
+            <title>Frontiers in Neuroanatomy</title>
+            <issn type="electronic">1662-5129</issn>
+            <homePage>http://www.frontiersin.org/Neuroanatomy</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
+        </coverage>
+    </product>
+    <product pcode="fgene" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fgene.xml">
+        <description>
+            <title>Frontiers in Genetics</title>
+            <issn type="electronic">1664-8021</issn>
+            <homePage>http://www.frontiersin.org/Genetics</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2010-10-21"/>
         </coverage>
     </product>
     <product pcode="fs" npgid="276" collection="journals_palgrave" content="fulltext"
@@ -1663,6 +1858,18 @@
             <date start="2007-04"/>
         </coverage>
     </product>
+    <product pcode="fnsys" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fnsys.xml">
+        <description>
+            <title>Frontiers in Systems Neuroscience</title>
+            <issn type="electronic">1662-5137</issn>
+            <homePage>http://www.frontiersin.org/Systems_Neuroscience</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
+        </coverage>
+    </product>
     <product pcode="iga" npgid="549787" collection="journals_palgrave" content="fulltext"
         xml:base="/ns.nature.com/products/iga.xml">
         <description>
@@ -1673,9 +1880,21 @@
             <targetDomain>palgrave-journals.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>iga</synonym>
             <synonym>Int Groups Adv</synonym>
-        </synonyms>
+            <synonym>iga</synonym>
+            </synonyms>
+    </product>
+    <product pcode="fpsyt" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fpsyt.xml">
+        <description>
+            <title>Frontiers in Psychiatry</title>
+            <issn type="electronic">1664-0640</issn>
+            <homePage>http://www.frontiersin.org/Psychiatry</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2009-11-19"/>
+        </coverage>
     </product>
     <product pcode="jdhf" npgid="932" collection="journals_palgrave" content="fulltext"
         xml:base="/ns.nature.com/products/jdhf.xml">
@@ -1918,9 +2137,9 @@
             <targetDomain>palgrave-journals.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>eps</synonym>
             <synonym>Eur Polit Sci</synonym>
-        </synonyms>
+            <synonym>eps</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2001-09"/>
             <volume start="1"/>
@@ -1936,6 +2155,18 @@
         </description>
         <coverage moving="true">
             <date start="2007-01"/>
+        </coverage>
+    </product>
+    <product pcode="fnint" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fnint.xml">
+        <description>
+            <title>Frontiers in Integrative Neuroscience</title>
+            <issn type="electronic">1662-5145</issn>
+            <homePage>http://www.frontiersin.org/Integrative_Neuroscience</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
         </coverage>
     </product>
     <product pcode="ori" npgid="965" collection="journals_palgrave" content="fulltext"
@@ -2014,9 +2245,9 @@
             <targetDomain>palgrave-journals.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>pmed</synonym>
             <synonym>Postmedieval</synonym>
-        </synonyms>
+            <synonym>pmed</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2010-03"/>
             <volume start="1"/>
@@ -2209,9 +2440,9 @@
             <targetDomain>palgrave-journals.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>ipr</synonym>
             <synonym>Int Polit Rev</synonym>
-        </synonyms>
+            <synonym>ipr</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2013-06"/>
             <volume start="1"/>
@@ -2234,6 +2465,11 @@
             <volume start="1" end="7"/>
             <issue start="1" end="4"/>
         </coverage>
+    </product>
+    <product pcode="journals_palgrave" xml:base="/ns.nature.com/products/journals_palgrave.xml">
+        <description>
+            <title/>
+        </description>
     </product>
     <product pcode="neuro" npgid="38" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/neuro.xml">
@@ -2429,6 +2665,18 @@
             <issue start="1"/>
         </coverage>
     </product>
+    <product pcode="fpls" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fpls.xml">
+        <description>
+            <title>Frontiers in Plant Science</title>
+            <issn type="electronic">1664-462X</issn>
+            <homePage>http://www.frontiersin.org/Plant_Science</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2011-01-28"/>
+        </coverage>
+    </product>
     <product pcode="jcbfm" npgid="270" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/jcbfm.xml">
         <description>
@@ -2439,13 +2687,25 @@
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>j cereb blood flow metab"</synonym>
+            <synonym>j cereb blood flow metab\</synonym>
             <synonym>jcbfm</synonym>
         </synonyms>
         <coverage moving="true">
             <date start="1996-01"/>
             <volume start="16"/>
             <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="fncom" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fncom.xml">
+        <description>
+            <title>Frontiers in Computational Neuroscience</title>
+            <issn type="electronic">1662-5188</issn>
+            <homePage>http://www.frontiersin.org/Computational_Neuroscience</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
         </coverage>
     </product>
     <product pcode="gimo" npgid="604" collection="journals_nature" content="fulltext"
@@ -2517,6 +2777,18 @@
             <date start="2001-10"/>
             <volume start="1"/>
             <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="fonc" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fonc.xml">
+        <description>
+            <title>Frontiers in Oncology</title>
+            <issn type="electronic">2234-943X</issn>
+            <homePage>http://www.frontiersin.org/Oncology</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2011-01-02"/>
         </coverage>
     </product>
     <product pcode="jgm" npgid="304" collection="journals_palgrave" content="fulltext"
@@ -2618,6 +2890,18 @@
             <date start="1999-09"/>
             <volume start="5"/>
             <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="fnagi" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fnagi.xml">
+        <description>
+            <title>Frontiers in Aging Neuroscience</title>
+            <issn type="electronic">1663-4365</issn>
+            <homePage>http://www.frontiersin.org/Aging_Neuroscience</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
         </coverage>
     </product>
     <product pcode="nature" npgid="1" collection="journals_nature" content="fulltext"
@@ -2724,6 +3008,26 @@
             <date start="2000-01"/>
             <volume start="13"/>
             <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="blogs_internal" xml:base="/ns.nature.com/products/blogs_internal.xml">
+        <description>
+            <title>Internal blogs</title>
+        </description>
+        <synonyms>
+            <synonym>Staff blogs</synonym>
+        </synonyms>
+    </product>
+    <product pcode="fpsyg" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fpsyg.xml">
+        <description>
+            <title>Frontiers in Psychology</title>
+            <issn type="electronic">1664-1078</issn>
+            <homePage>http://www.frontiersin.org/Psychology</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2009-06-11"/>
         </coverage>
     </product>
     <product pcode="ismej" npgid="321" collection="journals_nature" content="fulltext"
@@ -2856,6 +3160,11 @@
             <issue start="1"/>
         </coverage>
     </product>
+    <product pcode="blogs_nature" xml:base="/ns.nature.com/products/blogs_nature.xml">
+        <description>
+            <title/>
+        </description>
+    </product>
     <product pcode="lst" npgid="251" collection="journals_palgrave" content="fulltext"
         xml:base="/ns.nature.com/products/lst.xml">
         <description>
@@ -2973,6 +3282,18 @@
             <date start="2011-08"/>
         </coverage>
     </product>
+    <product pcode="fncel" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fncel.xml">
+        <description>
+            <title>Frontiers in Cellular Neuroscience</title>
+            <issn type="electronic">1662-5102</issn>
+            <homePage>http://www.frontiersin.org/Cellular_Neuroscience</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
+        </coverage>
+    </product>
     <product pcode="app_notes" npgid="283" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/app_notes.xml">
         <description>
@@ -3012,10 +3333,22 @@
             <targetDomain>nature.com</targetDomain>
         </description>
     </product>
+    <product pcode="fnbeh" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fnbeh.xml">
+        <description>
+            <title>Frontiers in Behavioral Neuroscience</title>
+            <issn type="electronic">1662-5153</issn>
+            <homePage>http://www.frontiersin.org/Behavioral_Neuroscience</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
+        </coverage>
+    </product>
     <product pcode="mtna" npgid="1393" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/mtna.xml">
         <description>
-            <title>Molecular Therapy &#x2014; Nucleic Acids</title>
+            <title>Molecular Therapy &#x2014; Nucleic Acids</title><!--dash missing in main ontology-->
             <issn type="electronic">2162-2531</issn>
             <homePage>www.nature.com/mtna</homePage>
         </description>
@@ -3059,9 +3392,9 @@
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>tp</synonym>
             <synonym>Transl Psychiatry</synonym>
-        </synonyms>
+            <synonym>tp</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2011-04"/>
             <volume start="1"/>
@@ -3285,15 +3618,15 @@
         xml:base="/ns.nature.com/products/ajcs.xml">
         <description>
             <title>American Journal of Cultural Sociology</title>
-            <issn type="print">2049-7121</issn>
             <issn type="electronic">2049-7113</issn>
+            <issn type="print">2049-7121</issn>
             <homePage>http://www.palgrave-journals.com/ajcs/</homePage>
             <targetDomain>palgrave-journals.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>ajcs</synonym>
             <synonym>Am J Cult Socio</synonym>
-        </synonyms>
+            <synonym>ajcs</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2013-02"/>
             <volume start="1"/>
@@ -3356,6 +3689,18 @@
             <date start="2009-05"/>
         </coverage>
     </product>
+    <product pcode="fped" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fped.xml">
+        <description>
+            <title>Frontiers in Pediatrics</title>
+            <issn type="electronic">2296-2360</issn>
+            <homePage>http://www.frontiersin.org/Pediatrics</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2012-12-21"/>
+        </coverage>
+    </product>
     <product pcode="ajg" npgid="946" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/ajg.xml">
         <description>
@@ -3391,6 +3736,32 @@
             <date start="1997-01"/>
             <volume start="35"/>
             <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="journals" xml:base="/ns.nature.com/products/journals.xml">
+        <description>
+            <title/>
+        </description>
+    </product>
+    <product pcode="blogs_external" xml:base="/ns.nature.com/products/blogs_external.xml">
+        <description>
+            <title>External Blogs</title>
+        </description>
+        <synonyms>
+            <synonym>Non staff blogs</synonym>
+            <synonym>Personal blogs</synonym>
+        </synonyms>
+    </product>
+    <product pcode="fneur" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fneur.xml">
+        <description>
+            <title>Frontiers in Neurology</title>
+            <issn type="electronic">1664-2295</issn>
+            <homePage>http://www.frontiersin.org/Neurology</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2009-03-12"/>
         </coverage>
     </product>
     <product pcode="nclimate" npgid="964" collection="journals_nature" content="fulltext"
@@ -3474,9 +3845,9 @@
             <targetDomain>palgrave-journals.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>jos</synonym>
             <synonym>J Simulation</synonym>
-        </synonyms>
+            <synonym>jos</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2006-12"/>
             <volume start="1"/>
@@ -3516,6 +3887,18 @@
             <date start="2003-02"/>
             <volume start="1"/>
             <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="fnsyn" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fnsyn.xml">
+        <description>
+            <title>Frontiers in Synaptic Neuroscience</title>
+            <issn type="electronic">1663-3563</issn>
+            <homePage>http://www.frontiersin.org/Synaptic_Neuroscience</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
         </coverage>
     </product>
     <product pcode="scientificamerican" npgid="1320" collection="journals_nature" content="fulltext"
@@ -3605,6 +3988,18 @@
             <issue start="1"/>
         </coverage>
     </product>
+    <product pcode="fpubh" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fpubh.xml">
+        <description>
+            <title>Frontiers in Public Health</title>
+            <issn type="electronic">2296-2565</issn>
+            <homePage>http://www.frontiersin.org/Public_Health</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2013-03-19"/>
+        </coverage>
+    </product>
     <product pcode="emi" npgid="549791" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/emi.xml">
         <description>
@@ -3614,9 +4009,9 @@
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>emi</synonym>
             <synonym>Emerg Microbes Infect</synonym>
-        </synonyms>
+            <synonym>emi</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2012-07"/>
             <volume start="1"/>
@@ -3626,7 +4021,7 @@
     <product pcode="abm" npgid="237" collection="journals_palgrave" content="fulltext"
         xml:base="/ns.nature.com/products/abm.xml">
         <description>
-            <title>Asian Business &amp; Management</title>
+            <title>Asian Business &amp; Management</title><!--ampersand missing in main ontology-->
             <issn type="print">1472-4782</issn>
             <issn type="electronic">1476-9328</issn>
             <targetDomain>palgrave-journals.com</targetDomain>
@@ -3657,6 +4052,18 @@
             <date start="1972-01"/>
             <volume start="1"/>
             <issue start="1"/>
+        </coverage>
+    </product>
+    <product pcode="fendo" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fendo.xml">
+        <description>
+            <title>Frontiers in Endocrinology</title>
+            <issn type="electronic">1664-2392</issn>
+            <homePage>http://www.frontiersin.org/Endocrinology</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2010-08-18"/>
         </coverage>
     </product>
     <product pcode="psiskb" npgid="958" collection="crawled_content" content="fulltext"
@@ -3792,6 +4199,18 @@
             <issue start="1"/>
         </coverage>
     </product>
+    <product pcode="fnhum" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fnhum.xml">
+        <description>
+            <title>Frontiers in Human Neuroscience</title>
+            <issn type="electronic">1662-5161</issn>
+            <homePage>http://www.frontiersin.org/Human_Neuroscience</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-02-07"/>
+        </coverage>
+    </product>
     <product pcode="bmt" npgid="202" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/bmt.xml">
         <description>
@@ -3881,6 +4300,11 @@
             <issue start="1" end="3"/>
         </coverage>
     </product>
+    <product pcode="journals_nature" xml:base="/ns.nature.com/products/journals_nature.xml">
+        <description>
+            <title/>
+        </description>
+    </product>
     <product pcode="gene" npgid="213" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/gene.xml">
         <description>
@@ -3908,6 +4332,18 @@
             <targetDomain>nature.com</targetDomain>
         </description>
     </product>
+    <product pcode="fbioe" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fbioe.xml">
+        <description>
+            <title>Frontiers in Bioengineering and Biotechnology</title>
+            <issn type="electronic">2296-4185</issn>
+            <homePage>http://www.frontiersin.org/Bioengineering_and_Biotechnology</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2013-05-22"/>
+        </coverage>
+    </product>
     <product pcode="emm" npgid="549801" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/emm.xml">
         <description>
@@ -3918,9 +4354,9 @@
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>emm</synonym>
             <synonym>Exp Mol Med</synonym>
-        </synonyms>
+            <synonym>emm</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2013-01"/>
             <volume start="45"/>
@@ -3991,6 +4427,19 @@
             <date start="2007-05" end="2010-06"/>
             <volume start="54" end="57"/>
             <issue start="1" end="2"/>
+        </coverage>
+    </product>
+    <product pcode="fnins" collection="journals_frontiers" content="fulltext"
+        xml:base="/ns.nature.com/products/fnins.xml">
+        <description>
+            <title>Frontiers in Neuroscience</title>
+            <issn type="electronic">1662-453X</issn>
+            <issn type="print">1662-4548</issn>
+            <homePage>http://www.frontiersin.org/Neuroscience</homePage>
+            <targetDomain>frontiersin.org</targetDomain>
+        </description>
+        <coverage moving="true">
+            <date start="2007-01-06"/>
         </coverage>
     </product>
     <product pcode="nrrheum" npgid="983" collection="journals_nature" content="fulltext"
@@ -4197,9 +4646,9 @@
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>cti</synonym>
             <synonym>Clin Trans Immunol</synonym>
-        </synonyms>
+            <synonym>cti</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2012-11"/>
             <volume start="1"/>
@@ -4230,9 +4679,9 @@
             <targetDomain>palgrave-journals.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>rpm</synonym>
             <synonym>J Revenue Pricing Manag</synonym>
-        </synonyms>
+            <synonym>rpm</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2002-05"/>
             <volume start="1"/>
@@ -4262,9 +4711,9 @@
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>hortres</synonym>
             <synonym>Hortic. Res.</synonym>
-        </synonyms>
+            <synonym>hortres</synonym>
+            </synonyms>
         <coverage moving="true">
             <date start="2014"/>
         </coverage>
@@ -4291,9 +4740,9 @@
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
-            <synonym>sdata</synonym>
             <synonym>Sci. Data</synonym>
-        </synonyms>
+            <synonym>sdata</synonym>
+            </synonyms>
         <coverage moving="true"/>
     </product>
     <product pcode="lonblog" collection="blogs_nature" content="fulltext"
