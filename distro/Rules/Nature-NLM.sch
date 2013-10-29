@@ -697,6 +697,26 @@ Use the <let> element to define the attribute if necessary.
          <report id="maestro1" test=".">Corresponding author information should only contain one email address. Please split "corresp" with id='<value-of select="parent::corresp/@id"/>' into separate "corresp" elements - one for each corresponding author. You will also need to update the equivalent "xref" elements with the new 'rid' values.</report>
       </rule>
   </pattern>
+   <pattern><!--Do no include the word 'correspondence' in the corresp element-->
+    <rule context="corresp[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]" role="error">
+         <report id="aj-corresp1"
+                 test="starts-with(.,'correspondence') or starts-with(.,'Correspondence') or starts-with(.,'CORRESPONDENCE')">Do not include the unnecessary text 'Correspondence' in the "corresp" element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--no empty xrefs for ref-types="author-notes"-->
+    <rule context="xref[@ref-type='author-notes'][matches($pcode,'^(nmstr|mtm|hortres)$')]"
+            role="error">
+         <assert id="aj-aunote1a" test="normalize-space(.) or *">"xref" with ref-type="author-notes" and rid="<value-of select="@rid"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--author footnotes should have label so AJ conversion works properly-->
+      <rule context="author-notes/fn[not(@fn-type)][@id][matches($pcode,'^(nmstr|mtm|hortres)$')]"
+            role="error">
+         <let name="id" value="@id"/>
+         <let name="symbol" value="(ancestor::article//xref[matches(@rid,$id)])[1]//text()"/>
+         <assert id="aj-aunote1b" test="label">Missing "label" element in author footnote - please insert one containing the same text as the corresponding "xref" element<value-of select="if ($symbol ne '') then concat(' (',$symbol,')') else ()"/>.</assert>
+      </rule>
+  </pattern>
    <pattern>
       <rule context="contrib-group[not(@content-type='contributor')]/contrib/xref"
             role="error"><!--Contrib xref should have @ref-type-->
@@ -731,12 +751,12 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern>
       <rule context="aff" role="error"><!--Affiliation information should have id-->
-      <assert id="aff3a" test="@id">Missing 'id' attribute - "aff" should have an 'id' of the form "a"+number.</assert>
+      <assert id="aff3a" test="@id">Missing 'id' attribute - "aff" should have an 'id' of the form "a"+number (with no leading zeros).</assert>
       </rule>
   </pattern>
    <pattern>
       <rule context="aff[@id]" role="error"><!--Affiliation id in required format-->
-      <assert id="aff3b" test="matches(@id,'^a[0-9]+$')">Invalid 'id' value ("<value-of select="@id"/>"). "aff" 'id' attribute should be of the form "a"+number. Also, update the values in any linking "xref" elements.</assert>
+      <assert id="aff3b" test="matches(@id,'^a[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "aff" 'id' attribute should be of the form "a"+number (with no leading zeros). Also, update the values in any linking "xref" elements.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -810,12 +830,12 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern>
       <rule context="author-notes/fn[not(@fn-type)]" role="error"><!--author notes should have an id-->
-      <assert id="aunote1a" test="@id">Missing 'id' attribute on author note - "fn" should have an 'id' of the form "n"+number.</assert>
+      <assert id="aunote1a" test="@id">Missing 'id' attribute on author note - "fn" should have an 'id' of the form "n"+number (without leading zeros).</assert>
       </rule>
   </pattern>
    <pattern>
       <rule context="author-notes/fn[not(@fn-type)][@id]" role="error"><!--author notes id in required format-->
-      <assert id="aunote1b" test="matches(@id,'^n[0-9]+$')">Invalid 'id' value ("<value-of select="@id"/>"). "author-notes/fn" 'id' attribute should be of the form "n"+number.</assert>
+      <assert id="aunote1b" test="matches(@id,'^n[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "author-notes/fn" 'id' attribute should be of the form "n"+number (without leading zeros).</assert>
       </rule>
   </pattern>
    <pattern><!--sec - sec-type or specific-use attribute used-->
@@ -1351,9 +1371,20 @@ Use the <let> element to define the attribute if necessary.
          <report id="disallowed2" test=".">Do not use "<name/>" element in "mixed-citation" in NPG/Palgrave articles.</report>
       </rule>
   </pattern>
+   <pattern><!--elements not allowed as children of ref-list-->
+    <rule context="ref-list/label|ref-list/address|ref-list/alternatives|ref-list/array|ref-list/boxed-text|ref-list/chem-struct-wrap|ref-list/fig|ref-list/fig-group|ref-list/graphic|ref-list/media|ref-list/preformat|ref-list/supplementary-material|ref-list/table-wrap|ref-list/table-wrap-group|ref-list/disp-formula|ref-list/disp-formula-group|ref-list/def-list|ref-list/list|ref-list/tex-math|ref-list/mml:math|ref-list/p|ref-list/related-article|ref-list/related-object|ref-list/disp-quote|ref-list/speech|ref-list/statement|ref-list/verse-group"
+            role="error">
+         <report id="disallowed3" test=".">Do not use "<name/>" element in "ref-list" in NPG/Palgrave articles.</report>
+      </rule>
+  </pattern>
    <pattern><!--no brackets in year-->
     <rule context="ref/mixed-citation/year" role="error">
          <report id="punct1a" test="starts-with(.,'(') or ends-with(.,')')">Do not include parentheses in the "year" element in citations in NPG/Palgrave articles.</report>
+      </rule>
+  </pattern>
+   <pattern><!--no brackets in publisher-name-->
+    <rule context="ref/mixed-citation/publisher-name" role="error">
+         <report id="punct1b" test="starts-with(.,'(') or ends-with(.,')')">Do not include parentheses in the "publisher-name" element in citations in NPG/Palgrave articles.</report>
       </rule>
   </pattern>
    <pattern><!--elocation-id should have @content-type in citations-->
@@ -1374,6 +1405,62 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--isbn should not contain text 'ISBN'-->
     <rule context="ref/mixed-citation/isbn" role="error">
          <report id="isbn1" test="starts-with(.,'ISBN')">"isbn" should contain the ISBN value only - move the text 'ISBN' and any punctuation to be outside the "isbn" element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--Reference lists should have specific-use attribute to give style info-->
+  <rule context="back/ref-list[not(@content-type)]" role="error">
+         <assert id="reflist1a" test="@specific-use">Ref-list should have a 'specific-use' attribute with value "alpha" (for alphabetical references) or "numero" (for numbered references).</assert>
+      </rule>
+  </pattern>
+   <pattern><!--ref-list specific-use attribute should be 'alpha' or 'numero'-->
+    <rule context="back/ref-list[not(@content-type)][@specific-use]" role="error">
+         <assert id="reflist1b" test="@specific-use='alpha' or @specific-use='numero'">Ref-list 'specific-use' attribute should have value "alpha" (for alphabetical references) or "numero" (for numbered references), not <value-of select="@specific-use"/>.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--ref-list - do not use 'id' attribute-->
+    <rule context="ref-list" role="error">
+         <report id="reflist1c" test="@id">Do not use 'id' attribute on "ref-list".</report>
+      </rule>
+  </pattern>
+   <pattern><!--ref-list - do not use 'content-type' attribute (except for link groups)-->
+    <rule context="ref-list[@content-type]" role="error">
+         <report id="reflist1d" test="@content-type='link-group'">Do not use 'content-type' attribute on "ref-list", except for link groups.</report>
+      </rule>
+  </pattern>
+   <pattern><!--ref-list does not need title "References"-->
+    <rule context="back/ref-list[not(@content-type)]/title" role="error">
+         <report id="reflist2a" test=".='references' or .='References' or .='REFERENCES'">A "title" element with text 'References' is not necessary at the start of the References section - please delete.</report>
+      </rule>
+  </pattern>
+   <pattern><!--citations in ref-list do not need labels, values can be generated from id-->
+    <rule context="back/ref-list[not(@content-type)]//ref/label" role="error">
+         <report id="reflist3a" test=".">Delete unnecessary "label" element in reference.</report>
+      </rule>
+  </pattern>
+   <pattern><!--ref - must have an @id-->
+    <rule context="back/ref-list[not(@content-type)]/ref" role="error">
+         <assert id="reflist4a" test="@id">Missing 'id' attribute - "ref" should have an 'id' of the form "b"+number (with no leading zeros).</assert>
+      </rule>
+  </pattern>
+   <pattern><!--ref - @id must be correct format-->
+    <rule context="back/ref-list[not(@content-type)]/ref[@id]" role="error">
+         <assert id="reflist4b" test="matches(@id,'^b[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "ref" 'id' attribute should be of the form "b"+number (with no leading zeros).</assert>
+      </rule>
+  </pattern>
+   <pattern><!--surname and given-names should be separated by whitespace, otherwise do not get rendered properly-->
+    <rule context="back/ref-list[not(@content-type)]//ref/mixed-citation/string-name/surname"
+            role="error">
+         <report id="reflist5a" test="following::node()[1]/self::given-names">Insert a space between "surname" and "given-names" in references.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="etal" role="error"><!--etal not followed by full stop-->
+      <report id="reflist5b" test="starts-with(following::node()[1],'.')">"etal" should not be followed by a full stop - in NPG/Palgrave articles, it is the equivalent of 'et al.' in italics.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="etal" role="error"><!--etal should be empty-->
+      <report id="reflist5c" test="normalize-space(.) or *">"etal" should be an empty element in NPG/Palgrave articles - please delete content.</report>
       </rule>
   </pattern>
    <pattern>
@@ -1450,19 +1537,19 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--fig - label not necessary if text is of form "Figure 1" etc-->
-        <rule context="fig[matches(@id,'^f[A-Z]?[0-9]+$')]/label" role="error">
+        <rule context="fig[matches(@id,'^f[A-Z]?[1-9][0-9]*$')]/label" role="error">
             <let name="derivedLabel" value="concat('Figure ',translate(parent::fig/@id,'f',''))"/>
             <report id="fig2e" test=".=$derivedLabel">Figure "label" is not necessary when text is of the standard format "<value-of select="$derivedLabel"/>" - please delete.</report>
         </rule>
     </pattern>
    <pattern><!--fig - must have an @id-->
         <rule context="fig[not(@fig-type='cover-image')]" role="error">
-            <assert id="fig3a" test="@id">Missing 'id' attribute - "fig" should have an 'id' of the form "f"+number.</assert>
+            <assert id="fig3a" test="@id">Missing 'id' attribute - "fig" should have an 'id' of the form "f"+number (with no leading zeros).</assert>
         </rule>
     </pattern>
    <pattern><!--fig - @id must be correct format-->
         <rule context="fig[@id]" role="error">
-            <assert id="fig3b" test="matches(@id,'^f[A-Z]?[0-9]+$')">Invalid 'id' value ("<value-of select="@id"/>"). "fig" 'id' attribute should be of the form "f"+number.</assert>
+            <assert id="fig3b" test="matches(@id,'^f[A-Z]?[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "fig" 'id' attribute should be of the form "f"+number (with no leading zeros).</assert>
         </rule>
     </pattern>
    <pattern>
