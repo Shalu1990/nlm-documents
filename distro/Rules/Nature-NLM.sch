@@ -1424,7 +1424,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--ref-list - do not use 'content-type' attribute (except for link groups)-->
     <rule context="ref-list[@content-type]" role="error">
-         <report id="reflist1d" test="@content-type='link-group'">Do not use 'content-type' attribute on "ref-list", except for link groups.</report>
+         <assert id="reflist1d" test="@content-type='link-group'">Do not use 'content-type' attribute on "ref-list", except for link groups.</assert>
       </rule>
   </pattern>
    <pattern><!--ref-list does not need title "References"-->
