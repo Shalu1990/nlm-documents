@@ -215,6 +215,16 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
+      <rule context="article-categories/subj-group">
+         <assert id="ameta2c" test="@subj-group-type">"subj-group" should have attribute 'subj-group-type' declared.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article-categories/subj-group[@subj-group-type='article-heading']/subject">
+         <assert id="ameta2e" test="@content-type">"subject" within "subj-group" (subj-group-type="article-heading") should have a 'content-type' attribute.</assert>
+      </rule>
+  </pattern>
+   <pattern>
       <rule context="trans-title-group" role="error"><!--No unexpected children of article title-group used-->
       <report id="arttitle1a" test="parent::title-group">Unexpected use of "trans-title-group" in article "title-group". "title-group" should only contain "article-title", "subtitle", "alt-title" or "fn-group".</report>
       </rule>
@@ -1127,6 +1137,27 @@ Use the <let> element to define the attribute if necessary.
          <report id="xref3e" test="contains(.,',')">Multiple rid values should only be used to a range of three or more references. See Tagging Instructions for examples.</report>
       </rule>
   </pattern>
+   <pattern><!--range not marked up properly-->
+    <rule context="xref[@ref-type='bibr'][following::node()[1]='–'][following-sibling::xref[@ref-type='bibr'][1]]"
+            role="error">
+         <let name="end" value="following-sibling::xref[@ref-type='bibr'][1]/text()"/>
+         <report id="xref3f1" test=".">For a range of references, do not put a separate "xref" on the start and end value. One "xref" should cover the range using multiple 'rid' values - one for each reference in the range. "xref" text should be "<value-of select="."/>&amp;#x2013;<value-of select="$end"/>". See the Tagging Instructions for example markup.</report>
+      </rule>
+  </pattern>
+   <pattern><!--range not marked up properly-->
+    <rule context="xref[@ref-type='bibr'][following::node()[1]='—'][following-sibling::xref[@ref-type='bibr'][1]]"
+            role="error">
+         <let name="end" value="following-sibling::xref[@ref-type='bibr'][1]/text()"/>
+         <report id="xref3f2" test=".">For a range of references, do not put a separate "xref" on the start and end value. One "xref" should cover the range using multiple 'rid' values - one for each reference in the range. "xref" text should be "<value-of select="."/>&amp;#x2014;<value-of select="$end"/>". See the Tagging Instructions for example markup.</report>
+      </rule>
+  </pattern>
+   <pattern><!--range not marked up properly-->
+    <rule context="xref[@ref-type='bibr'][following::node()[1]='-'][following-sibling::xref[@ref-type='bibr'][1]]"
+            role="error">
+         <let name="end" value="following-sibling::xref[@ref-type='bibr'][1]/text()"/>
+         <report id="xref3f3" test=".">For a range of references, do not put a separate "xref" on the start and end value. One "xref" should cover the range using multiple 'rid' values - one for each reference in the range. "xref" text should be "<value-of select="."/>-<value-of select="$end"/>". See the Tagging Instructions for example markup.</report>
+      </rule>
+  </pattern>
    <pattern>
       <rule context="floats-group/fig[not(@fig-type='cover-image')][@id]" role="error"><!--All figures should be referenced in the text-->
       <let name="id" value="@id"/>
@@ -1899,7 +1930,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
 <pattern><!--elements not allowed in NPG JATS content-->
-    <rule context="abbrev | annotation | collab-alternatives | comment | gov | issn-l | issue-id | issue-part | issue-title | milestone-end | milestone-start | object-id |  page-range | part-title | patent | pub-id | roman | std | trans-source | volume-id | volume-series"
+    <rule context="abbrev | annotation | collab-alternatives | comment | gov | issn-l | issue-id | issue-part | issue-title | milestone-end | milestone-start | object-id |  page-range | part-title | patent | pub-id | roman | std | trans-abstract | trans-source | volume-id | volume-series"
             role="error">
          <report id="disallowed1" test=".">Do not use "<name/>" element in NPG/Palgrave articles.</report>
          </rule>
