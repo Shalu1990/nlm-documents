@@ -536,34 +536,42 @@ Use the <let> element to define the attribute if necessary.
          <assert id="oa-aj1b" test="matches($article-type,'^(add|cg|cs|dd|er|ret)$')">Invalid article-type used (<value-of select="$article-type"/>). The only main article type allowed in Scientific Data is 'dd' (Data Descriptor). Correction articles are also allowed: 'add' (Addendum), 'cg' (Corrigendum), 'cs' (Correction), 'er' (Erratum), and 'ret' (Retraction).</assert>
       </rule>
   </pattern>   
-<pattern>
+<pattern><!--volume should be given in all new OA only journals-->
       <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]/front/article-meta"
             role="error">
          <assert id="oa-aj2a" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
   </pattern>
-   <pattern>
+   <pattern><!--issue, fpage and lpage should not be used in new OA only journals-->
       <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]/front/article-meta/issue | article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]/front/article-meta/fpage | article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]/front/article-meta/lpage"
             role="error">
          <report id="oa-aj2b" test=".">"<name/>" should not be used in "<value-of select="$journal-title"/>".</report>
       </rule>
   </pattern>
-   <pattern>
+   <pattern><!--elocation-id should be given in all new OA only journals-->
       <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]/front/article-meta"
             role="error">
          <assert id="oa-aj2c" test="elocation-id">An "elocation-id" should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
   </pattern>
-   <pattern>
+   <pattern><!--elocation-id should be numerical, i.e. does not start with 'e' or leading zeros-->
       <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]/front/article-meta/elocation-id"
             role="error">
          <assert id="oa-aj2d" test="matches(.,'^[1-9][0-9]*$')">"elocation-id" in "<value-of select="$journal-title"/>" should be a numerical value only (with no leading zeros), not "<value-of select="."/>".</assert>
       </rule>
   </pattern>
-   <pattern>
-      <rule context="article[(matches($pcode,'^(mtm|hortres|sdata)$')) and not(matches($article-type,'^(add|cg|cs|er|ret)$'))]/front/article-meta/permissions"
+   <pattern><!--open access license info should be given in all new OA only journals (except in correction articles)-->
+      <rule context="article[(matches($pcode,'^(mtm|hortres|sdata|nutd)$')) and not(matches($article-type,'^(add|cg|cs|er|ret)$'))]/front/article-meta/permissions"
             role="error">
          <assert id="oa-aj3" test="license">"<value-of select="$journal-title"/>" should contain "license", which gives details of the Open Access license being used. Please contact NPG for this information.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--open access license info should not be given in correction articles in new OA only journals-->
+    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata|nutd)$')) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/permissions"
+            role="error">
+         <let name="article-type-name"
+              value="if ($article-type='add') then 'Addendum'          else if ($article-type='cg') then 'Corrigendum'          else if ($article-type='cs') then 'Correction'          else if ($article-type='er') then 'Erratum'          else if ($article-type='ret') then 'Retraction' else ()"/>
+         <report id="oa-aj3b" test="license">"license" should not be used in correction articles, as they are not Open Access. This article is: <value-of select="$article-type-name"/>.</report>
       </rule>
   </pattern>
    <pattern>
@@ -718,6 +726,34 @@ Use the <let> element to define the attribute if necessary.
                  test=".=$derivedId or not($subjects//subject[@uri/.=$derivedUri]//reference[@pcode=$pcode]) or not($derivedUri = $subjects//subject/@uri)">Subject 'id' (<value-of select="."/>) does not match the final part of subject 'path' (<value-of select="$derivedId"/>). Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
+   <pattern><!--article-type and article heading should be equivalent (not 'rv')-->
+    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$') and(matches($article-type,'^(add|af|bc|cg|com|cr|cs|dd|ed|er|mr|nv|prot|ret)$'))]/front/article-meta//subject[@content-type='article-heading']"
+            role="error">
+         <let name="article-heading"
+              value="if ($article-type='add') then 'Addendum'          else if ($article-type='cg') then 'Corrigendum'          else if ($article-type='cs') then 'Correction'          else if ($article-type='er') then 'Erratum'          else if ($article-type='ret') then 'Retraction'         else if ($article-type='af') then 'Article'         else if ($article-type='bc') then 'Brief Communication'         else if ($article-type='com') then 'Comment'         else if ($article-type='cr') then 'Correspondence'         else if ($article-type='ed') then 'Editorial'         else if ($article-type='mr') then 'Meeting Report'         else if ($article-type='nv') then 'News and Views'         else if ($article-type='prot') then 'Protocol'         else if ($article-type='dd') then 'Data Descriptor'         else ()"/>
+         <assert id="oa-aj11a" test="matches(.,$article-heading)">Mismatch between article-heading (<value-of select="."/>) and expected value based on article-type (<value-of select="$article-heading"/>).</assert>
+      </rule>
+  </pattern>
+   <pattern><!--article-type and article heading should be equivalent (for 'rv')-->
+    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$') and(matches($article-type,'^(rv)$'))]/front/article-meta//subject[@content-type='article-heading']"
+            role="error">
+         <assert id="oa-aj11b" test="matches(.,'^(Mini Review|Review Article)$')">Mismatch between article-heading (<value-of select="."/>) and expected value based on article-type ("Mini Review" or "Review Article").</assert>
+      </rule>
+  </pattern>
+   <pattern><!--article-heading should be used (not 'rv')-->
+    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$') and(matches($article-type,'^(add|af|bc|cg|com|cr|cs|dd|ed|er|mr|nv|prot|ret)$'))]/front/article-meta/article-categories"
+            role="error">
+         <let name="article-heading"
+              value="if ($article-type='add') then 'Addendum'          else if ($article-type='cg') then 'Corrigendum'          else if ($article-type='cs') then 'Correction'          else if ($article-type='er') then 'Erratum'          else if ($article-type='ret') then 'Retraction'         else if ($article-type='af') then 'Article'         else if ($article-type='bc') then 'Brief Communication'         else if ($article-type='com') then 'Comment'         else if ($article-type='cr') then 'Correspondence'         else if ($article-type='ed') then 'Editorial'         else if ($article-type='mr') then 'Meeting Report'         else if ($article-type='nv') then 'News and Views'         else if ($article-type='prot') then 'Protocol'         else if ($article-type='dd') then 'Data Descriptor'         else ()"/>
+         <assert id="oa-aj11c" test="subj-group/@subj-group-type='article-heading'">Article categories should contain a "subj-group" element with attribute "subj-group-type='article-heading'". The value of the child "subject" element (with attribute "content-type='article-heading'") should be: <value-of select="$article-heading"/>.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--article heading should be used (for 'rv')-->
+    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$') and(matches($article-type,'^(rv)$'))]/front/article-meta/article-categories"
+            role="error">
+         <assert id="oa-aj11d" test="subj-group/@subj-group-type='article-heading'">Article categories should contain a "subj-group" element with attribute "subj-group-type='article-heading'". The value of the child "subject" element (with attribute "content-type='article-heading'") should be "Mini Review" or "Review Article". Please check instructions from NPG.</assert>
+      </rule>
+  </pattern>
    <pattern><!--Only one author email per corresp element-->
     <rule context="corresp[count(email) gt 1][matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]"
             role="error">
@@ -742,6 +778,27 @@ Use the <let> element to define the attribute if necessary.
          <let name="id" value="@id"/>
          <let name="symbol" value="(ancestor::article//xref[matches(@rid,$id)])[1]//text()"/>
          <assert id="aj-aunote1b" test="label">Missing "label" element in author footnote - please insert one containing the same text as the corresponding "xref" element<value-of select="if ($symbol ne '') then concat(' (',$symbol,')') else ()"/>.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--correction articles should contain a related-article element-->
+    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata)$')) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta"
+            role="error">
+         <let name="article-type-name"
+              value="if ($article-type='add') then 'Addendum'          else if ($article-type='cg') then 'Corrigendum'          else if ($article-type='cs') then 'Correction'          else if ($article-type='er') then 'Erratum'          else if ($article-type='ret') then 'Retraction' else ()"/>
+         <let name="related-article-type"
+              value="if ($article-type='add') then 'is-addendum-to'          else if ($article-type='cg') then 'is-corrigendum-to'          else if ($article-type='cs') then 'is-correction-to'          else if ($article-type='er') then 'is-erratum-to'          else if ($article-type='ret') then 'is-retraction-to' else ()"/>
+         <assert id="correct1a" test="related-article">
+            <value-of select="$article-type-name"/> should have a "related-article" element giving information on the article being corrected (following the "permissions" element). It should have 'related-article-type="<value-of select="$related-article-type"/>"', 'ext-link-type="doi"' and an 'xlink:href' giving the full doi of the corrected article.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--check correction articles have matching @related-article-type and @article-type values-->
+    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata)$')) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/related-article"
+            role="error">
+         <let name="article-type-name"
+              value="if ($article-type='add') then 'Addendum'          else if ($article-type='cg') then 'Corrigendum'          else if ($article-type='cs') then 'Correction'          else if ($article-type='er') then 'Erratum'          else if ($article-type='ret') then 'Retraction' else ()"/>
+         <let name="related-article-type"
+              value="if ($article-type='add') then 'is-addendum-to'          else if ($article-type='cg') then 'is-corrigendum-to'          else if ($article-type='cs') then 'is-correction-to'          else if ($article-type='er') then 'is-erratum-to'          else if ($article-type='ret') then 'is-retraction-to' else ()"/>
+         <assert id="correct1b" test="matches(@related-article-type,$related-article-type)">Mismatch between 'related-article-type' attribute (<value-of select="@related-article-type"/>) and expected value based on article-type (<value-of select="$related-article-type"/>).</assert>
       </rule>
   </pattern>
    <pattern>
