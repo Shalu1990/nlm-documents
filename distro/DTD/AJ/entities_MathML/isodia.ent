@@ -29,7 +29,7 @@
 <!ENTITY breve            "&#x002D8;" ><!--=breve -->
 <!ENTITY caron            "&#x002C7;" ><!--=caron -->
 <!ENTITY cedil            "&#x000B8;" ><!--=cedilla -->
-<!ENTITY circ             "&#x0005E;" ><!--circumflex accent -->
+<!ENTITY circ             "&#x002C6;" ><!--circumflex accent -->
 <!ENTITY dblac            "&#x002DD;" ><!--=double acute accent -->
 <!ENTITY die              "&#x000A8;" ><!--=dieresis -->
 <!ENTITY dot              "&#x002D9;" ><!--=dot above -->

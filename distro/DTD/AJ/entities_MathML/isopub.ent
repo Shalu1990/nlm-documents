@@ -54,6 +54,7 @@
 <!ENTITY fflig            "&#x0FB00;" ><!--small ff ligature -->
 <!ENTITY ffllig           "&#x0FB04;" ><!--small ffl ligature -->
 <!ENTITY filig            "&#x0FB01;" ><!--small fi ligature -->
+<!ENTITY fjlig            "&#x00066;&#x0006A;" ><!--UE3B2 small fj ligature -->
 <!ENTITY flat             "&#x0266D;" ><!--/flat =musical flat -->
 <!ENTITY fllig            "&#x0FB02;" ><!--small fl ligature -->
 <!ENTITY frac13           "&#x02153;" ><!--=fraction one-third -->
@@ -65,6 +66,7 @@
 <!ENTITY frac45           "&#x02158;" ><!--=fraction four-fifths -->
 <!ENTITY frac56           "&#x0215A;" ><!--=fraction five-sixths -->
 <!ENTITY hairsp           "&#x0200A;" ><!--=hair space -->
+<!ENTITY hearts           "&#x02665;"  ><!--U2661 /heartsuit =heart suit symbol  -->
 <!ENTITY hellip           "&#x02026;" ><!--=ellipsis (horizontal) -->
 <!ENTITY hybull           "&#x02043;" ><!--rectangle, filled (hyphen bullet) -->
 <!ENTITY incare           "&#x02105;" ><!--=in-care-of symbol -->
@@ -97,7 +99,7 @@
 <!ENTITY spades           "&#x02660;" ><!--/spadesuit =spades suit symbol  -->
 <!ENTITY squ              "&#x025A1;" ><!--=square, open -->
 <!ENTITY squf             "&#x025AA;" ><!--/blacksquare =sq bullet, filled -->
-<!ENTITY star             "&#x022C6;" ><!--=star, open -->
+<!ENTITY star             "&#x02606;" ><!--=star, open -->
 <!ENTITY starf            "&#x02605;" ><!--/bigstar - star, filled  -->
 <!ENTITY target           "&#x02316;" ><!--register mark or target -->
 <!ENTITY telrec           "&#x02315;" ><!--=telephone recorder symbol -->

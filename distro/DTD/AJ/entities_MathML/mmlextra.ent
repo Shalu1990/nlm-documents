@@ -22,8 +22,8 @@
 <!ENTITY bopf             "&#x1D553;" ><!-- -->
 <!ENTITY copf             "&#x1D554;" ><!-- -->
 <!ENTITY Cross            "&#x02A2F;" ><!--cross or vector product -->
-<!ENTITY dd               "&#x02146;" ><!--d for use in differentials, e.g., within integrals -->
 <!ENTITY DD               "&#x02145;" ><!--D for use in differentials, e.g., within integrals -->
+<!ENTITY dd               "&#x02146;" ><!--d for use in differentials, e.g., within integrals -->
 <!ENTITY dopf             "&#x1D555;" ><!-- -->
 <!ENTITY DownArrowBar     "&#x02913;" ><!--down arrow to bar -->
 <!ENTITY DownBreve        "&#x00311;" ><!--breve, inverted (non-spacing) -->

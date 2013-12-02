@@ -36,12 +36,12 @@
 <!ENTITY boxh             "&#x02500;" ><!--horizontal line  -->
 <!ENTITY boxH             "&#x02550;" ><!--horizontal line -->
 <!ENTITY boxhd            "&#x0252C;" ><!--lower left and right quadrants -->
-<!ENTITY boxhD            "&#x02565;" ><!--lower left and right quadrants -->
 <!ENTITY boxHd            "&#x02564;" ><!--lower left and right quadrants -->
+<!ENTITY boxhD            "&#x02565;" ><!--lower left and right quadrants -->
 <!ENTITY boxHD            "&#x02566;" ><!--lower left and right quadrants -->
 <!ENTITY boxhu            "&#x02534;" ><!--upper left and right quadrants -->
-<!ENTITY boxhU            "&#x02568;" ><!--upper left and right quadrants -->
 <!ENTITY boxHu            "&#x02567;" ><!--upper left and right quadrants -->
+<!ENTITY boxhU            "&#x02568;" ><!--upper left and right quadrants -->
 <!ENTITY boxHU            "&#x02569;" ><!--upper left and right quadrants -->
 <!ENTITY boxul            "&#x02518;" ><!--upper left quadrant -->
 <!ENTITY boxuL            "&#x0255B;" ><!--upper left quadrant -->

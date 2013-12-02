@@ -24,23 +24,23 @@
      ISO 8879, provided this notice is included in all copies.
 -->
 
-<!ENTITY aacgr      "&#940;"   ><!--U03AC =small alpha, accent, Greek -->
-<!ENTITY Aacgr      "&#902;"   ><!--U0386 =capital Alpha, accent, Greek -->
-<!ENTITY eacgr      "&#941;"   ><!--U03AD =small epsilon, accent, Greek -->
-<!ENTITY eeacgr     "&#942;"   ><!--U03AE =small eta, accent, Greek -->
-<!ENTITY Eacgr      "&#904;"   ><!--U0388 =capital Epsilon, accent, Greek -->
-<!ENTITY EEacgr     "&#905;"   ><!--U0389 =capital Eta, accent, Greek -->
-<!ENTITY iacgr      "&#943;"   ><!--U03AF =small iota, accent, Greek -->
-<!ENTITY idiagr     "&#912;"   ><!--U0390 =small iota, dieresis, accent, Greek -->
-<!ENTITY idigr      "&#970;"   ><!--U03CA =small iota, dieresis, Greek -->
-<!ENTITY Iacgr      "&#906;"   ><!--U038A =capital Iota, accent, Greek -->
-<!ENTITY Idigr      "&#938;"   ><!--U03AA =capital Iota, dieresis, Greek -->
-<!ENTITY oacgr      "&#972;"   ><!--U03CC =small omicron, accent, Greek -->
-<!ENTITY ohacgr     "&#974;"   ><!--U03CE =small omega, accent, Greek -->
-<!ENTITY Oacgr      "&#908;"   ><!--U038C =capital Omicron, accent, Greek -->
-<!ENTITY OHacgr     "&#911;"   ><!--U038F =capital Omega, accent, Greek -->
-<!ENTITY uacgr      "&#973;"   ><!--U03CD =small upsilon, accent, Greek -->
-<!ENTITY udiagr     "&#944;"   ><!--U03B0 =small upsilon, dieresis, accent, Greek -->
-<!ENTITY udigr      "&#971;"   ><!--U03CB =small upsilon, dieresis, Greek -->
-<!ENTITY Uacgr      "&#910;"   ><!--U038E =capital Upsilon, accent, Greek -->
-<!ENTITY Udigr      "&#939;"   ><!--U03AB =capital Upsilon, dieresis, Greek -->
+<!ENTITY Aacgr      "&#x00386;"   ><!--U0386 =capital Alpha, accent, Greek -->
+<!ENTITY aacgr      "&#x003AC;"   ><!--U03AC =small alpha, accent, Greek -->
+<!ENTITY Eacgr      "&#x00388;"   ><!--U0388 =capital Epsilon, accent, Greek -->
+<!ENTITY eacgr      "&#x003AD;"   ><!--U03AD =small epsilon, accent, Greek -->
+<!ENTITY EEacgr     "&#x00389;"   ><!--U0389 =capital Eta, accent, Greek -->
+<!ENTITY eeacgr     "&#x003AE;"   ><!--U03AE =small eta, accent, Greek -->
+<!ENTITY Iacgr      "&#x0038A;"   ><!--U038A =capital Iota, accent, Greek -->
+<!ENTITY iacgr      "&#x003AF;"   ><!--U03AF =small iota, accent, Greek -->
+<!ENTITY idiagr     "&#x00390;"   ><!--U0390 =small iota, dieresis, accent, Greek -->
+<!ENTITY Idigr      "&#x003AA;"   ><!--U03AA =capital Iota, dieresis, Greek -->
+<!ENTITY idigr      "&#x003CA;"   ><!--U03CA =small iota, dieresis, Greek -->
+<!ENTITY Oacgr      "&#x0038C;"   ><!--U038C =capital Omicron, accent, Greek -->
+<!ENTITY oacgr      "&#x003CC;"   ><!--U03CC =small omicron, accent, Greek -->
+<!ENTITY OHacgr     "&#x0038F;"   ><!--U038F =capital Omega, accent, Greek -->
+<!ENTITY ohacgr     "&#x003CE;"   ><!--U03CE =small omega, accent, Greek -->
+<!ENTITY Uacgr      "&#x0038E;"   ><!--U038E =capital Upsilon, accent, Greek -->
+<!ENTITY uacgr      "&#x003CD;"   ><!--U03CD =small upsilon, accent, Greek -->
+<!ENTITY udiagr     "&#x003B0;"   ><!--U03B0 =small upsilon, dieresis, accent, Greek -->
+<!ENTITY Udigr      "&#x003AB;"   ><!--U03AB =capital Upsilon, dieresis, Greek -->
+<!ENTITY udigr      "&#x003CB;"   ><!--U03CB =small upsilon, dieresis, Greek -->

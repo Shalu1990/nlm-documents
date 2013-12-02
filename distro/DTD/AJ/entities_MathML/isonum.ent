@@ -25,12 +25,14 @@
 
 -->
 
-<!ENTITY amp              "&#38;#38;" ><!--=ampersand &#x26;&#x00026; -->
+<!ENTITY amp              "&#x00026;" ><!--=ampersand &#x26;&#x00026; -->
 <!ENTITY apos             "&#x00027;" ><!--=apostrophe -->
 <!ENTITY ast              "&#x0002A;" ><!--/ast B: =asterisk -->
 <!ENTITY brvbar           "&#x000A6;" ><!--=broken (vertical) bar -->
 <!ENTITY bsol             "&#x0005C;" ><!--/backslash =reverse solidus -->
 <!ENTITY cent             "&#x000A2;" ><!--=cent sign -->
+<!ENTITY circ2     "&#x02461;"  ><!-- U2461 CIRCLED DIGIT TWO -->
+<!ENTITY cirf      "&#x025CF;"  ><!-- U25CF BLACK CIRCLE -->
 <!ENTITY colon            "&#x0003A;" ><!--/colon P: -->
 <!ENTITY comma            "&#x0002C;" ><!--P: =comma -->
 <!ENTITY commat           "&#x00040;" ><!--=commercial at -->
@@ -41,6 +43,7 @@
 <!ENTITY divide           "&#x000F7;" ><!--/div B: =divide sign -->
 <!ENTITY dollar           "&#x00024;" ><!--=dollar sign -->
 <!ENTITY equals           "&#x0003D;" ><!--=equals sign R: -->
+<!ENTITY euro       "&#x020AC;"   ><!--U20AC =euro sign -->
 <!ENTITY excl             "&#x00021;" ><!--=exclamation mark -->
 <!ENTITY frac12           "&#x000BD;" ><!--=fraction one-half -->
 <!ENTITY frac14           "&#x000BC;" ><!--=fraction one-quarter -->
@@ -101,3 +104,4 @@
 <!ENTITY uarr             "&#x02191;" ><!--/uparrow A: =upward arrow -->
 <!ENTITY verbar           "&#x0007C;" ><!--/vert =vertical bar -->
 <!ENTITY yen              "&#x000A5;" ><!--/yen =yen sign -->
+<!ENTITY zcirc     "&#x01E91;" ><!-- U1E91 LATIN SMALL LETTER Z WITH CIRCUMFLEX -->
