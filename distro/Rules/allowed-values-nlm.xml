@@ -70,6 +70,7 @@ Created - 20120208
     <abstract-type>first-paragraph</abstract-type>
     <abstract-type>executive-summary</abstract-type>
     <abstract-type>key-points</abstract-type>
+    <abstract-type>editorial-summary</abstract-type>
     <abstract-type>research-summary</abstract-type>
     <abstract-type>editorial-notes</abstract-type>
     <abstract-type>in-brief</abstract-type>
