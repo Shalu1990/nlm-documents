@@ -452,9 +452,14 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--only one of each abstract type used-->
-    <rule context="abstract[not(@abstract-type='editor' or @abstract-type='editor-standfirst' or @abstract-type='research-summary' or @abstract-type='editorial-notes')]"
+    <rule context="abstract[not(@abstract-type='editor' or @abstract-type='editor-standfirst' or @abstract-type='research-summary' or @abstract-type='editorial-summary' or @abstract-type='editorial-notes')]"
             role="error">
          <report id="abs2a" test="@abstract-type=./preceding-sibling::abstract/@abstract-type">Only one abstract of type "<value-of select="@abstract-type"/>" should appear in an article.</report>
+      </rule>
+  </pattern>
+   <pattern><!--"research-summary" not used as @abstract-type value in new journals-->
+    <rule context="abstract[@abstract-type='research-summary']" role="error">
+         <report id="abs2b" test="matches($pcode,'^(mtm|hortres)$')">Do not use 'abstract-type="research-summary" in <value-of select="$journal-title"/>, use 'abstract-type="editorial-summary" instead.</report>
       </rule>
   </pattern>
    <pattern><!--dateline para in correct place-->
