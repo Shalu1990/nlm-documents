@@ -50,7 +50,7 @@
 <!ENTITY cap              "&#x02229;" ><!--/cap B: intersection -->
 <!ENTITY Cconint          "&#x02230;" ><!--triple contour integral operator -->
 <!ENTITY cirfnint         "&#x02A10;" ><!--circulation function -->
-<!ENTITY compfn           "&#x02218;" ><!--/circ B: composite function (small circle) -->
+<!ENTITY compfn           "&#x02218;" ><!--/circ B: composite function (small circle) --><!-- PD reset as NPG has used &compfn; to map to degrees; -->
 <!ENTITY cong             "&#x02245;" ><!--/cong R: congruent with -->
 <!ENTITY conint           "&#x0222E;" ><!--/oint L: contour integral operator -->
 <!ENTITY Conint           "&#x0222F;" ><!--double contour integral operator -->
@@ -65,11 +65,13 @@
 <!ENTITY dsol             "&#x029F6;" ><!--solidus, bar above -->
 <!ENTITY dtdot            "&#x022F1;" ><!--/ddots, three dots, descending -->
 <!ENTITY dwangle          "&#x029A6;" ><!--large downward pointing angle -->
+<!ENTITY elinters         "&#x23E7;" ><!--UE3A7 electrical intersection -->
 <!ENTITY epar             "&#x022D5;" ><!--parallel, equal; equal or parallel -->
 <!ENTITY eparsl           "&#x029E3;" ><!--parallel, slanted, equal; homothetically congruent to -->
 <!ENTITY equiv            "&#x02261;" ><!--/equiv R: identical with -->
 <!ENTITY eqvparsl         "&#x029E5;" ><!--equivalent, equal; congruent and parallel -->
 <!ENTITY exist            "&#x02203;" ><!--/exists at least one exists -->
+<!ENTITY fltns            "&#x025B1;" ><!--UE381 flatness -->
 <!ENTITY fnof             "&#x00192;" ><!--function of (italic small f) -->
 <!ENTITY forall           "&#x02200;" ><!--/forall for all -->
 <!ENTITY fpartint         "&#x02A0D;" ><!--finite part integral -->
@@ -77,8 +79,9 @@
 <!ENTITY hamilt           "&#x0210B;" ><!--Hamiltonian (script capital H)  -->
 <!ENTITY iff              "&#x021D4;" ><!--/iff if and only if  -->
 <!ENTITY iinfin           "&#x029DC;" ><!--infinity sign, incomplete -->
-<!ENTITY imped            "&#x1D543;" ><!--impedance -->
+<!ENTITY imped            "&#x001B5;" ><!--impedance -->
 <!ENTITY infin            "&#x0221E;" ><!--/infty infinity -->
+<!ENTITY infintie         "&#x029DD;" ><!--UE50C tie, infinity -->
 <!ENTITY int              "&#x0222B;" ><!--/int L: integral operator -->
 <!ENTITY Int              "&#x0222C;" ><!--double integral operator -->
 <!ENTITY intlarhk         "&#x02A17;" ><!--integral, left arrow with hook -->
@@ -94,15 +97,15 @@
 <!ENTITY lArr             "&#x021D0;" ><!--/Leftarrow A: is implied by -->
 <!ENTITY lbbrk            "&#x03014;" ><!--left broken bracket -->
 <!ENTITY le               "&#x02264;" ><!--/leq /le R: less-than-or-equal -->
-<!ENTITY loang            "&#x0F558;" ><!--left open angular bracket -->
+<!ENTITY loang            "&#x03018;" ><!--left open angular bracket -->
 <!ENTITY lobrk            "&#x0301A;" ><!--left open bracket -->
-<!ENTITY lopar            "&#x03018;" ><!--left open parenthesis -->
+<!ENTITY lopar            "&#x02985;" ><!--left open parenthesis -->
 <!ENTITY lowast           "&#x02217;" ><!--low asterisk -->
 <!ENTITY minus            "&#x02212;" ><!--B: minus sign -->
 <!ENTITY mnplus           "&#x02213;" ><!--/mp B: minus-or-plus sign -->
 <!ENTITY nabla            "&#x02207;" ><!--/nabla del, Hamilton operator -->
 <!ENTITY ne               "&#x02260;" ><!--/ne /neq R: not equal -->
-<!ENTITY nedot            "&#x02260;&#x0FE00;" ><!--not equal, dot -->
+<!ENTITY nedot            "&#x02250;&#x00338;" ><!--not equal, dot -->
 <!ENTITY nhpar            "&#x02AF2;" ><!--not, horizontal, parallel -->
 <!ENTITY ni               "&#x0220B;" ><!--/ni /owns R: contains -->
 <!ENTITY nis              "&#x022FC;" ><!--contains, vertical bar on horizontal stroke -->
@@ -110,15 +113,16 @@
 <!ENTITY niv              "&#x0220B;" ><!--contains, variant -->
 <!ENTITY Not              "&#x02AEC;" ><!--not with two horizontal strokes -->
 <!ENTITY notin            "&#x02209;" ><!--/notin N: negated set membership -->
-<!ENTITY notindot         "&#x022F6;&#x0FE00;" ><!--negated set membership, dot above -->
-<!ENTITY notinva          "&#x02209;&#x00338;" ><!--negated set membership, variant -->
+<!ENTITY notindot         "&#x022F5;&#x00338;" ><!--negated set membership, dot above -->
+<!ENTITY notinE           "&#x022F9;&#x00338;" ><!--UE50D negated set membership, two horizontal strokes -->
+<!ENTITY notinva          "&#x02209;" ><!--negated set membership, variant -->
 <!ENTITY notinvb          "&#x022F7;" ><!--negated set membership, variant -->
 <!ENTITY notinvc          "&#x022F6;" ><!--negated set membership, variant -->
 <!ENTITY notni            "&#x0220C;" ><!--negated contains -->
 <!ENTITY notniva          "&#x0220C;" ><!--negated contains, variant -->
 <!ENTITY notnivb          "&#x022FE;" ><!--contains, variant -->
 <!ENTITY notnivc          "&#x022FD;" ><!--contains, variant -->
-<!ENTITY nparsl           "&#x02225;&#x0FE00;&#x020E5;" ><!--not parallel, slanted -->
+<!ENTITY nparsl           "&#x02AFD;&#x020E5;" ><!--not parallel, slanted -->
 <!ENTITY npart            "&#x02202;&#x00338;" ><!--not partial differential -->
 <!ENTITY npolint          "&#x02A14;" ><!--line integration, not including the pole -->
 <!ENTITY nvinfin          "&#x029DE;" ><!--not, vert, infinity -->
@@ -131,7 +135,7 @@
 <!ENTITY orslope          "&#x02A57;" ><!--sloping large or -->
 <!ENTITY orv              "&#x02A5B;" ><!--or with middle stem -->
 <!ENTITY par              "&#x02225;" ><!--/parallel R: parallel -->
-<!ENTITY parsl            "&#x02225;&#x0FE00;" ><!--parallel, slanted -->
+<!ENTITY parsl            "&#x02AFD;" ><!--parallel, slanted -->
 <!ENTITY part             "&#x02202;" ><!--/partial partial differential -->
 <!ENTITY permil           "&#x02030;" ><!--per thousand -->
 <!ENTITY perp             "&#x022A5;" ><!--/perp R: perpendicular -->
@@ -152,9 +156,9 @@
 <!ENTITY Rang             "&#x0300B;" ><!--right angle bracket, double -->
 <!ENTITY rArr             "&#x021D2;" ><!--/Rightarrow A: implies -->
 <!ENTITY rbbrk            "&#x03015;" ><!--right broken bracket -->
-<!ENTITY roang            "&#x0F559;" ><!--right open angular bracket -->
+<!ENTITY roang            "&#x03019;" ><!--right open angular bracket -->
 <!ENTITY robrk            "&#x0301B;" ><!--right open bracket -->
-<!ENTITY ropar            "&#x03019;" ><!--right open parenthesis -->
+<!ENTITY ropar            "&#x02986;" ><!--right open parenthesis -->
 <!ENTITY rppolint         "&#x02A12;" ><!--line integration, rectangular path around pole -->
 <!ENTITY scpolint         "&#x02A13;" ><!--line integration, semi-circular path around pole -->
 <!ENTITY sim              "&#x0223C;" ><!--/sim R: similar -->
@@ -163,11 +167,12 @@
 <!ENTITY smeparsl         "&#x029E4;" ><!--similar, parallel, slanted, equal -->
 <!ENTITY square           "&#x025A1;" ><!--/square, square -->
 <!ENTITY squarf           "&#x025AA;" ><!--/blacksquare, square, filled  -->
+<!ENTITY strns            "&#x000AF;" ><!--UE380 straightness -->
 <!ENTITY sub              "&#x02282;" ><!--/subset R: subset or is implied by -->
 <!ENTITY sube             "&#x02286;" ><!--/subseteq R: subset, equals -->
 <!ENTITY sup              "&#x02283;" ><!--/supset R: superset or implies -->
 <!ENTITY supe             "&#x02287;" ><!--/supseteq R: superset, equals -->
-<!ENTITY tdot             "&#x020DB;" ><!--three dots above -->
+<!ENTITY tdot             "&#x02026;" ><!--three dots above --><!-- PD reset as NPG has used &tdot; to map to &ellipsis; -->
 <!ENTITY there4           "&#x02234;" ><!--/therefore R: therefore -->
 <!ENTITY tint             "&#x0222D;" ><!--/iiint triple integral operator -->
 <!ENTITY top              "&#x022A4;" ><!--/top top -->
@@ -176,7 +181,7 @@
 <!ENTITY tprime           "&#x02034;" ><!--triple prime -->
 <!ENTITY utdot            "&#x022F0;" ><!--three dots, ascending -->
 <!ENTITY uwangle          "&#x029A7;" ><!--large upward pointing angle -->
-<!ENTITY vangrt           "&#x022BE;" ><!--right angle, variant -->
+<!ENTITY vangrt           "&#x0299C;" ><!--right angle, variant -->
 <!ENTITY veeeq            "&#x0225A;" ><!--logical or, equals -->
 <!ENTITY Verbar           "&#x02016;" ><!--/Vert dbl vertical bar -->
 <!ENTITY wedgeq           "&#x02259;" ><!--/wedgeq R: corresponds to (wedge, equals) -->

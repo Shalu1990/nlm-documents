@@ -37,7 +37,7 @@
       <title>Filenaming conventions</title>
       <section>
         <title>Online-only Academic journals</title>
-        <para>For our new online-only Academic Journals (<emphasis>Horticultural Research</emphasis>, <emphasis>MT Methods</emphasis>), the following conventions apply:</para>
+        <para>For our new online-only Academic Journals (<emphasis>Horticulture Research</emphasis>, <emphasis>Molecular Therapy &#x2013; Methods &amp; Clinical Development</emphasis>), the following conventions apply:</para>
         <itemizedlist>
         <listitem><para>article assets (pdf, XML, graphical files, supplementary files) will be named for the article id with an identifying suffix as appropriate</para></listitem>
         <listitem><para>all filenames and suffixes must be lower case</para></listitem>
@@ -241,22 +241,52 @@
      <article-id pub-id-type="publisher-id">nutd201113</article-id>
      <article-id pub-id-type="doi">10.1038/nutd.2011.13</article-id>]]></programlisting>
 </sect3>
-  <sect3>
-    <title>Article heading and category</title>
+  <sect3 xml:id="objects_categories">
+    <title>Article categories</title>
     <para>NPG/Palgrave articles should all have <tag>&lt;article-categories></tag>.</para>
-    <para>The article heading (e.g. "Original Article", "Short Communication", "Corrigendum") and category information should be captured within <tag>&lt;subj-group subj-group-type="article-heading"></tag> and child element <tag>&lt;subject content-type="article-heading"></tag>.</para>
+    <para>Do not use <tag>&lt;series-text></tag> or <tag>&lt;series-title></tag> in <tag>&lt;article-categories>.</tag></para>
+    <para>Do not use <tag>@specific-use</tag> or <tag>@xml:lang</tag> on <tag>&lt;subj-group></tag>.</para>
+    <para>Do not use <tag>@id</tag> on <tag>&lt;subject></tag>.</para>
+    <sect4>
+      <title>Article heading and article category code</title>
+      <para>All articles should have an article heading and category code captured within <tag>&lt;article-categories></tag>.</para>
+      <para>The article heading (e.g. "Article", "Brief Communication", "Corrigendum") should be captured within <tag>&lt;subj-group subj-group-type="article-heading"></tag> and child element <tag>&lt;subject content-type="article-heading"></tag>.</para>
     <para>The article category code (which is also the main <tag>&lt;article> @article-type</tag> code) should be captured within <tag>&lt;subj-group subj-group-type="category"></tag> and child element <tag>&lt;subject></tag> with no attributes.</para>
-    <para>Do not use <tag>&lt;series-text></tag> or <tag>&lt;series-title</tag> in <tag>&lt;article-categories></tag></para>
     <para>Example:</para>
     <programlisting><![CDATA[
      <article-categories>
        <subj-group subj-group-type="article-heading">
-         <subject content-type="article-heading">Original Article</subject>
+         <subject content-type="article-heading">Article</subject>
        </subj-group>
        <subj-group subj-group-type="category">
-         <subject>oa</subject>
+         <subject>af</subject>
        </subj-group>
-     </article-categories>]]></programlisting>
+       ...
+     </article-categories>]]></programlisting></sect4>
+    <sect4 xml:id="objects_subject-codes">
+      <title>Subject codes</title>
+      <para>Subject codes are provided by NPG and are a numerical representation of the key ontological terms covered by the article.</para>
+      <para>All the subject codes should be captured within one <tag>&lt;subj-group subj-group-type="subject"></tag> element with child elements <tag>&lt;subject content-type="npg.subject"></tag>.</para>
+      <para>There are three parts to each code: version, id and path, which must always be stated in the XML. Each one is captured as <tag>&lt;named-content></tag> with the <tag>@content-type</tag> value giving the part name.</para>
+      <para>The current "version" is 1.0, the "id" is always the final number in the "path" and the "path" gives the full heirarchy of terms.</para>
+      <para>Do not use any other attributes on <tag>&lt;named-content></tag>.</para>
+    <para>Example:</para>
+    <programlisting><![CDATA[
+     <article-categories>
+       ...
+       <subj-group subj-group-type="subject">
+         <subject content-type="npg.subject">
+           <named-content content-type="version">1.0</named-content>
+           <named-content content-type="id">535</named-content>
+           <named-content content-type="path">/631/45/535</named-content>
+         </subject>
+         <subject content-type="npg.subject">
+           <named-content content-type="version">1.0</named-content>
+           <named-content content-type="id">878</named-content>
+           <named-content content-type="path">/631/45/535/878</named-content>
+         </subject>
+       </subj-group>
+     </article-categories>]]></programlisting></sect4>
   </sect3>
   <sect3>
     <title>Article title</title>
@@ -407,7 +437,7 @@
   </sect3>
   <sect3>
     <title>Volume, issue and page information</title>
-    <para>For our new online-only Academic Journals (<emphasis>Horticultural Research</emphasis> and <emphasis>MT Methods</emphasis>), only include volume and elocation information.</para>
+    <para>For our new online-only Academic Journals (<emphasis>Horticulture Research</emphasis> and <emphasis>Molecular Therapy &#x2013; Methods &amp; Clinical Development</emphasis>), only include volume and elocation information.</para>
     <para>There is no need to give issue or first page information.</para>
     <para>Do not use the prefix 'e' on the elocation-id value.</para>
     <para>Example:</para>
@@ -473,10 +503,16 @@
     <para>Correction articles (addendum, correction, corrigendum, erratum and retraction) should provide a link back to the corrected article using <tag>&lt;related-article></tag>.</para>
     <para>See <link linkend="element_related-article"><tag>&lt;related-article></tag></link> for further information.</para>
   </sect3>
-  <sect3>
+  <sect3 xml:id="objects_abstract">
     <title>Abstracts</title>
-    <para>Do <emphasis role="bold">not</emphasis> use <tag>&lt;label></tag> or <tag>&lt;title></tag> as a child of <tag>&lt;abstract></tag>.</para>
+    <para>Do <emphasis role="bold">not</emphasis> use <tag>&lt;label></tag> as a child of <tag>&lt;abstract></tag>.</para>
     <para>Subsections within abstracts should be captured as <tag>&lt;sec specific-use="heading-level-1"></tag> and <tag>&lt;title></tag>, not <tag>&lt;p>&lt;bold></tag>.</para>
+    <para><tag>@abstract-type</tag> should be used to identify alternative abstract types:</para>
+    <itemizedlist>
+      <listitem><para>"standfirst"&#x2014;A "standfirst" is an article summary, <emphasis role="bold">not</emphasis> a true abstract, that appears both in print and online</para></listitem>
+      <listitem><para>"editorial-summary"&#x2014;An "editorial summary" is a professionally-written, 100-150 word summary of the article. It will usually have a title but no subsections.</para></listitem>
+    </itemizedlist>
+    <!--Add other values as they become relevant-->
     <para>Example 1: An abstract with no subsections</para>
     <programlisting><![CDATA[
      <abstract>
@@ -531,10 +567,28 @@
              pharmacology different from that of CB1 inverse agonists/antagonists.</p>
        </sec>
       </abstract>]]></programlisting>
+    <para>Example 3: A standfirst</para>
+    <programlisting><![CDATA[
+     <abstract abstract-type="standfirst">
+       <p>The war on emerging pathogens is intensifying in 2013.</p>
+     </abstract>]]></programlisting>
+    <para>Example 4: An editorial summary</para>
+    <programlisting><![CDATA[
+     <abstract abstract-type="editorial-summary">
+       <title>Solar cells: Nanostructure enhancement</title>
+       <p>The performance of screen-printed silicon solar cells can be enhanced by aluminium nanoparticles.
+           Xi Chen and co-workers from the Swinburne University of Technology in Australia report that light
+           scattering effects can increase a solar cell&#x2019;s short-circuit photocurrent density by up to
+           6.3%. Aluminium nanoparticles are advantageous because their Fano resonance, unlike those of gold
+           or silver nanoparticles, falls in the ultraviolet wavelength band. This means that detrimental
+           Fano interference effects between scattered and unscattered light can be avoided within the solar
+           cell&#x2019;s spectral range of operation. The addition of wrinkle-like graphene sheets further
+           improves the photocurrent to 7.3% beyond that of an unmodified screen-printed cell.</p>
+     </abstract>]]></programlisting>
   </sect3>
   <sect3>
     <title>Keywords</title>
-    <para>Any article keywords should appear after the abstract.</para>
+    <para>Articles which do not use <link linkend="objects_subject-codes">subject codes</link> may have keywords instead, and these should appear after the abstract.</para>
     <para>Example:</para>
     <programlisting><![CDATA[
      <kwd-group>
@@ -550,7 +604,7 @@
     <para>All NPG/Palgrave articles should have a record of the publication status of the article. This is captured using <tag>&lt;custom-meta-group></tag><tag>&lt;custom-meta></tag>.</para>
     <para><tag>&lt;meta-name></tag> will be "publish-type". <tag>&lt;meta-value></tag> can take the following values:</para>
     <itemizedlist>
-      <listitem><para>"online"&#x2014;for all articles published in online-only journals (<emphasis>NPG Asia Materials</emphasis>, <emphasis>Blood Cancer Journal</emphasis>, <emphasis>Cell Death &amp; Disease</emphasis>, <emphasis>Clinical and Translational Gastroenterology</emphasis>, <emphasis>Clinical &amp; Translational Immunology</emphasis>, <emphasis>Emerging Microbes &amp; Infections</emphasis>, <emphasis>Experimental &amp; Molecular Medicine</emphasis>, <emphasis>Horticultural Research</emphasis>, <emphasis>Light: Science &amp; Applications</emphasis>, <emphasis>Molecular Therapy &#x2013; Methods &amp; Clinical Development</emphasis>, <emphasis>Molecular Therapy &#x2013; Nucleic Acids</emphasis>, <emphasis>Nutrition &amp; Diabetes</emphasis>, <emphasis>Oncogenesis</emphasis>, <emphasis>CPT: Pharmacometrics &amp; Systems Pharmacology</emphasis>, <emphasis>Translational Psychiatry</emphasis>)</para></listitem>
+      <listitem><para>"online"&#x2014;for all articles published in online-only journals (<emphasis>NPG Asia Materials</emphasis>, <emphasis>Blood Cancer Journal</emphasis>, <emphasis>Cell Death &amp; Disease</emphasis>, <emphasis>Clinical and Translational Gastroenterology</emphasis>, <emphasis>Clinical &amp; Translational Immunology</emphasis>, <emphasis>Emerging Microbes &amp; Infections</emphasis>, <emphasis>Experimental &amp; Molecular Medicine</emphasis>, <emphasis>Horticulture Research</emphasis>, <emphasis>Light: Science &amp; Applications</emphasis>, <emphasis>Molecular Therapy &#x2013; Methods &amp; Clinical Development</emphasis>, <emphasis>Molecular Therapy &#x2013; Nucleic Acids</emphasis>, <emphasis>Nutrition &amp; Diabetes</emphasis>, <emphasis>Oncogenesis</emphasis>, <emphasis>CPT: Pharmacometrics &amp; Systems Pharmacology</emphasis>, <emphasis>Translational Psychiatry</emphasis>)</para></listitem>
       <listitem><para>"fav"&#x2014;final author version/author-ms</para></listitem>
       <listitem><para>"nfv"&#x2014;near final version</para></listitem>
       <listitem><para>"aop"&#x2014;aop version of an article</para></listitem>
@@ -963,7 +1017,7 @@
       <para><tag>@break</tag> may be used to aid formatting of the output.</para>
       <para><tag>@namest</tag> and <tag>@nameend</tag> should be used to show where entries span a number of columns. <tag>@align</tag> must also be declared for spanning entries.</para>
       <para>Values may also be declared for the following attributes where they are different to the values in the corresponding <tag>&lt;oasis:colspec></tag>: <tag>@align</tag>, <tag>@char</tag>, <tag>@colsep</tag>, <tag>@rowsep</tag>.</para>
-      <para>Do not use <tag>@colwidth</tag> or <tag>@charoff</tag>.</para>
+      <para>Do not use <tag>@colwidth</tag>, <tag>@charoff</tag> or <tag>@morerows</tag>.</para>
     </sect4>
   </sect3>
   <sect3 xml:id="tab_slides">
@@ -1067,8 +1121,8 @@
       <oasis:thead>
         <oasis:row>
           <oasis:entry>(A)</oasis:entry>
-          <oasis:entry namest="col2" nameend="col3"/>
-          <oasis:entry namest="col4" nameend="col5"/>
+          <oasis:entry namest="col2" nameend="col3" align="center"/>
+          <oasis:entry namest="col4" nameend="col5" align="center"/>
         </oasis:row>
         <oasis:row>
           <oasis:entry/>
@@ -1515,7 +1569,9 @@
 </chapter>
   <chapter xml:id="update_history">
     <title>Update History</title>
-    <para>2013-08-29 v0.91 - Addition of requirement for <tag>@ext-link-type</tag> on <tag>&lt;related-article></tag>.</para>
+    <para>2013-12-04 v1.0 - Rewrite of <link linkend="objects_categories">Article Categories</link> section to include subject codes. Addition of <tag>@abstract-type="editorial-summary"</tag> information in <link linkend="objects_abstract">Abstract</link> section.</para>
+    <para>2013-10-10 v0.92 - Addition of <tag>@abstract-type</tag> information in <link linkend="objects_abstract">Abstract</link> section.</para>
+    <para>2013-08-29 v0.91 - Addition of requirement for <tag>@ext-link-type</tag> on <link linkend="element_related-article"><tag>&lt;related-article></tag></link>.</para>
     <para>2013-07-30 v0.9 - Addition of filenaming conventions for online-only AJs. Addition of volume and elocation information for online-only AJs. Change in requirement for <tag>@align</tag> attribute on <tag>&lt;oasis:entry></tag>. Addition of instructions for illustrations and ORCID ids. Correction of errors found in v0.8.</para>
     <para>2013-06-19 v0.8 - Draft version released to cover elements required in NUTD.</para>
   </chapter>

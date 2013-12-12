@@ -25,11 +25,11 @@
 
 -->
 
-<!ENTITY ac               "&#x0290F;" ><!--most positive -->
-<!ENTITY acE              "&#x029DB;" ><!--most positive, two lines below -->
+<!ENTITY ac               "&#x0223E;" ><!--most positive -->
+<!ENTITY acE              "&#x0223E;&#x00333;" ><!--most positive, two lines below -->
 <!ENTITY amalg            "&#x02A3F;" ><!--/amalg B: amalgamation or coproduct -->
 <!ENTITY barvee           "&#x022BD;" ><!--bar, vee -->
-<!ENTITY barwed           "&#x022BC;" ><!--/barwedge B: logical and, bar above -->
+<!ENTITY barwed           "&#x02305;" ><!--/barwedge B: logical and, bar above -->
 <!ENTITY Barwed           "&#x02306;" ><!--/doublebarwedge B: log and, dbl bar above -->
 <!ENTITY bsolb            "&#x029C5;" ><!--reverse solidus in square -->
 <!ENTITY Cap              "&#x022D2;" ><!--/Cap /doublecap B: dbl intersection -->
@@ -100,7 +100,7 @@
 <!ENTITY plussim          "&#x02A26;" ><!--plus, similar below -->
 <!ENTITY plustwo          "&#x02A27;" ><!--plus, two; Nim-addition -->
 <!ENTITY prod             "&#x0220F;" ><!--/prod L: product operator -->
-<!ENTITY race             "&#x029DA;" ><!--reverse most positive, line below -->
+<!ENTITY race             "&#x0223D;&#x00331;" ><!--reverse most positive, line below -->
 <!ENTITY roplus           "&#x02A2E;" ><!--plus sign in right half circle -->
 <!ENTITY rotimes          "&#x02A35;" ><!--multiply sign in right half circle -->
 <!ENTITY rthree           "&#x022CC;" ><!--/rightthreetimes B: -->
@@ -136,11 +136,11 @@
 <!ENTITY xcirc            "&#x025EF;" ><!--/bigcirc B: large circle -->
 <!ENTITY xcup             "&#x022C3;" ><!--/bigcup L: union operator -->
 <!ENTITY xdtri            "&#x025BD;" ><!--/bigtriangledown B: big dn tri, open -->
-<!ENTITY xodot            "&#x02299;" ><!--/bigodot L: circle dot operator -->
-<!ENTITY xoplus           "&#x02295;" ><!--/bigoplus L: circle plus operator -->
-<!ENTITY xotime           "&#x02297;" ><!--/bigotimes L: circle times operator -->
-<!ENTITY xsqcup           "&#x02294;" ><!--/bigsqcup L: square union operator -->
-<!ENTITY xuplus           "&#x0228E;" ><!--/biguplus L: -->
+<!ENTITY xodot            "&#x02A00;" ><!--/bigodot L: circle dot operator -->
+<!ENTITY xoplus           "&#x02A01;" ><!--/bigoplus L: circle plus operator -->
+<!ENTITY xotime           "&#x02A02;" ><!--/bigotimes L: circle times operator -->
+<!ENTITY xsqcup           "&#x02A06;" ><!--/bigsqcup L: square union operator -->
+<!ENTITY xuplus           "&#x02A04;" ><!--/biguplus L: -->
 <!ENTITY xutri            "&#x025B3;" ><!--/bigtriangleup B: big up tri, open -->
 <!ENTITY xvee             "&#x022C1;" ><!--/bigvee L: logical and operator -->
 <!ENTITY xwedge           "&#x022C0;" ><!--/bigwedge L: logical or operator -->

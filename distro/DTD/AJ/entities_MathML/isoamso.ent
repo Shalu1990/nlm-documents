@@ -36,9 +36,10 @@
 <!ENTITY angmsdaf         "&#x029AD;" ><!--angle-measured, arrow, left, up -->
 <!ENTITY angmsdag         "&#x029AE;" ><!--angle-measured, arrow, right, down -->
 <!ENTITY angmsdah         "&#x029AF;" ><!--angle-measured, arrow, left, down -->
-<!ENTITY angrtvb          "&#x0299D;&#x0FE00;" ><!--right angle-measured -->
+<!ENTITY angrtvb          "&#x022BE;" ><!--right angle-measured -->
 <!ENTITY angrtvbd         "&#x0299D;" ><!--right angle-measured, dot -->
 <!ENTITY bbrk             "&#x023B5;" ><!--bottom square bracket -->
+<!ENTITY bbrktbrk         "&#x023B6;" ><!--UE419 bottom above top square bracket -->
 <!ENTITY bemptyv          "&#x029B0;" ><!--reversed circle, slash -->
 <!ENTITY beth             "&#x02136;" ><!--/beth - beth, Hebrew -->
 <!ENTITY boxbox           "&#x029C9;" ><!--two joined squares -->
@@ -57,20 +58,22 @@
 <!ENTITY iiota            "&#x02129;" ><!--inverted iota -->
 <!ENTITY image            "&#x02111;" ><!--/Im - imaginary   -->
 <!ENTITY imath            "&#x00131;" ><!--/imath - small i, no dot -->
-<!ENTITY jmath            "&#x0006A;&#x0FE00;" ><!--/jmath - small j, no dot -->
+<!ENTITY jmath            "&#x00237;" ><!--/jmath - small j, no dot -->
 <!ENTITY laemptyv         "&#x029B4;" ><!--circle, slash, left arrow above -->
 <!ENTITY lltri            "&#x025FA;" ><!--lower left triangle -->
 <!ENTITY lrtri            "&#x022BF;" ><!--lower right triangle -->
 <!ENTITY mho              "&#x02127;" ><!--/mho - conductance -->
-<!ENTITY nang             "&#x02220;&#x00338;" ><!--not, vert, angle -->
+<!ENTITY nang             "&#x02220;&#x020D2;" ><!--not, vert, angle -->
 <!ENTITY nexist           "&#x02204;" ><!--/nexists - negated exists -->
 <!ENTITY oS               "&#x024C8;" ><!--/circledS - capital S in circle -->
 <!ENTITY planck           "&#x0210F;&#x0FE00;" ><!--/hbar - Planck's over 2pi -->
+<!ENTITY plank            "&#x0210F;&#x0FE00;" ><!--UE2D5 /hbar - Planck's over 2pi -->
 <!ENTITY plankv           "&#x0210F;" ><!--/hslash - variant Planck's over 2pi -->
 <!ENTITY raemptyv         "&#x029B3;" ><!--circle, slash, right arrow above -->
 <!ENTITY range            "&#x029A5;" ><!--reverse angle, equal -->
 <!ENTITY real             "&#x0211C;" ><!--/Re - real -->
 <!ENTITY tbrk             "&#x023B4;" ><!--top square bracket -->
+<!ENTITY trpezium         "&#x023E2;" ><!--UE2EC trapezium -->
 <!ENTITY ultri            "&#x025F8;" ><!--upper left triangle -->
 <!ENTITY urtri            "&#x025F9;" ><!--upper right triangle -->
 <!ENTITY vzigzag          "&#x0299A;" ><!--vertical zig-zag line -->

@@ -13,6 +13,9 @@
 
 <!-- 
 
+21.11.13
+. HUBXML-30 - Added "ado", "do" and "dta" to NOTATION types and %format; parameter entity set.
+
 21.06.13
 . HUBXML-12 - Added "wmv" to NOTATION types and "wmv" to %format; parameter entity set.
 . HUBXML-10 - Add new optional element "technique" to support the technique ontology
@@ -1005,6 +1008,7 @@ SYSTEM  ajarticle_v7_x.dtd
 %MathML;
 <!-- Entity % MathML is used in XML version of the DTD only -->
 
+<!NOTATION ado SYSTEM "">   <!-- Adobe Photoshop Duotone options   -->
 <!NOTATION aiff SYSTEM "">   <!-- audio interchange file format -->
 <!NOTATION applet SYSTEM "">   <!-- Java applet -->
 <!NOTATION asf SYSTEM "">   <!-- advanced xtreaming format (Microsoft) -->
@@ -1014,8 +1018,10 @@ SYSTEM  ajarticle_v7_x.dtd
 <!NOTATION bmp SYSTEM "">   <!-- bitmap file        -->
 <!NOTATION class SYSTEM "">   <!-- Java class file -->
 <!NOTATION csv SYSTEM "">   <!-- Comma-separated Values text file -->
+<!NOTATION do SYSTEM "">   <!--  Java servlet  -->
 <!NOTATION doc SYSTEM "">   <!-- Word document format        -->
 <!NOTATION docx SYSTEM "">   <!-- Word document format -->
+<!NOTATION dta SYSTEM "">   <!-- Data file  -->
 <!NOTATION eps SYSTEM "">   <!-- Electronic PostScript -->
 <!NOTATION gif SYSTEM "">   <!-- graphic interchange format  -->
 <!NOTATION GIF SYSTEM "">   <!-- graphic interchange format  -->
@@ -1088,7 +1094,7 @@ SYSTEM  ajarticle_v7_x.dtd
 <!ENTITY % plain-text "%straight-text; | %emphasis; | %fontfamily; | %fontattr; | %zwidth;">
 
 <!-- common file format extensions        -->
-<!ENTITY % format    	"aiff | applet | asf | asp | au | avi | bmp | class | csv | doc | docx | eps | gif | html | htmlonly | java | jpeg | js | ma | mb | midi | mlonly | mov | mp2 | mp3 | mp4 | mpa | mpeg | nb | ole | pict | pdf | png | pps | ppt | ps | ra | ram | sgml | svg | texonly | tiff | txt | wav | wmf | wmv | xls | xlsx | xml | zip">
+<!ENTITY % format    	"ado | aiff | applet | asf | asp | au | avi | bmp | class | csv | do | doc | docx | dta | eps | gif | html | htmlonly | java | jpeg | js | ma | mb | midi | mlonly | mov | mp2 | mp3 | mp4 | mpa | mpeg | nb | ole | pict | pdf | png | pps | ppt | ps | ra | ram | sgml | svg | texonly | tiff | txt | wav | wmf | wmv | xls | xlsx | xml | zip">
 
 <!--********************************************************************-->
 <!--       % mathtypes for Math                                  		-->

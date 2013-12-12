@@ -16,6 +16,10 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2013/08/14 - HUBXML-18 - Added 'url' attribute to "datafile" element to support Tableau interactive figures
+
+2013/07/22 - HUBXML-16 - Added "secr" element with required 'rid' attribute; Added optional @id attribute to "sec" of type ID; Added optional @type attribute to "sec" with allowed value 'excerpt'
+
 2013/04/02 - SCHEMA-92 - Added "geneseq" and "proteinseq" as possible elements within entity %data;
 
            - SCHEMA-91 - Added "tiff" to values for entity %figure-data;
@@ -866,7 +870,7 @@ DTD Change History (yyyy/mm/dd format)
 <!--Note: Except in Kanjii edition, always use <super>, not <sup>, in text.-->
 <!ENTITY % controls "newline | separate | align">
 <!ENTITY % emptyref "bibr | illusr | pullquoter | imager | chemimgr">
-<!ENTITY % textref "ancref | bibrinl | bxr | coder | deflistr | fdr | figr | fnr | fr | illorinl | infographicr | mediar | tablr | compoundr | schemer | ext-mediar | slideshowr | %entityref;">
+<!ENTITY % textref "ancref | bibrinl | bxr | coder | deflistr | fdr | figr | fnr | fr | illorinl | infographicr | mediar | tablr | compoundr | schemer | ext-mediar | slideshowr | secr | %entityref;">
 <!ENTITY % refs "%emptyref; | %textref;">
 <!ENTITY % links "natlink | sir | cir | url | weblink | xnav | xref">
 <!ENTITY % data "%straight-text; | %fontchng; | %controls; | %refs; | %links; | accession | anchor | email | company | prod | brandname | term | scientific | code | geneseq | proteinseq">
@@ -1510,6 +1514,8 @@ time CDATA #IMPLIED>
 <!ELEMENT sec (sectitle, dateline?, (p | crosshd | online-methods | ext-media)*, (sec, (sec | ext-media)*)?)>
 <!ATTLIST sec
 level CDATA #REQUIRED
+id ID #IMPLIED
+type (excerpt) #IMPLIED
 >
 <!ELEMENT sectitle (%data; | f)*>
 
@@ -1593,7 +1599,8 @@ fig-type (box-figure | suppinfo) #IMPLIED
 
 <!ELEMENT datafile (label?)>
 <!ATTLIST datafile type %figure-data; "xls"
-                    datafile-type (figure-data | interactive) "figure-data" 
+                    datafile-type (figure-data | interactive) "figure-data"
+                    url CDATA #IMPLIED
                     entname CDATA #IMPLIED
                     entref IDREF #IMPLIED>
 
@@ -2043,6 +2050,11 @@ rid IDREF #REQUIRED
 <!-- HR: Scheme Reference. -->
 <!ELEMENT schemer (%plain-text;)*>
 <!ATTLIST schemer
+rid IDREF #REQUIRED
+>
+
+<!ELEMENT secr (%plain-text;)*>
+<!ATTLIST secr
 rid IDREF #REQUIRED
 >
 

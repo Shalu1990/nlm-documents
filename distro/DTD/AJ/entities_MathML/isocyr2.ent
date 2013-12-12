@@ -25,29 +25,29 @@
 
 -->
 
-<!ENTITY djcy             "&#x00452;" ><!--=small dje, Serbian -->
 <!ENTITY DJcy             "&#x00402;" ><!--=capital DJE, Serbian -->
-<!ENTITY dscy             "&#x00455;" ><!--=small dse, Macedonian -->
+<!ENTITY djcy             "&#x00452;" ><!--=small dje, Serbian -->
 <!ENTITY DScy             "&#x00405;" ><!--=capital DSE, Macedonian -->
-<!ENTITY dzcy             "&#x0045F;" ><!--=small dze, Serbian -->
+<!ENTITY dscy             "&#x00455;" ><!--=small dse, Macedonian -->
 <!ENTITY DZcy             "&#x0040F;" ><!--=capital dze, Serbian -->
-<!ENTITY gjcy             "&#x00453;" ><!--=small gje, Macedonian -->
+<!ENTITY dzcy             "&#x0045F;" ><!--=small dze, Serbian -->
 <!ENTITY GJcy             "&#x00403;" ><!--=capital GJE Macedonian -->
-<!ENTITY iukcy            "&#x00456;" ><!--=small i, Ukrainian -->
+<!ENTITY gjcy             "&#x00453;" ><!--=small gje, Macedonian -->
 <!ENTITY Iukcy            "&#x00406;" ><!--=capital I, Ukrainian -->
-<!ENTITY jsercy           "&#x00458;" ><!--=small je, Serbian -->
+<!ENTITY iukcy            "&#x00456;" ><!--=small i, Ukrainian -->
 <!ENTITY Jsercy           "&#x00408;" ><!--=capital JE, Serbian -->
-<!ENTITY jukcy            "&#x00454;" ><!--=small je, Ukrainian -->
+<!ENTITY jsercy           "&#x00458;" ><!--=small je, Serbian -->
 <!ENTITY Jukcy            "&#x00404;" ><!--=capital JE, Ukrainian -->
-<!ENTITY kjcy             "&#x0045C;" ><!--=small kje Macedonian -->
+<!ENTITY jukcy            "&#x00454;" ><!--=small je, Ukrainian -->
 <!ENTITY KJcy             "&#x0040C;" ><!--=capital KJE, Macedonian -->
-<!ENTITY ljcy             "&#x00459;" ><!--=small lje, Serbian -->
+<!ENTITY kjcy             "&#x0045C;" ><!--=small kje Macedonian -->
 <!ENTITY LJcy             "&#x00409;" ><!--=capital LJE, Serbian -->
-<!ENTITY njcy             "&#x0045A;" ><!--=small nje, Serbian -->
+<!ENTITY ljcy             "&#x00459;" ><!--=small lje, Serbian -->
 <!ENTITY NJcy             "&#x0040A;" ><!--=capital NJE, Serbian -->
-<!ENTITY tshcy            "&#x0045B;" ><!--=small tshe, Serbian -->
+<!ENTITY njcy             "&#x0045A;" ><!--=small nje, Serbian -->
 <!ENTITY TSHcy            "&#x0040B;" ><!--=capital TSHE, Serbian -->
-<!ENTITY ubrcy            "&#x0045E;" ><!--=small u, Byelorussian -->
+<!ENTITY tshcy            "&#x0045B;" ><!--=small tshe, Serbian -->
 <!ENTITY Ubrcy            "&#x0040E;" ><!--=capital U, Byelorussian -->
-<!ENTITY yicy             "&#x00457;" ><!--=small yi, Ukrainian -->
+<!ENTITY ubrcy            "&#x0045E;" ><!--=small u, Byelorussian -->
 <!ENTITY YIcy             "&#x00407;" ><!--=capital YI, Ukrainian -->
+<!ENTITY yicy             "&#x00457;" ><!--=small yi, Ukrainian -->
