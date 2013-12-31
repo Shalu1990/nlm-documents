@@ -693,8 +693,10 @@ Use the <let> element to define the attribute if necessary.
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="supp-image" value="substring-before(@xlink:href,'.')"/>
          <let name="supp-number" value="replace(replace($supp-image,$article-id,''),'-','')"/>
+         <let name="supp-id" value="@id"/>
+      <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <assert id="oa-aj9"
-                 test="starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,'^s[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for supplementary information (<value-of select="$supp-image"/>). Expected format is "<value-of select="concat($article-id,'-s')"/>"+number.</assert>
+                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) or starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,$supp-id) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for supplementary information (<value-of select="@xlink:href"/>). Expected format is "<value-of select="concat($article-id,'-',$supp-id,'.',$extension)"/>", i.e. XML filename + dash + id of supplementary material.</assert>
       </rule>
   </pattern>
 <pattern>
@@ -1145,6 +1147,16 @@ Use the <let> element to define the attribute if necessary.
          <assert id="para2" test="not(preceding-sibling::p)">Dateline paragraphs should only appear as the first element in "body", or directly following a section "title".</assert>
       </rule>
   </pattern>
+   <pattern><!--underline should have @underline-style in order to transform correctly to AJ-->
+    <rule context="underline" role="error">
+         <assert id="style1a" test="@underline-style">"underline" should have an 'underline-style' attribute with value "single" (for one line) or "double" (for two lines).</assert>
+      </rule>
+  </pattern>
+   <pattern><!--@underline-style should have allowed values-->
+    <rule context="underline[@underline-style]" role="error">
+         <assert id="style1b" test="@underline-style='single' or @underline-style='double'">"underline" 'underline-style' attribute should have value "single" (for one line) or "double" (for two lines), not "<value-of select="@underline-style"/>".</assert>
+      </rule>
+  </pattern>
    <pattern><!--no empty xrefs for some ref-types-->
     <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|fig|supplementary-material|table-fn)$')]"
             role="error">
@@ -1584,6 +1596,19 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="etal" role="error"><!--etal should be empty-->
       <report id="reflist5c" test="normalize-space(.) or *">"etal" should be an empty element in NPG/Palgrave articles - please delete content.</report>
+      </rule>
+  </pattern>
+   <pattern><!--collab should have @collab-type-->
+    <rule context="back/ref-list[not(@content-type)]//ref/mixed-citation/collab"
+            role="error">
+         <assert id="reflist5d" test="@collab-type">"collab" should have a 'collab-type' attribute with value "corporate-author" (for a committee, consortium or other collaborative group) or "on-behalf-of" (where this text is used in the reference).</assert>
+      </rule>
+  </pattern>
+   <pattern><!--@collab-type should have allowed values-->
+    <rule context="back/ref-list[not(@content-type)]//ref/mixed-citation/collab[@collab-type]"
+            role="error">
+         <assert id="reflist5e"
+                 test="@collab-type='corporate-author' or @collab-type='on-behalf-of'">"collab" 'collab-type' attribute should have value "corporate-author" (for a committee, consortium or other collaborative group) or "on-behalf-of" (where this text is used in the reference), not "<value-of select="@collab-type"/>".</assert>
       </rule>
   </pattern>
    <pattern>
