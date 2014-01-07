@@ -1729,6 +1729,12 @@ Use the <let> element to define the attribute if necessary.
                  test="@collab-type='corporate-author' or @collab-type='on-behalf-of'">"collab" 'collab-type' attribute should have value "corporate-author" (for a committee, consortium or other collaborative group) or "on-behalf-of" (where this text is used in the reference), not "<value-of select="@collab-type"/>".</assert>
       </rule>
   </pattern>
+   <pattern><!--book citations should not have "article-title"-->
+    <rule context="back/ref-list[not(@content-type)]//ref/mixed-citation[@publication-type='book']/article-title"
+            role="error">
+         <report id="reflist6a" test=".">"article-title" should not be used in book citations. Use "chapter-title" instead.</report>
+      </rule>
+  </pattern>
    <pattern>
       <rule context="table-wrap-foot/fn" role="error">
         <let name="id" value="@id"/>
