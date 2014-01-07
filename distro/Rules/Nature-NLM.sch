@@ -244,7 +244,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--only one of each subj-group-type used-->
     <rule context="subj-group" role="error">
          <report id="ameta2h"
-                 test="@subj-group-type=./preceding-sibling::subj-group/@subj-group-type">Only one "subj-group" of type "<value-of select="@subj-group-type"/>" should appear in an article - merge these elements.</report>
+                 test="@subj-group-type=./preceding-sibling::subj-group/@subj-group-type">Only one "subj-group" of subj-group-type "<value-of select="@subj-group-type"/>" should appear in an article - merge these elements.</report>
       </rule>
   </pattern>
    <pattern><!--only one of each subj-group-type used-->
