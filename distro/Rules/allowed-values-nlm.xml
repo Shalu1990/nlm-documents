@@ -18,6 +18,21 @@ Created - 20120208
     <language>de</language>
     <language>ja</language>
   </languages>
+  <subj-group-types>
+    <subj-group-type>article-heading</subj-group-type>
+    <subj-group-type>category</subj-group-type>
+    <subj-group-type>sub-category</subj-group-type>
+    <subj-group-type>sub-sub-category</subj-group-type>
+    <subj-group-type>subject</subj-group-type>
+    <subj-group-type>technique</subj-group-type>
+    <subj-group-type>indications</subj-group-type>
+    <subj-group-type>section</subj-group-type>
+    <subj-group-type>career</subj-group-type>
+    <subj-group-type>discipline</subj-group-type>
+    <subj-group-type>sector</subj-group-type>
+    <subj-group-type>region</subj-group-type>
+    <subj-group-type>study-parameters</subj-group-type>
+  </subj-group-types>
   <pub-types>
     <pub-type>issue-date</pub-type>
     <pub-type>aop</pub-type>
