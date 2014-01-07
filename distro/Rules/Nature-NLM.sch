@@ -220,8 +220,126 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
+      <rule context="article-categories/subj-group[@subj-group-type]">
+         <let name="subjGroupType" value="@subj-group-type"/>
+         <assert id="ameta2d"
+                 test="$allowed-values/subj-group-types/subj-group-type[.=$subjGroupType]">Invalid value for 'subj-group-type' attribute (<value-of select="@subj-group-type"/>). Refer to the Tagging Instructions for allowed values.</assert>
+      </rule>
+  </pattern>
+   <pattern>
       <rule context="article-categories/subj-group[@subj-group-type='article-heading']/subject">
          <assert id="ameta2e" test="@content-type">"subject" within "subj-group" (subj-group-type="article-heading") should have a 'content-type' attribute.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group">
+         <report id="ameta2f" test="@specific-use">Do not 'specific-use' attribute on "subj-group".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group">
+         <report id="ameta2g" test="@xml:lang">Do not 'xml:lang' attribute on "subj-group".</report>
+      </rule>
+  </pattern>
+   <pattern><!--only one of each subj-group-type used-->
+    <rule context="subj-group" role="error">
+         <report id="ameta2h"
+                 test="@subj-group-type=./preceding-sibling::subj-group/@subj-group-type">Only one "subj-group" of type "<value-of select="@subj-group-type"/>" should appear in an article - merge these elements.</report>
+      </rule>
+  </pattern>
+   <pattern><!--only one of each subj-group-type used-->
+    <rule context="subj-group/subject" role="error">
+         <report id="ameta2i" test="@id">Do not use 'id' attribute on "subject".</report>
+      </rule>
+  </pattern>
+   <pattern><!--subject codes should have @content-type="npg.subject" (for transforms to work properly) in new journals-->
+    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$')]//subj-group[@subj-group-type='subject']/subject">
+         <assert id="subject1" test="@content-type='npg.subject'">In "subj-group" with attribute 'subj-group="subject"', child "subject" elements should have 'content-type="npg.subject"'.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--subject codes should only contained "named-content"-->
+    <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject']/*">
+         <assert id="subject2" test="self::named-content">"subject" should only contain "named-content" child elements. Do not use "<name/>".</assert>
+      </rule>
+  </pattern>
+   <pattern><!--subject codes should contain three "named-content" children-->
+    <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject']">
+         <report id="subject3" test="count(named-content) ne 3">"subject" contains <value-of select="count(named-content)"/> "named-content" children. It should contain 3, with 'content-type' values of "id", "path" and "version".</report>
+      </rule>
+  </pattern>
+   <pattern><!--"named-content" @content-type should be id, path or version-->
+    <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject'][count(named-content) eq 3 and count(*) eq 3]/named-content">
+         <assert id="subject4" test="matches(@content-type,'^(id|path|version)$')">Unexpected value for 'content-type' in subject codes (<value-of select="@content-type"/>). Allowed values are on each of: "id", "path" and "version".</assert>
+      </rule>
+  </pattern>
+   <pattern><!--"version" included-->
+    <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject'][count(named-content) eq 3 and count(*) eq 3][not(named-content[not(matches(@content-type,'^(id|path|version)$'))])]">
+         <assert id="subject5" test="named-content[@content-type='version']">Missing "named-content" with 'content-type="version"' in subject codes. "subject" should contain three "named-content" children, with one of each 'content-type' attribute value: "id", "path" and "version".</assert>
+      </rule>
+  </pattern>
+   <pattern><!--"id" included-->
+    <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject'][count(named-content) eq 3 and count(*) eq 3][not(named-content[not(matches(@content-type,'^(id|path|version)$'))])]">
+         <assert id="subject6" test="named-content[@content-type='id']">Missing "named-content" with 'content-type="id"' in subject codes. "subject" should contain three "named-content" children, with one of each 'content-type' attribute value: "id", "path" and "version".</assert>
+      </rule>
+  </pattern>
+   <pattern><!--"path" included-->
+    <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject'][count(named-content) eq 3 and count(*) eq 3][not(named-content[not(matches(@content-type,'^(id|path|version)$'))])]">
+         <assert id="subject7" test="named-content[@content-type='path']">Missing "named-content" with 'content-type="path"' in subject codes. "subject" should contain three "named-content" children, with one of each 'content-type' attribute value: "id", "path" and "version".</assert>
+      </rule>
+  </pattern>
+   <pattern><!--named-content should only use @content-type-->
+    <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject']/named-content">
+         <report id="subject8a" test="@id">Only 'content-type' should be used as an attribute on "named-content" in "subject". Do not use 'id'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject']/named-content">
+         <report id="subject8b" test="@alt">Only 'content-type' should be used as an attribute on "named-content" in "subject". Do not use 'alt'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject']/named-content">
+         <report id="subject8c" test="@rid">Only 'content-type' should be used as an attribute on "named-content" in "subject". Do not use 'rid'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject']/named-content">
+         <report id="subject8d" test="@specific-use">Only 'content-type' should be used as an attribute on "named-content" in "subject". Do not use 'specific-use'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject']/named-content">
+         <report id="subject8e" test="@xlink:actuate">Only 'content-type' should be used as an attribute on "named-content" in "subject". Do not use 'xlink:actuate'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject']/named-content">
+         <report id="subject8f" test="@xlink:href">Only 'content-type' should be used as an attribute on "named-content" in "subject". Do not use 'xlink:href'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject']/named-content">
+         <report id="subject8g" test="@xlink:role">Only 'content-type' should be used as an attribute on "named-content" in "subject". Do not use 'xlink:role'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject']/named-content">
+         <report id="subject8h" test="@xlink:show">Only 'content-type' should be used as an attribute on "named-content" in "subject". Do not use 'xlink:show'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject']/named-content">
+         <report id="subject8i" test="@xlink:title">Only 'content-type' should be used as an attribute on "named-content" in "subject". Do not use 'xlink:title'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject']/named-content">
+         <report id="subject8j" test="@xlink:type">Only 'content-type' should be used as an attribute on "named-content" in "subject". Do not use 'xlink:type'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='subject']/subject[@content-type='npg.subject']/named-content">
+         <report id="subject8k" test="@xml:lang">Only 'content-type' should be used as an attribute on "named-content" in "subject". Do not use 'xml:lang'.</report>
       </rule>
   </pattern>
    <pattern>
@@ -711,22 +829,22 @@ Use the <let> element to define the attribute if necessary.
                  test="starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,'^isa[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for ISA-tab file (<value-of select="$supp-image"/>). Expected format is "<value-of select="concat($article-id,'-isa')"/>"+number.</assert>
       </rule>
   </pattern>
-   <pattern>
+   <pattern><!--subject path found in subject ontology-->
       <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$')]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <let name="derivedUri" value="concat('data:,npg.subject:',.)"/>
          <assert id="oa-aj10a" test="$derivedUri = $subjects//subject/@uri">Subject path (<value-of select="."/>) is not recognized by the subject ontology. Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
-   <pattern>
+   <pattern><!--subject path valid for the journal-->
       <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$')]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <let name="derivedUri" value="concat('data:,npg.subject:',.)"/>
          <assert id="oa-aj10b"
                  test="$subjects//subject[@uri/.=$derivedUri]//reference[@pcode=$pcode] or not($derivedUri = $subjects//subject/@uri)">Subject path (<value-of select="."/> - <value-of select="$subjects//subject[@uri/.=$derivedUri]/@name"/>) is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
-   <pattern>
+   <pattern><!--id should be final value in subject path-->
       <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$')]//subject[@content-type='npg.subject']/named-content[@content-type='id']">
-         <let name="path" value="following-sibling::named-content[@content-type='path']"/>
+         <let name="path" value="following-sibling::named-content[@content-type='path'][1]"/>
          <let name="derivedUri" value="concat('data:,npg.subject:',$path)"/>
          <let name="derivedId" value="functx:substring-after-last($path,'/')"/>
          <assert id="oa-aj10c"
