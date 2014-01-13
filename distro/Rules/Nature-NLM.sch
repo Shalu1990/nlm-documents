@@ -879,6 +879,24 @@ Use the <let> element to define the attribute if necessary.
          <assert id="oa-aj11d" test="subj-group/@subj-group-type='article-heading'">Article categories should contain a "subj-group" element with attribute "subj-group-type='article-heading'". The value of the child "subject" element (with attribute "content-type='article-heading'") should be "Mini Review" or "Review Article". Please check instructions from NPG.</assert>
       </rule>
   </pattern>
+   <pattern><!--authors should link to their affiliated body, even when there is only one aff-->
+    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$')]/front/article-meta[aff]/contrib-group/contrib"
+            role="error">
+         <assert id="oa-aj12" test="xref[@ref-type='aff']">All authors should be linked to an affiliated body. Insert xref with 'ref-type="aff"'.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--pub-date should have @pub-type="epub"-->
+    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$')]/front/article-meta/pub-date"
+            role="error">
+         <assert id="oa-aj13a" test="@pub-type='epub'">Online-only open access journals should have publication date with the 'pub-type' attribute value "epub", not "<value-of select="@pub-type"/>". </assert>
+      </rule>
+  </pattern>
+   <pattern><!--pub-date should have day element-->
+    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$')]/front/article-meta/pub-date[@pub-type='epub']"
+            role="error">
+         <assert id="oa-aj13b" test="day">Online-only open access journals should have a full publication date - "day" is missing.</assert>
+      </rule>
+  </pattern>
    <pattern><!--Only one author email per corresp element-->
     <rule context="corresp[count(email) gt 1][matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]"
             role="error">
@@ -1606,7 +1624,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--elements not allowed as children of mixed-citation-->
-    <rule context="ref/mixed-citation/alternatives|ref/mixed-citation/chem-struct|ref/mixed-citation/conf-date|ref/mixed-citation/conf-loc|ref/mixed-citation/conf-name|ref/mixed-citation/conf-sponsor|ref/mixed-citation/date|ref/mixed-citation/date-in-citation|ref/mixed-citation/inline-graphic|ref/mixed-citation/institution|ref/mixed-citation/label|ref/mixed-citation/name|ref/mixed-citation/name-alternatives|ref/mixed-citation/person-group|ref/mixed-citation/private-char|ref/mixed-citation/role|ref/mixed-citation/series|ref/mixed-citation/size|ref/mixed-citation/supplement"
+    <rule context="ref/mixed-citation/alternatives|ref/mixed-citation/chem-struct|ref/mixed-citation/conf-date|ref/mixed-citation/conf-loc|ref/mixed-citation/conf-name|ref/mixed-citation/conf-sponsor|ref/mixed-citation/date|ref/mixed-citation/date-in-citation|ref/mixed-citation/inline-graphic|ref/mixed-citation/institution|ref/mixed-citation/label|ref/mixed-citation/name|ref/mixed-citation/name-alternatives|ref/mixed-citation/private-char|ref/mixed-citation/role|ref/mixed-citation/series|ref/mixed-citation/size|ref/mixed-citation/supplement"
             role="error">
          <report id="disallowed2" test=".">Do not use "<name/>" element in "mixed-citation" in NPG/Palgrave articles.</report>
       </rule>
@@ -1733,6 +1751,42 @@ Use the <let> element to define the attribute if necessary.
     <rule context="back/ref-list[not(@content-type)]//ref/mixed-citation[@publication-type='book']/article-title"
             role="error">
          <report id="reflist6a" test=".">"article-title" should not be used in book citations. Use "chapter-title" instead.</report>
+      </rule>
+  </pattern>
+   <pattern><!--second set of authors in book citation should be contained in person-group-->
+    <rule context="back//mixed-citation[@publication-type='book']/chapter-title"
+            role="error">
+         <report id="reflist7a" test="following-sibling::string-name">The second set of author/editor names in a book citation should be enclosed in "person-group" with a 'person-group-type' attribute to identify authors/editors etc.</report>
+      </rule>
+  </pattern>
+   <pattern><!--person-group should have @person-group-type-->
+    <rule context="back//mixed-citation[@publication-type='book']/person-group"
+            role="error">
+         <assert id="reflist7b" test="@person-group-type">"person-group" should have a 'person-group-type' attribute to identify authors/editors etc.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--person-group should not have @id-->
+    <rule context="back//mixed-citation[@publication-type='book']/person-group"
+            role="error">
+         <report id="reflist7c" test="@id">Do not use 'id' attribute on "person-group".</report>
+      </rule>
+  </pattern>
+   <pattern><!--person-group should not have @specific-use-->
+    <rule context="back//mixed-citation[@publication-type='book']/person-group"
+            role="error">
+         <report id="reflist7d" test="@specific-use">Do not use 'specific-use' attribute on "person-group".</report>
+      </rule>
+  </pattern>
+   <pattern><!--person-group should not have @xml:lang-->
+    <rule context="back//mixed-citation[@publication-type='book']/person-group"
+            role="error">
+         <report id="reflist7e" test="@xml:lang">Do not use 'xml:lang' attribute on "person-group".</report>
+      </rule>
+  </pattern>
+   <pattern><!--person-group should only be used in book citations-->
+    <rule context="person-group" role="error">
+         <assert id="reflist7f"
+                 test="parent::mixed-citation[@publication-type='book'] and preceding-sibling::chapter-title">"person-group" should only be used to capture the second group of editors/authors in a book citation. Do not use it here.</assert>
       </rule>
   </pattern>
    <pattern>
