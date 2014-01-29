@@ -16,6 +16,14 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2014/01/27 - HUBXML-32 - Additional elements and attributes to support Scientific Data:
+                         Added 'type' attribute to "aufn" - allowed value is "contributions"
+                         "related-article" changed from %data; to %reftxt;
+                         'is-data-descriptor-to' and 'has-data-descriptor' added to allowed values of @related-article-type
+                         Added "jtl" as a possible child of "data-citation"; added 'dbid' as a required attribute; 'id' now used for internal links and is optional
+                         Added "data-citationr" with required 'rid' attribute
+                         Added "study-parameters" as an optional structure within "pubfm"
+
 2013/08/14 - HUBXML-18 - Added 'url' attribute to "datafile" element to support Tableau interactive figures
 
 2013/07/22 - HUBXML-16 - Added "secr" element with required 'rid' attribute; Added optional @id attribute to "sec" of type ID; Added optional @type attribute to "sec" with allowed value 'excerpt'
@@ -870,7 +878,7 @@ DTD Change History (yyyy/mm/dd format)
 <!--Note: Except in Kanjii edition, always use <super>, not <sup>, in text.-->
 <!ENTITY % controls "newline | separate | align">
 <!ENTITY % emptyref "bibr | illusr | pullquoter | imager | chemimgr">
-<!ENTITY % textref "ancref | bibrinl | bxr | coder | deflistr | fdr | figr | fnr | fr | illorinl | infographicr | mediar | tablr | compoundr | schemer | ext-mediar | slideshowr | secr | %entityref;">
+<!ENTITY % textref "ancref | bibrinl | bxr | coder | data-citationr | deflistr | fdr | figr | fnr | fr | illorinl | infographicr | mediar | tablr | compoundr | schemer | ext-mediar | slideshowr | secr | %entityref;">
 <!ENTITY % refs "%emptyref; | %textref;">
 <!ENTITY % links "natlink | sir | cir | url | weblink | xnav | xref">
 <!ENTITY % data "%straight-text; | %fontchng; | %controls; | %refs; | %links; | accession | anchor | email | company | prod | brandname | term | scientific | code | geneseq | proteinseq">
@@ -973,7 +981,7 @@ guid CDATA #IMPLIED
                 url CDATA #IMPLIED>
 
 
-<!ELEMENT pubfm (jtl, vol?, iss?, idt?, artpubdt?, altlang?, conf?, section?, categ?, categtxt?, subcateg?, subcatxt?, subsubcateg?, subsubcatxt?, arthead?, artsubhead?, pp?, seq?, elocation?, cdn?, (issn+ | isbn), cpg, related-article*, article-link*, nvid*, xrespond*, xrelate*, errorcor*, suppinfo?, assoc-file*, patent?, chghst?, keywordgrp?, subject*, technique*, article-grouping?, indications*, channel*, subclass*, (careerstage | discipline | region | sector)*, doi?, altdoi*, mtsno?, licence*)>
+<!ELEMENT pubfm (jtl, vol?, iss?, idt?, artpubdt?, altlang?, conf?, section?, categ?, categtxt?, subcateg?, subcatxt?, subsubcateg?, subsubcatxt?, arthead?, artsubhead?, pp?, seq?, elocation?, cdn?, (issn+ | isbn), cpg, related-article*, article-link*, nvid*, xrespond*, xrelate*, errorcor*, suppinfo?, assoc-file*, patent?, chghst?, keywordgrp?, subject*, technique*, study-parameters?, article-grouping?, indications*, channel*, subclass*, (careerstage | discipline | region | sector)*, doi?, altdoi*, mtsno?, licence*)>
 
 <!ELEMENT jtl (%data;)*>
 <!ELEMENT vol (#PCDATA)>
@@ -1071,12 +1079,12 @@ type (electronic | print) "print"
 <!ELEMENT cpn (#PCDATA)>
 <!ELEMENT cps (#PCDATA)>
 
-<!ELEMENT related-article (%data;)* >
+<!ELEMENT related-article (%reftxt;)* >
 <!ATTLIST related-article
   id   ID  #IMPLIED
   extrefid  CDATA #REQUIRED
   extrefid-type (uri | doi | local-path) "doi"
-  related-article-type (protocol | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol | is-protocol-update-to | has-protocol-update) #REQUIRED
+  related-article-type (protocol | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol | is-protocol-update-to | has-protocol-update | is-data-descriptor-to | has-data-descriptor) #REQUIRED
 >
 
 <!ELEMENT article-link EMPTY>
@@ -1257,6 +1265,7 @@ role (author | contributor) "author"
 <!ATTLIST aufn
 id ID #REQUIRED
 refchar %refchars; #IMPLIED
+type (contributions) #IMPLIED
 >
 <!-- Added AUFN to be used in situations where information is placed in the AFF section which does not pertain to one more author's affiliations, such as straight PCDATA.  To be used in conjunction with AUFNR which will be where the PCDATA will be housed. -->
 <!ELEMENT auname (%author; | blogref | bio | role)*>
@@ -1838,10 +1847,11 @@ status (primary | secondary) "secondary"
 
 <!ELEMENT data-citations (data-citation)+>
 
-<!ELEMENT data-citation (refau)*>
+<!ELEMENT data-citation (jtl?, refau)*>
 <!ATTLIST data-citation
+id ID #IMPLIED
 db-name CDATA #REQUIRED
-id CDATA #REQUIRED
+dbid CDATA #REQUIRED
 url CDATA #IMPLIED
 year CDATA #REQUIRED
 source ( existing | new ) #IMPLIED
@@ -2058,6 +2068,11 @@ rid IDREF #REQUIRED
 rid IDREF #REQUIRED
 >
 
+<!ELEMENT data-citationr (%plain-text;)*>
+<!ATTLIST data-citationr
+rid IDREF #REQUIRED
+>
+
 <!-- semantic text identifier for external applications -->
 <!ELEMENT named-entity (%data;)*>
 <!ATTLIST named-entity
@@ -2162,6 +2177,20 @@ filename CDATA #REQUIRED
          version CDATA #IMPLIED
          path CDATA #IMPLIED
 >
+
+<!ELEMENT study-parameters (study-parameters-title, parameter-group+)>
+ 
+<!ELEMENT study-parameters-title (%straight-text; | %fontchng;)*>
+ 
+<!ELEMENT parameter-group (parameter-group-title, parameter+)>
+<!ATTLIST parameter-group parameter-group-type CDATA #REQUIRED>
+ 
+<!ELEMENT parameter-group-title (%straight-text; | %fontchng;)*>
+ 
+<!ELEMENT parameter (parameter-item)+>
+ 
+<!ELEMENT parameter-item (%straight-text; | %fontchng;)*>
+<!ATTLIST parameter-item parameter-item-type CDATA #REQUIRED>
 
 <!ELEMENT article-grouping (title?)>
 <!ATTLIST article-grouping
