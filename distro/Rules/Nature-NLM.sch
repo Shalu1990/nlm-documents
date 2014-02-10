@@ -53,12 +53,14 @@ Use the <let> element to define the attribute if necessary.
     
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
-      <assert id="article1" test="@article-type">All articles should have an article-type attribute on "article". The value should be the same as the information contained in the "subject" element with attribute subj-group-type="category".</assert>
+      <let name="article-type"
+              value="descendant::subj-group[@subj-group-type='category']/subject"/>
+      <assert id="article1" test="@article-type">All articles should have an article-type attribute on "article". The value should be the same as the information contained in the "subject" element with attribute subj-group-type="category"<value-of select="if ($article-type ne '') then concat(' (',$article-type,')') else ()"/>.</assert>
       </rule>
   </pattern>
    <pattern>
       <rule context="article[@article-type]" role="error"><!--Does the article-type have a value?-->
-      <report id="article2" test="$article-type = ''">&lt;article&gt; 'article-type' attribute should have a value and not be empty.</report>
+      <report id="article2" test="$article-type = ''">"article" 'article-type' attribute should have a value and not be empty.</report>
       </rule>
   </pattern>
    <pattern>
@@ -75,7 +77,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern>
       <rule context="journal-meta" role="error"><!--Only one journal-id included-->
-      <assert id="jmeta1b" test="count(journal-id) eq 1">There should only be one "journal-id" element in Macmillan articles, with attribute: journal-id-type="publisher".</assert>
+      <assert id="jmeta1b" test="count(journal-id) eq 1">There should only be one "journal-id" element in NPG/Palgrave articles, with attribute: journal-id-type="publisher".</assert>
       </rule>
   </pattern>
    <pattern>
@@ -172,7 +174,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="journal-meta/contrib-group | journal-meta/aff | journal-meta/aff-alternatives | journal-meta/isbn | journal-meta/notes | journal-meta/self-uri"
+      <rule context="journal-meta/contrib-group | journal-meta/isbn | journal-meta/notes | journal-meta/self-uri"
             role="error"><!--Unexpected elements in journal-meta-->
       <report id="jmeta6" test=".">Do not use the "<name/>" element in "journal-meta".</report>
       </rule>
@@ -209,9 +211,10 @@ Use the <let> element to define the attribute if necessary.
       </rule>
     </pattern>
    <pattern>
-      <rule context="article-categories" role="error">
+      <rule context="article-categories/subj-group[@subj-group-type='category']"
+            role="error">
          <assert id="ameta2b"
-                 test="subj-group[@subj-group-type='category']/subject = $article-type or not($article-type) or not(subj-group[@subj-group-type='category']/subject)">Subject catgory (<value-of select="subj-group[@subj-group-type='category']/subject"/>) does not match root article type (<value-of select="$article-type"/>)</assert>
+                 test="subject = $article-type or not($article-type) or not(subject)">Subject catgory (<value-of select="subject"/>) does not match root article type (<value-of select="$article-type"/>)</assert>
       </rule>
   </pattern>
    <pattern>
@@ -411,8 +414,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--Year/Day - invalid combination in pub-date-->
-    <rule context="pub-date" role="error">
-         <report id="pubdate3" test="year and day and not(month)">Missing month in pub-date. Currently only contains year and day.</report>
+    <rule context="pub-date[year and day]" role="error">
+         <assert id="pubdate3" test="month">Missing month in pub-date. Currently only contains year and day.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -422,19 +425,19 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="volume[parent::article-meta] | issue[parent::article-meta] | fpage[parent::article-meta] | lpage[parent::article-meta] | page-count[@count='0'][parent::article-meta]"
+      <rule context="volume[parent::article-meta] | issue[parent::article-meta] | fpage[parent::article-meta] | lpage[parent::article-meta]"
             role="error">
-         <assert id="artinfo1a" test="normalize-space(.) or *">Empty "<name/>" element should not be used - please delete.</assert>
+         <assert id="artinfo1a" test="normalize-space(.) or *">Empty "<name/>" element should not be used.</assert>
       </rule>
     </pattern>
    <pattern>
-      <rule context="volume[parent::article-meta] | issue[parent::article-meta] | fpage[parent::article-meta] | lpage[parent::article-meta] | page-count[@count='0'][parent::article-meta]"
+      <rule context="volume[parent::article-meta] | issue[parent::article-meta] | fpage[parent::article-meta] | lpage[parent::article-meta]"
             role="error">
          <assert id="artinfo1b" test="not(@content-type)">Do not use "content-type" attribute on "<name/>" within article metadata.</assert>
       </rule>
   </pattern>
    <pattern><!--fpage[parent::article-meta] |-->
-    <rule context="volume[parent::article-meta] | issue[parent::article-meta] | lpage[parent::article-meta] | page-count/@count"
+    <rule context="volume[parent::article-meta] | issue[parent::article-meta] | lpage[parent::article-meta]"
             role="error">
          <let name="value" value="replace(.,'test','')"/>
          <assert id="artinfo2"
@@ -471,9 +474,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--... and only one of each type-->
-    <rule context="history/date" role="error">
-         <report id="histdate0c"
-                 test="@date-type[not(.='rev-recd')]=./preceding-sibling::date/@date-type">There should only be one instance of the "date" element with "date-type" attribute value of "<value-of select="@date-type"/>". Please check with NPG.</report>
+    <rule context="history/date[not(@date-type='rev-recd')]" role="error">
+         <report id="histdate0c" test="@date-type=./preceding-sibling::date/@date-type">There should only be one instance of the "date" element with "date-type" attribute value of "<value-of select="@date-type"/>". Please check with NPG.</report>
       </rule>
   </pattern>
    <pattern><!--Valid values for year, month and day-->
@@ -504,8 +506,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--Year/Day - invalid combination in date-->
-    <rule context="history/date" role="error">
-         <report id="histdate3" test="year and day and not(month)">Missing month in "date" element. Currently only contains year and day.</report>
+    <rule context="history/date[year and day]" role="error">
+         <assert id="histdate3" test="month">Missing month in "date" element. Currently only contains year and day.</assert>
       </rule>
   </pattern>
    <pattern><!--No content-type attribute on day, month or year-->
@@ -556,7 +558,7 @@ Use the <let> element to define the attribute if necessary.
          <assert id="relart1c" test="@xlink:href">"related-article" element of type '<value-of select="@related-article-type"/>' should have 'xlink:href' and 'ext-link-type' attributes.</assert>
       </rule>  
   </pattern>
-   <pattern><!--Bi directional articles should have @xlink:href and @ext-link-type-->
+   <pattern><!--@related-article-type has allowed value-->
     <rule context="article-meta/related-article" role="error">
          <let name="relatedArticleType" value="@related-article-type"/>
          <assert id="relart2"
@@ -566,7 +568,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--valid @abstract-type-->
     <rule context="abstract[@abstract-type]" role="error">
          <let name="abstractType" value="@abstract-type"/>
-         <assert id="abs1" test="$allowed-values/abstract-types/abstract-type[.=$abstractType]">Unexpected value for "abstract-type" attribute (<value-of select="$abstractType"/>). Allowed values are: editor, editor-standfirst, editorial-notes, executive-summary, first-paragraph, key-points, research-summary, standfirst, synopsis, toc, toc-note, web-summary.</assert>
+         <assert id="abs1" test="$allowed-values/abstract-types/abstract-type[.=$abstractType]">Unexpected value for "abstract-type" attribute (<value-of select="$abstractType"/>). Allowed values are: editor, editor-standfirst, editorial-summary, editorial-notes, executive-summary, first-paragraph, key-points, research-summary, standfirst, synopsis, toc, toc-note, web-summary.</assert>
       </rule>
   </pattern>
    <pattern><!--only one of each abstract type used-->
@@ -621,13 +623,13 @@ Use the <let> element to define the attribute if necessary.
       <rule context="abstract[@abstract-type='editorial-notes'][@specific-use]"
             role="error">
          <report id="abs4e"
-                 test="@specific-use=./preceding-sibling::abstract[@abstract-type='editorial-notes']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear on research-summary in each article.</report>
+                 test="@specific-use=./preceding-sibling::abstract[@abstract-type='editorial-notes']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear on editorial-notes in each article.</report>
       </rule>
   </pattern>
    <pattern><!--update $derived-status with all Frontiers titles if they are converted to JATS-->
     <rule context="article-meta" role="error">
          <let name="derived-status"
-              value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|hortres|lsa|msb|mtm|mtna|ncomms|nmstr|nutd|oncsis|psp|scibx|sdata|srep|tp)$')) then 'online'         else if (pub-date[@pub-type='epub'] or pub-date[@pub-type='cover-date']) then 'issue'         else if (pub-date[@pub-type='aop']) then 'aop'         else if (pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/>
+              value="if (matches($pcode,'^(am|bcj|boneres|cddis|ctg|cti|emi|emm|hortres|lsa|msb|mtm|mtna|ncomms|nmstr|nutd|oncsis|psp|scibx|sdata|srep|tp)$')) then 'online'         else if (pub-date[@pub-type='epub'] or pub-date[@pub-type='cover-date']) then 'issue'         else if (pub-date[@pub-type='aop']) then 'aop'         else if (pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/>
          <assert id="custom1"
                  test="not($products[descendant::product/@pcode=$pcode]) or custom-meta-group/custom-meta[meta-name='publish-type']">All articles should contain publication status information at the end of "article-metadata". Insert "custom-meta-group/custom-meta" with "meta-name". For this journal and publication status, "meta-value" should be "<value-of select="$derived-status"/>".</assert>
       </rule>
@@ -637,7 +639,7 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="status" value="meta-value"/>
          <let name="derived-status"
-              value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|hortres|lsa|msb|mtm|mtna|ncomms|nmstr|nutd|oncsis|psp|scibx|sdata|srep|tp)$')) then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub'] or ancestor::article-meta/pub-date[@pub-type='cover-date']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else if (ancestor::article-meta/pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/>
+              value="if (matches($pcode,'^(am|bcj|boneres|cddis|ctg|cti|emi|emm|hortres|lsa|msb|mtm|mtna|ncomms|nmstr|nutd|oncsis|psp|scibx|sdata|srep|tp)$')) then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub'] or ancestor::article-meta/pub-date[@pub-type='cover-date']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else if (ancestor::article-meta/pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/>
          <assert id="custom2"
                  test="not($products[descendant::product/@pcode=$pcode]) or $status=$derived-status">Unexpected value for "publish-type" (<value-of select="$status"/>). Expected value for this journal and publication status is "<value-of select="$derived-status"/>".</assert>
       </rule>
@@ -649,7 +651,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--new OA AJs with restricted article types-->
-    <rule context="article[matches($pcode,'^(mtm|hortres)$')]" role="error">
+    <rule context="article[matches($pcode,'^(mtm|hortres)$') or ($pcode='boneres' and not(descendant::volume='1'))]"
+            role="error">
          <assert id="oa-aj1"
                  test="matches($article-type,'^(add|af|bc|cg|com|cr|cs|ed|er|mr|nv|prot|ret|rv)$')">Invalid article-type used (<value-of select="$article-type"/>). Article types for "<value-of select="$journal-title"/>" are restricted to: 'add' (Addendum), 'af' (Article), 'bc' (Brief Communication), 'cg' (Corrigendum), 'com' (Comment), 'cr' (Correspondence), 'cs' (Correction), 'ed' (Editorial), 'er' (Erratum), 'mr' (Meeting Report), 'nv' (News and Views), 'prot' (Protocol), 'ret' (Retraction), and 'rv' (Review Article or Mini Review).</assert>
       </rule>
@@ -660,61 +663,54 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>   
 <pattern><!--volume should be given in all new OA only journals-->
-      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]/front/article-meta"
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata|boneres)$')]/front/article-meta"
             role="error">
          <assert id="oa-aj2a" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
   </pattern>
-   <pattern><!--issue, fpage and lpage should not be used in new OA only journals-->
-      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]/front/article-meta/issue | article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]/front/article-meta/fpage | article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]/front/article-meta/lpage"
+   <pattern><!--issue should not be used in new OA only journals-->
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))]/front/article-meta/issue"
             role="error">
-         <report id="oa-aj2b" test=".">"<name/>" should not be used in "<value-of select="$journal-title"/>".</report>
+         <report id="oa-aj2b" test=".">"issue" should not be used in "<value-of select="$journal-title"/>".</report>
       </rule>
   </pattern>
    <pattern><!--elocation-id should be given in all new OA only journals-->
-      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]/front/article-meta"
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))]/front/article-meta"
             role="error">
          <assert id="oa-aj2c" test="elocation-id">An "elocation-id" should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
   </pattern>
    <pattern><!--elocation-id should be numerical, i.e. does not start with 'e' or leading zeros-->
-      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]/front/article-meta/elocation-id"
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata|boneres)$')]/front/article-meta/elocation-id"
             role="error">
          <assert id="oa-aj2d" test="matches(.,'^[1-9][0-9]*$')">"elocation-id" in "<value-of select="$journal-title"/>" should be a numerical value only (with no leading zeros), not "<value-of select="."/>".</assert>
       </rule>
   </pattern>
    <pattern><!--open access license info should be given in all new OA only journals (except in correction articles)-->
-      <rule context="article[(matches($pcode,'^(mtm|hortres|sdata|nutd)$')) and not(matches($article-type,'^(add|cg|cs|er|ret)$'))]/front/article-meta/permissions"
+      <rule context="article[(matches($pcode,'^(mtm|hortres|sdata|nutd|boneres)$')) and not(matches($article-type,'^(add|cg|cs|er|ret)$'))]/front/article-meta/permissions"
             role="error">
          <assert id="oa-aj3" test="license">"<value-of select="$journal-title"/>" should contain "license", which gives details of the Open Access license being used. Please contact NPG for this information.</assert>
       </rule>
   </pattern>
    <pattern><!--open access license info should not be given in correction articles in new OA only journals-->
-    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata|nutd)$')) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/permissions"
+    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata|nutd|boneres)$')) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/permissions"
             role="error">
          <let name="article-type-name"
               value="if ($article-type='add') then 'Addendum'          else if ($article-type='cg') then 'Corrigendum'          else if ($article-type='cs') then 'Correction'          else if ($article-type='er') then 'Erratum'          else if ($article-type='ret') then 'Retraction' else ()"/>
          <report id="oa-aj3b" test="license">"license" should not be used in correction articles, as they are not Open Access. This article is: <value-of select="$article-type-name"/>.</report>
       </rule>
   </pattern>
-   <pattern>
-      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres|sdata)$'))]//article-meta/article-id[@pub-id-type='publisher-id']"
-            role="error">
-         <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
-         <report id="oa-aj4a1" test="$derivedPcode=''">Article-id, with attribute pub-id-type='publisher-id' (<value-of select="."/>), should start with the pcode/journal-id. Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
-      </rule>
-  </pattern>
-   <pattern>
-      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres|sdata)$'))]//article-meta/article-id[@pub-id-type='publisher-id']"
+   <pattern><!--error in pcode, but numerical value ok-->
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata|boneres)$') or ($pcode='boneres' and not(descendant::volume='1'))]//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
          <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
-         <report id="oa-aj4a2"
+      <report id="oa-aj4a2"
                  test="not($pcode=$derivedPcode) and ($derivedPcode ne '' and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article id (<value-of select="."/>) should start with the pcode/journal-id (<value-of select="$pcode"/>) not "<value-of select="$derivedPcode"/>". Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
       </rule>
   </pattern>
-   <pattern>
-      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres|sdata)$'))]//article-meta/article-id[@pub-id-type='publisher-id']"
+   <pattern><!--pcode ok but error in numerical value-->
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))]//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
          <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
@@ -722,8 +718,8 @@ Use the <let> element to define the attribute if necessary.
                  test="not(matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$')) and ($derivedPcode ne '' and $pcode=$derivedPcode)">Article id after the "<value-of select="$pcode"/>" pcode (<value-of select="$numericValue"/>) should have format year + number of article (without additional letters or leading zeros). Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
       </rule>
   </pattern>
-   <pattern>
-      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres|sdata)$'))]//article-meta/article-id[@pub-id-type='publisher-id']"
+   <pattern><!--errors in pcode and numerical value-->
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))]//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
          <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
@@ -731,8 +727,8 @@ Use the <let> element to define the attribute if necessary.
                  test="$derivedPcode ne '' and not($pcode=$derivedPcode) and not(matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article id (<value-of select="."/>) should have format pcode + year + number of article (without additional letters or leading zeros). Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
       </rule>
   </pattern>
-   <pattern>
-      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres|sdata)$'))]//article-meta/article-id[@pub-id-type='doi']"
+   <pattern><!--Does doi match article-id?-->
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))]//article-meta/article-id[@pub-id-type='doi']"
             role="error">
          <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -744,7 +740,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres|sdata)$'))]//fig//graphic[@xlink:href]"
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))]//fig//graphic[@xlink:href]"
             role="error">
          <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -756,7 +752,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres|sdata)$'))]//fig//supplementary-material[@content-type='slide'][@xlink:href]"
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))]//fig//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
          <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -768,7 +764,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres|sdata)$'))]//table-wrap//graphic[@xlink:href]"
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))]//table-wrap//graphic[@xlink:href]"
             role="error">
          <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -780,7 +776,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres|sdata)$'))]//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))]//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
          <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -792,7 +788,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[(matches($pcode,'^(nmstr|mtm|hortres|sdata)$'))]//floats-group/graphic[@content-type='illustration'][@xlink:href]"
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))]//floats-group/graphic[@content-type='illustration'][@xlink:href]"
             role="error">
          <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -804,7 +800,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]//floats-group/supplementary-material[@xlink:href][not(@content-type='isa-tab')]"
+      <rule context="article[matches($pcode,'^(nmstr|mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))]//floats-group/supplementary-material[@xlink:href][not(@content-type='isa-tab')]"
             role="error">
          <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -830,43 +826,43 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--subject path found in subject ontology-->
-      <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$')]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+      <rule context="article[matches($pcode,'^(mtm|hortres|sdata|boneres)$')]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <let name="derivedUri" value="concat('data:,npg.subject:',.)"/>
          <assert id="oa-aj10a" test="$derivedUri = $subjects//subject/@uri">Subject path (<value-of select="."/>) is not recognized by the subject ontology. Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--subject path valid for the journal-->
-      <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$')]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+      <rule context="article[matches($pcode,'^(mtm|hortres|sdata|boneres)$')]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <let name="derivedUri" value="concat('data:,npg.subject:',.)"/>
          <assert id="oa-aj10b"
-                 test="$subjects//subject[@uri/.=$derivedUri]//reference[@pcode=$pcode] or not($derivedUri = $subjects//subject/@uri)">Subject path (<value-of select="."/> - <value-of select="$subjects//subject[@uri/.=$derivedUri]/@name"/>) is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by NPG.</assert>
+                 test="$subjects//subject[@uri/.=$derivedUri]/references/reference[@pcode=$pcode] or not($derivedUri = $subjects//subject/@uri)">Subject path (<value-of select="."/> - <value-of select="$subjects//subject[@uri/.=$derivedUri]/@name"/>) is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--id should be final value in subject path-->
-      <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$')]//subject[@content-type='npg.subject']/named-content[@content-type='id']">
+      <rule context="article[matches($pcode,'^(mtm|hortres|sdata|boneres)$')]//subject[@content-type='npg.subject']/named-content[@content-type='id']">
          <let name="path" value="following-sibling::named-content[@content-type='path'][1]"/>
          <let name="derivedUri" value="concat('data:,npg.subject:',$path)"/>
          <let name="derivedId" value="functx:substring-after-last($path,'/')"/>
          <assert id="oa-aj10c"
-                 test=".=$derivedId or not($subjects//subject[@uri/.=$derivedUri]//reference[@pcode=$pcode]) or not($derivedUri = $subjects//subject/@uri)">Subject 'id' (<value-of select="."/>) does not match the final part of subject 'path' (<value-of select="$derivedId"/>). Please check the information supplied by NPG.</assert>
+                 test=".=$derivedId or not($subjects//subject[@uri/.=$derivedUri]/references/reference[@pcode=$pcode]) or not($derivedUri = $subjects//subject/@uri)">Subject 'id' (<value-of select="."/>) does not match the final part of subject 'path' (<value-of select="$derivedId"/>). Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--article-type and article heading should be equivalent (not 'rv')-->
-    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$') and(matches($article-type,'^(add|af|bc|cg|com|cr|cs|dd|ed|er|mr|nv|prot|ret)$'))]/front/article-meta//subject[@content-type='article-heading']"
+    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))) and (matches($article-type,'^(add|af|bc|cg|com|cr|cs|dd|ed|er|mr|nv|prot|ret)$'))]/front/article-meta//subject[@content-type='article-heading']"
             role="error">
          <let name="article-heading"
               value="if ($article-type='add') then 'Addendum'          else if ($article-type='cg') then 'Corrigendum'          else if ($article-type='cs') then 'Correction'          else if ($article-type='er') then 'Erratum'          else if ($article-type='ret') then 'Retraction'         else if ($article-type='af') then 'Article'         else if ($article-type='bc') then 'Brief Communication'         else if ($article-type='com') then 'Comment'         else if ($article-type='cr') then 'Correspondence'         else if ($article-type='ed') then 'Editorial'         else if ($article-type='mr') then 'Meeting Report'         else if ($article-type='nv') then 'News and Views'         else if ($article-type='prot') then 'Protocol'         else if ($article-type='dd') then 'Data Descriptor'         else ()"/>
-         <assert id="oa-aj11a" test="matches(.,$article-heading)">Mismatch between article-heading (<value-of select="."/>) and expected value based on article-type (<value-of select="$article-heading"/>).</assert>
+         <assert id="oa-aj11a" test=".=$article-heading">Mismatch between article-heading (<value-of select="."/>) and expected value based on article-type (<value-of select="$article-heading"/>).</assert>
       </rule>
   </pattern>
    <pattern><!--article-type and article heading should be equivalent (for 'rv')-->
-    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$') and(matches($article-type,'^(rv)$'))]/front/article-meta//subject[@content-type='article-heading']"
+    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))) and(matches($article-type,'^(rv)$'))]/front/article-meta//subject[@content-type='article-heading']"
             role="error">
          <assert id="oa-aj11b" test="matches(.,'^(Mini Review|Review Article)$')">Mismatch between article-heading (<value-of select="."/>) and expected value based on article-type ("Mini Review" or "Review Article").</assert>
       </rule>
   </pattern>
    <pattern><!--article-heading should be used (not 'rv')-->
-    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$') and(matches($article-type,'^(add|af|bc|cg|com|cr|cs|dd|ed|er|mr|nv|prot|ret)$'))]/front/article-meta/article-categories"
+    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))) and(matches($article-type,'^(add|af|bc|cg|com|cr|cs|dd|ed|er|mr|nv|prot|ret)$'))]/front/article-meta/article-categories"
             role="error">
          <let name="article-heading"
               value="if ($article-type='add') then 'Addendum'          else if ($article-type='cg') then 'Corrigendum'          else if ($article-type='cs') then 'Correction'          else if ($article-type='er') then 'Erratum'          else if ($article-type='ret') then 'Retraction'         else if ($article-type='af') then 'Article'         else if ($article-type='bc') then 'Brief Communication'         else if ($article-type='com') then 'Comment'         else if ($article-type='cr') then 'Correspondence'         else if ($article-type='ed') then 'Editorial'         else if ($article-type='mr') then 'Meeting Report'         else if ($article-type='nv') then 'News and Views'         else if ($article-type='prot') then 'Protocol'         else if ($article-type='dd') then 'Data Descriptor'         else ()"/>
@@ -874,49 +870,50 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--article heading should be used (for 'rv')-->
-    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$') and(matches($article-type,'^(rv)$'))]/front/article-meta/article-categories"
+    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))) and(matches($article-type,'^(rv)$'))]/front/article-meta/article-categories"
             role="error">
          <assert id="oa-aj11d" test="subj-group/@subj-group-type='article-heading'">Article categories should contain a "subj-group" element with attribute "subj-group-type='article-heading'". The value of the child "subject" element (with attribute "content-type='article-heading'") should be "Mini Review" or "Review Article". Please check instructions from NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--authors should link to their affiliated body, even when there is only one aff-->
-    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$')]/front/article-meta[aff]/contrib-group/contrib"
+    <rule context="article[matches($pcode,'^(mtm|hortres|sdata|boneres)$')]/front/article-meta[aff]/contrib-group/contrib"
             role="error">
          <assert id="oa-aj12" test="xref[@ref-type='aff']">All authors should be linked to an affiliated body. Insert xref with 'ref-type="aff"'.</assert>
       </rule>
   </pattern>
    <pattern><!--pub-date should have @pub-type="epub"-->
-    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$')]/front/article-meta/pub-date"
+    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))]/front/article-meta/pub-date"
             role="error">
          <assert id="oa-aj13a" test="@pub-type='epub'">Online-only open access journals should have publication date with the 'pub-type' attribute value "epub", not "<value-of select="@pub-type"/>". </assert>
       </rule>
   </pattern>
    <pattern><!--pub-date should have day element-->
-    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$')]/front/article-meta/pub-date[@pub-type='epub']"
+    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))]/front/article-meta/pub-date[@pub-type='epub']"
             role="error">
          <assert id="oa-aj13b" test="day">Online-only open access journals should have a full publication date - "day" is missing.</assert>
       </rule>
   </pattern>
    <pattern><!--Only one author email per corresp element-->
-    <rule context="corresp[count(email) gt 1][matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]"
+    <rule context="corresp[count(email) gt 1][matches($pcode,'^(nmstr|mtm|hortres|sdata|boneres)$')]"
             role="error">
-         <report id="maestro1" test=".">Corresponding author information should only contain one email address. Please split "corresp" with id='<value-of select="parent::corresp/@id"/>' into separate "corresp" elements - one for each corresponding author. You will also need to update the equivalent "xref" elements with the new 'rid' values.</report>
+         <report id="maestro1" test=".">Corresponding author information should only contain one email address. Please split "corresp" with id='<value-of select="@id"/>' into separate "corresp" elements - one for each corresponding author. You will also need to update the equivalent "xref" elements with the new 'rid' values.</report>
       </rule>
   </pattern>
-   <pattern><!--Do no include the word 'correspondence' in the corresp element-->
-    <rule context="corresp[matches($pcode,'^(nmstr|mtm|hortres|sdata)$')]" role="error">
+   <pattern><!--Do not include the word 'correspondence' in the corresp element-->
+    <rule context="corresp[matches($pcode,'^(nmstr|mtm|hortres|sdata|boneres)$')]"
+            role="error">
          <report id="aj-corresp1"
                  test="starts-with(.,'correspondence') or starts-with(.,'Correspondence') or starts-with(.,'CORRESPONDENCE')">Do not include the unnecessary text 'Correspondence' in the "corresp" element.</report>
       </rule>
   </pattern>
    <pattern><!--no empty xrefs for ref-types="author-notes"-->
-    <rule context="xref[@ref-type='author-notes'][matches($pcode,'^(nmstr|mtm|hortres)$')]"
+    <rule context="xref[@ref-type='author-notes'][matches($pcode,'^(nmstr|mtm|hortres|boneres)$')]"
             role="error">
          <assert id="aj-aunote1a" test="normalize-space(.) or *">"xref" with ref-type="author-notes" and rid="<value-of select="@rid"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
       </rule>
   </pattern>
    <pattern>
-      <rule context="author-notes/fn[not(@fn-type)][@id][matches($pcode,'^(nmstr|mtm|hortres)$')]"
+      <rule context="author-notes/fn[not(@fn-type)][@id][matches($pcode,'^(nmstr|mtm|hortres|boneres)$')]"
             role="error">
          <let name="id" value="@id"/>
          <let name="symbol" value="(ancestor::article//xref[matches(@rid,$id)])[1]//text()"/>
@@ -924,7 +921,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--correction articles should contain a related-article element-->
-    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata)$')) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta"
+    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata|boneres)$')) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta"
             role="error">
          <let name="article-type-name"
               value="if ($article-type='add') then 'Addendum'          else if ($article-type='cg') then 'Corrigendum'          else if ($article-type='cs') then 'Correction'          else if ($article-type='er') then 'Erratum'          else if ($article-type='ret') then 'Retraction' else ()"/>
@@ -935,7 +932,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--check correction articles have matching @related-article-type and @article-type values-->
-    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata)$')) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/related-article"
+    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata|boneres)$')) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/related-article"
             role="error">
          <let name="article-type-name"
               value="if ($article-type='add') then 'Addendum'          else if ($article-type='cg') then 'Corrigendum'          else if ($article-type='cs') then 'Correction'          else if ($article-type='er') then 'Erratum'          else if ($article-type='ret') then 'Retraction' else ()"/>
@@ -967,7 +964,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="xref[@ref-type='aff']" role="error"><!--xref/@ref-type='aff' should be empty-->
+      <rule context="xref[@ref-type='aff'][@rid]" role="error"><!--xref/@ref-type='aff' should be empty-->
       <report id="aff2a" test="matches(.,replace(@rid,'a',''))">Do not use text in "xref" element with ref-type="aff" - these values can be auto-generated from the ids.</report>
       </rule>
   </pattern>
@@ -1139,7 +1136,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--sec - sec-type or specific-use attribute used-->
-    <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/boxed-text | sec/chem-struct-wrap | sec/fig | sec/fig-group | sec/graphic | sec/media |  sec/supplementary-material | sec/table-wrap | sec/table-wrap-group | sec/disp-formula-group | sec/def-list | sec/text-math | sec/mml:math | sec/related-article | sec/related-object | sec/disp-quote | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list"
+    <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/boxed-text | sec/chem-struct-wrap | sec/graphic | sec/media |  sec/supplementary-material | sec/table-wrap | sec/table-wrap-group | sec/disp-formula-group | sec/def-list | sec/tex-math | sec/mml:math | sec/related-article | sec/related-object | sec/disp-quote | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list"
             role="error">
          <report id="sec4" test=".">Children of "sec" should only be "title", "p", "sec", "disp-formula" or "preformat" - do not use "<name/>".</report>
       </rule>
@@ -1155,7 +1152,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="sec/title">
+      <rule context="title">
          <assert id="title1c" test="normalize-space(.) or *">Do not use empty section "title" for formatting purposes.</assert>
       </rule>
   </pattern>
@@ -1191,7 +1188,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--list-type attribute is valid--><!--needs work - excludes lists in body when no sec exists; does it work in abstracts?-->
-    <rule context="list[not(ancestor::sec/@sec-type) and ancestor::sec/@specific-use][@list-type]"
+    <rule context="list[not(ancestor::sec/@sec-type) and (ancestor::sec/@specific-use or ancestor::abstract)][@list-type]"
             role="error">
          <let name="listType" value="@list-type"/>
          <assert id="list3b" test="$allowed-values/list-types/list-type[.=$listType]">Unexpected value for "list-type" attribute (<value-of select="$listType"/>). Allowed values are: none, bullet, number, lcletter, ucletter, lcroman and ucroman for unbracketed labels. Use number-paren, lcletter-paren and roman-paren for labels in parentheses.</assert>
@@ -1344,7 +1341,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--multiple rids not allowed for non-ranges-->
     <rule context="xref[@ref-type='bibr'  and (count(tokenize(@rid, '\W+')[. != '']) gt 2) and not(.='') and not(matches(.,'[a-z]'))]"
             role="error">
-         <report id="xref3e" test="contains(.,',')">Multiple rid values should only be used to a range of three or more references. See Tagging Instructions for examples.</report>
+         <report id="xref3e" test="contains(.,',')">Multiple rid values should only be used for a range of references - please split into separate "xref" elements. See Tagging Instructions for examples.</report>
       </rule>
   </pattern>
    <pattern><!--range not marked up properly-->
@@ -1376,7 +1373,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="floats-group/table-wrap[@id][not($pcode='sdata')]" role="error"><!--All tables should be referenced in the text-->
+      <rule context="floats-group/table-wrap[@id]" role="error"><!--All tables should be referenced in the text-->
       <let name="id" value="@id"/>
          <assert id="xref4b"
                  test="ancestor::article//xref[@ref-type='table' and matches(@rid,$id)]">Table <value-of select="replace($id,'t','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Table <value-of select="replace($id,'t','')"/>, please contact NPG.</assert>
@@ -1400,14 +1397,14 @@ Use the <let> element to define the attribute if necessary.
          <assert id="form1b" test="count(*)=3">The MathML "<value-of select="local-name()"/>" element should have three children not <value-of select="count(*)"/>.</assert>
       </rule>
   </pattern>
-   <pattern><!--equation with @id has used mtable to mark up the formulae content-->
+   <pattern><!--equation with @id has used mtable to mark up the formula content-->
     <rule context="disp-formula[@id]/mml:math">
          <assert id="form2a" test="count(*)=1 and mml:mtable">Where an equation is numbered in the pdf, the whole expression should be captured using "mml:mtable". The label should captured as the first cell of "mml:mlabeledtr". If the equation is not numbered in the pdf, delete the 'id' attribute.</assert>
       </rule>
   </pattern>
    <pattern><!--do not use @display on mml:math-->
     <rule context="mml:math[@display]">
-         <report id="form3" test=".">Do not use 'display' attribute on "mml:math". If the formulae is inline, then use "inline-formula" as the parent element, otherwise use "disp-formula".</report>
+         <report id="form3" test=".">Do not use 'display' attribute on "mml:math". If the formula is inline, then use "inline-formula" as the parent element, otherwise use "disp-formula".</report>
       </rule>
   </pattern>
    <pattern><!--back - label or title should not be used-->
@@ -1486,7 +1483,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--app - no attributes on p used-->
-    <rule context="app/p">
+    <rule context="app//p">
          <report id="app6" test="@content-type">Unnecessary use of "content-type" attribute on "p" in appendix.</report>
       </rule>
   </pattern>
@@ -1522,9 +1519,9 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--fn-group - @content-type allowed-->
-    <rule context="back/fn-group" role="error">
+    <rule context="back/fn-group[@content-type]" role="error">
          <assert id="back-fn2b"
-                 test="not(@content-type) or @content-type='endnotes' or @content-type='footnotes' or @content-type='closenotes' or @content-type='article-notes'">Allowed values for 'content-type' attribute on "fn-group" are "article-notes", "closenotes", "endnotes" or "footnotes".</assert>
+                 test="@content-type='endnotes' or @content-type='footnotes' or @content-type='closenotes' or @content-type='article-notes'">Allowed values for 'content-type' attribute on "fn-group" are "article-notes", "closenotes", "endnotes" or "footnotes".</assert>
       </rule>
   </pattern>
    <pattern><!--fn-group - no id or specific-use attribute-->
@@ -1558,8 +1555,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--footnotes - @id has required syntax-->
-    <rule context="back/fn-group[@content-type='footnotes']/fn" role="error">
-         <assert id="back5b" test="not(@id) or matches(@id,'^fn[0-9]+$')">Unexpected 'id' syntax found (<value-of select="@id"/>). Footnote ids should be "fn" followed by a number.</assert>
+    <rule context="back/fn-group[@content-type='footnotes']/fn[@id]" role="error">
+         <assert id="back5b" test="matches(@id,'^fn[0-9]+$')">Unexpected 'id' syntax found (<value-of select="@id"/>). Footnote ids should be "fn" followed by a number.</assert>
       </rule>
   </pattern>
    <pattern><!--footnotes - fn-type attribute not necessary-->
@@ -1608,9 +1605,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--notes ext-link - @ext-link-type allowed-->
-    <rule context="back/notes/p/ext-link" role="error">
-         <assert id="notes4b"
-                 test="not(@ext-link-type) or @ext-link-type='genbank' or @ext-link-type='pdb'">Allowed values for 'ext-link-type' attribute on "ext-link" in notes section are "genbank" or "pdb".</assert>
+    <rule context="back/notes/p/ext-link[@ext-link-type]" role="error">
+         <assert id="notes4b" test="@ext-link-type='genbank' or @ext-link-type='pdb'">Allowed values for 'ext-link-type' attribute on "ext-link" in notes section are "genbank" or "pdb".</assert>
       </rule>
   </pattern>
    <pattern><!--notes ext-link - @ext-link-type allowed-->
@@ -1619,8 +1615,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--notes ext-link - @ext-link-type allowed-->
-    <rule context="back/notes/p/ext-link" role="error">
-         <assert id="notes4d" test="not(@xlink:href) or @xlink:href=.">'xlink:href' should be equal to the link text (<value-of select="."/>).</assert>
+    <rule context="back/notes/p/ext-link[@xlink:href]" role="error">
+         <assert id="notes4d" test="@xlink:href=.">'xlink:href' should be equal to the link text (<value-of select="."/>).</assert>
       </rule>
   </pattern>
    <pattern><!--elements not allowed as children of mixed-citation-->
@@ -1783,7 +1779,7 @@ Use the <let> element to define the attribute if necessary.
          <report id="reflist7e" test="@xml:lang">Do not use 'xml:lang' attribute on "person-group".</report>
       </rule>
   </pattern>
-   <pattern><!--person-group should only be used in book citations-->
+   <pattern><!--person-group should only be used in book citations for the second group of authors-->
     <rule context="person-group" role="error">
          <assert id="reflist7f"
                  test="parent::mixed-citation[@publication-type='book'] and preceding-sibling::chapter-title">"person-group" should only be used to capture the second group of editors/authors in a book citation. Do not use it here.</assert>

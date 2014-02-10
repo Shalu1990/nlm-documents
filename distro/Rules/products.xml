@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<products created="2009-10-01" modified="" version="1.7.7">
+<products created="2009-10-01" modified="" version="1.9.0">
     <product pcode="bostblog" collection="blogs_nature" content="fulltext"
         xml:base="/ns.nature.com/products/bostblog.xml">
         <description>
@@ -79,7 +79,7 @@
         <description>
             <title>Cellular &amp; Molecular Immunology</title>
             <issn type="print">1672-7681</issn>
-            <issn type="electronic">2042-0226</issn><!--missing from main ontology-->
+            <issn type="electronic">2042-0226</issn>
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
@@ -149,7 +149,7 @@
     <product pcode="mtm" npgid="549821" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/mtm.xml">
         <description>
-            <title>Molecular Therapy &#x2014; Methods &amp; Clinical Development</title><!--hyphen in main ontology-->
+            <title>Molecular Therapy &#x2014; Methods &amp; Clinical Development</title>
             <issn type="electronic">2329-0501</issn>
             <homePage>http://www.nature.com/mtm/</homePage>
             <targetDomain>nature.com</targetDomain>
@@ -161,6 +161,19 @@
         <coverage moving="true">
             <date start="2013"/>
             </coverage>
+    </product>
+    <product pcode="jea" npgid="312" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/jea.xml">
+        <references>
+            <reference type="replacedby" pcode="jes"/>
+        </references>
+        <description>
+            <title>Journal of Exposure Analysis and Environmental Epidemiology</title>
+            <issn type="print">1053-4245</issn>
+            <issn type="electronic">1476-5519</issn>
+            <homePage>http://www.nature.com/jes</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
     </product>
     <product pcode="fnene" collection="journals_frontiers" content="fulltext"
         xml:base="/ns.nature.com/products/fnene.xml">
@@ -345,7 +358,7 @@
     <product pcode="embor" npgid="236" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/embor.xml">
         <description>
-            <title>EMBO reports</title><!--uppercase R in main ontology-->
+            <title>EMBO reports</title>
             <issn type="print">1469-221X</issn>
             <issn type="electronic">1469-3178</issn>
             <homePage>http://www.nature.com/embor</homePage>
@@ -604,7 +617,7 @@
             <reference type="replacedby" pcode="jdhf"/>
         </references>
         <description>
-            <title>Derivatives Use, Trading &amp; Regulation</title><!--Added ISSNs for dutr-->
+            <title>Derivatives Use, Trading &amp; Regulation</title>
             <issn type="print">1357-0927</issn>
             <issn type="electronic">1747-4426</issn>
             <homePage>http://www.palgrave-journals.com/dutr/</homePage>
@@ -637,11 +650,6 @@
             <volume start="21"/>
             <issue start="1"/>
         </coverage>
-    </product>
-    <product pcode="blogs" xml:base="/ns.nature.com/products/blogs.xml">
-        <description>
-            <title/>
-        </description>
     </product>
     <product pcode="nbt" npgid="40" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/nbt.xml">
@@ -755,7 +763,7 @@
             <title>Genetics in Medicine</title>
             <issn type="print">1098-3600</issn>
             <issn type="electronic">1530-0366</issn>
-            <homePage>http://www.nature.com/gim/index.html</homePage>
+            <homePage>http://www.nature.com/gim</homePage>
         </description>
         <synonyms>
             <synonym>Genet Med</synonym>
@@ -818,7 +826,7 @@
         <description>
             <title>Oncogenesis</title>
             <issn type="electronic">2157-9024</issn>
-            <homePage>http://www.nature.com/oncsis/index.html</homePage>
+            <homePage>http://www.nature.com/oncsis</homePage>
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
@@ -834,7 +842,7 @@
             <title>Contemporary Political Theory</title>
             <issn type="print">1470-8914</issn>
             <issn type="electronic">1476-9336</issn>
-            <homePage>http://www.palgrave-journals.com/cpt/index.html</homePage>
+            <homePage>http://www.palgrave-journals.com/cpt</homePage>
             <targetDomain>palgrave-journals.com</targetDomain>
         </description>
         <synonyms>
@@ -1115,6 +1123,17 @@
             <date start="2009-12-11"/>
         </coverage>
     </product>
+    <product pcode="xyzn" collection="journals_test" content="fulltext"
+        xml:base="/ns.nature.com/products/xyzn.xml">
+        <description>
+            <title>Nature Test Journal</title>
+            <issn type="print">0000-0000</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>xyzn</synonym>
+        </synonyms>
+    </product>
     <product pcode="iresp" collection="blogs_nature" content="fulltext"
         xml:base="/ns.nature.com/products/iresp.xml">
         <references>
@@ -1247,6 +1266,17 @@
             <issue start="1"/>
         </coverage>
     </product>
+    <product pcode="xyzp" collection="journals_test" content="fulltext"
+        xml:base="/ns.nature.com/products/xyzp.xml">
+        <description>
+            <title>Palgrave Test Journal</title>
+            <issn type="print">0000-0000</issn>
+            <targetDomain>palgrave-journals.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>xyzp</synonym>
+        </synonyms>
+    </product>
     <product pcode="stemcells" npgid="927" collection="journals_nature" content="listings"
         xml:base="/ns.nature.com/products/stemcells.xml">
         <description>
@@ -1371,7 +1401,7 @@
             <title>International Journal of Oral Science</title>
             <issn type="print">1674-2818</issn>
             <issn type="electronic">2049-3169</issn>
-            <homePage>http://www.nature.com/ijos/index.html</homePage>
+            <homePage>http://www.nature.com/ijos</homePage>
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
@@ -1439,7 +1469,7 @@
             <title>Clinical Pharmacology &amp; Therapeutics</title>
             <issn type="print">0009-9236</issn>
             <issn type="electronic">1532-6535</issn>
-            <homePage>http://www.nature.com/clpt/index.html</homePage>
+            <homePage>http://www.nature.com/clpt</homePage>
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
@@ -1876,7 +1906,7 @@
             <title>Interest Groups &amp; Advocacy</title>
             <issn type="print">2047-7414</issn>
             <issn type="electronic">2047-7422</issn>
-            <homePage>http://www.palgrave-journals.com/iga/index.html</homePage>
+            <homePage>http://www.palgrave-journals.com/iga</homePage>
             <targetDomain>palgrave-journals.com</targetDomain>
         </description>
         <synonyms>
@@ -2064,6 +2094,9 @@
     </product>
     <product pcode="jes" npgid="312" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/jes.xml">
+        <references>
+            <reference type="replaces" pcode="jea"/>
+        </references>
         <description>
             <title>Journal of Exposure Science and Environmental Epidemiology</title>
             <issn type="electronic">1476-5519</issn>
@@ -2082,22 +2115,12 @@
             <issue start="1"/>
         </coverage>
     </product>
-<!--Added info for superseded journal title jea--><product collection="journals_nature" content="fulltext" npgid="312" pcode="jes">
-        <description>
-            <title>Journal of Exposure Analysis and Environmental Epidemiology</title>
-            <issn type="print">1053-4245</issn>
-            <issn type="electronic">1476-5519</issn>
-            <homePage>http://www.nature.com/jes</homePage>
-            <targetDomain>nature.com</targetDomain>
-        </description>
-    </product>
-    
-    <product pcode="bonekey" npgid="1396" collection="journals_nature" content="fulltext"
+<product pcode="bonekey" npgid="1396" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/bonekey.xml">
         <description>
             <title>IBMS BoneKEy</title>
             <issn type="electronic">1940-8692</issn>
-            <homePage>http://www.nature.com/bonekey/index.html</homePage>
+            <homePage>http://www.nature.com/bonekey</homePage>
             <targetDomain>nature.com</targetDomain>
         </description>
         <coverage moving="true">
@@ -2145,6 +2168,17 @@
             <volume start="1"/>
             <issue start="1"/>
         </coverage>
+    </product>
+    <product pcode="xyza" collection="journals_test" content="fulltext"
+        xml:base="/ns.nature.com/products/xyza.xml">
+        <description>
+            <title>AJ Test Journal</title>
+            <issn type="print">0000-0000</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>xyza</synonym>
+        </synonyms>
     </product>
     <product pcode="7stn" collection="blogs_nature" content="fulltext"
         xml:base="/ns.nature.com/products/7stn.xml">
@@ -2270,6 +2304,14 @@
             <volume start="1"/>
             <issue start="1"/>
         </coverage>
+    </product>
+    <product pcode="nmstr" collection="journals_test" content="fulltext"
+        xml:base="/ns.nature.com/products/nmstr.xml">
+        <description>
+            <title>npj Maestro</title>
+            <issn type="electronic">0000-0000</issn>
+            <targetDomain>nature.com</targetDomain>
+        </description>
     </product>
     <product pcode="cmg_update" npgid="600" collection="external_gateway" content="fulltext"
         xml:base="/ns.nature.com/products/cmg_update.xml">
@@ -2578,7 +2620,7 @@
             <title>International Journal of Educational Advancement</title>
             <issn type="print">1744-6503</issn>
             <issn type="electronic">1744-6511</issn>
-            <homePage>http://www.palgrave-journals.com/ijea/index.html</homePage>
+            <homePage>http://www.palgrave-journals.com/ijea</homePage>
             <targetDomain>palgrave-journals.com</targetDomain>
         </description>
         <synonyms>
@@ -2654,7 +2696,7 @@
             <title>NPG Asia Materials</title>
             <issn type="print">1884-4049</issn>
             <issn type="electronic">1884-4057</issn>
-            <homePage>http://www.nature.com/am/index.html</homePage>
+            <homePage>http://www.nature.com/am</homePage>
         </description>
         <synonyms>
             <synonym>NPG Asia Mater</synonym>
@@ -2858,6 +2900,23 @@
             <issue start="1"/>
         </coverage>
     </product>
+    <product pcode="boneres" collection="journals_nature" content="fulltext"
+        xml:base="/ns.nature.com/products/boneres.xml">
+        <description>
+            <title>Bone Research</title>
+            <issn type="print">2095-4700</issn>
+            <issn type="electronic">2095-6231</issn>
+            <homePage>http://www.nature.com/boneres</homePage>
+            <targetDomain>nature.com</targetDomain>
+        </description>
+        <synonyms>
+            <synonym>Bone Res.</synonym>
+        </synonyms>
+        <coverage moving="true">
+            <date start="2014-04"/>
+            <volume start="2"/>
+        </coverage>
+    </product>
     <product pcode="cep" npgid="238" collection="journals_palgrave" content="fulltext"
         xml:base="/ns.nature.com/products/cep.xml">
         <description>
@@ -3010,14 +3069,6 @@
             <issue start="1"/>
         </coverage>
     </product>
-    <product pcode="blogs_internal" xml:base="/ns.nature.com/products/blogs_internal.xml">
-        <description>
-            <title>Internal blogs</title>
-        </description>
-        <synonyms>
-            <synonym>Staff blogs</synonym>
-        </synonyms>
-    </product>
     <product pcode="fpsyg" collection="journals_frontiers" content="fulltext"
         xml:base="/ns.nature.com/products/fpsyg.xml">
         <description>
@@ -3072,7 +3123,7 @@
             <title>Health Systems</title>
             <issn type="print">2047-6965</issn>
             <issn type="electronic">2047-6973</issn>
-            <homePage>http://www.palgrave-journals.com/hs/index.html</homePage>
+            <homePage>http://www.palgrave-journals.com/hs</homePage>
             <targetDomain>palgrave-journals.com</targetDomain>
         </description>
         <synonyms>
@@ -3159,11 +3210,6 @@
             <volume start="8"/>
             <issue start="1"/>
         </coverage>
-    </product>
-    <product pcode="blogs_nature" xml:base="/ns.nature.com/products/blogs_nature.xml">
-        <description>
-            <title/>
-        </description>
     </product>
     <product pcode="lst" npgid="251" collection="journals_palgrave" content="fulltext"
         xml:base="/ns.nature.com/products/lst.xml">
@@ -3348,7 +3394,7 @@
     <product pcode="mtna" npgid="1393" collection="journals_nature" content="fulltext"
         xml:base="/ns.nature.com/products/mtna.xml">
         <description>
-            <title>Molecular Therapy &#x2014; Nucleic Acids</title><!--dash missing in main ontology-->
+            <title>Molecular Therapy &#x2014; Nucleic Acids</title>
             <issn type="electronic">2162-2531</issn>
             <homePage>www.nature.com/mtna</homePage>
         </description>
@@ -3512,7 +3558,7 @@
         <description>
             <title>Nature Middle East</title>
             <issn type="electronic">2042-6046</issn>
-            <homePage>http://www.nature.com/nmiddleeast/index.html</homePage>
+            <homePage>http://www.nature.com/nmiddleeast</homePage>
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
@@ -3537,7 +3583,7 @@
         <description>
             <title>Light: Science &amp; Applications</title>
             <issn type="electronic">2047-7538</issn>
-            <homePage>http://www.nature.com/lsa/index.html</homePage>
+            <homePage>http://www.nature.com/lsa</homePage>
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
@@ -3638,7 +3684,7 @@
         <description>
             <title>BoneKEy Reports</title>
             <issn type="electronic">2047-6396</issn>
-            <homePage>http://www.nature.com/bonekey/index.html</homePage>
+            <homePage>http://www.nature.com/bonekey</homePage>
             <targetDomain>nature.com</targetDomain>
         </description>
         <coverage moving="true">
@@ -3743,15 +3789,6 @@
             <title/>
         </description>
     </product>
-    <product pcode="blogs_external" xml:base="/ns.nature.com/products/blogs_external.xml">
-        <description>
-            <title>External Blogs</title>
-        </description>
-        <synonyms>
-            <synonym>Non staff blogs</synonym>
-            <synonym>Personal blogs</synonym>
-        </synonyms>
-    </product>
     <product pcode="fneur" collection="journals_frontiers" content="fulltext"
         xml:base="/ns.nature.com/products/fneur.xml">
         <description>
@@ -3839,7 +3876,7 @@
     <product pcode="jos" npgid="286" collection="journals_palgrave" content="fulltext"
         xml:base="/ns.nature.com/products/jos.xml">
         <description>
-            <title>Journal of Stimulation</title>
+            <title>Journal of Simulation</title>
             <issn type="print">1747-7778</issn>
             <issn type="electronic">1747-7786</issn>
             <targetDomain>palgrave-journals.com</targetDomain>
@@ -3860,7 +3897,7 @@
             <title>Kidney International Supplements</title>
             <issn type="electronic">2157-1716</issn>
             <issn type="print">2157-1724</issn>
-            <homePage>http://www.nature.com/kisup/index.html</homePage>
+            <homePage>http://www.nature.com/kisup</homePage>
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
@@ -4005,7 +4042,7 @@
         <description>
             <title>Emerging Microbes &amp; Infections</title>
             <issn type="electronic">2222-1751</issn>
-            <homePage>http://www.nature.com/emi/index.html</homePage>
+            <homePage>http://www.nature.com/emi</homePage>
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
@@ -4021,7 +4058,7 @@
     <product pcode="abm" npgid="237" collection="journals_palgrave" content="fulltext"
         xml:base="/ns.nature.com/products/abm.xml">
         <description>
-            <title>Asian Business &amp; Management</title><!--ampersand missing in main ontology-->
+            <title>Asian Business &amp; Management</title>
             <issn type="print">1472-4782</issn>
             <issn type="electronic">1476-9328</issn>
             <targetDomain>palgrave-journals.com</targetDomain>
@@ -4350,7 +4387,7 @@
             <title>Experimental &amp; Molecular Medicine</title>
             <issn type="print">1226-3613</issn>
             <issn type="electronic">2092-6413</issn>
-            <homePage>http://www.nature.com/emm/index.html</homePage>
+            <homePage>http://www.nature.com/emm</homePage>
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
@@ -4400,7 +4437,7 @@
         <description>
             <title>Clinical and Translational Gastroenterology</title>
             <issn type="print">2155-384X</issn>
-            <homePage>http://www.nature.com/ctg/index.html</homePage>
+            <homePage>http://www.nature.com/ctg</homePage>
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
@@ -4469,7 +4506,7 @@
         <description>
             <title>Scientific Reports</title>
             <issn type="electronic">2045-2322</issn>
-            <homePage>http://www.nature.com/srep/index.html</homePage>
+            <homePage>http://www.nature.com/srep</homePage>
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
@@ -4642,7 +4679,7 @@
         <description>
             <title>Clinical &amp; Translational Immunology</title>
             <issn type="electronic">2050-0068</issn>
-            <homePage>http://www.nature.com/cti/index.html</homePage>
+            <homePage>http://www.nature.com/cti</homePage>
             <targetDomain>nature.com</targetDomain>
         </description>
         <synonyms>
@@ -4723,7 +4760,7 @@
         <description>
             <title>Migration Statistics Quarterly Report</title>
             <issn type="electronic">2050-8544</issn>
-            <homePage>http://www.palgrave-journals.com/msq/index.html</homePage>
+            <homePage>http://www.palgrave-journals.com/msq</homePage>
         </description>
         <coverage moving="true">
             <date start="2011-02"/>
@@ -4809,44 +4846,4 @@
             <issue start="1"/>
         </coverage>
     </product>
-<!--Dummy products: nmstr, xyza, xyzn, xyzp-->
-    <product collection="journals_nature" content="fulltext" pcode="nmstr">
-        <description>
-            <title>npj Maestro</title>
-            <issn type="electronic">0000-0000</issn>
-            <homePage>http://www.nature.com/nmstr</homePage>
-            <targetDomain>nature.com</targetDomain>
-        </description>
-    </product>
-    
-    <product collection="journals_nature" content="fulltext" pcode="xyza">
-        <description>
-            <title>Nature Academic</title>
-            <issn type="print">1745-2473</issn>
-            <issn type="electronic">1745-2481</issn>
-            <homePage>http://www.nature.com/xyza</homePage>
-            <targetDomain>nature.com</targetDomain>
-        </description>
-    </product>
-    
-    <product collection="journals_nature" content="fulltext" pcode="xyzn">
-        <description>
-            <title>xyzn Nature products</title>
-            <issn type="print">1469-221X</issn>
-            <issn type="electronic">1469-3178</issn>
-            <homePage>http://www.nature.com/xyzn</homePage>
-            <targetDomain>nature.com</targetDomain>
-        </description>
-    </product>
-    
-    <product collection="journals_palgrave" content="fulltext" pcode="xyzp">
-        <description>
-            <title>Palgrace JATS Testing</title>
-            <issn type="print">1477-8211</issn>
-            <issn type="electronic">1477-822X</issn>
-            <homePage>http://www.nature.com/xyzp</homePage>
-            <targetDomain>nature.com</targetDomain>
-        </description>
-    </product>
-    
 </products>
