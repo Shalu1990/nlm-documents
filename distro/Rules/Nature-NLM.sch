@@ -659,7 +659,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
 <pattern><!--SciData only has data descriptors-->
     <rule context="article[$pcode='sdata']" role="error">
-         <assert id="oa-aj1b" test="matches($article-type,'^(add|cg|cs|dd|er|ret)$')">Invalid article-type used (<value-of select="$article-type"/>). The only main article type allowed in Scientific Data is 'dd' (Data Descriptor). Correction articles are also allowed: 'add' (Addendum), 'cg' (Corrigendum), 'cs' (Correction), 'er' (Erratum), and 'ret' (Retraction).</assert>
+         <assert id="oa-aj1b" test="matches($article-type,'^(add|cg|cs|dd|ed|er|ret)$')">Invalid article-type used (<value-of select="$article-type"/>). The only main article types allowed in Scientific Data are 'dd' (Data Descriptor) and 'ed' (Editorial). Correction articles are also allowed: 'add' (Addendum), 'cg' (Corrigendum), 'cs' (Correction), 'er' (Erratum), and 'ret' (Retraction).</assert>
       </rule>
   </pattern>   
 <pattern><!--volume should be given in all new OA only journals-->
@@ -856,7 +856,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--article-type and article heading should be equivalent (for 'rv')-->
-    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))) and(matches($article-type,'^(rv)$'))]/front/article-meta//subject[@content-type='article-heading']"
+    <rule context="article[(matches($pcode,'^(mtm|hortres)$') or ($pcode='boneres' and not(descendant::volume='1'))) and(matches($article-type,'^(rv)$'))]/front/article-meta//subject[@content-type='article-heading']"
             role="error">
          <assert id="oa-aj11b" test="matches(.,'^(Mini Review|Review Article)$')">Mismatch between article-heading (<value-of select="."/>) and expected value based on article-type ("Mini Review" or "Review Article").</assert>
       </rule>
@@ -870,7 +870,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--article heading should be used (for 'rv')-->
-    <rule context="article[(matches($pcode,'^(mtm|hortres|sdata)$') or ($pcode='boneres' and not(descendant::volume='1'))) and(matches($article-type,'^(rv)$'))]/front/article-meta/article-categories"
+    <rule context="article[(matches($pcode,'^(mtm|hortres)$') or ($pcode='boneres' and not(descendant::volume='1'))) and(matches($article-type,'^(rv)$'))]/front/article-meta/article-categories"
             role="error">
          <assert id="oa-aj11d" test="subj-group/@subj-group-type='article-heading'">Article categories should contain a "subj-group" element with attribute "subj-group-type='article-heading'". The value of the child "subject" element (with attribute "content-type='article-heading'") should be "Mini Review" or "Review Article". Please check instructions from NPG.</assert>
       </rule>
