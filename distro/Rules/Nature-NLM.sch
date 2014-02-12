@@ -1499,8 +1499,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--bio - no attributes used-->
     <rule context="back/bio">
-         <report id="bio3"
-                 test="@content-type or @id or @rid or @specific-use or @xlink:actuate or @xlink:href or @xlink:role or @xlink:show or @xlink:title">Do not use attributes on "bio" element.</report>
+         <report id="bio3" test="attribute::*">Do not use attributes on "bio" element.</report>
       </rule>
   </pattern>
    <pattern><!--p in bio - no attributes used-->
@@ -1785,6 +1784,33 @@ Use the <let> element to define the attribute if necessary.
                  test="parent::mixed-citation[@publication-type='book'] and preceding-sibling::chapter-title">"person-group" should only be used to capture the second group of editors/authors in a book citation. Do not use it here.</assert>
       </rule>
   </pattern>
+   <pattern><!--caption must contain a title-->
+        <rule context="table-wrap/caption" role="error">
+            <report id="tab5a" test="not(child::title) and child::p" role="error">Table-wrap "caption" should contain a "title" element - change "p" to "title".</report>
+        </rule>
+    </pattern>
+   <pattern><!--caption should not be empty (strip out unicode spaces as well - &#x2003; &#x2009;)-->
+        <rule context="table-wrap/caption" role="error">
+            <let name="text" value="replace(.,'( )|( )','')"/>
+            <assert id="tab5b" test="normalize-space($text) or *" role="error">Table-wrap "caption" should not be empty - it should contain a "title" or not be used at all.</assert>
+        </rule>
+    </pattern>
+   <pattern><!--caption children should not be empty (strip out unicode spaces as well - &#x2003; &#x2009;)-->
+        <rule context="table-wrap/caption/p | table-wrap/caption/title" role="error">
+            <let name="text" value="replace(.,'( )|( )','')"/>
+            <assert id="tab5c" test="normalize-space($text) or *" role="error">Do not use empty "<name/>" element in table-wrap "caption".</assert>
+        </rule>
+    </pattern>
+   <pattern><!--caption should not have attributes-->
+        <rule context="table-wrap/caption" role="error">
+            <report id="tab5d" test="attribute::*" role="error">Do not use attributes on table-wrap "caption".</report>
+        </rule>
+    </pattern>
+   <pattern><!--caption title or p should not have attributes-->
+        <rule context="table-wrap/caption/title|table-wrap/caption/p" role="error">
+            <report id="tab5e" test="attribute::*" role="error">Do not use attributes on "<name/>" within table-wrap "caption".</report>
+        </rule>
+    </pattern>
    <pattern>
       <rule context="table-wrap-foot/fn" role="error">
         <let name="id" value="@id"/>
