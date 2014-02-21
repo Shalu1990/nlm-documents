@@ -657,9 +657,9 @@ Use the <let> element to define the attribute if necessary.
                  test="matches($article-type,'^(add|af|bc|cg|com|cr|cs|ed|er|mr|nv|prot|ret|rv)$')">Invalid article-type used (<value-of select="$article-type"/>). Article types for "<value-of select="$journal-title"/>" are restricted to: 'add' (Addendum), 'af' (Article), 'bc' (Brief Communication), 'cg' (Corrigendum), 'com' (Comment), 'cr' (Correspondence), 'cs' (Correction), 'ed' (Editorial), 'er' (Erratum), 'mr' (Meeting Report), 'nv' (News and Views), 'prot' (Protocol), 'ret' (Retraction), and 'rv' (Review Article or Mini Review).</assert>
       </rule>
   </pattern>
-<pattern><!--SciData only has data descriptors-->
+<pattern><!--SciData restricted article types-->
     <rule context="article[$pcode='sdata']" role="error">
-         <assert id="oa-aj1b" test="matches($article-type,'^(add|cg|cs|dd|ed|er|ret)$')">Invalid article-type used (<value-of select="$article-type"/>). The only main article types allowed in Scientific Data are 'dd' (Data Descriptor) and 'ed' (Editorial). Correction articles are also allowed: 'add' (Addendum), 'cg' (Corrigendum), 'cs' (Correction), 'er' (Erratum), and 'ret' (Retraction).</assert>
+         <assert id="oa-aj1b" test="matches($article-type,'^(add|cg|com|cs|dd|ed|er|ret)$')">Invalid article-type used (<value-of select="$article-type"/>). The only article types allowed in Scientific Data are 'dd' (Data Descriptor), 'com' (Comment) and 'ed' (Editorial). Correction articles are also allowed: 'add' (Addendum), 'cg' (Corrigendum), 'cs' (Correction), 'er' (Erratum), and 'ret' (Retraction).</assert>
       </rule>
   </pattern>   
 <pattern><!--volume should be given in all new OA only journals-->
