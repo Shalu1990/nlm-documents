@@ -1661,13 +1661,12 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--Reference lists should have specific-use attribute to give style info-->
-  <rule context="back/ref-list[not(@content-type='link-group')]" role="error">
+  <rule context="back/ref-list[not(@content-type)]" role="error">
          <assert id="reflist1a" test="@specific-use">Ref-list should have a 'specific-use' attribute with value "alpha" (for alphabetical references) or "numero" (for numbered references).</assert>
       </rule>
   </pattern>
    <pattern><!--ref-list specific-use attribute should be 'alpha' or 'numero'-->
-    <rule context="back/ref-list[not(@content-type='link-group')][@specific-use]"
-            role="error">
+    <rule context="back/ref-list[not(@content-type)][@specific-use]" role="error">
          <assert id="reflist1b" test="@specific-use='alpha' or @specific-use='numero'">Ref-list 'specific-use' attribute should have value "alpha" (for alphabetical references) or "numero" (for numbered references), not "<value-of select="@specific-use"/>".</assert>
       </rule>
   </pattern>
@@ -1683,7 +1682,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--ref-list does not need title "References"-->
-    <rule context="back/ref-list[not(@content-type='link-group')]/title" role="error">
+    <rule context="back/ref-list[not(@content-type)]/title" role="error">
          <report id="reflist2a" test=".='references' or .='References' or .='REFERENCES'">A "title" element with text 'References' is not necessary at the start of the References section - please delete.</report>
       </rule>
   </pattern>
