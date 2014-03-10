@@ -1775,72 +1775,79 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--book citations should not have "article-title"-->
     <rule context="back/ref-list[not(@content-type)]//ref/mixed-citation[@publication-type='book']/article-title"
             role="error">
-         <report id="reflist6a" test=".">"article-title" should not be used in book citations. Use "chapter-title" instead.</report>
+         <report id="reflist6a" test=".">"article-title" should not be used in book citation "<value-of select="ancestor::ref/@id"/>". Use "chapter-title" instead.</report>
       </rule>
   </pattern>
    <pattern><!--second set of authors in book citation should be contained in person-group-->
     <rule context="back//mixed-citation[@publication-type='book']/chapter-title"
             role="error">
-         <report id="reflist7a" test="following-sibling::string-name">The second set of author/editor names in a book citation should be enclosed in "person-group" with a 'person-group-type' attribute to identify authors/editors etc.</report>
+         <report id="reflist7a" test="following-sibling::string-name">The second set of author/editor names in book citation "<value-of select="ancestor::ref/@id"/>" should be enclosed in "person-group" with a 'person-group-type' attribute to identify authors/editors etc.</report>
       </rule>
   </pattern>
    <pattern><!--person-group should have @person-group-type-->
     <rule context="back//mixed-citation[@publication-type='book']/person-group"
             role="error">
-         <assert id="reflist7b" test="@person-group-type">"person-group" should have a 'person-group-type' attribute to identify authors/editors etc.</assert>
+         <assert id="reflist7b" test="@person-group-type">"person-group" in citation "<value-of select="ancestor::ref/@id"/>" should have a 'person-group-type' attribute to identify authors/editors etc.</assert>
       </rule>
   </pattern>
    <pattern><!--person-group should not have @id-->
     <rule context="back//mixed-citation[@publication-type='book']/person-group"
             role="error">
-         <report id="reflist7c" test="@id">Do not use 'id' attribute on "person-group".</report>
+         <report id="reflist7c" test="@id">Do not use 'id' attribute on "person-group" in citation "<value-of select="ancestor::ref/@id"/>".</report>
       </rule>
   </pattern>
    <pattern><!--person-group should not have @specific-use-->
     <rule context="back//mixed-citation[@publication-type='book']/person-group"
             role="error">
-         <report id="reflist7d" test="@specific-use">Do not use 'specific-use' attribute on "person-group".</report>
+         <report id="reflist7d" test="@specific-use">Do not use 'specific-use' attribute on "person-group" in citation "<value-of select="ancestor::ref/@id"/>".</report>
       </rule>
   </pattern>
    <pattern><!--person-group should not have @xml:lang-->
     <rule context="back//mixed-citation[@publication-type='book']/person-group"
             role="error">
-         <report id="reflist7e" test="@xml:lang">Do not use 'xml:lang' attribute on "person-group".</report>
+         <report id="reflist7e" test="@xml:lang">Do not use 'xml:lang' attribute on "person-group" in citation "<value-of select="ancestor::ref/@id"/>".</report>
       </rule>
   </pattern>
    <pattern><!--person-group should only be used in book citations for the second group of authors-->
     <rule context="person-group[not(ancestor::mixed-citation/@publication-type='other')]"
             role="error">
          <assert id="reflist7f"
-                 test="parent::mixed-citation[@publication-type='book'] and preceding-sibling::*">"person-group" should only be used to capture the second group of editors/authors in a book citation. Do not use it here.</assert>
+                 test="parent::mixed-citation[@publication-type='book'] and preceding-sibling::*">"person-group" should only be used to capture the second group of editors/authors in a book citation. Do not use it in citation "<value-of select="ancestor::ref/@id"/>".</assert>
+      </rule>
+  </pattern>
+   <pattern><!--"other" publication-type should not have "article-title" and "source"-->
+    <rule context="ref/mixed-citation[@publication-type='other'][source and article-title]"
+            role="error">
+         <report id="reflist8a" test=".">Citation "<value-of select="parent::ref/@id"/>" contains an article-title (<value-of select="article-title"/>) and a "source" (<value-of select="source"/>). Therefore it should have 'publication-type="journal"', not "other".</report>
       </rule>
   </pattern>
    <pattern><!--"other" publication-type should not have "source"-->
-    <rule context="ref/mixed-citation[@publication-type='other'][source]" role="error">
-         <report id="reflist8a" test=".">Citation containing a "source" (<value-of select="source"/>) should have 'publication-type="book"' not "other".</report>
+    <rule context="ref/mixed-citation[@publication-type='other'][source and not(article-title)]"
+            role="error">
+         <report id="reflist8b" test=".">Citation "<value-of select="parent::ref/@id"/>" contains a "source" (<value-of select="source"/>) and no article-title. Therefore it should have 'publication-type="book"', not "other".</report>
       </rule>
   </pattern>
    <pattern><!--publisher-loc should not be used instead of publisher-name-->
     <rule context="ref/mixed-citation[not(publisher-name)]/publisher-loc" role="error">
-         <report id="reflist9a" test=".">"publisher-loc" (<value-of select="."/>) should not be used in citations without a corresponding "publisher-name". Change "publisher-loc" to "publisher-name" or add publisher name.</report>
+         <report id="reflist9a" test=".">Citation "<value-of select="ancestor::ref/@id"/>" has "publisher-loc" (<value-of select="."/>), but no corresponding "publisher-name". Change "publisher-loc" to "publisher-name" or add publisher name information.</report>
       </rule>
   </pattern>
    <pattern><!--journal citation should not contain chapter-title-->
     <rule context="ref/mixed-citation[@publication-type='journal']/chapter-title"
             role="error">
-         <report id="reflist10a" test=".">Journal citation (source: <value-of select="parent::mixed-citation/source"/>) should not use "chapter-title". Change this to "article-title" (or check if this should be a book citation).</report>
+         <report id="reflist10a" test=".">Journal citation "<value-of select="ancestor::ref/@id"/>" (source: <value-of select="parent::mixed-citation/source"/>) should not use "chapter-title". Change this to "article-title" (or check if this should be a book citation).</report>
       </rule>
   </pattern>
    <pattern><!--journal citation should have source and article-title-->
     <rule context="ref/mixed-citation[@publication-type='journal'][source][not(chapter-title|article-title)]"
             role="error">
-         <report id="reflist10b" test=".">Journal citation only has "source" identified (<value-of select="source"/>). Mark up the "article-title" or change to 'publication-type="book"'.</report>
+         <report id="reflist10b" test=".">Journal citation "<value-of select="parent::ref/@id"/>" only has "source" identified (<value-of select="source"/>). Mark up the "article-title" or change to 'publication-type="book"'.</report>
       </rule>
   </pattern>
    <pattern><!--journal citation should have source and article-title-->
     <rule context="ref/mixed-citation[@publication-type='journal'][not(source)]"
             role="error">
-         <report id="reflist10c" test="article-title">Journal citation only has "article-title" identified (<value-of select="article-title"/>). Mark up the "source" also.</report>
+         <report id="reflist10c" test="article-title">Journal citation "<value-of select="parent::ref/@id"/>" only has "article-title" identified (<value-of select="article-title"/>). Mark up the "source" also.</report>
       </rule>
   </pattern>
    <pattern><!--caption must contain a title-->
