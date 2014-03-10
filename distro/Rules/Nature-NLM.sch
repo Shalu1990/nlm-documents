@@ -57,7 +57,7 @@ Use the <let> element to define the attribute if necessary.
     
    <let name="volume" value="article/front/article-meta/volume"/>
   <let name="new-oa-aj"
-        value="if (matches($pcode,'^(nmstr|mtm|hortres|sdata)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|mtm|hortres|sdata|bdjteam)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
       <let name="article-type"
@@ -636,7 +636,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--update $derived-status with all Frontiers titles if they are converted to JATS-->
     <rule context="article-meta" role="error">
          <let name="derived-status"
-              value="if (matches($pcode,'^(am|bcj|boneres|cddis|ctg|cti|emi|emm|hortres|lsa|msb|mtm|mtna|ncomms|nmstr|nutd|oncsis|psp|scibx|sdata|srep|tp)$')) then 'online'         else if (pub-date[@pub-type='epub'] or pub-date[@pub-type='cover-date']) then 'issue'         else if (pub-date[@pub-type='aop']) then 'aop'         else if (pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/>
+              value="if (matches($pcode,'^(am|bcj|bdjteam|boneres|cddis|ctg|cti|emi|emm|hortres|lsa|msb|mtm|mtna|ncomms|nmstr|nutd|oncsis|psp|scibx|sdata|srep|tp)$')) then 'online'         else if (pub-date[@pub-type='epub'] or pub-date[@pub-type='cover-date']) then 'issue'         else if (pub-date[@pub-type='aop']) then 'aop'         else if (pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/>
          <assert id="custom1"
                  test="not($products[descendant::product/@pcode=$pcode]) or custom-meta-group/custom-meta[meta-name='publish-type']">All articles should contain publication status information at the end of "article-metadata". Insert "custom-meta-group/custom-meta" with "meta-name". For this journal and publication status, "meta-value" should be "<value-of select="$derived-status"/>".</assert>
       </rule>
@@ -646,7 +646,7 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="status" value="meta-value"/>
          <let name="derived-status"
-              value="if (matches($pcode,'^(am|bcj|boneres|cddis|ctg|cti|emi|emm|hortres|lsa|msb|mtm|mtna|ncomms|nmstr|nutd|oncsis|psp|scibx|sdata|srep|tp)$')) then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub'] or ancestor::article-meta/pub-date[@pub-type='cover-date']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else if (ancestor::article-meta/pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/>
+              value="if (matches($pcode,'^(am|bcj|bdjteam|boneres|cddis|ctg|cti|emi|emm|hortres|lsa|msb|mtm|mtna|ncomms|nmstr|nutd|oncsis|psp|scibx|sdata|srep|tp)$')) then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub'] or ancestor::article-meta/pub-date[@pub-type='cover-date']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else if (ancestor::article-meta/pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/>
          <assert id="custom2"
                  test="not($products[descendant::product/@pcode=$pcode]) or $status=$derived-status">Unexpected value for "publish-type" (<value-of select="$status"/>). Expected value for this journal and publication status is "<value-of select="$derived-status"/>".</assert>
       </rule>
@@ -686,15 +686,21 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--open access license info should be given in all new OA only journals (except in correction articles)-->
-      <rule context="article[$new-oa-aj='yes' and not(matches($article-type,'^(add|cg|cs|er|ret)$'))]/front/article-meta/permissions"
+      <rule context="article[$new-oa-aj='yes' and not(matches($article-type,'^(add|cg|cs|er|ret)$')) and not($pcode='bdjteam')]/front/article-meta/permissions"
             role="error">
          <assert id="oa-aj3" test="license">"<value-of select="$journal-title"/>" should contain "license", which gives details of the Open Access license being used. Please contact NPG for this information.</assert>
       </rule>
   </pattern>
    <pattern><!--open access license info should not be given in correction articles in new OA only journals-->
-    <rule context="article[$new-oa-aj='yes' and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/permissions"
+    <rule context="article[$new-oa-aj='yes' and matches($article-type,'^(add|cg|cs|er|ret)$') and not($pcode='bdjteam')]/front/article-meta/permissions"
             role="error">
          <report id="oa-aj3b" test="license">"license" should not be used in correction articles, as they are not Open Access. This article is: <value-of select="$allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading"/>.</report>
+      </rule>
+  </pattern>
+   <pattern><!--open access license info should not be given in BDJ Team, which is free-->
+    <rule context="article[$pcode='bdjteam']/front/article-meta/permissions/license"
+            role="error">
+         <report id="oa-aj3c" test=".">"license" should not be used in <value-of select="$journal-title"/>, as it is a free journal.</report>
       </rule>
   </pattern>
    <pattern><!--error in pcode, but numerical value ok-->
@@ -918,6 +924,17 @@ Use the <let> element to define the attribute if necessary.
          <let name="related-article-type"
               value="if ($article-type='add') then 'is-addendum-to'          else if ($article-type='cg') then 'is-corrigendum-to'          else if ($article-type='cs') then 'is-correction-to'          else if ($article-type='er') then 'is-erratum-to'          else if ($article-type='ret') then 'is-retraction-to' else ()"/>
          <assert id="correct1b" test="@related-article-type=$related-article-type">Mismatch between 'related-article-type' attribute (<value-of select="@related-article-type"/>) and expected value based on article-type (<value-of select="$related-article-type"/>).</assert>
+      </rule>
+  </pattern>
+   <pattern><!--elocation-id follows expected format-->
+    <rule context="article[$pcode='bdjteam']/front/article-meta/elocation-id"
+            role="error">
+         <let name="year" value="substring(replace($article-id,$pcode,''),1,4)"/>
+         <let name="artnum" value="replace(replace($article-id,$pcode,''),$year,'')"/>
+         <let name="fullartnum"
+              value="if (string-length($artnum)=1) then concat('00',$artnum) else          if (string-length($artnum)=2) then concat('0',$artnum) else $artnum"/>
+         <let name="eloc" value="concat(substring($year,3,4),$fullartnum)"/>
+         <assert id="oa-eloc1a" test=".=$eloc">Mismatch between elocation-id/article number (<value-of select="."/>) and expected value based on article id: <value-of select="$eloc"/>.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -1262,6 +1279,16 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--@underline-style should have allowed values-->
     <rule context="underline[@underline-style]" role="error">
          <assert id="style1b" test="@underline-style='single' or @underline-style='double'">"underline" 'underline-style' attribute should have value "single" (for one line) or "double" (for two lines), not "<value-of select="@underline-style"/>".</assert>
+      </rule>
+  </pattern>
+   <pattern><!--preformat should have @preformat-type to assist rendering-->
+    <rule context="preformat" role="error">
+         <assert id="style2a" test="@preformat-type">"preformat" should have an 'preformat-type' attribute with value "inline" (for inline monospaced type) or "block" (for set out code).</assert>
+      </rule>
+  </pattern>
+   <pattern><!--@preformat-type should have allowed values-->
+    <rule context="preformat[@preformat-type]" role="error">
+         <assert id="style2b" test="@preformat-type='inline' or @preformat-type='block'">"preformat" 'preformat-type' attribute should have value "inline" (for inline monospaced type) or "block" (for set out code), not "<value-of select="@preformat-type"/>".</assert>
       </rule>
   </pattern>
    <pattern><!--no empty xrefs for some ref-types-->
@@ -1782,9 +1809,38 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--person-group should only be used in book citations for the second group of authors-->
-    <rule context="person-group" role="error">
+    <rule context="person-group[not(ancestor::mixed-citation/@publication-type='other')]"
+            role="error">
          <assert id="reflist7f"
-                 test="parent::mixed-citation[@publication-type='book'] and preceding-sibling::chapter-title">"person-group" should only be used to capture the second group of editors/authors in a book citation. Do not use it here.</assert>
+                 test="parent::mixed-citation[@publication-type='book'] and preceding-sibling::*">"person-group" should only be used to capture the second group of editors/authors in a book citation. Do not use it here.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--"other" publication-type should not have "source"-->
+    <rule context="ref/mixed-citation[@publication-type='other'][source]" role="error">
+         <report id="reflist8a" test=".">Citation containing a "source" (<value-of select="source"/>) should have 'publication-type="book"' not "other".</report>
+      </rule>
+  </pattern>
+   <pattern><!--publisher-loc should not be used instead of publisher-name-->
+    <rule context="ref/mixed-citation[not(publisher-name)]/publisher-loc" role="error">
+         <report id="reflist9a" test=".">"publisher-loc" (<value-of select="."/>) should not be used in citations without a corresponding "publisher-name". Change "publisher-loc" to "publisher-name" or add publisher name.</report>
+      </rule>
+  </pattern>
+   <pattern><!--journal citation should not contain chapter-title-->
+    <rule context="ref/mixed-citation[@publication-type='journal']/chapter-title"
+            role="error">
+         <report id="reflist10a" test=".">Journal citation (source: <value-of select="parent::mixed-citation/source"/>) should not use "chapter-title". Change this to "article-title" (or check if this should be a book citation).</report>
+      </rule>
+  </pattern>
+   <pattern><!--journal citation should have source and article-title-->
+    <rule context="ref/mixed-citation[@publication-type='journal'][source][not(chapter-title|article-title)]"
+            role="error">
+         <report id="reflist10b" test=".">Journal citation only has "source" identified (<value-of select="source"/>). Mark up the "article-title" or change to 'publication-type="book"'.</report>
+      </rule>
+  </pattern>
+   <pattern><!--journal citation should have source and article-title-->
+    <rule context="ref/mixed-citation[@publication-type='journal'][not(source)]"
+            role="error">
+         <report id="reflist10c" test="article-title">Journal citation only has "article-title" identified (<value-of select="article-title"/>). Mark up the "source" also.</report>
       </rule>
   </pattern>
    <pattern><!--caption must contain a title-->
