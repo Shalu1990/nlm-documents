@@ -790,7 +790,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$new-oa-aj='yes']//floats-group/graphic[@content-type='illustration'][@xlink:href]"
+      <rule context="article[$new-oa-aj='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')]"
             role="error">
          <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -798,7 +798,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
          <let name="ill-number" value="replace(replace($ill-image,$article-id,''),'-','')"/>
          <assert id="oa-aj8"
-                 test="starts-with($ill-image,concat($article-id,'-')) and matches($ill-number,'^i[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for illustration (<value-of select="$ill-image"/>). Expected format is "<value-of select="concat($article-id,'-i')"/>"+number.</assert>
+                 test="starts-with($ill-image,concat($article-id,'-')) and matches($ill-number,'^i[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for illustration (<value-of select="@xlink:href"/>). Expected format is "<value-of select="concat($article-id,'-i')"/>"+number.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -1387,6 +1387,22 @@ Use the <let> element to define the attribute if necessary.
                  test="ancestor::article//xref[@ref-type='other' and matches(@rid,$id)]">Illustration <value-of select="replace($id,'i','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location.</assert>
       </rule>
   </pattern>
+   <pattern>
+      <rule context="xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id][not(@specific-use)]"><!--xref to illustration should have @specific-use for image alignment info-->
+      <report id="xref5a" test=".">"xref" to illustration "<value-of select="@rid"/>" should have 'specific-use' attribute containing image alignment. Allowed values are: "align-left", "align-center" and "align-right".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id][@specific-use]"><!--xref @specific-use should have valid value-->
+      <assert id="xref5b"
+                 test="matches(@specific-use,'^(align-left|align-right|align-center)$')">"xref" to illustration "<value-of select="@rid"/>" has invalid 'specific-use' value (<value-of select="@specific-use"/>). Allowed values are: "align-left", "align-center" and "align-right".</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id]/named-content[@content-type='image-align']"><!--xref to illustration should not use named-content for image alignment info-->
+      <report id="xref5c" test=".">Do not use "named-content" in "xref" to illustration "<value-of select="parent::xref/@rid"/>" for image alignment information.</report>
+      </rule>
+  </pattern>
    <pattern><!--elements which should have two child elements-->
     <rule context="mml:mfrac|mml:mroot|mml:msub|mml:msup|mml:munder|mml:mover"
             role="error">
@@ -1925,11 +1941,11 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern>
-        <rule context="fig" role="error">
-            <assert id="fig1c" test="parent::floats-group or parent::fig-group">"fig" should be only be a child of "floats-group" in NPG/Palgrave articles - not "<value-of select="local-name(parent::*)"/>".</assert>
+        <rule context="fig[not(parent::floats-group or parent::fig-group)]" role="error">
+            <report id="fig1c" test=".">"fig" should be only be a child of "floats-group" in NPG/Palgrave articles - not "<value-of select="local-name(parent::*)"/>".</report>
         </rule>
     </pattern>
-   <pattern><!--fig - allowed children only: add other possibilities!!!!!!!!!!!!!!-->
+   <pattern><!--fig - allowed children only-->
         <rule context="fig/alt-text | fig/long-desc | fig/email | fig/ext-link | fig/uri | fig/disp-formula | fig/disp-formula-group | fig/chem-struct-wrap | fig/disp-quote | fig/speech | fig/statement | fig/verse-group | fig/table-wrap | fig/p | fig/def-list | fig/list | fig/array | fig/media | fig/preformat | fig/permissions"
             role="error">
             <report id="fig2a" test=".">Do not use "<name/>" as a child of "fig". Refer to Tagging Instructions for sample markup.</report>
@@ -1941,13 +1957,13 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--fig - caption must not have attributes-->
-        <rule context="fig/caption" role="error">
-            <report id="fig2c" test="@content-type or @id or @specific-use or @style or @xml:lang">Do not use attributes on figure "caption".</report>
+        <rule context="fig/caption[attribute::*]" role="error">
+            <report id="fig2c" test=".">Do not use attributes on figure "caption".</report>
         </rule>
     </pattern>
    <pattern><!--fig - label must not have attributes-->
-        <rule context="fig/label" role="error">
-            <report id="fig2d" test="@alt or @xml:lang">Do not use attributes on figure "label".</report>
+        <rule context="fig/label[attribute::*]" role="error">
+            <report id="fig2d" test=".">Do not use attributes on figure "label".</report>
         </rule>
     </pattern>
    <pattern><!--fig - label not necessary if text is of form "Figure 1" etc-->
@@ -1957,8 +1973,8 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--fig - must have an @id-->
-        <rule context="fig[not(@fig-type='cover-image')]" role="error">
-            <assert id="fig3a" test="@id">Missing 'id' attribute - "fig" should have an 'id' of the form "f"+number (with no leading zeros).</assert>
+        <rule context="fig[not(@fig-type='cover-image')][not(@id)]" role="error">
+            <report id="fig3a" test=".">Missing 'id' attribute - "fig" should have an 'id' of the form "f"+number (with no leading zeros).</report>
         </rule>
     </pattern>
    <pattern><!--fig - @id must be correct format-->
@@ -1967,18 +1983,18 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern>
-        <rule context="fig" role="error">
-            <report id="fig3c" test="@specific-use" role="error">Do not use "specific-use" attribute on "fig".</report>
+        <rule context="fig[@specific-use]" role="error">
+            <report id="fig3c" test="." role="error">Do not use "specific-use" attribute on "fig".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="fig" role="error">
-            <report id="fig3d" test="@xml:lang" role="error">Do not use "xml:lang" attribute on "fig".</report>
+        <rule context="fig[@xml:lang]" role="error">
+            <report id="fig3d" test="." role="error">Do not use "xml:lang" attribute on "fig".</report>
         </rule>
     </pattern>
    <pattern><!--fig - must have an @xlink:href-->
-        <rule context="fig//graphic" role="error">
-            <assert id="fig4a" test="@xlink:href">Missing 'xlink:href' attribute on figure "graphic". The 'xlink:href' should contain the filename (including extension) of the item of graphic. Do not include any path information.</assert>
+        <rule context="fig//graphic[not(@xlink:href)]" role="error">
+            <report id="fig4a" test=".">Missing 'xlink:href' attribute on figure "graphic". The 'xlink:href' should contain the filename (including extension) of the graphic. Do not include any path information.</report>
         </rule>
     </pattern>
    <pattern><!--@xlink:href does not contain filepath info-->
@@ -1999,9 +2015,9 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--fig graphic - must have a @mimetype; when @xlink:href does not exist, point to Tagging instructions-->
-        <rule context="fig//graphic[not(@xlink:href or contains(@xlink:href,'.'))]"
+        <rule context="fig//graphic[not(@xlink:href or contains(@xlink:href,'.'))][not(@mimetype)]"
             role="error">
-            <assert id="fig5a" test="@mimetype">Missing 'mimetype' attribute on figure "graphic". Refer to Tagging Instructions for correct value.</assert>
+            <report id="fig5a" test=".">Missing 'mimetype' attribute on figure "graphic". Refer to Tagging Instructions for correct value.</report>
         </rule>
     </pattern>
    <pattern><!--fig graphic - must have a @mimetype; when @xlink:href is invalid, point to Tagging instructions-->
@@ -2039,7 +2055,7 @@ Use the <let> element to define the attribute if necessary.
         <rule context="fig//graphic[contains(@xlink:href,'.')]" role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
             <report id="fig6b"
-                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) and not(@mime-subtype)">Missing 'mime-subtype' attribute on figure "graphic". Refer to Tagging Instructions for correct value based.</report>
+                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) and not(@mime-subtype)">Missing 'mime-subtype' attribute on figure "graphic". Refer to Tagging Instructions for correct value.</report>
         </rule>
     </pattern>
    <pattern><!--fig - must have a @mime-subtype; when @xlink:href exists (and is valid) gives value that should be used-->
@@ -2060,39 +2076,158 @@ Use the <let> element to define the attribute if necessary.
                  test="@mime-subtype=$mime-subtype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">For figure graphics with extension "<value-of select="$extension"/>", the 'mime-subtype' attribute should have the value "<value-of select="$mime-subtype"/>" (not "<value-of select="@mime-subtype"/>").</assert>
         </rule>
     </pattern>
-   <pattern><!--no other attributes used on supplementary-material - check what's allowed for fig graphics!!!!!!!!!!!!!!!!!!!-->
-        <rule context="fig//graphic" role="error">
-            <report id="fig7a" test="@specific-use" role="error">Do not use "specific-use" attribute on figure "graphic".</report>
+   <pattern><!--no other attributes used on fig graphics-->
+        <rule context="fig//graphic[@specific-use]" role="error">
+            <report id="fig7a" test="." role="error">Do not use "specific-use" attribute on figure "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="fig//graphic" role="error">
-            <report id="fig7b" test="@xlink:actuate" role="error">Do not use "xlink:actuate" attribute on figure "graphic".</report>
+        <rule context="fig//graphic[@xlink:actuate]" role="error">
+            <report id="fig7b" test="." role="error">Do not use "xlink:actuate" attribute on figure "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="fig//graphic[not(@content-type='external-media')]" role="error">
-            <report id="fig7c" test="@xlink:role" role="error">Do not use "xlink:role" attribute on figure "graphic".</report>
+        <rule context="fig//graphic[not(@content-type='external-media')][@xlink:role]"
+            role="error">
+            <report id="fig7c" test="." role="error">Do not use "xlink:role" attribute on figure "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="fig//graphic" role="error">
-            <report id="fig7d" test="@xlink:show" role="error">Do not use "xlink:show" attribute on figure "graphic".</report>
+        <rule context="fig//graphic[@xlink:show]" role="error">
+            <report id="fig7d" test="." role="error">Do not use "xlink:show" attribute on figure "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="fig//graphic" role="error">
-            <report id="fig7e" test="@xlink:title" role="error">Do not use "xlink:title" attribute on figure "graphic".</report>
+        <rule context="fig//graphic[@xlink:title]" role="error">
+            <report id="fig7e" test="." role="error">Do not use "xlink:title" attribute on figure "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="fig//graphic" role="error">
-            <report id="fig7f" test="@xlink:type" role="error">Do not use "xlink:type" attribute on figure "graphic".</report>
+        <rule context="fig//graphic[@xlink:type]" role="error">
+            <report id="fig7f" test="." role="error">Do not use "xlink:type" attribute on figure "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="fig//graphic" role="error">
-            <report id="fig7g" test="@xml:lang" role="error">Do not use "xml:lang" attribute on figure "graphic".</report>
+        <rule context="fig//graphic[@xml:lang]" role="error">
+            <report id="fig7g" test="." role="error">Do not use "xml:lang" attribute on figure "graphic".</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="fig//graphic[@id]" role="error">
+            <report id="fig7h" test="." role="error">Do not use "id" attribute on figure "graphic".</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="floats-group/graphic" role="error">
+            <assert id="ill1a" test="@content-type='illustration'" role="error">Unexpected "graphic" as child of "floats-group". If this is an illustration, add content-type='illustration'. If this is a figure image, enclose in "fig" and add "caption" information.</assert>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="graphic[@content-type='illustration'][not(parent::floats-group)]"
+            role="error">
+            <report id="ill1b" test="." role="error">Illustration "<value-of select="@id"/>" should be a child of "floats-group" at the end of the article.</report>
+        </rule>
+    </pattern>
+   <pattern><!--illustration - must have an @id-->
+        <rule context="graphic[@content-type='illustration'][not(@id)]" role="error">
+            <report id="ill1c" test=".">Missing 'id' attribute - illustration should have an 'id' of the form "i"+number (with no leading zeros).</report>
+        </rule>
+    </pattern>
+   <pattern><!--illustration - @id must be correct format (restricted to new oa ajs for now)-->
+        <rule context="graphic[@content-type='illustration'][@id][$new-oa-aj='yes']"
+            role="error">
+            <assert id="ill1d" test="matches(@id,'^i[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). Illustration 'id' attribute should be of the form "i"+number (with no leading zeros).</assert>
+        </rule>
+    </pattern>
+   <pattern><!--illustration - should have @position="anchor"-->
+        <rule context="graphic[@content-type='illustration'][not(@position='anchor')]"
+            role="error">
+            <report id="ill1e" test=".">Illustration graphic should have attribute 'position="anchor"'.</report>
+        </rule>
+    </pattern>
+   <pattern><!--@xlink:href does not contain filepath info-->
+        <rule context="graphic[@content-type='illustration'][not($new-oa-aj='yes')]"
+            role="error">
+            <report id="ill2a" test="contains(@xlink:href,'/')">Do not include filepath information for illustration images "<value-of select="@xlink:href"/>".</report>
+        </rule>
+    </pattern>
+   <pattern><!--@xlink:href contains a '.' and therefore may have an extension-->
+        <rule context="graphic[@content-type='illustration']" role="error">
+            <assert id="ill2b" test="contains(@xlink:href,'.')">Illustration 'xlink:href' value ("<value-of select="@xlink:href"/>") should contain the file extension (e.g. jpg, gif, etc).</assert>
+        </rule>
+    </pattern>
+   <pattern><!--@xlink:href has valid file extension - check allowed image extensions-->
+        <rule context="graphic[@content-type='illustration'][contains(@xlink:href,'.')]"
+            role="error">
+            <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+            <assert id="ill2c" test="matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$')">Unexpected file extension value ("<value-of select="$extension"/>") in illustration '@xlink:href' attribute - please check.</assert>
+        </rule>
+    </pattern>
+   <pattern><!--illustration - must have a @mimetype="image"-->
+        <rule context="graphic[@content-type='illustration'][not(@mimetype='image')]"
+            role="error">
+            <report id="ill3a" test=".">Illustration should have 'mimetype='image'".</report>
+        </rule>
+    </pattern>
+   <pattern><!--illustration - must have a @mime-subtype; when @xlink:href exists (and is valid) gives value that should be used-->
+        <rule context="graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@mime-subtype)]"
+            role="error">
+            <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+            <let name="mime-subtype"
+              value="if ($extension='bmp') then 'bmp'                 else if ($extension='gif') then 'gif'                 else if ($extension='jpeg' or $extension='jpg') then 'jpeg'                 else if ($extension='png') then 'png'                 else if ($extension='tiff') then 'tiff'                 else if ($extension='pict') then 'x-pict'                 else ()"/>
+            <assert id="ill4b"
+                 test="@mime-subtype or not(matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$'))">Missing 'mime-subtype' attribute on illustration. For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$mime-subtype"/>".</assert>
+        </rule>
+    </pattern>
+   <pattern><!--value used for @mimetype is correct based on file extension (includes test for valid extension)-->
+        <rule context="graphic[@content-type='illustration'][@mime-subtype][contains(@xlink:href,'.')]"
+            role="error">
+            <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+            <let name="mime-subtype"
+              value="if ($extension='bmp') then 'bmp'                 else if ($extension='gif') then 'gif'                 else if ($extension='jpeg' or $extension='jpg') then 'jpeg'                 else if ($extension='png') then 'png'                 else if ($extension='tiff') then 'tiff'                 else if ($extension='pict') then 'x-pict'                 else ()"/>
+            <assert id="ill4c"
+                 test="@mime-subtype=$mime-subtype or not(matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$'))">For illustrations with extension "<value-of select="$extension"/>", the 'mime-subtype' attribute should have the value "<value-of select="$mime-subtype"/>" (not "<value-of select="@mime-subtype"/>").</assert>
+        </rule>
+    </pattern>
+   <pattern><!--no other attributes used on illustrations-->
+        <rule context="graphic[@content-type='illustration'][@specific-use]" role="error">
+            <report id="ill5a" test="." role="error">Do not use "specific-use" attribute on illustration.</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="graphic[@content-type='illustration'][@xlink:actuate]" role="error">
+            <report id="ill5b" test="." role="error">Do not use "xlink:actuate" attribute on illustration.</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="graphic[@content-type='illustration'][@xlink:role]" role="error">
+            <report id="ill5c" test="." role="error">Do not use "xlink:role" attribute on illustration.</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="graphic[@content-type='illustration'][@xlink:show]" role="error">
+            <report id="ill5d" test="." role="error">Do not use "xlink:show" attribute on illustration.</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="graphic[@content-type='illustration'][@xlink:title]" role="error">
+            <report id="ill5e" test="." role="error">Do not use "xlink:title" attribute on illustration.</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="graphic[@content-type='illustration'][@xlink:type]" role="error">
+            <report id="ill5f" test="." role="error">Do not use "xlink:type" attribute on illustration.</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="graphic[@content-type='illustration'][@xml:lang]" role="error">
+            <report id="ill5g" test="." role="error">Do not use "xml:lang" attribute on illustration.</report>
+        </rule>
+    </pattern>
+   <pattern><!--no other attributes used on illustrations-->
+        <rule context="graphic[@content-type='illustration']/alt-text | graphic[@content-type='illustration']/email | graphic[@content-type='illustration']/ext-link | graphic[@content-type='illustration']/label | graphic[@content-type='illustration']/long-desc | graphic[@content-type='illustration']/permissions | graphic[@content-type='illustration']/uri"
+            role="error">
+            <report id="ill6a" test="." role="error">Do not use "<name/>" in illustration "graphic".</report>
         </rule>
     </pattern>
    <pattern><!--supplementary-material - only caption allowed as a child-->
