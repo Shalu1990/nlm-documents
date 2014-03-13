@@ -1794,6 +1794,24 @@ Use the <let> element to define the attribute if necessary.
          <report id="reflist6a" test=".">"article-title" should not be used in book citation "<value-of select="ancestor::ref/@id"/>". Use "chapter-title" instead.</report>
       </rule>
   </pattern>
+   <pattern><!--book citations should have "source" and "year"-->
+    <rule context="back/ref-list[not(@content-type)]//ref/mixed-citation[@publication-type='book'][not(source) and not(year)]"
+            role="error">
+         <report id="reflist6b" test=".">Book citation "<value-of select="ancestor::ref/@id"/>" does not have "source" or "year". Either mark these up, or change 'publication-type' to "other".</report>
+      </rule>
+  </pattern>
+   <pattern><!--book citations should have "source" and "year"-->
+    <rule context="back/ref-list[not(@content-type)]//ref/mixed-citation[@publication-type='book'][source and not(year)]"
+            role="error">
+         <report id="reflist6c" test=".">Book citation "<value-of select="ancestor::ref/@id"/>" has "source" but no "year". Either mark up the year, or change 'publication-type' to "other".</report>
+      </rule>
+  </pattern>
+   <pattern><!--book citations should have "source" and "year"-->
+    <rule context="back/ref-list[not(@content-type)]//ref/mixed-citation[@publication-type='book'][not(source) and year]"
+            role="error">
+         <report id="reflist6d" test=".">Book citation "<value-of select="ancestor::ref/@id"/>" has "year" but no "source". Either mark up the source, or change 'publication-type' to "other".</report>
+      </rule>
+  </pattern>
    <pattern><!--second set of authors in book citation should be contained in person-group-->
     <rule context="back//mixed-citation[@publication-type='book']/chapter-title"
             role="error">
@@ -1838,9 +1856,9 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--"other" publication-type should not have "source"-->
-    <rule context="ref/mixed-citation[@publication-type='other'][source and not(article-title)]"
+    <rule context="ref/mixed-citation[@publication-type='other'][source and year and not(article-title)]"
             role="error">
-         <report id="reflist8b" test=".">Citation "<value-of select="parent::ref/@id"/>" contains a "source" (<value-of select="source"/>) and no article-title. Therefore it should have 'publication-type="book"', not "other".</report>
+         <report id="reflist8b" test=".">Citation "<value-of select="parent::ref/@id"/>" contains a "source" (<value-of select="source"/>) and a "year" (<value-of select="year"/>). Therefore it should have 'publication-type="book"', not "other".</report>
       </rule>
   </pattern>
    <pattern><!--publisher-loc should not be used instead of publisher-name-->
@@ -1913,6 +1931,12 @@ Use the <let> element to define the attribute if necessary.
             <let name="sup-fn"
               value="ancestor::article//table-wrap-foot/fn[@id=$id]/label//text()"/>
             <assert id="tab10c" test="not($sup-fn) or not($sup-link) or $sup-link=$sup-fn">Mismatch on linking text: "<value-of select="$sup-link"/>" in table, but "<value-of select="$sup-fn"/>" in footnote. Please check that correct footnote has been linked to.</assert>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="xref[@ref-type='table-fn'][not(parent::sup or descendant::sup)][matches(descendant::text(),'^[a-z]$')]"
+            role="error"><!--single letter references should be superscript-->
+            <report id="tab10d" test=".">Table footnote xref to "<value-of select="@rid"/>" should be wrapped in superscript element "sup".</report>
         </rule>
     </pattern>
    <pattern>
