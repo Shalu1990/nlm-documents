@@ -50,7 +50,8 @@
           <itemizedlist><listitem><para>nmstr201322-i1.jpg&#x2014;an illustration</para></listitem></itemizedlist>
           <itemizedlist><listitem><para>nmstr201322-t1.jpg&#x2014;a table image</para></listitem></itemizedlist>
           <itemizedlist><listitem><para>nmstr201322-pt1.ppt&#x2014;a table slide</para></listitem></itemizedlist>
-          <itemizedlist><listitem><para>nmstr201322-s1.xxx&#x2014;supplementary information</para></listitem></itemizedlist>
+          <itemizedlist><listitem><para>nmstr201322-s1.xxx&#x2014;supplementary information. Each item of supplementary information should be numbered uniquely - the file extension should <emphasis role="bold">not</emphasis> be used to distinguish different files e.g. nmstr201322-s1.jpg and nmstr201322-s2.mov (not nmstr201322-s1.mov)</para></listitem></itemizedlist>
+          <itemizedlist><listitem><para>sdata201422-isa1.zip&#x2014;ISA-Tab file for use in <emphasis>Scientific Data</emphasis></para></listitem></itemizedlist>
         </listitem>
       </itemizedlist>
       </section>
@@ -71,6 +72,7 @@
     <section>
       <title>Emphasised text</title>
       <para>As a rule, use emphasised text markup (<tag>&lt;bold></tag>, <tag>&lt;italic></tag>, <tag>&lt;sc></tag>, etc) only to set off a piece of information. Do not set entire elements in emphasised text. For example, if a <tag>&lt;title></tag> is set completely in boldface, do not use the <tag>&lt;bold></tag>. However, if a title has a word or some words set in boldface for emphasis, tag those words using <tag>&lt;bold></tag>. Mainly this will apply to <tag>&lt;title></tag>, <tag>&lt;p></tag> in <tag>&lt;abstract></tag>, <tag>&lt;label></tag> and entries in <tag>&lt;oasis:thead></tag>. It might also appear in <tag>&lt;aff></tag> and "special" sections, like <tag>&lt;ack></tag>.</para>
+      <para>See <link linkend="element_underline"><tag>&lt;underline></tag></link> for additional information on attribute use with that element. Do <emphasis role="bold">not</emphasis> use <tag>@specific-use</tag> with any stylistic element.</para>
       <!--para>[*Insert examples - figure title perhaps?*]</para-->
     </section>
     <section>
@@ -80,7 +82,7 @@
     <section xml:id="links">
       <title>Links</title>
       <para>Tag all internal links within the document (e.g. tables, figures, display formulae) with the <tag>&lt;xref></tag> element and include the appropriate <tag>@ref-type</tag>. See <link linkend="element_xref"><tag>&lt;xref></tag></link>.</para>
-      <para>Tag all links to related articles (e.g. from a correction to the corrected article) with <tag>&lt;related-article></tag> and include the appropriate <tag>@related-article-type</tag>, and citation information. See <link linkend="element_related-article"><tag>&lt;related-article></tag></link>.</para>
+      <para>Tag all links to related articles (e.g. from a correction to the corrected article) with <tag>&lt;related-article></tag> and include the appropriate <tag>@related-article-type</tag>, and citation information. See <link linkend="related-articles">Related articles</link>.</para>
       <para>Tag all external links with <tag>&lt;ext-link></tag> and include the appropriate <tag>@ext-link-type</tag>. See <link linkend="element_ext-link"><tag>&lt;ext-link></tag></link>.</para>
       </section>
     <section xml:id="mathematics">
@@ -302,7 +304,7 @@
     <title>Contributors and affiliations</title>
     <para>All NPG/Palgrave articles should have <tag>&lt;contrib-group></tag> to capture the article authors. <tag>&lt;contrib-group></tag> should only contain one or more <tag>&lt;contrib></tag>, do not use any other child elements.</para>
     <para>Each <tag>&lt;contrib></tag> should have <tag>@contrib-type</tag> (with values "author" or "editor") and <tag>@corresp</tag> (with values "yes" or "no").</para>
-    <para>Each <tag>&lt;contrib></tag> should also contain an <tag>&lt;xref></tag> to their affiliation details (except for correction articles where this is not required).</para>
+    <para>Each <tag>&lt;contrib></tag> should also contain an <tag>&lt;xref></tag> to their affiliation details (except for correction articles where this is not required). <emphasis role="bold">This is required even if all the authors are affiliated to the same institution.</emphasis></para>
     <para>If a contributor has <tag>@corresp="yes"</tag> then an <tag>&lt;xref></tag> to the correspondence information should be also be given.</para>
     <para><tag>&lt;xref></tag> should also be used for links to other notes about the authors, e.g. equal contribution information.</para>
     <para>The affilations should be gathered together as separate <tag>&lt;aff></tag> elements after <tag>&lt;contrib-group></tag> and not included as a child element of <tag>&lt;contrib></tag>.</para>
@@ -382,6 +384,8 @@
          Banpo-Dong, Seocho-Gu</addr-line>, <addr-line content-type="city">Seoul</addr-line> <addr-line
          content-type="zip">137-701</addr-line>, <country>Korea</country>. E-mail: <email
          xlink:href="kolpos@naver.com">kolpos@naver.com</email></corresp>
+     <corresp id="c2"><named-content content-type="author">EM Simpson</named-content> (<email
+         xlink:href="simpson@cmmt.ubc.ca">simpson@cmmt.ubc.ca</email>)</corresp>
          
       <corresp id="c1"><email xlink:href="hrmaskf@hkucc.hku.hk">hrmaskf@hkucc.hku.hk</email></corresp>
       <corresp id="c2"><email xlink:href="tgeorge@hkucc.hku.hk">tgeorge@hkucc.hku.hk</email></corresp>]]></programlisting>
@@ -398,7 +402,8 @@
      <fn fn-type="conflict" specific-use="conflict"><p>RJS has received grant support from Zafgen and
          Ethicon Endo-Surgery. RJS also currently has stock/stock options with Zafgen and consults for
          Zafgen, Eli Lilly and Ethicon Endo-Surgeries. DAS has received grant support from Ethicon Endo-
-         Surgery, Roche, Mannkind, and Pfizer. The other authors declare no conflict of interest.</p></fn>]]></programlisting>
+         Surgery, Roche, Mannkind, and Pfizer. The other authors declare no conflict of
+         interest.</p></fn>]]></programlisting>
     </sect4>
     <sect4>
       <title>Contribution information</title>
@@ -437,13 +442,13 @@
   </sect3>
   <sect3>
     <title>Volume, issue and page information</title>
-    <para>For our new online-only Academic Journals (<emphasis>Horticulture Research</emphasis> and <emphasis>Molecular Therapy &#x2013; Methods &amp; Clinical Development</emphasis>), only include volume and elocation information.</para>
-    <para>There is no need to give issue or first page information.</para>
+    <para>For our new online-only Academic Journals, only include volume and elocation information. There is no need to give issue or first page information.</para>
     <para>Do not use the prefix 'e' on the elocation-id value.</para>
+    <para>Please see the separate "Web deliverables" document for each journal on how to construct the elocation-id value.</para>
     <para>Example:</para>
     <programlisting><![CDATA[
      <volume>2</volume>
-     <elocation-id>23</elocation-id>]]></programlisting>
+     <elocation-id>14023</elocation-id>]]></programlisting>
     <para>For online-only journals which follow a volume and issue structure, include volume, issue and first page information.</para>
     <para>Example:</para>
     <programlisting><![CDATA[
@@ -498,10 +503,37 @@
      </permissions>]]></programlisting>
     <para>Correction articles should not contain license information as they are provided free of charge.</para>
   </sect3>
-  <sect3>
-    <title>Correction articles</title>
-    <para>Correction articles (addendum, correction, corrigendum, erratum and retraction) should provide a link back to the corrected article using <tag>&lt;related-article></tag>.</para>
-    <para>See <link linkend="element_related-article"><tag>&lt;related-article></tag></link> for further information.</para>
+  <sect3 xml:id="related-articles">
+    <title>Related articles</title>
+    <para>Correction articles (addendum, correction, corrigendum, erratum or retraction) should provide information on the corrected article using <tag>&lt;related-article></tag> with corresponding <tag>@related-article-type</tag> values of "is-addendum-to", "is-correction-to", "is-corrigendum-to", "is-erratum-to" or "is-retraction-to".</para>
+    <para>Example:</para>
+    <programlisting><![CDATA[
+     <related-article related-article-type="is-corrigendum-to" xlink:href="10.1038/nutd.2012.8"
+         ext-link-type="doi"/>]]></programlisting>
+    <sect4>
+      <title>Data descriptors</title>
+      <para>This information is added by the synchronisation tool after submission of an article to the Content Gateway and does not need to be created by the typesetters.</para>
+      <para>Data descriptors (the article type used in <emphasis>Scientific Data</emphasis>) should provide information on the source article using <tag>&lt;related-article></tag> with <tag>@related-article-type="is-data-descriptor-to"</tag>. If the source article was not published by NPG/Palgrave, then additional information should also be included in the <tag>&lt;related-article></tag> element: <tag>&lt;article-title></tag>, author names (contained in <tag>&lt;string-name></tag>), <tag>&lt;source></tag> and publication <tag>&lt;date></tag>.</para>
+    <para>Other required attributes:</para>
+    <itemizedlist>
+      <listitem><para>xlink:href&#x2014;the DOI for the referenced article</para></listitem>
+      <listitem><para>ext-link-type&#x2014;takes the value "doi"</para></listitem>
+    </itemizedlist>
+    <para>Example 1: Data descriptor to NPG article</para><!--Is this still correct??? Or are we including other info?-->
+    <programlisting><![CDATA[
+     <related-article related-article-type="is-data-descriptor-to" xlink:href="10.1038/ng.2642"
+         ext-link-type="doi"/>]]></programlisting>
+    <para>Example 2: Data descriptor to non-NPG article</para>
+    <programlisting><![CDATA[
+     <related-article related-article-type="is-data-descriptor-to" xlink:href="10.1155/2012/359647"
+           ext-link-type="doi">
+       <article-title>Urinary TWEAK level as a marker of lupus nephritis activity in 46 cases
+           </article-title>
+       <string-name><surname>Xuejing</surname> <given-names>Zhu</given-names></string-name>
+       <string-name><surname>Jiazhen</surname> <given-names>Tan</given-names></string-name>
+       <source>Journal of Biomedicine and Biotechnology</source>
+       <date><year>2012</year></date>
+     </related-article>]]></programlisting></sect4>
   </sect3>
   <sect3 xml:id="objects_abstract">
     <title>Abstracts</title>
@@ -672,6 +704,25 @@
        </sec>
        ...
      </body>]]></programlisting>
+    <sect3 xml:id="objects_secid">
+      <title>Section ids - <emphasis>Scientific Data</emphasis> only</title>
+      <para>For <emphasis>Scientific Data</emphasis>, <tag>@id</tag> should be added to <tag>&lt;sec></tag> for all sub-sections of the Methods section. The value of the <tag>@id</tag> should be the section title with the following changes made to the text:
+      <itemizedlist>
+        <listitem><para>strip XML tags leaving only text</para></listitem>
+        <listitem><para>convert spaces to hyphens</para></listitem>
+        <listitem><para>change all letters to lowercase</para></listitem>
+      </itemizedlist></para>
+      <para>Examples:</para>
+      <programlisting><![CDATA[
+     <sec specific-use="heading-level-1">
+       <title>Methods</title>
+       <sec specific-use="heading-level-2" id="gidmaps-drought-monitoring-and-prediction">
+          <title>GIDMaPS drought monitoring and prediction</title>
+          ...
+       <sec specific-use="heading-level-2" id="rna-seq-library-construction">
+          <title>RNA-<italic>seq</italic> library construction</title>]]></programlisting>
+      <para>[More information will be given on how to code non-ANSII characters.]</para>
+    </sect3>
   </sect2>
 <sect2 xml:id="objects_lists">
 <title>Lists</title>
@@ -727,7 +778,6 @@
 </sect1>
 <sect1 xml:id="objects_back">
 <title>Back</title>
-  <para></para>
   <sect2 xml:id="object_references">
     <title>References</title>
     <para>A reference list (<tag>&lt;ref-list></tag>) is a series of references (<tag>&lt;ref></tag>). Generally each reference item contains only one citation element. As we currently have no standard style for punctuation in our journals, use <tag>&lt;mixed-citation></tag> for all references and retain punctuation.<!--, but see <link linkend="object_link_groups">Link Groups</link> for an exception-->.</para>
@@ -735,27 +785,94 @@
     <para>All <tag>&lt;ref></tag> elements should have an <tag>@id</tag> which should follow the format of "b" + number. Do not use <tag>&lt;label></tag>.</para>
     <para><tag>&lt;mixed-citation></tag> should have <tag>@publication-type</tag> which can take the value "journal", "book" or "other" (e.g. meeting reports, websites).</para>
     <para>Where a reference has been written by a committee or other collaboration, use <tag>&lt;collab collab-type="corporate-author"></tag>.</para>
+    <para>Where a book reference contains details of a specific chapter:
+      <itemizedlist><listitem><para>use <tag>&lt;chapter-title></tag>, not <tag>&lt;article-title></tag>, for the chapter title</para></listitem>
+        <listitem><para>enclose the book's author/editor names in <tag>&lt;person-group></tag>, but do not put any additional markup on the chapter authors</para></listitem>
+        <listitem><para><tag>&lt;person-group></tag> should have <tag>@person-group-type</tag> identifying the role of the second set of names (e.g. "author", "editor" etc)</para></listitem></itemizedlist>
+    </para>
     <para>Do not use <tag>&lt;comment></tag> to mark-up punctuation or any other text, e.g. "(article in Japanese)".</para>
     <para>Example:</para>
     <programlisting><![CDATA[
-        <ref-list specific-use="numero">
-          ...
-          <ref id="b10"><mixed-citation publication-type="journal"><collab collab-type="corporate-author">
-              Committee to Evaluate Diagnostic Standards for Metabolic Syndrome</collab>. <article-title>
-              Definition and the diagnostic standard for metabolic syndrome</article-title>. <source>Nippon
-              Naika Gakkai Zasshi</source> <year>2005</year>; <volume>94</volume>: <fpage>794</fpage>&#x2013;
-              <lpage>809</lpage> (article in Japanese).</mixed-citation></ref>
-          <ref id="b11"><mixed-citation publication-type="book"><string-name><surname>Christie</surname>
-              <given-names>WW</given-names></string-name>. <source>Lipid Analysis: Isolation, Separation,
-              Identification, and Structural Analysis of Lipids</source>, 3rd edn. <publisher-name>The Oily
-              Press: Bridgwater</publisher-name>, <year>2003</year>.</mixed-citation></ref>
-          <ref id="b38"><mixed-citation publication-type="other"><string-name><surname>Hoe</surname>
-              <given-names>Y</given-names></string-name> Singapore's adult diabetes rate at 12-year high.
-              (Internet) 2010 (cited 26 November 2010). <ext-link xlink:href="http://www.channelnewsasia.com/
-              stories/singaporelocalnews/view/1095709/1/.html" ext-link-type="url">http://www.channelnews
-              asia.com/stories/singaporelocalnews/view/1095709/1/.html</ext-link>. (accessed 26 July 2012).
-              </mixed-citation></ref>
-        </ref-list>]]></programlisting>
+     <ref-list specific-use="numero">
+       ...
+       <ref id="b10"><mixed-citation publication-type="journal"><collab collab-type="corporate-author">
+           Committee to Evaluate Diagnostic Standards for Metabolic Syndrome</collab>. <article-title>
+           Definition and the diagnostic standard for metabolic syndrome</article-title>. <source>Nippon
+           Naika Gakkai Zasshi</source> <year>2005</year>; <volume>94</volume>: <fpage>794</fpage>&#x2013;
+           <lpage>809</lpage> (article in Japanese).</mixed-citation></ref>
+       <ref id="b17"><mixed-citation publication-type="book"><string-name><surname>Stocker</surname>
+           <given-names>O</given-names></string-name>. <chapter-title>Die Abh&#xE4;ngigkeit der Transpiration
+           von den Umweltfaktoren</chapter-title>. In: <person-group><string-name><surname>Ruhland</surname>
+           <given-names>W</given-names></string-name></person-group> (ed.) <source>Encyclopedia of PLANT 
+           PHYSIOLOGY</source>. <publisher-loc>Berlin</publisher-loc>: <publisher-name>Springer-Verlag
+           </publisher-name>, <year>1956</year>.</mixed-citation></ref>
+       <ref id="b38"><mixed-citation publication-type="other"><string-name><surname>Hoe</surname>
+           <given-names>Y</given-names></string-name> Singapore's adult diabetes rate at 12-year high.
+           (Internet) 2010 (cited 26 November 2010). <ext-link xlink:href="http://www.channelnewsasia.com/
+           stories/singaporelocalnews/view/1095709/1/.html" ext-link-type="url">http://www.channelnews
+           asia.com/stories/singaporelocalnews/view/1095709/1/.html</ext-link>. (accessed 26 July 2012).
+           </mixed-citation></ref>
+     </ref-list>]]></programlisting>
+  </sect2>
+  <sect2 xml:id="object_data_citations">
+    <title>Data Citations</title>
+    <para>Data citations (<tag>&lt;ref-list ref-type="data-citations"></tag>) are a series of references (<tag>&lt;ref></tag>) to scientific databases.</para>
+    <para>All <tag>&lt;ref></tag> elements should have an <tag>@id</tag> which should follow the format of "d" + number (starting from 1). Do not use <tag>&lt;label></tag>.</para>
+    <para>Each <tag>&lt;ref></tag> contains only one <tag>&lt;element-citation></tag> and this may contain any or all of the following:</para>
+    <itemizedlist>
+      <listitem><para><tag>&lt;named-content content-type="source"></tag>&#x2014;with text "new" or "existing". If no distinction is made between new and existing data (e.g. in <emphasis>Scientific Data</emphasis>), this element should not be used</para></listitem>
+      <listitem><para><tag>&lt;source></tag>&#x2014;the repository hosting the data</para></listitem>
+      <listitem><para><tag>&lt;ext-link></tag>&#x2014;containing the data citation ID, and with the following attributes:
+      <itemizedlist>
+        <listitem><para><tag>ext-link-type</tag>&#x2014;the repository identifier</para></listitem>
+        <listitem><para><tag>specific-use</tag>&#x2014;takes the value "url" when a full url has been supplied, or "id" when only the database ID is provided</para></listitem>
+        <listitem><para><tag>xlink:href</tag>&#x2014;the link information (either the full url or the ID, as provided)</para></listitem>
+      </itemizedlist></para></listitem>
+      <listitem><para><tag>&lt;year></tag></para></listitem>
+      <listitem><para><tag>&lt;collab></tag>&#x2014;containing author information</para></listitem>
+    </itemizedlist>
+    <para>Example:</para>
+    <programlisting><![CDATA[
+     <ref-list ref-type="data-citations">
+       <ref id="d1">
+         <element-citation>
+           <named-content content-type="source">new</named-content>
+           <source>FigShare</source>
+           <ext-link ext-link-type="figshare" specific-use="url" xlink:href="http://dx.doi.org/10.9999/figsharedoi/787700">787700</ext-link>
+           <year>2014</year>
+           <collab>
+             <contrib-group>
+               <contrib>
+                 <contrib-id contrib-id-type="orcid">http://orcid.org/0000-0002-8205-121X</contrib-id>
+                 <name><surname>Smith</surname><given-names>Mary</given-names></name>
+             </contrib>
+             <contrib><name><surname>Jones</surname><given-names>Peter</given-names><suffix>Jr.</suffix></name></contrib>
+             <contrib>
+               <contrib-id contrib-id-type="orcid">http://orcid.org/0000-0002-5463-0974</contrib-id>
+               <name><surname>Duncan</surname><given-names>Andrew</given-names><suffix>III</suffix></name>
+             </contrib>
+           </contrib-group>
+         </collab>
+       </element-citation>
+     </ref>
+     <ref id="d2">
+       <element-citation>
+         <named-content content-type="source">existing</named-content>
+         <source>Dryad Digital Repository</source>
+         <ext-link ext-link-type="dryad" specific-use="id" xlink:href="dryad.rv624">dryad.rv624</ext-link>
+         <year>2010</year>
+         <collab>
+           <contrib-group>
+             <contrib><name><surname>Brown</surname><given-names>Alison</given-names></name></contrib>
+             <contrib>
+               <contrib-id contrib-id-type="orcid">http://orcid.org/0000-0002-6199-2343</contrib-id>
+               <name><surname>Xiang</surname><given-names>Xu</given-names><suffix>Jr</suffix></name>
+             </contrib>
+           </contrib-group>
+         </collab>
+       </element-citation>
+     </ref>
+     </ref-list>]]></programlisting>
   </sect2>
 </sect1>
 <sect1 xml:id="objects_float">
@@ -795,7 +912,7 @@
       <itemizedlist>
         <listitem><para>position&#x2014;must be <tag>="anchor"</tag> for all images/slides in figures</para></listitem>
         <listitem><para>xlink:href&#x2014;image/slide filename, including the extension</para></listitem>
-        <listitem><para>mimetype&#x2014;based on the filename extension. See <link linkend="mimetypes">Mimetypes and mime subtypes</link> for the correct mappings.</para></listitem>
+        <listitem><para>mimetype&#x2014;<tag>="image"</tag> for figures; <tag>="application"</tag> for slides.</para></listitem>
         <listitem><para>mime-subtype&#x2014;based on the filename extension. See <link linkend="mimetypes">Mimetypes and mime subtypes</link> for the correct mappings.</para></listitem>
       </itemizedlist>
     </para>
@@ -915,7 +1032,7 @@
         <itemizedlist>
           <listitem><para>position&#x2014;must be <tag>="anchor"</tag> for all illustrations</para></listitem>
           <listitem><para>xlink:href&#x2014;illustration filename, including the extension</para></listitem>
-          <listitem><para>mimetype&#x2014;based on the filename extension. See <link linkend="mimetypes">Mimetypes and mime subtypes</link> for the correct mappings.</para></listitem>
+          <listitem><para>mimetype&#x2014;must be <tag>="image"</tag> for all illustrations</para></listitem>
           <listitem><para>mime-subtype&#x2014;based on the filename extension. See <link linkend="mimetypes">Mimetypes and mime subtypes</link> for the correct mappings.</para></listitem>
         </itemizedlist>
       </para>
@@ -936,15 +1053,15 @@
      </body>
      ...        
      <floats-group>
-        <graphic id="i1" position="anchor" content-type="illustration" xlink:href="am201232i1.jpg"
+        <graphic id="i1" position="anchor" content-type="illustration" xlink:href="am201232-i1.jpg"
             mimetype="image" mime-subtype="jpeg">
           <caption><p>Professor Yang Yang</p></caption>
         </graphic>
-        <graphic id="i2" position="anchor" content-type="illustration" xlink:href="am201232i2.jpg"
+        <graphic id="i2" position="anchor" content-type="illustration" xlink:href="am201232-i2.jpg"
             mimetype="image" mime-subtype="jpeg">
           <attrib>WpN/Photoshot</attrib>
         </graphic>
-        <graphic id="i3" position="anchor" content-type="illustration" xlink:href="am201232i3.jpg"
+        <graphic id="i3" position="anchor" content-type="illustration" xlink:href="am201232-i3.jpg"
             mimetype="image" mime-subtype="jpeg">
         </graphic>
     </floats-group>]]></programlisting>
@@ -1412,6 +1529,14 @@
      <supplementary-material id="s7" content-type="text" xlink:href="nutd20104-s7.csv" mimetype="text"
          mime-subtype="csv"><caption><title>Data Record</title></caption></supplementary-material>]]></programlisting>
   <para><emphasis role="bold">Note</emphasis>: <tag>&lt;supplementary-material></tag> can also be used as a descendant element within <tag>&lt;fig></tag> or <tag>&lt;table-wrap></tag> to capture information about powerpoint slides. The markup requirements are different, so please see <link linkend="fig_slides">Figure</link> and <link linkend="tab_slides">Table</link> sections for more information.</para>
+  <sect3 xml:id="isatab_files">
+    <title>ISA-Tab files</title>
+    <para>ISA-Tab files (used in <emphasis>Scientific Data</emphasis>) are also captured as <tag>&lt;supplementary-material></tag> but with <tag>@content type="isa-tab"</tag>. Other attribute values are as described above.</para>
+    <para>Example:</para>
+    <programlisting><![CDATA[
+     <supplementary-material id="s8" content-type="isa-tab" xlink:href="sdata201025-isa1.zip"
+         mimetype="application" mime-subtype="x-zip-compressed"/>]]></programlisting>
+  </sect3>
 </sect2>
 </sect1>
 <sect1 xml:id="objects_sub-article">
@@ -1422,6 +1547,10 @@
   <chapter xml:id="elements">
     <title>Elements</title>
     <para>These XML elements have specific style rules associated with them not covered by the information in the previous section.</para>
+    <sect1 xml:id="element_addr-line">
+      <title><tag>&lt;addr-line></tag></title>
+      <para>The <tag>@content-type</tag> attribute is required and should take one of the following values: "street", "city", "state", or "zip".</para>
+    </sect1>
     <sect1 xml:id="element_article">
       <title><tag>&lt;article></tag></title>
       <para>The root element for all articles.</para>
@@ -1472,23 +1601,20 @@
 <para>Do <emphasis role="bold">not</emphasis> use <tag>&lt;abbrev-journal-title></tag>, <tag>&lt;journal-subtitle></tag> or <tag>&lt;trans-title-group></tag>.</para>
 <para>See <link linkend="objects_journal_metadata">Journal metadata</link> for examples of markup.</para>
 </sect1>
-<sect1 xml:id="element_publisher">
+<sect1 xml:id="element_preformat">
+  <title><tag>&lt;preformat></tag></title>
+  <para>The <tag>@preformat-type</tag> attribute is required and should have value "inline" (for inline monospaced type) or "block" (for set out code).</para>
+  <para>Blocks of computer code (<tag>@preformat-type="block"</tag>) should not be contained in <tag>&lt;p></tag>, but be direct children of <tag>&lt;sec></tag>. This is to ensure correct rendering online.</para>
+</sect1>
+    <sect1 xml:id="element_publisher">
 <title><tag>&lt;publisher></tag></title>
 <para>The publisher name ("Nature Publishing Group", "Palgrave Macmillan") should be contained in the child <tag>&lt;publisher-name></tag> element.</para>
 <para>Do <emphasis role="bold">not</emphasis> use <tag>&lt;publisher-loc></tag>.</para>
 <para>See <link linkend="objects_journal_metadata">Journal metadata</link> for examples of markup.</para>
 </sect1>
-    <sect1 xml:id="element_related-article">
-      <title><tag>&lt;related-article></tag></title>
-      <para>Links to related articles (for example, articles which have had a corrigendum).</para>
-      <para>Required attributes:</para>
-      <itemizedlist>
-        <listitem><para>related-article-type&#x2014;takes the value "is-erratum-to", "is-correction-to", "is-retraction-to", "is-addendum-to" or "is-corrigendum-to"</para></listitem>
-        <listitem><para>xlink:href&#x2014;the doi for the referenced article</para></listitem>
-        <listitem><para>ext-link-type&#x2014;takes the value "doi"</para></listitem>
-      </itemizedlist>
-      <para>Example:</para>
-      <programlisting><![CDATA[<related-article related-article-type="is-corrigendum-to" xlink:href="10.1038/nutd.2012.8" ext-link-type="doi"/>]]></programlisting>
+    <sect1 xml:id="element_underline">
+      <title><tag>&lt;underline></tag></title>
+      <para><tag>@underline-style</tag> must be used on <tag>&lt;underline></tag>. It will take the value "single" (for one underline) or "double" (for two underlines).</para>
     </sect1>
     <sect1 xml:id="element_xref">
       <title><tag>&lt;xref></tag></title>
@@ -1508,12 +1634,13 @@
             <!--row><entry>app</entry><entry>appendix</entry><entry>app</entry><entry><tag>&lt;app></tag></entry></row-->
             <row><entry>aff</entry><entry>author affiliation</entry><entry>a</entry><entry><tag>&lt;aff></tag></entry></row>
             <row><entry>author-notes</entry><entry>footnote to author</entry><entry>n</entry><entry><tag>&lt;fn></tag></entry></row>
-            <row><entry>bibr</entry><entry>bibliographic reference</entry><entry>b</entry><entry><tag>&lt;ref></tag></entry></row>
+            <row><entry>bibr</entry><entry>bibliographic reference</entry><entry>b</entry><entry><tag>&lt;ref></tag> (parent <tag>&lt;ref-list></tag> without <tag>@ref-type</tag>)</entry></row>
             <!--row><entry>boxed-text</entry><entry>textbox or sidebar</entry><entry>bx</entry><entry><tag>&lt;boxed-text></tag></entry></row-->
             <row><entry>corresp</entry><entry>author correspondence information</entry><entry>c</entry><entry><tag>&lt;corresp></tag></entry></row>
             <row><entry>disp-formula</entry><entry>display formula</entry><entry>eq</entry><entry><tag>&lt;disp-formula></tag></entry></row>
             <row><entry>fig</entry><entry>figure</entry><entry>f</entry><entry><tag>&lt;fig></tag></entry></row>
             <!--row><entry>fn</entry><entry>footnote</entry><entry>fn</entry><entry><tag>&lt;fn></tag></entry></row-->
+            <row><entry>other</entry><entry>data citation</entry><entry>d</entry><entry><tag>&lt;ref></tag> (parent <tag>&lt;ref-list ref-type="data-citations"></tag>)</entry></row>
             <row><entry>other</entry><entry>illustration</entry><entry>i</entry><entry><tag>&lt;graphic content-type="illustration"></tag></entry></row>
             <row><entry>supplementary-material</entry><entry>supplementary content</entry><entry>s</entry><entry><tag>&lt;supplementary-material></tag></entry></row>
             <row><entry>table</entry><entry>table</entry><entry>t</entry><entry><tag>&lt;table-wrap></tag></entry></row>
@@ -1561,6 +1688,15 @@
         </table>
       </sect2>
       <sect2>
+        <title>Data citations</title>
+        <para>Where <tag>&lt;xref></tag> is used to link to data citation references, it should always contain the number of the link (i.e. not be empty).</para>
+        <para>Example:</para>
+        <programlisting><![CDATA[
+     ...deposited at the Metabolights repository (<xref ref-type="other"
+         rid="d1">Data Citation 1</xref>: Metabolights <xref ref-type="other"
+         rid="d1">MTBLS2</xref>)]]></programlisting>
+      </sect2>
+      <sect2>
         <title>Table footnotes</title>
         <para>Where <tag>&lt;xref></tag> is used to link to table footnotes, it should always contain the label for the link (i.e. not be empty).</para>
         <para>See <link linkend="sample_table_5">table samples 5</link> and <link linkend="sample_table_6">6</link> for example markup of <tag>&lt;xref ref-type="table-fn"></tag>.</para>
@@ -1569,10 +1705,34 @@
 </chapter>
   <chapter xml:id="update_history">
     <title>Update History</title>
-    <para>2013-12-04 v1.0 - Rewrite of <link linkend="objects_categories">Article Categories</link> section to include subject codes. Addition of <tag>@abstract-type="editorial-summary"</tag> information in <link linkend="objects_abstract">Abstract</link> section.</para>
+    <para>2014-03-14 v1.03 - 
+      <itemizedlist>
+        <listitem><para>Amendments to <link linkend="object_data_citations">Data Citations</link> instructions;</para></listitem>
+        <listitem><para>addition of instructions on <link linkend="objects_secid">section ids</link> for <emphasis>Scientific Data</emphasis>;</para></listitem>
+        <listitem><para>tightening of information on <link linkend="objects_figs">mimetypes for figures and illustrations</link>;</para></listitem>
+        <listitem><para>details of allowed values for <link linkend="element_addr-line"><tag>addr-line/@content-type</tag></link> and <link linkend="element_preformat"><tag>preformat/@preformat-type</tag></link>.</para></listitem>
+      </itemizedlist>
+    </para>
+    <para>2014-01-14 v1.02 - 
+      <itemizedlist>
+        <listitem><para>Instructions for <link linkend="element_underline"><tag>&lt;underline></tag></link>;</para></listitem>
+        <listitem><para>instructions for marking up <link linkend="object_references">book references</link> containing chapter information;</para></listitem>
+        <listitem><para>added note to <link linkend="object_contributors">Contributors and affiliations</link> section on use of <tag>&lt;xref></tag> links to affiliations.</para></listitem>
+      </itemizedlist>
+    </para>
+    <para>2013-12-29 v1.01 - Information for structures in <emphasis>Scientific Data</emphasis>:
+      <itemizedlist>
+        <listitem><para>New <link linkend="object_data_citations">Data Citations</link> section in "Back".</para></listitem>
+        <listitem><para>Rewrite of <link linkend="related-articles">Related articles</link> section within "Article metadata" and deletion of separate <tag>&lt;related-article></tag> element section.</para></listitem>
+        <listitem><para>Additions to: <link linkend="filenames">filenaming conventions</link>, <link linkend="isatab_files">Supplementary information</link>, and <link linkend="element_xref"><tag>&lt;xref></tag></link>.</para></listitem>
+      </itemizedlist> 
+    </para>
+    <para>2013-12-04 v1.0 - 
+      <itemizedlist><listitem><para>Rewrite of <link linkend="objects_categories">Article Categories</link> section to include subject codes.</para></listitem></itemizedlist>
+      <itemizedlist><listitem><para>Addition of <tag>@abstract-type="editorial-summary"</tag> information in <link linkend="objects_abstract">Abstract</link> section.</para></listitem></itemizedlist></para>
     <para>2013-10-10 v0.92 - Addition of <tag>@abstract-type</tag> information in <link linkend="objects_abstract">Abstract</link> section.</para>
-    <para>2013-08-29 v0.91 - Addition of requirement for <tag>@ext-link-type</tag> on <link linkend="element_related-article"><tag>&lt;related-article></tag></link>.</para>
-    <para>2013-07-30 v0.9 - Addition of filenaming conventions for online-only AJs. Addition of volume and elocation information for online-only AJs. Change in requirement for <tag>@align</tag> attribute on <tag>&lt;oasis:entry></tag>. Addition of instructions for illustrations and ORCID ids. Correction of errors found in v0.8.</para>
+    <para>2013-08-29 v0.91 - Addition of requirement for <tag>@ext-link-type</tag> on <link linkend="related-articles"><tag>&lt;related-article></tag></link>.</para>
+    <para>2013-07-30 v0.9 - <itemizedlist><listitem><para>Addition of filenaming conventions for online-only AJs.</para></listitem><listitem><para>Addition of volume and elocation information for online-only AJs.</para></listitem><listitem><para>Change in requirement for <tag>@align</tag> attribute on <tag>&lt;oasis:entry></tag>.</para></listitem><listitem><para>Addition of instructions for illustrations and ORCID ids.</para></listitem><listitem><para>Correction of errors found in v0.8.</para></listitem></itemizedlist></para>
     <para>2013-06-19 v0.8 - Draft version released to cover elements required in NUTD.</para>
   </chapter>
 </book>
