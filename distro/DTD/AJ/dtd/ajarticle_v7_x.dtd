@@ -13,6 +13,9 @@
 
 <!-- 
 
+04.04.14
+. CDS-79 - Added agreed relationship types to "related-article" 'related-article-type' attribute.
+
 21.11.13
 . HUBXML-30 - Added "ado", "do" and "dta" to NOTATION types and %format; parameter entity set.
 
@@ -1593,7 +1596,7 @@ suped?, supspon?, suptext?)>
 <!ELEMENT related-article EMPTY>
 <!ATTLIST related-article
   extrefid CDATA #REQUIRED
-  related-article-type (is-update-to) #REQUIRED
+  related-article-type (is-update-to | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol | is-protocol-update-to | has-protocol-update | is-data-descriptor-to | has-data-descriptor) #REQUIRED
 >
 
 <!-- errorcor is used to establish links between "Errata", "Corrections" and

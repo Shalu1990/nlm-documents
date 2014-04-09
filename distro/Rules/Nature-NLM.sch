@@ -57,11 +57,11 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="new-oa-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (matches($pcode,'^(bdjteam|palcomms)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+        value="if (matches($pcode,'^(bdjteam|palcomms)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="collection"
         value="if ($products//product[$pcode=@pcode]//targetDomain='nature.com') then 'nature'     else if ($products//product[$pcode=@pcode]//targetDomain='palgrave-journals.com') then 'palgrave'     else ()"/>
    <pattern>
@@ -708,7 +708,7 @@ Use the <let> element to define the attribute if necessary.
          <report id="oa-aj3b" test="license">"license" should not be used in correction articles, as they are not Open Access. This article is: <value-of select="$allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading"/>.</report>
       </rule>
   </pattern>
-   <pattern><!--open access license info should not be given in BDJ Team, which is free-->
+   <pattern><!--open access license info should not be given in BDJ Team, which is free. If this applies to other journals start a new variable $free rather than hard-coding pcodes here-->
     <rule context="article[$pcode='bdjteam']/front/article-meta/permissions/license"
             role="error">
          <report id="oa-aj3c" test=".">"license" should not be used in <value-of select="$journal-title"/>, as it is a free journal.</report>
@@ -977,28 +977,6 @@ Use the <let> element to define the attribute if necessary.
     <rule context="article[$pcode='sdata'][$article-type='dd'][descendant::related-article[@related-article-type='is-data-descriptor-to']]//subj-group[@subj-group-type='study-parameters'][preceding-sibling::subj-group[@subj-group-type='study-parameters']]"
             role="error">
          <report id="sdata1c" test=".">More than one study parameter section found - the pre-synched version of the article XML should be submitted to the Content Gateway.</report>
-      </rule>
-  </pattern>
-   <pattern><!--sec ids only needed in Methods sections-->
-    <rule context="article[$pcode='sdata'][$article-type='dd']//sec[@id][not(ancestor::sec[@specific-use='heading-level-1']/title/.='Methods')]"
-            role="error">
-         <report id="sdata2a" test=".">Section ids are only required on subsections of "Methods" in Data Descriptors.</report>
-      </rule>
-  </pattern>
-   <pattern><!--subsections of Methods section should have @ids-->
-    <rule context="article[$pcode='sdata'][$article-type='dd']//sec[not(@id)][ancestor::sec[@specific-use='heading-level-1']/title/.='Methods']"
-            role="error">
-         <let name="derivedId" value="lower-case(replace(title,' ','-'))"/>
-         <!--Needs updating once I have the non-ASCII coding requirements from Paul-->
-      <report id="sdata2b" test=".">Subsections of the "Methods" section in Data Descriptors, should have 'id' attributes. Expected value here is: <value-of select="$derivedId"/>.</report>
-      </rule>
-  </pattern>
-   <pattern><!--sec ids has expected value-->
-    <rule context="article[$pcode='sdata'][$article-type='dd']//sec[@id][ancestor::sec[@specific-use='heading-level-1']/title/.='Methods']"
-            role="error">
-         <let name="derivedId" value="lower-case(replace(title,' ','-'))"/>
-         <!--Needs updating once I have the non-ASCII coding requirements from Paul-->
-      <assert id="sdata2c" test="@id=$derivedId">Mismatch between section id (<value-of select="@id"/>) and expected value based on section title (<value-of select="$derivedId"/>).</assert>
       </rule>
   </pattern>
    <pattern>
