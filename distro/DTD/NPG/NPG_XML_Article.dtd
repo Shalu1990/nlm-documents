@@ -16,6 +16,8 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2014/04/04 - CDS-79 - Added "is-update-to" to allowed values "related-article" 'related-article-type' attribute - standardising.
+
 2014/01/27 - HUBXML-32 - Additional elements and attributes to support Scientific Data:
                          Added 'type' attribute to "aufn" - allowed value is "contributions"
                          "related-article" changed from %data; to %reftxt;
@@ -1084,7 +1086,7 @@ type (electronic | print) "print"
   id   ID  #IMPLIED
   extrefid  CDATA #REQUIRED
   extrefid-type (uri | doi | local-path) "doi"
-  related-article-type (protocol | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol | is-protocol-update-to | has-protocol-update | is-data-descriptor-to | has-data-descriptor) #REQUIRED
+  related-article-type (protocol | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol | is-protocol-update-to | has-protocol-update | is-data-descriptor-to | has-data-descriptor | is-update-to) #REQUIRED
 >
 
 <!ELEMENT article-link EMPTY>
@@ -1847,7 +1849,7 @@ status (primary | secondary) "secondary"
 
 <!ELEMENT data-citations (data-citation)+>
 
-<!ELEMENT data-citation (jtl?, refau)*>
+<!ELEMENT data-citation (jtl?, refau*)>
 <!ATTLIST data-citation
 id ID #IMPLIED
 db-name CDATA #REQUIRED
