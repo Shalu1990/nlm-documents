@@ -1671,14 +1671,15 @@ Use the <let> element to define the attribute if necessary.
          <report id="back-fn7c" test="@symbol">'symbol' attribute is not necessary on article-notes.</report>
       </rule>
   </pattern>
-   <pattern><!--notes - zero or one-->
-    <rule context="back/notes" role="error">
-         <report id="notes1" test="preceding-sibling::notes">There should only be one "notes" (accession group) in "back".</report>
+   <pattern><!--notes - should have @notes-type-->
+    <rule context="back/notes[not(@notes-type)]" role="error">
+         <report id="notes1" test=".">"notes" should have 'notes-type' attribute. Allowed values are: "database-links", "note-in-proof", "disclaimer" or "contact".</report>
       </rule>
   </pattern>
    <pattern><!--notes - @notes-type="database-links"-->
-    <rule context="back/notes" role="error">
-         <assert id="notes2a" test="@notes-type='database-links' or @notes-type='note-in-proof'">Unexpected value for "notes" attribute 'notes-type' ("<value-of select="@notes-type"/>"). It should be either "database-links" or "note-in-proof".</assert>
+    <rule context="back/notes[@notes-type]" role="error">
+         <assert id="notes2a"
+                 test="matches(@notes-type,'^(database-links|note-in-proof|disclaimer|contact)$')">Unexpected value for "notes" attribute 'notes-type' ("<value-of select="@notes-type"/>").  Allowed values are: "database-links", "note-in-proof", "disclaimer" or "contact".</assert>
       </rule>
   </pattern>
    <pattern><!--notes - no id or specific-use attribute-->
