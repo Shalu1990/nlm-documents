@@ -961,22 +961,10 @@ Use the <let> element to define the attribute if necessary.
          <assert id="oa-eloc1b" test=".=$eloc">Mismatch between elocation-id/article number (<value-of select="."/>) and expected value based on article id: <value-of select="$eloc"/>.</assert>
       </rule>
   </pattern>
-   <pattern><!--study parameters should be added by sync tool-->
-    <rule context="article[$pcode='sdata'][$article-type='dd'][not(descendant::related-article[@related-article-type='is-data-descriptor-to'])]//subj-group[@subj-group-type='study-parameters']"
-            role="error">
-         <report id="sdata1a" test=".">Study parameters should be added by the SciData synch tool. They do not need to be included as part of the typesetting process - please delete "subj-group" with "subj-group-type='study-parameters'".</report>
-      </rule>
-  </pattern>
    <pattern><!--"is-data-descriptor-to should be added by sync tool-->
     <rule context="article[$pcode='sdata'][$article-type='dd'][not(descendant::subj-group[@subj-group-type='study-parameters'])]//related-article[@related-article-type='is-data-descriptor-to']"
             role="error">
          <report id="sdata1b" test=".">"related-article" with 'related-article-type' of "is-data-descriptor-to" should be added by the SciData synch tool. It does not need to be included as part of the typesetting process - please delete.</report>
-      </rule>
-  </pattern>
-   <pattern><!--study parameters should be added by sync tool-->
-    <rule context="article[$pcode='sdata'][$article-type='dd'][descendant::related-article[@related-article-type='is-data-descriptor-to']]//subj-group[@subj-group-type='study-parameters'][preceding-sibling::subj-group[@subj-group-type='study-parameters']]"
-            role="error">
-         <report id="sdata1c" test=".">More than one study parameter section found - the pre-synched version of the article XML should be submitted to the Content Gateway.</report>
       </rule>
   </pattern>
    <pattern>
@@ -1205,12 +1193,6 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--List does not have an id-->
     <rule context="list[@id]" role="error">
          <report id="list1" test=".">The "id" attribute is not necessary on lists.</report>
-      </rule>
-  </pattern>
-   <pattern><!--List is not block-level, i.e. is a child of p or list-item [unless used for interview/quiz, materials/procedures]-->
-    <rule context="list[not(@list-content or @list-type='materials' or @list-type='procedure-group')][not(parent::p or parent::list-item)]"
-            role="error">
-         <report id="list2a" test=".">Regular lists should be enclosed in paragraphs or other lists.</report>
       </rule>
   </pattern>
    <pattern><!--List - no unnecessary attributes-->
@@ -1671,14 +1653,15 @@ Use the <let> element to define the attribute if necessary.
          <report id="back-fn7c" test="@symbol">'symbol' attribute is not necessary on article-notes.</report>
       </rule>
   </pattern>
-   <pattern><!--notes - zero or one-->
-    <rule context="back/notes" role="error">
-         <report id="notes1" test="preceding-sibling::notes">There should only be one "notes" (accession group) in "back".</report>
+   <pattern><!--notes - should have @notes-type-->
+    <rule context="back/notes[not(@notes-type)]" role="error">
+         <report id="notes1" test=".">"notes" should have 'notes-type' attribute. Allowed values are: "database-links", "note-in-proof", "disclaimer" or "contact".</report>
       </rule>
   </pattern>
    <pattern><!--notes - @notes-type="database-links"-->
-    <rule context="back/notes" role="error">
-         <assert id="notes2a" test="@notes-type='database-links' or @notes-type='note-in-proof'">Unexpected value for "notes" attribute 'notes-type' ("<value-of select="@notes-type"/>"). It should be either "database-links" or "note-in-proof".</assert>
+    <rule context="back/notes[@notes-type]" role="error">
+         <assert id="notes2a"
+                 test="matches(@notes-type,'^(database-links|note-in-proof|disclaimer|contact)$')">Unexpected value for "notes" attribute 'notes-type' ("<value-of select="@notes-type"/>").  Allowed values are: "database-links", "note-in-proof", "disclaimer" or "contact".</assert>
       </rule>
   </pattern>
    <pattern><!--notes - no id or specific-use attribute-->
@@ -2311,9 +2294,9 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--supplementary-material - only caption allowed as a child-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media')]/*"
             role="error">
-         <report id="supp1a" test="*[not(self::caption)]">Only "caption" should be used as a child of "supplementary-material" - do not use "<value-of select="local-name(*)"/>".</report>
+         <assert id="supp1a" test="self::caption or self::alternatives">Only "caption" should be used as a child of "supplementary-material" - do not use "<name/>".</assert>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - caption must contain title-->
