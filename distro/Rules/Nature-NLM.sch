@@ -1882,7 +1882,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--person-group should only be used in book citations for the second group of authors-->
-    <rule context="person-group[not(ancestor::mixed-citation/@publication-type='other')]"
+    <rule context="back//mixed-citation[not(@publication-type='other')]/person-group"
             role="error">
          <assert id="reflist7f"
                  test="parent::mixed-citation[@publication-type='book'] and preceding-sibling::*">"person-group" should only be used to capture the second group of editors/authors in a book citation. Do not use it in citation "<value-of select="ancestor::ref/@id"/>".</assert>
