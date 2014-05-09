@@ -967,6 +967,13 @@ Use the <let> element to define the attribute if necessary.
          <report id="sdata1b" test=".">"related-article" with 'related-article-type' of "is-data-descriptor-to" should be added by the SciData synch tool. It does not need to be included as part of the typesetting process - please delete.</report>
       </rule>
   </pattern>
+   <pattern><!--"is-data-descriptor-to should be added by sync tool-->
+    <rule context="article[$pcode='sdata'][$article-type='dd']//related-article[not(@related-article-type='is-data-descriptor-to')]"
+            role="error">
+         <let name="type" value="@related-article-type"/>
+         <report id="sdata1d" test=".">In Data Descriptors, the only "related-article" 'related-article-type' value should be "is-data-descriptor-to", which will be added by the SciData synch tool. Please delete "related-article" with 'related-article-type="<value-of select="$type"/>"'.</report>
+      </rule>
+  </pattern>
    <pattern>
       <rule context="contrib-group[not(@content-type='contributor')]/contrib/xref"
             role="error"><!--Contrib xref should have @ref-type-->
@@ -1007,6 +1014,12 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="aff[@id]" role="error"><!--Affiliation id in required format-->
       <assert id="aff3b" test="matches(@id,'^a[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "aff" 'id' attribute should be of the form "a"+number (with no leading zeros). Also, update the values in any linking "xref" elements.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article-meta/aff[@id]" role="error"><!--Affiliation information given, but no corresponding author in contrib list-->
+      <let name="id" value="@id"/>
+         <assert id="aff3c" test="ancestor::article//contrib/xref[@rid=$id]">Affiliation information has been given (id="<value-of select="@id"/>"), but no link has been added to the contrib information. Insert an "xref" link with attributes ref-type="aff" and rid="<value-of select="@id"/>" on the relevant contributor.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -1976,6 +1989,11 @@ Use the <let> element to define the attribute if necessary.
         <rule context="xref[@ref-type='table-fn'][not(parent::sup or descendant::sup)][matches(descendant::text(),'^[a-z]$')]"
             role="error"><!--single letter references should be superscript-->
             <report id="tab10d" test=".">Table footnote xref to "<value-of select="@rid"/>" should be wrapped in superscript element "sup".</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="table-wrap-foot/fn-group" role="error"><!--do not use fn-group in table footer-->
+            <report id="tab10e" test=".">Do not use "fn-group" within "table-wrap-foot".</report>
         </rule>
     </pattern>
    <pattern>
