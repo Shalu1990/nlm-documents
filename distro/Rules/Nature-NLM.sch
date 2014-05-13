@@ -1687,6 +1687,12 @@ Use the <let> element to define the attribute if necessary.
          <report id="notes2c" test="@specific-use">Do not use "specific-use" attribute on "notes" in back matter.</report>
       </rule>
   </pattern>
+   <pattern><!--notes - @notes-type="database-links"-->
+    <rule context="back/notes[matches(@notes-type,'^(disclaimer|contact)$')]"
+            role="error">
+         <assert id="notes2d" test="$article-type='advert'">"<value-of select="@notes-type"/>" note should only be used in adverts. Please contact Production to get tagging instructions.</assert>
+      </rule>
+  </pattern>
    <pattern><!--para in notes - only one ext-link per para-->
     <rule context="back/notes/p">
          <report id="notes3a" test="count(ext-link) gt 1">Take a new paragraph for each "ext-link" in the database link (notes) section.</report>
