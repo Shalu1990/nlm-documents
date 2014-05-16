@@ -27,7 +27,7 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="allowed-values"
         value="document( 'allowed-values-nlm.xml' )/allowed-values"/>
-   <!--Points at document containing information on journal titles, ids and DOIs-->
+   <!--Points at document containing information on allowed attribute values-->
   <let name="allowed-article-types"
         value="document( 'allowed-article-types.xml' )/allowed-article-types"/>
    <!--look-up file for allowed article types. Once the product ontology contains this information, this file can be deleted and the Schematron rules updated-->
@@ -1104,6 +1104,18 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="author-notes/fn[not(@fn-type)][@id]" role="error"><!--author notes id in required format-->
       <assert id="aunote1b" test="matches(@id,'^n[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "author-notes/fn" 'id' attribute should be of the form "n"+number (without leading zeros).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="contrib[collab][attribute::*]" role="error"><!--no attributes required when contributor is a collaboration-->
+      <report id="collab1a" test=".">No attributes are required when a contributor is a collaboration - element should just be &lt;contrib&gt;.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="contrib[collab[@collab-type='on-behalf-of']]/xref" role="error"><!--no xref links allowed when contributor is a collaboration-->
+      <let name="refType"
+              value="if (@ref-type='aff') then 'an affiliation' else         if (@ref-type='corresp') then 'correspondence information' else         if (@ref-type='author-notes') then 'author notes' else 'xref links'"/>
+         <report id="collab1b" test=".">"on behalf of" collaborations cannot have <value-of select="$refType"/>. Please contact NPG for markup instructions.</report>
       </rule>
   </pattern>
    <pattern><!--sec - sec-type or specific-use attribute used-->
