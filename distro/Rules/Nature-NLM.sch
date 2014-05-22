@@ -16,16 +16,24 @@ Use the <let> element to define the attribute if necessary.
   <ns uri="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table"
        prefix="oasis"/>
   <ns uri="http://www.w3.org/1999/xlink" prefix="xlink"/>
+  <ns prefix="npg" uri="http://ns.nature.com/terms/"/>
+  <ns prefix="rdf" uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+  <ns prefix="skos" uri="http://www.w3.org/2004/02/skos/core#"/>
+  <ns prefix="bibo" uri="http://purl.org/ontology/bibo/"/>
+  <ns prefix="foaf" uri="http://xmlns.com/foaf/0.1/"/>
+  <ns prefix="owl" uri="http://www.w3.org/2002/07/owl#"/>
+  <ns prefix="dc" uri="http://purl.org/dc/elements/1.1/"/>
+  <ns prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
+  
   <let name="allowed-values"
         value="document( 'allowed-values-nlm.xml' )/allowed-values"/>
-   <!--Points at document containing information on journal titles, ids and DOIs-->
+   <!--Points at document containing information on allowed attribute values-->
   <let name="allowed-article-types"
         value="document( 'allowed-article-types.xml' )/allowed-article-types"/>
    <!--look-up file for allowed article types. Once the product ontology contains this information, this file can be deleted and the Schematron rules updated-->
 
-  <let name="products" value="document('products.xml')"/>
-  <let name="subjects" value="document('subjects.xml')"/>
-      
+  <let name="journals" value="document('journals.xml')"/>
+    
   <ns prefix="functx" uri="http://www.functx.com"/>
    <!--extended XPath functions from Priscilla Walmsley-->
   <xsl:function xmlns:functx="http://www.functx.com" name="functx:substring-after-last"
@@ -57,13 +65,12 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="new-oa-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (matches($pcode,'^(bdjteam|palcomms)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
-  <let name="collection"
-        value="if ($products//product[$pcode=@pcode]//targetDomain='nature.com') then 'nature'     else if ($products//product[$pcode=@pcode]//targetDomain='palgrave-journals.com') then 'palgrave'     else ()"/>
+        value="if (matches($pcode,'^(bdjteam|palcomms|hgv)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+  <let name="collection" value="$journals//npg:Journal[npg:pcode=$pcode]/npg:domain"/>
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
       <let name="article-type"
@@ -107,19 +114,19 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="journal-title-group[not($journal-title='')]" role="error"><!--Is the journal title valid-->
       <assert id="jmeta3a"
-                 test="not(descendant::journal-title) or $products[descendant::title=$journal-title]">Journal titles must be from the prescribed list of journal names. "<value-of select="$journal-title"/>" is not on this list - check spelling, spacing of words or use of the ampersand. Other rules are based on having a correct journal title and therefore will not be run. Please resubmit this file when the title has been corrected.</assert>
+                 test="not(descendant::journal-title) or $journals//npg:Journal[dc:title=$journal-title]">Journal titles must be from the prescribed list of journal names. "<value-of select="$journal-title"/>" is not on this list - check spelling, spacing of words or use of the ampersand. Other rules are based on having a correct journal title and therefore will not be run. Please resubmit this file when the title has been corrected.</assert>
       </rule>
     </pattern>
    <pattern>
       <rule context="journal-title-group[not($journal-title='')]" role="error"><!--Is the journal id valid?-->
       <assert id="jmeta3b"
-                 test="$products[descendant::product/@pcode=$pcode] or not($products[descendant::title=$journal-title])">Journal id is incorrect (<value-of select="$pcode"/>). For <value-of select="$journal-title"/>, it should be: <value-of select="$products//product[descendant::title=$journal-title]/@pcode"/>. Other rules are based on having a correct journal id and therefore will not be run. Please resubmit this file when the journal id has been corrected.</assert>
+                 test="$journals//npg:Journal[npg:pcode=$pcode] or not($journals//npg:Journal[dc:title=$journal-title])">Journal id is incorrect (<value-of select="$pcode"/>). For <value-of select="$journal-title"/>, it should be: <value-of select="$journals//npg:Journal[dc:title=$journal-title]/npg:pcode"/>. Other rules are based on having a correct journal id and therefore will not be run. Please resubmit this file when the journal id has been corrected.</assert>
       </rule>
     </pattern>
    <pattern>
       <rule context="journal-title-group[not($journal-title='')]" role="error"><!--Do the journal title and id match each other?-->
       <assert id="jmeta3c"
-                 test="$pcode=$products//product[descendant::title=$journal-title]/@pcode or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode])">Journal id (<value-of select="$pcode"/>) does not match journal title: <value-of select="$journal-title"/>. Check which is the correct value.</assert>
+                 test="$pcode=$journals//npg:Journal[dc:title=$journal-title]/npg:pcode or not($journals//npg:Journal[dc:title=$journal-title]) or not($journals//npg:Journal[npg:pcode=$pcode])">Journal id (<value-of select="$pcode"/>) does not match journal title: <value-of select="$journal-title"/>. Check which is the correct value.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -146,39 +153,39 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--ISSN ppub declared in XML has equivalent print issn in ontology-->
     <rule context="journal-meta/issn[@pub-type='ppub']" role="error">
          <assert id="jmeta5b1a"
-                 test="not($journal-title) or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode]) or $products/descendant::product[@pcode=$pcode]//issn[@type='print']">Print ISSN given in XML, but <value-of select="$journal-title"/> is online only. Only an electronic ISSN should be given.</assert>
+                 test="not($journal-title) or not($journals//npg:Journal[dc:title=$journal-title]) or not($journals//npg:Journal[npg:pcode=$pcode]) or $journals//npg:Journal[npg:pcode=$pcode][bibo:issn]">Print ISSN given in XML, but <value-of select="$journal-title"/> is online only. Only an electronic ISSN should be given.</assert>
       </rule>
   </pattern>
    <pattern><!--Journal with print issn in ontology has ISSN ppub declared in XML-->
     <rule context="journal-meta[not($pcode='am')]" role="error">
          <assert id="jmeta5b1b"
-                 test="not($journal-title) or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode]) or not($products/descendant::product[@pcode=$pcode]//issn[@type='print']) or issn[@pub-type='ppub']">
-            <value-of select="$journal-title"/> should have print ISSN (<value-of select="$products/descendant::product[@pcode=$pcode]//issn[@type='print']"/>).</assert>
+                 test="not($journal-title) or not($journals//npg:Journal[dc:title=$journal-title]) or not($journals//npg:Journal[npg:pcode=$pcode]) or not($journals//npg:Journal[npg:pcode=$pcode][bibo:issn]) or issn[@pub-type='ppub']">
+            <value-of select="$journal-title"/> should have print ISSN (<value-of select="$journals//npg:Journal[npg:pcode=$pcode]/bibo:issn"/>).</assert>
       </rule>
   </pattern>
    <pattern><!--ISSN ppub matches print issn in ontology-->
     <rule context="journal-meta/issn[@pub-type='ppub']" role="error">
          <assert id="jmeta5b2"
-                 test="not($journal-title) or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode]) or not($products/descendant::product[@pcode=$pcode]//issn[@type='print']) or .=$products/descendant::product[@pcode=$pcode]//issn[@type='print']">Incorrect print ISSN (<value-of select="."/>) for <value-of select="$journal-title"/>. Expected value is: <value-of select="$products/descendant::product[@pcode=$pcode]//issn[@type='print']"/>.</assert>
+                 test="not($journal-title) or not($journals//npg:Journal[dc:title=$journal-title]) or not($journals//npg:Journal[npg:pcode=$pcode]) or not($journals//npg:Journal[npg:pcode=$pcode][bibo:issn]) or .=$journals//npg:Journal[npg:pcode=$pcode]/bibo:issn">Incorrect print ISSN (<value-of select="."/>) for <value-of select="$journal-title"/>. Expected value is: <value-of select="$journals//npg:Journal[npg:pcode=$pcode]/bibo:issn"/>.</assert>
       </rule>
   </pattern>
    <pattern><!--ISSN epub declared in XML has equivalent eissn in ontology-->
     <rule context="journal-meta/issn[@pub-type='epub']" role="error">
          <assert id="jmeta5c1a"
-                 test="not($journal-title) or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode]) or $products/descendant::product[@pcode=$pcode]//issn[@type='electronic']">Electronic ISSN given in XML, but <value-of select="$journal-title"/> is print only. Only a print ISSN should be given.</assert>
+                 test="not($journal-title) or not($journals//npg:Journal[dc:title=$journal-title]) or not($journals//npg:Journal[npg:pcode=$pcode]) or $journals//npg:Journal[npg:pcode=$pcode][bibo:eissn]">Electronic ISSN given in XML, but <value-of select="$journal-title"/> is print only. Only a print ISSN should be given.</assert>
       </rule>
   </pattern>
    <pattern><!--Journal with eissn in ontology has ISSN epub declared in XML-->
     <rule context="journal-meta" role="error">
          <assert id="jmeta5c1b"
-                 test="not($journal-title) or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode]) or not($products/descendant::product[@pcode=$pcode]//issn[@type='electronic']) or issn[@pub-type='epub']">
-            <value-of select="$journal-title"/> should have eISSN (<value-of select="$products/descendant::product[@pcode=$pcode]//issn[@type='electronic']"/>).</assert>
+                 test="not($journal-title) or not($journals//npg:Journal[dc:title=$journal-title]) or not($journals//npg:Journal[npg:pcode=$pcode]) or not($journals//npg:Journal[npg:pcode=$pcode][bibo:eissn]) or issn[@pub-type='epub']">
+            <value-of select="$journal-title"/> should have eISSN (<value-of select="$journals//npg:Journal[npg:pcode=$pcode]/bibo:eissn"/>).</assert>
       </rule>
   </pattern>
    <pattern><!--ISSN ppub matches print issn in ontology-->
     <rule context="journal-meta/issn[@pub-type='epub']" role="error">
          <assert id="jmeta5c2"
-                 test="not($journal-title) or not($products[descendant::title=$journal-title]) or not($products[descendant::product/@pcode=$pcode]) or not($products/descendant::product[@pcode=$pcode]//issn[@type='electronic']) or .=$products/descendant::product[@pcode=$pcode]//issn[@type='electronic']">Incorrect electronic ISSN (<value-of select="."/>) for <value-of select="$journal-title"/>. Expected value is: <value-of select="$products/descendant::product[@pcode=$pcode]//issn[@type='electronic']"/>.</assert>
+                 test="not($journal-title) or not($journals//npg:Journal[dc:title=$journal-title]) or not($journals//npg:Journal[npg:pcode=$pcode]) or not($journals//npg:Journal[npg:pcode=$pcode][bibo:eissn]) or .=$journals//npg:Journal[npg:pcode=$pcode]/bibo:eissn">Incorrect electronic ISSN (<value-of select="."/>) for <value-of select="$journal-title"/>. Expected value is: <value-of select="$journals//npg:Journal[npg:pcode=$pcode]/bibo:eissn"/>.</assert>
       </rule>
   </pattern>
    <pattern><!--Only one of each issn pub-type used-->
@@ -649,7 +656,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="derived-status"
               value="if ($new-oa-aj='yes' or $existing-oa-aj='yes') then 'online'         else if (pub-date[@pub-type='epub'] or pub-date[@pub-type='cover-date']) then 'issue'         else if (pub-date[@pub-type='aop']) then 'aop'         else if (pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/> 
          <assert id="custom1"
-                 test="not($products[descendant::product/@pcode=$pcode]) or custom-meta-group/custom-meta[meta-name='publish-type']">All articles should contain publication status information at the end of "article-metadata". Insert "custom-meta-group/custom-meta" with "meta-name". For this journal and publication status, "meta-value" should be "<value-of select="$derived-status"/>".</assert>
+                 test="not($journals//npg:Journal[npg:pcode=$pcode]) or custom-meta-group/custom-meta[meta-name='publish-type']">All articles should contain publication status information at the end of "article-metadata". Insert "custom-meta-group/custom-meta" with "meta-name". For this journal and publication status, "meta-value" should be "<value-of select="$derived-status"/>".</assert>
       </rule>
   </pattern>
    <pattern><!--update $derived-status with all Frontiers titles if they are converted to JATS-->
@@ -659,7 +666,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="derived-status"
               value="if ($new-oa-aj='yes' or $existing-oa-aj='yes') then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub'] or ancestor::article-meta/pub-date[@pub-type='cover-date']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else if (ancestor::article-meta/pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/>
          <assert id="custom2"
-                 test="not($products[descendant::product/@pcode=$pcode]) or $status=$derived-status">Unexpected value for "publish-type" (<value-of select="$status"/>). Expected value for this journal and publication status is "<value-of select="$derived-status"/>".</assert>
+                 test="not($journals//npg:Journal[npg:pcode=$pcode]) or $status=$derived-status">Unexpected value for "publish-type" (<value-of select="$status"/>). Expected value for this journal and publication status is "<value-of select="$derived-status"/>".</assert>
       </rule>
   </pattern>
    <pattern>
@@ -842,24 +849,22 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--subject path found in subject ontology-->
     <rule context="article[$new-oa-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
-         <let name="derivedUri" value="concat('data:,npg.subject:',.)"/>
-         <assert id="oa-aj10a" test="$derivedUri = $subjects//subject/@uri">Subject path (<value-of select="."/>) is not recognized by the subject ontology. Please check the information supplied by NPG.</assert>
+         <assert id="oa-aj10a" test=".=$journals//npg:subjectPath">Subject path (<value-of select="."/>) is not recognized by the subject ontology. Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--subject path valid for the journal-->
     <rule context="article[$new-oa-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
-         <let name="derivedUri" value="concat('data:,npg.subject:',.)"/>
          <assert id="oa-aj10b"
-                 test="$subjects//subject[@uri/.=$derivedUri]/references/reference[@pcode=$pcode] or not($derivedUri = $subjects//subject/@uri)">Subject path (<value-of select="."/> - <value-of select="$subjects//subject[@uri/.=$derivedUri]/@name"/>) is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by NPG.</assert>
+                 test=".=$journals//npg:Journal[npg:pcode=$pcode]/npg:subjectPath or not(.=$journals//npg:subjectPath)">Subject path <value-of select="."/> is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--id should be final value in subject path-->
-    <rule context="article[$new-oa-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))]//subject[@content-type='npg.subject']/named-content[@content-type='id']">
-         <let name="path" value="following-sibling::named-content[@content-type='path'][1]"/>
-         <let name="derivedUri" value="concat('data:,npg.subject:',$path)"/>
+    <rule context="article[$new-oa-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))]//subject[@content-type='npg.subject'][named-content[@content-type='id']]">
+         <let name="path" value="named-content[@content-type='path'][1]"/>
+         <let name="id" value="named-content[@content-type='id']"/>
          <let name="derivedId" value="functx:substring-after-last($path,'/')"/>
          <assert id="oa-aj10c"
-                 test=".=$derivedId or not($subjects//subject[@uri/.=$derivedUri]/references/reference[@pcode=$pcode]) or not($derivedUri = $subjects//subject/@uri)">Subject 'id' (<value-of select="."/>) does not match the final part of subject 'path' (<value-of select="$derivedId"/>). Please check the information supplied by NPG.</assert>
+                 test="$id=$derivedId or not($journals//npg:Journal[npg:pcode=$pcode]/npg:subjectPath[.=$path]) or not($journals//npg:subjectPath[.=$path])">Subject 'id' (<value-of select="$id"/>) does not match the final part of subject 'path' (<value-of select="$derivedId"/>). Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--article-type and article heading should be equivalent-->
@@ -967,6 +972,13 @@ Use the <let> element to define the attribute if necessary.
          <report id="sdata1b" test=".">"related-article" with 'related-article-type' of "is-data-descriptor-to" should be added by the SciData synch tool. It does not need to be included as part of the typesetting process - please delete.</report>
       </rule>
   </pattern>
+   <pattern><!--"is-data-descriptor-to should be added by sync tool-->
+    <rule context="article[$pcode='sdata'][$article-type='dd']//related-article[not(@related-article-type='is-data-descriptor-to')]"
+            role="error">
+         <let name="type" value="@related-article-type"/>
+         <report id="sdata1d" test=".">In Data Descriptors, the only "related-article" 'related-article-type' value should be "is-data-descriptor-to", which will be added by the SciData synch tool. Please delete "related-article" with 'related-article-type="<value-of select="$type"/>"'.</report>
+      </rule>
+  </pattern>
    <pattern>
       <rule context="contrib-group[not(@content-type='contributor')]/contrib/xref"
             role="error"><!--Contrib xref should have @ref-type-->
@@ -1007,6 +1019,12 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="aff[@id]" role="error"><!--Affiliation id in required format-->
       <assert id="aff3b" test="matches(@id,'^a[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "aff" 'id' attribute should be of the form "a"+number (with no leading zeros). Also, update the values in any linking "xref" elements.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article-meta/aff[@id]" role="error"><!--Affiliation information given, but no corresponding author in contrib list-->
+      <let name="id" value="@id"/>
+         <assert id="aff3c" test="ancestor::article//contrib/xref[@rid=$id]">Affiliation information has been given (id="<value-of select="@id"/>"), but no link has been added to the contrib information. Insert an "xref" link with attributes ref-type="aff" and rid="<value-of select="@id"/>" on the relevant contributor.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -1086,6 +1104,18 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="author-notes/fn[not(@fn-type)][@id]" role="error"><!--author notes id in required format-->
       <assert id="aunote1b" test="matches(@id,'^n[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "author-notes/fn" 'id' attribute should be of the form "n"+number (without leading zeros).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="contrib[collab][attribute::*]" role="error"><!--no attributes required when contributor is a collaboration-->
+      <report id="collab1a" test=".">No attributes are required when a contributor is a collaboration - element should just be &lt;contrib&gt;.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="contrib[collab[@collab-type='on-behalf-of']]/xref" role="error"><!--no xref links allowed when contributor is a collaboration-->
+      <let name="refType"
+              value="if (@ref-type='aff') then 'an affiliation' else         if (@ref-type='corresp') then 'correspondence information' else         if (@ref-type='author-notes') then 'author notes' else 'xref links'"/>
+         <report id="collab1b" test=".">"on behalf of" collaborations cannot have <value-of select="$refType"/>. Please contact NPG for markup instructions.</report>
       </rule>
   </pattern>
    <pattern><!--sec - sec-type or specific-use attribute used-->
@@ -1674,6 +1704,12 @@ Use the <let> element to define the attribute if necessary.
          <report id="notes2c" test="@specific-use">Do not use "specific-use" attribute on "notes" in back matter.</report>
       </rule>
   </pattern>
+   <pattern><!--notes - @notes-type="database-links"-->
+    <rule context="back/notes[matches(@notes-type,'^(disclaimer|contact)$')]"
+            role="error">
+         <assert id="notes2d" test="$article-type='advert'">"<value-of select="@notes-type"/>" note should only be used in adverts. Please contact Production to get tagging instructions.</assert>
+      </rule>
+  </pattern>
    <pattern><!--para in notes - only one ext-link per para-->
     <rule context="back/notes/p">
          <report id="notes3a" test="count(ext-link) gt 1">Take a new paragraph for each "ext-link" in the database link (notes) section.</report>
@@ -1882,7 +1918,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--person-group should only be used in book citations for the second group of authors-->
-    <rule context="person-group[not(ancestor::mixed-citation/@publication-type='other')]"
+    <rule context="back//mixed-citation[not(@publication-type='other')]/person-group"
             role="error">
          <assert id="reflist7f"
                  test="parent::mixed-citation[@publication-type='book'] and preceding-sibling::*">"person-group" should only be used to capture the second group of editors/authors in a book citation. Do not use it in citation "<value-of select="ancestor::ref/@id"/>".</assert>
@@ -1976,6 +2012,11 @@ Use the <let> element to define the attribute if necessary.
         <rule context="xref[@ref-type='table-fn'][not(parent::sup or descendant::sup)][matches(descendant::text(),'^[a-z]$')]"
             role="error"><!--single letter references should be superscript-->
             <report id="tab10d" test=".">Table footnote xref to "<value-of select="@rid"/>" should be wrapped in superscript element "sup".</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="table-wrap-foot/fn-group" role="error"><!--do not use fn-group in table footer-->
+            <report id="tab10e" test=".">Do not use "fn-group" within "table-wrap-foot".</report>
         </rule>
     </pattern>
    <pattern>
