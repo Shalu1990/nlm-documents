@@ -16,6 +16,13 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2014/05/31 - CDS-181 - Added "excerpt-from" to 'related-article-type' attribute
+                       Added "related-article" and "sec" as optional children of "bx" 
+                       Added "excerpt" to list of allowed values for "bx" 'type' attribute
+                       Added optional "label" to "fig"
+                       Added optional "title" to "edsumm"
+                       Added "short-summary", "long-summary" and "key-points" to list of allowed values for "edsumm" 'type' attribute
+
 2014/04/04 - CDS-79 - Added "is-update-to" to allowed values "related-article" 'related-article-type' attribute - standardising.
 
 2014/01/27 - HUBXML-32 - Additional elements and attributes to support Scientific Data:
@@ -1086,7 +1093,7 @@ type (electronic | print) "print"
   id   ID  #IMPLIED
   extrefid  CDATA #REQUIRED
   extrefid-type (uri | doi | local-path) "doi"
-  related-article-type (protocol | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol | is-protocol-update-to | has-protocol-update | is-data-descriptor-to | has-data-descriptor | is-update-to) #REQUIRED
+  related-article-type (protocol | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol | is-protocol-update-to | has-protocol-update | is-data-descriptor-to | has-data-descriptor | is-update-to | excerpt-from) #REQUIRED
 >
 
 <!ELEMENT article-link EMPTY>
@@ -1444,9 +1451,9 @@ type 	(toc | regular) "regular"
 <!--A "synopsis" is an article overview, *not* a true abstract, restricted to online delivery and is not displayed on the full text article.-->
 <!ELEMENT highlts (p+)>
 <!--A "highlights" is a list of article highlights, restricted to online delivery and is only displayed with the synopsis, does not appear on the full text article -->
-<!ELEMENT edsumm (title, p+)>
+<!ELEMENT edsumm (title?, p+)>
 <!ATTLIST edsumm
-type 	(standfirst | regular) "regular"
+type (standfirst | regular | short-summary | long-summary | key-points) "regular"
 publish (issue | aop) "issue"
 >
 
@@ -1589,7 +1596,7 @@ id ID #IMPLIED
 <!ELEMENT slideshow (title?, caption?, (fig | illus | infographic)+) >
 <!ATTLIST slideshow id ID #REQUIRED >
 
-<!ELEMENT fig (subfig*, slide?, datafile*, figtl?, caption?, figfn?, credit?)>
+<!ELEMENT fig (subfig*, slide?, datafile*, label?, figtl?, caption?, figfn?, credit?)>
 <!ATTLIST fig
 id ID #REQUIRED
 type %notation; "bmp"
@@ -1688,11 +1695,11 @@ colwd CDATA "1 5"
 %glossid;
 >
 <!ELEMENT defn (p+)>
-<!ELEMENT bx (bxtitle?, stndfrst?, (p | deflist | illus | table | critical | trouble | caution | pause | timing)+, byline?)>
+<!ELEMENT bx (bxtitle?, stndfrst?, (p | deflist | illus | table | critical | trouble | caution | pause | timing | related-article)+, (sec)*, byline?)>
 <!ATTLIST bx
         id ID #REQUIRED
         placement (internal | external) "external"
-        type (bio | reg) "reg"
+        type (bio | reg | excerpt) "reg"
 >
 
 <!ELEMENT bxtitle (%data; | f)*>
