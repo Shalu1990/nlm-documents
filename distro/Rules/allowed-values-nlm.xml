@@ -89,6 +89,9 @@ Created - 20120208
     <abstract-type>research-summary</abstract-type>
     <abstract-type>editorial-notes</abstract-type>
     <abstract-type>in-brief</abstract-type>
+    <abstract-type>short-summary</abstract-type>
+    <abstract-type>long-summary</abstract-type>
+    <abstract-type>key-points</abstract-type>
   </abstract-types>
   <sec-types>
     <sec-type>materials</sec-type>
