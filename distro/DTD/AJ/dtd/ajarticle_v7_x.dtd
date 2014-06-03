@@ -13,6 +13,15 @@
 
 <!-- 
 
+03.06.14
+. CDS-185 - Changed "related-article" from EMPTY to %citinfo;
+            Added 'extrefid' attribute to "related-article"
+            Changed 'extrefid-type' attribute values from CDATA to (uri | doi | local-path)
+            Added "excerpt-from" to allowed values of 'related-article-type'
+            Added "related-article" and "sec" as optional children of "bx" 
+            Added 'type' attribute to "box"
+            Added "short-summary", "long-summary" and "key-points" to list of allowed values for "edsumm" 'type' attribute  
+
 04.04.14
 . CDS-79 - Added agreed relationship types to "related-article" 'related-article-type' attribute.
 
@@ -1593,10 +1602,11 @@ suped?, supspon?, suptext?)>
 <!ELEMENT 	seealso						EMPTY>
 <!ATTLIST 	seealso				extrefid 	CDATA #REQUIRED>
 
-<!ELEMENT related-article EMPTY>
+<!ELEMENT related-article (%citinfo;)* >
 <!ATTLIST related-article
-  extrefid CDATA #REQUIRED
-  related-article-type (is-update-to | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol | is-protocol-update-to | has-protocol-update | is-data-descriptor-to | has-data-descriptor) #REQUIRED
+  extrefid  CDATA #REQUIRED
+  extrefid-type (uri | doi | local-path) "doi"
+  related-article-type (is-update-to | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol | is-protocol-update-to | has-protocol-update | is-data-descriptor-to | has-data-descriptor | excerpt-from) #REQUIRED
 >
 
 <!-- errorcor is used to establish links between "Errata", "Corrections" and
@@ -2053,7 +2063,7 @@ language        %language;      #IMPLIED>
 <!--********************************************************************-->
 
 <!ELEMENT   edsumm                  (title?, p+)>
-<!ATTLIST   edsumm      type 	      (standfirst | regular | research-summary | editorial-notes) "regular"
+<!ATTLIST   edsumm      type 	      (standfirst | regular | research-summary | editorial-notes | short-summary | long-summary | key-points) "regular"
                         publish     (issue | aop) "issue" >
 
 <!ELEMENT   websumm                 (%reftext; | %mathtypes;)*>
@@ -2565,9 +2575,10 @@ RETAINED FOR BACK COMPATIBILITY ONLY-->
 <!--       ELEMENTS TO HOLD BOXED CONTENT				-->
 <!--********************************************************************-->
 
-<!ELEMENT 	box           		  		(boxttl?, p+)>
-<!ATTLIST 	box   	    id         	ID            #REQUIRED>
-
+<!ELEMENT   box  (boxttl?, (p | related-article)+, (sec1)*)>
+<!ATTLIST 	box  id  ID #REQUIRED
+  type (bio | reg | excerpt) "reg">
+  
 <!ELEMENT 	boxttl           		  	(%text;)*>
 
 
