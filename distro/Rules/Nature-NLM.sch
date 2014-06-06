@@ -884,7 +884,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--authors should link to their affiliated body, even when there is only one aff-->
-    <rule context="article[$new-oa-aj='yes']/front/article-meta[aff]/contrib-group//contrib[@contrib-type='author']"
+    <rule context="article[$new-oa-aj='yes']/front/article-meta[aff]/contrib-group//contrib[@contrib-type='author'][not(ancestor::collab[@collab-type='authors'])]"
             role="error">
          <assert id="oa-aj12" test="xref[@ref-type='aff']">All authors should be linked to an affiliated body. Insert xref with 'ref-type="aff"'.</assert>
       </rule>
@@ -964,6 +964,11 @@ Use the <let> element to define the attribute if necessary.
               value="if (string-length($artnum)=1) then concat('000',$artnum) else          if (string-length($artnum)=2) then concat('00',$artnum) else          if (string-length($artnum)=3) then concat('0',$artnum) else $artnum"/>
          <let name="eloc" value="concat(substring($year,3,4),$fullartnum)"/>
          <assert id="oa-eloc1b" test=".=$eloc">Mismatch between elocation-id/article number (<value-of select="."/>) and expected value based on article id: <value-of select="$eloc"/>.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--monospace should not be used-->
+    <rule context="article[$new-oa-aj='yes']//monospace" role="error">
+         <report id="style2d" test=".">Do not use "monospace", as this will not render correctly. Please change to "preformat" with 'preformat-type="inline"'.</report>
       </rule>
   </pattern>
    <pattern><!--"is-data-descriptor-to should be added by sync tool-->
