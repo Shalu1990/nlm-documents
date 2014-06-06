@@ -884,7 +884,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--authors should link to their affiliated body, even when there is only one aff-->
-    <rule context="article[$new-oa-aj='yes']/front/article-meta[aff]/contrib-group//contrib[@contrib-type='author']"
+    <rule context="article[$new-oa-aj='yes']/front/article-meta[aff]/contrib-group//contrib[@contrib-type='author'][not(ancestor::collab[@collab-type='authors'])]"
             role="error">
          <assert id="oa-aj12" test="xref[@ref-type='aff']">All authors should be linked to an affiliated body. Insert xref with 'ref-type="aff"'.</assert>
       </rule>
@@ -964,6 +964,11 @@ Use the <let> element to define the attribute if necessary.
               value="if (string-length($artnum)=1) then concat('000',$artnum) else          if (string-length($artnum)=2) then concat('00',$artnum) else          if (string-length($artnum)=3) then concat('0',$artnum) else $artnum"/>
          <let name="eloc" value="concat(substring($year,3,4),$fullartnum)"/>
          <assert id="oa-eloc1b" test=".=$eloc">Mismatch between elocation-id/article number (<value-of select="."/>) and expected value based on article id: <value-of select="$eloc"/>.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--monospace should not be used-->
+    <rule context="article[$new-oa-aj='yes']//monospace" role="error">
+         <report id="style2d" test=".">Do not use "monospace", as this will not render correctly. Please change to "preformat" with 'preformat-type="inline"'.</report>
       </rule>
   </pattern>
    <pattern><!--"is-data-descriptor-to should be added by sync tool-->
@@ -1200,7 +1205,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--sec - sec-type or specific-use attribute used-->
-    <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/boxed-text | sec/chem-struct-wrap | sec/graphic | sec/media |  sec/supplementary-material | sec/table-wrap | sec/table-wrap-group | sec/disp-formula-group | sec/def-list | sec/tex-math | sec/mml:math | sec/related-article | sec/related-object | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list"
+    <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/chem-struct-wrap | sec/graphic | sec/media |  sec/supplementary-material | sec/table-wrap | sec/table-wrap-group | sec/disp-formula-group | sec/def-list | sec/tex-math | sec/mml:math | sec/related-article | sec/related-object | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list"
             role="error">
          <report id="sec4" test=".">Children of "sec" should only be "title", "p", "sec", "disp-formula", "disp-quote" or "preformat" - do not use "<name/>".</report>
       </rule>
@@ -1453,6 +1458,13 @@ Use the <let> element to define the attribute if necessary.
       <let name="id" value="@id"/>
          <assert id="xref4c"
                  test="ancestor::article//xref[@ref-type='other' and matches(@rid,$id)]">Illustration <value-of select="replace($id,'i','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="floats-group/boxed-text[@id]" role="error"><!--All boxes should be referenced in the text-->
+      <let name="id" value="@id"/>
+         <assert id="xref4d"
+                 test="ancestor::article//xref[@ref-type='boxed-text' and matches(@rid,$id)]">Box <value-of select="replace($id,'bx','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Box <value-of select="replace($id,'bx','')"/>, please contact NPG.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -2332,6 +2344,59 @@ Use the <let> element to define the attribute if necessary.
         <rule context="graphic[@content-type='illustration']/alt-text | graphic[@content-type='illustration']/email | graphic[@content-type='illustration']/ext-link | graphic[@content-type='illustration']/label | graphic[@content-type='illustration']/long-desc | graphic[@content-type='illustration']/permissions | graphic[@content-type='illustration']/uri"
             role="error">
             <report id="ill6a" test="." role="error">Do not use "<name/>" in illustration "graphic".</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="boxed-text[not(@content-type='excerpt')][not(parent::floats-group)]"
+            role="error">
+            <report id="box1a" test=".">"boxed-text" (which is not an excerpt) should only be a child of "floats-group" - not "<value-of select="local-name(parent::*)"/>".</report>
+        </rule>
+    </pattern>
+   <pattern><!--box - caption must not be empty-->
+        <rule context="boxed-text/caption" role="error">
+            <assert id="box3a" test="normalize-space(.) or *">Box "caption" should not be empty - delete or include required title.</assert>
+        </rule>
+    </pattern>
+   <pattern><!--box - caption must not have attributes-->
+        <rule context="boxed-text/caption[attribute::*]" role="error">
+            <report id="box3b" test=".">Do not use attributes on box "caption".</report>
+        </rule>
+    </pattern>
+   <pattern><!--box - label must not have attributes-->
+        <rule context="boxed-text/label[attribute::*]" role="error">
+            <report id="box3c" test=".">Do not use attributes on box "label".</report>
+        </rule>
+    </pattern>
+   <pattern><!--box - label not necessary if text is of form "Box 1" etc-->
+        <rule context="boxed-text[matches(@id,'^bx[1-9][0-9]*$')]/label" role="error">
+            <let name="derivedLabel"
+              value="concat('Box ',translate(parent::boxed-text/@id,'bx',''))"/>
+            <report id="box3d" test=".=$derivedLabel">Box "label" is not necessary when text is of the standard format "<value-of select="$derivedLabel"/>" - please delete.</report>
+        </rule>
+    </pattern>
+   <pattern><!--box - must have an @id-->
+        <rule context="boxed-text[not(@content-type='excerpt')][not(@id)]" role="error">
+            <report id="box4a" test=".">Missing 'id' attribute - "boxed-text" should have an 'id' of the form "bx"+number (with no leading zeros).</report>
+        </rule>
+    </pattern>
+   <pattern><!--box - @id must be correct format-->
+        <rule context="boxed-text[not(@content-type='excerpt')][@id]" role="error">
+            <assert id="box4b" test="matches(@id,'^bx[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "boxed-text" 'id' attribute should be of the form "bx"+number (with no leading zeros).</assert>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="boxed-text[@specific-use]" role="error">
+            <report id="box4c" test="." role="error">Do not use "specific-use" attribute on "boxed-text".</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="boxed-text[@xml:lang]" role="error">
+            <report id="box4d" test="." role="error">Do not use "xml:lang" attribute on "boxed-text".</report>
+        </rule>
+    </pattern>
+   <pattern><!--caption must contain a title-->
+        <rule context="boxed-text/caption" role="error">
+            <report id="box5a" test="not(child::title) and child::p" role="error">Box "caption" should contain a "title" element - change "p" to "title".</report>
         </rule>
     </pattern>
    <pattern><!--supplementary-material - only caption allowed as a child-->
