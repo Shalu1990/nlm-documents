@@ -300,11 +300,11 @@
          borderline metabolic abnormalities</article-title>
      <alt-title alt-title-type="running-title">Adiponectin and borderline abnormalities</alt-title>]]></programlisting>
   </sect3>
-  <sect3 xml:id="object_contributors">
+  <sect3 xml:id="objects_contributors">
     <title>Contributors and affiliations</title>
     <para>All NPG/Palgrave articles should have <tag>&lt;contrib-group></tag> to capture the article authors. <tag>&lt;contrib-group></tag> should only contain one or more <tag>&lt;contrib></tag>, do not use any other child elements.</para>
     <para>Each <tag>&lt;contrib></tag> should have <tag>@contrib-type</tag> (with values "author" or "editor") and <tag>@corresp</tag> (with values "yes" or "no").</para>
-    <para>Each <tag>&lt;contrib></tag> should also contain an <tag>&lt;xref></tag> to their affiliation details (except for correction articles where this is not required). <emphasis role="bold">This is required even if all the authors are affiliated to the same institution.</emphasis></para>
+    <para>Each <tag>&lt;contrib></tag> should also contain an <tag>&lt;xref></tag> to their affiliation details (except for correction articles where this is not required). <emphasis role="bold">This is required even if all the authors are affiliated to the same institution.</emphasis> [See <link linkend="objects_consortia">Consortia</link> below for a case where this is not required.]</para>
     <para>If a contributor has <tag>@corresp="yes"</tag> then an <tag>&lt;xref></tag> to the correspondence information should be also be given.</para>
     <para><tag>&lt;xref></tag> should also be used for links to other notes about the authors, e.g. equal contribution information.</para>
     <para>The affilations should be gathered together as separate <tag>&lt;aff></tag> elements after <tag>&lt;contrib-group></tag> and not included as a child element of <tag>&lt;contrib></tag>.</para>
@@ -348,6 +348,43 @@
      <aff id="a2"><institution>Physical Check up Center, Sumitomo Hospital</institution>, <addr-line
          content-type="city">Osaka</addr-line>, <country>Japan</country></aff>]]></programlisting>
     <para>See <link linkend="element_xref"><tag>&lt;xref></tag></link> for further information on marking up author-related links.</para>
+    <sect4 xml:id="objects_consortia">
+      <title>Consortia</title>
+      <para>Consortia information can be given in two different ways.</para>
+      <para>1. Where the work has been carried out on behalf of an organisation and no member names are listed: <tag>&lt;contrib></tag> has no attributes, and the child <tag>&lt;contrib></tag> element has <tag>@collab-type="on-behalf-of"</tag>.</para>
+      <para>This type of contributor cannot have affiliation, correspondence or any other author notes.</para>
+      <para>Example:</para>
+      <programlisting><![CDATA[
+     <contrib>
+       <collab collab-type="on-behalf-of">for the Study Team</collab>
+     </contrib>]]></programlisting>
+      <para>2. Where the consortium lists all contributing authors with affilations: <tag>&lt;contrib></tag> has no attributes, and the child <tag>&lt;contrib></tag> element has <tag>@collab-type="authors"</tag>.</para>
+      <para>The consortium name is marked up as <tag>&lt;named-content></tag> with <tag>@content-type="program"</tag>. Each author in the consortium is then included as <tag>&lt;contrib></tag> within  <tag>&lt;contrib-group></tag>, and marked up in the usual way.</para>
+      <para>If a consortium author is also listed as a main article author, do not repeat the affilation and/or correspondence information in their consortium listing.</para>
+      <para>Example (Amelie Baud and Victor Guryev are also listed as main authors):</para>
+      <programlisting><![CDATA[
+     <contrib>
+       <collab collab-type="authors">
+         <named-content content-type="program">The Rat Genome Sequencing and Mapping
+             Consortium</named-content>
+         <contrib-group>
+           <contrib contrib-type="author" corresp="no">
+             <name><surname>Baud</surname><given-names>Amelie</given-names></name>
+           </contrib>
+           <contrib contrib-type="author" corresp="no">
+             <name><surname>Guryev</surname><given-names>Victor</given-names></name>
+           </contrib>
+           <contrib contrib-type="author" corresp="no">
+             <name><surname>Hermsen</surname><given-names>Roel Hermsen</given-names></name>
+             <xref ref-type="aff" rid="a6"/>
+           </contrib>
+           <contrib contrib-type="author" corresp="no">
+             <name><surname>Stridh</surname><given-names>Pernilla</given-names></name>
+             <xref ref-type="aff" rid="a7"/>
+           </contrib>
+        </collab>
+     </contrib>]]></programlisting>
+    </sect4>
   </sect3>
   <sect3>
     <title>Author notes</title>
@@ -726,7 +763,6 @@
   </sect2>
 <sect2 xml:id="objects_lists">
 <title>Lists</title>
-  <para>For NPG/Palgrave article <tag>&lt;list></tag> should always be contained in <tag>&lt;p></tag> and should not be a block-level element.</para>
   <para>Do <emphasis role="bold">not</emphasis> use <tag>&lt;label></tag> or <tag>&lt;title></tag> in <tag>&lt;list></tag>.</para>
   <para><tag>&lt;list></tag> should have <tag>@list-type</tag> which can take the values "number", "bullet", "ucletter", "lcletter", "ucroman", "lcroman" or "none".</para>
   <para>Do <emphasis role="bold">not</emphasis> use any other attributes on <tag>&lt;list></tag>.</para>
@@ -778,9 +814,9 @@
 </sect1>
 <sect1 xml:id="objects_back">
 <title>Back</title>
-  <sect2 xml:id="object_references">
+  <sect2 xml:id="objects_references">
     <title>References</title>
-    <para>A reference list (<tag>&lt;ref-list></tag>) is a series of references (<tag>&lt;ref></tag>). Generally each reference item contains only one citation element. As we currently have no standard style for punctuation in our journals, use <tag>&lt;mixed-citation></tag> for all references and retain punctuation.<!--, but see <link linkend="object_link_groups">Link Groups</link> for an exception-->.</para>
+    <para>A reference list (<tag>&lt;ref-list></tag>) is a series of references (<tag>&lt;ref></tag>). Generally each reference item contains only one citation element. As we currently have no standard style for punctuation in our journals, use <tag>&lt;mixed-citation></tag> for all references and retain punctuation.<!--, but see <link linkend="objects_link_groups">Link Groups</link> for an exception-->.</para>
     <para><tag>&lt;ref-list></tag> should have <tag>@specific-use</tag> which takes the value "numero" (for numbered references) or "alpha" (for an alphabetical listing).</para>
     <para>All <tag>&lt;ref></tag> elements should have an <tag>@id</tag> which should follow the format of "b" + number. Do not use <tag>&lt;label></tag>.</para>
     <para><tag>&lt;mixed-citation></tag> should have <tag>@publication-type</tag> which can take the value "journal", "book" or "other" (e.g. meeting reports, websites).</para>
@@ -814,7 +850,7 @@
            </mixed-citation></ref>
      </ref-list>]]></programlisting>
   </sect2>
-  <sect2 xml:id="object_data_citations">
+  <sect2 xml:id="objects_data_citations">
     <title>Data Citations</title>
     <para>Data citations (<tag>&lt;ref-list ref-type="data-citations"></tag>) are a series of references (<tag>&lt;ref></tag>) to scientific databases.</para>
     <para>All <tag>&lt;ref></tag> elements should have an <tag>@id</tag> which should follow the format of "d" + number (starting from 1). Do not use <tag>&lt;label></tag>.</para>
@@ -1470,6 +1506,72 @@
   </sect3>
     <!--<para>Set any tabular material that needs to be displayed in the flow of the text as <tag>&lt;array></tag> in a <tag>&lt;p></tag>.</para> [I think we should use this element once we're doing JATS only. Will save a lot of the formatting issues we currently have.]-->
   </sect2>
+  <sect2 xml:id="objects_boxes">
+    <title>Boxes</title>
+    <para>Boxes are block-level objects that can contain supporting text and/or images and are captured using <tag>&lt;boxed-text></tag>. They may contain sections, lists, illustrations, formulae, other boxes and any other structures that can normally appear in the body of an article.</para>
+    <para>Characteristics of a box which should be captured within <tag>&lt;floats-group></tag>:</para>
+    <itemizedlist>
+      <listitem><para>It has a label like "Box 1" or "Key Points".</para></listitem>
+      <listitem><para>It may have a title or caption.</para></listitem>
+      <listitem><para>It is referenced by an <tag>&lt;xref></tag> with <tag>@ref-type="boxed-text"</tag> in the article text.</para></listitem>
+    </itemizedlist>
+    <sect3>
+      <title><tag>&lt;boxed-text></tag></title>
+      <para>The <tag>&lt;boxed-text></tag> <tag>@id</tag> attribute should follow the format of "bx" + the label number, e.g. <tag>id="bx1"</tag>.</para>
+    </sect3>
+    <sect3>
+      <title>Label</title>
+      <para><tag>&lt;label></tag> should only be used if the box label is not of the standard "Box" + number format, e.g. "Key Points". See <link linkend="sample_box_1">Box sample 1</link>.</para>
+      <para>Do <emphasis role="bold">not</emphasis> use any attributes on <tag>&lt;label></tag>.</para>
+    </sect3>
+    <sect3>
+      <title>Caption</title>
+      <para>If <tag>&lt;caption></tag> is used, it must contain <tag>&lt;title></tag>.</para>
+      <para>Do <emphasis role="bold">not</emphasis> use any attributes on <tag>&lt;caption></tag> or <tag>&lt;title></tag>.</para>
+    </sect3>
+    <sect3>
+      <title>Sample boxes</title>
+      <sect4 xml:id="sample_box_1">
+        <title>Sample box 1</title>
+        <programlisting><![CDATA[
+<boxed-text id="bx1">
+  <label>Key Points</label>
+  <list list-type="bullet">
+    <list-item><p>History taking</p></list-item>
+    <list-item><p>Diagnosis</p></list-item>
+    <list-item><p>Treatment and management of allergic airways</p></list-item>
+    <list-item><p>Identification and management of relevant co-morbidities</p></list-item>
+    <list-item><p>Compliance and nasal spray device technique</p></list-item>
+    <list-item><p>Organisational issues</p></list-item>
+  </list>
+</boxed-text>]]></programlisting>
+      </sect4>
+      <sect4 xml:id="sample_box_2">
+        <title>Sample box 2</title>
+        <programlisting><![CDATA[
+<boxed-text id="bx2">
+  <caption><title>Application of Rasch modelling</title></caption>
+  <p>Mathematically, the logit model can be expressed as:
+      <disp-formula><mml:math><mml:mi mathvariant="normal">ln</mml:mi><mml:mrow><mml:mo stretchy="true">
+      (</mml:mo><mml:mrow><mml:mfrac><mml:mrow><mml:msub><mml:mrow><mml:mi mathvariant="normal">P</mml:mi>
+      </mml:mrow><mml:mrow><mml:mi>n</mml:mi><mml:mi>i</mml:mi><mml:mi>j</mml:mi></mml:mrow>
+      </mml:msub></mml:mrow><mml:mrow><mml:mn>1</mml:mn><mml:mo>&#x02212;</mml:mo><mml:msub><mml:mrow>
+      <mml:mi mathvariant="normal">P</mml:mi></mml:mrow><mml:mrow><mml:mi>n</mml:mi><mml:mi>i</mml:mi>
+      <mml:mo stretchy="false">(</mml:mo><mml:mi>j</mml:mi><mml:mo>&#x02212;</mml:mo><mml:mn>1</mml:mn>
+      <mml:mo stretchy="false">)</mml:mo></mml:mrow></mml:msub></mml:mrow></mml:mfrac></mml:mrow>
+      <mml:mo stretchy="true">)</mml:mo></mml:mrow><mml:mo>=</mml:mo><mml:msub><mml:mrow>
+      <mml:mi>&#x003B8;</mml:mi></mml:mrow><mml:mrow><mml:mi>n</mml:mi></mml:mrow></mml:msub>
+      <mml:mo>&#x02212;</mml:mo><mml:msub><mml:mrow><mml:mi>&#x003B4;</mml:mi></mml:mrow>
+      <mml:mrow><mml:mi>i</mml:mi><mml:mi>j</mml:mi></mml:mrow></mml:msub><mml:mo>,</mml:mo>
+      </mml:math></disp-formula></p>
+  <p>where P<sub><italic>nij</italic></sub> is the probability of person <italic>n</italic> affirming
+      response category <italic>j</italic> of item <italic>i</italic>, <italic>&#x003B8;</italic> is the
+      person&#x02019;s level of HRQoL (ability) and <italic>&#x003B4;</italic> is the level of HRQoL
+      expressed by the item (difficulty).<sup><xref ref-type="bibr" rid="b24">24</xref></sup></p>
+</boxed-text>]]></programlisting>
+      </sect4>
+    </sect3>
+  </sect2>
 <sect2 xml:id="objects_supplementary-material">
 <title>Supplementary information</title>
   <para>Supplementary items are block-level objects that contain additional information relating to an article and are captured using <tag>&lt;supplementary-material></tag>.</para>
@@ -1593,7 +1695,7 @@
 <para>This element takes the value of the journal pcode, e.g. "nutd" for <emphasis>Nutrition &amp; Diabetes</emphasis>, "nneuro" for <emphasis>Nature Neuroscience</emphasis>.</para>
 <para>attributes:</para>
 <itemizedlist><listitem><para>journal-id-type&#x2014;Set as "publisher". (#REQUIRED)</para></listitem></itemizedlist>
-<para>See <link xlink:href="object_journal_metadata">Journal metadata</link> for examples of markup.</para>
+<para>See <link xlink:href="objects_journal_metadata">Journal metadata</link> for examples of markup.</para>
 </sect1>
 <sect1 xml:id="element_journal-title-group">
 <title><tag>&lt;journal-title-group></tag></title> 
@@ -1659,7 +1761,7 @@
       <title>Author affiliation, correspondence and notes</title>
         <para>Where <tag>&lt;xref></tag> is used to link to affiliation [<tag>@ref-type="aff"</tag>] and correspondence [<tag>@ref-type="corresp"</tag>] information, it should be empty as the link numbering can be derived from the <tag>@id</tag>s.</para>
         <para>Where <tag>&lt;xref></tag> is used to link to author notes [<tag>@ref-type="author-notes"</tag>] (e.g. equal contribution or current address information), it should contain the superscript number or symbol used in the manuscript.</para>
-        <para>See <link linkend="object_contributors">Contributors and affiliations</link> for example markup.</para>
+        <para>See <link linkend="objects_contributors">Contributors and affiliations</link> for example markup.</para>
       </sect2>
       <sect2>
         <title>Bibliographic references</title>
@@ -1705,9 +1807,16 @@
 </chapter>
   <chapter xml:id="update_history">
     <title>Update History</title>
+    <para>2014-06-10 v1.1 - 
+      <itemizedlist>
+        <listitem><para>Instructions on marking up <link linkend="objects_boxes">boxes</link>;</para></listitem>
+        <listitem><para>Instructions in the contributor section on marking up <link linkend="objects_consortia">consortia</link>;</para></listitem>
+        <listitem><para>Updated <link linkend="objects_lists">list</link> instructions - block-level lists are now allowed in our articles.</para></listitem>
+      </itemizedlist>
+    </para>
     <para>2014-03-14 v1.03 - 
       <itemizedlist>
-        <listitem><para>Amendments to <link linkend="object_data_citations">Data Citations</link> instructions;</para></listitem>
+        <listitem><para>Amendments to <link linkend="objects_data_citations">Data Citations</link> instructions;</para></listitem>
         <listitem><para>addition of instructions on <link linkend="objects_secid">section ids</link> for <emphasis>Scientific Data</emphasis>;</para></listitem>
         <listitem><para>tightening of information on <link linkend="objects_figs">mimetypes for figures and illustrations</link>;</para></listitem>
         <listitem><para>details of allowed values for <link linkend="element_addr-line"><tag>addr-line/@content-type</tag></link> and <link linkend="element_preformat"><tag>preformat/@preformat-type</tag></link>.</para></listitem>
@@ -1716,13 +1825,13 @@
     <para>2014-01-14 v1.02 - 
       <itemizedlist>
         <listitem><para>Instructions for <link linkend="element_underline"><tag>&lt;underline></tag></link>;</para></listitem>
-        <listitem><para>instructions for marking up <link linkend="object_references">book references</link> containing chapter information;</para></listitem>
-        <listitem><para>added note to <link linkend="object_contributors">Contributors and affiliations</link> section on use of <tag>&lt;xref></tag> links to affiliations.</para></listitem>
+        <listitem><para>instructions for marking up <link linkend="objects_references">book references</link> containing chapter information;</para></listitem>
+        <listitem><para>added note to <link linkend="objects_contributors">Contributors and affiliations</link> section on use of <tag>&lt;xref></tag> links to affiliations.</para></listitem>
       </itemizedlist>
     </para>
     <para>2013-12-29 v1.01 - Information for structures in <emphasis>Scientific Data</emphasis>:
       <itemizedlist>
-        <listitem><para>New <link linkend="object_data_citations">Data Citations</link> section in "Back".</para></listitem>
+        <listitem><para>New <link linkend="objects_data_citations">Data Citations</link> section in "Back".</para></listitem>
         <listitem><para>Rewrite of <link linkend="related-articles">Related articles</link> section within "Article metadata" and deletion of separate <tag>&lt;related-article></tag> element section.</para></listitem>
         <listitem><para>Additions to: <link linkend="filenames">filenaming conventions</link>, <link linkend="isatab_files">Supplementary information</link>, and <link linkend="element_xref"><tag>&lt;xref></tag></link>.</para></listitem>
       </itemizedlist> 
