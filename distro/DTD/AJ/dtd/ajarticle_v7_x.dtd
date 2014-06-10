@@ -13,6 +13,9 @@
 
 <!-- 
 
+10.06.14
+. CDS-194 - Added "xlsm" to NOTATION types and %format; parameter entity set.
+
 03.06.14
 . CDS-185 - Changed "related-article" from EMPTY to %citinfo;
             Added 'extrefid' attribute to "related-article"
@@ -1066,6 +1069,7 @@ SYSTEM  ajarticle_v7_x.dtd
 <!NOTATION wmf SYSTEM "">   <!--   ?     -->
 <!NOTATION wmv SYSTEM "">   <!-- Windows media video -->
 <!NOTATION xls SYSTEM "">   <!-- Excel spreadsheet -->
+<!NOTATION xlsm SYSTEM "">   <!-- Excel Macro-Enabled Workbook -->
 <!NOTATION xlsx SYSTEM "">   <!-- Excel spreadsheet -->
 <!NOTATION xml SYSTEM "">   <!-- extensible markup language -->
 <!NOTATION zip SYSTEM "">   <!-- zip archive format -->
@@ -1106,7 +1110,7 @@ SYSTEM  ajarticle_v7_x.dtd
 <!ENTITY % plain-text "%straight-text; | %emphasis; | %fontfamily; | %fontattr; | %zwidth;">
 
 <!-- common file format extensions        -->
-<!ENTITY % format    	"ado | aiff | applet | asf | asp | au | avi | bmp | class | csv | do | doc | docx | dta | eps | gif | html | htmlonly | java | jpeg | js | ma | mb | midi | mlonly | mov | mp2 | mp3 | mp4 | mpa | mpeg | nb | ole | pict | pdf | png | pps | ppt | ps | ra | ram | sgml | svg | texonly | tiff | txt | wav | wmf | wmv | xls | xlsx | xml | zip">
+<!ENTITY % format    	"ado | aiff | applet | asf | asp | au | avi | bmp | class | csv | do | doc | docx | dta | eps | gif | html | htmlonly | java | jpeg | js | ma | mb | midi | mlonly | mov | mp2 | mp3 | mp4 | mpa | mpeg | nb | ole | pict | pdf | png | pps | ppt | ps | ra | ram | sgml | svg | texonly | tiff | txt | wav | wmf | wmv | xls | xlsm | xlsx | xml | zip">
 
 <!--********************************************************************-->
 <!--       % mathtypes for Math                                  		-->
