@@ -65,11 +65,13 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="new-oa-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
+  <let name="maestro-rj"
+        value="if (matches($pcode,'^(maestrorj)$')) then 'yes'     else ()"/>
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (matches($pcode,'^(bdjteam|palcomms|hgv)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+        value="if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="collection" value="$journals//npg:Journal[npg:pcode=$pcode]/npg:domain"/>
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
@@ -1954,19 +1956,19 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--journal citation should not contain chapter-title-->
-    <rule context="ref/mixed-citation[@publication-type='journal']/chapter-title"
+    <rule context="ref[$new-oa-aj='yes']/mixed-citation[@publication-type='journal']/chapter-title"
             role="error">
          <report id="reflist10a" test=".">Journal citation "<value-of select="ancestor::ref/@id"/>" (source: <value-of select="parent::mixed-citation/source"/>) should not use "chapter-title". Change this to "article-title" (or check if this should be a book citation).</report>
       </rule>
   </pattern>
    <pattern><!--journal citation should have source and article-title-->
-    <rule context="ref/mixed-citation[@publication-type='journal'][source][not(chapter-title|article-title)]"
+    <rule context="ref[$new-oa-aj='yes']/mixed-citation[@publication-type='journal'][source][not(chapter-title|article-title)]"
             role="error">
          <report id="reflist10b" test=".">Journal citation "<value-of select="parent::ref/@id"/>" only has "source" identified (<value-of select="source"/>). Mark up the "article-title" or change to 'publication-type="book"'.</report>
       </rule>
   </pattern>
    <pattern><!--journal citation should have source and article-title-->
-    <rule context="ref/mixed-citation[@publication-type='journal'][not(source)]"
+    <rule context="ref[$new-oa-aj='yes']/mixed-citation[@publication-type='journal'][not(source)]"
             role="error">
          <report id="reflist10c" test="article-title">Journal citation "<value-of select="parent::ref/@id"/>" only has "article-title" identified (<value-of select="article-title"/>). Mark up the "source" also.</report>
       </rule>
