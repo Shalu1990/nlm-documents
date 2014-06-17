@@ -1442,7 +1442,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="floats-group/fig[not(@fig-type='cover-image')][@id]" role="error"><!--All figures should be referenced in the text-->
+      <rule context="floats-group/fig[not(@fig-type='cover-image')][not(@specific-use='suppinfo')][@id]"
+            role="error"><!--All figures should be referenced in the text-->
       <let name="id" value="@id"/>
          <assert id="xref4a"
                  test="ancestor::article//xref[@ref-type='fig' and matches(@rid,$id)]">Figure <value-of select="replace($id,'f','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Figure <value-of select="replace($id,'f','')"/>, please contact NPG.</assert>
@@ -2096,12 +2097,12 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--fig - @id must be correct format-->
-        <rule context="fig[@id]" role="error">
+        <rule context="fig[@id][not(@specific-use='suppinfo')]" role="error">
             <assert id="fig3b" test="matches(@id,'^f[A-Z]?[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "fig" 'id' attribute should be of the form "f"+number (with no leading zeros).</assert>
         </rule>
     </pattern>
    <pattern>
-        <rule context="fig[@specific-use]" role="error">
+        <rule context="fig[@specific-use][not(@specific-use='suppinfo')]" role="error">
             <report id="fig3c" test="." role="error">Do not use "specific-use" attribute on "fig".</report>
         </rule>
     </pattern>
