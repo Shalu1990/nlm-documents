@@ -846,7 +846,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="supp-image" value="substring-before(@xlink:href,'.')"/>
          <let name="supp-number" value="replace(replace($supp-image,$article-id,''),'-','')"/>
          <assert id="oa-aj9b"
-                 test="starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,'^isa[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for ISA-tab file (<value-of select="$supp-image"/>). Expected format is "<value-of select="concat($article-id,'-isa')"/>"+number.</assert>
+                 test="starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,'^isa1') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for ISA-tab file (<value-of select="$supp-image"/>). It does not follow the same numbering as other supplementary information files. Expected value is "<value-of select="concat($article-id,'-isa1')"/>".</assert>
       </rule>
   </pattern>
    <pattern><!--subject path found in subject ontology-->
