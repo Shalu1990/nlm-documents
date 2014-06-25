@@ -65,11 +65,13 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="new-oa-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
+  <let name="maestro-rj"
+        value="if (matches($pcode,'^(maestrorj)$')) then 'yes'     else ()"/>
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (matches($pcode,'^(bdjteam|palcomms|hgv)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+        value="if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjschz)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="collection" value="$journals//npg:Journal[npg:pcode=$pcode]/npg:domain"/>
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
@@ -844,7 +846,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="supp-image" value="substring-before(@xlink:href,'.')"/>
          <let name="supp-number" value="replace(replace($supp-image,$article-id,''),'-','')"/>
          <assert id="oa-aj9b"
-                 test="starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,'^isa[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for ISA-tab file (<value-of select="$supp-image"/>). Expected format is "<value-of select="concat($article-id,'-isa')"/>"+number.</assert>
+                 test="starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,'^isa1') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for ISA-tab file (<value-of select="$supp-image"/>). It does not follow the same numbering as other supplementary information files. Expected value is "<value-of select="concat($article-id,'-isa1')"/>".</assert>
       </rule>
   </pattern>
    <pattern><!--subject path found in subject ontology-->
@@ -1440,7 +1442,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="floats-group/fig[not(@fig-type='cover-image')][@id]" role="error"><!--All figures should be referenced in the text-->
+      <rule context="floats-group/fig[not(@fig-type='cover-image')][not(@specific-use='suppinfo')][@id]"
+            role="error"><!--All figures should be referenced in the text-->
       <let name="id" value="@id"/>
          <assert id="xref4a"
                  test="ancestor::article//xref[@ref-type='fig' and matches(@rid,$id)]">Figure <value-of select="replace($id,'f','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Figure <value-of select="replace($id,'f','')"/>, please contact NPG.</assert>
@@ -1954,19 +1957,19 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--journal citation should not contain chapter-title-->
-    <rule context="ref/mixed-citation[@publication-type='journal']/chapter-title"
+    <rule context="ref[$new-oa-aj='yes']/mixed-citation[@publication-type='journal']/chapter-title"
             role="error">
          <report id="reflist10a" test=".">Journal citation "<value-of select="ancestor::ref/@id"/>" (source: <value-of select="parent::mixed-citation/source"/>) should not use "chapter-title". Change this to "article-title" (or check if this should be a book citation).</report>
       </rule>
   </pattern>
    <pattern><!--journal citation should have source and article-title-->
-    <rule context="ref/mixed-citation[@publication-type='journal'][source][not(chapter-title|article-title)]"
+    <rule context="ref[$new-oa-aj='yes']/mixed-citation[@publication-type='journal'][source][not(chapter-title|article-title)]"
             role="error">
          <report id="reflist10b" test=".">Journal citation "<value-of select="parent::ref/@id"/>" only has "source" identified (<value-of select="source"/>). Mark up the "article-title" or change to 'publication-type="book"'.</report>
       </rule>
   </pattern>
    <pattern><!--journal citation should have source and article-title-->
-    <rule context="ref/mixed-citation[@publication-type='journal'][not(source)]"
+    <rule context="ref[$new-oa-aj='yes']/mixed-citation[@publication-type='journal'][not(source)]"
             role="error">
          <report id="reflist10c" test="article-title">Journal citation "<value-of select="parent::ref/@id"/>" only has "article-title" identified (<value-of select="article-title"/>). Mark up the "source" also.</report>
       </rule>
@@ -2094,12 +2097,12 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--fig - @id must be correct format-->
-        <rule context="fig[@id]" role="error">
+        <rule context="fig[@id][not(@specific-use='suppinfo')]" role="error">
             <assert id="fig3b" test="matches(@id,'^f[A-Z]?[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "fig" 'id' attribute should be of the form "f"+number (with no leading zeros).</assert>
         </rule>
     </pattern>
    <pattern>
-        <rule context="fig[@specific-use]" role="error">
+        <rule context="fig[@specific-use][not(@specific-use='suppinfo')]" role="error">
             <report id="fig3c" test="." role="error">Do not use "specific-use" attribute on "fig".</report>
         </rule>
     </pattern>
