@@ -1396,8 +1396,50 @@ Use the <let> element to define the attribute if necessary.
          <report id="xref3c" test="count(tokenize(@rid, '\W+')[. != '']) eq 2">Bibrefs should be to a single reference or a range of three or more references. See Tagging Instructions for examples.</report>
       </rule>
   </pattern>
-   <pattern><!--compare multiple bib rids with text-->
+   <pattern><!--check start of range value is a number-->
     <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'–')]"
+            role="error"><!--range items must be numbers-->
+      <let name="first" value="substring-before(.,'–')"/>
+         <assert id="xref3d1a" test="matches($first,'^[0-9]+$')">Non-numeric character included at the start of citation range: <value-of select="$first"/>. Please make this a number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--check end of range value is a number-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'–')]"
+            role="error"><!--range items must be numbers-->
+      <let name="last" value="substring-after(.,'–')"/>
+         <assert id="xref3d1b" test="matches($last,'^[0-9]+$')">Non-numeric character included at the end of citation range: <value-of select="$last"/>. Please make this a number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--check start of range value is a number-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'—')]"
+            role="error"><!--range items must be numbers-->
+      <let name="first" value="substring-before(.,'—')"/>
+         <assert id="xref3d1a-2" test="matches($first,'^[0-9]+$')">Non-numeric character included at the start of citation range: <value-of select="$first"/>. Please make this a number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--check end of range value is a number-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'—')]"
+            role="error"><!--range items must be numbers-->
+      <let name="last" value="substring-after(.,'—')"/>
+         <assert id="xref3d1b-2" test="matches($last,'^[0-9]+$')">Non-numeric character included at the end of citation range: <value-of select="$last"/>. Please make this a number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--check start of range value is a number-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'-')]"
+            role="error"><!--range items must be numbers-->
+      <let name="first" value="substring-before(.,'-')"/>
+         <assert id="xref3d1a-3" test="matches($first,'^[0-9]+$')">Non-numeric character included at the start of citation range: <value-of select="$first"/>. Please make this a number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--check end of range value is a number-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'-')]"
+            role="error"><!--range items must be numbers-->
+      <let name="last" value="substring-after(.,'-')"/>
+         <assert id="xref3d1b-4" test="matches($last,'^[0-9]+$')">Non-numeric character included at the end of citation range: <value-of select="$last"/>. Please make this a number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--compare multiple bib rids with text-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][matches(substring-before(.,'–'),'^[0-9]+$')][matches(substring-after(.,'–'),'^[0-9]+$')]"
             role="error"><!--find multiple bibrefs, text must contain a dash (i.e. is a range)-->
       <let name="first" value="xs:integer(substring-before(.,'–'))"/>
          <!--find start of range-->
@@ -1409,7 +1451,43 @@ Use the <let> element to define the attribute if necessary.
          <!--generate expected sequence of rid values-->
       <let name="normalizedRid" value="tokenize(@rid,'\W+')"/>
          <!--turn rid into a sequence for comparison purposes-->
-      <assert id="xref3d"
+      <assert id="xref3d2"
+                 test="every $i in 1 to $range satisfies $derivedRid[$i]=$normalizedRid[$i]">xref with ref-type="bibr" range <value-of select="."/> has non-matching multiple rids (<value-of select="@rid"/>). See Tagging Instructions for examples.</assert>
+         <!--if any pair does not match, then test will fail-->
+    </rule>
+  </pattern>
+   <pattern><!--compare multiple bib rids with text-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][matches(substring-before(.,'—'),'^[0-9]+$')][matches(substring-after(.,'—'),'^[0-9]+$')]"
+            role="error"><!--find multiple bibrefs, text must contain a dash (i.e. is a range)-->
+      <let name="first" value="xs:integer(substring-before(.,'—'))"/>
+         <!--find start of range-->
+      <let name="last" value="xs:integer(substring-after(.,'—'))"/>
+         <!--find end of range-->
+      <let name="range" value="$last - $first + 1"/>
+         <!--find number of refs in the range-->
+      <let name="derivedRid" value="for $j in $first to $last return concat('b',$j)"/>
+         <!--generate expected sequence of rid values-->
+      <let name="normalizedRid" value="tokenize(@rid,'\W+')"/>
+         <!--turn rid into a sequence for comparison purposes-->
+      <assert id="xref3d2-2"
+                 test="every $i in 1 to $range satisfies $derivedRid[$i]=$normalizedRid[$i]">xref with ref-type="bibr" range <value-of select="."/> has non-matching multiple rids (<value-of select="@rid"/>). See Tagging Instructions for examples.</assert>
+         <!--if any pair does not match, then test will fail-->
+    </rule>
+  </pattern>
+   <pattern><!--compare multiple bib rids with text-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][matches(substring-before(.,'-'),'^[0-9]+$')][matches(substring-after(.,'-'),'^[0-9]+$')]"
+            role="error"><!--find multiple bibrefs, text must contain a dash (i.e. is a range)-->
+      <let name="first" value="xs:integer(substring-before(.,'-'))"/>
+         <!--find start of range-->
+      <let name="last" value="xs:integer(substring-after(.,'-'))"/>
+         <!--find end of range-->
+      <let name="range" value="$last - $first + 1"/>
+         <!--find number of refs in the range-->
+      <let name="derivedRid" value="for $j in $first to $last return concat('b',$j)"/>
+         <!--generate expected sequence of rid values-->
+      <let name="normalizedRid" value="tokenize(@rid,'\W+')"/>
+         <!--turn rid into a sequence for comparison purposes-->
+      <assert id="xref3d2-3"
                  test="every $i in 1 to $range satisfies $derivedRid[$i]=$normalizedRid[$i]">xref with ref-type="bibr" range <value-of select="."/> has non-matching multiple rids (<value-of select="@rid"/>). See Tagging Instructions for examples.</assert>
          <!--if any pair does not match, then test will fail-->
     </rule>
