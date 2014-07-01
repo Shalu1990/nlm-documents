@@ -986,6 +986,30 @@ Use the <let> element to define the attribute if necessary.
          <report id="sdata1d" test=".">In Data Descriptors, the only "related-article" 'related-article-type' value should be "is-data-descriptor-to", which will be added by the SciData synch tool. Please delete "related-article" with 'related-article-type="<value-of select="$type"/>"'.</report>
       </rule>
   </pattern>
+   <pattern><!--only one element-citation in ref-->
+    <rule context="ref-list[@content-type='data-citations']/ref[@id]/element-citation[1][following-sibling::element-citation]"
+            role="error">
+         <report id="sdata2a" test=".">Error in data citation <value-of select="parent::ref/@id"/>: data citation references should only contain one child "element-citation". Please refer to the Tagging Instructions.</report>
+      </rule>
+  </pattern>
+   <pattern><!--should be element-citation not mixed-citation-->
+    <rule context="ref-list[@content-type='data-citations']/ref[@id]/mixed-citation"
+            role="error">
+         <report id="sdata2b" test=".">Error in data citation <value-of select="parent::ref/@id"/>: data citation references should use "element-citation", not "mixed-citation". Please refer to the Tagging Instructions.</report>
+      </rule>
+  </pattern>
+   <pattern><!--named-content for source info is not required in sdata-->
+    <rule context="ref-list[@content-type='data-citations'][$pcode='sdata']/ref[@id]//named-content[@content-type='source']"
+            role="error">
+         <report id="sdata2c" test=".">Error in data citation <value-of select="ancestor::ref/@id"/>: data citation references in Scientific Data do not need the source status (new/existing) declared, as this information will not be supplied by NPG. Please delete the "named-content" element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--year should be included-->
+    <rule context="ref-list[@content-type='data-citations']/ref[@id]/element-citation[not(year)]"
+            role="error">
+         <report id="sdata2d" test=".">Error in data citation <value-of select="parent::ref/@id"/>: the "year" should be marked up in data citations. Please refer to the Tagging Instructions.</report>
+      </rule>
+  </pattern>
    <pattern>
       <rule context="contrib-group[not(@content-type='contributor')]/contrib/xref"
             role="error"><!--Contrib xref should have @ref-type-->
