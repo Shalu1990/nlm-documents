@@ -64,7 +64,7 @@ Use the <let> element to define the attribute if necessary.
         value="article/front/article-meta/article-id[@pub-id-type='publisher-id']"/>
   
   <let name="volume" value="article/front/article-meta/volume"/>
-  <let name="new-oa-aj"
+  <let name="maestro-aj"
         value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
   <let name="maestro-rj"
         value="if (matches($pcode,'^(maestrorj)$')) then 'yes'     else ()"/>
@@ -656,7 +656,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--update $derived-status with all Frontiers titles if they are converted to JATS-->
     <rule context="article-meta" role="error">
          <let name="derived-status"
-              value="if ($new-oa-aj='yes' or $existing-oa-aj='yes') then 'online'         else if (pub-date[@pub-type='epub'] or pub-date[@pub-type='cover-date']) then 'issue'         else if (pub-date[@pub-type='aop']) then 'aop'         else if (pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/> 
+              value="if ($maestro-aj='yes' or $existing-oa-aj='yes') then 'online'         else if (pub-date[@pub-type='epub'] or pub-date[@pub-type='cover-date']) then 'issue'         else if (pub-date[@pub-type='aop']) then 'aop'         else if (pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/> 
          <assert id="custom1"
                  test="not($journals//npg:Journal[npg:pcode=$pcode]) or custom-meta-group/custom-meta[meta-name='publish-type']">All articles should contain publication status information at the end of "article-metadata". Insert "custom-meta-group/custom-meta" with "meta-name". For this journal and publication status, "meta-value" should be "<value-of select="$derived-status"/>".</assert>
       </rule>
@@ -666,7 +666,7 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="status" value="meta-value"/>
          <let name="derived-status"
-              value="if ($new-oa-aj='yes' or $existing-oa-aj='yes') then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub'] or ancestor::article-meta/pub-date[@pub-type='cover-date']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else if (ancestor::article-meta/pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/>
+              value="if ($maestro-aj='yes' or $existing-oa-aj='yes') then 'online'         else if (ancestor::article-meta/pub-date[@pub-type='epub'] or ancestor::article-meta/pub-date[@pub-type='cover-date']) then 'issue'         else if (ancestor::article-meta/pub-date[@pub-type='aop']) then 'aop'         else if (ancestor::article-meta/pub-date[@pub-type='fav']) then 'fav'         else 'issue'"/>
          <assert id="custom2"
                  test="not($journals//npg:Journal[npg:pcode=$pcode]) or $status=$derived-status">Unexpected value for "publish-type" (<value-of select="$status"/>). Expected value for this journal and publication status is "<value-of select="$derived-status"/>".</assert>
       </rule>
@@ -678,41 +678,41 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$new-oa-aj='yes' and $allowed-article-types/journal[@pcode=$pcode]]"
+      <rule context="article[$maestro-aj='yes' and $allowed-article-types/journal[@pcode=$pcode]]"
             role="error">
          <assert id="oa-aj1"
                  test="$allowed-article-types/journal[@pcode eq $pcode]/article-type[$article-type=@code]">Invalid article-type used (<value-of select="$article-type"/>). The only article types allowed in "<value-of select="$journal-title"/>" are: <value-of select="for $j in 1 to count($allowed-article-types/journal[@pcode eq $pcode]/article-type) return concat(string-join($allowed-article-types/journal[@pcode eq $pcode]/article-type[$j]/article-heading,' or '),' (',$allowed-article-types/journal[@pcode eq $pcode]/article-type[$j]/@code,'),')"/>.</assert>
       </rule>
   </pattern>
    <pattern><!--volume should be given in all new OA only journals-->
-    <rule context="article[$new-oa-aj='yes']/front/article-meta" role="error">
+    <rule context="article[$maestro-aj='yes']/front/article-meta" role="error">
          <assert id="oa-aj2a" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
   </pattern>
    <pattern><!--issue should not be used in new OA only journals-->
-    <rule context="article[$new-oa-aj='yes']/front/article-meta/issue" role="error">
+    <rule context="article[$maestro-aj='yes']/front/article-meta/issue" role="error">
          <report id="oa-aj2b" test=".">"issue" should not be used in "<value-of select="$journal-title"/>".</report>
       </rule>
   </pattern>
    <pattern><!--elocation-id should be given in all new OA only journals-->
-    <rule context="article[$new-oa-aj='yes']/front/article-meta" role="error">
+    <rule context="article[$maestro-aj='yes']/front/article-meta" role="error">
          <assert id="oa-aj2c" test="elocation-id">An "elocation-id" should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
   </pattern>
    <pattern><!--elocation-id should be numerical, i.e. does not start with 'e' or leading zeros-->
-    <rule context="article[$new-oa-aj='yes']/front/article-meta/elocation-id"
+    <rule context="article[$maestro-aj='yes']/front/article-meta/elocation-id"
             role="error">
          <assert id="oa-aj2d" test="matches(.,'^[1-9][0-9]*$')">"elocation-id" in "<value-of select="$journal-title"/>" should be a numerical value only (with no leading zeros), not "<value-of select="."/>".</assert>
       </rule>
   </pattern>
    <pattern><!--open access license info should be given in all new OA only journals (except in correction articles)-->
-    <rule context="article[$new-oa-aj='yes' and not(matches($article-type,'^(add|cg|cs|er|ret)$')) and not($pcode='bdjteam')]/front/article-meta/permissions"
+    <rule context="article[$maestro-aj='yes' and not(matches($article-type,'^(add|cg|cs|er|ret)$')) and not($pcode='bdjteam')]/front/article-meta/permissions"
             role="error">
          <assert id="oa-aj3" test="license">"<value-of select="$journal-title"/>" should contain "license", which gives details of the Open Access license being used. Please contact NPG for this information.</assert>
       </rule>
   </pattern>
    <pattern><!--open access license info should not be given in correction articles in new OA only journals-->
-    <rule context="article[$new-oa-aj='yes' and matches($article-type,'^(add|cg|cs|er|ret)$') and not($pcode='bdjteam')]/front/article-meta/permissions"
+    <rule context="article[$maestro-aj='yes' and matches($article-type,'^(add|cg|cs|er|ret)$') and not($pcode='bdjteam')]/front/article-meta/permissions"
             role="error">
          <report id="oa-aj3b" test="license">"license" should not be used in correction articles, as they are not Open Access. This article is: <value-of select="$allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading"/>.</report>
       </rule>
@@ -724,7 +724,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--error in pcode, but numerical value ok-->
-    <rule context="article[$new-oa-aj='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
+    <rule context="article[$maestro-aj='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
          <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
@@ -733,7 +733,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--pcode ok but error in numerical value-->
-    <rule context="article[$new-oa-aj='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
+    <rule context="article[$maestro-aj='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
          <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
@@ -742,7 +742,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--errors in pcode and numerical value-->
-    <rule context="article[$new-oa-aj='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
+    <rule context="article[$maestro-aj='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
          <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
@@ -751,7 +751,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--Does doi match article-id?-->
-    <rule context="article[$new-oa-aj='yes']//article-meta/article-id[@pub-id-type='doi']"
+    <rule context="article[$maestro-aj='yes']//article-meta/article-id[@pub-id-type='doi']"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -765,7 +765,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$new-oa-aj='yes']//fig//graphic[@xlink:href]" role="error">
+      <rule context="article[$maestro-aj='yes']//fig//graphic[@xlink:href]" role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
@@ -776,7 +776,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$new-oa-aj='yes']//fig//supplementary-material[@content-type='slide'][@xlink:href]"
+      <rule context="article[$maestro-aj='yes']//fig//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -788,7 +788,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$new-oa-aj='yes']//table-wrap//graphic[@xlink:href]"
+      <rule context="article[$maestro-aj='yes']//table-wrap//graphic[@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -800,7 +800,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$new-oa-aj='yes']//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
+      <rule context="article[$maestro-aj='yes']//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -812,7 +812,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$new-oa-aj='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')]"
+      <rule context="article[$maestro-aj='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -824,7 +824,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$new-oa-aj='yes']//floats-group/supplementary-material[@xlink:href][not(@content-type='isa-tab')]"
+      <rule context="article[$maestro-aj='yes']//floats-group/supplementary-material[@xlink:href][not(@content-type='isa-tab')]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -850,18 +850,18 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--subject path found in subject ontology-->
-    <rule context="article[$new-oa-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+    <rule context="article[$maestro-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <assert id="oa-aj10a" test=".=$journals//npg:subjectPath">Subject path (<value-of select="."/>) is not recognized by the subject ontology. Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--subject path valid for the journal-->
-    <rule context="article[$new-oa-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+    <rule context="article[$maestro-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <assert id="oa-aj10b"
                  test=".=$journals//npg:Journal[npg:pcode=$pcode]/npg:subjectPath or not(.=$journals//npg:subjectPath)">Subject path <value-of select="."/> is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--id should be final value in subject path-->
-    <rule context="article[$new-oa-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))]//subject[@content-type='npg.subject'][named-content[@content-type='id']]">
+    <rule context="article[$maestro-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))]//subject[@content-type='npg.subject'][named-content[@content-type='id']]">
          <let name="path" value="named-content[@content-type='path'][1]"/>
          <let name="id" value="named-content[@content-type='id']"/>
          <let name="derivedId" value="functx:substring-after-last($path,'/')"/>
@@ -870,7 +870,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--article-type and article heading should be equivalent-->
-    <rule context="article[$new-oa-aj='yes' and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta//subject[@content-type='article-heading']"
+    <rule context="article[$maestro-aj='yes' and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta//subject[@content-type='article-heading']"
             role="error">
          <let name="article-heading"
               value="replace(string-join($allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading,' or '),'\W\([a-z]+\)','')"/>
@@ -878,7 +878,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--article-heading should be used-->
-    <rule context="article[$new-oa-aj='yes' and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta/article-categories"
+    <rule context="article[$maestro-aj='yes' and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta/article-categories"
             role="error">
          <let name="article-heading"
               value="replace(string-join($allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading,' or '),'\W\([a-z]+\)','')"/>
@@ -886,41 +886,41 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--authors should link to their affiliated body, even when there is only one aff-->
-    <rule context="article[$new-oa-aj='yes']/front/article-meta[aff]/contrib-group//contrib[@contrib-type='author'][not(ancestor::collab[@collab-type='authors'])]"
+    <rule context="article[$maestro-aj='yes']/front/article-meta[aff]/contrib-group//contrib[@contrib-type='author'][not(ancestor::collab[@collab-type='authors'])]"
             role="error">
          <assert id="oa-aj12" test="xref[@ref-type='aff']">All authors should be linked to an affiliated body. Insert xref with 'ref-type="aff"'.</assert>
       </rule>
   </pattern>
    <pattern><!--pub-date should have @pub-type="epub"-->
-    <rule context="article[$new-oa-aj='yes']/front/article-meta/pub-date" role="error">
+    <rule context="article[$maestro-aj='yes']/front/article-meta/pub-date" role="error">
          <assert id="oa-aj13a" test="@pub-type='epub'">Online-only open access journals should have publication date with the 'pub-type' attribute value "epub", not "<value-of select="@pub-type"/>". </assert>
       </rule>
   </pattern>
    <pattern><!--pub-date should have day element-->
-    <rule context="article[$new-oa-aj='yes']/front/article-meta/pub-date[@pub-type='epub']"
+    <rule context="article[$maestro-aj='yes']/front/article-meta/pub-date[@pub-type='epub']"
             role="error">
          <assert id="oa-aj13b" test="day">Online-only open access journals should have a full publication date - "day" is missing.</assert>
       </rule>
   </pattern>
    <pattern><!--Only one author email per corresp element-->
-    <rule context="corresp[count(email) gt 1][$new-oa-aj='yes']" role="error">
+    <rule context="corresp[count(email) gt 1][$maestro-aj='yes']" role="error">
          <report id="maestro1" test=".">Corresponding author information should only contain one email address. Please split "corresp" with id='<value-of select="@id"/>' into separate "corresp" elements - one for each corresponding author. You will also need to update the equivalent "xref" elements with the new 'rid' values.</report>
       </rule>
   </pattern>
    <pattern><!--Do not include the word 'correspondence' in the corresp element-->
-    <rule context="corresp[$new-oa-aj='yes']" role="error">
+    <rule context="corresp[$maestro-aj='yes']" role="error">
          <report id="aj-corresp1"
                  test="starts-with(.,'correspondence') or starts-with(.,'Correspondence') or starts-with(.,'CORRESPONDENCE')">Do not include the unnecessary text 'Correspondence' in the "corresp" element.</report>
       </rule>
   </pattern>
    <pattern><!--no empty xrefs for ref-types="author-notes"-->
-    <rule context="xref[@ref-type='author-notes'][$new-oa-aj='yes' and not($pcode='sdata')]"
+    <rule context="xref[@ref-type='author-notes'][$maestro-aj='yes' and not($pcode='sdata')]"
             role="error">
          <assert id="aj-aunote1a" test="normalize-space(.) or *">"xref" with ref-type="author-notes" and rid="<value-of select="@rid"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
       </rule>
   </pattern>
    <pattern>
-      <rule context="author-notes/fn[not(@fn-type)][@id][$new-oa-aj='yes' and not($pcode='sdata')]"
+      <rule context="author-notes/fn[not(@fn-type)][@id][$maestro-aj='yes' and not($pcode='sdata')]"
             role="error">
          <let name="id" value="@id"/>
          <let name="symbol" value="(ancestor::article//xref[matches(@rid,$id)])[1]//text()"/>
@@ -928,7 +928,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--correction articles should contain a related-article element-->
-    <rule context="article[($new-oa-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta"
+    <rule context="article[($maestro-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta"
             role="error">
          <let name="article-heading"
               value="$allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading"/>
@@ -939,7 +939,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--check correction articles have matching @related-article-type and @article-type values-->
-    <rule context="article[($new-oa-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/related-article"
+    <rule context="article[($maestro-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/related-article"
             role="error">
          <let name="related-article-type"
               value="if ($article-type='add') then 'is-addendum-to'          else if ($article-type='cg') then 'is-corrigendum-to'          else if ($article-type='cs') then 'is-correction-to'          else if ($article-type='er') then 'is-erratum-to'          else if ($article-type='ret') then 'is-retraction-to' else ()"/>
@@ -969,7 +969,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--monospace should not be used-->
-    <rule context="article[$new-oa-aj='yes']//monospace" role="error">
+    <rule context="article[$maestro-aj='yes']//monospace" role="error">
          <report id="style2d" test=".">Do not use "monospace", as this will not render correctly. Please change to "preformat" with 'preformat-type="inline"'.</report>
       </rule>
   </pattern>
@@ -984,6 +984,30 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="type" value="@related-article-type"/>
          <report id="sdata1d" test=".">In Data Descriptors, the only "related-article" 'related-article-type' value should be "is-data-descriptor-to", which will be added by the SciData synch tool. Please delete "related-article" with 'related-article-type="<value-of select="$type"/>"'.</report>
+      </rule>
+  </pattern>
+   <pattern><!--only one element-citation in ref-->
+    <rule context="ref-list[@content-type='data-citations']/ref[@id]/element-citation[1][following-sibling::element-citation]"
+            role="error">
+         <report id="sdata2a" test=".">Error in data citation <value-of select="parent::ref/@id"/>: data citation references should only contain one child "element-citation". Please refer to the Tagging Instructions.</report>
+      </rule>
+  </pattern>
+   <pattern><!--should be element-citation not mixed-citation-->
+    <rule context="ref-list[@content-type='data-citations']/ref[@id]/mixed-citation"
+            role="error">
+         <report id="sdata2b" test=".">Error in data citation <value-of select="parent::ref/@id"/>: data citation references should use "element-citation", not "mixed-citation". Please refer to the Tagging Instructions.</report>
+      </rule>
+  </pattern>
+   <pattern><!--named-content for source info is not required in sdata-->
+    <rule context="ref-list[@content-type='data-citations'][$pcode='sdata']/ref[@id]//named-content[@content-type='source']"
+            role="error">
+         <report id="sdata2c" test=".">Error in data citation <value-of select="ancestor::ref/@id"/>: data citation references in Scientific Data do not need the source status (new/existing) declared, as this information will not be supplied by NPG. Please delete the "named-content" element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--year should be included-->
+    <rule context="ref-list[@content-type='data-citations']/ref[@id]/element-citation[not(year)]"
+            role="error">
+         <report id="sdata2d" test=".">Error in data citation <value-of select="parent::ref/@id"/>: the "year" should be marked up in data citations. Please refer to the Tagging Instructions.</report>
       </rule>
   </pattern>
    <pattern>
@@ -1396,8 +1420,50 @@ Use the <let> element to define the attribute if necessary.
          <report id="xref3c" test="count(tokenize(@rid, '\W+')[. != '']) eq 2">Bibrefs should be to a single reference or a range of three or more references. See Tagging Instructions for examples.</report>
       </rule>
   </pattern>
-   <pattern><!--compare multiple bib rids with text-->
+   <pattern><!--check start of range value is a number-->
     <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'–')]"
+            role="error"><!--range items must be numbers-->
+      <let name="first" value="substring-before(.,'–')"/>
+         <assert id="xref3d1a" test="matches($first,'^[0-9]+$')">Non-numeric character included at the start of citation range: <value-of select="$first"/>. Please make this a number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--check end of range value is a number-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'–')]"
+            role="error"><!--range items must be numbers-->
+      <let name="last" value="substring-after(.,'–')"/>
+         <assert id="xref3d1b" test="matches($last,'^[0-9]+$')">Non-numeric character included at the end of citation range: <value-of select="$last"/>. Please make this a number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--check start of range value is a number-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'—')]"
+            role="error"><!--range items must be numbers-->
+      <let name="first" value="substring-before(.,'—')"/>
+         <assert id="xref3d1a-2" test="matches($first,'^[0-9]+$')">Non-numeric character included at the start of citation range: <value-of select="$first"/>. Please make this a number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--check end of range value is a number-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'—')]"
+            role="error"><!--range items must be numbers-->
+      <let name="last" value="substring-after(.,'—')"/>
+         <assert id="xref3d1b-2" test="matches($last,'^[0-9]+$')">Non-numeric character included at the end of citation range: <value-of select="$last"/>. Please make this a number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--check start of range value is a number-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'-')]"
+            role="error"><!--range items must be numbers-->
+      <let name="first" value="substring-before(.,'-')"/>
+         <assert id="xref3d1a-3" test="matches($first,'^[0-9]+$')">Non-numeric character included at the start of citation range: <value-of select="$first"/>. Please make this a number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--check end of range value is a number-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][contains(.,'-')]"
+            role="error"><!--range items must be numbers-->
+      <let name="last" value="substring-after(.,'-')"/>
+         <assert id="xref3d1b-4" test="matches($last,'^[0-9]+$')">Non-numeric character included at the end of citation range: <value-of select="$last"/>. Please make this a number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--compare multiple bib rids with text-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][matches(substring-before(.,'–'),'^[0-9]+$')][matches(substring-after(.,'–'),'^[0-9]+$')]"
             role="error"><!--find multiple bibrefs, text must contain a dash (i.e. is a range)-->
       <let name="first" value="xs:integer(substring-before(.,'–'))"/>
          <!--find start of range-->
@@ -1409,7 +1475,43 @@ Use the <let> element to define the attribute if necessary.
          <!--generate expected sequence of rid values-->
       <let name="normalizedRid" value="tokenize(@rid,'\W+')"/>
          <!--turn rid into a sequence for comparison purposes-->
-      <assert id="xref3d"
+      <assert id="xref3d2"
+                 test="every $i in 1 to $range satisfies $derivedRid[$i]=$normalizedRid[$i]">xref with ref-type="bibr" range <value-of select="."/> has non-matching multiple rids (<value-of select="@rid"/>). See Tagging Instructions for examples.</assert>
+         <!--if any pair does not match, then test will fail-->
+    </rule>
+  </pattern>
+   <pattern><!--compare multiple bib rids with text-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][matches(substring-before(.,'—'),'^[0-9]+$')][matches(substring-after(.,'—'),'^[0-9]+$')]"
+            role="error"><!--find multiple bibrefs, text must contain a dash (i.e. is a range)-->
+      <let name="first" value="xs:integer(substring-before(.,'—'))"/>
+         <!--find start of range-->
+      <let name="last" value="xs:integer(substring-after(.,'—'))"/>
+         <!--find end of range-->
+      <let name="range" value="$last - $first + 1"/>
+         <!--find number of refs in the range-->
+      <let name="derivedRid" value="for $j in $first to $last return concat('b',$j)"/>
+         <!--generate expected sequence of rid values-->
+      <let name="normalizedRid" value="tokenize(@rid,'\W+')"/>
+         <!--turn rid into a sequence for comparison purposes-->
+      <assert id="xref3d2-2"
+                 test="every $i in 1 to $range satisfies $derivedRid[$i]=$normalizedRid[$i]">xref with ref-type="bibr" range <value-of select="."/> has non-matching multiple rids (<value-of select="@rid"/>). See Tagging Instructions for examples.</assert>
+         <!--if any pair does not match, then test will fail-->
+    </rule>
+  </pattern>
+   <pattern><!--compare multiple bib rids with text-->
+    <rule context="xref[@ref-type='bibr' and count(tokenize(@rid, '\W+')[. != '']) gt 2][matches(substring-before(.,'-'),'^[0-9]+$')][matches(substring-after(.,'-'),'^[0-9]+$')]"
+            role="error"><!--find multiple bibrefs, text must contain a dash (i.e. is a range)-->
+      <let name="first" value="xs:integer(substring-before(.,'-'))"/>
+         <!--find start of range-->
+      <let name="last" value="xs:integer(substring-after(.,'-'))"/>
+         <!--find end of range-->
+      <let name="range" value="$last - $first + 1"/>
+         <!--find number of refs in the range-->
+      <let name="derivedRid" value="for $j in $first to $last return concat('b',$j)"/>
+         <!--generate expected sequence of rid values-->
+      <let name="normalizedRid" value="tokenize(@rid,'\W+')"/>
+         <!--turn rid into a sequence for comparison purposes-->
+      <assert id="xref3d2-3"
                  test="every $i in 1 to $range satisfies $derivedRid[$i]=$normalizedRid[$i]">xref with ref-type="bibr" range <value-of select="."/> has non-matching multiple rids (<value-of select="@rid"/>). See Tagging Instructions for examples.</assert>
          <!--if any pair does not match, then test will fail-->
     </rule>
@@ -1957,19 +2059,19 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--journal citation should not contain chapter-title-->
-    <rule context="ref[$new-oa-aj='yes']/mixed-citation[@publication-type='journal']/chapter-title"
+    <rule context="ref[$maestro-aj='yes']/mixed-citation[@publication-type='journal']/chapter-title"
             role="error">
          <report id="reflist10a" test=".">Journal citation "<value-of select="ancestor::ref/@id"/>" (source: <value-of select="parent::mixed-citation/source"/>) should not use "chapter-title". Change this to "article-title" (or check if this should be a book citation).</report>
       </rule>
   </pattern>
    <pattern><!--journal citation should have source and article-title-->
-    <rule context="ref[$new-oa-aj='yes']/mixed-citation[@publication-type='journal'][source][not(chapter-title|article-title)]"
+    <rule context="ref[$maestro-aj='yes']/mixed-citation[@publication-type='journal'][source][not(chapter-title|article-title)]"
             role="error">
          <report id="reflist10b" test=".">Journal citation "<value-of select="parent::ref/@id"/>" only has "source" identified (<value-of select="source"/>). Mark up the "article-title" or change to 'publication-type="book"'.</report>
       </rule>
   </pattern>
    <pattern><!--journal citation should have source and article-title-->
-    <rule context="ref[$new-oa-aj='yes']/mixed-citation[@publication-type='journal'][not(source)]"
+    <rule context="ref[$maestro-aj='yes']/mixed-citation[@publication-type='journal'][not(source)]"
             role="error">
          <report id="reflist10c" test="article-title">Journal citation "<value-of select="parent::ref/@id"/>" only has "article-title" identified (<value-of select="article-title"/>). Mark up the "source" also.</report>
       </rule>
@@ -2253,7 +2355,7 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--illustration - @id must be correct format (restricted to new oa ajs for now)-->
-        <rule context="graphic[@content-type='illustration'][@id][$new-oa-aj='yes']"
+        <rule context="graphic[@content-type='illustration'][@id][$maestro-aj='yes']"
             role="error">
             <assert id="ill1d" test="matches(@id,'^i[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). Illustration 'id' attribute should be of the form "i"+number (with no leading zeros).</assert>
         </rule>
@@ -2265,7 +2367,7 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--@xlink:href does not contain filepath info-->
-        <rule context="graphic[@content-type='illustration'][not($new-oa-aj='yes')]"
+        <rule context="graphic[@content-type='illustration'][not($maestro-aj='yes')]"
             role="error">
             <report id="ill2a" test="contains(@xlink:href,'/')">Do not include filepath information for illustration images "<value-of select="@xlink:href"/>".</report>
         </rule>
