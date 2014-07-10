@@ -567,6 +567,56 @@ Use the <let> element to define the attribute if necessary.
          <report id="copy4" test=".">Do not use "<name/>" element in "copyright-statement" - it should only contain text.</report>
       </rule>  
   </pattern>
+   <pattern><!--licence link is present-->
+    <rule context="license[not(@xlink:href)][contains(license-p,'http://creativecommons.org/licenses/')]"
+            role="error">
+         <let name="stub"
+              value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
+         <let name="standardizeStub"
+              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
+         <let name="url"
+              value="concat('http://creativecommons.org/licenses/',$standardizeStub)"/>
+         <report id="license1a" test=".">"license" should have 'xlink:href' attribute containing the url declared in the license text - "<value-of select="$url"/>".</report>
+      </rule>  
+  </pattern>
+   <pattern><!--licence type is present-->
+    <rule context="license[not(@license-type)][contains(license-p,'http://creativecommons.org/licenses/')]"
+            role="error">
+         <let name="stub"
+              value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
+         <let name="standardizeStub"
+              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
+         <let name="typeStub"
+              value="if (ends-with($standardizeStub,'/')) then functx:substring-before-last($standardizeStub,'/') else $standardizeStub"/>
+         <let name="type" value="replace($typeStub,'/','-')"/>
+         <report id="license1b" test=".">"license" should have 'license-type' attribute giving the license type declared in the license text - "<value-of select="$type"/>".</report>
+      </rule>  
+  </pattern>
+   <pattern><!--licence links is correct-->
+    <rule context="license[@xlink:href][contains(license-p,'http://creativecommons.org/licenses/')]"
+            role="error">
+         <let name="stub"
+              value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
+         <let name="standardizeStub"
+              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
+         <let name="url"
+              value="concat('http://creativecommons.org/licenses/',$standardizeStub)"/>
+         <assert id="license2a" test="$url eq @xlink:href">"license" 'xlink:href' attribute (<value-of select="@xlink:href"/>) does not match the url declared in the license text (<value-of select="$url"/>).</assert>
+      </rule>  
+  </pattern>
+   <pattern><!--licence type is correct-->
+    <rule context="license[@license-type][contains(license-p,'http://creativecommons.org/licenses/')]"
+            role="error">
+         <let name="stub"
+              value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
+         <let name="standardizeStub"
+              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
+         <let name="typeStub"
+              value="if (ends-with($standardizeStub,'/')) then functx:substring-before-last($standardizeStub,'/') else $standardizeStub"/>
+         <let name="type" value="replace($typeStub,'/','-')"/>
+         <assert id="license2b" test="$type eq @license-type">"license" 'license-type' attribute (<value-of select="@license-type"/>) does not match the license type declared in the license text (<value-of select="$type"/>).</assert>
+      </rule>  
+  </pattern>
    <pattern><!--Related-article with a link should have @ext-link-type-->
     <rule context="article-meta/related-article[@xlink:href][not(@ext-link-type)]"
             role="error">
