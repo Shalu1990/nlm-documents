@@ -1440,6 +1440,36 @@ Use the <let> element to define the attribute if necessary.
          <report id="style2c" test=".">Preformatted blocks should not be included in "p" - change to be a sibling of "p" within "<name path="parent::p/parent::*"/>".</report>
       </rule>
   </pattern>
+   <pattern><!--quote should have @content-type to assist rendering-->
+    <rule context="disp-quote[not(@content-type)]" role="error">
+         <report id="quote1a" test=".">"disp-quote" should have an 'content-type' attribute with value "pullquote" (for quotes shown at the side of the text) or "quote" (for an indented block of text within the body of the article).</report>
+      </rule>
+  </pattern>
+   <pattern><!--quote should have valid @content-type-->
+    <rule context="disp-quote[@content-type]" role="error">
+         <assert id="quote1b" test="@content-type='pullquote' or @content-type='quote'">"disp-quote" 'content-type' attribute should have value "pullquote" (for quotes shown at the side of the text) or "quote" (for an indented block of text within the body of the article), not "<value-of select="@content-type"/>".</assert>
+      </rule>
+  </pattern>
+   <pattern><!--block quotes should not have atrribution-->
+    <rule context="disp-quote[@content-type='quote']/attrib" role="error">
+         <report id="quote2" test=".">Do not use "attrib" in block quotes. The attribution statement should just follow the text of the quote itself.</report>
+      </rule>
+  </pattern>
+   <pattern><!--quote should not have @id-->
+    <rule context="disp-quote[@id]" role="error">
+         <report id="quote3a" test=".">Unnecessary use of 'id' attribute on "disp-quote" element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--quote should not have @specific-use-->
+    <rule context="disp-quote[@specific-use]" role="error">
+         <report id="quote3b" test=".">Unnecessary use of 'specific-use' attribute on "disp-quote" element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--quote should only contain p or attrib-->
+    <rule context="disp-quote/*[not(self::p or self::attrib)]" role="error">
+         <report id="quote4" test=".">Do not use "<name/>" in "disp-quote". Only "p" or "attrib" should be used.</report>
+      </rule>
+  </pattern>
    <pattern><!--no empty xrefs for some ref-types-->
     <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|fig|supplementary-material|table-fn)$')]"
             role="error">
