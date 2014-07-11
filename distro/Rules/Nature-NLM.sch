@@ -1470,6 +1470,21 @@ Use the <let> element to define the attribute if necessary.
          <report id="quote4" test=".">Do not use "<name/>" in "disp-quote". Only "p" or "attrib" should be used.</report>
       </rule>
   </pattern>
+   <pattern><!--url starting https should not have extra http added to @xlink:href-->
+    <rule context="ext-link[contains(@xlink:href,'http://http')]" role="error">
+         <report id="url1a" test=".">Do not insert extra "http://" on an 'xlink-href' which already has an http protocol - <value-of select="@xlink:href"/>.</report>
+      </rule>
+  </pattern>
+   <pattern><!--url starting ftp:// should not have extra http added to @xlink:href-->
+    <rule context="ext-link[contains(@xlink:href,'http://ftp://')]" role="error">
+         <report id="url1b" test=".">Do not insert "http://" on an 'xlink-href' to an ftp - <value-of select="@xlink:href"/>.</report>
+      </rule>
+  </pattern>
+   <pattern><!--url starting mailto should not have extra http added to @xlink:href-->
+    <rule context="ext-link[contains(@xlink:href,'http://mailto')]" role="error">
+         <report id="url1c" test=".">Do not insert "http://" on an 'xlink-href' to a "mailto" address - <value-of select="@xlink:href"/>.</report>
+      </rule>
+  </pattern>
    <pattern><!--no empty xrefs for some ref-types-->
     <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|fig|supplementary-material|table-fn)$')]"
             role="error">
