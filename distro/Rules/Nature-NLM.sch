@@ -1485,6 +1485,26 @@ Use the <let> element to define the attribute if necessary.
          <report id="url1c" test=".">Do not insert "http://" on an 'xlink-href' to a "mailto" address - <value-of select="@xlink:href"/>.</report>
       </rule>
   </pattern>
+   <pattern><!--ext-link should have @xlink:href-->
+    <rule context="ext-link[not(@xlink:href)]" role="error">
+         <report id="url2a" test=".">"ext-link" should have an 'xlink:href' attribute giving the target website or ftp site.</report>
+      </rule>
+  </pattern>
+   <pattern><!--ext-link should have non-empty @xlink:href-->
+    <rule context="ext-link[@xlink:href='']" role="error">
+         <report id="url2b" test=".">"ext-link" 'xlink:href' attribute should not be empty. It should contain the address for the target website or ftp site.</report>
+      </rule>
+  </pattern>
+   <pattern><!--ext-link should have @xlink:href-->
+    <rule context="ext-link[not(@ext-link-type)]" role="error">
+         <report id="url3a" test=".">"ext-link" should have an 'ext-link-type' attribute: "url" for a link to a website; "ftp" for a link to an ftp site.</report>
+      </rule>
+  </pattern>
+   <pattern><!--ext-link should have non-empty @xlink:href-->
+    <rule context="ext-link[@ext-link-type='']" role="error">
+         <report id="url3b" test=".">"ext-link" 'ext-link-type' attribute should not be empty. It should be "url" for a link to a website; "ftp" for a link to an ftp site.</report>
+      </rule>
+  </pattern>
    <pattern><!--no empty xrefs for some ref-types-->
     <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|fig|supplementary-material|table-fn)$')]"
             role="error">
