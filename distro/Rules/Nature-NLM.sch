@@ -1188,6 +1188,19 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
+      <rule context="author-notes/fn[not(@fn-type)][matches(@id,'^n[1-9][0-9]*$')]"
+            role="error"><!--author notes linked to from at least one contributor-->
+      <let name="id" value="@id"/>
+         <assert id="aunote1c"
+                 test="ancestor::article//xref[@ref-type='author-notes'][@rid=$id]">An author note appears, but no contributor has been linked. Please add linking information to the relevant "contrib" element(s) - insert an "xref" link with attributes ref-type="author-notes" and rid="<value-of select="@id"/>".</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="author-notes/fn[@fn-type='equal']" role="error"><!--use author-notes not equal footnotes-->
+      <report id="aunote2" test=".">Do not use author footnote with 'fn-type="equal"' in Macmillan articles. Mark up as a normal author footnote instead, i.e. "fn" with no 'fn-type' attribute, and a linking xref from the relevant contributors. See example in Tagging Instructions.</report>
+      </rule>
+  </pattern>
+   <pattern>
       <rule context="contrib[collab][attribute::*]" role="error"><!--no attributes required when contributor is a collaboration-->
       <report id="collab1a" test=".">No attributes are required when a contributor is a collaboration - element should just be &lt;contrib&gt;.</report>
       </rule>
