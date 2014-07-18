@@ -1346,7 +1346,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--list-type attribute is valid--><!--needs work - excludes lists in body when no sec exists; does it work in abstracts?-->
-    <rule context="list[not(ancestor::sec/@sec-type) and (ancestor::sec/@specific-use or ancestor::abstract)][@list-type]"
+    <rule context="list[@list-content='boxed-list' or not(@list-content)][@list-type]"
             role="error">
          <let name="listType" value="@list-type"/>
          <assert id="list3b" test="$allowed-values/list-types/list-type[.=$listType]">Unexpected value for "list-type" attribute (<value-of select="$listType"/>). Allowed values are: none, bullet, number, lcletter, ucletter, lcroman and ucroman for unbracketed labels. Use number-paren, lcletter-paren and roman-paren for labels in parentheses.</assert>
