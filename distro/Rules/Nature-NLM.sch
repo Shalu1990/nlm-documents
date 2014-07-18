@@ -643,7 +643,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>  
   </pattern>
    <pattern><!--valid @abstract-type-->
-    <rule context="abstract[@abstract-type]" role="error">
+    <rule context="abstract[@abstract-type][not($maestro-aj='yes')]" role="error">
          <let name="abstractType" value="@abstract-type"/>
          <assert id="abs1" test="$allowed-values/abstract-types/abstract-type[.=$abstractType]">Unexpected value for "abstract-type" attribute (<value-of select="$abstractType"/>). Allowed values are: editor, editor-standfirst, editorial-summary, editorial-notes, executive-summary, first-paragraph, key-points, research-summary, standfirst, synopsis, toc, toc-note, web-summary.</assert>
       </rule>
@@ -652,11 +652,6 @@ Use the <let> element to define the attribute if necessary.
     <rule context="abstract[not(@abstract-type='editor' or @abstract-type='editor-standfirst' or @abstract-type='research-summary' or @abstract-type='editorial-summary' or @abstract-type='editorial-notes')]"
             role="error">
          <report id="abs2a" test="@abstract-type=./preceding-sibling::abstract/@abstract-type">Only one abstract of type "<value-of select="@abstract-type"/>" should appear in an article.</report>
-      </rule>
-  </pattern>
-   <pattern><!--"research-summary" not used as @abstract-type value in new journals-->
-    <rule context="abstract[@abstract-type='research-summary']" role="error">
-         <report id="abs2b" test="matches($pcode,'^(mtm|hortres)$')">Do not use 'abstract-type="research-summary" in <value-of select="$journal-title"/>, use 'abstract-type="editorial-summary" instead.</report>
       </rule>
   </pattern>
    <pattern><!--dateline para in correct place-->
@@ -812,6 +807,12 @@ Use the <let> element to define the attribute if necessary.
               value="concat($baseDOI,$derivedPcode,'.',substring($numericValue,1,4),'.',substring($numericValue,5))"/>
          <assert id="oa-aj5"
                  test=".=$derivedDoi or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article DOI (<value-of select="."/>) does not match the expected value based on the article id (<value-of select="$derivedDoi"/>).</assert>
+      </rule>
+  </pattern>
+   <pattern><!--valid @abstract-type-->
+    <rule context="abstract[@abstract-type][$maestro-aj='yes']" role="error">
+         <assert id="oa-aj-abs1a"
+                 test="matches(@abstract-type,'^(standfirst|long-summary|short-summary|key-points)$')">Unexpected value for "abstract-type" attribute (<value-of select="@abstract-type"/>). Allowed values are: standfirst, long-summary, short-summary and key-points.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -1506,6 +1507,11 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--ext-link should have non-empty @xlink:href-->
     <rule context="ext-link[@xlink:href='']" role="error">
          <report id="url2b" test=".">"ext-link" 'xlink:href' attribute should not be empty. It should contain the address for the target website or ftp site.</report>
+      </rule>
+  </pattern>
+   <pattern><!--ext-link @xlink:href should not contain whitespace-->
+    <rule context="ext-link[matches(@xlink:href,'\s')]" role="error">
+         <report id="url2c" test=".">"ext-link" 'xlink:href' attribute should not contain whitespace - this will create a broken link in the online article. Please delete spaces and new lines.</report>
       </rule>
   </pattern>
    <pattern><!--ext-link should have @xlink:href-->
