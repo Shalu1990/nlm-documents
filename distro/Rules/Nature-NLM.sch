@@ -1496,7 +1496,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--url starting mailto should not have extra http added to @xlink:href-->
     <rule context="ext-link[contains(@xlink:href,'http://mailto')]" role="error">
-         <report id="url1c" test=".">Do not insert "http://" on an 'xlink-href' to a "mailto" address - <value-of select="@xlink:href"/>.</report>
+         <report id="url1c" test=".">Do not use "ext-link" for links to email addresses. Use the "email" element, retaining the 'xlink:href' attribute (and delete 'http://mailto' from it).</report>
       </rule>
   </pattern>
    <pattern><!--ext-link should have @xlink:href-->
@@ -1514,7 +1514,7 @@ Use the <let> element to define the attribute if necessary.
          <report id="url2c" test=".">"ext-link" 'xlink:href' attribute (<value-of select="@xlink:href"/>) should not contain whitespace - this may create a broken link in the online article. Please delete spaces and new lines.</report>
       </rule>
   </pattern>
-   <pattern><!--ext-link @xlink:href should not contain whitespace-->
+   <pattern><!--ext-link should not be used for email addresses-->
     <rule context="ext-link[starts-with(@xlink:href,'mailto')]" role="error">
          <report id="url2d" test=".">Do not use "ext-link" for links to email addresses. Use the "email" element, retaining the 'xlink:href' attribute (and delete 'mailto' from it).</report>
       </rule>
