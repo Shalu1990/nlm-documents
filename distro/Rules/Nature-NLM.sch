@@ -1056,9 +1056,9 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--year should be included-->
-    <rule context="ref-list[@content-type='data-citations']/ref[@id]/element-citation[not(year)]"
+    <rule context="ref-list[@content-type='data-citations']/ref[@id][not(descendant::year)]"
             role="error">
-         <report id="sdata2d" test=".">Error in data citation <value-of select="parent::ref/@id"/>: the "year" should be marked up in data citations. Please refer to the Tagging Instructions.</report>
+         <report id="sdata2d" test=".">Error in data citation <value-of select="@id"/>: the "year" should be marked up in data citations. Please refer to the Tagging Instructions.</report>
       </rule>
   </pattern>
    <pattern>
@@ -1511,16 +1511,23 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--ext-link @xlink:href should not contain whitespace-->
     <rule context="ext-link[matches(@xlink:href,'\s')]" role="error">
-         <report id="url2c" test=".">"ext-link" 'xlink:href' attribute should not contain whitespace - this will create a broken link in the online article. Please delete spaces and new lines.</report>
+         <report id="url2c" test=".">"ext-link" 'xlink:href' attribute (<value-of select="@xlink:href"/>) should not contain whitespace - this may create a broken link in the online article. Please delete spaces and new lines.</report>
+      </rule>
+  </pattern>
+   <pattern><!--ext-link @xlink:href should not contain whitespace-->
+    <rule context="ext-link[starts-with(@xlink:href,'mailto')]" role="error">
+         <report id="url2d" test=".">Do not use "ext-link" for links to email addresses. Use the "email" element, retaining the 'xlink:href' attribute (and delete 'mailto' from it).</report>
       </rule>
   </pattern>
    <pattern><!--ext-link should have @xlink:href-->
-    <rule context="ext-link[not(@ext-link-type)]" role="error">
+    <rule context="ext-link[not(@ext-link-type)][not(ancestor::ref-list[@content-type='data-citations'])]"
+            role="error">
          <report id="url3a" test=".">"ext-link" should have an 'ext-link-type' attribute: "url" for a link to a website; "ftp" for a link to an ftp site.</report>
       </rule>
   </pattern>
    <pattern><!--ext-link should have non-empty @xlink:href-->
-    <rule context="ext-link[@ext-link-type='']" role="error">
+    <rule context="ext-link[@ext-link-type=''][not(ancestor::ref-list[@content-type='data-citations'])]"
+            role="error">
          <report id="url3b" test=".">"ext-link" 'ext-link-type' attribute should not be empty. It should be "url" for a link to a website; "ftp" for a link to an ftp site.</report>
       </rule>
   </pattern>
