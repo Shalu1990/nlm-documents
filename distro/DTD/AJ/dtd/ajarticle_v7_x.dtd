@@ -13,6 +13,14 @@
 
 <!-- 
 
+15.07.14
+. CDS-283 - Added optional element "data-citations" to "bm"
+            "data-citations" contains one or more "data-citation"
+            "data-citation" contains an optional "citso" and one "citaug"
+            "data-citation" has required attributes 'db-name', 'dbid' and 'year'; and optional attributes 'id', 'url' and 'source'
+            "auid" has been added as an optional child of "citau"
+            Added "datacitref" to %refs;
+
 10.06.14
 . CDS-194 - Added "xlsm" to NOTATION types and %format; parameter entity set.
 
@@ -1175,7 +1183,7 @@ SYSTEM  ajarticle_v7_x.dtd
 <!--********************************************************************-->
 
 <!ENTITY % refs      	"extlink | dateref | tlnref | figref | schemeref | equref | 
-tblref | textref | extcite | footref | appref | xheadref | xobref | illref | pullquoteref | boxref | sidenoteref">
+tblref | textref | extcite | footref | appref | xheadref | xobref | illref | pullquoteref | boxref | sidenoteref | datacitref">
 
 <!--********************************************************************-->
 <!--       General Text                                           	-->
@@ -2246,7 +2254,7 @@ language        %language;      #IMPLIED>
 <!ELEMENT 	citaug         	  	( cittext | citau | citcorp | 
 citcollab | delim)*  >
 <!ELEMENT 	citau         	  	( cittext | citsname | citfnames | 
-citsuff | delim)*  >
+citsuff | delim | auid)*  >
 <!ELEMENT 	citcorp         	  			(%text; | delim)*>
 <!ELEMENT 	citcollab       	  			(%text; | delim)*>
 <!ELEMENT 	citsname        	  			(%text; | delim)*>
@@ -2412,10 +2420,21 @@ RETAINED FOR BACK COMPATIBILITY ONLY-->
 <!--       BACK MATTER        	-->
 <!--********************************************************************-->
 
-<!ELEMENT 	bm	(footnote*, ack?, audecl*, prf?, endnote*, bioggrp?, closenote?, app*, objects?, linkgrp?, cits?)>
-
+<!ELEMENT 	bm	(footnote*, ack?, audecl*, prf?, endnote*, bioggrp?, closenote?, app*, objects?, linkgrp?, cits?, data-citations?)>
 
 <!ELEMENT 	objects	(%objects;)*>
+
+<!ELEMENT data-citations (data-citation)+>
+
+<!ELEMENT data-citation (citso?, citaug)>
+<!ATTLIST data-citation
+id ID #IMPLIED
+db-name CDATA #REQUIRED
+dbid CDATA #REQUIRED
+url CDATA #IMPLIED
+year CDATA #REQUIRED
+source ( existing | new ) #IMPLIED
+>
 
 <!--********************************************************************-->
 <!--       FIGURES AND ILLUSTRATIONS                          	-->
@@ -2766,6 +2785,11 @@ name CDATA #IMPLIED
 
 <!ELEMENT	sidenoteref					EMPTY >
 <!ATTLIST	sidenoteref	rid			IDREF #REQUIRED>
+
+<!ELEMENT datacitref (%text;)*>
+<!ATTLIST datacitref
+rid IDREF #REQUIRED
+>
 
 
 <!--********************************************************************-->

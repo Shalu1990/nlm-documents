@@ -567,6 +567,56 @@ Use the <let> element to define the attribute if necessary.
          <report id="copy4" test=".">Do not use "<name/>" element in "copyright-statement" - it should only contain text.</report>
       </rule>  
   </pattern>
+   <pattern><!--licence link is present-->
+    <rule context="license[not(@xlink:href)][contains(license-p,'http://creativecommons.org/licenses/')]"
+            role="error">
+         <let name="stub"
+              value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
+         <let name="standardizeStub"
+              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
+         <let name="url"
+              value="concat('http://creativecommons.org/licenses/',$standardizeStub)"/>
+         <report id="license1a" test=".">"license" should have 'xlink:href' attribute containing the url declared in the license text - "<value-of select="$url"/>".</report>
+      </rule>  
+  </pattern>
+   <pattern><!--licence type is present-->
+    <rule context="license[not(@license-type)][contains(license-p,'http://creativecommons.org/licenses/')]"
+            role="error">
+         <let name="stub"
+              value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
+         <let name="standardizeStub"
+              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
+         <let name="typeStub"
+              value="if (ends-with($standardizeStub,'/')) then functx:substring-before-last($standardizeStub,'/') else $standardizeStub"/>
+         <let name="type" value="replace($typeStub,'/','-')"/>
+         <report id="license1b" test=".">"license" should have 'license-type' attribute giving the license type declared in the license text - "<value-of select="$type"/>".</report>
+      </rule>  
+  </pattern>
+   <pattern><!--licence links is correct-->
+    <rule context="license[@xlink:href][contains(license-p,'http://creativecommons.org/licenses/')]"
+            role="error">
+         <let name="stub"
+              value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
+         <let name="standardizeStub"
+              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
+         <let name="url"
+              value="concat('http://creativecommons.org/licenses/',$standardizeStub)"/>
+         <assert id="license2a" test="$url eq @xlink:href">"license" 'xlink:href' attribute (<value-of select="@xlink:href"/>) does not match the url declared in the license text (<value-of select="$url"/>).</assert>
+      </rule>  
+  </pattern>
+   <pattern><!--licence type is correct-->
+    <rule context="license[@license-type][contains(license-p,'http://creativecommons.org/licenses/')]"
+            role="error">
+         <let name="stub"
+              value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
+         <let name="standardizeStub"
+              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
+         <let name="typeStub"
+              value="if (ends-with($standardizeStub,'/')) then functx:substring-before-last($standardizeStub,'/') else $standardizeStub"/>
+         <let name="type" value="replace($typeStub,'/','-')"/>
+         <assert id="license2b" test="$type eq @license-type">"license" 'license-type' attribute (<value-of select="@license-type"/>) does not match the license type declared in the license text (<value-of select="$type"/>).</assert>
+      </rule>  
+  </pattern>
    <pattern><!--Related-article with a link should have @ext-link-type-->
     <rule context="article-meta/related-article[@xlink:href][not(@ext-link-type)]"
             role="error">
@@ -593,7 +643,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>  
   </pattern>
    <pattern><!--valid @abstract-type-->
-    <rule context="abstract[@abstract-type]" role="error">
+    <rule context="abstract[@abstract-type][not($maestro-aj='yes')]" role="error">
          <let name="abstractType" value="@abstract-type"/>
          <assert id="abs1" test="$allowed-values/abstract-types/abstract-type[.=$abstractType]">Unexpected value for "abstract-type" attribute (<value-of select="$abstractType"/>). Allowed values are: editor, editor-standfirst, editorial-summary, editorial-notes, executive-summary, first-paragraph, key-points, research-summary, standfirst, synopsis, toc, toc-note, web-summary.</assert>
       </rule>
@@ -602,11 +652,6 @@ Use the <let> element to define the attribute if necessary.
     <rule context="abstract[not(@abstract-type='editor' or @abstract-type='editor-standfirst' or @abstract-type='research-summary' or @abstract-type='editorial-summary' or @abstract-type='editorial-notes')]"
             role="error">
          <report id="abs2a" test="@abstract-type=./preceding-sibling::abstract/@abstract-type">Only one abstract of type "<value-of select="@abstract-type"/>" should appear in an article.</report>
-      </rule>
-  </pattern>
-   <pattern><!--"research-summary" not used as @abstract-type value in new journals-->
-    <rule context="abstract[@abstract-type='research-summary']" role="error">
-         <report id="abs2b" test="matches($pcode,'^(mtm|hortres)$')">Do not use 'abstract-type="research-summary" in <value-of select="$journal-title"/>, use 'abstract-type="editorial-summary" instead.</report>
       </rule>
   </pattern>
    <pattern><!--dateline para in correct place-->
@@ -762,6 +807,12 @@ Use the <let> element to define the attribute if necessary.
               value="concat($baseDOI,$derivedPcode,'.',substring($numericValue,1,4),'.',substring($numericValue,5))"/>
          <assert id="oa-aj5"
                  test=".=$derivedDoi or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article DOI (<value-of select="."/>) does not match the expected value based on the article id (<value-of select="$derivedDoi"/>).</assert>
+      </rule>
+  </pattern>
+   <pattern><!--valid @abstract-type-->
+    <rule context="abstract[@abstract-type][$maestro-aj='yes']" role="error">
+         <assert id="oa-aj-abs1a"
+                 test="matches(@abstract-type,'^(standfirst|long-summary|short-summary|key-points)$')">Unexpected value for "abstract-type" attribute (<value-of select="@abstract-type"/>). Allowed values are: standfirst, long-summary, short-summary and key-points.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -1005,9 +1056,9 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--year should be included-->
-    <rule context="ref-list[@content-type='data-citations']/ref[@id]/element-citation[not(year)]"
+    <rule context="ref-list[@content-type='data-citations']/ref[@id][not(descendant::year)]"
             role="error">
-         <report id="sdata2d" test=".">Error in data citation <value-of select="parent::ref/@id"/>: the "year" should be marked up in data citations. Please refer to the Tagging Instructions.</report>
+         <report id="sdata2d" test=".">Error in data citation <value-of select="@id"/>: the "year" should be marked up in data citations. Please refer to the Tagging Instructions.</report>
       </rule>
   </pattern>
    <pattern>
@@ -1135,6 +1186,19 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="author-notes/fn[not(@fn-type)][@id]" role="error"><!--author notes id in required format-->
       <assert id="aunote1b" test="matches(@id,'^n[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "author-notes/fn" 'id' attribute should be of the form "n"+number (without leading zeros).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="author-notes/fn[not(@fn-type)][matches(@id,'^n[1-9][0-9]*$')]"
+            role="error"><!--author notes linked to from at least one contributor-->
+      <let name="id" value="@id"/>
+         <assert id="aunote1c"
+                 test="ancestor::article//xref[@ref-type='author-notes'][@rid=$id]">An author note appears, but no contributor has been linked. Please add linking information to the relevant "contrib" element(s) - insert an "xref" link with attributes ref-type="author-notes" and rid="<value-of select="@id"/>".</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="author-notes/fn[@fn-type='equal']" role="error"><!--use author-notes not equal footnotes-->
+      <report id="aunote2" test=".">Do not use author footnote with 'fn-type="equal"' in Macmillan articles. Mark up as a normal author footnote instead, i.e. "fn" with no 'fn-type' attribute, and a linking xref from the relevant contributors. See example in Tagging Instructions.</report>
       </rule>
   </pattern>
    <pattern>
@@ -1282,7 +1346,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--list-type attribute is valid--><!--needs work - excludes lists in body when no sec exists; does it work in abstracts?-->
-    <rule context="list[not(ancestor::sec/@sec-type) and (ancestor::sec/@specific-use or ancestor::abstract)][@list-type]"
+    <rule context="list[@list-content='boxed-list' or not(@list-content)][@list-type]"
             role="error">
          <let name="listType" value="@list-type"/>
          <assert id="list3b" test="$allowed-values/list-types/list-type[.=$listType]">Unexpected value for "list-type" attribute (<value-of select="$listType"/>). Allowed values are: none, bullet, number, lcletter, ucletter, lcroman and ucroman for unbracketed labels. Use number-paren, lcletter-paren and roman-paren for labels in parentheses.</assert>
@@ -1388,6 +1452,83 @@ Use the <let> element to define the attribute if necessary.
     <rule context="preformat[@preformat-type='block'][parent::p[ancestor::body]]"
             role="error">
          <report id="style2c" test=".">Preformatted blocks should not be included in "p" - change to be a sibling of "p" within "<name path="parent::p/parent::*"/>".</report>
+      </rule>
+  </pattern>
+   <pattern><!--quote should have @content-type to assist rendering-->
+    <rule context="disp-quote[not(@content-type)]" role="error">
+         <report id="quote1a" test=".">"disp-quote" should have an 'content-type' attribute with value "pullquote" (for quotes shown at the side of the text) or "quote" (for an indented block of text within the body of the article).</report>
+      </rule>
+  </pattern>
+   <pattern><!--quote should have valid @content-type-->
+    <rule context="disp-quote[@content-type]" role="error">
+         <assert id="quote1b" test="@content-type='pullquote' or @content-type='quote'">"disp-quote" 'content-type' attribute should have value "pullquote" (for quotes shown at the side of the text) or "quote" (for an indented block of text within the body of the article), not "<value-of select="@content-type"/>".</assert>
+      </rule>
+  </pattern>
+   <pattern><!--block quotes should not have atrribution-->
+    <rule context="disp-quote[@content-type='quote']/attrib" role="error">
+         <report id="quote2" test=".">Do not use "attrib" in block quotes. The attribution statement should just follow the text of the quote itself.</report>
+      </rule>
+  </pattern>
+   <pattern><!--quote should not have @id-->
+    <rule context="disp-quote[@id]" role="error">
+         <report id="quote3a" test=".">Unnecessary use of 'id' attribute on "disp-quote" element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--quote should not have @specific-use-->
+    <rule context="disp-quote[@specific-use]" role="error">
+         <report id="quote3b" test=".">Unnecessary use of 'specific-use' attribute on "disp-quote" element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--quote should only contain p or attrib-->
+    <rule context="disp-quote/*[not(self::p or self::attrib)]" role="error">
+         <report id="quote4" test=".">Do not use "<name/>" in "disp-quote". Only "p" or "attrib" should be used.</report>
+      </rule>
+  </pattern>
+   <pattern><!--url starting https should not have extra http added to @xlink:href-->
+    <rule context="ext-link[contains(@xlink:href,'http://http')]" role="error">
+         <report id="url1a" test=".">Do not insert extra "http://" on an 'xlink-href' which already has an http protocol - <value-of select="@xlink:href"/>.</report>
+      </rule>
+  </pattern>
+   <pattern><!--url starting ftp:// should not have extra http added to @xlink:href-->
+    <rule context="ext-link[contains(@xlink:href,'http://ftp://')]" role="error">
+         <report id="url1b" test=".">Do not insert "http://" on an 'xlink-href' to an ftp - <value-of select="@xlink:href"/>.</report>
+      </rule>
+  </pattern>
+   <pattern><!--url starting mailto should not have extra http added to @xlink:href-->
+    <rule context="ext-link[contains(@xlink:href,'http://mailto')]" role="error">
+         <report id="url1c" test=".">Do not use "ext-link" for links to email addresses. Use the "email" element, retaining the 'xlink:href' attribute (and delete 'http://mailto' from it).</report>
+      </rule>
+  </pattern>
+   <pattern><!--ext-link should have @xlink:href-->
+    <rule context="ext-link[not(@xlink:href)]" role="error">
+         <report id="url2a" test=".">"ext-link" should have an 'xlink:href' attribute giving the target website or ftp site.</report>
+      </rule>
+  </pattern>
+   <pattern><!--ext-link should have non-empty @xlink:href-->
+    <rule context="ext-link[@xlink:href='']" role="error">
+         <report id="url2b" test=".">"ext-link" 'xlink:href' attribute should not be empty. It should contain the address for the target website or ftp site.</report>
+      </rule>
+  </pattern>
+   <pattern><!--ext-link @xlink:href should not contain whitespace-->
+    <rule context="ext-link[matches(@xlink:href,'\s')]" role="error">
+         <report id="url2c" test=".">"ext-link" 'xlink:href' attribute (<value-of select="@xlink:href"/>) should not contain whitespace - this may create a broken link in the online article. Please delete spaces and new lines.</report>
+      </rule>
+  </pattern>
+   <pattern><!--ext-link should not be used for email addresses-->
+    <rule context="ext-link[starts-with(@xlink:href,'mailto')]" role="error">
+         <report id="url2d" test=".">Do not use "ext-link" for links to email addresses. Use the "email" element, retaining the 'xlink:href' attribute (and delete 'mailto' from it).</report>
+      </rule>
+  </pattern>
+   <pattern><!--ext-link should have @xlink:href-->
+    <rule context="ext-link[not(@ext-link-type)][not(ancestor::ref-list[@content-type='data-citations'])]"
+            role="error">
+         <report id="url3a" test=".">"ext-link" should have an 'ext-link-type' attribute: "url" for a link to a website; "ftp" for a link to an ftp site.</report>
+      </rule>
+  </pattern>
+   <pattern><!--ext-link should have non-empty @xlink:href-->
+    <rule context="ext-link[@ext-link-type=''][not(ancestor::ref-list[@content-type='data-citations'])]"
+            role="error">
+         <report id="url3b" test=".">"ext-link" 'ext-link-type' attribute should not be empty. It should be "url" for a link to a website; "ftp" for a link to an ftp site.</report>
       </rule>
   </pattern>
    <pattern><!--no empty xrefs for some ref-types-->
