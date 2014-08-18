@@ -815,6 +815,35 @@ Use the <let> element to define the attribute if necessary.
                  test="matches(@abstract-type,'^(standfirst|long-summary|short-summary|key-points)$')">Unexpected value for "abstract-type" attribute (<value-of select="@abstract-type"/>). Allowed values are: standfirst, long-summary, short-summary and key-points.</assert>
       </rule>
   </pattern>
+   <pattern><!--no subsections in editorial summaries-->
+      <rule context="abstract[@abstract-type][$maestro-aj='yes'][sec]" role="error">
+         <report id="oa-aj-abs1b" test=".">Do not use sections in editorial summaries (<value-of select="@abstract-type"/>) - please contact NPG/Palgrave.</report>
+      </rule>
+  </pattern>
+   <pattern><!--standfirst - no title-->
+      <rule context="abstract[@abstract-type='standfirst'][$maestro-aj='yes'][title]"
+            role="error">
+         <report id="oa-aj-abs1c" test=".">Do not use "title" in standfirsts - please contact NPG/Palgrave.</report>
+      </rule>
+  </pattern>
+   <pattern><!--standfirst - no images-->
+      <rule context="abstract[@abstract-type='standfirst'][$maestro-aj='yes'][descendant::xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id]]"
+            role="error">
+         <report id="oa-aj-abs1d" test=".">Do not use images in standfirsts - please contact NPG/Palgrave.</report>
+      </rule>
+  </pattern>
+   <pattern><!--standfirst - one paragraph-->
+      <rule context="abstract[@abstract-type='standfirst'][$maestro-aj='yes'][count(p) gt 1]"
+            role="error">
+         <report id="oa-aj-abs1e" test=".">Standfirsts should only contain one paragraph - please contact NPG/Palgrave.</report>
+      </rule>
+  </pattern>
+   <pattern><!--only one of each abstract type used-->
+      <rule context="abstract[$maestro-aj='yes'][not(@abstract-type)][preceding-sibling::abstract[not(@abstract-type)]]"
+            role="error">
+         <report id="oa-aj-abs2a" test=".">Only one true abstract should appear in an article.</report>
+      </rule>
+  </pattern>
    <pattern>
       <rule context="article[$maestro-aj='yes']//fig//graphic[@xlink:href]" role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
@@ -897,7 +926,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="supp-id" value="@id"/>
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <assert id="oa-aj9"
-                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) or starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,$supp-id) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for supplementary information (<value-of select="@xlink:href"/>). Expected format is "<value-of select="concat($article-id,'-',$supp-id,'.',$extension)"/>", i.e. XML filename + dash + id of supplementary material.</assert>
+                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) or starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,$supp-id) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for supplementary information (<value-of select="$supp-image"/>). Expected format is "<value-of select="concat($article-id,'-',$supp-id,'.',$extension)"/>", i.e. XML filename + dash + id of supplementary material.</assert>
       </rule>
   </pattern>
    <pattern>
