@@ -863,7 +863,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-aj='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')]"
+      <rule context="article[$maestro-aj='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid)]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -871,7 +871,19 @@ Use the <let> element to define the attribute if necessary.
          <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
          <let name="ill-number" value="replace(replace($ill-image,$article-id,''),'-','')"/>
          <assert id="oa-aj8"
-                 test="starts-with($ill-image,concat($article-id,'-')) and matches($ill-number,'^i[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for illustration (<value-of select="@xlink:href"/>). Expected format is "<value-of select="concat($article-id,'-i')"/>"+number.</assert>
+                 test="starts-with($ill-image,concat($article-id,'-')) and matches($ill-number,'^i[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for illustration (<value-of select="$ill-image"/>). Expected format is "<value-of select="concat($article-id,'-i')"/>"+number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--graphical abstract filename-->
+      <rule context="article[$maestro-aj='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid]"
+            role="error">
+      <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
+         <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="graphab" value="concat($article-id,'-toc')"/>
+         <assert id="oa-aj8b"
+                 test="($ill-image eq $graphab) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for graphical abstract (<value-of select="$ill-image"/>). Expected format is "<value-of select="concat($article-id,'-toc')"/>".</assert>
       </rule>
   </pattern>
    <pattern>
@@ -1499,6 +1511,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="url1c" test=".">Do not use "ext-link" for links to email addresses. Use the "email" element, retaining the 'xlink:href' attribute (and delete 'http://mailto' from it).</report>
       </rule>
   </pattern>
+   <pattern><!--@xlink:href shouldn't target doifinder - does not work on Maestro-->
+      <rule context="ext-link[contains(@xlink:href,'doifinder')]" role="error">
+         <report id="url1d" test=".">Do not link to doifinder in "ext-link" as this does not work for JATS articles. 'xlink:href' should be: <value-of select="concat('http://dx.doi.org',substring-after(@xlink:href,'doifinder'))"/>.</report>
+      </rule>
+  </pattern>
    <pattern><!--ext-link should have @xlink:href-->
     <rule context="ext-link[not(@xlink:href)]" role="error">
          <report id="url2a" test=".">"ext-link" should have an 'xlink:href' attribute giving the target website or ftp site.</report>
@@ -1714,7 +1731,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id][not(@specific-use)]"><!--xref to illustration should have @specific-use for image alignment info-->
+      <rule context="xref[@ref-type='other'][not(ancestor::abstract)][@rid=ancestor::article//graphic[@content-type='illustration']/@id][not(@specific-use)]"><!--xref to illustration should have @specific-use for image alignment info-->
       <report id="xref5a" test=".">"xref" to illustration "<value-of select="@rid"/>" should have 'specific-use' attribute containing image alignment. Allowed values are: "align-left", "align-center" and "align-right".</report>
       </rule>
   </pattern>
