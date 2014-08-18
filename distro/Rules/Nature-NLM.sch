@@ -1019,6 +1019,16 @@ Use the <let> element to define the attribute if necessary.
          <assert id="aj-aunote1b" test="label">Missing "label" element in author footnote - please insert one containing the same text as the corresponding "xref" element<value-of select="if ($symbol ne '') then concat(' (',$symbol,')') else ()"/>.</assert>
       </rule>
   </pattern>
+   <pattern><!--Current address and death notices should not be in "aff"-->
+      <rule context="aff[$maestro-aj='yes'][contains(.,'address')]" role="error">
+         <report id="aj-aunote2a" test=".">Do not use "aff" for current address information - use author notes instead. Refer to Tagging Instructions.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="aff[$maestro-aj='yes'][contains(.,'Deceased')]" role="error">
+         <report id="aj-aunote2b" test=".">Do not use "aff" for deceased information - use author notes instead. Refer to Tagging Instructions.</report>
+      </rule>
+  </pattern>
    <pattern><!--correction articles should contain a related-article element-->
     <rule context="article[($maestro-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta"
             role="error">
