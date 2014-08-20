@@ -1,4 +1,4 @@
-This folder contains documentation for the NLM project. XML documents will be validated against Nature's spec for using the JATS model version 1.0.
+This folder contains documentation on the use of JATS by Macmillan. XML documents will be validated against the Tagging Instructions for using the JATS model version 1.0.
 
 FOLDER CONTENTS
 ===============
@@ -8,9 +8,8 @@ The distro folder contains:
 DTD:
 - the JATS DTD v1.0 (JATS-journalpublishing-oasis-article1.dtd file, .ent files, associated folders, etc.)
 - an archived copy of the NLM DTD v3.0 (as used at the beginning of the project)
-- the in-house AJ and NPG DTDs
+- the in-house AJ, NPG and HeaderX DTDs
 
 Rules:
-- a Schematron schema (Nature-NLM.sch, with supporting XML files: allowed-values-nlm.xml, products.owl, subjects.owl)
-- a spreadsheet listing existing and proposed schematron rules
-- NLM Tagging Guidelines (source .xml and the converted HTML version for display on the XML Gateway)
+- a Schematron schema (Nature-NLM.sch, with supporting XML files: allowed-article-types.xml, allowed-values-nlm.xml, journals.xml)
+- JATS Tagging Instructions (in HTML format)

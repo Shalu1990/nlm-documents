@@ -65,13 +65,13 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
   <let name="maestro-rj"
         value="if (matches($pcode,'^(maestrorj)$')) then 'yes'     else ()"/>
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjschz)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+        value="if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="collection" value="$journals//npg:Journal[npg:pcode=$pcode]/npg:domain"/>
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
@@ -815,6 +815,35 @@ Use the <let> element to define the attribute if necessary.
                  test="matches(@abstract-type,'^(standfirst|long-summary|short-summary|key-points)$')">Unexpected value for "abstract-type" attribute (<value-of select="@abstract-type"/>). Allowed values are: standfirst, long-summary, short-summary and key-points.</assert>
       </rule>
   </pattern>
+   <pattern><!--no subsections in editorial summaries-->
+      <rule context="abstract[@abstract-type][$maestro-aj='yes'][sec]" role="error">
+         <report id="oa-aj-abs1b" test=".">Do not use sections in editorial summaries (<value-of select="@abstract-type"/>) - please contact NPG/Palgrave.</report>
+      </rule>
+  </pattern>
+   <pattern><!--standfirst - no title-->
+      <rule context="abstract[@abstract-type='standfirst'][$maestro-aj='yes'][title]"
+            role="error">
+         <report id="oa-aj-abs1c" test=".">Do not use "title" in standfirsts - please contact NPG/Palgrave.</report>
+      </rule>
+  </pattern>
+   <pattern><!--standfirst - no images-->
+      <rule context="abstract[@abstract-type='standfirst'][$maestro-aj='yes'][descendant::xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id]]"
+            role="error">
+         <report id="oa-aj-abs1d" test=".">Do not use images in standfirsts - please contact NPG/Palgrave.</report>
+      </rule>
+  </pattern>
+   <pattern><!--standfirst - one paragraph-->
+      <rule context="abstract[@abstract-type='standfirst'][$maestro-aj='yes'][count(p) gt 1]"
+            role="error">
+         <report id="oa-aj-abs1e" test=".">Standfirsts should only contain one paragraph - please contact NPG/Palgrave.</report>
+      </rule>
+  </pattern>
+   <pattern><!--only one of each abstract type used-->
+      <rule context="abstract[$maestro-aj='yes'][not(@abstract-type)][preceding-sibling::abstract[not(@abstract-type)]]"
+            role="error">
+         <report id="oa-aj-abs2a" test=".">Only one true abstract should appear in an article.</report>
+      </rule>
+  </pattern>
    <pattern>
       <rule context="article[$maestro-aj='yes']//fig//graphic[@xlink:href]" role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
@@ -863,7 +892,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-aj='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')]"
+      <rule context="article[$maestro-aj='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid)]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -871,7 +900,19 @@ Use the <let> element to define the attribute if necessary.
          <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
          <let name="ill-number" value="replace(replace($ill-image,$article-id,''),'-','')"/>
          <assert id="oa-aj8"
-                 test="starts-with($ill-image,concat($article-id,'-')) and matches($ill-number,'^i[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for illustration (<value-of select="@xlink:href"/>). Expected format is "<value-of select="concat($article-id,'-i')"/>"+number.</assert>
+                 test="starts-with($ill-image,concat($article-id,'-')) and matches($ill-number,'^i[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for illustration (<value-of select="$ill-image"/>). Expected format is "<value-of select="concat($article-id,'-i')"/>"+number.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--graphical abstract filename-->
+      <rule context="article[$maestro-aj='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid]"
+            role="error">
+      <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
+         <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="graphab" value="concat($article-id,'-toc')"/>
+         <assert id="oa-aj8b"
+                 test="($ill-image eq $graphab) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for graphical abstract (<value-of select="$ill-image"/>). Expected format is "<value-of select="concat($article-id,'-toc')"/>".</assert>
       </rule>
   </pattern>
    <pattern>
@@ -885,7 +926,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="supp-id" value="@id"/>
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <assert id="oa-aj9"
-                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) or starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,$supp-id) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for supplementary information (<value-of select="@xlink:href"/>). Expected format is "<value-of select="concat($article-id,'-',$supp-id,'.',$extension)"/>", i.e. XML filename + dash + id of supplementary material.</assert>
+                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) or starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,$supp-id) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for supplementary information (<value-of select="$supp-image"/>). Expected format is "<value-of select="concat($article-id,'-',$supp-id,'.',$extension)"/>", i.e. XML filename + dash + id of supplementary material.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -976,6 +1017,16 @@ Use the <let> element to define the attribute if necessary.
          <let name="id" value="@id"/>
          <let name="symbol" value="(ancestor::article//xref[matches(@rid,$id)])[1]//text()"/>
          <assert id="aj-aunote1b" test="label">Missing "label" element in author footnote - please insert one containing the same text as the corresponding "xref" element<value-of select="if ($symbol ne '') then concat(' (',$symbol,')') else ()"/>.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--Current address and death notices should not be in "aff"-->
+      <rule context="aff[$maestro-aj='yes'][contains(.,'address')]" role="error">
+         <report id="aj-aunote2a" test=".">Do not use "aff" for current address information - use author notes instead. Refer to Tagging Instructions.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="aff[$maestro-aj='yes'][contains(.,'Deceased')]" role="error">
+         <report id="aj-aunote2b" test=".">Do not use "aff" for deceased information - use author notes instead. Refer to Tagging Instructions.</report>
       </rule>
   </pattern>
    <pattern><!--correction articles should contain a related-article element-->
@@ -1499,6 +1550,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="url1c" test=".">Do not use "ext-link" for links to email addresses. Use the "email" element, retaining the 'xlink:href' attribute (and delete 'http://mailto' from it).</report>
       </rule>
   </pattern>
+   <pattern><!--@xlink:href shouldn't target doifinder - does not work on Maestro-->
+      <rule context="ext-link[contains(@xlink:href,'doifinder')]" role="error">
+         <report id="url1d" test=".">Do not link to doifinder in "ext-link" as this does not work for JATS articles. 'xlink:href' should be: <value-of select="concat('http://dx.doi.org',substring-after(@xlink:href,'doifinder'))"/>.</report>
+      </rule>
+  </pattern>
    <pattern><!--ext-link should have @xlink:href-->
     <rule context="ext-link[not(@xlink:href)]" role="error">
          <report id="url2a" test=".">"ext-link" should have an 'xlink:href' attribute giving the target website or ftp site.</report>
@@ -1714,7 +1770,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id][not(@specific-use)]"><!--xref to illustration should have @specific-use for image alignment info-->
+      <rule context="xref[@ref-type='other'][not(ancestor::abstract)][@rid=ancestor::article//graphic[@content-type='illustration']/@id][not(@specific-use)]"><!--xref to illustration should have @specific-use for image alignment info-->
       <report id="xref5a" test=".">"xref" to illustration "<value-of select="@rid"/>" should have 'specific-use' attribute containing image alignment. Allowed values are: "align-left", "align-center" and "align-right".</report>
       </rule>
   </pattern>
