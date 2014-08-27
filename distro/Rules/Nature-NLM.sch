@@ -1112,6 +1112,13 @@ Use the <let> element to define the attribute if necessary.
          <report id="sdata2d" test=".">Error in data citation <value-of select="@id"/>: the "year" should be marked up in data citations. Please refer to the Tagging Instructions.</report>
       </rule>
   </pattern>
+   <pattern><!--separate contrib elements for each data citation contributor-->
+      <rule context="ref-list[@content-type='data-citations']/ref//contrib[count(name) gt 1]"
+            role="error">
+         <let name="id" value="ancestor::ref/@id"/>
+         <report id="sdata3a" test=".">Multiple names given in one "contrib" in data citation <value-of select="$id"/>: use a separate "contrib" element for each contributor. Please refer to the Tagging Instructions.</report>
+      </rule>
+  </pattern>
    <pattern>
       <rule context="contrib-group[not(@content-type='contributor')]/contrib/xref"
             role="error"><!--Contrib xref should have @ref-type-->
