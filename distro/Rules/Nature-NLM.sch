@@ -71,7 +71,9 @@ Use the <let> element to define the attribute if necessary.
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+  <let name="test-journal"
+        value="if (matches($pcode,'^(nmstr|palmstr|maestrorj)$')) then 'yes' else 'no'"/>
   <let name="collection" value="$journals//npg:Journal[npg:pcode=$pcode]/npg:domain"/>
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
@@ -947,13 +949,13 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--subject path valid for the journal-->
-    <rule context="article[$maestro-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+    <rule context="article[$maestro-aj='yes' and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <assert id="oa-aj10b"
                  test=".=$journals//npg:Journal[npg:pcode=$pcode]/npg:subjectPath or not(.=$journals//npg:subjectPath)">Subject path <value-of select="."/> is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--id should be final value in subject path-->
-    <rule context="article[$maestro-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))]//subject[@content-type='npg.subject'][named-content[@content-type='id']]">
+    <rule context="article[$maestro-aj='yes' and $test-journal='no']//subject[@content-type='npg.subject'][named-content[@content-type='id']]">
          <let name="path" value="named-content[@content-type='path'][1]"/>
          <let name="id" value="named-content[@content-type='id']"/>
          <let name="derivedId" value="functx:substring-after-last($path,'/')"/>
@@ -1030,7 +1032,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--correction articles should contain a related-article element-->
-    <rule context="article[($maestro-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta"
+    <rule context="article[($maestro-aj='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta"
             role="error">
          <let name="article-heading"
               value="$allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading"/>
@@ -1041,7 +1043,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--check correction articles have matching @related-article-type and @article-type values-->
-    <rule context="article[($maestro-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))) and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/related-article"
+    <rule context="article[($maestro-aj='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/related-article"
             role="error">
          <let name="related-article-type"
               value="if ($article-type='add') then 'is-addendum-to'          else if ($article-type='cg') then 'is-corrigendum-to'          else if ($article-type='cs') then 'is-correction-to'          else if ($article-type='er') then 'is-erratum-to'          else if ($article-type='ret') then 'is-retraction-to' else ()"/>
