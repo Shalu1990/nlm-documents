@@ -13,6 +13,12 @@
 
 <!-- 
 
+17.09.14
+. CDS-419 - Added new attribute 'type' to "ill" element, with allowed values "illustration" (default) and "toc-image".
+
+27.08.14
+. CDS-371 - Added "pptx" to NOTATION types and %format; parameter entity set.
+
 15.07.14
 . CDS-283 - Added optional element "data-citations" to "bm"
             "data-citations" contains one or more "data-citation"
@@ -1066,6 +1072,7 @@ SYSTEM  ajarticle_v7_x.dtd
 <!NOTATION pict SYSTEM "">   <!--         -->
 <!NOTATION png SYSTEM "">   <!--portable network graphics -->
 <!NOTATION ppt SYSTEM "">   <!--powerpoint file -->
+<!NOTATION pptx SYSTEM "">   <!--powerpoint file -->
 <!NOTATION ra SYSTEM "">   <!-- RealAudio -->
 <!NOTATION ram SYSTEM "">   <!--         -->
 <!NOTATION sgml SYSTEM "">   <!--standard generalized markup language-->
@@ -1118,7 +1125,7 @@ SYSTEM  ajarticle_v7_x.dtd
 <!ENTITY % plain-text "%straight-text; | %emphasis; | %fontfamily; | %fontattr; | %zwidth;">
 
 <!-- common file format extensions        -->
-<!ENTITY % format    	"ado | aiff | applet | asf | asp | au | avi | bmp | class | csv | do | doc | docx | dta | eps | gif | html | htmlonly | java | jpeg | js | ma | mb | midi | mlonly | mov | mp2 | mp3 | mp4 | mpa | mpeg | nb | ole | pict | pdf | png | pps | ppt | ps | ra | ram | sgml | svg | texonly | tiff | txt | wav | wmf | wmv | xls | xlsm | xlsx | xml | zip">
+<!ENTITY % format    	"ado | aiff | applet | asf | asp | au | avi | bmp | class | csv | do | doc | docx | dta | eps | gif | html | htmlonly | java | jpeg | js | ma | mb | midi | mlonly | mov | mp2 | mp3 | mp4 | mpa | mpeg | nb | ole | pict | pdf | png | pps | ppt | pptx | ps | ra | ram | sgml | svg | texonly | tiff | txt | wav | wmf | wmv | xls | xlsm | xlsx | xml | zip">
 
 <!--********************************************************************-->
 <!--       % mathtypes for Math                                  		-->
@@ -2448,7 +2455,8 @@ source ( existing | new ) #IMPLIED
 <!ELEMENT 	ill             		(no?, thumbnail*, graphic+, legend*)        >
 <!ATTLIST 		ill     	id    		ID   #REQUIRED 
 				hiding 	(%hiding;)  "shown" 
-                        	psn 		(%psn;) "external">		  
+                psn 		(%psn;) "external"
+                type (illustration | toc-image) "illustration">		  
 
 <!ELEMENT 	no            		  		(%text;)*>
 
