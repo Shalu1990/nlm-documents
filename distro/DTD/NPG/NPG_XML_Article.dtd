@@ -16,6 +16,8 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2014/09/17 - CDS-419 - Added "toc-image" to 'illus-type' attribute of "illus" element
+
 2014/05/31 - CDS-181 - Added "excerpt-from" to 'related-article-type' attribute
                        Added "related-article" and "sec" as optional children of "bx" 
                        Added "excerpt" to list of allowed values for "bx" 'type' attribute
@@ -1640,7 +1642,7 @@ entref IDREF #IMPLIED
 embed (yes | no) "yes"
 file CDATA #IMPLIED
 display (print-only | online-only | print-online) "print-online"
-illus-type (illustration | infographic) "illustration"
+illus-type (illustration | infographic | toc-image) "illustration"
 >
 
 <!-- new element alt-image to hold alternative versions (normally different sizes) of the parent image
