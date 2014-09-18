@@ -849,7 +849,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro='yes']//fig//graphic[@xlink:href]"
+      <rule context="article[$maestro='yes']//fig[not(@specific-use='suppinfo')]//graphic[@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -861,7 +861,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro='yes']//fig//supplementary-material[@content-type='slide'][@xlink:href]"
+      <rule context="article[$maestro='yes']//fig[not(@specific-use='suppinfo')]//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -870,6 +870,18 @@ Use the <let> element to define the attribute if necessary.
          <let name="fig-number" value="replace(replace($fig-image,$article-id,''),'-','')"/>
          <assert id="oa-aj6b"
                  test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^pf[1-9][0-9]*[a-z]?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for figure slide (<value-of select="$fig-image"/>). Expected format is "<value-of select="concat($article-id,'-pf')"/>"+number (and following letters, if figure has multiple slides).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[$maestro-rj='yes']//fig[@specific-use='suppinfo']//graphic[@xlink:href]"
+            role="error">
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
+         <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="fig-number"
+              value="replace(replace($fig-image,$article-id,''),'-','')"/>
+         <assert id="oa-aj6c"
+                 test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^sf[1-9][0-9]*[a-z]?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for supplementary figure image (<value-of select="$fig-image"/>). Expected format is "<value-of select="concat($article-id,'-sf')"/>"+number (and following letters, if figure has multiple images).</assert>
       </rule>
   </pattern>
    <pattern>
@@ -908,11 +920,10 @@ Use the <let> element to define the attribute if necessary.
                  test="starts-with($ill-image,concat($article-id,'-')) and matches($ill-number,'^i[1-9][0-9]*?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for illustration (<value-of select="$ill-image"/>). Expected format is "<value-of select="concat($article-id,'-i')"/>"+number.</assert>
       </rule>
   </pattern>
-   <pattern><!--graphical abstract filename; needs updating now that toc images are not referenced from the abstract-->
-      <rule context="article[$maestro='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid]"
+   <pattern><!--graphical abstract filename-->
+      <rule context="article[$maestro='yes']//floats-group/graphic[@content-type='toc-image'][contains(@xlink:href,'.')]"
             role="error">
-      <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+      <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
          <let name="graphab" value="concat($article-id,'-toc')"/>
@@ -2406,6 +2417,11 @@ Use the <let> element to define the attribute if necessary.
             <assert id="fig3b" test="matches(@id,'^f[A-Z]?[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "fig" 'id' attribute should be of the form "f"+number (with no leading zeros).</assert>
         </rule>
     </pattern>
+   <pattern><!--supplementary figures - @id must be correct format-->
+        <rule context="fig[@id][@specific-use='suppinfo']" role="error">
+            <assert id="fig3b-2" test="matches(@id,'^sf[A-Z]?[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). Supplementary figure 'id' attribute should be of the form "sf"+number (with no leading zeros).</assert>
+        </rule>
+    </pattern>
    <pattern>
         <rule context="fig[@specific-use][not(@specific-use='suppinfo')]" role="error">
             <report id="fig3c" test="." role="error">Do not use "specific-use" attribute on "fig".</report>
@@ -2543,7 +2559,9 @@ Use the <let> element to define the attribute if necessary.
     </pattern>
    <pattern>
         <rule context="floats-group/graphic" role="error">
-            <assert id="ill1a" test="@content-type='illustration'" role="error">Unexpected "graphic" as child of "floats-group". If this is an illustration, add content-type='illustration'. If this is a figure image, enclose in "fig" and add "caption" information.</assert>
+            <assert id="ill1a"
+                 test="matches(@content-type,'^(illustration|toc-image)$')"
+                 role="error">Unexpected "graphic" as child of "floats-group". If this is an illustration, add content-type='illustration'. If this is a figure image, enclose in "fig" and add "caption" information. If this is a graphical abstract, add content-type='toc-image'.</assert>
         </rule>
     </pattern>
    <pattern>
@@ -2552,9 +2570,20 @@ Use the <let> element to define the attribute if necessary.
             <report id="ill1b" test="." role="error">Illustration "<value-of select="@id"/>" should be a child of "floats-group" at the end of the article.</report>
         </rule>
     </pattern>
+   <pattern>
+        <rule context="graphic[@content-type='toc-image'][not(parent::floats-group)]"
+            role="error">
+            <report id="ill1b-2" test="." role="error">Graphical abstract "graphic" should be a child of "floats-group" at the end of the article.</report>
+        </rule>
+    </pattern>
    <pattern><!--illustration - must have an @id-->
         <rule context="graphic[@content-type='illustration'][not(@id)]" role="error">
             <report id="ill1c" test=".">Missing 'id' attribute - illustration should have an 'id' of the form "i"+number (with no leading zeros).</report>
+        </rule>
+    </pattern>
+   <pattern><!--graphical abstract should not have an @id-->
+        <rule context="graphic[@content-type='toc-image'][@id]" role="error">
+            <report id="ill1c-2" test=".">Graphical abstract "graphic" should not have an 'id' attribute.</report>
         </rule>
     </pattern>
    <pattern><!--illustration - @id must be correct format (restricted to new oa ajs for now)-->
@@ -2563,95 +2592,92 @@ Use the <let> element to define the attribute if necessary.
             <assert id="ill1d" test="matches(@id,'^i[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). Illustration 'id' attribute should be of the form "i"+number (with no leading zeros).</assert>
         </rule>
     </pattern>
-   <pattern><!--illustration - should have @position="anchor"-->
-        <rule context="graphic[@content-type='illustration'][not(@position='anchor')]"
-            role="error">
-            <report id="ill1e" test=".">Illustration graphic should have attribute 'position="anchor"'.</report>
+   <pattern><!--illustration and toc image - should have @position="anchor"-->
+        <rule context="graphic[@content-type][not(@position='anchor')]" role="error">
+            <report id="ill1e" test=".">"graphic" should have attribute 'position="anchor"'.</report>
         </rule>
     </pattern>
    <pattern><!--@xlink:href does not contain filepath info-->
-        <rule context="graphic[@content-type='illustration'][not($maestro-aj='yes')]"
-            role="error">
-            <report id="ill2a" test="contains(@xlink:href,'/')">Do not include filepath information for illustration images "<value-of select="@xlink:href"/>".</report>
+        <rule context="graphic[@content-type][not($maestro='yes')]" role="error">
+            <report id="ill2a" test="contains(@xlink:href,'/')">Do not include filepath information in graphic "<value-of select="@xlink:href"/>".</report>
         </rule>
     </pattern>
    <pattern><!--@xlink:href contains a '.' and therefore may have an extension-->
-        <rule context="graphic[@content-type='illustration']" role="error">
-            <assert id="ill2b" test="contains(@xlink:href,'.')">Illustration 'xlink:href' value ("<value-of select="@xlink:href"/>") should contain the file extension (e.g. jpg, gif, etc).</assert>
+        <rule context="graphic[@content-type]" role="error">
+            <assert id="ill2b" test="contains(@xlink:href,'.')">"graphic" 'xlink:href' value ("<value-of select="@xlink:href"/>") should contain the file extension (e.g. jpg, gif, etc).</assert>
         </rule>
     </pattern>
    <pattern><!--@xlink:href has valid file extension - check allowed image extensions-->
-        <rule context="graphic[@content-type='illustration'][contains(@xlink:href,'.')]"
+        <rule context="graphic[@content-type][contains(@xlink:href,'.')]"
             role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
-            <assert id="ill2c" test="matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$')">Unexpected file extension value ("<value-of select="$extension"/>") in illustration '@xlink:href' attribute - please check.</assert>
+            <assert id="ill2c" test="matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$')">Unexpected file extension value ("<value-of select="$extension"/>") in "graphic" '@xlink:href' attribute - please check.</assert>
         </rule>
     </pattern>
-   <pattern><!--illustration - must have a @mimetype="image"-->
-        <rule context="graphic[@content-type='illustration'][not(@mimetype='image')]"
-            role="error">
-            <report id="ill3a" test=".">Illustration should have 'mimetype='image'".</report>
+   <pattern><!--graphic - must have a @mimetype="image"-->
+        <rule context="graphic[@content-type][not(@mimetype='image')]" role="error">
+            <report id="ill3a" test=".">"graphic" should have 'mimetype='image'".</report>
         </rule>
     </pattern>
    <pattern><!--illustration - must have a @mime-subtype; when @xlink:href exists (and is valid) gives value that should be used-->
-        <rule context="graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@mime-subtype)]"
+        <rule context="graphic[@content-type][contains(@xlink:href,'.')][not(@mime-subtype)]"
             role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
             <let name="mime-subtype"
               value="if ($extension='bmp') then 'bmp'                 else if ($extension='gif') then 'gif'                 else if ($extension='jpeg' or $extension='jpg') then 'jpeg'                 else if ($extension='png') then 'png'                 else if ($extension='tiff') then 'tiff'                 else if ($extension='pict') then 'x-pict'                 else ()"/>
             <assert id="ill4b"
-                 test="@mime-subtype or not(matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$'))">Missing 'mime-subtype' attribute on illustration. For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$mime-subtype"/>".</assert>
+                 test="@mime-subtype or not(matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$'))">Missing 'mime-subtype' attribute on "graphic". For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$mime-subtype"/>".</assert>
         </rule>
     </pattern>
    <pattern><!--value used for @mimetype is correct based on file extension (includes test for valid extension)-->
-        <rule context="graphic[@content-type='illustration'][@mime-subtype][contains(@xlink:href,'.')]"
+        <rule context="graphic[@content-type][@mime-subtype][contains(@xlink:href,'.')]"
             role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
             <let name="mime-subtype"
               value="if ($extension='bmp') then 'bmp'                 else if ($extension='gif') then 'gif'                 else if ($extension='jpeg' or $extension='jpg') then 'jpeg'                 else if ($extension='png') then 'png'                 else if ($extension='tiff') then 'tiff'                 else if ($extension='pict') then 'x-pict'                 else ()"/>
             <assert id="ill4c"
-                 test="@mime-subtype=$mime-subtype or not(matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$'))">For illustrations with extension "<value-of select="$extension"/>", the 'mime-subtype' attribute should have the value "<value-of select="$mime-subtype"/>" (not "<value-of select="@mime-subtype"/>").</assert>
+                 test="@mime-subtype=$mime-subtype or not(matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$'))">For "graphic" with extension "<value-of select="$extension"/>", the 'mime-subtype' attribute should have the value "<value-of select="$mime-subtype"/>" (not "<value-of select="@mime-subtype"/>").</assert>
         </rule>
     </pattern>
    <pattern><!--no other attributes used on illustrations-->
-        <rule context="graphic[@content-type='illustration'][@specific-use]" role="error">
-            <report id="ill5a" test="." role="error">Do not use "specific-use" attribute on illustration.</report>
+        <rule context="graphic[@content-type][@specific-use]" role="error">
+            <report id="ill5a" test="." role="error">Do not use "specific-use" attribute on "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="graphic[@content-type='illustration'][@xlink:actuate]" role="error">
-            <report id="ill5b" test="." role="error">Do not use "xlink:actuate" attribute on illustration.</report>
+        <rule context="graphic[@content-type][@xlink:actuate]" role="error">
+            <report id="ill5b" test="." role="error">Do not use "xlink:actuate" attribute on "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="graphic[@content-type='illustration'][@xlink:role]" role="error">
-            <report id="ill5c" test="." role="error">Do not use "xlink:role" attribute on illustration.</report>
+        <rule context="graphic[@content-type][@xlink:role]" role="error">
+            <report id="ill5c" test="." role="error">Do not use "xlink:role" attribute on "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="graphic[@content-type='illustration'][@xlink:show]" role="error">
-            <report id="ill5d" test="." role="error">Do not use "xlink:show" attribute on illustration.</report>
+        <rule context="graphic[@content-type][@xlink:show]" role="error">
+            <report id="ill5d" test="." role="error">Do not use "xlink:show" attribute on "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="graphic[@content-type='illustration'][@xlink:title]" role="error">
-            <report id="ill5e" test="." role="error">Do not use "xlink:title" attribute on illustration.</report>
+        <rule context="graphic[@content-type][@xlink:title]" role="error">
+            <report id="ill5e" test="." role="error">Do not use "xlink:title" attribute on "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="graphic[@content-type='illustration'][@xlink:type]" role="error">
-            <report id="ill5f" test="." role="error">Do not use "xlink:type" attribute on illustration.</report>
+        <rule context="graphic[@content-type][@xlink:type]" role="error">
+            <report id="ill5f" test="." role="error">Do not use "xlink:type" attribute on "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="graphic[@content-type='illustration'][@xml:lang]" role="error">
-            <report id="ill5g" test="." role="error">Do not use "xml:lang" attribute on illustration.</report>
+        <rule context="graphic[@content-type][@xml:lang]" role="error">
+            <report id="ill5g" test="." role="error">Do not use "xml:lang" attribute on "graphic".</report>
         </rule>
     </pattern>
-   <pattern><!--no other attributes used on illustrations-->
-        <rule context="graphic[@content-type='illustration']/alt-text | graphic[@content-type='illustration']/email | graphic[@content-type='illustration']/ext-link | graphic[@content-type='illustration']/label | graphic[@content-type='illustration']/long-desc | graphic[@content-type='illustration']/permissions | graphic[@content-type='illustration']/uri"
+   <pattern><!--no other elements used in graphics-->
+        <rule context="graphic[@content-type]/alt-text | graphic[@content-type]/email | graphic[@content-type]/ext-link | graphic[@content-type]/label | graphic[@content-type]/long-desc | graphic[@content-type]/permissions | graphic[@content-type]/uri"
             role="error">
-            <report id="ill6a" test="." role="error">Do not use "<name/>" in illustration "graphic".</report>
+            <report id="ill6a" test="." role="error">Do not use "<name/>" in "graphic".</report>
         </rule>
     </pattern>
    <pattern>
