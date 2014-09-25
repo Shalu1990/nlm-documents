@@ -2082,7 +2082,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--no brackets in publisher-name-->
     <rule context="ref/mixed-citation/publisher-name" role="error">
-         <report id="punct1b" test="starts-with(.,'(') or ends-with(.,')')">Do not include parentheses in the "publisher-name" element in citations in NPG/Palgrave articles.</report>
+         <report id="punct1b" test="starts-with(.,'(') and ends-with(.,')')">Do not include parentheses in the "publisher-name" element in citations in NPG/Palgrave articles.</report>
       </rule>
   </pattern>
    <pattern><!--elocation-id should have @content-type in citations-->
