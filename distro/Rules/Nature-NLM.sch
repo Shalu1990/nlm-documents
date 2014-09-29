@@ -8,7 +8,8 @@ Due to the configuration of XSLT templates used in the validation service, attri
 For example, context="article[@article-type]" will recognise the context as 'article' with an 'article-type' attribute, but context="article/@article-type" will set context as 'article'.
 Use the <let> element to define the attribute if necessary.
 
---><schema xmlns="http://purl.oclc.org/dsdl/schematron"
+-->
+<schema xmlns="http://purl.oclc.org/dsdl/schematron"
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         queryBinding="xslt2">
   <title>Schematron rules for NPG content in JATS v1.0</title>
@@ -65,13 +66,15 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto|npjsba)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
   <let name="maestro-rj"
-        value="if (matches($pcode,'^(maestrorj)$')) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(maestrorj|nplants)$')) then 'yes'     else ()"/>
+  <let name="maestro"
+        value="if ($maestro-aj='yes' or $maestro-rj='yes') then 'yes' else ()"/>
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj)$')) then 'yes' else 'no'"/>
   <let name="collection" value="$journals//npg:Journal[npg:pcode=$pcode]/npg:domain"/>
@@ -725,29 +728,29 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-aj='yes' and $allowed-article-types/journal[@pcode=$pcode]]"
+      <rule context="article[$maestro='yes' and $allowed-article-types/journal[@pcode=$pcode]]"
             role="error">
          <assert id="oa-aj1"
                  test="$allowed-article-types/journal[@pcode eq $pcode]/article-type[$article-type=@code]">Invalid article-type used (<value-of select="$article-type"/>). The only article types allowed in "<value-of select="$journal-title"/>" are: <value-of select="for $j in 1 to count($allowed-article-types/journal[@pcode eq $pcode]/article-type) return concat(string-join($allowed-article-types/journal[@pcode eq $pcode]/article-type[$j]/article-heading,' or '),' (',$allowed-article-types/journal[@pcode eq $pcode]/article-type[$j]/@code,'),')"/>.</assert>
       </rule>
   </pattern>
-   <pattern><!--volume should be given in all new OA only journals-->
+   <pattern><!--volume should be given in all new OA only journals; #not allowed in issue-based journals?#-->
     <rule context="article[$maestro-aj='yes']/front/article-meta" role="error">
          <assert id="oa-aj2a" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
   </pattern>
-   <pattern><!--issue should not be used in new OA only journals-->
+   <pattern><!--issue should not be used in new OA only journals; #maybe also not allowed in nplants?#-->
     <rule context="article[$maestro-aj='yes']/front/article-meta/issue" role="error">
          <report id="oa-aj2b" test=".">"issue" should not be used in "<value-of select="$journal-title"/>".</report>
       </rule>
   </pattern>
-   <pattern><!--elocation-id should be given in all new OA only journals-->
-    <rule context="article[$maestro-aj='yes']/front/article-meta" role="error">
+   <pattern><!--elocation-id should be given in all Maestro journals-->
+    <rule context="article[$maestro='yes']/front/article-meta" role="error">
          <assert id="oa-aj2c" test="elocation-id">An "elocation-id" should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
   </pattern>
    <pattern><!--elocation-id should be numerical, i.e. does not start with 'e' or leading zeros-->
-    <rule context="article[$maestro-aj='yes']/front/article-meta/elocation-id"
+    <rule context="article[$maestro='yes']/front/article-meta/elocation-id"
             role="error">
          <assert id="oa-aj2d" test="matches(.,'^[1-9][0-9]*$')">"elocation-id" in "<value-of select="$journal-title"/>" should be a numerical value only (with no leading zeros), not "<value-of select="."/>".</assert>
       </rule>
@@ -771,7 +774,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--error in pcode, but numerical value ok-->
-    <rule context="article[$maestro-aj='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
+    <rule context="article[$maestro='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
          <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
@@ -780,7 +783,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--pcode ok but error in numerical value-->
-    <rule context="article[$maestro-aj='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id']"
+    <rule context="article[$maestro='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
          <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
@@ -789,7 +792,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--errors in pcode and numerical value-->
-    <rule context="article[$maestro-aj='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
+    <rule context="article[$maestro='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
          <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
@@ -797,7 +800,7 @@ Use the <let> element to define the attribute if necessary.
                  test="$derivedPcode ne '' and not($pcode=$derivedPcode) and not(matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article id (<value-of select="."/>) should have format pcode + year + number of article (without additional letters or leading zeros). Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
       </rule>
   </pattern>
-   <pattern><!--Does doi match article-id?-->
+   <pattern><!--Does doi match article-id? # check formatting of nplants DOIs #-->
     <rule context="article[$maestro-aj='yes']//article-meta/article-id[@pub-id-type='doi']"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
@@ -812,42 +815,43 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--valid @abstract-type-->
-    <rule context="abstract[@abstract-type][$maestro-aj='yes']" role="error">
+    <rule context="abstract[@abstract-type][$maestro='yes']" role="error">
          <assert id="oa-aj-abs1a"
                  test="matches(@abstract-type,'^(standfirst|long-summary|short-summary|key-points)$')">Unexpected value for "abstract-type" attribute (<value-of select="@abstract-type"/>). Allowed values are: standfirst, long-summary, short-summary and key-points.</assert>
       </rule>
   </pattern>
    <pattern><!--no subsections in editorial summaries-->
-      <rule context="abstract[@abstract-type][$maestro-aj='yes'][sec]" role="error">
+      <rule context="abstract[@abstract-type][$maestro='yes'][sec]" role="error">
          <report id="oa-aj-abs1b" test=".">Do not use sections in editorial summaries (<value-of select="@abstract-type"/>) - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - no title-->
-      <rule context="abstract[@abstract-type='standfirst'][$maestro-aj='yes'][title]"
+      <rule context="abstract[@abstract-type='standfirst'][$maestro='yes'][title]"
             role="error">
          <report id="oa-aj-abs1c" test=".">Do not use "title" in standfirsts - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - no images-->
-      <rule context="abstract[@abstract-type='standfirst'][$maestro-aj='yes'][descendant::xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id]]"
+      <rule context="abstract[@abstract-type='standfirst'][$maestro='yes'][descendant::xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id]]"
             role="error">
          <report id="oa-aj-abs1d" test=".">Do not use images in standfirsts - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - one paragraph-->
-      <rule context="abstract[@abstract-type='standfirst'][$maestro-aj='yes'][count(p) gt 1]"
+      <rule context="abstract[@abstract-type='standfirst'][$maestro='yes'][count(p) gt 1]"
             role="error">
          <report id="oa-aj-abs1e" test=".">Standfirsts should only contain one paragraph - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
-   <pattern><!--only one of each abstract type used-->
-      <rule context="abstract[$maestro-aj='yes'][not(@abstract-type)][preceding-sibling::abstract[not(@abstract-type)]]"
+   <pattern><!--only one true abstract used; there is a general rule to test for more than one of the same @abstract-type-->
+      <rule context="abstract[$maestro='yes'][not(@abstract-type)][preceding-sibling::abstract[not(@abstract-type)]]"
             role="error">
          <report id="oa-aj-abs2a" test=".">Only one true abstract should appear in an article.</report>
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-aj='yes']//fig//graphic[@xlink:href]" role="error">
+      <rule context="article[$maestro='yes']//fig[not(@specific-use='suppinfo')]//graphic[@xlink:href]"
+            role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
@@ -858,7 +862,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-aj='yes']//fig//supplementary-material[@content-type='slide'][@xlink:href]"
+      <rule context="article[$maestro='yes']//fig[not(@specific-use='suppinfo')]//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -870,7 +874,19 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-aj='yes']//table-wrap//graphic[@xlink:href]"
+      <rule context="article[$maestro-rj='yes']//fig[@specific-use='suppinfo']//graphic[@xlink:href]"
+            role="error">
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
+         <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="fig-number"
+              value="replace(replace($fig-image,$article-id,''),'-','')"/>
+         <assert id="oa-aj6c"
+                 test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^sf[1-9][0-9]*[a-z]?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for supplementary figure image (<value-of select="$fig-image"/>). Expected format is "<value-of select="concat($article-id,'-sf')"/>"+number (and following letters, if figure has multiple images).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[$maestro='yes']//table-wrap//graphic[@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -882,7 +898,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-aj='yes']//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
+      <rule context="article[$maestro='yes']//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -894,7 +910,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-aj='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid)]"
+      <rule context="article[$maestro='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid)]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -906,10 +922,9 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--graphical abstract filename-->
-      <rule context="article[$maestro-aj='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid]"
+      <rule context="article[$maestro='yes']//floats-group/graphic[@content-type='toc-image'][contains(@xlink:href,'.')]"
             role="error">
-      <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+      <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
          <let name="graphab" value="concat($article-id,'-toc')"/>
@@ -918,7 +933,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-aj='yes']//floats-group/supplementary-material[@xlink:href][not(@content-type='isa-tab')]"
+      <rule context="article[$maestro='yes']//floats-group/supplementary-material[@xlink:href][not(@content-type='isa-tab')]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -944,18 +959,18 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--subject path found in subject ontology-->
-    <rule context="article[$maestro-aj='yes' and not(matches($pcode,'^(nmstr|palmstr)$'))]//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+    <rule context="article[$maestro='yes' and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <assert id="oa-aj10a" test=".=$journals//npg:subjectPath">Subject path (<value-of select="."/>) is not recognized by the subject ontology. Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--subject path valid for the journal-->
-    <rule context="article[$maestro-aj='yes' and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+    <rule context="article[$maestro='yes' and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <assert id="oa-aj10b"
                  test=".=$journals//npg:Journal[npg:pcode=$pcode]/npg:subjectPath or not(.=$journals//npg:subjectPath)">Subject path <value-of select="."/> is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--id should be final value in subject path-->
-    <rule context="article[$maestro-aj='yes' and $test-journal='no']//subject[@content-type='npg.subject'][named-content[@content-type='id']]">
+    <rule context="article[$maestro='yes' and $test-journal='no']//subject[@content-type='npg.subject'][named-content[@content-type='id']]">
          <let name="path" value="named-content[@content-type='path'][1]"/>
          <let name="id" value="named-content[@content-type='id']"/>
          <let name="derivedId" value="functx:substring-after-last($path,'/')"/>
@@ -964,7 +979,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--article-type and article heading should be equivalent-->
-    <rule context="article[$maestro-aj='yes' and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta//subject[@content-type='article-heading']"
+    <rule context="article[$maestro='yes' and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta//subject[@content-type='article-heading']"
             role="error">
          <let name="article-heading"
               value="replace(string-join($allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading,' or '),'\W\([a-z]+\)','')"/>
@@ -972,7 +987,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--article-heading should be used-->
-    <rule context="article[$maestro-aj='yes' and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta/article-categories"
+    <rule context="article[$maestro='yes' and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta/article-categories"
             role="error">
          <let name="article-heading"
               value="replace(string-join($allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading,' or '),'\W\([a-z]+\)','')"/>
@@ -980,7 +995,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--authors should link to their affiliated body, even when there is only one aff-->
-    <rule context="article[$maestro-aj='yes']/front/article-meta[aff]/contrib-group//contrib[@contrib-type='author'][not(ancestor::collab[@collab-type='authors'])]"
+    <rule context="article[$maestro='yes']/front/article-meta[aff]/contrib-group//contrib[@contrib-type='author'][not(ancestor::collab[@collab-type='authors'])]"
             role="error">
          <assert id="oa-aj12" test="xref[@ref-type='aff']">All authors should be linked to an affiliated body. Insert xref with 'ref-type="aff"'.</assert>
       </rule>
@@ -991,18 +1006,18 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--pub-date should have day element-->
-    <rule context="article[$maestro-aj='yes']/front/article-meta/pub-date[@pub-type='epub']"
+    <rule context="article[$maestro='yes']/front/article-meta/pub-date[matches(@pub-type,'^(epub|aop)$')]"
             role="error">
-         <assert id="oa-aj13b" test="day">Online-only open access journals should have a full publication date - "day" is missing.</assert>
+         <assert id="oa-aj13b" test="day">Online-only journals should have a full publication date - "day" is missing.</assert>
       </rule>
   </pattern>
    <pattern><!--Only one author email per corresp element-->
-    <rule context="corresp[count(email) gt 1][$maestro-aj='yes']" role="error">
+    <rule context="corresp[count(email) gt 1][$maestro='yes']" role="error">
          <report id="maestro1" test=".">Corresponding author information should only contain one email address. Please split "corresp" with id='<value-of select="@id"/>' into separate "corresp" elements - one for each corresponding author. You will also need to update the equivalent "xref" elements with the new 'rid' values.</report>
       </rule>
   </pattern>
    <pattern><!--Do not include the word 'correspondence' in the corresp element-->
-    <rule context="corresp[$maestro-aj='yes']" role="error">
+    <rule context="corresp[$maestro='yes']" role="error">
          <report id="aj-corresp1"
                  test="starts-with(.,'correspondence') or starts-with(.,'Correspondence') or starts-with(.,'CORRESPONDENCE')">Do not include the unnecessary text 'Correspondence' in the "corresp" element.</report>
       </rule>
@@ -1022,17 +1037,17 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--Current address and death notices should not be in "aff"-->
-      <rule context="aff[$maestro-aj='yes'][contains(.,'address')]" role="error">
+      <rule context="aff[$maestro='yes'][contains(.,'address')]" role="error">
          <report id="aj-aunote2a" test=".">Do not use "aff" for current address information - use author notes instead. Refer to Tagging Instructions.</report>
       </rule>
   </pattern>
    <pattern>
-      <rule context="aff[$maestro-aj='yes'][contains(.,'Deceased')]" role="error">
+      <rule context="aff[$maestro='yes'][contains(.,'Deceased')]" role="error">
          <report id="aj-aunote2b" test=".">Do not use "aff" for deceased information - use author notes instead. Refer to Tagging Instructions.</report>
       </rule>
   </pattern>
    <pattern><!--correction articles should contain a related-article element-->
-    <rule context="article[($maestro-aj='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta"
+    <rule context="article[($maestro='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta"
             role="error">
          <let name="article-heading"
               value="$allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading"/>
@@ -1043,7 +1058,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--check correction articles have matching @related-article-type and @article-type values-->
-    <rule context="article[($maestro-aj='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/related-article"
+    <rule context="article[($maestro='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/related-article"
             role="error">
          <let name="related-article-type"
               value="if ($article-type='add') then 'is-addendum-to'          else if ($article-type='cg') then 'is-corrigendum-to'          else if ($article-type='cs') then 'is-correction-to'          else if ($article-type='er') then 'is-erratum-to'          else if ($article-type='ret') then 'is-retraction-to' else ()"/>
@@ -1073,7 +1088,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--monospace should not be used-->
-    <rule context="article[$maestro-aj='yes']//monospace" role="error">
+    <rule context="article[$maestro='yes']//monospace" role="error">
          <report id="style2d" test=".">Do not use "monospace", as this will not render correctly. Please change to "preformat" with 'preformat-type="inline"'.</report>
       </rule>
   </pattern>
@@ -2403,6 +2418,11 @@ Use the <let> element to define the attribute if necessary.
             <assert id="fig3b" test="matches(@id,'^f[A-Z]?[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "fig" 'id' attribute should be of the form "f"+number (with no leading zeros).</assert>
         </rule>
     </pattern>
+   <pattern><!--supplementary figures - @id must be correct format-->
+        <rule context="fig[@id][@specific-use='suppinfo']" role="error">
+            <assert id="fig3b-2" test="matches(@id,'^sf[A-Z]?[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). Supplementary figure 'id' attribute should be of the form "sf"+number (with no leading zeros).</assert>
+        </rule>
+    </pattern>
    <pattern>
         <rule context="fig[@specific-use][not(@specific-use='suppinfo')]" role="error">
             <report id="fig3c" test="." role="error">Do not use "specific-use" attribute on "fig".</report>
@@ -2540,7 +2560,9 @@ Use the <let> element to define the attribute if necessary.
     </pattern>
    <pattern>
         <rule context="floats-group/graphic" role="error">
-            <assert id="ill1a" test="@content-type='illustration'" role="error">Unexpected "graphic" as child of "floats-group". If this is an illustration, add content-type='illustration'. If this is a figure image, enclose in "fig" and add "caption" information.</assert>
+            <assert id="ill1a"
+                 test="matches(@content-type,'^(illustration|toc-image)$')"
+                 role="error">Unexpected "graphic" as child of "floats-group". If this is an illustration, add content-type='illustration'. If this is a figure image, enclose in "fig" and add "caption" information. If this is a graphical abstract, add content-type='toc-image'.</assert>
         </rule>
     </pattern>
    <pattern>
@@ -2549,9 +2571,20 @@ Use the <let> element to define the attribute if necessary.
             <report id="ill1b" test="." role="error">Illustration "<value-of select="@id"/>" should be a child of "floats-group" at the end of the article.</report>
         </rule>
     </pattern>
+   <pattern>
+        <rule context="graphic[@content-type='toc-image'][not(parent::floats-group)]"
+            role="error">
+            <report id="ill1b-2" test="." role="error">Graphical abstract "graphic" should be a child of "floats-group" at the end of the article.</report>
+        </rule>
+    </pattern>
    <pattern><!--illustration - must have an @id-->
         <rule context="graphic[@content-type='illustration'][not(@id)]" role="error">
             <report id="ill1c" test=".">Missing 'id' attribute - illustration should have an 'id' of the form "i"+number (with no leading zeros).</report>
+        </rule>
+    </pattern>
+   <pattern><!--graphical abstract should not have an @id-->
+        <rule context="graphic[@content-type='toc-image'][@id]" role="error">
+            <report id="ill1c-2" test=".">Graphical abstract "graphic" should not have an 'id' attribute.</report>
         </rule>
     </pattern>
    <pattern><!--illustration - @id must be correct format (restricted to new oa ajs for now)-->
@@ -2560,95 +2593,92 @@ Use the <let> element to define the attribute if necessary.
             <assert id="ill1d" test="matches(@id,'^i[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). Illustration 'id' attribute should be of the form "i"+number (with no leading zeros).</assert>
         </rule>
     </pattern>
-   <pattern><!--illustration - should have @position="anchor"-->
-        <rule context="graphic[@content-type='illustration'][not(@position='anchor')]"
-            role="error">
-            <report id="ill1e" test=".">Illustration graphic should have attribute 'position="anchor"'.</report>
+   <pattern><!--illustration and toc image - should have @position="anchor"-->
+        <rule context="graphic[@content-type][not(@position='anchor')]" role="error">
+            <report id="ill1e" test=".">"graphic" should have attribute 'position="anchor"'.</report>
         </rule>
     </pattern>
    <pattern><!--@xlink:href does not contain filepath info-->
-        <rule context="graphic[@content-type='illustration'][not($maestro-aj='yes')]"
-            role="error">
-            <report id="ill2a" test="contains(@xlink:href,'/')">Do not include filepath information for illustration images "<value-of select="@xlink:href"/>".</report>
+        <rule context="graphic[@content-type][not($maestro='yes')]" role="error">
+            <report id="ill2a" test="contains(@xlink:href,'/')">Do not include filepath information in graphic "<value-of select="@xlink:href"/>".</report>
         </rule>
     </pattern>
    <pattern><!--@xlink:href contains a '.' and therefore may have an extension-->
-        <rule context="graphic[@content-type='illustration']" role="error">
-            <assert id="ill2b" test="contains(@xlink:href,'.')">Illustration 'xlink:href' value ("<value-of select="@xlink:href"/>") should contain the file extension (e.g. jpg, gif, etc).</assert>
+        <rule context="graphic[@content-type]" role="error">
+            <assert id="ill2b" test="contains(@xlink:href,'.')">"graphic" 'xlink:href' value ("<value-of select="@xlink:href"/>") should contain the file extension (e.g. jpg, gif, etc).</assert>
         </rule>
     </pattern>
    <pattern><!--@xlink:href has valid file extension - check allowed image extensions-->
-        <rule context="graphic[@content-type='illustration'][contains(@xlink:href,'.')]"
+        <rule context="graphic[@content-type][contains(@xlink:href,'.')]"
             role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
-            <assert id="ill2c" test="matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$')">Unexpected file extension value ("<value-of select="$extension"/>") in illustration '@xlink:href' attribute - please check.</assert>
+            <assert id="ill2c" test="matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$')">Unexpected file extension value ("<value-of select="$extension"/>") in "graphic" '@xlink:href' attribute - please check.</assert>
         </rule>
     </pattern>
-   <pattern><!--illustration - must have a @mimetype="image"-->
-        <rule context="graphic[@content-type='illustration'][not(@mimetype='image')]"
-            role="error">
-            <report id="ill3a" test=".">Illustration should have 'mimetype='image'".</report>
+   <pattern><!--graphic - must have a @mimetype="image"-->
+        <rule context="graphic[@content-type][not(@mimetype='image')]" role="error">
+            <report id="ill3a" test=".">"graphic" should have 'mimetype='image'".</report>
         </rule>
     </pattern>
    <pattern><!--illustration - must have a @mime-subtype; when @xlink:href exists (and is valid) gives value that should be used-->
-        <rule context="graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@mime-subtype)]"
+        <rule context="graphic[@content-type][contains(@xlink:href,'.')][not(@mime-subtype)]"
             role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
             <let name="mime-subtype"
               value="if ($extension='bmp') then 'bmp'                 else if ($extension='gif') then 'gif'                 else if ($extension='jpeg' or $extension='jpg') then 'jpeg'                 else if ($extension='png') then 'png'                 else if ($extension='tiff') then 'tiff'                 else if ($extension='pict') then 'x-pict'                 else ()"/>
             <assert id="ill4b"
-                 test="@mime-subtype or not(matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$'))">Missing 'mime-subtype' attribute on illustration. For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$mime-subtype"/>".</assert>
+                 test="@mime-subtype or not(matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$'))">Missing 'mime-subtype' attribute on "graphic". For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$mime-subtype"/>".</assert>
         </rule>
     </pattern>
    <pattern><!--value used for @mimetype is correct based on file extension (includes test for valid extension)-->
-        <rule context="graphic[@content-type='illustration'][@mime-subtype][contains(@xlink:href,'.')]"
+        <rule context="graphic[@content-type][@mime-subtype][contains(@xlink:href,'.')]"
             role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
             <let name="mime-subtype"
               value="if ($extension='bmp') then 'bmp'                 else if ($extension='gif') then 'gif'                 else if ($extension='jpeg' or $extension='jpg') then 'jpeg'                 else if ($extension='png') then 'png'                 else if ($extension='tiff') then 'tiff'                 else if ($extension='pict') then 'x-pict'                 else ()"/>
             <assert id="ill4c"
-                 test="@mime-subtype=$mime-subtype or not(matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$'))">For illustrations with extension "<value-of select="$extension"/>", the 'mime-subtype' attribute should have the value "<value-of select="$mime-subtype"/>" (not "<value-of select="@mime-subtype"/>").</assert>
+                 test="@mime-subtype=$mime-subtype or not(matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$'))">For "graphic" with extension "<value-of select="$extension"/>", the 'mime-subtype' attribute should have the value "<value-of select="$mime-subtype"/>" (not "<value-of select="@mime-subtype"/>").</assert>
         </rule>
     </pattern>
    <pattern><!--no other attributes used on illustrations-->
-        <rule context="graphic[@content-type='illustration'][@specific-use]" role="error">
-            <report id="ill5a" test="." role="error">Do not use "specific-use" attribute on illustration.</report>
+        <rule context="graphic[@content-type][@specific-use]" role="error">
+            <report id="ill5a" test="." role="error">Do not use "specific-use" attribute on "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="graphic[@content-type='illustration'][@xlink:actuate]" role="error">
-            <report id="ill5b" test="." role="error">Do not use "xlink:actuate" attribute on illustration.</report>
+        <rule context="graphic[@content-type][@xlink:actuate]" role="error">
+            <report id="ill5b" test="." role="error">Do not use "xlink:actuate" attribute on "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="graphic[@content-type='illustration'][@xlink:role]" role="error">
-            <report id="ill5c" test="." role="error">Do not use "xlink:role" attribute on illustration.</report>
+        <rule context="graphic[@content-type][@xlink:role]" role="error">
+            <report id="ill5c" test="." role="error">Do not use "xlink:role" attribute on "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="graphic[@content-type='illustration'][@xlink:show]" role="error">
-            <report id="ill5d" test="." role="error">Do not use "xlink:show" attribute on illustration.</report>
+        <rule context="graphic[@content-type][@xlink:show]" role="error">
+            <report id="ill5d" test="." role="error">Do not use "xlink:show" attribute on "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="graphic[@content-type='illustration'][@xlink:title]" role="error">
-            <report id="ill5e" test="." role="error">Do not use "xlink:title" attribute on illustration.</report>
+        <rule context="graphic[@content-type][@xlink:title]" role="error">
+            <report id="ill5e" test="." role="error">Do not use "xlink:title" attribute on "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="graphic[@content-type='illustration'][@xlink:type]" role="error">
-            <report id="ill5f" test="." role="error">Do not use "xlink:type" attribute on illustration.</report>
+        <rule context="graphic[@content-type][@xlink:type]" role="error">
+            <report id="ill5f" test="." role="error">Do not use "xlink:type" attribute on "graphic".</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="graphic[@content-type='illustration'][@xml:lang]" role="error">
-            <report id="ill5g" test="." role="error">Do not use "xml:lang" attribute on illustration.</report>
+        <rule context="graphic[@content-type][@xml:lang]" role="error">
+            <report id="ill5g" test="." role="error">Do not use "xml:lang" attribute on "graphic".</report>
         </rule>
     </pattern>
-   <pattern><!--no other attributes used on illustrations-->
-        <rule context="graphic[@content-type='illustration']/alt-text | graphic[@content-type='illustration']/email | graphic[@content-type='illustration']/ext-link | graphic[@content-type='illustration']/label | graphic[@content-type='illustration']/long-desc | graphic[@content-type='illustration']/permissions | graphic[@content-type='illustration']/uri"
+   <pattern><!--no other elements used in graphics-->
+        <rule context="graphic[@content-type]/alt-text | graphic[@content-type]/email | graphic[@content-type]/ext-link | graphic[@content-type]/label | graphic[@content-type]/long-desc | graphic[@content-type]/permissions | graphic[@content-type]/uri"
             role="error">
-            <report id="ill6a" test="." role="error">Do not use "<name/>" in illustration "graphic".</report>
+            <report id="ill6a" test="." role="error">Do not use "<name/>" in "graphic".</report>
         </rule>
     </pattern>
    <pattern>
