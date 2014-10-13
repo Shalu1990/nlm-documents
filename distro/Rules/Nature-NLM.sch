@@ -66,7 +66,7 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto|npjsba)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
   <let name="maestro-rj"
         value="if (matches($pcode,'^(maestrorj|nplants)$')) then 'yes'     else ()"/>
   <let name="maestro"
@@ -74,7 +74,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj)$')) then 'yes' else 'no'"/>
   <let name="collection" value="$journals//npg:Journal[npg:pcode=$pcode]/npg:domain"/>
@@ -1092,6 +1092,13 @@ Use the <let> element to define the attribute if necessary.
          <report id="style2d" test=".">Do not use "monospace", as this will not render correctly. Please change to "preformat" with 'preformat-type="inline"'.</report>
       </rule>
   </pattern>
+   <pattern><!--suppinfo should not be tif in maestro titles - use tiff instead-->
+      <rule context="floats-group[$maestro='yes']/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.') and not(contains(@xlink:href,'.doi.'))]"
+            role="error">
+         <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+         <report id="maestro-tif" test="$extension = 'tif'">Do not use 'tif' files for supplementary material. Please change file extension to 'tiff' on the asset, in the article XML and in the manifest file.</report>
+      </rule>
+  </pattern>
    <pattern><!--"is-data-descriptor-to should be added by sync tool-->
     <rule context="article[$pcode='sdata'][$article-type='dd'][not(descendant::subj-group[@subj-group-type='study-parameters'])]//related-article[@related-article-type='is-data-descriptor-to']"
             role="error">
@@ -1286,6 +1293,31 @@ Use the <let> element to define the attribute if necessary.
       <let name="refType"
               value="if (@ref-type='aff') then 'an affiliation' else         if (@ref-type='corresp') then 'correspondence information' else         if (@ref-type='author-notes') then 'author notes' else 'xref links'"/>
          <report id="collab1b" test=".">"on behalf of" collaborations cannot have <value-of select="$refType"/>. Please contact NPG for markup instructions.</report>
+      </rule>
+  </pattern>
+   <pattern><!--markup for orcids is correct-->
+      <rule context="contrib-id[not(@contrib-id-type='orcid')]" role="error">
+         <report id="orcid1a" test=".">"contrib-id" should have 'contrib-id-type="orcid"'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="contrib-id[@content-type]" role="error">
+         <report id="orcid1b" test=".">Do not use 'content-type' attribute on "contrib-id".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="contrib-id[@specific-use]" role="error">
+         <report id="orcid1c" test=".">Do not use 'specific-use' attribute on "contrib-id".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="contrib-id" role="error">
+         <assert id="orcid2a" test="normalize-space(.) or *">"contrib-id" should contain the orcid url as text content of the element.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="contrib-id[normalize-space(.) or *]" role="error">
+         <assert id="orcid2b" test="starts-with(.,'http://orcid.org/')">"contrib-id" should contain the full orcid url, i.e. start with "http://orcid.org/".</assert>
       </rule>
   </pattern>
    <pattern><!--sec - sec-type or specific-use attribute used-->
@@ -1973,22 +2005,22 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--footnotes - @id used-->
     <rule context="back/fn-group[@content-type='footnotes']/fn" role="error">
-         <assert id="back5a" test="@id">"fn" within footnotes section should have attribute 'id' declared. Expected syntax is "fn" followed by a number.</assert>
+         <assert id="back5a" test="@id">"fn" within footnotes section should have attribute 'id' declared. Expected format is "fn" followed by a number.</assert>
       </rule>
   </pattern>
-   <pattern><!--footnotes - @id has required syntax-->
+   <pattern><!--footnotes - @id has required format-->
     <rule context="back/fn-group[@content-type='footnotes']/fn[@id]" role="error">
-         <assert id="back5b" test="matches(@id,'^fn[0-9]+$')">Unexpected 'id' syntax found (<value-of select="@id"/>). Footnote ids should be "fn" followed by a number.</assert>
+         <assert id="back5b" test="matches(@id,'^fn[0-9]+$')">Unexpected 'id' format found (<value-of select="@id"/>). Footnote ids should be "fn" followed by a number.</assert>
       </rule>
   </pattern>
    <pattern><!--footnotes - fn-type attribute not necessary-->
     <rule context="back/fn-group[@content-type='footnotes']/fn" role="error">
-         <report id="back-fn5c" test="@fn-type">'fn-type' attribute is not necessary on footnotes.</report>
+         <report id="back-fn5c" test="@fn-type">'fn-type' attribute is not necessary on article footnotes.</report>
       </rule>
   </pattern>
    <pattern><!--footnotes - symbol attribute not necessary-->
     <rule context="back/fn-group[@content-type='footnotes']/fn" role="error">
-         <report id="back-fn5d" test="@symbol">'symbol' attribute is not necessary on footnotes.</report>
+         <report id="back-fn5d" test="@symbol">'symbol' attribute is not necessary on article footnotes.</report>
       </rule>
   </pattern>
    <pattern><!--closenotes - fn-type="other"-->
