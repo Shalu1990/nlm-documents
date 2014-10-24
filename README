@@ -1,4 +1,4 @@
-This folder contains documentation on the use of JATS by Macmillan. XML documents will be validated against the Tagging Instructions for using the JATS model version 1.0.
+This folder contains documentation on the use of JATS by Macmillan. XML documents using the JATS model version 1.0 will be validated against the Tagging Instructions.
 
 FOLDER CONTENTS
 ===============
@@ -13,3 +13,5 @@ DTD:
 Rules:
 - a Schematron schema (Nature-NLM.sch, with supporting XML files: allowed-article-types.xml, allowed-values-nlm.xml, journals.xml)
 - JATS Tagging Instructions (in HTML format)
+
+The other folders are for internal Macmillan use only and can be ignored by vendors.
