@@ -1344,7 +1344,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--sec - sec-type is valid-->
     <rule context="sec[@sec-type]" role="error">
          <let name="secType" value="@sec-type"/>
-         <assert id="sec2a" test="$allowed-values/sec-types/sec-type[.=$secType]">Unexpected value for "sec-type" attribute (<value-of select="$secType"/>). Allowed values are: materials, online-methods, procedure. </assert>
+         <assert id="sec2a" test="$allowed-values/sec-types/sec-type[.=$secType]">Unexpected value for "sec-type" attribute (<value-of select="$secType"/>). Allowed values are: "bookshelf" (only for use in book reviews), "materials", "online-methods", "procedure". </assert>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use - follows expected syntax-->
