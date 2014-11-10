@@ -66,7 +66,7 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
   <let name="maestro-rj"
         value="if (matches($pcode,'^(maestrorj|nplants|nrdp)$')) then 'yes'     else ()"/>
   <let name="maestro"
@@ -74,7 +74,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj)$')) then 'yes' else 'no'"/>
   <let name="collection" value="$journals//npg:Journal[npg:pcode=$pcode]/npg:domain"/>
@@ -1344,7 +1344,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--sec - sec-type is valid-->
     <rule context="sec[@sec-type]" role="error">
          <let name="secType" value="@sec-type"/>
-         <assert id="sec2a" test="$allowed-values/sec-types/sec-type[.=$secType]">Unexpected value for "sec-type" attribute (<value-of select="$secType"/>). Allowed values are: materials, online-methods, procedure. </assert>
+         <assert id="sec2a" test="$allowed-values/sec-types/sec-type[.=$secType]">Unexpected value for "sec-type" attribute (<value-of select="$secType"/>). Allowed values are: "bookshelf" (only for use in book reviews), "materials", "online-methods", "procedure". </assert>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use - follows expected syntax-->
