@@ -211,6 +211,7 @@
         </article-type>
         <article-type code="caser">
             <article-heading>Case Report</article-heading>
+        <article-heading>Case-based Learning</article-heading>
         </article-type>
         <article-type code="cr">
             <article-heading>Correspondence</article-heading>
