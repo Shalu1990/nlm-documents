@@ -66,7 +66,7 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
   <let name="maestro-rj"
         value="if (matches($pcode,'^(maestrorj|nplants|nrdp)$')) then 'yes'     else ()"/>
   <let name="maestro"
@@ -74,7 +74,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'npjpcrm' and number($volume) gt 23) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj)$')) then 'yes' else 'no'"/>
   <let name="collection" value="$journals//npg:Journal[npg:pcode=$pcode]/npg:domain"/>
@@ -370,6 +370,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="subject8k" test=".">Only 'content-type' should be used as an attribute on "named-content" in "subject". Do not use 'xml:lang'.</report>
       </rule>
   </pattern>
+   <pattern><!--techniques should be in own subj-group, not part of subjects-->
+      <rule context="subject[@content-type='npg.technique'][parent::subj-group[@subj-group-type='subject']]">
+         <report id="tech1a" test=".">Techniques should not be included in "subj-group/@subj-group-type='subject'". Create a separate "subj-group" with '@subj-group-type='technique'.</report>
+      </rule>
+  </pattern>
    <pattern>
       <rule context="trans-title-group[parent::title-group]" role="error"><!--No unexpected children of article title-group used-->
       <report id="arttitle1a" test=".">Unexpected use of "trans-title-group" in article "title-group". "title-group" should only contain "article-title", "subtitle", "alt-title" or "fn-group".</report>
@@ -464,8 +469,8 @@ Use the <let> element to define the attribute if necessary.
          <report id="artinfo1b" test=".">Do not use "content-type" attribute on "<name/>" within article metadata.</report>
       </rule>
   </pattern>
-   <pattern><!--fpage[parent::article-meta] |-->
-    <rule context="volume[parent::article-meta] | issue[parent::article-meta] | lpage[parent::article-meta]"
+   <pattern>
+    <rule context="volume[parent::article-meta] | issue[parent::article-meta] | lpage[not($pcode='pcrj')][parent::article-meta]"
             role="error">
          <let name="value" value="replace(.,'test','')"/>
          <assert id="artinfo2"
