@@ -1104,6 +1104,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="maestro-tif" test="$extension = 'tif'">Do not use 'tif' files for supplementary material. Please change file extension to 'tiff' on the asset, in the article XML and in the manifest file.</report>
       </rule>
   </pattern>
+   <pattern><!--ext-link should be used instead of uri-->
+      <rule context="uri" role="error">
+         <report id="uri1" test=".">Do not use "uri" for links to websites. Please change to "ext-link" with attributes 'ext-link-type="url"' and 'xlink:href' containing the full address.</report>
+      </rule>
+  </pattern>
    <pattern><!--"is-data-descriptor-to should be added by sync tool-->
     <rule context="article[$pcode='sdata'][$article-type='dd'][not(descendant::subj-group[@subj-group-type='study-parameters'])]//related-article[@related-article-type='is-data-descriptor-to']"
             role="error">
@@ -2333,6 +2338,12 @@ Use the <let> element to define the attribute if necessary.
     <rule context="ref[$maestro-aj='yes']/mixed-citation[@publication-type='journal'][not(source)]"
             role="error">
          <report id="reflist10c" test="article-title">Journal citation "<value-of select="parent::ref/@id"/>" only has "article-title" identified (<value-of select="article-title"/>). Mark up the "source" also.</report>
+      </rule>
+  </pattern>
+   <pattern><!--citation should not contain two <years> - messes up transforms-->
+      <rule context="ref[$maestro='yes']/mixed-citation[count(year) gt 1]"
+            role="error">
+         <report id="reflist11a" test=".">Citation "<value-of select="ancestor::ref/@id"/>" has two "year" elements. Please check that the citation has been constructed correctly.</report>
       </rule>
   </pattern>
    <pattern><!--caption must contain a title-->
