@@ -66,17 +66,17 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|testpalfile|testpalevent|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
   <let name="maestro-rj"
-        value="if (matches($pcode,'^(maestrorj|nplants|nrdp)$')) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(maestrorj|testnatfile|testnatevent|npgdelor|nplants|nrdp)$')) then 'yes'     else ()"/>
   <let name="maestro"
         value="if ($maestro-aj='yes' or $maestro-rj='yes') then 'yes' else ()"/>
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="test-journal"
-        value="if (matches($pcode,'^(nmstr|palmstr|maestrorj)$')) then 'yes' else 'no'"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|maestrorj|testnatfile|testpalfile|paldelor|testnatevent|npgdelor|testpalevent)$')) then 'yes' else 'no'"/>
   <let name="collection" value="$journals//npg:Journal[npg:pcode=$pcode]/npg:domain"/>
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
@@ -1104,6 +1104,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="maestro-tif" test="$extension = 'tif'">Do not use 'tif' files for supplementary material. Please change file extension to 'tiff' on the asset, in the article XML and in the manifest file.</report>
       </rule>
   </pattern>
+   <pattern><!--ext-link should be used instead of uri-->
+      <rule context="uri" role="error">
+         <report id="uri1" test=".">Do not use "uri" for links to websites. Please change to "ext-link" with attributes 'ext-link-type="url"' and 'xlink:href' containing the full address.</report>
+      </rule>
+  </pattern>
    <pattern><!--"is-data-descriptor-to should be added by sync tool-->
     <rule context="article[$pcode='sdata'][$article-type='dd'][not(descendant::subj-group[@subj-group-type='study-parameters'])]//related-article[@related-article-type='is-data-descriptor-to']"
             role="error">
@@ -1649,10 +1654,17 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--no empty xrefs for some ref-types-->
-    <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|fig|supplementary-material|table-fn)$')]"
+    <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|fig|supplementary-material|table-fn)$')][not($pcode='pcrj')]"
             role="error">
          <let name="ref-type" value="@ref-type"/>
          <assert id="xref1" test="normalize-space(.) or *">"xref" with ref-type="<value-of select="$ref-type"/>" and rid="<value-of select="@rid"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
+      </rule>
+  </pattern>
+   <pattern><!--tweaked rule for PCRJ archive only - no empty xrefs for some ref-types, ok for figures-->
+      <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|supplementary-material|table-fn)$')][$pcode='pcrj']"
+            role="error">
+         <let name="ref-type" value="@ref-type"/>
+         <assert id="xref1b" test="normalize-space(.) or *">"xref" with ref-type="<value-of select="$ref-type"/>" and rid="<value-of select="@rid"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
       </rule>
   </pattern>
    <pattern><!--Multiple rid values only allowed in bibrefs-->
@@ -2326,6 +2338,12 @@ Use the <let> element to define the attribute if necessary.
     <rule context="ref[$maestro-aj='yes']/mixed-citation[@publication-type='journal'][not(source)]"
             role="error">
          <report id="reflist10c" test="article-title">Journal citation "<value-of select="parent::ref/@id"/>" only has "article-title" identified (<value-of select="article-title"/>). Mark up the "source" also.</report>
+      </rule>
+  </pattern>
+   <pattern><!--citation should not contain two <years> - messes up transforms-->
+      <rule context="ref[$maestro='yes']/mixed-citation[count(year) gt 1]"
+            role="error">
+         <report id="reflist11a" test=".">Citation "<value-of select="ancestor::ref/@id"/>" has two "year" elements. Please check that the citation has been constructed correctly.</report>
       </rule>
   </pattern>
    <pattern><!--caption must contain a title-->
