@@ -66,18 +66,21 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|testpalfile|testpalevent|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
   <let name="maestro-rj"
-        value="if (matches($pcode,'^(maestrorj|testnatfile|testnatevent|npgdelor|nplants|nrdp)$')) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(maestrorj|testpalevent|testnatevent|npgdelor|nplants|nrdp)$')) then 'yes'     else ()"/>
   <let name="maestro"
         value="if ($maestro-aj='yes' or $maestro-rj='yes') then 'yes' else ()"/>
+  <let name="pubevent"
+        value="if (matches($pcode,'^(maestrorj|testnatevent|testpalevent|nplants|nrdp)$')) then 'yes'     else 'no'"/>
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
         value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj|testnatfile|testpalfile|paldelor|testnatevent|npgdelor|testpalevent)$')) then 'yes' else 'no'"/>
-  <let name="collection" value="$journals//npg:Journal[npg:pcode=$pcode]/npg:domain"/>
+  <let name="collection"
+        value="$journals//npg:Journal[npg:pcode=$pcode]/npg:hasDomain/functx:substring-after-last(@rdf:resource,'/')"/>
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
       <let name="article-type"
@@ -740,13 +743,20 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--volume should be given in all new OA only journals; #not allowed in issue-based journals?#-->
-    <rule context="article[$maestro-aj='yes']/front/article-meta" role="error">
+    <rule context="article[$maestro='yes' and $pubevent='no']/front/article-meta"
+            role="error">
          <assert id="oa-aj2a" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
   </pattern>
-   <pattern><!--issue should not be used in new OA only journals; #maybe also not allowed in nplants?#-->
-    <rule context="article[$maestro-aj='yes']/front/article-meta/issue" role="error">
-         <report id="oa-aj2b" test=".">"issue" should not be used in "<value-of select="$journal-title"/>".</report>
+   <pattern><!--volume not allowed in pub event based journals? -->
+    <rule context="article[$pubevent='yes']/front/article-meta/volume"
+            role="error">
+         <report id="oa-aj2a2" test=".">A "volume" element should not be used in "<value-of select="$journal-title"/>".</report>
+      </rule>
+  </pattern>
+   <pattern><!--issue should not be used in new OA only journals nor event-based publishing-->
+      <rule context="article[$maestro='yes']/front/article-meta/issue" role="error">
+         <report id="oa-aj2b" test=".">An "issue" element should not be used in "<value-of select="$journal-title"/>".</report>
       </rule>
   </pattern>
    <pattern><!--elocation-id should be given in all Maestro journals-->
