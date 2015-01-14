@@ -373,9 +373,16 @@ Use the <let> element to define the attribute if necessary.
          <report id="subject8k" test=".">Only 'content-type' should be used as an attribute on "named-content" in "subject". Do not use 'xml:lang'.</report>
       </rule>
   </pattern>
-   <pattern><!--techniques should be in own subj-group, not part of subjects-->
-      <rule context="subject[@content-type='npg.technique'][parent::subj-group[@subj-group-type='subject']]">
-         <report id="tech1a" test=".">Techniques should not be included in "subj-group/@subj-group-type='subject'". Create a separate "subj-group" with '@subj-group-type='technique'.</report>
+   <pattern><!--subjects should be in own subj-group-->
+      <rule context="subject[@content-type='npg.subject'][parent::subj-group[not(@subj-group-type='subject')]]">
+         <let name="subj-group-type" value="parent::subj-group/@subj-group-type"/>
+      <report id="subject9a" test=".">Subjects should not be included in "subj-group/@subj-group-type='<value-of select="$subj-group-type"/>'". Create a separate "subj-group" with '@subj-group-type='subject'.</report>
+      </rule>
+  </pattern>
+   <pattern><!--techniques should be in own subj-group-->
+      <rule context="subject[@content-type='npg.technique'][parent::subj-group[not(@subj-group-type='technique')]]">
+         <let name="subj-group-type" value="parent::subj-group/@subj-group-type"/>
+         <report id="tech1a" test=".">Techniques should not be included in "subj-group/@subj-group-type='<value-of select="$subj-group-type"/>'". Create a separate "subj-group" with '@subj-group-type='technique'.</report>
       </rule>
   </pattern>
    <pattern>
