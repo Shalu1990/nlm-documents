@@ -13,6 +13,14 @@
 
 <!-- 
 
+15.01.15
+. CDS-649 - Additional elements and attributes to support funding information:
+            Added "funding-group" as possible child of "artfm"
+            Added "award" and "funding-statement" as possible children of "funding-group"
+            "award" has required child "funding" and one or more required "sectau" children
+            "funding" has attributes 'funder-id' and 'award-id'
+            "funding-statement" has optional "extlink" child and is %plain-text
+
 17.09.14
 . CDS-419 - Added new attribute 'type' to "ill" element, with allowed values "illustration" (default) and "toc-image".
 
@@ -1361,7 +1369,7 @@ citdoi | cittext | delim" >
 <!--********************************************************************-->
 
 <!ELEMENT 	artfm 			  		(jti, sjti?, issn+, 
-doi, altdoi*, vol?, iss?, issinfo?, isbn*, aopseq?, seq, pp, elocation?, serno?, pubdates, prdates?, chghst?, si?, seealso*, related-article*, errorcor*, firstpagepdf?, no_pdf?, licence*, branding?)>
+doi, altdoi*, vol?, iss?, issinfo?, isbn*, aopseq?, seq, pp, elocation?, serno?, pubdates, prdates?, chghst?, si?, seealso*, related-article*, errorcor*, firstpagepdf?, no_pdf?, licence*, funding-group?, branding?)>
 
 <!--			  		jti           	journal title
 				  	sjti			journal short title
@@ -1659,8 +1667,15 @@ suped?, supspon?, suptext?)>
              month    NMTOKEN  #REQUIRED 
              day      NMTOKEN  #REQUIRED
 >
-		
 
+<!ELEMENT funding-group ((award+, funding-statement?) | funding-statement)>
+<!ELEMENT award (funding, sectau+)>
+<!ELEMENT funding (%plain-text;)*>
+<!ATTLIST funding
+    funder-id CDATA #REQUIRED
+    award-id ID #IMPLIED
+>
+<!ELEMENT funding-statement (%plain-text; | extlink)*>
       
 <!ELEMENT branding EMPTY>
 
@@ -1843,7 +1858,7 @@ serieshead?, tochead?, arttype, subarttype?, artcode?, subject*, technique*, cla
 <!--********************************************************************-->
 <!--       Section Author                                                 	-->
 <!--********************************************************************-->
-<!ELEMENT 	sectau  		 		(%authors;)>
+<!ELEMENT 	sectau  		 		(%authors;)*>
 
 <!--********************************************************************-->
 <!--       Author Groups / Consortia                              	-->
