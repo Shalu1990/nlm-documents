@@ -16,6 +16,13 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2015/01/14 - CDS-649 - Additional elements and attributes to support funding information:
+                       Added "funding-group" as possible child of "pubfm"
+                       Added "award" and "funding-statement" as possible children of "funding-group"
+                       "award" has required child "funding" and one or more required "au" children
+                       "funding" has attributes 'funder-id' and 'award-id'
+                       "funding-statement" has optional "weblink" child and is %plain-text
+
 2014/09/17 - CDS-419 - Added "toc-image" to 'illus-type' attribute of "illus" element
 
 2014/05/31 - CDS-181 - Added "excerpt-from" to 'related-article-type' attribute
@@ -992,7 +999,7 @@ guid CDATA #IMPLIED
                 url CDATA #IMPLIED>
 
 
-<!ELEMENT pubfm (jtl, vol?, iss?, idt?, artpubdt?, altlang?, conf?, section?, categ?, categtxt?, subcateg?, subcatxt?, subsubcateg?, subsubcatxt?, arthead?, artsubhead?, pp?, seq?, elocation?, cdn?, (issn+ | isbn), cpg, related-article*, article-link*, nvid*, xrespond*, xrelate*, errorcor*, suppinfo?, assoc-file*, patent?, chghst?, keywordgrp?, subject*, technique*, study-parameters?, article-grouping?, indications*, channel*, subclass*, (careerstage | discipline | region | sector)*, doi?, altdoi*, mtsno?, licence*)>
+<!ELEMENT pubfm (jtl, vol?, iss?, idt?, artpubdt?, altlang?, conf?, section?, categ?, categtxt?, subcateg?, subcatxt?, subsubcateg?, subsubcatxt?, arthead?, artsubhead?, pp?, seq?, elocation?, cdn?, (issn+ | isbn), cpg, related-article*, article-link*, nvid*, xrespond*, xrelate*, errorcor*, suppinfo?, assoc-file*, patent?, chghst?, keywordgrp?, subject*, technique*, study-parameters?, article-grouping?, indications*, channel*, subclass*, (careerstage | discipline | region | sector)*, doi?, altdoi*, mtsno?, licence*, funding-group?)>
 
 <!ELEMENT jtl (%data;)*>
 <!ELEMENT vol (#PCDATA)>
@@ -2274,3 +2281,12 @@ code CDATA #REQUIRED
       paid (yes | no) "yes" >
 
 <!ELEMENT licence-text (%data;)*> 
+
+<!ELEMENT funding-group ((award+, funding-statement?) | funding-statement)>
+<!ELEMENT award (funding, au+)>
+<!ELEMENT funding (%plain-text;)*>
+<!ATTLIST funding
+    funder-id CDATA #REQUIRED
+    award-id ID #IMPLIED
+>
+<!ELEMENT funding-statement (%plain-text; | weblink)*>
