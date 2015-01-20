@@ -31,10 +31,19 @@ case, be added to all elements in this DTD.                     -->
 <!--
 DTD Change History (U.S. date notation)
 
+2014-12-16 (ISO Date) CDS-616 Added support for MathML (supporting files/folders required: mathml.dtd, mathml2-qname-1.mod,
+mathml sub folder containing: mmlalias.ent and mmlextra.ent)
+
 05/29/02	Commented out definitions and uses of SDAFORM, SDARULE, SDAPREF, SDASUFF, SDASUSP as they are not used for 
 		NPG
 		
 -->
+
+<!ENTITY % MATHML.prefixed "INCLUDE">
+<!ENTITY % MATHML.prefix "mml">
+<!ENTITY % mathml SYSTEM "entities_MathML/mathml2.dtd">
+%mathml;
+
 <!-- ===================================================================== -->
 <!--  Parameter entities describing the possible contents of formulas.     -->
 <!-- ===================================================================== -->
@@ -263,8 +272,8 @@ DTD Change History (U.S. date notation)
 <!-- ===================================================================== -->
 
 <!--      ELEMENT              MIN  CONTENT               EXPLANATIONS     -->
-<!ELEMENT f              (#PCDATA | %p.trans;|%m.math;|mathimg)*><!-- in-line formula -->
-<!ELEMENT fd             (#PCDATA | %p.trans;|%m.math;|mathimg)*><!-- display formula -->
+<!ELEMENT f              (#PCDATA | %p.trans;|%m.math;|mathimg|mml:math)*><!-- in-line formula -->
+<!ELEMENT fd             (#PCDATA | %p.trans;|%m.math;|mathimg|mml:math)*><!-- display formula -->
 <!ELEMENT dformgrp       (f|fd)+><!-- display-formula group -->
 						  
 <!-- MATHIMG added to parallel TBLIMG in CALSTBL.DTD --> 
