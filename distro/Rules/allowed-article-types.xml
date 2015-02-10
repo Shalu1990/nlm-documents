@@ -534,7 +534,7 @@
             <article-heading>Retraction</article-heading>
         </article-type>
     </journal>
-    <journal pcode="npjmgrav">
+    <!--journal pcode="npjmgrav">
         <article-type code="af">
             <article-heading>Article</article-heading>
         </article-type>
@@ -566,7 +566,7 @@
         <article-type code="ret">
             <article-heading>Retraction</article-heading>
         </article-type>
-    </journal>
+    </journal-->
     <journal pcode="celldisc">
         <article-type code="af">
             <article-heading>Article</article-heading>
