@@ -2994,7 +2994,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--elements not allowed in NPG JATS content-->
-    <rule context="abbrev | annotation | collab-alternatives | comment | gov | issn-l | issue-id | issue-part | issue-title | milestone-end | milestone-start | object-id |  page-range | part-title | patent | pub-id | roman | std | trans-abstract | trans-source | volume-id | volume-series"
+    <rule context="abbrev | collab-alternatives | comment | gov | issn-l | issue-id | issue-part | issue-title | milestone-end | milestone-start | object-id |  page-range | part-title | patent | pub-id | roman | std | trans-abstract | trans-source | volume-id | volume-series"
             role="error">
          <report id="disallowed1" test=".">Do not use "<name/>" element in NPG/Palgrave articles.</report>
       </rule>
