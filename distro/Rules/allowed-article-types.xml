@@ -544,13 +544,15 @@
         <article-type code="cr">
             <article-heading>Correspondence</article-heading>
         </article-type>
+        <article-type code="ed">
+            <article-heading>Editorial</article-heading>
+        </article-type>
         <article-type code="mr">
             <article-heading>Meeting Report</article-heading>
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
-            <article-heading>Mini Review</article-heading>
-        </article-type>
+            </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
