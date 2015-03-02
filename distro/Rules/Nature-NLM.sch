@@ -983,18 +983,18 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--subject path found in subject ontology-->
-    <rule context="article[$maestro='yes' or $transition='yes' and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+    <rule context="article[($maestro='yes' or $transition='yes') and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <assert id="oa-aj10a" test=".=$journals//npg:subjectPath">Subject path (<value-of select="."/>) is not recognized by the subject ontology. Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--subject path valid for the journal-->
-    <rule context="article[$maestro='yes' or $transition='yes' and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+    <rule context="article[($maestro='yes' or $transition='yes') and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <assert id="oa-aj10b"
                  test=".=$journals//npg:Journal[npg:pcode=$pcode]/npg:subjectPath or not(.=$journals//npg:subjectPath)">Subject path <value-of select="."/> is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--id should be final value in subject path-->
-    <rule context="article[$maestro='yes' or $transition='yes' and $test-journal='no']//subject[@content-type='npg.subject'][named-content[@content-type='id']]">
+    <rule context="article[($maestro='yes' or $transition='yes') and $test-journal='no']//subject[@content-type='npg.subject'][named-content[@content-type='id']]">
          <let name="path" value="named-content[@content-type='path'][1]"/>
          <let name="id" value="named-content[@content-type='id']"/>
          <let name="derivedId" value="functx:substring-after-last($path,'/')"/>
