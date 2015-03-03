@@ -67,6 +67,8 @@ Use the <let> element to define the attribute if necessary.
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
         value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
+  <let name="transition"
+        value="if ($pcode eq 'srep' and number($volume) lt 6) then 'yes'     else ()"/>
   <let name="maestro-rj"
         value="if (matches($pcode,'^(maestrorj|testpalevent|testnatevent|npgdelor|nplants|nrdp)$')) then 'yes'     else ()"/>
   <let name="maestro"
@@ -284,7 +286,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--subject codes should have @content-type="npg.subject" (for transforms to work properly) in new journals-->
-    <rule context="article[matches($pcode,'^(mtm|hortres|sdata)$')]//subj-group[@subj-group-type='subject']/subject[not(@content-type='npg.subject')]">
+    <rule context="article[$maestro='yes' or $transition='yes']//subj-group[@subj-group-type='subject']/subject[not(@content-type='npg.subject')]">
          <report id="subject1" test=".">In "subj-group" with attribute 'subj-group="subject"', child "subject" elements should have 'content-type="npg.subject"'.</report>
       </rule>
   </pattern>
@@ -981,18 +983,18 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--subject path found in subject ontology-->
-    <rule context="article[$maestro='yes' and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+    <rule context="article[($maestro='yes' or $transition='yes') and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <assert id="oa-aj10a" test=".=$journals//npg:subjectPath">Subject path (<value-of select="."/>) is not recognized by the subject ontology. Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--subject path valid for the journal-->
-    <rule context="article[$maestro='yes' and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+    <rule context="article[($maestro='yes' or $transition='yes') and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <assert id="oa-aj10b"
                  test=".=$journals//npg:Journal[npg:pcode=$pcode]/npg:subjectPath or not(.=$journals//npg:subjectPath)">Subject path <value-of select="."/> is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--id should be final value in subject path-->
-    <rule context="article[$maestro='yes' and $test-journal='no']//subject[@content-type='npg.subject'][named-content[@content-type='id']]">
+    <rule context="article[($maestro='yes' or $transition='yes') and $test-journal='no']//subject[@content-type='npg.subject'][named-content[@content-type='id']]">
          <let name="path" value="named-content[@content-type='path'][1]"/>
          <let name="id" value="named-content[@content-type='id']"/>
          <let name="derivedId" value="functx:substring-after-last($path,'/')"/>
@@ -1671,7 +1673,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--no empty xrefs for some ref-types-->
-    <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|fig|supplementary-material|table-fn)$')][not($pcode='pcrj')]"
+    <rule context="xref[matches(@ref-type,'^(bibr|fig|supplementary-material|table-fn)$')][not($pcode='pcrj')]"
             role="error">
          <let name="ref-type" value="@ref-type"/>
          <assert id="xref1" test="normalize-space(.) or *">"xref" with ref-type="<value-of select="$ref-type"/>" and rid="<value-of select="@rid"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
@@ -2280,7 +2282,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--book citations should have "source" and "year"-->
-    <rule context="back/ref-list[not(@content-type)]//ref/mixed-citation[@publication-type='book'][source and not(year)]"
+    <rule context="back[$maestro='yes']/ref-list[not(@content-type)]//ref/mixed-citation[@publication-type='book'][source and not(year)]"
             role="error">
          <report id="reflist6c" test=".">Book citation "<value-of select="ancestor::ref/@id"/>" has "source" but no "year". Either mark up the year, or change 'publication-type' to "other".</report>
       </rule>
@@ -2391,13 +2393,13 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern>
-      <rule context="table-wrap-foot/fn" role="error">
+      <rule context="table-wrap-foot[$maestro='yes']/fn" role="error">
         <let name="id" value="@id"/>
         <assert id="tab10a" test="ancestor::article//xref[@ref-type='table-fn'][@rid=$id]">Table footnote is not linked to. Either insert a correctly numbered link, or just mark up as a table footer paragraph.</assert>
       </rule>
     </pattern>
    <pattern>
-        <rule context="table-wrap-foot/fn" role="error">
+        <rule context="table-wrap-foot[$maestro='yes']/fn" role="error">
             <let name="id" value="@id"/>
             <assert id="tab10b"
                  test="not(ancestor::article//xref[@ref-type='table-fn'][@rid=$id]) or label">Table footnote should contain "label" element - check if it is a footnote or should just be a table footer paragraph.</assert>
