@@ -182,6 +182,9 @@
         <article-type code="mr">
             <article-heading>Meeting Report</article-heading>
         </article-type>
+        <article-type code="pe">
+            <article-heading>Perspective</article-heading>
+        </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
             <article-heading>Mini Review</article-heading>
@@ -913,6 +916,124 @@
         </article-type>
         <article-type code="ed">
             <article-heading>Editorial</article-heading>
+        </article-type>
+        <article-type code="add">
+            <article-heading>Addendum</article-heading>
+        </article-type>
+        <article-type code="cg">
+            <article-heading>Corrigendum</article-heading>
+        </article-type>
+        <article-type code="cs">
+            <article-heading>Correction</article-heading>
+        </article-type>
+        <article-type code="er">
+            <article-heading>Erratum</article-heading>
+        </article-type>
+        <article-type code="ret">
+            <article-heading>Retraction</article-heading>
+        </article-type>
+    </journal>
+<journal pcode="nmicrobiol">
+        <article-type code="af">
+            <article-heading>Article</article-heading>
+            <article-heading>Letter</article-heading>
+        </article-type>
+        <article-type code="ba">
+            <article-heading>Books and Arts</article-heading>
+        </article-type>
+        <article-type code="bc">
+            <article-heading>Brief Communication</article-heading>
+        </article-type>
+        <article-type code="com">
+            <article-heading>Comment</article-heading>
+        </article-type>
+        <article-type code="cr">
+            <article-heading>Correspondence</article-heading>
+        </article-type>
+        <article-type code="ed">
+            <article-heading>Editorial</article-heading>
+        </article-type>
+        <article-type code="hl">
+            <article-heading>Research Highlight</article-heading>
+        </article-type>
+        <article-type code="nv">
+            <article-heading>News and Views</article-heading>
+        </article-type>
+        <article-type code="nw">
+            <article-heading>News</article-heading>
+        </article-type>
+        <article-type code="rv">
+            <article-heading>Review Article</article-heading>
+            <article-heading>Mini Review</article-heading>
+        </article-type>
+        <article-type code="add">
+            <article-heading>Addendum</article-heading>
+        </article-type>
+        <article-type code="cg">
+            <article-heading>Corrigendum</article-heading>
+        </article-type>
+        <article-type code="cs">
+            <article-heading>Correction</article-heading>
+        </article-type>
+        <article-type code="er">
+            <article-heading>Erratum</article-heading>
+        </article-type>
+        <article-type code="ret">
+            <article-heading>Retraction</article-heading>
+        </article-type>
+    </journal>
+    <journal pcode="nenergy">
+        <article-type code="af">
+            <article-heading>Article</article-heading>
+        </article-type>
+        <article-type code="ba">
+            <article-heading>Books and Arts</article-heading>
+        </article-type>
+        <article-type code="bca">
+            <article-heading>Brief Communications Arising</article-heading>
+        </article-type>
+        <article-type code="bo">
+            <article-heading>Book Review</article-heading>
+        </article-type>
+        <article-type code="com">
+            <article-heading>Comment</article-heading>
+        </article-type>
+        <article-type code="cons">
+            <article-heading>Consensus Statement</article-heading>
+        </article-type>
+        <article-type code="cr">
+            <article-heading>Correspondence</article-heading>
+        </article-type>
+        <article-type code="ed">
+            <article-heading>Editorial</article-heading>
+        </article-type>
+        <article-type code="fe">
+            <article-heading>Feature</article-heading>
+        </article-type>
+        <article-type code="hl">
+            <article-heading>Research Highlight</article-heading>
+        </article-type>
+        <article-type code="na">
+            <article-heading>News Analysis</article-heading>
+        </article-type>
+        <article-type code="nv">
+            <article-heading>News and Views</article-heading>
+        </article-type>
+        <article-type code="nw">
+            <article-heading>News</article-heading>
+        </article-type>
+        <article-type code="pe">
+            <article-heading>Perspective</article-heading>
+        </article-type>
+        <article-type code="qa">
+            <article-heading>Q&amp;A</article-heading>
+        </article-type>
+        <article-type code="rv">
+            <article-heading>Review Article</article-heading>
+            <article-heading>Mini Review</article-heading>
+        </article-type>
+        <article-type code="tf">
+            <article-heading>Technology Feature</article-heading>
         </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
