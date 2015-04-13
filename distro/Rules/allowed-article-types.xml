@@ -547,6 +547,9 @@
         <article-type code="bc">
             <article-heading>Brief Communication</article-heading>
         </article-type>
+        <article-type code="caser">
+            <article-heading>Case Report</article-heading>
+        </article-type>
         <article-type code="cr">
             <article-heading>Correspondence</article-heading>
         </article-type>
@@ -939,7 +942,7 @@
             <article-heading>Retraction</article-heading>
         </article-type>
     </journal>
-<journal pcode="nmicrobiol">
+    <journal pcode="nmicrobiol">
         <article-type code="af">
             <article-heading>Article</article-heading>
             <article-heading>Letter</article-heading>
@@ -1075,7 +1078,7 @@
             <article-heading>Retraction</article-heading>
         </article-type>
     </journal>
-<journal pcode="scsandc">
+    <journal pcode="scsandc">
         <article-type code="af">
             <article-heading>Article</article-heading>
         </article-type>
