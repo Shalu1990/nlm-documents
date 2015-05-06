@@ -68,7 +68,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="maestro-aj"
         value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
   <let name="transition"
-        value="if ($pcode eq 'srep' and number($volume) lt 6) then 'yes'     else ()"/>
+        value="if ($pcode eq 'srep' and number($volume) lt 6) then 'yes'     else if ($pcode eq 'ncomms' and number($volume) lt 7) then 'yes'     else ()"/>
   <let name="maestro-rj"
         value="if (matches($pcode,'^(maestrorj|testpalevent|testnatevent|npgdelor|nplants|nrdp|nmicrobiol|nenergy|natrevmats)$')) then 'yes'     else ()"/>
   <let name="maestro"
@@ -286,7 +286,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--subject codes should have @content-type="npg.subject" (for transforms to work properly) in new journals-->
-    <rule context="article[$maestro='yes' or $transition='yes']//subj-group[@subj-group-type='subject']/subject[not(@content-type='npg.subject')]">
+    <rule context="article[$maestro='yes']//subj-group[@subj-group-type='subject']/subject[not(@content-type='npg.subject')]">
          <report id="subject1" test=".">In "subj-group" with attribute 'subj-group="subject"', child "subject" elements should have 'content-type="npg.subject"'.</report>
       </rule>
   </pattern>
@@ -845,30 +845,31 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--no subsections in editorial summaries-->
-      <rule context="abstract[@abstract-type][$maestro='yes'][sec]" role="error">
+      <rule context="abstract[@abstract-type][$maestro='yes' or $transition='yes'][sec]"
+            role="error">
          <report id="oa-aj-abs1b" test=".">Do not use sections in editorial summaries (<value-of select="@abstract-type"/>) - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - no title-->
-      <rule context="abstract[@abstract-type='standfirst'][$maestro='yes'][title]"
+      <rule context="abstract[@abstract-type='standfirst'][$maestro='yes' or $transition='yes'][title]"
             role="error">
          <report id="oa-aj-abs1c" test=".">Do not use "title" in standfirsts - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - no images-->
-      <rule context="abstract[@abstract-type='standfirst'][$maestro='yes'][descendant::xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id]]"
+      <rule context="abstract[@abstract-type='standfirst'][$maestro='yes' or $transition='yes'][descendant::xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id]]"
             role="error">
          <report id="oa-aj-abs1d" test=".">Do not use images in standfirsts - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - one paragraph-->
-      <rule context="abstract[@abstract-type='standfirst'][$maestro='yes'][count(p) gt 1]"
+      <rule context="abstract[@abstract-type='standfirst' or $transition='yes'][$maestro='yes'][count(p) gt 1]"
             role="error">
          <report id="oa-aj-abs1e" test=".">Standfirsts should only contain one paragraph - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
    <pattern><!--only one true abstract used; there is a general rule to test for more than one of the same @abstract-type-->
-      <rule context="abstract[$maestro='yes'][not(@abstract-type)][preceding-sibling::abstract[not(@abstract-type)]]"
+      <rule context="abstract[$maestro='yes' or $transition='yes'][not(@abstract-type)][preceding-sibling::abstract[not(@abstract-type)]]"
             role="error">
          <report id="oa-aj-abs2a" test=".">Only one true abstract should appear in an article.</report>
       </rule>
@@ -983,12 +984,12 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--subject path found in subject ontology-->
-    <rule context="article[($maestro='yes' or $transition='yes') and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+    <rule context="article[$maestro='yes' and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <assert id="oa-aj10a" test=".=$journals//npg:subjectPath">Subject path (<value-of select="."/>) is not recognized by the subject ontology. Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--subject path valid for the journal-->
-    <rule context="article[($maestro='yes' or $transition='yes') and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
+    <rule context="article[$maestro='yes' and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
          <assert id="oa-aj10b"
                  test=".=$journals//npg:Journal[npg:pcode=$pcode]/npg:subjectPath or not(.=$journals//npg:subjectPath)">Subject path <value-of select="."/> is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by NPG.</assert>
       </rule>
@@ -1011,7 +1012,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--article-heading should be used-->
-    <rule context="article[$maestro='yes' and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta/article-categories"
+    <rule context="article[($maestro='yes' or $transition='yes') and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta/article-categories"
             role="error">
          <let name="article-heading"
               value="replace(string-join($allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading,' or '),'\W\([a-z]+\)','')"/>
@@ -1019,7 +1020,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--authors should link to their affiliated body, even when there is only one aff-->
-    <rule context="article[$maestro='yes']/front/article-meta[aff]/contrib-group//contrib[@contrib-type='author'][not(ancestor::collab[@collab-type='authors'])]"
+    <rule context="article[$maestro='yes' or $transition='yes']/front/article-meta[aff]/contrib-group//contrib[@contrib-type='author'][not(ancestor::collab[@collab-type='authors'])]"
             role="error">
          <assert id="oa-aj12" test="xref[@ref-type='aff']">All authors should be linked to an affiliated body. Insert xref with 'ref-type="aff"'.</assert>
       </rule>
@@ -1036,7 +1037,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--Only one author email per corresp element-->
-    <rule context="corresp[count(email) gt 1][$maestro='yes']" role="error">
+    <rule context="corresp[count(email) gt 1][$maestro='yes' or $transition='yes']"
+            role="error">
          <report id="maestro1" test=".">Corresponding author information should only contain one email address. Please split "corresp" with id='<value-of select="@id"/>' into separate "corresp" elements - one for each corresponding author. You will also need to update the equivalent "xref" elements with the new 'rid' values.</report>
       </rule>
   </pattern>
@@ -1071,7 +1073,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--correction articles should contain a related-article element-->
-    <rule context="article[($maestro='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta"
+    <rule context="article[($maestro='yes' or $transition='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta"
             role="error">
          <let name="article-heading"
               value="$allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading"/>
@@ -1082,7 +1084,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--check correction articles have matching @related-article-type and @article-type values-->
-    <rule context="article[($maestro='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/related-article"
+    <rule context="article[($maestro='yes' or $transition='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta/related-article"
             role="error">
          <let name="related-article-type"
               value="if ($article-type='add') then 'is-addendum-to'          else if ($article-type='cg') then 'is-corrigendum-to'          else if ($article-type='cs') then 'is-correction-to'          else if ($article-type='er') then 'is-erratum-to'          else if ($article-type='ret') then 'is-retraction-to' else ()"/>
@@ -1673,14 +1675,14 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--no empty xrefs for some ref-types-->
-    <rule context="xref[matches(@ref-type,'^(bibr|fig|supplementary-material|table-fn)$')][not($pcode='pcrj')]"
+    <rule context="xref[matches(@ref-type,'^(bibr|fig|supplementary-material|table-fn)$')][not($pcode='pcrj' or $transition='yes')]"
             role="error">
          <let name="ref-type" value="@ref-type"/>
          <assert id="xref1" test="normalize-space(.) or *">"xref" with ref-type="<value-of select="$ref-type"/>" and rid="<value-of select="@rid"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
       </rule>
   </pattern>
-   <pattern><!--tweaked rule for PCRJ archive only - no empty xrefs for some ref-types, ok for figures-->
-      <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|supplementary-material|table-fn)$')][$pcode='pcrj']"
+   <pattern><!--tweaked rule for PCRJ archive and transition journals only - no empty xrefs for some ref-types, ok for figures-->
+      <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|supplementary-material|table-fn)$')][($pcode='pcrj' or $transition='yes')]"
             role="error">
          <let name="ref-type" value="@ref-type"/>
          <assert id="xref1b" test="normalize-space(.) or *">"xref" with ref-type="<value-of select="$ref-type"/>" and rid="<value-of select="@rid"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
