@@ -16,6 +16,8 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2015/05/15 - CDS-890 - Added "fd" as a possible child of "li"
+
 2015/01/14 - CDS-649 - Additional elements and attributes to support funding information:
                        Added "funding-group" as possible child of "pubfm"
                        Added "award" and "funding-statement" as possible children of "funding-group"
@@ -1687,7 +1689,7 @@ file CDATA #IMPLIED
 id ID #REQUIRED
 type (bullet | number | ucletter | lcletter | ucroman | lcroman) "bullet"
 >
-<!ELEMENT li (%data; | cite | f | list | critical | trouble | caution | pause | timing)*>
+<!ELEMENT li (%data; | cite | f | fd | list | critical | trouble | caution | pause | timing)*>
 <!ELEMENT deflist (listttl?, (term, defn)+)>
 <!ATTLIST deflist
 id ID #REQUIRED
