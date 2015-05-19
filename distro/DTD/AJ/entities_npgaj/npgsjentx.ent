@@ -1,7 +1,7 @@
 <!-- (C) Nature Publishing Group 2000-2006 -->
 <!-- XML Version of NPGSJ Added Symbols. Complete list of character entities recognised by Nature Publishing Group Specialist Journals, but not present in the ISO character sets listed in the NPGSJ DTD version 6.0 -->
 
-<!-- Version 154. Issued on 01 November 2010 -->
+<!-- Version 155. Issued on 31 March 2015 -->
 
 <!-- Character entity set. Typical invocation:
   <!ENTITY % npgsjentx.ent PUBLIC "NPG//ENTITIES NPGSJ Added Symbols XML//EN">
@@ -10,6 +10,7 @@
 <!-- npgsjent.ent. Recent change history. Date format is dd/mm/yy -->
 <!--
 
+31/03/15 ver 155 replaced many definitions with Unicode hex character references
 01/11/10 ver 154 &cirf; added.
 14/07/10 ver 153 &macr1;, &macr2;, &macr3;, &macr4;, &macr8; added for JORS
 21/05/10 ver 152 &xcirc; REMOVED (duplicated in isoamsb.ent); &xcrcmflx; and &Xcrcmflx; added.

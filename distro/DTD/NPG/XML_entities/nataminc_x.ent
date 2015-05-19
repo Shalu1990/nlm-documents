@@ -1,1139 +1,670 @@
-<!-- NATURE Additional character entity set. -->
+<!-- 2015-03-31 NATURE Additional character entity set. -->
 <!-- Character entity set. Typical invocation:
 
-<!ENTITY % NATURE PRIVATE "NATURE Specific Entities//EN">
-     %NATURE;
-     -->
+<!ENTITY % NATURE PRIVATE	"NATURE Specific Entities//EN">
+%NATURE;
+-->
+
 <!-- NATAMINC.ENT CHANGE HISTORY -->
 <!--
 
-04/18/00        Added speciala and specialb     - JL
-04/25/00        Added alphauml, huml, alphadot - JL
-05/02/00        Added cbreve and Cbreve - DB
-05/11/00        Added tmacr and Tmacr - DB
-16/05/00        Added phivcirc - DB
-23/05/00        Added betadot - DB
-24/05/00        Added pcirc, Pcirc, qdot, Qdot, cmacr and Cmacr - DB
-31/05/00        Added upomicr, buprho, bupeta - DB
-15/06/00        Added Sbreve - VB
-27/06/00        Added bupPhi - DB
-18/07/00        Added deltilde - VB
-25/07/00        Added bupalpha - VB
-25/07/00        Added bupsigma - VB
-31/08/00	Added rlhar2 - VB
-21/09/00	Added rlarr2 - VB
-4/10/00	        Added fcirc - VB
-4/10/00         Added ftilde - VB
-4/10/00         Added ydot - VB
-1/11/00		Added lrhar2 - VB
-18/12/00	Added psicirc - VB
-21/12/00	Added Gammadot - VB
-16/01/01        Added bitsigma - VB
-13/02/01        Added bupgamma - VB
-20/02/01        Added learr - VB
-20/02/01        Added lfarr - VB
-18/04/01	Added Kmacr - VB
-23/05/01	Added Dmacr - VB
-31/05/01	Added mmacr - NS
-31/05/01	Added kvec - NS
-31/05/01	Added Kvec - NS
-15/06/01        Added bpart - VB
-26/06/01	Added circshf, squtimes, sqush25, squhoriz, squplus - JL
-02/07/01        Added omegadot - VB
-03/09/01	Added lambcross - VB
-10/09/01        Added obreve - VB
-12/09/01	Added ktilde - VB
-12/09/01	Added Ktilde - VB
-17/09/01	Added rbreve - VB
-19/09/01	Added Xcirc and and Smacr - VB
-3/10/01		Added Vdot - VB
-15/10/01	Added upphis - VB
-28/11/01	Added fmacr - VB
-03/12/01	Added thetamacr - VB
-22/01/02	Added smalleq - VB
-22/01/02	Added smalleq7 - VB
-22/01/02	Added smallpar - VB
-22/01/02	Added smallpar7 - VB
-22/01/02	Added smeqloff - VB
-22/01/02	Added smeqoff - VB
-22/01/02	Added smeqoff7 - VB
-22/01/02	Added smparoff - VB
-22/01/02	Added smparoff7 - VB
-22/01/02	Added smslant - VB
-22/01/02	Added smslant7 - VB
-22/01/02	Added smslantv - VB
-22/01/02	Added smslantv7 - VB
-22/01/02	Added smslanvs - VB
-22/01/02	Added smslanvs7 - VB
-22/01/02	Added loznew - VB
-22/01/02	Added loznew7 - VB
-22/01/02	Added lozright - VB
-22/01/02	Added lozright7 - VB
-22/01/02	Added lozleft - VB
-22/01/02	Added lozleft7 - VB
-23/01/02	Added Etilde - VB
-23/01/02	Added pmacr - VB
-14/02/02	Added gtilde - VB
-09/03/02	Added qmacr - VB
-09/03/02	Added Taumacr - VB
-13/03/02	Added Rhotilde - VB
-14/03/02	Added Gammamacr - VB
-19/06/02	Added ctdot - VB
-19/06/02	Added xline - SK
-19/06/02	Added crosse - SK
-24/07/02	Added dmacr - VB
-24/07/02	Added Tvec - SC
-24/07/02	Added Evec - SC
-21/08/02	Added macr1, macr2, macr3, macr4, macr8 and strok1 - HR
-04/09/02	Added Lang - VB
-04/09/02	Added Rang - VB
-04/09/02	Added crot - LP
-25/10/02	Added utriequ - SC
-28/10/02	Added Utilde LP
-28/10/02	Added mutilde LP
-28/10/02	Added Jtilde LP
-28/10/02	Added ttilde LP
-28/10/02	Added integral10 LP
-28/10/02	Added zeroplus LP
-28/10/02	Added zerominus LP
-28/10/02	Added Ucurly LP
-28/10/02	Added Ucurlytilde LP
-22/12/02	Added xarr LP
-22/12/02	Added Hcurly LP
-22/12/02	Added narr LP
-06/01/03	Added sidet LP
-22/01/03	Added taucirc LP
-22/01/03	Added sigmacarat SK
-20/02/03	Added Svec LP
-19/03/03	Added Pvec LP
-16/06/03	Added Jvec LP
-16/06/03	Added fvec LP
-17/06/03	Added thetacirc LP
-22/07/03	Added Hvec and Mvec HR
-12/08/03	Added squfill45 and squlvert - SK
-18/08/03	Added macr11 - LP
-10/28/03	Added circtimes - HR
-12/02/03	Added diam25 - HR
-07/01/04	Added emptyv - VB
-05/02/04	Added xidot - MJ
-02/17/04	Added sigmamacr - HR
-03/03/04	Added bmacr - VB
-03/14/04	Added Rlatin - HR
-03/24/04	Added picirc and ccircital - RB
-27/04/04	Added hdot - VB
-04/30/04	Added Eogon - RB
-05/04/04	Added gsime and lsime - VB
-05/10/04	Added deltamacr - LP
-05/12/04	Added Zcirc - VB
-05/22/04	Added hmacr - LP
-05/22/04	Added kdot - LP
-05/22/04	Added lmacr - LP
-06/11/04	Added Thetadot - LP
-06/11/04	Added Thetauml - LP
-06/18/04	Added elldot - LP
-07/12/04 	Added Acurly - LP
-07/12/04 	Added Ncurly - LP
-07/27/04 	Added alphacirc - LP
-07/27/04 	Added omegatilde - LP
-08/10/04	Added Chinese character - li3 - VB
-08/10/04	Added Chinese character - li3phon - VB
-08/27/04	Added Dcurly - LP
-09/07/04	Added ucaron - LP
-09/07/04	Added icaron - LP
-09/07/04	Added Puml - LP
-09/07/04	Added Jdot - LP
-09/07/04	Added Wcirc - LP
-09/07/04	Added proptilde - LP
-09/28/04	Added ape - LP
-09/28/04	Added vuml - LP
-09/28/04	Added Kuml - LP
-09/28/04	Added Gacute - LP
-09/28/04	Added Pacute - LP
-10/04/04	Added Racute - LP
-10/04/04	Added mnplus - LP
-10/18/04	Added Ucaron - LP
-10/18/04	Added Nmacr - LP
-11/03/04	Added Ecedil - LP
-11/03/04	Added Saturn - LP
-11/03/04	Added Jupiter - LP
-11/03/04	Added dminus - LP
-12/01/04	Added Rtilde - VB
-12/08/04	Added epsilontilde - SK
-01/24/05	Added rhomacr - MJ
-01/31/05	Added Hcallig - MJ
-01/31/05	Added Deltaemacr - MJ
-02/08/05	Added svec - MJ
-03/15/05	Added Mtilde - SC
-04/11/05	Added Gcaron - MJ
-04/11/05	Added Acaron - MJ
-04/11/05	Added Rbreve - MJ
-04/11/05	Added Bdot - MJ
-04/11/05	Added zgrave - MJ
-04/11/05	Added Wmacr - MJ
-04/11/05	Added etilde - MJ
-04/11/05	Added ycaron - MJ
-04/11/05	Added Juml - MJ
-04/11/05	Added Oring - MJ
-04/11/05	Added Gtilde - MJ
-04/11/05	Added ymacrcaron - MJ
-04/18/05	Added taumacr - MJ
-04/18/05	Added atildemacr - MJ
-04/19/05	Added psimacr - MJ
-05/05/05	Added cgrave - MJ
-05/05/05	Added etamacr - MJ
-05/05/05	Added gammamacr - MJ
-05/05/05	Added Lmacr - MJ
-06/07/05	Added Ebar - MJ
-06/14/05	Added Tcirc - MJ
-06/23/05	Added Sscr - MJ
-06/23/05	Added nbreve - MJ
-06/23/05	Added rdot - MJ
-12/06/05	Added Vacute - MJ
-12/06/05	Added xwedge - MJ
-01/25/06	Added mean - SC
-02/09/06	Added gee - MJ
-03/14/06	Added circ3 and mvec - EH
-05/24/06	Added rhov - AT
-06/19/06	Added adblac - AT
-11/14/06	Added phivneg - EH
-12/19/06	Added mucirc - SC
-01/07/07	Added Mscr - AT
-03/07/07	Added dcaron - AT
-10/22/07	Added squred - SC
-10/22/07	Added utrired - SC
-29/03/07	Added epsilonmacr - BW
-14/02/08	Added xicirc and sq3d - BW
-02/04/08	Added aleph - BW
-22/04/08	Added sqcup - BW
-12/06/08	Added hexagon and scissors - BW
-03/07/08	Added hcross - BW
+04/18/00   Added speciala and specialb     - JL
+04/25/00   Added alphauml, huml, alphadot - JL
+05/02/00   Added cbreve and Cbreve - DB
+05/11/00   Added tmacr and Tmacr - DB
+16/05/00   Added phivcirc - DB
+23/05/00   Added betadot - DB
+24/05/00   Added pcirc, Pcirc, qdot, Qdot, cmacr and Cmacr - DB
+31/05/00   Added upomicr, buprho, bupeta - DB
+15/06/00   Added Sbreve - VB
+27/06/00   Added bupPhi - DB
+18/07/00   Added deltilde - VB
+25/07/00   Added bupalpha - VB
+25/07/00   Added bupsigma - VB
+31/08/00   Added rlhar2 - VB
+21/09/00   Added rlarr2 - VB
+04/10/00   Added fcirc - VB
+04/10/00   Added ftilde - VB
+04/10/00   Added ydot - VB
+01/11/00   Added lrhar2 - VB
+18/12/00   Added psicirc - VB
+21/12/00   Added Gammadot - VB
+16/01/01   Added bitsigma - VB
+13/02/01   Added bupgamma - VB
+20/02/01   Added learr - VB
+20/02/01   Added lfarr - VB
+18/04/01   Added Kmacr - VB
+23/05/01   Added Dmacr - VB
+31/05/01   Added mmacr - NS
+31/05/01   Added kvec - NS
+31/05/01   Added Kvec - NS
+15/06/01   Added bpart - VB
+26/06/01   Added circshf, squtimes, sqush25, squhoriz, squplus - JL
+02/07/01   Added omegadot - VB
+03/09/01   Added lambcross - VB
+10/09/01   Added obreve - VB
+12/09/01   Added ktilde - VB
+12/09/01   Added Ktilde - VB
+17/09/01   Added rbreve - VB
+19/09/01   Added Xcirc and and Smacr - VB
+03/10/01   Added Vdot - VB
+15/10/01   Added upphis - VB
+28/11/01   Added fmacr - VB
+03/12/01   Added thetamacr - VB
+22/01/02   Added smalleq - VB
+22/01/02   Added smalleq7 - VB
+22/01/02   Added smallpar - VB
+22/01/02   Added smallpar7 - VB
+22/01/02   Added smeqloff - VB
+22/01/02   Added smeqoff - VB
+22/01/02   Added smeqoff7 - VB
+22/01/02   Added smparoff - VB
+22/01/02   Added smparoff7 - VB
+22/01/02   Added smslant - VB
+22/01/02   Added smslant7 - VB
+22/01/02   Added smslantv - VB
+22/01/02   Added smslantv7 - VB
+22/01/02   Added smslanvs - VB
+22/01/02   Added smslanvs7 - VB
+22/01/02   Added loznew - VB
+22/01/02   Added loznew7 - VB
+22/01/02   Added lozright - VB
+22/01/02   Added lozright7 - VB
+22/01/02   Added lozleft - VB
+22/01/02   Added lozleft7 - VB
+23/01/02   Added Etilde - VB
+23/01/02   Added pmacr - VB
+14/02/02   Added gtilde - VB
+09/03/02   Added qmacr - VB
+09/03/02   Added Taumacr - VB
+13/03/02   Added Rhotilde - VB
+14/03/02   Added Gammamacr - VB
+19/06/02   Added ctdot - VB
+19/06/02   Added xline - SK
+19/06/02   Added crosse - SK
+24/07/02   Added dmacr - VB
+24/07/02   Added Tvec - SC
+24/07/02   Added Evec - SC
+21/08/02   Added macr1, macr2, macr3, macr4, macr8 and strok1 - HR
+04/09/02   Added Lang - VB
+04/09/02   Added Rang - VB
+04/09/02   Added crot - LP
+25/10/02   Added utriequ - SC
+28/10/02   Added Utilde LP
+28/10/02   Added mutilde LP
+28/10/02   Added Jtilde LP
+28/10/02   Added ttilde LP
+28/10/02   Added integral10 LP
+28/10/02   Added zeroplus LP
+28/10/02   Added zerominus LP
+28/10/02   Added Ucurly LP
+28/10/02   Added Ucurlytilde LP
+22/12/02   Added xarr LP
+22/12/02   Added Hcurly LP
+22/12/02   Added narr LP
+06/01/03   Added sidet LP
+22/01/03   Added taucirc LP
+22/01/03   Added sigmacarat SK
+20/02/03   Added Svec LP
+19/03/03   Added Pvec LP
+16/06/03   Added Jvec LP
+16/06/03   Added fvec LP
+17/06/03   Added thetacirc LP
+22/07/03   Added Hvec and Mvec HR
+12/08/03   Added squfill45 and squlvert - SK
+18/08/03   Added macr11 - LP
+10/28/03   Added circtimes - HR
+12/02/03   Added diam25 - HR
+07/01/04   Added emptyv - VB
+05/02/04   Added xidot - MJ
+02/17/04   Added sigmamacr - HR
+03/03/04   Added bmacr - VB
+03/14/04   Added Rlatin - HR
+03/24/04   Added picirc and ccircital - RB
+27/04/04   Added hdot - VB
+04/30/04   Added Eogon - RB
+05/04/04   Added gsime and lsime - VB
+05/10/04   Added deltamacr - LP
+05/12/04   Added Zcirc - VB
+05/22/04   Added hmacr - LP
+05/22/04   Added kdot - LP
+05/22/04   Added lmacr - LP
+06/11/04   Added Thetadot - LP
+06/11/04   Added Thetauml - LP
+06/18/04   Added elldot - LP
+07/12/04   Added Acurly - LP
+07/12/04   Added Ncurly - LP
+07/27/04   Added alphacirc - LP
+07/27/04   Added omegatilde - LP
+08/10/04   Added Chinese character - li3 - VB
+08/10/04   Added Chinese character - li3phon - VB
+08/27/04   Added Dcurly - LP
+09/07/04   Added ucaron - LP
+09/07/04   Added icaron - LP
+09/07/04   Added Puml - LP
+09/07/04   Added Jdot - LP
+09/07/04   Added Wcirc - LP
+09/07/04   Added proptilde - LP
+09/28/04   Added ape - LP
+09/28/04   Added vuml - LP
+09/28/04   Added Kuml - LP
+09/28/04   Added Gacute - LP
+09/28/04   Added Pacute - LP
+10/04/04   Added Racute - LP
+10/04/04   Added mnplus - LP
+10/18/04   Added Ucaron - LP
+10/18/04   Added Nmacr - LP
+11/03/04   Added Ecedil - LP
+11/03/04   Added Saturn - LP
+11/03/04   Added Jupiter - LP
+11/03/04   Added dminus - LP
+12/01/04   Added Rtilde - VB
+12/08/04   Added epsilontilde - SK
+01/24/05   Added rhomacr - MJ
+01/31/05   Added Hcallig - MJ
+01/31/05   Added Deltaemacr - MJ
+02/08/05   Added svec - MJ
+03/15/05   Added Mtilde - SC
+04/11/05   Added Gcaron - MJ
+04/11/05   Added Acaron - MJ
+04/11/05   Added Rbreve - MJ
+04/11/05   Added Bdot - MJ
+04/11/05   Added zgrave - MJ
+04/11/05   Added Wmacr - MJ
+04/11/05   Added etilde - MJ
+04/11/05   Added ycaron - MJ
+04/11/05   Added Juml - MJ
+04/11/05   Added Oring - MJ
+04/11/05   Added Gtilde - MJ
+04/11/05   Added ymacrcaron - MJ
+04/18/05   Added taumacr - MJ
+04/18/05   Added atildemacr - MJ
+04/19/05   Added psimacr - MJ
+05/05/05   Added cgrave - MJ
+05/05/05   Added etamacr - MJ
+05/05/05   Added gammamacr - MJ
+05/05/05   Added Lmacr - MJ
+06/07/05   Added Ebar - MJ
+06/14/05   Added Tcirc - MJ
+06/23/05   Added Sscr - MJ
+06/23/05   Added nbreve - MJ
+06/23/05   Added rdot - MJ
+12/06/05   Added Vacute - MJ
+12/06/05   Added xwedge - MJ
+01/25/06   Added mean - SC
+02/09/06   Added gee - MJ
+03/14/06   Added circ3 and mvec - EH
+05/24/06   Added rhov - AT
+06/19/06   Added adblac - AT
+11/14/06   Added phivneg - EH
+12/19/06   Added mucirc - SC
+01/07/07   Added Mscr - AT
+03/07/07   Added dcaron - AT
+10/22/07   Added squred - SC
+10/22/07   Added utrired - SC
+29/03/07   Added epsilonmacr - BW
+14/02/08   Added xicirc and sq3d - BW
+02/04/08   Added aleph - BW
+22/04/08   Added sqcup - BW
+12/06/08   Added hexagon and scissors - BW
+03/07/08   Added hcross - BW
+14/07/08   Added sqrtn - BW
+31/03/15   replaced many definitions with Unicode hex character references
 
 -->
-<!ENTITY boxdd "[boxdd ]">
-<!--=   -->
-<!ENTITY boxsd "[boxsd ]">
-<!--=   -->
-<!ENTITY boxsl "[boxsl ]">
-<!--=   -->
-<!ENTITY boxsld "[boxsld]">
-<!--=   -->
-<!ENTITY boxv1 "[boxv1 ]">
-<!--=   -->
-<!ENTITY boxv2 "[boxv2 ]">
-<!--=   -->
-<!ENTITY boxv3 "[boxv3 ]">
-<!--=   -->
-<!ENTITY boxv4 "[boxv4 ]">
-<!--=   -->
-<!ENTITY boxv5 "[boxv5 ]">
-<!--=   -->
-<!ENTITY Bull "[Bull  ]">
-<!--= Bull  -->
-<!ENTITY Cast "[Cast  ]">
-<!--= Cast  -->
-<!ENTITY curvy "[curvy ]">
-<!--= curvy  -->
-<!ENTITY cirf "[cirf ]">
-<!--= filled circle  -->
-<!ENTITY circlndot "[circlndot]">
-<!--= circle with dotted line through it  -->
-<!ENTITY circln "[circln]">
-<!--= circle with horizontal line through it  -->
-<!ENTITY circtimes "[circtimes]">
-<!--= circle with a times sign within  -->
-<!ENTITY lncircf "[lncircf  ]">
-<!--= filled circle with line through it -->
-<!ENTITY dDiams "[dDiams]">
-<!--= dDiams  -->
-<!ENTITY diamhdash "[diamhdash]">
-<!--= open diamond with a dashed line through it  -->
-<!ENTITY diam25 "[diam25]">
-<!--= light shaded diamond -->
-<!ENTITY diamshdash "[diamshdash]">
-<!--= shaded diamond with a dashed line through it  -->
-<!ENTITY Edot "[Edot]">
-<!--= Cap E w/ centered dot over it  -->
-<!ENTITY Fcirc "[Fcirc]">
-<!--= F w/ caret over it  -->
-<!ENTITY Gdot "[Gdot]">
-<!--= Cap G w/ centered dot over it  -->
-<!ENTITY Hdot "[Hdot]">
-<!--= Cap H w/ centered dot over it  -->
-<!ENTITY invtrifhlndash "[invtrifhlndash]">
-<!--= inverted filled triangle with a dashed line through it  -->
-<!ENTITY OHgr1d "[OHgr1d]">
-<!--=   -->
-<!ENTITY OHgr2d "[OHgr2d]">
-<!--=   -->
-<!ENTITY OHgr3d "[OHgr3d]">
-<!--=   -->
-<!ENTITY omegamacr "[omegamacr ]">
-<!--= lc omega w/ bar over it  -->
-<!ENTITY pkhat "[pkhat ]">
-<!--= pkhat  -->
-<!ENTITY scrpA "[scrpA ]">
-<!--= script A  -->
-<!ENTITY scrpB "[scrpB ]">
-<!--= script B  -->
-<!ENTITY scrpE "[scrpE ]">
-<!--= script E  -->
-<!ENTITY scrpF "[scrpF ]">
-<!--= script F  -->
-<!ENTITY scrpH "[scrpH ]">
-<!--= script H  -->
-<!ENTITY scrpJ "[scrpJ ]">
-<!--= script J  -->
-<!ENTITY scrpL "[scrpL ]">
-<!--= script L  -->
-<!ENTITY scrpM "[scrpM ]">
-<!--= script M  -->
-<!ENTITY scrpN "[scrpN ]">
-<!--= script N  -->
-<!ENTITY scrpP "[scrpP ]">
-<!--= script P  -->
-<!ENTITY scrpR "[scrpR ]">
-<!--= script R  -->
-<!ENTITY scrpT "[scrpT ]">
-<!--= script T  -->
-<!ENTITY scrpU "[scrpU ]">
-<!--= script U  -->
-<!ENTITY scrpV "[scrpV ]">
-<!--= script V  -->
-<!ENTITY scrpf "[scrpf ]">
-<!--= script f  -->
-<!ENTITY scrpl "[scrpl ]">
-<!--= script l  -->
-<!ENTITY scrpz "[scrpz ]">
-<!--= script z  -->
-<!ENTITY sqln "[sqln ]">
-<!--= open square with a solid line through it  -->
-<!ENTITY sqdot8 "[sqdot8  ]">
-<!--= square with a lot of small dots in it   -->
-<!ENTITY sqdot5 "[sqdot5  ]">
-<!--= square with a few big dots in it -->
-<!ENTITY lndashsq "[lndashsq  ]">
-<!--= open square with dashed line -->
-<!ENTITY squA "[squA  ]">
-<!--=   -->
-<!ENTITY squB "[squB  ]">
-<!--=   -->
-<!ENTITY squl "[squl  ]">
-<!--=   -->
-<!ENTITY squy "[squy  ]">
-<!--= squy  -->
-<!ENTITY squshf "[squshf]">
-<!--= shaded square  -->
-<!ENTITY squdots "[squdots]">
-<!--= square with dots thru it  -->
-<!ENTITY squfhln "[squfhln]">
-<!--= filled square with a solid line through it  -->
-<!ENTITY squlnclk "[squlnclk]">
-<!--= square with line slant right -->
-<!ENTITY squlncclk "[squlncclk]">
-<!--= square with line slant left -->
-<!ENTITY tbull "[tbull ]">
-<!--= tbull  -->
-<!ENTITY tcastf "[tcastf]">
-<!--= tcastf  -->
-<!ENTITY tdomeg "[tdomeg]">
-<!--= tdomeg  -->
-<!ENTITY Thetacirc "[Thetacirc]">
-<!--= Thetacirc  -->
-<!ENTITY Thetadot "[Thetadot]">
-<!--= Thetadot  -->
-<!ENTITY Thetauml "[Thetauml]">
-<!--= Thetauml  -->
-<!ENTITY tree "[tree  ]">
-<!--= tree  -->
-<!ENTITY triflndot "[triflndot]">
-<!--= filled triangle with a dotted line through it  -->
-<!ENTITY ubowti "[ubowti]">
-<!--=   -->
-<!ENTITY Vbbull "[Vbbull]">
-<!--= Vbbull  -->
-<!ENTITY wtail "[wtail ]">
-<!--= wtail  -->
-<!ENTITY wutail "[wutail]">
-<!--= wutail  -->
-<!ENTITY xdelta "[xdelta]">
-<!--=   -->
-<!ENTITY vrarr "[vrarr]">
-<!--= v with arrow over it -->
-<!ENTITY boxsh "[boxsh]">
-<!--= shaded box  -->
-<!ENTITY boxrule "[boxrule]">
-<!--= rule around box  -->
-<!ENTITY lsims "[lsims]">
-<!--=   -->
-<!ENTITY gsims "[gsims]">
-<!--=   -->
-<!ENTITY lrhartail "[lrhartail]">
-<!--=   -->
-<!ENTITY lrhartailbot "[lrhartailbot]">
-<!--=   -->
-<!ENTITY cdots "[cdots]">
-<!--=   -->
-<!ENTITY propsim "[propsim]">
-<!--=   -->
-<!ENTITY longrarr "[longrarr]">
-<!--=   -->
-<!ENTITY uphash "[uphash]">
-<!--=   -->
-<!ENTITY hexfill "[hexfill]">
-<!--= filled hexagon   -->
-<!ENTITY supbolddot "[supbolddot]">
-<!--= superscript bold dot  -->
-<!ENTITY diamplus "[diamplus]">
-<!--= diamond with plus or cross joining the angles   -->
-<!ENTITY euro "[euro]">
-<!--= Euro currency symbol  -->
-<!ENTITY gmacr "[gmacr]">
-<!--= small g with a line over it  -->
-<!ENTITY Ldot "[Ldot]">
-<!--= capital L with dot over it  -->
-<!ENTITY Mcirc "[Mcirc]">
-<!--= capital M with a cap over it  -->
-<!ENTITY lambdacirc "[lambdacirc]">
-<!--= lambda with a cap over it  -->
-<!ENTITY Ttilde "[Ttilde]">
-<!--= capital T with a tilde over it  -->
-<!ENTITY rvector "[rvector]">
-<!--= small r with a vctor over it  -->
-<!ENTITY squvert "[squvert]">
-<!--= square with vertical lines  -->
-<!ENTITY lndcircf "[lndcircf]">
-<!--= filled circle with a dashed line through it  -->
-<!ENTITY rlharr "[rlharr]">
-<!--= right harpoon on top of a left harpoon  -->
-<!ENTITY lrarr "[lrarr]">
-<!--= left arrow over a right arrow  -->
-<!ENTITY loz "[loz]">
-<!--= diamond  -->
-<!ENTITY Rarr "[Rarr]">
-<!--= open right arrow  -->
-<!ENTITY utrilnfilled "[utrilnfilled]">
-<!--= upright filled triangle with a line through it  -->
-<!ENTITY zmacr "[zmacr]">
-<!--= small z with a line over it  -->
-<!ENTITY rcirc "[rcirc]">
-<!--= lower case r w/ caret over it  -->
-<!ENTITY Ndot "[Ndot]">
-<!--= Cap N w/ centered dot over it  -->
-<!ENTITY planck "[planck]">
-<!--=   -->
-<!ENTITY gcaron "[gcaron]">
-<!--=   -->
-<!ENTITY zbreve "[zbreve]">
-<!--=   -->
-<!ENTITY mdot "[mdot]">
-<!--= m w/ centered dot over it  -->
-<!ENTITY udot "[udot]">
-<!--= u w/ centered dot over it  -->
-<!ENTITY Ltilde "[Ltilde]">
-<!--= capital L with a tilde over it  -->
-<!ENTITY zcirc "[zcirc]">
-<!--= lower case z w/ caret over it  -->
-<!ENTITY sigmacirc "[sigmacirc]">
-<!--= lower case sigma w/ caret over it  -->
-<!ENTITY adot "[adot]">
-<!--= lower case a with dot over it  -->
-<!ENTITY epsilondot "[epsilondot]">
-<!--= epsilon with dot over it  -->
-<!ENTITY Xdot "[Xdot]">
-<!--= capital X with dot over it  -->
-<!ENTITY Ydot "[Ydot]">
-<!--= capital Y with dot over it  -->
-<!ENTITY bdot "[bdot]">
-<!--= lower case "b" with dot over it  -->
-<!ENTITY Dtilde "[Dtilde]">
-<!--= capital D with a tilde over it  -->
-<!ENTITY Htilde "[Htilde]">
-<!--= capital H with a tilde over it  -->
-<!ENTITY Zmacr "[Zmacr]">
-<!--= captial Z with a line over it  -->
-<!ENTITY Xmacr "[Xmacr]">
-<!--= captial X with a line over it  -->
-<!ENTITY Ymacr "[Ymacr]">
-<!--= captial Y with a line over it  -->
-<!ENTITY Tmacr "[Tmacr]">
-<!--= captial T with a line over it  -->
-<!ENTITY mumacr "[mumacr]">
-<!--= lower case "mu" with a line over it  -->
-<!ENTITY smacr "[smacr]">
-<!--= lower case s with a line over it  -->
-<!ENTITY Pdot "[Pdot]">
-<!--= capital P with dot over it  -->
-<!ENTITY kcirc "[kcirc]">
-<!--= lower case k w/ caret over it  -->
-<!ENTITY Kcirc "[Kcirc]">
-<!--= upper case K w/ caret over it  -->
-<!ENTITY Btilde "[Btilde]">
-<!--= capital B with a tilde over it  -->
-<!ENTITY Omegadot "[Omegadot]">
-<!--= upper case omega with dot over it  -->
-<!ENTITY Qdot "[Qdot]">
-<!--= capital Q with dot over it  -->
-<!ENTITY Rcirc "[Rcirc]">
-<!--= capital case R w/ caret over it  -->
-<!ENTITY bcirc "[bcirc]">
-<!--= lower case b w/ caret over it  -->
-<!ENTITY thetadot "[thetadot]">
-<!--= lower case theta with dot over it  -->
-<!ENTITY vdot "[vdot]">
-<!--= lower case v with dot over it  -->
-<!ENTITY rtilde "[rtilde]">
-<!--= lower case r with a tilde over it  -->
-<!ENTITY Gcirc "[Gcirc]">
-<!--= capital G with a caret over it  -->
-<!ENTITY Wdot "[Wdot]">
-<!--= capital W with dot over it  -->
-<!ENTITY Mdotmacr "[Mdotmacr]">
-<!--= captial M with a dot and line over it  -->
-<!ENTITY Omegamacr "[Omegamacr]">
-<!--= captial Omega with a line over it  -->
-<!ENTITY omegacirc "[omegacirc]">
-<!--= lower case omega w/ caret over it  -->
-<!ENTITY Phicirc "[Phicirc]">
-<!--= capital case Phi w/ caret over it  -->
-<!ENTITY gcirc "[gcirc]">
-<!--= lower case g w/ caret over it  -->
-<!ENTITY circdot "[circdot]">
-<!--= open circle with a dot inside it  -->
-<!ENTITY lcirc "[lcirc]">
-<!--= lower case l w/ caret over it  -->
-<!ENTITY Stilde "[Stilde]">
-<!--= capital S with a tilde over it  -->
-<!ENTITY phimacr "[phimacr]">
-<!--= lower case "phi" with a line over it  -->
-<!ENTITY Mdot "[Mdot]">
-<!--= Capital M w/ centered dot over it  -->
-<!ENTITY sbreve "[sbreve]">
-<!--= lower case "s" with a breve over it-->
-<!ENTITY numacr "[numacr]">
-<!--= lower case "nu" with a line over it  -->
-<!ENTITY epsidot "[epsidot]">
-<!--= lower case epsilon with dot over it  -->
-<!ENTITY circ1 "[circ1]">
-<!--= the number 1 inside a circle  -->
-<!ENTITY circ2 "[circ2]">
-<!--= the number 2 inside a circle  -->
-<!ENTITY Tbar "[Tbar]">
-<!--= capital "T" with a horizontal bar over it  -->
-<!ENTITY barrow "[barrow]">
-<!--= lower case "b" with arrow over it -->
-<!ENTITY rmacr "[rmacr]">
-<!--= lower case "r" with a line over it  -->
-<!ENTITY Ncirc "[Ncirc]">
-<!--= capital case N w/ caret over it  -->
-<!ENTITY dcirc "[dcirc]">
-<!--= lower case d w/ caret over it  -->
-<!ENTITY Mmacr "[Mmacr]">
-<!--= captial M with a line over it  -->
-<!ENTITY Bmacr "[Bmacr]">
-<!--= captial B with a line over it  -->
-<!ENTITY Ptilde "[Ptilde]">
-<!--= capital P with a tilde over it  -->
-<!ENTITY ptilde "[ptilde]">
-<!--= lower case p with a tilde over it  -->
-<!ENTITY hamiltcirc "[hamiltcirc]">
-<!--= ??? w/ caret over it  -->
-<!ENTITY vcirc "[vcirc]">
-<!--= lower case v w/ caret over it  -->
-<!ENTITY Lagran "[Lagran]">
-<!--= ???  -->
-<!ENTITY tcirc "[tcirc]">
-<!--= lower case t w/ caret over it  -->
-<!ENTITY Vmacr "[Vmacr]">
-<!--= captial V with a line over it  -->
-<!ENTITY Vtilde "[Vtilde]">
-<!--= capital V with a tilde over it  -->
-<!ENTITY nudot "[nudot]">
-<!--= lower case nu with dot over it  -->
-<!ENTITY Fmacr "[Fmacr]">
-<!--= captial F with a line over it  -->
-<!ENTITY Bcirc "[Bcirc]">
-<!--= capital case B w/ caret over it  -->
-<!ENTITY Dcirc "[Dcirc]">
-<!--= capital case D w/ caret over it  -->
-<!ENTITY xuml "[xuml]">
-<!--= lower case "x" with an uumalut over it  -->
-<!ENTITY rhocirc "[rhocirc]">
-<!--= lower case "rho" w/ caret over it  -->
-<!ENTITY kmacr "[kmacr]">
-<!--= lower case "k" with a line over it  -->
-<!ENTITY Aagran "[Aagran]">
-<!--= ???  -->
-<!ENTITY Qmacr "[Qmacr]">
-<!--= captial Q with a line over it  -->
-<!ENTITY rbreve "[rbreve]">
-<!--=   -->
-<!ENTITY cbreve "[cbreve]">
-<!--=   -->
-<!ENTITY ebreve "[ebreve]">
-<!--=   -->
-<!ENTITY qcirc "[qcirc]">
-<!--= lower case "q" w/ caret over it  -->
-<!ENTITY epsilonmacr "[epsilonmacr]">
-<!--= lower case "epsilon" with a line over it  -->
-<!ENTITY Pmacr "[Pmacr]">
-<!--= captial "P" with a line over it  -->
-<!ENTITY xmacr "[xmacr]">
-<!--= lower case "x" with a line over it  -->
-<!ENTITY ctilde "[ctilde]">
-<!--= lower case "c" with a tilde over it  -->
-<!ENTITY Vcirc "[Vcirc]">
-<!--= upper case "V" w/ caret over it  -->
-<!ENTITY vtilde "[vtilde]">
-<!--= lower case "v" with a tilde over it  -->
-<!ENTITY Odot "[Odot]">
-<!--= upper case "O" with dot over it  -->
-<!ENTITY qtilde "[qtilde]">
-<!--= lower case "q" with a tilde over it  -->
-<!ENTITY phidot "[phidot]">
-<!--= lower case "phi" with dot over it  -->
-<!ENTITY acaron "[acaron]">
-<!--= lower case a with caron over it  -->
-<!ENTITY outR "[outR]">
-<!--= Double, shadowed upper case "R"-->
-<!ENTITY gammadot "[gammadot]">
-<!--= lower case "gamma" with dot over it  -->
-<!ENTITY bycirc "[bycirc]">
-<!--= bold, lower case "y" w/ caret over it  -->
-<!ENTITY ttilde "[ttilde]">
-<!--= lower case "t" with a tilde over it  -->
-<!ENTITY btilde "[btilde]">
-<!--= lower case "b" with a tilde over it  -->
-<!ENTITY xtilde "[xtilde]">
-<!--= lower case "x" with a tilde over it  -->
-<!ENTITY xdot "[xdot]">
-<!--= lower case "x" with dot over it  -->
-<!ENTITY ocaron "[ocaron]">
-<!--= lower case "o" with caron over it  -->
-<!ENTITY vmacr "[vmacr]">
-<!--= lower case "v" with a line over it  -->
-<!ENTITY Ftilde "[Ftilde]">
-<!--= capital F with a tilde over it  -->
-<!ENTITY Ctilde "[Ctilde]">
-<!--= capital C with a tilde over it  -->
-<!ENTITY ncirc "[ncirc]">
-<!--= lower case "n" w/ caret over it  -->
-<!ENTITY sgrave "[sgrave]">
-<!--= lower case "s" w/ a back accent over it  -->
-<!ENTITY longharr "[longharr]">
-<!--= long horizontal arrow  -->
-<!ENTITY longrarr2 "[longrarr2]">
-<!--= long horizontal arrow 2  -->
-<!ENTITY nmacr "[nmacr]">
-<!--= lower case "n" with a line over it  -->
-<!ENTITY ecedil "[ecedil]">
-<!--= lower case "e" with a cedil  -->
-<!ENTITY acedil "[acedil]">
-<!--= lower case "a" with a cedil  -->
-<!ENTITY wmacr "[wmacr]">
-<!--= lower case "w" with a line over it  -->
-<!ENTITY ltln "[ltln]">
-<!--= ?  -->
-<!ENTITY ymacr "[ymacr]">
-<!--= lower case "y" with a line over it  -->
-<!ENTITY doygh "[doygh]">
-<!--= ?  -->
-<!ENTITY Rdot "[Rdot]">
-<!--=  capital "R" with a dot over it -->
-<!ENTITY xbar "[xbar]">
-<!--= lower case "x" with a horizontal bar over it  -->
-<!ENTITY zbar "[zbar]">
-<!--= lower case "z" with a horizontal bar over it -->
-<!ENTITY xuml "[xuml ]">
-<!--= lower case 'x' with an umlaut  -->
-<!ENTITY lmidot "[lmidot]">
-<!--= ?  -->
-<!ENTITY lfloor "[lfloor]">
-<!--= ?  -->
-<!ENTITY rfloor "[rfloor]">
-<!--= ?  -->
-<!ENTITY Hmacr "[Hmacr]">
-<!--= captial H with a line over it  -->
-<!ENTITY neswarr "[neswarr]">
-<!--= ?  -->
-<!ENTITY nwsearr "[nwsearr]">
-<!--= ?  -->
-<!ENTITY bupPsi "[bupPsi]">
-<!--= ?  -->
-<!ENTITY Sdot "[Sdot]">
-<!--= ?  -->
-<!ENTITY lcirc "[lcirc]">
-<!--= ?  -->
-<!ENTITY itOmegadot "[itOmegadot]">
-<!--= ?  -->
-<!ENTITY zuml "[zuml]">
-<!--= lower case "z" with an umlaut over it  -->
-<!ENTITY Zuml "[Zuml]">
-<!--= upper case "z" with an umlaut over it  -->
-<!ENTITY fdot "[fdot]">
-<!--= lower case "f" with an dot over it  -->
-<!ENTITY Fdot "[Fdot]">
-<!--= upper case "F" with an dot over it  -->
-<!ENTITY speciala "[speciala]">
-<!--= special a  -->
-<!ENTITY specialb "[specialb]">
-<!--= special b  -->
-<!ENTITY alphauml "[alphauml ]">
-<!--= lower case 'alpha' with an umlaut  -->
-<!ENTITY huml "[huml ]">
-<!--= lower case 'h' with an umlaut  -->
-<!ENTITY alphadot "[alphadot ]">
-<!--= lower case 'aplha' with a dot over it  -->
-<!ENTITY cbreve "[cbreve]">
-<!--= lower case "c" with a breve over it  -->
-<!ENTITY Cbreve "[Cbreve]">
-<!--= upper case "C" with a breve over it  -->
-<!ENTITY tmacr "[tmacr]">
-<!--= lower case "t" with a macr over it  -->
-<!ENTITY Tmacr "[Tmacr]">
-<!--= upper case "T" with a macr over it  -->
-<!ENTITY phivcirc "[phivcirc]">
-<!--= Phiv character with circ accent over the top  -->
-<!ENTITY betadot "[betadot ]">
-<!--= lower case 'beta' with a dot over it  -->
-<!ENTITY betacrc "[betacrc  ]">
-<!--= lower case 'beta' with circumflex over it -->
-<!ENTITY pcirc "[pcirc ]">
-<!--= lower case p with a circ over it  -->
-<!ENTITY Pcirc "[Pcirc ]">
-<!--= upper case P with a circ over it  -->
-<!ENTITY qdot "[qdot ]">
-<!--= lower case q with a dot over it  -->
-<!ENTITY Qdot "[Qdot ]">
-<!--= upper case Q with a dot over it  -->
-<!ENTITY cmacr "[cmacr ]">
-<!--= lower case c with a macr over it  -->
-<!ENTITY Cmacr "[Cmacr ]">
-<!--= upper case C with a macr over it  -->
-<!ENTITY upomicr "[upomicr ]">
-<!--= upright greek omicr  -->
-<!ENTITY buprho "[buprho ]">
-<!--= bold upright greek rho  -->
-<!ENTITY bupeta "[bupeta ]">
-<!--= bold upright greek eta  -->
-<!ENTITY Sbreve "[Sbreve ]">
-<!--= Capital S with a breve accent  -->
-<!ENTITY bupPhi "[bupPhi ]">
-<!--= Capital bold greek Phi  -->
-<!ENTITY deltilde "[deltilde ]">
-<!--= delta with tilde over  -->
-<!ENTITY bupalpha "[bupalpha ]">
-<!--= bold upright alpha  -->
-<!ENTITY bupsigma "[bupsigma ]">
-<!--= bold upright sigma  -->
-<!ENTITY rlhar2 "[rlhar2 ]">
-<!--= right left parallel harpoon  -->
-<!ENTITY rlarr2 "[rlarr2 ]">
-<!--= right left parallel arrow  -->
-<!ENTITY fcirc "[fcirc ]">
-<!--= f with a circ over -->
-<!ENTITY ftilde "[ftilde ]">
-<!--= f with a tilde over -->
-<!ENTITY ydot "[ydot ]">
-<!--= y with a dot over -->
-<!ENTITY lrhar2 "[lrhar2 ]">
-<!--= left right parallel harpoon -->
-<!ENTITY psicirc "[psicirc ]">
-<!--= psi with a circ over -->
-<!ENTITY Gammadot "[Gammadot ]">
-<!--= gamma with a dot over -->
-<!ENTITY bitsigma "[bitsigma ]">
-<!--= bold italic sigma -->
-<!ENTITY bupgamma "[bupgamma ]">
-<!--= bold upright gamma -->
-<!ENTITY ndot "[ndot ]">
-<!--= n with dot over -->
-<!ENTITY learr "[learr ]">
-<!--= left empty arrow -->
-<!ENTITY lfarr "[lfarr ]">
-<!--= left filled arrow -->
-<!ENTITY Dmacr "[Dmacr]">
-<!--= capital D with a line over it  -->
-<!ENTITY Kmacr "[Kmacr]">
-<!--= upper case "K" with a line over it  -->
-<!ENTITY mmacr "[mmacr]">
-<!--= lower case m with a line over it  -->
-<!ENTITY kvec "[kvec]">
-<!--= lower case k with small arrow over it -->
-<!ENTITY Kvec "[Kvec]">
-<!--= upper case k with small arrow over it -->
-<!ENTITY bpart "[bpart]">
-<!--= bold partial -->
-<!ENTITY circshf "[circshf ]">
-<!--= circle 50% shaded -->
-<!ENTITY squtimes "[squtimes ]">
-<!--= square with an 'x' through it -->
-<!ENTITY sqush25 "[sqush25 ]">
-<!--= square with a 25 percent shade -->
-<!ENTITY squhoriz "[squhoriz ]">
-<!--= square with mulitple horizontal lines-->
-<!ENTITY squplus "[squplus ]">
-<!--= square with a plus sign in it -->
-<!ENTITY omegadot "[omegadot ]">
-<!--= omega with dot above -->
-<!ENTITY lambcross "[lambcross ]">
-<!--= lambda cross -->
-<!ENTITY obreve "[obreve]">
-<!--=   -->
-<!ENTITY ktilde "[ktilde]">
-<!--= lower case k with a tilde over it  -->
-<!ENTITY Ktilde "[Ktilde]">
-<!--= capital K with a tilde over it  -->
-<!ENTITY sbreve "[sbreve]">
-<!--= lower case "r" with a breve over it-->
-<!ENTITY Xcirc "[Xcirc]">
-<!--= upper case X w/ circ over it  -->
-<!ENTITY Smacr "[Smacr]">
-<!--= upper case S with a line over it -->
-<!ENTITY Vdot "[Vdot]">
-<!--= upper case V with dot over it  -->
-<!ENTITY upphis "[upphis]">
-<!--= upright Phis  -->
-<!ENTITY fmacr "[fmacr]">
-<!--= lower case f with a line over it  -->
-<!ENTITY thetamacr "[thetamacr ]">
-<!--= lc theta w/ bar over it  -->
-<!ENTITY smalleq "[smalleq]">
-<!--=   -->
-<!ENTITY smalleq7 "[smalleq7]">
-<!--=   -->
-<!ENTITY smallpar "[smallpar]">
-<!--=   -->
-<!ENTITY smallpar7 "[smallpar7]">
-<!--=   -->
-<!ENTITY smeqloff "[smeqloff]">
-<!--=   -->
-<!ENTITY smeqoff "[smeqoff]">
-<!--=   -->
-<!ENTITY smeqoff7 "[smeqoff7]">
-<!--=   -->
-<!ENTITY smparoff "[smparoff]">
-<!--=   -->
-<!ENTITY smparoff7 "[smparoff7]">
-<!--=   -->
-<!ENTITY smslant "[smslant]">
-<!--=   -->
-<!ENTITY smslant7 "[smslant7]">
-<!--=   -->
-<!ENTITY smslantv "[smslantv]">
-<!--=   -->
-<!ENTITY smslantv7 "[smslantv7]">
-<!--=   -->
-<!ENTITY smslanvs "[smslanvs]">
-<!--=   -->
-<!ENTITY smslanvs7 "[smslanvs7]">
-<!--=   -->
-<!ENTITY loznew "[loznew]">
-<!--=   -->
-<!ENTITY loznew7 "[loznew7]">
-<!--=   -->
-<!ENTITY lozright "[lozright]">
-<!--=   -->
-<!ENTITY lozright7 "[lozright7]">
-<!--=   -->
-<!ENTITY lozleft "[lozleft]">
-<!--=   -->
-<!ENTITY lozleft7 "[lozleft7]">
-<!--=   -->
-<!ENTITY Etilde "[Etilde]">
-<!--= capital E with a tilde over it  -->
-<!ENTITY pmacr "[pmacr]">
-<!--= lower case p with a line over it  -->
-<!ENTITY gtilde "[gtilde]">
-<!--= lower case g with a tilde over it  -->
-<!ENTITY qmacr "[qmacr]">
-<!--= small q with a line over it  -->
-<!ENTITY Taumacr "[Taumacr]">
-<!--= tau with a line over it  -->
-<!ENTITY Rhotilde "[Rhotilde]">
-<!--= Rho with a tilde over it  -->
-<!ENTITY Gammamacr "[Gammamacr]">
-<!--= Gamma with bar over it -->
-<!ENTITY Rmacr "[Rmacr]">
-<!--= upper case R with a line over it  -->
-<!ENTITY wmacr "[wmacr]">
-<!--= lower case w with a line over it  -->
-<!ENTITY thetas "[thetas]">
-<!--= straight theta -->
-<!ENTITY ctdot "[ctdot]">
-<!--= three centred dots   -->
-<!ENTITY xline "[xline]">
-<!--= x with a horizontal line through it  -->
-<!ENTITY crosse "[crosse]">
-<!--= empty cross  -->
-<!ENTITY dmacr "[dmacr]">
-<!--= lower case d with a line over it  -->
-<!ENTITY Tvec "[Tvec]">
-<!--= upper case T with arrow over it  -->
-<!ENTITY Evec "[Evec]">
-<!--= upper case E with arrow over it  -->
-<!ENTITY macr1 "[macr1]">
-<!--= 1 macron  -->
-<!ENTITY macr2 "[macr2]">
-<!--= 2 macron  -->
-<!ENTITY macr3 "[macr3]">
-<!--= 3 macron  -->
-<!ENTITY macr4 "[macr4]">
-<!--= 4 macron  -->
-<!ENTITY macr8 "[macr8]">
-<!--= 8 macron  -->
-<!ENTITY strok1 "[strok1]">
-<!--= 1, stroke  -->
-<!ENTITY Lang "[Lang]">
-<!--= double left angular bracket  -->
-<!ENTITY Rang "[Rang]">
-<!--= double right angular bracket  -->
-<!ENTITY crot "[crot]">
-<!--= cross with left arm missing  -->
-<!ENTITY utriequ "[utriequ]">
-<!--= triangle over equal sign  -->
-<!ENTITY Utilde "[Utilde]">
-<!--= upper case U with a tilde over it  -->
-<!ENTITY mutilde "[mutilde]">
-<!--= mu with a tilde over it  -->
-<!ENTITY Jtilde "[Jtilde]">
-<!--= upper case J with a tilde over it  -->
-<!ENTITY integral10 "[integral10]">
-<!--= integral between one and zero -->
-<!ENTITY zeroplus "[zeroplus]">
-<!--= zero with a plus sign over it -->
-<!ENTITY zerominus "[zerominus]">
-<!--= zero with a minus sign over it -->
-<!ENTITY Ucurly "[Ucurly]">
-<!--= upper case curly copperplate U -->
-<!ENTITY Ucurlytilde "[Ucurlytilde]">
-<!--= upper case curly copperplate U with a tilde over it -->
-<!ENTITY Xarr "[Xarr]">
-<!--= lower case x with an arrow over it -->
-<!ENTITY Hcurly "[Hcurly]">
-<!--= upper case curly copperplate H -->
-<!ENTITY narr "[narr]">
-<!--= lower case n with an arrow over it -->
-<!ENTITY sidet "[sidet]">
-<!--= T shape rotated 90 degrees clockwise -->
-<!ENTITY taucirc "[taucirc]">
-<!--= Tau symbol with circ above -->
-<!ENTITY sigmacarat "[sigmacarat]">
-<!--= sigma with carat on top -->
-<!ENTITY Svec "[Svec]">
-<!--= capital S with a vector arrow above it -->
-<!ENTITY Pvec "[Pvec]">
-<!--= capital P with a vector arrow above it -->
-<!ENTITY calepsi "[calepsi]">
-<!--= caligraphic epsi-->
-<!ENTITY bcalepsi "[bcalepsi]">
-<!--= bold caligraphic epsi-->
-<!ENTITY fvec "[fvec]">
-<!--= lower case f with a vector arrow above it -->
-<!ENTITY Jvec "[Jvec]">
-<!--= upper case J with a vector arrow above it -->
-<!ENTITY thetacirc "[thetacirc]">
-<!--= theta with circumflex -->
-<!ENTITY Hvec "[Hvec]">
-<!--= Cap H w/ right vector over it  -->
-<!ENTITY Mvec "[Mvec]">
-<!--= Cap M w/ right vector over it  -->
-<!ENTITY squfill45 "[squfill45]">
-<!--= square with bottom 45 degrees filled  -->
-<!ENTITY squlvert "[squlvert]">
-<!--= square with vertical line  -->
-<!ENTITY macr11 "[macr11]">
-<!--= 11 macron  -->
-<!ENTITY emptyv "[emptyv]">
-<!--= circle with slash through  -->
-<!ENTITY xidot "[xidot]">
-<!--= xi symbol with a dot above  -->
-<!ENTITY sigmamacr "[sigmamacr]">
-<!--= lower case sigma with a macron above  -->
-<!ENTITY hdot "[hdot]">
-<!--= lower case h with a dot above  -->
-<!ENTITY bmacr "[bmacr]">
-<!--=lower case b with a line over it  -->
-<!ENTITY Rlatin "[Rlatin]">
-<!--=upper case "latin" R -->
-<!ENTITY Picirc "[Picirc]">
-<!--=upper case Pi with circ above it -->
-<!ENTITY ccircital "[ccircital]">
-<!--=lower case c with circ above it -->
-<!ENTITY Eogon "[Eogon]">
-<!--=upper case E with ogon below -->
-<!ENTITY gsime "[gsime]">
-<!--=greater than, similar, equal to -->
-<!ENTITY lsime "[lsime]">
-<!--=less than, similar, equal to -->
-<!ENTITY deltamacr "[deltamacr]">
-<!--=delta symbol with macron over it -->
-<!ENTITY Zcirc "[Zcirc]">
-<!--= capital Z with a cap over it  -->
-<!ENTITY hmacr "[hmacr]">
-<!--= lowercase h with a line over it  -->
-<!ENTITY kdot "[kdot]">
-<!--= lowercase k with a dot over it  -->
-<!ENTITY lmacr "[lmacr]">
-<!--= lowercase l with a line over it  -->
-<!ENTITY elldot "[elldot]">
-<!--= lowercase ell with a dot over it  -->
-<!ENTITY Acurly "[Acurly]">
-<!--= uppercase A in curly font  -->
-<!ENTITY Ncurly "[Ncurly]">
-<!--= uppercase N in curly font  -->
-<!ENTITY alphacirc "[alphacirc]">
-<!--= lower case alpha with circumflex  -->
-<!ENTITY omegatilde "[omegatilde]">
-<!--= lower case omega with tilde  -->
-<!ENTITY li3 "[li3]">
-<!--= Chinese character li3 (meaning reason)  -->
-<!ENTITY li3phon "[li3phon]">
-<!--= Chinese character li3phon (phonetic version of li3)  -->
-<!ENTITY ucaron "[ucaron]">
-<!--= Lower case u with a caron above it  -->
-<!ENTITY icaron "[icaron]">
-<!--= Lower case i with a caron above it  -->
-<!ENTITY Puml "[Puml]">
-<!--= Upper case P with an umlaut above it  -->
-<!ENTITY Jdot "[Jdot]">
-<!--= Upper case P with an umlaut above it  -->
-<!ENTITY Wcirc "[Wcirc]">
-<!--= Upper case W with a circumflex above it  -->
-<!ENTITY proptilde "[proptilde]">
-<!--= Math symbol prop with a tilde above it  -->
-<!ENTITY ape "[ape]">
-<!--= Math symbol approximately equals  -->
-<!ENTITY vuml "[vuml]">
-<!--= lower case v with an umlaut  -->
-<!ENTITY Kuml "[Kuml]">
-<!--= upper case K with an umlaut  -->
-<!ENTITY Gacute "[Gacute]">
-<!--= upper case G with an acute  -->
-<!ENTITY Pacute "[Pacute]">
-<!--= upper case P with an acute  -->
-<!ENTITY Racute "[Racute]">
-<!--= upper case R with an acute  -->
-<!ENTITY mnplus "[mnplus]">
-<!--= minus over plus symbol -->
-<!ENTITY Ucaron "[Ucaron]">
-<!--= Upper case U with a caron above it  -->
-<!ENTITY Nmacr "[Nmacr]">
-<!--= Upper case N with a macron above it  -->
-<!ENTITY Ecedil "[Ecedil]">
-<!--= Upper case E with cedil  -->
-<!ENTITY Saturn "[Saturn]">
-<!--= Saturn planet symbol  -->
-<!ENTITY Jupiter "[Jupiter]">
-<!--= Jupiter planet symbol  -->
-<!ENTITY dminus "[dminus]">
-<!--= dminus symbol  -->
-<!ENTITY Rtilde "[Rtilde]">
-<!--= upper case R with a tilde over it  -->
-<!ENTITY epsilontilde "[epsilontilde]">
-<!--= lower case epsilon with a tilde over it  -->
-<!ENTITY rhomacr "[rhomacr]">
-<!--= lower case rho with a macron over it  -->
-<!ENTITY Hcallig "[Hcallig]">
-<!--= upper case H in calligraphy style  -->
-<!ENTITY Deltaemacr "[Deltaemacr]">
-<!--= upper case Delta and E with a superscript 2 and a macron above them  -->
-<!ENTITY svec "[svec]">
-<!--= lower case s with arrow above it  -->
-<!ENTITY Mtilde "[Mtilde]">
-<!--= upper case M with tilde above it  -->
-<!ENTITY Gcaron "[Gcaron]">
-<!--= upper case G with caron over it  -->
-<!ENTITY Acaron "[Acaron]">
-<!--= upper case A with caron over it  -->
-<!ENTITY Rbreve "[Rbreve]">
-<!--= upper case R with breve over it  -->
-<!ENTITY Bdot "[Bdot]">
-<!--= upper case B with dot over it  -->
-<!ENTITY zgrave "[zgrave]">
-<!--= lower case z with grave accent over it  -->
-<!ENTITY Wmacr "[Wmacr]">
-<!--= upper case W with macron over it  -->
-<!ENTITY etilde "[etilde]">
-<!--= lower case e with tilde over it  -->
-<!ENTITY ycaron "[ycaron]">
-<!--= lower case y with caron over it  -->
-<!ENTITY Juml "[Juml]">
-<!--= upper case J with umlaut over it  -->
-<!ENTITY Oring "[Oring]">
-<!--= upper case O with ring over it  -->
-<!ENTITY Gtilde "[Gtilde]">
-<!--= upper case G with tilde over it  -->
-<!ENTITY ymacrcaron "[ymacrcaron]">
-<!--= lower case y with macron and caron over it  -->
-<!ENTITY taumacr "[taumacr]">
-<!--= lower case tau with macron over it  -->
-<!ENTITY atildemacr "[atildemacr]">
-<!--= lower case a with tilde and macron over it  -->
-<!ENTITY psimacr "[psimacr]">
-<!--= lower case psi with macron over it  -->
-<!ENTITY cgrave "[cgrave]">
-<!--= lower case c with grave over it  -->
-<!ENTITY etamacr "[etamacr]">
-<!--= lower case eta with macron over it  -->
-<!ENTITY gammamacr "[gammamacr]">
-<!--= lower case gamma with macron over it  -->
-<!ENTITY Lmacr "[Lmacr]">
-<!--= upper case L with macron over it  -->
-<!ENTITY Ebar "[Ebar]">
-<!--= upper case E with bar on the side  -->
-<!ENTITY Tcirc "[Tcirc]">
-<!--= upper case T with circumflex over it  -->
-<!ENTITY Sscr "[Sscr]">
-<!--= upper case curly S  -->
-<!ENTITY nbreve "[nbreve]">
-<!--= lower case n with breve over it  -->
-<!ENTITY rdot "[rdot]">
-<!--= lower case r with dot over it  -->
-<!ENTITY Vacute "[Vacute]">
-<!--= upper case V with an acute  -->
-<!ENTITY xwedge "[xwedge]">
-<!--= upside down v  -->
-<!ENTITY mean "[mean]">
-<!--= arithmetic mean displays as x with bar over it  -->
-<!ENTITY gee "[gee]">
-<!--= special styled g character  -->
-<!ENTITY circ3 "[circ3]">
-<!--= circle with 3 in it character  -->
-<!ENTITY circ4 "[circ4]">
-<!--= circle with 4 in it character  -->
-<!ENTITY mvec "[mvec]">
-<!--= lower case m with vector symbol  -->
-<!ENTITY rhov "[rhov]">
-<!--= looks bit like a Q  -->
-<!ENTITY adblac "[adblac]">
-<!--=   -->
-<!ENTITY phivneg "[phivneg]">
-<!--= phi with a bar over it  -->
-<!ENTITY mucirc "[mucirc]">
-<!--= mu with a carat over it  -->
-<!ENTITY Dcurly "[Dcurly]">
-<!--= upper case d  -->
-<!ENTITY Mscr "[Mscr]">
-<!--= upper case italic M  -->
-<!ENTITY dcaron "[dcaron]">
-<!--= lower case d  with a caron over it-->
-<!ENTITY squred "[squred]">
-<!--= red square-->
-<!ENTITY utrired "[utrired]">
-<!--= red triangle-->
-<!ENTITY epsilonmacr "[epsilonmacr]">
-<!--= lower case epsilon with a macron over it-->
-<!ENTITY xicirc "[xicirc]">
-<!--= xi with a circumflex -->
-<!ENTITY sq3d "[sq3d]">
-<!--= 3d square -->
-<!ENTITY aleph "[aleph]">
-<!--= aleph symbol -->
-<!ENTITY sqcup "[sqcup]">
-<!--= sqcup symbol -->
-<!ENTITY hexagon "[hexagon]">
-<!--= non filled in hexagon symbol -->
-<!ENTITY scissors "[scissors]">
-<!--= pair of horizontal scissors -->
-<!ENTITY hcross "[hcross]">
-<!--= lower case h with a diagonal stike through it -->
+<!ENTITY Aagran          "[Aagran]">             <!--= ???  -->
+<!ENTITY acaron          "&#x001CE;">            <!--= lower case a with caron over it  -->
+<!ENTITY Acaron          "&#x001CD;">            <!--= upper case A with caron over it  -->
+<!ENTITY acedil          "a&#x00327;">           <!--= lower case "a" with a cedil  -->
+<!ENTITY Acurly          "[Acurly]">             <!--= uppercase A in curly font  -->
+<!ENTITY adblac          "a&#x0030B;">           <!--=   -->
+<!ENTITY adot            "&#x00227;">            <!--= lower case a with dot over it  -->
+<!ENTITY aleph           "&#x02135;">            <!--= aleph symbol -->
+<!ENTITY alphacirc       "&#x003B1;&#x00302;">   <!--= lower case alpha with circumflex  -->
+<!ENTITY alphadot        "&#x003B1;&#x00307;">   <!--= lower case 'aplha' with a dot over it  -->
+<!ENTITY alphauml        "&#x003B1;&#x00308;">   <!--= lower case 'alpha' with an umlaut  -->
+<!ENTITY ape             "&#x0224A;">            <!--= Math symbol approximately equals  -->
+<!ENTITY atildemacr      "&#x000E3;&#x00304;">   <!--= lower case a with tilde and macron over it  -->
+<!ENTITY barrow          "b&#x020D7;">           <!--= lower case "b" with arrow over it -->
+<!ENTITY bcalepsi        "[bcalepsi]">           <!--= bold caligraphic epsi-->
+<!ENTITY Bcirc           "B&#x00302;">           <!--= capital case B w/ caret over it  -->
+<!ENTITY bcirc           "b&#x00302;">           <!--= lower case b w/ caret over it  -->
+<!ENTITY bdot            "&#x01E03;">            <!--= lower case "b" with dot over it  -->
+<!ENTITY Bdot            "&#x01E02;">            <!--= upper case B with dot over it  -->
+<!ENTITY betacrc         "&#x003B2;&#x00302;">   <!--= lower case 'beta' with circumflex over it -->
+<!ENTITY betadot         "&#x003B2;&#x00307;">   <!--= lower case 'beta' with a dot over it  -->
+<!ENTITY bitsigma        "[bitsigma]">           <!--= bold italic sigma --><!-- no image, no instances found? -->
+<!ENTITY Bmacr           "B&#x00304;">           <!--= captial B with a line over it  -->
+<!ENTITY bmacr           "b&#x00304;">           <!--=lower case b with a line over it  -->
+<!ENTITY boxdd           "[boxdd]">              <!--=   --><!-- no image, no instances found? -->
+<!ENTITY boxrule         "[boxrule]">            <!--= rule around box  --><!-- no image, no instances found? -->
+<!ENTITY boxsd           "[boxsd]">              <!--=   --><!-- no image, no instances found? -->
+<!ENTITY boxsh           "[boxsh]">              <!--= shaded box  --><!-- no image, no instances found? -->
+<!ENTITY boxsl           "[boxsl]">              <!--=   --><!-- no image, no instances found? -->
+<!ENTITY boxsld          "[boxsld]">             <!--=   --><!-- no image, no instances found? -->
+<!ENTITY boxv1           "[boxv1]">              <!--=   --><!-- no image, no instances found? -->
+<!ENTITY boxv2           "[boxv2]">              <!--=   --><!-- no image, no instances found? -->
+<!ENTITY boxv3           "[boxv3]">              <!--=   --><!-- no image, no instances found? -->
+<!ENTITY boxv4           "[boxv4]">              <!--=   --><!-- no image, no instances found? -->
+<!ENTITY boxv5           "[boxv5]">              <!--=   --><!-- no image, no instances found? -->
+<!ENTITY bpart           "[bpart]">              <!--= bold partial --><!-- no image, no instances found? -->
+<!ENTITY Btilde          "B&#x00303;">           <!--= capital B with a tilde over it  -->
+<!ENTITY btilde          "b&#x00303;">           <!--= lower case "b" with a tilde over it  -->
+<!ENTITY Bull            "&#x02022;">            <!--= Bull  -->
+<!ENTITY bupalpha        "[bupalpha]">           <!--= bold upright alpha  --><!-- no image, no instances found? -->
+<!ENTITY bupeta          "[bupeta]">             <!--= bold upright greek eta  --><!-- no image, no instances found? -->
+<!ENTITY bupgamma        "[bupgamma]">           <!--= bold upright gamma --><!-- no image, no instances found? -->
+<!ENTITY bupPhi          "[bupPhi]">             <!--= Capital bold greek Phi  --><!-- no image, no instances found? -->
+<!ENTITY bupPsi          "[bupPsi]">             <!--= ?  --><!-- no image, no instances found? -->
+<!ENTITY buprho          "[buprho]">             <!--= bold upright greek rho  --><!-- no image, no instances found? -->
+<!ENTITY bupsigma        "[bupsigma]">           <!--= bold upright sigma  --><!-- no image, no instances found? -->
+<!ENTITY bycirc          "&#x00177;">            <!--= bold, lower case "y" w/ caret over it  -->
+<!ENTITY calepsi         "[calepsi]">            <!--= caligraphic epsi--><!-- use character bitmap ? or U2107 -->
+<!ENTITY Cast            "[Cast]">               <!--= Cast  --><!-- no image, no instances found? -->
+<!ENTITY cbreve          "c&#x00306;">           <!--= lower case "c" with a breve over it  -->
+<!ENTITY Cbreve          "C&#x00306;">           <!--= upper case "C" with a breve over it  -->
+<!ENTITY ccircital       "[ccircital]">          <!--=lower case c with circ above it --><!-- use character bitmap ? -->
+<!ENTITY cdots           "[cdots]">              <!--=   --><!--  no image, refer to PDFs? -->
+<!ENTITY cgrave          "c&#x00300;">           <!--= lower case c with grave over it  -->
+<!ENTITY circ1           "&#x02460;">            <!--= the number 1 inside a circle  -->
+<!ENTITY circ2           "&#x02461;">            <!--= the number 2 inside a circle  -->
+<!ENTITY circ3           "&#x02462;">            <!--= circle with 3 in it character  -->
+<!ENTITY circ4           "&#x02463;">            <!--= circle with 4 in it character  -->
+<!ENTITY circdot         "&#x02299;">            <!--= open circle with a dot inside it  -->
+<!ENTITY circln          "&#x025EF;&#x00336;">   <!--= circle with horizontal line through it  -->
+<!ENTITY circlndot       "[circlndot]">          <!--= circle with dotted line through it  --><!--  no image, refer to PDFs? use character bitmap? -->
+<!ENTITY circshf         "[circshf]">            <!--= circle 50% shaded --><!-- use character bitmap? -->
+<!ENTITY circtimes       "[circtimes]">          <!--= circle with a times sign within  --><!--  no image, refer to PDFs? use character bitmap? or U+2297 -->
+<!ENTITY cirf            "&#x025CF;">            <!--= filled circle  -->
+<!ENTITY cmacr           "c&#x00304;">           <!--= lower case c with a macr over it  -->
+<!ENTITY Cmacr           "C&#x00304;">           <!--= upper case C with a macr over it  -->
+<!ENTITY crosse          "&#x1F546;">            <!--= empty cross  -->
+<!ENTITY crot            "[crot]">               <!--= cross with left arm missing  --><!--  no image, refer to PDFs? -->
+<!ENTITY ctdot           "&#x022EF;">            <!--= three centred dots   -->
+<!ENTITY Ctilde          "C&#x00303;">           <!--= capital C with a tilde over it  -->
+<!ENTITY ctilde          "c&#x00303;">           <!--= lower case "c" with a tilde over it  -->
+<!ENTITY curvy           "[curvy]">              <!--= curvy  --><!-- no image, no instances found? -->
+<!ENTITY dcaron          "&#x0010F;">            <!--= lower case d  with a caron over it-->
+<!ENTITY Dcirc           "D&#x00302;">           <!--= capital case D w/ caret over it  -->
+<!ENTITY dcirc           "d&#x00302;">           <!--= lower case d w/ caret over it  -->
+<!ENTITY Dcurly          "[Dcurly]">             <!--= upper case d script style  --><!-- use character bitmap ? -->
+<!ENTITY dDiams          "[dDiams]">             <!--= dDiams  --><!-- no image, no instances found? -->
+<!ENTITY Deltaemacr      "[Deltaemacr]">         <!--= upper case Delta and E with a superscript 2 and a macron above them  --><!-- convert to mathimg or MathML -->
+<!ENTITY deltamacr       "&#x003B4;&#x00304;">   <!--=delta symbol with macron over it -->
+<!ENTITY deltilde        "&#x003B4;&#x00303;">   <!--= delta with tilde over  -->
+<!ENTITY diam25          "[diam25]">             <!--= light shaded diamond --><!-- use character bitmap ? -->
+<!ENTITY diamhdash       "[diamhdash]">          <!--= open diamond with a dashed line through it  --><!-- use character bitmap ? -->
+<!ENTITY diamplus        "[diamplus]">           <!--= diamond with plus or cross joining the angles   --><!-- use character bitmap ? -->
+<!ENTITY diamshdash      "[diamshdash]">         <!--= shaded diamond with a dashed line through it  --><!-- use character bitmap ? -->
+<!ENTITY Dmacr           "D&#x00304;">           <!--= capital D with a line over it  -->
+<!ENTITY dmacr           "d&#x00304;">           <!--= lower case d with a line over it  -->
+<!ENTITY dminus          "&#x02A2A;">            <!--= dminus symbol  -->
+<!ENTITY doygh           "[doygh]">              <!--= ?  --><!-- no image, no instances found? -->
+<!ENTITY Dtilde          "D&#x00303;">           <!--= capital D with a tilde over it  -->
+<!ENTITY Ebar            "[Ebar]">               <!--= upper case E with bar on the side  --><!-- use character bitmap ? -->
+<!ENTITY ebreve          "&#x00115;">            <!--=   -->
+<!ENTITY ecedil          "&#x00229;">            <!--= lower case "e" with a cedil  -->
+<!ENTITY Ecedil          "&#x00228;">            <!--= Upper case E with cedil  -->
+<!ENTITY Edot            "&#x00116;">            <!--= Cap E w/ centered dot over it  -->
+<!ENTITY elldot          "[elldot]">             <!--= lowercase ell with a dot over it  --><!-- use character bitmap ? -->
+<!ENTITY emptyv          "&#x02205;">            <!--= circle with slash through  -->
+<!ENTITY Eogon           "&#x00118;">            <!--=upper case E with ogon below -->
+<!ENTITY epsidot         "&#x003B5;&#x00307;">   <!--= lower case epsilon with dot over it  -->
+<!ENTITY epsilondot      "&#x003B5;&#x00307;">   <!--= epsilon with dot over it  -->
+<!ENTITY epsilonmacr     "&#x003B5;&#x00304;">   <!--= lower case epsilon with a macron over it-->
+<!ENTITY epsilontilde    "&#x003B5;&#x00303;">   <!--= lower case epsilon with a tilde over it  -->
+<!ENTITY etamacr         "&#x003B7;&#x00304;">   <!--= lower case eta with macron over it  -->
+<!ENTITY Etilde          "&#x01EBC;">            <!--= capital E with a tilde over it  -->
+<!ENTITY etilde          "&#x01EBD;">            <!--= lower case e with tilde over it  -->
+<!ENTITY euro            "&#x020AC;">            <!--= Euro currency symbol  -->
+<!ENTITY Evec            "E&#x020D7;">           <!--= upper case E with arrow over it  -->
+<!ENTITY fcirc           "f&#x00302;">           <!--= f with a circ over -->
+<!ENTITY Fcirc           "F&#x00302;">           <!--= F w/ caret over it  -->
+<!ENTITY fdot            "&#x01E1F;">            <!--= lower case "f" with an dot over it  -->
+<!ENTITY Fdot            "&#x01E1E;">            <!--= upper case "F" with an dot over it  -->
+<!ENTITY Fmacr           "F&#x00304;">           <!--= captial F with a line over it  -->
+<!ENTITY fmacr           "f&#x00304;">           <!--= lower case f with a line over it  -->
+<!ENTITY ftilde          "f&#x00303;">           <!--= f with a tilde over -->
+<!ENTITY Ftilde          "F&#x00303;">           <!--= capital F with a tilde over it  -->
+<!ENTITY fvec            "f&#x020D7;">           <!--= lower case f with a vector arrow above it -->
+<!ENTITY Gacute          "&#x001F4;">            <!--= upper case G with an acute  -->
+<!ENTITY Gammadot        "&#x00393;&#x00307;">   <!--= gamma with a dot over -->
+<!ENTITY gammadot        "&#x00263;&#x00307;">   <!--= lower case "gamma" with dot over it  -->
+<!ENTITY Gammamacr       "&#x00393;&#x00304;">   <!--= Gamma with bar over it -->
+<!ENTITY gammamacr       "&#x00263;&#x00304;">   <!--= lower case gamma with macron over it  -->
+<!ENTITY gcaron          "&#x001E7;">            <!--=   -->
+<!ENTITY Gcaron          "&#x001E6;">            <!--= upper case G with caron over it  -->
+<!ENTITY Gcirc           "&#x0011C;">            <!--= capital G with a caret over it  -->
+<!ENTITY gcirc           "&#x0011D;">            <!--= lower case g w/ caret over it  -->
+<!ENTITY Gdot            "&#x00120;">            <!--= Cap G w/ centered dot over it  -->
+<!ENTITY gee             "g">                    <!--= special styled g character  -->
+<!ENTITY gmacr           "&#x01E21;">            <!--= small g with a line over it  -->
+<!ENTITY gsime           "&#x02A8E;">            <!--=greater than, similar, equal to -->
+<!ENTITY gsims           "&#x02273;">            <!--=   -->
+<!ENTITY gtilde          "g&#x00303;">           <!--= lower case g with a tilde over it  -->
+<!ENTITY Gtilde          "G&#x00303;">           <!--= upper case G with tilde over it  -->
+<!ENTITY hamiltcirc      "[hamiltcirc]">         <!--= ??? w/ caret over it  --><!-- no image, no instances found? -->
+<!ENTITY Hcallig         "&#x1D43B;&#x0FE00;">   <!--= upper case H in calligraphy style  -->
+<!ENTITY hcross          "[hcross]">             <!--= lower case h with a diagonal stike through it --><!--  use character bitmap? or U+210F -->
+<!ENTITY Hcurly          "[Hcurly]">             <!--= upper case curly copperplate H --><!--  use character bitmap? -->
+<!ENTITY Hdot            "&#x01E22;">            <!--= Cap H w/ centered dot over it  -->
+<!ENTITY hdot            "&#x01E23;">            <!--= lower case h with a dot above  -->
+<!ENTITY hexagon         "&#x02B21;">            <!--= non filled in hexagon symbol -->
+<!ENTITY hexfill         "&#x02B22;">            <!--= filled hexagon   -->
+<!ENTITY Hmacr           "H&#x00304;">           <!--= captial H with a line over it  -->
+<!ENTITY hmacr           "h&#x00304;">           <!--= lowercase h with a line over it  -->
+<!ENTITY Htilde          "H&#x00303;">           <!--= capital H with a tilde over it  -->
+<!ENTITY huml            "&#x01E27;">            <!--= lower case 'h' with an umlaut  -->
+<!ENTITY Hvec            "H&#x020D7;">           <!--= Cap H w/ right vector over it  -->
+<!ENTITY icaron          "&#x001D0;">            <!--= Lower case i with a caron above it  -->
+<!ENTITY integral10      "[integral10]">         <!--= integral between one and zero --><!-- use character bitmap? or convert to mathimg or MathML -->
+<!ENTITY invtrifhlndash  "[invtrifhlndash]">     <!--= inverted filled triangle with a dashed line through it  --><!--  use character bitmap? -->
+<!ENTITY itOmegadot      "[itOmegadot]">         <!--= ?  --><!-- no image, no instances found? -->
+<!ENTITY Jdot            "J&#x00307;">           <!--= Upper case J with an dot above it  -->
+<!ENTITY Jtilde          "J&#x00303;">           <!--= upper case J with a tilde over it  -->
+<!ENTITY Juml            "J&#x00308;">           <!--= upper case J with umlaut over it  -->
+<!ENTITY Jupiter         "&#x02643;">            <!--= Jupiter planet symbol  -->
+<!ENTITY Jvec            "J&#x020D7;">           <!--= upper case J with a vector arrow above it -->
+<!ENTITY kcirc           "k&#x00302;">           <!--= lower case k w/ caret over it  -->
+<!ENTITY Kcirc           "K&#x00302;">           <!--= upper case K w/ caret over it  -->
+<!ENTITY kdot            "k&#x00307;">           <!--= lowercase k with a dot over it  -->
+<!ENTITY kmacr           "k&#x00304;">           <!--= lower case "k" with a line over it  -->
+<!ENTITY Kmacr           "K&#x00304;">           <!--= upper case "K" with a line over it  -->
+<!ENTITY Ktilde          "K&#x00303;">           <!--= capital K with a tilde over it  -->
+<!ENTITY ktilde          "k&#x00303;">           <!--= lower case k with a tilde over it  -->
+<!ENTITY Kuml            "K&#x00308;">           <!--= upper case K with an umlaut  -->
+<!ENTITY kvec            "k&#x020D7;">           <!--= lower case k with small arrow over it -->
+<!ENTITY Kvec            "K&#x020D7;">           <!--= upper case k with small arrow over it -->
+<!ENTITY Lagran          "[Lagran]">             <!--= ???  --><!--  use character bitmap? -->
+<!ENTITY lambcross       "[lambcross]">          <!--= lambda cross --><!-- no image, no instances found? -->
+<!ENTITY lambdacirc      "&#x030BB;&#x00302;">   <!--= lambda with a caret over it  -->
+<!ENTITY Lang            "&#x0300A;">            <!--= double left angular bracket (may be confused with U27EA) -->
+<!ENTITY lcirc           "l&#x00302;">           <!--= lower case l w/ caret over it  -->
+<!ENTITY Ldot            "L&#x00307;">           <!--= capital L with dot over it  -->
+<!ENTITY learr           "[learr]">              <!--= left empty arrow --><!-- no image, no instances found? -->
+<!ENTITY lfarr           "[lfarr]">              <!--= left filled arrow --><!-- no image, no instances found? -->
+<!ENTITY lfloor          "&#x0230A;">            <!--= ?  -->
+<!ENTITY li3             "[li3]">                <!--= Chinese character li3 (meaning reason)  --><!-- can't search for this in unicode -->
+<!ENTITY li3phon         "[li3phon]">            <!--= Chinese character li3phon (phonetic version of li3)  --><!-- can't search for this in unicode -->
+<!ENTITY lmacr           "l&#x00304;">           <!--= lowercase l with a line over it  -->
+<!ENTITY Lmacr           "L&#x00304;">           <!--= upper case L with macron over it  -->
+<!ENTITY lmidot          "&#x00140;">            <!--= ?  -->
+<!ENTITY lncircf         "[lncircf]">            <!--= filled circle with line through it --><!--  use inline image ? -->
+<!ENTITY lndashsq        "[lndashsq]">           <!--= open square with dashed line --><!--  use inline image ? -->
+<!ENTITY lndcircf        "[lndcircf]">           <!--= filled circle with a dashed line through it  --><!--  use inline image ? -->
+<!ENTITY longharr        "[longharr]">           <!--= long horizontal arrow  --><!--  no image, refer to PDFs? -->
+<!ENTITY longrarr        "[longrarr]">           <!--=   --><!--  no image, refer to PDFs? -->
+<!ENTITY longrarr2       "[longrarr2]">          <!--= long horizontal arrow 2  --><!--  no image, refer to PDFs? -->
+<!ENTITY loz             "&#x025CA;">            <!--= diamond  -->
+<!ENTITY lozleft         "[lozleft]">            <!--=   --><!-- no image, no instances found? -->
+<!ENTITY lozleft7        "[lozleft7]">           <!--=   --><!-- no image, no instances found? -->
+<!ENTITY loznew          "[loznew]">             <!--=   --><!-- no image, no instances found? -->
+<!ENTITY loznew7         "[loznew7]">            <!--=   --><!-- no image, no instances found? -->
+<!ENTITY lozright        "[lozright]">           <!--=   --><!-- no image, no instances found? -->
+<!ENTITY lozright7       "[lozright7]">          <!--=   --><!-- no image, no instances found? -->
+<!ENTITY lrarr           "&#x021C6;">            <!--= left arrow over a right arrow  -->
+<!ENTITY lrhar2          "&#x021CB;">            <!--= left right parallel harpoon -->
+<!ENTITY lrhartail       "[lrhartail]">          <!--=   --><!-- no image, no instances found? -->
+<!ENTITY lrhartailbot    "[lrhartailbot]">       <!--=   --><!-- no image, no instances found? -->
+<!ENTITY lsime           "&#x02A8D;">            <!--=less than, similar, equal to -->
+<!ENTITY lsims           "&#x02272;">            <!--=   -->
+<!ENTITY Ltilde          "L&#x00303;">           <!--= capital L with a tilde over it  -->
+<!ENTITY ltln            "[ltln]">               <!--= ?  --><!--  no image, refer to PDFs? -->
+<!ENTITY macr1           "1&#x00304;">           <!--= 1 macron  -->
+<!ENTITY macr11          "[macr11]">             <!--= 11 macron  --><!--  use character bitmap? -->
+<!ENTITY macr2           "2&#x00304;">           <!--= 2 macron  -->
+<!ENTITY macr3           "3&#x00304;">           <!--= 3 macron  -->
+<!ENTITY macr4           "4&#x00304;">           <!--= 4 macron  -->
+<!ENTITY macr8           "8&#x00304;">           <!--= 8 macron  -->
+<!ENTITY Mcirc           "M&#x00302;">           <!--= capital M with a cap over it  -->
+<!ENTITY Mdot            "&#x01E40;">            <!--= Capital M w/ centered dot over it  -->
+<!ENTITY mdot            "&#x01E41;">            <!--= m w/ centered dot over it  -->
+<!ENTITY Mdotmacr        "&#x01E40;&#x00304;">   <!--= captial M with a dot and line over it  -->
+<!ENTITY mean            "[mean]">               <!--= arithmetic mean displays as x with bar over it  --><!-- convert to mathimg or MathML -->
+<!ENTITY Mmacr           "M&#x00304;">           <!--= captial M with a line over it  -->
+<!ENTITY mmacr           "m&#x00304;">           <!--= lower case m with a line over it  -->
+<!ENTITY mnplus          "&#x02213;">            <!--= minus over plus symbol -->
+<!ENTITY Mscr            "&#x02133;">            <!--= upper case italic M  -->
+<!ENTITY Mtilde          "M&#x00303;">           <!--= upper case M with tilde above it  -->
+<!ENTITY mucirc          "&#x003BC;&#x00302;">   <!--= mu with a carat over it  -->
+<!ENTITY mumacr          "&#x003BC;&#x00304;">   <!--= lower case "mu" with a line over it  -->
+<!ENTITY mutilde         "&#x003BC;&#x00303;">   <!--= mu with a tilde over it  -->
+<!ENTITY Mvec            "M&#x020D7;">           <!--= Cap M w/ right vector over it  -->
+<!ENTITY mvec            "m&#x020D7;">           <!--= lower case m with vector symbol  -->
+<!ENTITY narr            "n&#x020D7;">           <!--= lower case n with an arrow over it -->
+<!ENTITY nbreve          "n&#x00306;">           <!--= lower case n with breve over it  -->
+<!ENTITY Ncirc           "N&#x00302;">           <!--= capital case N w/ caret over it  -->
+<!ENTITY ncirc           "n&#x00302;">           <!--= lower case "n" w/ caret over it  -->
+<!ENTITY Ncurly          "[Ncurly]">             <!--= uppercase N in curly font  --><!--  use character bitmap? -->
+<!ENTITY ndot            "&#x01E45;">            <!--= n with dot over -->
+<!ENTITY Ndot            "&#x01E44;">            <!--= Cap N w/ centered dot over it  -->
+<!ENTITY neswarr         "[neswarr]">            <!--= ?  --><!--  no image, refer to PDFs? -->
+<!ENTITY nmacr           "n&#x00304;">           <!--= lower case "n" with a line over it  -->
+<!ENTITY Nmacr           "N&#x00304;">           <!--= Upper case N with a macron above it  -->
+<!ENTITY nudot           "&#x003BD;&#x00307;">   <!--= lower case nu with dot over it  -->
+<!ENTITY numacr          "&#x003BD;&#x00304;">   <!--= lower case "nu" with a line over it  -->
+<!ENTITY nwsearr         "[nwsearr]">            <!--= ?  --><!--  no image, refer to PDFs? -->
+<!ENTITY obreve          "&#x0014F;">            <!--=   -->
+<!ENTITY ocaron          "&#x001D2;">            <!--= lower case "o" with caron over it  -->
+<!ENTITY Odot            "&#x02A00;">            <!--= large circle with middle dot  -->
+<!ENTITY OHgr1d          "[OHgr1d]">             <!--=   --><!-- no image, no instances found? -->
+<!ENTITY OHgr2d          "[OHgr2d]">             <!--=   --><!-- no image, no instances found? -->
+<!ENTITY OHgr3d          "[OHgr3d]">             <!--=   --><!-- no image, no instances found? -->
+<!ENTITY omegacirc       "&#x003C9;&#x00302;">   <!--= lower case omega w/ caret over it  -->
+<!ENTITY omegadot        "&#x003C9;&#x00307;">   <!--= omega with dot above -->
+<!ENTITY Omegadot        "&#x003A9;&#x00307;">   <!--= upper case omega with dot over it  -->
+<!ENTITY omegamacr       "&#x003C9;&#x00304;">   <!--= lc omega w/ bar over it  -->
+<!ENTITY Omegamacr       "&#x003A9;&#x00304;">   <!--= captial Omega with a line over it  -->
+<!ENTITY omegatilde      "&#x003C9;&#x00303;">   <!--= lower case omega with tilde  -->
+<!ENTITY Oring           "O&#x0030A;">           <!--= upper case O with ring over it  -->
+<!ENTITY outR            "[outR]">               <!--= Double, shadowed upper case "R"--><!--  use character bitmap? -->
+<!ENTITY Pacute          "&#x01E54;">            <!--= upper case P with an acute  -->
+<!ENTITY pcirc           "p&#x00302;">           <!--= lower case p with a circ over it  -->
+<!ENTITY Pcirc           "P&#x00302;">           <!--= upper case P with a circ over it  -->
+<!ENTITY Pdot            "&#x01E56;">            <!--= capital P with dot over it  -->
+<!ENTITY Phicirc         "&#x003A6;&#x00302;">   <!--= capital case Phi w/ caret over it  -->
+<!ENTITY phidot          "&#x003C6;&#x00307;">   <!--= lower case "phi" with dot over it  -->
+<!ENTITY phimacr         "&#x003C6;&#x00304;">   <!--= lower case "phi" with a line over it  -->
+<!ENTITY phivcirc        "[phivcirc]">           <!--= Phiv character with circ accent over the top  --><!--  no image, refer to PDFs? -->
+<!ENTITY phivneg         "[phivneg]">            <!--= phi with a bar over it  --><!-- no instances found? -->
+<!ENTITY Picirc          "&#x003A0;&#x00302;">   <!--=upper case Pi with circ above it -->
+<!ENTITY pkhat           "[pkhat]">              <!--= pkhat  --><!-- no image, no instances found? -->
+<!ENTITY planck          "&#x0210F;&#x0FE00;">   <!--=   -->
+<!ENTITY Pmacr           "P&#x00304;">           <!--= captial "P" with a line over it  -->
+<!ENTITY pmacr           "p&#x00304;">           <!--= lower case p with a line over it  -->
+<!ENTITY propsim         "[propsim]">            <!--=   --><!-- no image, no instances found? -->
+<!ENTITY proptilde       "[proptilde]">          <!--= Math symbol prop with a tilde above it  --><!-- no instances found? -->
+<!ENTITY psicirc         "&#x003C8;&#x00302;">   <!--= psi with a circ over -->
+<!ENTITY psimacr         "&#x003C8;&#x00304;">   <!--= lower case psi with macron over it  -->
+<!ENTITY Ptilde          "P&#x00303;">           <!--= capital P with a tilde over it  -->
+<!ENTITY ptilde          "p&#x00303;">           <!--= lower case p with a tilde over it  -->
+<!ENTITY Puml            "P&#x00308;">           <!--= Upper case P with an umlaut above it  -->
+<!ENTITY Pvec            "P&#x020D7;">           <!--= capital P with a vector arrow above it -->
+<!ENTITY qcirc           "q&#x00302;">           <!--= lower case "q" w/ caret over it  -->
+<!ENTITY qdot            "q&#x00307;">           <!--= lower case q with a dot over it  -->
+<!ENTITY Qdot            "Q&#x00307;">           <!--= upper case Q with a dot over it  -->
+<!ENTITY Qmacr           "Q&#x00304;">           <!--= captial Q with a line over it  -->
+<!ENTITY qmacr           "q&#x00304;">           <!--= small q with a line over it  -->
+<!ENTITY qtilde          "q&#x00303;">           <!--= lower case "q" with a tilde over it  -->
+<!ENTITY Racute          "&#x00154;">            <!--= upper case R with an acute  -->
+<!ENTITY Rang            "&#x0300B;">            <!--= double right angular bracket (may be confused with U27EB) -->
+<!ENTITY Rarr            "&#x021A0;">            <!--= rightwards two headed arrow  -->
+<!ENTITY rbreve          "r&#x00306;">           <!--= lower case R with breve over it  -->
+<!ENTITY Rbreve          "R&#x00306;">           <!--= upper case R with breve over it  -->
+<!ENTITY Rcirc           "R&#x00302;">           <!--= capital case R w/ caret over it  -->
+<!ENTITY rcirc           "r&#x00302;">           <!--= lower case r w/ caret over it  -->
+<!ENTITY Rdot            "&#x01E58;">            <!--=  capital "R" with a dot over it -->
+<!ENTITY rdot            "&#x01E59;">            <!--= lower case r with dot over it  -->
+<!ENTITY rfloor          "&#x0230B;">            <!--= ?  -->
+<!ENTITY rhocirc         "&#x003C1;&#x00302;">   <!--= lower case "rho" w/ caret over it  -->
+<!ENTITY rhomacr         "&#x003C1;&#x00304;">   <!--= lower case rho with a macron over it  -->
+<!ENTITY Rhotilde        "&#x003A1;&#x00303;">   <!--= Rho with a tilde over it  -->
+<!ENTITY rhov            "&#x03F1;">             <!--= lowercase rho symbol (not a rho letter) -->
+<!ENTITY rlarr2          "&#x021C4;">            <!--= right left parallel arrow  -->
+<!ENTITY Rlatin          "[Rlatin]">             <!--=upper case "latin" R --><!--  use character bitmap? -->
+<!ENTITY rlhar2          "&#x021CC;">            <!--= right left parallel harpoon  -->
+<!ENTITY rlharr          "&#x021CC;">            <!--= right harpoon on top of a left harpoon  -->
+<!ENTITY rmacr           "r&#x00304;">           <!--= lower case "r" with a line over it  -->
+<!ENTITY Rmacr           "R&#x00304;">           <!--= upper case R with a line over it  -->
+<!ENTITY rtilde          "r&#x00303;">           <!--= lower case r with a tilde over it  -->
+<!ENTITY Rtilde          "R&#x00303;">           <!--= upper case R with a tilde over it  -->
+<!ENTITY rvector         "r&#x020D7;">           <!--= small r with a vector over it  -->
+<!ENTITY Saturn          "&#x02644;">            <!--= Saturn planet symbol  -->
+<!ENTITY Sbreve          "S&#x00306;">           <!--= Capital S with a breve accent  -->
+<!ENTITY sbreve          "s&#x00306;">           <!--= lower case "s" with a breve over it-->
+<!ENTITY scissors        "&#x02704;">            <!--= pair of horizontal scissors -->
+<!ENTITY scrpA           "[scrpA]">              <!--= script A  --><!-- no image, no instances found? -->
+<!ENTITY scrpB           "[scrpB]">              <!--= script B  --><!-- no image, no instances found? -->
+<!ENTITY scrpE           "[scrpE]">              <!--= script E  --><!-- no image, no instances found? -->
+<!ENTITY scrpf           "[scrpf]">              <!--= script f  --><!-- no image, no instances found? -->
+<!ENTITY scrpF           "[scrpF]">              <!--= script F  --><!-- no image, no instances found? -->
+<!ENTITY scrpH           "[scrpH]">              <!--= script H  --><!-- no image, no instances found? -->
+<!ENTITY scrpJ           "[scrpJ]">              <!--= script J  --><!-- no image, no instances found? -->
+<!ENTITY scrpl           "[scrpl]">              <!--= script l  --><!-- no image, no instances found? -->
+<!ENTITY scrpL           "[scrpL]">              <!--= script L  --><!-- no image? -->
+<!ENTITY scrpM           "[scrpM]">              <!--= script M  --><!-- no image, no instances found? -->
+<!ENTITY scrpN           "[scrpN]">              <!--= script N  --><!-- no image, no instances found? -->
+<!ENTITY scrpP           "[scrpP]">              <!--= script P  --><!-- no image, no instances found? -->
+<!ENTITY scrpR           "[scrpR]">              <!--= script R  --><!-- no image, no instances found? -->
+<!ENTITY scrpT           "[scrpT]">              <!--= script T  --><!-- no image? -->
+<!ENTITY scrpU           "[scrpU]">              <!--= script U  --><!-- no image, no instances found? -->
+<!ENTITY scrpV           "[scrpV]">              <!--= script V  --><!-- no image, no instances found? -->
+<!ENTITY scrpz           "[scrpz]">              <!--= script z  --><!-- no image, no instances found? -->
+<!ENTITY Sdot            "&#x01E60;">            <!--= upper case S wth a dot over it  -->
+<!ENTITY sgrave          "s&#x00300;">           <!--= lower case "s" w/ a back accent over it  -->
+<!ENTITY sidet           "&#x027DE;">            <!--= T shape rotated 90 degrees clockwise, long left tack -->
+<!ENTITY sigmacarat      "&#x003C2;&#x00302;">   <!--= sigma with carEt on top -->
+<!ENTITY sigmacirc       "&#x003C2;&#x00302;">   <!--= lower case sigma w/ caret over it  -->
+<!ENTITY sigmamacr       "&#x003C2;&#x00304;">   <!--= lower case sigma with a macron above  -->
+<!ENTITY smacr           "s&#x00304;">           <!--= lower case s with a line over it  -->
+<!ENTITY Smacr           "S&#x00304;">           <!--= upper case S with a line over it -->
+<!ENTITY smalleq         "[smalleq]">            <!--=   --><!-- no image, no instances found? -->
+<!ENTITY smalleq7        "[smalleq7]">           <!--=   --><!-- no image, no instances found? -->
+<!ENTITY smallpar        "[smallpar]">           <!--=   --><!-- no image, no instances found? -->
+<!ENTITY smallpar7       "[smallpar7]">          <!--=   --><!-- no image, no instances found? -->
+<!ENTITY smeqloff        "[smeqloff]">           <!--=   --><!-- no image, no instances found? -->
+<!ENTITY smeqoff         "[smeqoff]">            <!--=   --><!-- no image, no instances found? -->
+<!ENTITY smeqoff7        "[smeqoff7]">           <!--=   --><!-- no image, no instances found? -->
+<!ENTITY smparoff        "[smparoff]">           <!--=   --><!-- no image, no instances found? -->
+<!ENTITY smparoff7       "[smparoff7]">          <!--=   --><!-- no image, no instances found? -->
+<!ENTITY smslant         "[smslant]">            <!--=   --><!-- no image, no instances found? -->
+<!ENTITY smslant7        "[smslant7]">           <!--=   --><!-- no image, no instances found? -->
+<!ENTITY smslantv        "[smslantv]">           <!--=   --><!-- no image, no instances found? -->
+<!ENTITY smslantv7       "[smslantv7]">          <!--=   --><!-- no image, no instances found? -->
+<!ENTITY smslanvs        "[smslanvs]">           <!--=   --><!-- no image, no instances found? -->
+<!ENTITY smslanvs7       "[smslanvs7]">          <!--=   --><!-- no image, no instances found? -->
+<!ENTITY speciala        "[speciala]">           <!--= special a  --><!-- no image? -->
+<!ENTITY specialb        "[specialb]">           <!--= special b  --><!-- no image? -->
+<!ENTITY sq3d            "[sq3d]">               <!--= 3d square --><!-- no image, no instances found? -->
+<!ENTITY sqcup           "&#x02294;">            <!--= sqcup symbol | square union -->
+<!ENTITY sqdot5          "[sqdot5]">             <!--= square with a few big dots in it --><!-- use character bitmap? or convert to inline illustration  -->
+<!ENTITY sqdot8          "[sqdot8]">             <!--= square with a lot of small dots in it   --><!-- use character bitmap? or convert to inline illustration  -->
+<!ENTITY sqln            "[sqln]">               <!--= open square with a solid line through it  --><!-- use character bitmap? or convert to inline illustration  -->
+<!ENTITY sqrtn           "[sqrtn]">              <!--= square root symbol with the tail going over a lower case n --><!-- no image? use character bitmap? or convert to inline illustration  -->
+<!ENTITY squA            "[squA]">               <!--=   --><!-- no image, no instances found? -->
+<!ENTITY squB            "[squB]">               <!--=   --><!-- no image, no instances found? -->
+<!ENTITY squdots         "[squdots]">            <!--= square with dots thru it  --><!-- use character bitmap? or convert to inline illustration  -->
+<!ENTITY squfhln         "[squfhln]">            <!--= filled square with a solid line through it  --><!-- use character bitmap? or convert to inline illustration  -->
+<!ENTITY squfill45       "[squfill45]">          <!--= square with bottom 45 degrees filled  --><!-- use character bitmap? or convert to inline illustration  -->
+<!ENTITY squhoriz        "[squhoriz]">           <!--= square with mulitple horizontal lines--><!-- use character bitmap? or convert to inline illustration  -->
+<!ENTITY squl            "[squl]">               <!--=   --><!-- no image? use character bitmap? or convert to inline illustration  -->
+<!ENTITY squlncclk       "[squlncclk]">          <!--= square with line slant left --><!-- use character bitmap? or convert to inline illustration  -->
+<!ENTITY squlnclk        "[squlnclk]">           <!--= square with line slant right --><!-- no image? use character bitmap? or convert to inline illustration  -->
+<!ENTITY squlvert        "[squlvert]">           <!--= square with vertical line  --><!-- use character bitmap? or convert to inline illustration  -->
+<!ENTITY squplus         "[squplus]">            <!--= square with a plus sign in it --><!-- use character bitmap? or convert to inline illustration  -->
+<!ENTITY squred          "[squred]">             <!--= red square--><!-- no image, no instances found? -->
+<!ENTITY sqush25         "[sqush25]">            <!--= square with a 25 percent shade --><!-- use character bitmap? or convert to inline illustration  -->
+<!ENTITY squshf          "[squshf]">             <!--= shaded square  --><!-- use character bitmap? or convert to inline illustration  -->
+<!ENTITY squtimes        "[squtimes]">           <!--= square with an 'x' through it --><!-- use character bitmap? or convert to inline illustration  -->
+<!ENTITY squvert         "[squvert]">            <!--= square with vertical lines  --><!--  no image, refer to PDFs? use character bitmap? or convert to inline illustration -->
+<!ENTITY squy            "[squy]">               <!--= squy  --><!-- no image, no instances found? -->
+<!ENTITY Sscr            "&#x1D4AE;">            <!--= upper case curly S  -->
+<!ENTITY Stilde          "S&#x00303;">           <!--= capital S with a tilde over it  -->
+<!ENTITY strok1          "[strok1]">             <!--= 1, stroke  --><!-- no image, no instances found? -->
+<!ENTITY supbolddot      "[supbolddot]">         <!--= superscript bold dot  --><!-- no image? -->
+<!ENTITY Svec            "S&#x020D7;">           <!--= capital S with a vector arrow above it -->
+<!ENTITY svec            "s&#x020D7;">           <!--= lower case s with arrow above it  -->
+<!ENTITY taucirc         "&#x003C4;&#x00302;">   <!--= Tau symbol with circ above -->
+<!ENTITY taumacr         "&#x003C4;&#x00304;">   <!--= lower case tau with macron over it  -->
+<!ENTITY Taumacr         "&#x003A4;&#x00304;">   <!--= tau with a line over it  -->
+<!ENTITY Tbar            "T&#x00304;">           <!--= capital "T" with a horizontal bar over it  --><!-- no image, no instances found? -->
+<!ENTITY tbull           "[tbull]">              <!--= tbull  --><!-- no image, no instances found? -->
+<!ENTITY tcastf          "[tcastf]">             <!--= tcastf  --><!-- no image, no instances found? -->
+<!ENTITY tcirc           "t&#x00302;">           <!--= lower case t w/ caret over it  -->
+<!ENTITY Tcirc           "T&#x00302;">           <!--= upper case T with circumflex over it  -->
+<!ENTITY tdomeg          "[tdomeg]">             <!--= tdomeg  --><!-- no image, no instances found? -->
+<!ENTITY thetacirc       "&#x003B8;&#x00302;">   <!--= theta with circumflex -->
+<!ENTITY Thetacirc       "&#x00398;&#x00302;">   <!--= Thetacirc  -->
+<!ENTITY thetadot        "&#x003B8;&#x00307;">   <!--= lower case theta with dot over it  -->
+<!ENTITY Thetadot        "&#x00398;&#x00307;">   <!--= upper case theta with dot over it  -->
+<!ENTITY thetamacr       "&#x003B8;&#x00304;">   <!--= lc theta w/ bar over it  -->
+<!ENTITY thetas          "&#x003B8;">            <!--= straight theta same as theta -->
+<!ENTITY Thetauml        "&#x00398;&#x00308;">   <!--= upper case theta with umlaut over it  -->
+<!ENTITY Tmacr           "T&#x00304;">           <!--= upper case T with a line over it  -->
+<!ENTITY tmacr           "t&#x00304;">           <!--= lower case "t" with a macr over it  -->
+<!ENTITY tree            "[tree]">               <!--= tree  --><!-- no image, no instances found? -->
+<!ENTITY triflndot       "[triflndot]">          <!--= filled triangle with a dotted line through it  --><!-- use character bitmap? or convert to inline illustration  -->
+<!ENTITY Ttilde          "T&#x00303;">           <!--= capital T with a tilde over it  -->
+<!ENTITY ttilde          "t&#x00303;">           <!--= lower case "t" with a tilde over it  -->
+<!ENTITY Tvec            "T&#x020D7;">           <!--= upper case T with arrow over it  -->
+<!ENTITY ubowti          "[ubowti]">             <!--=   --><!-- no image, no instances found? -->
+<!ENTITY ucaron          "&#x001D4;">            <!--= Lower case u with a caron above it  -->
+<!ENTITY Ucaron          "&#x001D3;">            <!--= Upper case U with a caron above it  -->
+<!ENTITY Ucurly          "[Ucurly]">             <!--= upper case curly copperplate U --><!-- use character bitmap?  -->
+<!ENTITY Ucurlytilde     "[Ucurlytilde]">        <!--= upper case curly copperplate U with a tilde over it --><!-- use character bitmap?  -->
+<!ENTITY udot            "u&#x00307;">           <!--= u w/ centered dot over it  -->
+<!ENTITY uphash          "&#x00023;">            <!--=   -->
+<!ENTITY upomicr         "[upomicr]">            <!--= upright greek omicr  --><!--  no image, refer to PDFs? -->
+<!ENTITY upphis          "[upphis]">             <!--= upright Phis  --><!-- no image, no instances found? -->
+<!ENTITY Utilde          "&#x00168;">            <!--= upper case U with a tilde over it  -->
+<!ENTITY utriequ         "[utriequ]">            <!--= triangle over equal sign  --><!-- use character bitmap?  -->
+<!ENTITY utrilnfilled    "[utrilnfilled]">       <!--= upright filled triangle with a line through it  --><!--  no image, refer to PDFs? use character bitmap? or convert to inline illustration -->
+<!ENTITY utrired         "[utrired]">            <!--= red triangle--><!-- no image, no instances found? -->
+<!ENTITY Vacute          "V&#x00301;">           <!--= upper case V with an acute  -->
+<!ENTITY Vbbull          "[Vbbull]">             <!--= Vbbull  --><!-- no image, no instances found? -->
+<!ENTITY vcirc           "v&#x00302;">           <!--= lower case v w/ caret over it  -->
+<!ENTITY Vcirc           "V&#x00302;">           <!--= upper case "V" w/ caret over it  -->
+<!ENTITY vdot            "v&#x00307;">           <!--= lower case v with dot over it  -->
+<!ENTITY Vdot            "V&#x00307;">           <!--= upper case V with dot over it  -->
+<!ENTITY Vmacr           "V&#x00304;">           <!--= captial V with a line over it  -->
+<!ENTITY vmacr           "v&#x00304;">           <!--= lower case "v" with a line over it  -->
+<!ENTITY vrarr           "v&#x020D7;">           <!--= v with arrow over it -->
+<!ENTITY Vtilde          "&#x01E7C;">            <!--= capital V with a tilde over it  -->
+<!ENTITY vtilde          "&#x01E7D;">            <!--= lower case "v" with a tilde over it  -->
+<!ENTITY vuml            "v&#x00308;">           <!--= lower case v with an umlaut  -->
+<!ENTITY Wcirc           "&#x00174;">            <!--= Upper case W with a circumflex above it  -->
+<!ENTITY Wdot            "&#x01E86;">            <!--= capital W with dot over it  -->
+<!ENTITY wmacr           "w&#x00304;">           <!--= lower case w with a line over it  -->
+<!ENTITY Wmacr           "W&#x00304;">           <!--= upper case W with macron over it  -->
+<!ENTITY wtail           "[wtail]">              <!--= wtail  --><!-- no image, no instances found? -->
+<!ENTITY wutail          "[wutail]">             <!--= wutail  --><!-- no image, no instances found? -->
+<!ENTITY Xarr            "X&#x020D7;">           <!--= upper case x with an arrow over it -->
+<!ENTITY xbar            "x&#x00304;">           <!--= lower case "x" with a horizontal bar over it  --><!-- no image, no instances found? -->
+<!ENTITY Xcirc           "X&#x00302;">           <!--= upper case X w/ circ over it  -->
+<!ENTITY Xdot            "&#x01E8A;">            <!--= capital X with dot over it  -->
+<!ENTITY xdot            "&#x01E8B;">            <!--= lower case "x" with dot over it  -->
+<!ENTITY xicirc          "&#x003BE;&#x00302;">   <!--= xi with a circumflex -->
+<!ENTITY xidot           "&#x003BE;&#x00307;">   <!--= xi symbol with a dot above  -->
+<!ENTITY xline           "[xline]">              <!--= x with a vertical line through it  --><!-- use character bitmap?  -->
+<!ENTITY Xmacr           "X&#x00304;">           <!--= captial X with a line over it  -->
+<!ENTITY xmacr           "x&#x00304;">           <!--= lower case "x" with a line over it  -->
+<!ENTITY xtilde          "x&#x00303;">           <!--= lower case "x" with a tilde over it  -->
+<!ENTITY xuml            "&#x01E8D;">            <!--= lower case "x" with an umlaut over it  --><!-- no image, no instances found? -->
+<!ENTITY xwedge          "&#x022C0;">            <!--= upside down v  -->
+<!ENTITY ycaron          "y&#x0030C;">           <!--= lower case y with caron over it  -->
+<!ENTITY ydot            "&#x01E8F;">            <!--= y with a dot over -->
+<!ENTITY Ydot            "&#x01E8E;">            <!--= capital Y with dot over it  -->
+<!ENTITY Ymacr           "&#x00232;">            <!--= captial Y with a line over it  -->
+<!ENTITY ymacr           "&#x00233;">            <!--= lower case "y" with a line over it  -->
+<!ENTITY ymacrcaron      "&#x00233;&#x0030C;">   <!--= lower case y with macron and caron over it  -->
+<!ENTITY zbar            "[zbar]">               <!--= lower case "z" with a horizontal bar over it --><!-- no image, no instances found? -->
+<!ENTITY zbreve          "z&#x00306;">           <!--= lower case z with a breve over it  -->
+<!ENTITY Zcirc           "&#x01E90;">            <!--= capital Z with a cap over it  -->
+<!ENTITY zcirc           "&#x01E91;">            <!--= lower case z w/ caret over it  -->
+<!ENTITY zerominus       "[zerominus]">          <!--= zero with a minus sign over it --><!-- use character bitmap?  -->
+<!ENTITY zeroplus        "[zeroplus]">           <!--= zero with a plus sign over it --><!-- use character bitmap?  -->
+<!ENTITY zgrave          "z&#x00300;">           <!--= lower case z with grave accent over it  -->
+<!ENTITY Zmacr           "Z&#x00304;">           <!--= captial Z with a line over it  -->
+<!ENTITY zmacr           "z&#x00304;">           <!--= small z with a line over it  -->
+<!ENTITY zuml            "z&#x00308;">           <!--= lower case "z" with an umlaut over it  -->
+<!ENTITY Zuml            "Z&#x00308;">           <!--= upper case "z" with an umlaut over it  -->
