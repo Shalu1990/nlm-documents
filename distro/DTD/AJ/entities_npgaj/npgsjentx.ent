@@ -146,403 +146,403 @@
 28/02/03 Ver 24: wmacr added for HDY 90:2 art. 6800212
 25/02/03 Ver 23: Qcirc, Lcirc, alphacrc, mtildcrc added for HDY 90:2 art. 6800212a
 21/02/03 Ver 22: mtilde needed for HDY 90:2 art. 6800212a
-9/1/03 Ver 21: DeltaPsi needed for ONC 22:1 art 1206061
+09/01/03 Ver 21: DeltaPsi needed for ONC 22:1 art 1206061
 27/06/02 Ver 20: zstrok needed for BJC
 28/05/02 Ver 19: sogon needed for correspondence address in SC 40:6 art 3101258
 23/05/02 Ver 18: hbhatch issued as key graphic for CGT 9:6 art 7700463.
 21/05/02 Ver 17: zbreve and mcirc added for IAOR 53:4.
 13/05/02 Ver 16: Re-issued to correct typing error in SDATA for ptilde
-8/05/02 Ver 16: Fdot and ptilde added for hdy 88:5. Dcirc added for unknown issue, see LH-I e-mail of 23/4/2. qcirc added for hdy 88:6. rbreve, sbreve and Sbreve added for IAOR 53:3. TF.
-4/04/02 Ver 15: Gbox added by VL.
+08/05/02 Ver 16: Fdot and ptilde added for hdy 88:5. Dcirc added for unknown issue, see LH-I e-mail of 23/4/2. qcirc added for hdy 88:6. rbreve, sbreve and Sbreve added for IAOR 53:3. TF.
+04/04/02 Ver 15: Gbox added by VL.
 26/02/02 Ver 14: Qdot added by VL.
 18/01/02 Ver 13: Added ebreve, etilde, Ftilde, Krarr, macute, Nmacr, pcedil, Qcedil, Ttilde, vacute, Wtilde, Xtilde, Zbreve for IAOR. TF
 Change history prior to 18 January 2002 deleted. A full change history is kept by NPGSJ. -->
 
-<!ENTITY Acaron      "&#x001CD;"> <!-- capital A caron -->
-<!ENTITY acaron      "&#x001CE;"> <!-- small a caron -->
-<!ENTITY Acallig     "&#x1D434;&#x0FE00;"> <!-- capital A calligraphy -->
-<!ENTITY acedil      "a&#x00327;"> <!-- small a cedilla -->
-<!ENTITY adblac      "a&#x0030B;"> <!-- small a dblac -->
-<!ENTITY adot        "a&#x00307;"> <!-- small a dot -->
-<!ENTITY alphaacute  "&#x003B1;&#x00301;"> <!-- small alpha acute -->
-<!ENTITY alphacrc    "&#x003B1;&#x00302;"> <!-- small alpha circumflex -->
-<!ENTITY alphamacr   "&#x003B1;&#x00304;"> <!-- small alpha macron -->
-<!ENTITY alphatilde  "&#x003B1;&#x00303;"> <!-- small alpha tilde -->
-<!ENTITY Aringacute  "&#x001FA;"> <!-- capital A ring with acute over -->
-<!ENTITY astln       "&#x0002A;&#x00336;"> <!-- asterix with line -->
-<!ENTITY bacute      "b&#x00301;"> <!-- small b acute  -->
-<!ENTITY Bauriol     "[Bauriol]"> <!-- large italic B in Auriol font -->
-<!ENTITY Bcallig     "&#x1D435;&#x0FE00;"> <!-- capital B calligraphy -->
-<!ENTITY Bcaron      "B&#x0030C;"> <!-- capital B caron -->
-<!ENTITY Bcirc       "B&#x00302;"> <!-- large B circumflex -->
-<!ENTITY bcirc       "b&#x00302;"> <!-- small b circumflex -->
-<!ENTITY Bdot        "&#x01E02;"> <!-- large B with dot over -->
-<!ENTITY betacrc     "&#x003B2;&#x00302;"> <!-- small beta, Greek with circumflex over  -->
-<!ENTITY betamacr    "&#x003B2;&#x00304;"> <!-- small beta, Greek with macron over  -->
-<!ENTITY betatilde   "&#x003B2;&#x00303;"> <!-- small beta, Greek with tilde over  -->
-<!ENTITY bbcirc      "b&#x00302;"> <!-- small b, bold with circumflex over  -->
-<!ENTITY block1      "[block1]"> <!-- square block, small dots  -->
-<!ENTITY block2      "[block2]"> <!-- square block, medium dots  -->
-<!ENTITY block3      "[block3]"> <!-- square block, diagonal lines  -->
-<!ENTITY block4      "[block4]"> <!-- square block, left diagonal lines  -->
-<!ENTITY block5      "[block5]"> <!-- square block, crisscross lines  -->
-<!ENTITY block6      "[block6]"> <!-- square block, white square  -->
-<!ENTITY block7      "[block7]"> <!-- square block, black square  -->
-<!ENTITY block8      "[block8]"> <!-- square block, dots  -->
-<!ENTITY block9      "[block9]"> <!-- square block, dots  -->
-<!ENTITY block10     "[block10]"> <!-- square block, dots  -->
-<!ENTITY block11     "[block11]"> <!-- square block, dots  -->
-<!ENTITY block12     "[block12]"> <!-- square block, shaded  -->
-<!ENTITY block13     "[block13]"> <!-- square block, shaded  -->
-<!ENTITY block14     "[block14]"> <!-- square block, shaded  -->
-<!ENTITY block15     "[block15]"> <!-- square block, shaded  -->
-<!ENTITY block16     "[block16]"> <!-- square block, black square with white dots -->
-<!ENTITY block17     "[block17]"> <!-- square block, thick horizontal lines -->
-<!ENTITY block18     "[block18]"> <!-- square block, thick vertical lines -->
-<!ENTITY block19     "[block19]"> <!-- square block, thick 315 degree lines -->
-<!ENTITY block20     "[block20]"> <!-- square block, thick 45 degree lines -->
-<!ENTITY block21     "[block21]"> <!-- square block, chequered -->
-<!ENTITY block22     "[block22]"> <!-- square block, thin horizontal lines -->
-<!ENTITY block23     "[block23]"> <!-- square block, thin vertical lines -->
-<!ENTITY block24     "[block24]"> <!-- square block, thin 315 degree lines -->
-<!ENTITY block25     "[block25]"> <!-- square block, thin 45 degree lines -->
-<!ENTITY block26     "[block26]"> <!-- square block, crossed lines -->
-<!ENTITY block27     "[block27]"> <!-- square block, shaded -->
-<!ENTITY block28     "[block28]"> <!-- square block, shaded -->
-<!ENTITY block29     "[block29]"> <!-- square block, shaded -->
-<!ENTITY block30     "[block30]"> <!-- square block, shaded -->
-<!ENTITY block31     "[block31]"> <!-- square block, shaded -->
-<!ENTITY block32     "[block32]"> <!-- square block, brown -->
-<!ENTITY block33     "[block33]"> <!-- square block, olive -->
-<!ENTITY block34     "[block34]"> <!-- square block, circle -->
-<!ENTITY block35     "[block35]"> <!-- square block, diagonal dashes -->
-<!ENTITY block36     "[block36]"> <!-- square block, gold -->
-<!ENTITY blockrect   "[blockrect]"> <!-- square block, diagonal lines -->
-<!ENTITY Bmacr       "B&#x00304;"> <!-- capital B macron -->
-<!ENTITY bmacr       "b&#x00304;"> <!-- small b macron -->
-<!ENTITY Brarr       "B&#x020D7;"> <!-- capital B with right arrow over -->
-<!ENTITY Btilde      "B&#x00303;"> <!-- capital B tilde -->
-<!ENTITY btilde      "b&#x00303;"> <!-- small b tilde -->
-<!ENTITY Cbreve      "C&#x00306;"> <!-- capital C breve -->
-<!ENTITY cbreve      "c&#x00306;"> <!-- small c breve -->
-<!ENTITY Ccallig     "&#x1D436;&#x0FE00;"> <!-- capital C calligraphy style -->
-<!ENTITY cgrave      "c&#x00300;"> <!-- small c grave -->
-<!ENTITY chimcr      "&#x003C7;&#x00304;"> <!-- small chi macron -->
-<!ENTITY cir12       "[cir12]"> <!-- 50% shaded circle -->
-<!ENTITY circdot     "&#x02299;"> <!-- circle with dot in the middle-->
-<!ENTITY CirclePlus  "&#x02295;"> <!-- Large circle with plus inside-->
-<!ENTITY circln      "&#x025EF;&#x00336;"> <!-- circle with line through -->
-<!ENTITY circshf     "[circshf]"> <!-- circle with shaded fill -->
-<!ENTITY cirf        "&#x025CF;"> <!-- circle with solid fill -->
-<!ENTITY Cmacr       "C&#x00304;"> <!-- capital C macron -->
-<!ENTITY cmacr       "c&#x00304;"> <!-- small c macron-->
-<!ENTITY Cogon       "C&#x00328;"> <!-- capital C ogonek -->
-<!ENTITY cogwl       "[cogwl]"> <!-- cog-wheel, 8 teeth -->
-<!ENTITY crolo       "&#x0271E;"> <!-- long open cross -->
-<!ENTITY crorecf     "&#x0271A;"> <!-- cross, rect arms, filled -->
-<!ENTITY crorecoc    "&#x0271C;"> <!-- cross, rect arms, open centre -->
-<!ENTITY crossrnd    "&#x02724;"> <!-- cross, rounded arms-->
-<!ENTITY crostar     "&#x02726;"> <!-- cross, star -->
-<!ENTITY Ctilde      "C&#x00303;"> <!-- capital C tilde -->
-<!ENTITY ctilde      "c&#x00303;"> <!-- small c tilde -->
-<!ENTITY Dacute      "D&#x00301;"> <!-- capital D acute -->
-<!ENTITY dacute      "d&#x00301;"> <!-- small d acute -->
-<!ENTITY Dcirc       "D&#x00302;"> <!-- capital D circumflex -->
-<!ENTITY dcirc       "d&#x00302;"> <!-- small d circumflex -->
-<!ENTITY Deltadot    "&#x00394;&#x00307;"> <!-- capital Delta, Greek with dot -->
-<!ENTITY Deltamacr   "&#x00394;&#x00304;"> <!-- capital Delta, Greek with macron over -->
-<!ENTITY DeltaPsi    "&#x1D71F;"> <!-- capital Delta, Greek, bold upright -->
-<!ENTITY Deltauml    "&#x00394;&#x00308;"> <!-- capital Delta, Greek with umlau -->
-<!ENTITY deltacrc    "&#x003B4;&#x00302;"> <!-- small delta, Greek with circumflex over -->
-<!ENTITY deltamacr   "&#x003B4;&#x00304;"> <!-- small delta, Greek with macron over -->
-<!ENTITY deltaundl   "&#x003B4;&#x00332;"> <!-- small delta, Greek underlined -->
-<!ENTITY diamfln     "&#x025C6;&#x00336;"> <!-- filled diamond with line -->
-<!ENTITY diamln      "&#x025C7;&#x00336;"> <!-- diamond with line -->
-<!ENTITY Dmacr       "D&#x00304;"> <!-- capital D macron -->
-<!ENTITY dmacr       "d&#x00304;"> <!-- small d macron -->
-<!ENTITY Dtilde      "D&#x00303;"> <!-- capital D tilde -->
-<!ENTITY dtilde      "d&#x00303;"> <!-- small d tilde -->
-<!ENTITY Ebreve      "&#x00114;"> <!-- capital E breve -->
-<!ENTITY ebreve      "&#x00115;"> <!-- small e breve -->
-<!ENTITY ecedil      "&#x00229;"> <!-- small e cedilla -->
-<!ENTITY edblac      "e&#x0030B;"> <!-- small e with double acute -->
-<!ENTITY emptyv      "&#x02205;"> <!-- empty set variant -->
-<!ENTITY epsilondot  "&#x003B5;&#x00307;"> <!-- epsilon dot over -->
-<!ENTITY epsilonundl "&#x003B5;&#x00332;"> <!-- epsilon underlined -->
-<!ENTITY epsimacr    "&#x003B5;&#x00304;"> <!-- epsilon straight macron -->
-<!ENTITY epsivacute  "&#x1D700;&#x00301;"> <!-- epsilon variant acute -->
-<!ENTITY epsivcrc    "&#x1D700;&#x00302;"> <!-- epsilon variant with circumflex over -->
-<!ENTITY epsivmcr    "&#x1D700;&#x00304;"> <!-- epsilon variant macron -->
-<!ENTITY epsivtilde  "&#x1D700;&#x00303;"> <!-- epsilon variant tilde -->
-<!ENTITY etacirc     "&#x003B7;&#x00302;"> <!-- small e tilde with circumflex over -->
-<!ENTITY Etilde      "E&#x00303;"> <!-- capital e tilde -->
-<!ENTITY etilde      "e&#x00303;"> <!-- small e tilde -->
-<!ENTITY euro        "&#x020AC;"> <!-- euro currency sign -->
-<!ENTITY facute      "f&#x00301;"> <!-- small f acute -->
-<!ENTITY fcaron      "f&#x0030C;"> <!-- small f caron -->
-<!ENTITY Fcirc       "F&#x00302;"> <!-- capital F circumflex -->
-<!ENTITY fcirc       "f&#x00302;"> <!-- small f circumflex -->
-<!ENTITY Fdot        "&#x01E1E;"> <!-- capital F dot above -->
-<!ENTITY Fmacr       "F&#x00304;"> <!-- capital F macron -->
-<!ENTITY fmacr       "f&#x00304;"> <!-- small f macron -->
-<!ENTITY frac17      "&#x02150;"> <!-- fraction 1 over 7 -->
-<!ENTITY frac43      "[frac43]"> <!-- fraction 4 over 3 -->
-<!ENTITY frac67      "[frac67]"> <!-- fraction 6 over 7 -->
-<!ENTITY frac97      "[frac97]"> <!-- fraction 9 over 7 -->
-<!ENTITY Ftilde      "F&#x00303;"> <!-- capital F tilde -->
-<!ENTITY ftilde      "f&#x00303;"> <!-- small f tilde -->
-<!ENTITY Gacute      "G&#x00301;"> <!-- capital G acute -->
-<!ENTITY gammacrc    "&#x003B3;&#x00302;"> <!-- small gamma circumflex -->
-<!ENTITY gammatilde  "&#x003B3;&#x00303;"> <!-- small gamma with tilde over -->
-<!ENTITY Gbox        "&#x1F136;"> <!-- capital G in open square -->
-<!ENTITY gcaron      "&#x001E7;"> <!-- small g caron -->
-<!ENTITY ggrave      "g&#x00300;"> <!-- small g grave -->
-<!ENTITY Gmacr       "&#x01E20;"> <!-- capital g macron-->
-<!ENTITY gmacr       "&#x01E21;"> <!-- small g macron-->
-<!ENTITY graybull    "[graybull]"> <!-- grey filled bullet -->
-<!ENTITY gsims       "&#x02273;"> <!-- greater than or equivalent to-->
-<!ENTITY Gtilde      "G&#x00303;"> <!-- capital g tilde -->
-<!ENTITY gtilde      "g&#x00303;"> <!-- small g tilde -->
-<!ENTITY guml        "g&#x00308;"> <!-- small g umlau -->
-<!ENTITY hbhatch     "[hbhatch]"> <!-- rectangle, hatched -->
-<!ENTITY Hcallig     "&#x1D43B;&#x0FE00;"> <!-- capital H calligraphy style -->
-<!ENTITY hexagon     "&#x02B21;"> <!-- open hexagon -->
-<!ENTITY Hmacr       "H&#x00304;"> <!-- capital H, macron -->
-<!ENTITY hmacr       "h&#x00304;"> <!-- small h, macron -->
-<!ENTITY hmacrcrc    "h&#x00304;&#x00302;"> <!-- small h macron with circumflex over -->
-<!ENTITY house       "&#x02302;"> <!-- house shape, open -->
-<!ENTITY Htilde      "H&#x00303;"> <!-- capital H tilde -->
-<!ENTITY htilde      "h&#x00303;"> <!-- small h tilde -->
-<!ENTITY hybullhl    "[hybullhl]"> <!-- rectangle, horizontal lines -->
-<!ENTITY ibreve      "&#x0012D;"> <!-- small i breve -->
-<!ENTITY icaron      "&#x001D0;"> <!-- small i caron -->
-<!ENTITY idot        "i"> <!-- small i dot above, Finnish -->
-<!ENTITY Imacr       "&#x0012A;"> <!-- capital I macron -->
-<!ENTITY Itilde      "&#x00128;"> <!-- capital I tilde -->
-<!ENTITY Jdot        "J&#x00307;"> <!-- capital J with dot over-->
-<!ENTITY Jmacr       "J&#x00304;"> <!-- capital J macron -->
-<!ENTITY jmacr       "j&#x00304;"> <!-- small j macron -->
-<!ENTITY Jring       "J&#x0030A;"> <!-- capital J ring -->
-<!ENTITY Kacute      "&#x01E30;"> <!-- capital K acute -->
-<!ENTITY kacute      "&#x01E31;"> <!-- small k acute -->
-<!ENTITY kappacrc    "&#x003BA;&#x00302;"> <!-- small kappa circumflex -->
-<!ENTITY Kcallig     "&#x1D43E;&#x0FE00;"> <!-- capital K calligraphy -->
-<!ENTITY Kcirc       "K&#x00302;"> <!-- capital K circumflex -->
-<!ENTITY kcirc       "k&#x00302;"> <!-- small k circumflex -->
-<!ENTITY Kmacr       "K&#x00304;"> <!-- capital K macron -->
-<!ENTITY kmacr       "k&#x00304;"> <!-- small k macron -->
-<!ENTITY Krarr       "K&#x020D7;"> <!-- capital K right arrow over -->
-<!ENTITY Ktilde      "K&#x00303;"> <!-- capital K tilde -->
-<!ENTITY lambdacrc   "&#x003BB;&#x00302;"> <!-- small lambda circumflex -->
-<!ENTITY lambdamn    "&#x003BB;&#x00304;"> <!-- small lambda, Greek with macron over -->
-<!ENTITY lambdatilde "&#x003BB;&#x00303;"> <!-- small lambda, Greek with tilde over -->
-<!ENTITY Lcallig     "&#x1D43F;&#x0FE00;"> <!-- capital L calligraphy style -->
-<!ENTITY Lcirc       "L&#x00302;"> <!-- capital L circumflex -->
-<!ENTITY lcirc       "l&#x00302;"> <!-- small l circumflex -->
-<!ENTITY Ldot        "L&#x00307;"> <!-- Capital L dot -->
-<!ENTITY Lmacr       "L&#x00304;"> <!-- capital L macron-->
-<!ENTITY lmacr       "l&#x00304;"> <!-- small l macron-->
-<!ENTITY lncircf     "[lncircf]"> <!-- circle with line-->
-<!ENTITY lndshd      "&#x02509;"> <!-- dashed line -->
-<!ENTITY lnthck      "[lnthck]"> <!-- thick line -->
-<!ENTITY Lring       "L&#x0030A;"> <!-- capital L with ring over-->
-<!ENTITY Ltilde      "L&#x00303;"> <!-- capital L with tilde over-->
-<!ENTITY ltilde      "l&#x00303;"> <!-- small l with tilde over-->
-<!ENTITY macr1       "1&#x00304;"> <!-- 1 macron  -->
-<!ENTITY macr2       "2&#x00304;"> <!-- 2 macron  -->
-<!ENTITY macr3       "3&#x00304;"> <!-- 3 macron  -->
-<!ENTITY macr4       "4&#x00304;"> <!-- 4 macron  -->
-<!ENTITY macr8       "8&#x00304;"> <!-- 8 macron  -->
-<!ENTITY macute      "&#x01E3F;"> <!-- small m acute -->
-<!ENTITY mart        "[mart]"> <!-- martingale -->
-<!ENTITY Mcallig     "&#x1D440;&#x0FE00;"> <!-- capital M calligraphy -->
-<!ENTITY Mcirc       "M&#x00302;"> <!-- capital M circumflex -->
-<!ENTITY mcirc       "m&#x00302;"> <!-- small m circumflex -->
-<!ENTITY Mmacr       "M&#x00304;"> <!-- capital M macron-->
-<!ENTITY mmacr       "m&#x00304;"> <!-- small m macron-->
-<!ENTITY Mtilde      "M&#x00303;"> <!-- Capital M tilde -->
-<!ENTITY mtilde      "m&#x00303;"> <!-- small m tilde -->
-<!ENTITY mtildcrc    "m&#x00303;&#x00302;"> <!-- small m tilde with circumflex over -->
-<!ENTITY mucirc      "&#x003BC;&#x00302;"> <!-- small mu, Greek with circumflex over -->
-<!ENTITY mumacr      "&#x003BC;&#x00304;"> <!-- small mu, Greek with macron over -->
-<!ENTITY mutilde     "&#x003BC;&#x00303;"> <!-- small mu tilde -->
-<!ENTITY Ncallig     "&#x1D441;&#x0FE00;"> <!-- capital N calligraphy -->
-<!ENTITY Ncirc       "N&#x00302;"> <!-- capital N circumflex -->
-<!ENTITY ndot        "&#x01E45;"> <!-- small n dot above -->
-<!ENTITY ngrave      "n&#x00300;"> <!-- small n grave -->
-<!ENTITY Nmacr       "N&#x00304;"> <!-- capital N macron -->
-<!ENTITY nmacr       "n&#x00304;"> <!-- small n macron -->
-<!ENTITY Nscr        "&#x1D4A9;"> <!-- capital N script -->
-<!ENTITY Nscrmacr    "&#x1D4A9;&#x00304;"> <!-- capital N script with macron over -->
-<!ENTITY Nscrtilde   "&#x1D4A9;&#x00303;"> <!-- capital N script with tilde over -->
-<!ENTITY numl        "n&#x00308;"> <!-- small n umlaut -->
-<!ENTITY nutilde     "&#x003BD;&#x00303;"> <!-- small nu, Greek with tilde over -->
-<!ENTITY obreve      "&#x0014F;"> <!-- small o breve -->
-<!ENTITY ocaron      "&#x001D2;"> <!-- lowercase o with caron over -->
-<!ENTITY oct1        "[oct1]"> <!-- octagon, dark grey -->
-<!ENTITY oct2        "[oct2]"> <!-- octagon, mid grey -->
-<!ENTITY oct3        "[oct3]"> <!-- octagon, no fill -->
-<!ENTITY Omegacrc    "&#x003A9;&#x00302;"> <!-- capital omega with circumflex over -->
-<!ENTITY omegacirc   "&#x003C9;&#x00302;"> <!-- small omega with circumflex over -->
-<!ENTITY omegadot    "&#x003C9;&#x00307;"> <!-- small omega dot over -->
-<!ENTITY Omegamacr   "&#x003A9;&#x00304;"> <!-- capital omega with macron over -->
-<!ENTITY Omegatilde  "&#x003A9;&#x00303;"> <!-- capital omega with tilde over -->
-<!ENTITY omegatilde  "&#x003C9;&#x00303;"> <!-- small omega with tilde over -->
-<!ENTITY oogon       "&#x001EB;"> <!-- small o ogonek -->
-<!ENTITY pacute      "&#x01E55;"> <!-- small p acute -->
-<!ENTITY partacute   "&#x02202;&#x00301;"> <!-- partial differential with acute over -->
-<!ENTITY Pcallig     "&#x1D443;&#x0FE00;"> <!-- capital P calligraphy style -->
-<!ENTITY pcedil      "p&#x00327;"> <!-- small p cedilla -->
-<!ENTITY Pcirc       "P&#x00302;"> <!-- capital P circumflex -->
-<!ENTITY pcirc       "p&#x00302;"> <!-- small p circumflex -->
-<!ENTITY Picirc      "&#x003A0;&#x00302;"> <!-- capital pi circumflex -->
-<!ENTITY picirc      "&#x003C0;&#x00302;"> <!-- small pi circumflex -->
-<!ENTITY piundl      "&#x003C0;&#x00332;"> <!-- small pi with underline -->
-<!ENTITY Phicirc     "&#x003A6;&#x00302;"> <!-- capital Phi with circumflex -->
-<!ENTITY phicirc     "&#x003C6;&#x00302;"> <!-- small phi with circumflex -->
-<!ENTITY phimacr     "&#x003C6;&#x00304;"> <!-- small phi macron -->
-<!ENTITY phiundl     "&#x003C6;&#x00332;"> <!-- small phi underlined -->
-<!ENTITY plusdash    "&#x02508;&#x020D3;"> <!-- plus sign with dashed line -->
-<!ENTITY plusln      "[plusln]"> <!-- plus sign with line -->
-<!ENTITY Pmacr       "P&#x00304;"> <!-- capital p macron -->
-<!ENTITY pmacr       "p&#x00304;"> <!-- small p macron -->
-<!ENTITY psicirc     "&#x003C8;&#x00302;"> <!-- small psi circumflex -->
-<!ENTITY Psitilde    "&#x003A8;&#x00303;"> <!-- capital Psi tilde -->
-<!ENTITY Ptilde      "P&#x00303;"> <!-- capital P tilde -->
-<!ENTITY ptilde      "p&#x00303;"> <!-- small p tilde -->
-<!ENTITY Puml        "P&#x00308;"> <!-- capital P umlaut -->
-<!ENTITY qbreve      "q&#x00306;"> <!-- small q breve -->
-<!ENTITY Qcedil      "Q&#x00327;"> <!-- capital Q cedilla -->
-<!ENTITY Qcirc       "Q&#x00302;"> <!-- capital Q circumflex -->
-<!ENTITY qcirc       "q&#x00302;"> <!-- small q circumflex -->
-<!ENTITY Qdot        "Q&#x00307;"> <!-- capital Q dot over -->
-<!ENTITY qdot        "q&#x00307;"> <!-- small q dot over -->
-<!ENTITY Qequals     "Q&#x00347;"> <!-- capital Q with equal sign under -->
-<!ENTITY Qmacr       "Q&#x00304;"> <!-- capital Q macron -->
-<!ENTITY qmacr       "q&#x00304;"> <!-- small q macron -->
-<!ENTITY Qscr        "&#x1D4AC;"> <!-- capital Q script -->
-<!ENTITY Qtilde      "Q&#x00303;"> <!-- capital Q tilde -->
-<!ENTITY qtilde      "q&#x00303;"> <!-- small q tilde -->
-<!ENTITY rbreve      "r&#x00306;"> <!-- small r breve -->
-<!ENTITY Rcirc       "R&#x00302;"> <!-- capital R circumflex -->
-<!ENTITY rcirc       "r&#x00302;"> <!-- small r circumflex -->
-<!ENTITY Rdot        "&#x01E58;"> <!-- capital R with dot over -->
-<!ENTITY rhocirc     "&#x003C1;&#x00302;"> <!-- small rho circumflex -->
-<!ENTITY rhomacr     "&#x003C1;&#x00304;"> <!-- small rho macron -->
-<!ENTITY Rmacr       "R&#x00304;"> <!-- capital R macron-->
-<!ENTITY rmacr       "r&#x00304;"> <!-- small r macron-->
-<!ENTITY Ropf        "&#x0211D;"> <!-- capital r openface-->
-<!ENTITY rring       "r&#x0030A;"> <!-- small r ring-->
-<!ENTITY Rtilde      "R&#x00303;"> <!-- capital R tilde -->
-<!ENTITY rtilde      "r&#x00303;"> <!-- small r tilde -->
-<!ENTITY Sbreve      "S&#x00306;"> <!-- capital S breve -->
-<!ENTITY sbreve      "s&#x00306;"> <!-- small s breve -->
-<!ENTITY scissors    "&#x02704;"> <!-- scissors -->
-<!ENTITY Sdot        "&#x01E60;"> <!-- capital S dot above -->
-<!ENTITY Sigmacrc    "&#x003A3;&#x00302;"> <!-- capital Sigma, Greek with circ over -->
-<!ENTITY sigmacrc    "&#x003C2;&#x00302;"> <!-- small sigma, Greek with circ over -->
-<!ENTITY Sigmamacr   "&#x003A3;&#x00304;"> <!-- capital Sigma, Greek with macron over -->
-<!ENTITY sigmamacr   "&#x003C2;&#x00304;"> <!-- small sigma, Greek with macron over -->
-<!ENTITY Sigmatilde  "&#x003A3;&#x00303;"> <!-- capital Sigma, Greek with tilde over -->
-<!ENTITY sigmatld    "&#x003C3;&#x00303;"> <!-- small sigma, Greek with tilde -->
-<!ENTITY Smacr       "S&#x00304;"> <!-- capital S macron-->
-<!ENTITY smacr       "s&#x00304;"> <!-- small s macron-->
-<!ENTITY smacrcrc    "s&#x00304;&#x00302;"> <!-- small s macron with circumflex over-->
-<!ENTITY Sogon       "S&#x00328;"> <!-- capital S ogonek -->
-<!ENTITY sogon       "s&#x00328;"> <!-- small s ogonek -->
-<!ENTITY sqdot5      "[sqdot5]"> <!-- 5 dots in square -->
-<!ENTITY sqdot7      "[sqdot7]"> <!-- 7 dots in square -->
-<!ENTITY sqdot8      "[sqdot8]"> <!-- 8 dots in square  -->
-<!ENTITY sqln        "[sqln]"> <!-- square with line  -->
-<!ENTITY sqpatocr    "[sqpatocr]"> <!-- square pattern open crosses  -->
-<!ENTITY squdcr      "[squdcr]"> <!-- square diagonal cross -->
-<!ENTITY squdd2      "[squdd2]"> <!-- square diag down 2-stripe -->
-<!ENTITY squdd3      "[squdd3]"> <!-- square diag down 3-stripe -->
-<!ENTITY squdd6      "[squdd6]"> <!-- square diag down 6-stripe -->
-<!ENTITY squdots     "[squdots]"> <!-- square with single dot -->
-<!ENTITY squdu3      "[squdu3]"> <!-- square diag up 3-stripe -->
-<!ENTITY squdu6      "[squdu6]"> <!-- square diag up 6-stripe -->
-<!ENTITY squfdd3     "[squfdd3]"> <!-- filled square diag down 3-stripe-->
-<!ENTITY squfdu3     "[squfdu3]"> <!-- filled square diag up 3-stripe-->
-<!ENTITY squfhln     "[squfhln]"> <!-- filled square with line-->
-<!ENTITY sqzigdu     "[sqzigdu]"> <!-- square zigzag diag up stripes-->
-<!ENTITY starcir     "&#x0272A;"> <!-- open star in filled circle -->
-<!ENTITY starhf      "[starhf]"> <!-- star, half-filled -->
-<!ENTITY Stilde      "S&#x00303;"> <!-- capital S tilde -->
-<!ENTITY stilde      "s&#x00303;"> <!-- small s tilde -->
-<!ENTITY sturk       "[sturk]"> <!-- small s, Turkish -->
-<!ENTITY suml        "s&#x00308;"> <!-- small s umlaut -->
-<!ENTITY tacute      "t&#x00301;"> <!-- small t acute -->
-<!ENTITY taucirc     "&#x003C4;&#x00302;"> <!-- small tau circumflex -->
-<!ENTITY tbreve      "t&#x00306;"> <!-- small t breve -->
-<!ENTITY Tcallig     "&#x1D447;&#x0FE00;"> <!-- capital T calligraphy -->
-<!ENTITY Tcirc       "T&#x00302;"> <!-- capital T circumflex -->
-<!ENTITY tcirc       "t&#x00302;"> <!-- small t circumflex -->
-<!ENTITY thetacrc    "&#x003B8;&#x00302;"> <!-- small theta, Greek with circumflex over -->
-<!ENTITY thetacirc   "&#x003B8;&#x00302;"> <!-- small theta, Greek with circumflex over -->
-<!ENTITY thetamacr   "&#x003B8;&#x00304;"> <!-- small theta, Greek with macron over -->
-<!ENTITY thetatilde  "&#x003B8;&#x00303;"> <!-- small theta, Greek with tilde over -->
-<!ENTITY Tmacr       "T&#x00304;"> <!-- capital T macron -->
-<!ENTITY tmacr       "t&#x00304;"> <!-- small t macron -->
-<!ENTITY trapln      "[trapln]"> <!-- trapezoid with line -->
-<!ENTITY trie        "&#x0225C;"> <!-- delta equal to -->
-<!ENTITY trifln      "[trifln]"> <!-- filled triangle with line -->
-<!ENTITY triln       "[triln]"> <!-- triangle with line -->
-<!ENTITY Tstrok      "&#x00166;"> <!-- capital T stroke -->
-<!ENTITY Ttilde      "T&#x00303;"> <!-- capital T tilde -->
-<!ENTITY ttilde      "t&#x00303;"> <!-- small t tilde -->
-<!ENTITY udot        "u&#x00307;"> <!-- small u dot above -->
-<!ENTITY vacute      "v&#x00301;"> <!-- small v acute -->
-<!ENTITY varrul      "&#x02195;&#x00332;"> <!-- updown arrow, underlined -->
-<!ENTITY Vcirc       "V&#x00302;"> <!-- capital v circumflex -->
-<!ENTITY vcirc       "v&#x00302;"> <!-- small v circumflex -->
-<!ENTITY Vdot        "V&#x00307;"> <!-- capital V dot above -->
-<!ENTITY vdot        "v&#x00307;"> <!-- small v dot over -->
-<!ENTITY Vdoti       "&#x1D449;&#x00307;"> <!-- capital V dot above, italic -->
-<!ENTITY Vmacr       "V&#x00304;"> <!-- capital V macron -->
-<!ENTITY vmacr       "v&#x00304;"> <!-- lowercase V macron -->
-<!ENTITY Vtilde      "V&#x00303;"> <!-- capital v tilde -->
-<!ENTITY vtilde      "v&#x00303;"> <!-- small v tilde -->
-<!ENTITY Wcirc       "&#x00174;"> <!-- capital W circumflex -->
-<!ENTITY Wdot        "&#x01E86;"> <!-- capital W dot -->
-<!ENTITY Wmacr       "W&#x00304;"> <!-- capital W macron -->
-<!ENTITY wmacr       "w&#x00304;"> <!-- small w macron -->
-<!ENTITY Wstrok      "W&#x00336;"> <!-- capital W with stroke through it -->
-<!ENTITY Wtilde      "W&#x00303;"> <!-- capital W tilde -->
-<!ENTITY wtilde      "w&#x00303;"> <!-- small w tilde -->
-<!ENTITY Wuml        "W&#x00308;"> <!-- capital W umlaut -->
-<!ENTITY xacute      "x&#x00301;"> <!-- small x with acute over -->
-<!ENTITY Xcirc       "X&#x00302;"> <!-- Deprecated -->
-<!ENTITY xcrcmflx    "x&#x00302;"> <!-- small x circumflex -->
-<!ENTITY Xcrcmflx    "X&#x00302;"> <!-- capital x circumflex -->
-<!ENTITY Xdot        "&#x01E8A;"> <!-- capital X with dot above -->
-<!ENTITY xdot        "&#x01E8B;"> <!-- small x dot above -->
-<!ENTITY xhln        "[xhln]"> <!-- x with horizontal line -->
-<!ENTITY Xmacr       "X&#x00304;"> <!-- capital X macron -->
-<!ENTITY xmacr       "x&#x00304;"> <!-- small x macron -->
-<!ENTITY Xmacrcrc    "X&#x00304;&#x00302;"> <!-- large italic X with macron and circ over -->
-<!ENTITY Xtilde      "X&#x00303;"> <!-- capital X tilde -->
-<!ENTITY xtilde      "x&#x00303;"> <!-- small x tilde -->
-<!ENTITY xwedge      "&#x022C0;"> <!-- bigwedge L logical or operator -->
-<!ENTITY Ydot        "&#x01E8E;"> <!-- capital Y with dot above -->
-<!ENTITY ydot        "&#x01E8F;"> <!-- small y dot above -->
-<!ENTITY ygrave      "y&#x00300;"> <!-- small y grave above -->
-<!ENTITY Ymacr       "Y&#x00304;"> <!-- capital Y macron -->
-<!ENTITY ymacr       "y&#x00304;"> <!-- small y macron -->
-<!ENTITY Ytilde      "Y&#x00303;"> <!-- capital Y tilde -->
-<!ENTITY ytilde      "y&#x00303;"> <!-- small y tilde -->
-<!ENTITY Zbreve      "Z&#x00306;"> <!-- capital Z breve -->
-<!ENTITY zbreve      "z&#x00306;"> <!-- small z breve -->
-<!ENTITY zcedil      "z&#x00327;"> <!-- small z cedilla -->
-<!ENTITY Zcirc       "&#x01E90;"> <!-- capital Z circumflex -->
-<!ENTITY zcirc       "&#x01E91;"> <!-- small z circumflex -->
-<!ENTITY zetacn      "&#x003B6;&#x0030C;"> <!-- small zeta, Greek with caron over -->
-<!ENTITY zgrave      "z&#x00300;"> <!-- small z grave -->
-<!ENTITY Zmacr       "Z&#x00304;"> <!-- capital Z macron -->
-<!ENTITY zmacr       "z&#x00304;"> <!-- small z macron -->
-<!ENTITY zring       "z&#x0030A;"> <!-- small z ring -->
-<!ENTITY Zstrok      "&#x001B5;"> <!-- capital z, horizontal stroke -->
-<!ENTITY zstrok      "&#x001B6;"> <!-- small z, horizontal stroke -->
-<!ENTITY Zstrokcn    "&#x001B5;&#x0030C;"> <!-- capital Z, Polish with caron over -->
-<!ENTITY ztilde      "z&#x00303;"> <!-- small z, with tilde over -->
-<!ENTITY Zuml        "Z&#x00308;"> <!-- capital Z umlaut -->
+<!ENTITY Acaron          "&#x001CD;">            <!-- capital A caron -->
+<!ENTITY acaron          "&#x001CE;">            <!-- small a caron -->
+<!ENTITY Acallig         "&#x1D434;&#x0FE00;">   <!-- capital A calligraphy -->
+<!ENTITY acedil          "a&#x00327;">           <!-- small a cedilla -->
+<!ENTITY adblac          "a&#x0030B;">           <!-- small a dblac -->
+<!ENTITY adot            "a&#x00307;">           <!-- small a dot -->
+<!ENTITY alphaacute      "&#x003B1;&#x00301;">   <!-- small alpha acute -->
+<!ENTITY alphacrc        "&#x003B1;&#x00302;">   <!-- small alpha circumflex -->
+<!ENTITY alphamacr       "&#x003B1;&#x00304;">   <!-- small alpha macron -->
+<!ENTITY alphatilde      "&#x003B1;&#x00303;">   <!-- small alpha tilde -->
+<!ENTITY Aringacute      "&#x001FA;">            <!-- capital A ring with acute over -->
+<!ENTITY astln           "&#x0002A;&#x00336;">   <!-- asterix with line -->
+<!ENTITY bacute          "b&#x00301;">           <!-- small b acute  -->
+<!ENTITY Bauriol         "[Bauriol]">            <!-- large italic B in Auriol font -->
+<!ENTITY Bcallig         "&#x1D435;&#x0FE00;">   <!-- capital B calligraphy -->
+<!ENTITY Bcaron          "B&#x0030C;">           <!-- capital B caron -->
+<!ENTITY Bcirc           "B&#x00302;">           <!-- large B circumflex -->
+<!ENTITY bcirc           "b&#x00302;">           <!-- small b circumflex -->
+<!ENTITY Bdot            "&#x01E02;">            <!-- large B with dot over -->
+<!ENTITY betacrc         "&#x003B2;&#x00302;">   <!-- small beta, Greek with circumflex over  -->
+<!ENTITY betamacr        "&#x003B2;&#x00304;">   <!-- small beta, Greek with macron over  -->
+<!ENTITY betatilde       "&#x003B2;&#x00303;">   <!-- small beta, Greek with tilde over  -->
+<!ENTITY bbcirc          "b&#x00302;">           <!-- small b, bold with circumflex over  -->
+<!ENTITY block1          "[block1]">             <!-- square block, small dots  -->
+<!ENTITY block2          "[block2]">             <!-- square block, medium dots  -->
+<!ENTITY block3          "[block3]">             <!-- square block, diagonal lines  -->
+<!ENTITY block4          "[block4]">             <!-- square block, left diagonal lines  -->
+<!ENTITY block5          "[block5]">             <!-- square block, crisscross lines  -->
+<!ENTITY block6          "[block6]">             <!-- square block, white square  -->
+<!ENTITY block7          "[block7]">             <!-- square block, black square  -->
+<!ENTITY block8          "[block8]">             <!-- square block, dots  -->
+<!ENTITY block9          "[block9]">             <!-- square block, dots  -->
+<!ENTITY block10         "[block10]">            <!-- square block, dots  -->
+<!ENTITY block11         "[block11]">            <!-- square block, dots  -->
+<!ENTITY block12         "[block12]">            <!-- square block, shaded  -->
+<!ENTITY block13         "[block13]">            <!-- square block, shaded  -->
+<!ENTITY block14         "[block14]">            <!-- square block, shaded  -->
+<!ENTITY block15         "[block15]">            <!-- square block, shaded  -->
+<!ENTITY block16         "[block16]">            <!-- square block, black square with white dots -->
+<!ENTITY block17         "[block17]">            <!-- square block, thick horizontal lines -->
+<!ENTITY block18         "[block18]">            <!-- square block, thick vertical lines -->
+<!ENTITY block19         "[block19]">            <!-- square block, thick 315 degree lines -->
+<!ENTITY block20         "[block20]">            <!-- square block, thick 45 degree lines -->
+<!ENTITY block21         "[block21]">            <!-- square block, chequered -->
+<!ENTITY block22         "[block22]">            <!-- square block, thin horizontal lines -->
+<!ENTITY block23         "[block23]">            <!-- square block, thin vertical lines -->
+<!ENTITY block24         "[block24]">            <!-- square block, thin 315 degree lines -->
+<!ENTITY block25         "[block25]">            <!-- square block, thin 45 degree lines -->
+<!ENTITY block26         "[block26]">            <!-- square block, crossed lines -->
+<!ENTITY block27         "[block27]">            <!-- square block, shaded -->
+<!ENTITY block28         "[block28]">            <!-- square block, shaded -->
+<!ENTITY block29         "[block29]">            <!-- square block, shaded -->
+<!ENTITY block30         "[block30]">            <!-- square block, shaded -->
+<!ENTITY block31         "[block31]">            <!-- square block, shaded -->
+<!ENTITY block32         "[block32]">            <!-- square block, brown -->
+<!ENTITY block33         "[block33]">            <!-- square block, olive -->
+<!ENTITY block34         "[block34]">            <!-- square block, circle -->
+<!ENTITY block35         "[block35]">            <!-- square block, diagonal dashes -->
+<!ENTITY block36         "[block36]">            <!-- square block, gold -->
+<!ENTITY blockrect       "[blockrect]">          <!-- square block, diagonal lines -->
+<!ENTITY Bmacr           "B&#x00304;">           <!-- capital B macron -->
+<!ENTITY bmacr           "b&#x00304;">           <!-- small b macron -->
+<!ENTITY Brarr           "B&#x020D7;">           <!-- capital B with right arrow over -->
+<!ENTITY Btilde          "B&#x00303;">           <!-- capital B tilde -->
+<!ENTITY btilde          "b&#x00303;">           <!-- small b tilde -->
+<!ENTITY Cbreve          "C&#x00306;">           <!-- capital C breve -->
+<!ENTITY cbreve          "c&#x00306;">           <!-- small c breve -->
+<!ENTITY Ccallig         "&#x1D436;&#x0FE00;">   <!-- capital C calligraphy style -->
+<!ENTITY cgrave          "c&#x00300;">           <!-- small c grave -->
+<!ENTITY chimcr          "&#x003C7;&#x00304;">   <!-- small chi macron -->
+<!ENTITY cir12           "[cir12]">              <!-- 50% shaded circle -->
+<!ENTITY circdot         "&#x02299;">            <!-- circle with dot in the middle-->
+<!ENTITY CirclePlus      "&#x02295;">            <!-- Large circle with plus inside-->
+<!ENTITY circln          "&#x025EF;&#x00336;">   <!-- circle with line through -->
+<!ENTITY circshf         "[circshf]">            <!-- circle with shaded fill -->
+<!ENTITY cirf            "&#x025CF;">            <!-- circle with solid fill -->
+<!ENTITY Cmacr           "C&#x00304;">           <!-- capital C macron -->
+<!ENTITY cmacr           "c&#x00304;">           <!-- small c macron-->
+<!ENTITY Cogon           "C&#x00328;">           <!-- capital C ogonek -->
+<!ENTITY cogwl           "[cogwl]">              <!-- cog-wheel, 8 teeth -->
+<!ENTITY crolo           "&#x0271E;">            <!-- long open cross -->
+<!ENTITY crorecf         "&#x0271A;">            <!-- cross, rect arms, filled -->
+<!ENTITY crorecoc        "&#x0271C;">            <!-- cross, rect arms, open centre -->
+<!ENTITY crossrnd        "&#x02724;">            <!-- cross, rounded arms-->
+<!ENTITY crostar         "&#x02726;">            <!-- cross, star -->
+<!ENTITY Ctilde          "C&#x00303;">           <!-- capital C tilde -->
+<!ENTITY ctilde          "c&#x00303;">           <!-- small c tilde -->
+<!ENTITY Dacute          "D&#x00301;">           <!-- capital D acute -->
+<!ENTITY dacute          "d&#x00301;">           <!-- small d acute -->
+<!ENTITY Dcirc           "D&#x00302;">           <!-- capital D circumflex -->
+<!ENTITY dcirc           "d&#x00302;">           <!-- small d circumflex -->
+<!ENTITY Deltadot        "&#x00394;&#x00307;">   <!-- capital Delta, Greek with dot -->
+<!ENTITY Deltamacr       "&#x00394;&#x00304;">   <!-- capital Delta, Greek with macron over -->
+<!ENTITY DeltaPsi        "&#x1D71F;">            <!-- capital Delta, Greek, bold upright -->
+<!ENTITY Deltauml        "&#x00394;&#x00308;">   <!-- capital Delta, Greek with umlau -->
+<!ENTITY deltacrc        "&#x003B4;&#x00302;">   <!-- small delta, Greek with circumflex over -->
+<!ENTITY deltamacr       "&#x003B4;&#x00304;">   <!-- small delta, Greek with macron over -->
+<!ENTITY deltaundl       "&#x003B4;&#x00332;">   <!-- small delta, Greek underlined -->
+<!ENTITY diamfln         "&#x025C6;&#x00336;">   <!-- filled diamond with line -->
+<!ENTITY diamln          "&#x025C7;&#x00336;">   <!-- diamond with line -->
+<!ENTITY Dmacr           "D&#x00304;">           <!-- capital D macron -->
+<!ENTITY dmacr           "d&#x00304;">           <!-- small d macron -->
+<!ENTITY Dtilde          "D&#x00303;">           <!-- capital D tilde -->
+<!ENTITY dtilde          "d&#x00303;">           <!-- small d tilde -->
+<!ENTITY Ebreve          "&#x00114;">            <!-- capital E breve -->
+<!ENTITY ebreve          "&#x00115;">            <!-- small e breve -->
+<!ENTITY ecedil          "&#x00229;">            <!-- small e cedilla -->
+<!ENTITY edblac          "e&#x0030B;">           <!-- small e with double acute -->
+<!ENTITY emptyv          "&#x02205;">            <!-- empty set variant -->
+<!ENTITY epsilondot      "&#x003B5;&#x00307;">   <!-- epsilon dot over -->
+<!ENTITY epsilonundl     "&#x003B5;&#x00332;">   <!-- epsilon underlined -->
+<!ENTITY epsimacr        "&#x003B5;&#x00304;">   <!-- epsilon straight macron -->
+<!ENTITY epsivacute      "&#x1D700;&#x00301;">   <!-- epsilon variant acute -->
+<!ENTITY epsivcrc        "&#x1D700;&#x00302;">   <!-- epsilon variant with circumflex over -->
+<!ENTITY epsivmcr        "&#x1D700;&#x00304;">   <!-- epsilon variant macron -->
+<!ENTITY epsivtilde      "&#x1D700;&#x00303;">   <!-- epsilon variant tilde -->
+<!ENTITY etacirc         "&#x003B7;&#x00302;">   <!-- small e tilde with circumflex over -->
+<!ENTITY Etilde          "E&#x00303;">           <!-- capital e tilde -->
+<!ENTITY etilde          "e&#x00303;">           <!-- small e tilde -->
+<!ENTITY euro            "&#x020AC;">            <!-- euro currency sign -->
+<!ENTITY facute          "f&#x00301;">           <!-- small f acute -->
+<!ENTITY fcaron          "f&#x0030C;">           <!-- small f caron -->
+<!ENTITY Fcirc           "F&#x00302;">           <!-- capital F circumflex -->
+<!ENTITY fcirc           "f&#x00302;">           <!-- small f circumflex -->
+<!ENTITY Fdot            "&#x01E1E;">            <!-- capital F dot above -->
+<!ENTITY Fmacr           "F&#x00304;">           <!-- capital F macron -->
+<!ENTITY fmacr           "f&#x00304;">           <!-- small f macron -->
+<!ENTITY frac17          "&#x02150;">            <!-- fraction 1 over 7 -->
+<!ENTITY frac43          "[frac43]">             <!-- fraction 4 over 3 -->
+<!ENTITY frac67          "[frac67]">             <!-- fraction 6 over 7 -->
+<!ENTITY frac97          "[frac97]">             <!-- fraction 9 over 7 -->
+<!ENTITY Ftilde          "F&#x00303;">           <!-- capital F tilde -->
+<!ENTITY ftilde          "f&#x00303;">           <!-- small f tilde -->
+<!ENTITY Gacute          "G&#x00301;">           <!-- capital G acute -->
+<!ENTITY gammacrc        "&#x003B3;&#x00302;">   <!-- small gamma circumflex -->
+<!ENTITY gammatilde      "&#x003B3;&#x00303;">   <!-- small gamma with tilde over -->
+<!ENTITY Gbox            "&#x1F136;">            <!-- capital G in open square -->
+<!ENTITY gcaron          "&#x001E7;">            <!-- small g caron -->
+<!ENTITY ggrave          "g&#x00300;">           <!-- small g grave -->
+<!ENTITY Gmacr           "&#x01E20;">            <!-- capital g macron-->
+<!ENTITY gmacr           "&#x01E21;">            <!-- small g macron-->
+<!ENTITY graybull        "[graybull]">           <!-- grey filled bullet -->
+<!ENTITY gsims           "&#x02273;">            <!-- greater than or equivalent to-->
+<!ENTITY Gtilde          "G&#x00303;">           <!-- capital g tilde -->
+<!ENTITY gtilde          "g&#x00303;">           <!-- small g tilde -->
+<!ENTITY guml            "g&#x00308;">           <!-- small g umlau -->
+<!ENTITY hbhatch         "[hbhatch]">            <!-- rectangle, hatched -->
+<!ENTITY Hcallig         "&#x1D43B;&#x0FE00;">   <!-- capital H calligraphy style -->
+<!ENTITY hexagon         "&#x02B21;">            <!-- open hexagon -->
+<!ENTITY Hmacr           "H&#x00304;">           <!-- capital H, macron -->
+<!ENTITY hmacr           "h&#x00304;">           <!-- small h, macron -->
+<!ENTITY hmacrcrc        "h&#x00304;&#x00302;">  <!-- small h macron with circumflex over -->
+<!ENTITY house           "&#x02302;">            <!-- house shape, open -->
+<!ENTITY Htilde          "H&#x00303;">           <!-- capital H tilde -->
+<!ENTITY htilde          "h&#x00303;">           <!-- small h tilde -->
+<!ENTITY hybullhl        "[hybullhl]">           <!-- rectangle, horizontal lines -->
+<!ENTITY ibreve          "&#x0012D;">            <!-- small i breve -->
+<!ENTITY icaron          "&#x001D0;">            <!-- small i caron -->
+<!ENTITY idot            "i">                    <!-- small i dot above, Finnish -->
+<!ENTITY Imacr           "&#x0012A;">            <!-- capital I macron -->
+<!ENTITY Itilde          "&#x00128;">            <!-- capital I tilde -->
+<!ENTITY Jdot            "J&#x00307;">           <!-- capital J with dot over-->
+<!ENTITY Jmacr           "J&#x00304;">           <!-- capital J macron -->
+<!ENTITY jmacr           "j&#x00304;">           <!-- small j macron -->
+<!ENTITY Jring           "J&#x0030A;">           <!-- capital J ring -->
+<!ENTITY Kacute          "&#x01E30;">            <!-- capital K acute -->
+<!ENTITY kacute          "&#x01E31;">            <!-- small k acute -->
+<!ENTITY kappacrc        "&#x003BA;&#x00302;">   <!-- small kappa circumflex -->
+<!ENTITY Kcallig         "&#x1D43E;&#x0FE00;">   <!-- capital K calligraphy -->
+<!ENTITY Kcirc           "K&#x00302;">           <!-- capital K circumflex -->
+<!ENTITY kcirc           "k&#x00302;">           <!-- small k circumflex -->
+<!ENTITY Kmacr           "K&#x00304;">           <!-- capital K macron -->
+<!ENTITY kmacr           "k&#x00304;">           <!-- small k macron -->
+<!ENTITY Krarr           "K&#x020D7;">           <!-- capital K right arrow over -->
+<!ENTITY Ktilde          "K&#x00303;">           <!-- capital K tilde -->
+<!ENTITY lambdacrc       "&#x003BB;&#x00302;">   <!-- small lambda circumflex -->
+<!ENTITY lambdamn        "&#x003BB;&#x00304;">   <!-- small lambda, Greek with macron over -->
+<!ENTITY lambdatilde     "&#x003BB;&#x00303;">   <!-- small lambda, Greek with tilde over -->
+<!ENTITY Lcallig         "&#x1D43F;&#x0FE00;">   <!-- capital L calligraphy style -->
+<!ENTITY Lcirc           "L&#x00302;">           <!-- capital L circumflex -->
+<!ENTITY lcirc           "l&#x00302;">           <!-- small l circumflex -->
+<!ENTITY Ldot            "L&#x00307;">           <!-- Capital L dot -->
+<!ENTITY Lmacr           "L&#x00304;">           <!-- capital L macron-->
+<!ENTITY lmacr           "l&#x00304;">           <!-- small l macron-->
+<!ENTITY lncircf         "[lncircf]">            <!-- circle with line-->
+<!ENTITY lndshd          "&#x02509;">            <!-- dashed line -->
+<!ENTITY lnthck          "[lnthck]">             <!-- thick line -->
+<!ENTITY Lring           "L&#x0030A;">           <!-- capital L with ring over-->
+<!ENTITY Ltilde          "L&#x00303;">           <!-- capital L with tilde over-->
+<!ENTITY ltilde          "l&#x00303;">           <!-- small l with tilde over-->
+<!ENTITY macr1           "1&#x00304;">           <!-- 1 macron  -->
+<!ENTITY macr2           "2&#x00304;">           <!-- 2 macron  -->
+<!ENTITY macr3           "3&#x00304;">           <!-- 3 macron  -->
+<!ENTITY macr4           "4&#x00304;">           <!-- 4 macron  -->
+<!ENTITY macr8           "8&#x00304;">           <!-- 8 macron  -->
+<!ENTITY macute          "&#x01E3F;">            <!-- small m acute -->
+<!ENTITY mart            "[mart]">               <!-- martingale -->
+<!ENTITY Mcallig         "&#x1D440;&#x0FE00;">   <!-- capital M calligraphy -->
+<!ENTITY Mcirc           "M&#x00302;">           <!-- capital M circumflex -->
+<!ENTITY mcirc           "m&#x00302;">           <!-- small m circumflex -->
+<!ENTITY Mmacr           "M&#x00304;">           <!-- capital M macron-->
+<!ENTITY mmacr           "m&#x00304;">           <!-- small m macron-->
+<!ENTITY Mtilde          "M&#x00303;">           <!-- Capital M tilde -->
+<!ENTITY mtilde          "m&#x00303;">           <!-- small m tilde -->
+<!ENTITY mtildcrc        "m&#x00303;&#x00302;">  <!-- small m tilde with circumflex over -->
+<!ENTITY mucirc          "&#x003BC;&#x00302;">   <!-- small mu, Greek with circumflex over -->
+<!ENTITY mumacr          "&#x003BC;&#x00304;">   <!-- small mu, Greek with macron over -->
+<!ENTITY mutilde         "&#x003BC;&#x00303;">   <!-- small mu tilde -->
+<!ENTITY Ncallig         "&#x1D441;&#x0FE00;">   <!-- capital N calligraphy -->
+<!ENTITY Ncirc           "N&#x00302;">           <!-- capital N circumflex -->
+<!ENTITY ndot            "&#x01E45;">            <!-- small n dot above -->
+<!ENTITY ngrave          "n&#x00300;">           <!-- small n grave -->
+<!ENTITY Nmacr           "N&#x00304;">           <!-- capital N macron -->
+<!ENTITY nmacr           "n&#x00304;">           <!-- small n macron -->
+<!ENTITY Nscr            "&#x1D4A9;">            <!-- capital N script -->
+<!ENTITY Nscrmacr        "&#x1D4A9;&#x00304;">   <!-- capital N script with macron over -->
+<!ENTITY Nscrtilde       "&#x1D4A9;&#x00303;">   <!-- capital N script with tilde over -->
+<!ENTITY numl            "n&#x00308;">           <!-- small n umlaut -->
+<!ENTITY nutilde         "&#x003BD;&#x00303;">   <!-- small nu, Greek with tilde over -->
+<!ENTITY obreve          "&#x0014F;">            <!-- small o breve -->
+<!ENTITY ocaron          "&#x001D2;">            <!-- lowercase o with caron over -->
+<!ENTITY oct1            "[oct1]">               <!-- octagon, dark grey -->
+<!ENTITY oct2            "[oct2]">               <!-- octagon, mid grey -->
+<!ENTITY oct3            "[oct3]">               <!-- octagon, no fill -->
+<!ENTITY Omegacrc        "&#x003A9;&#x00302;">   <!-- capital omega with circumflex over -->
+<!ENTITY omegacirc       "&#x003C9;&#x00302;">   <!-- small omega with circumflex over -->
+<!ENTITY omegadot        "&#x003C9;&#x00307;">   <!-- small omega dot over -->
+<!ENTITY Omegamacr       "&#x003A9;&#x00304;">   <!-- capital omega with macron over -->
+<!ENTITY Omegatilde      "&#x003A9;&#x00303;">   <!-- capital omega with tilde over -->
+<!ENTITY omegatilde      "&#x003C9;&#x00303;">   <!-- small omega with tilde over -->
+<!ENTITY oogon           "&#x001EB;">            <!-- small o ogonek -->
+<!ENTITY pacute          "&#x01E55;">            <!-- small p acute -->
+<!ENTITY partacute       "&#x02202;&#x00301;">   <!-- partial differential with acute over -->
+<!ENTITY Pcallig         "&#x1D443;&#x0FE00;">   <!-- capital P calligraphy style -->
+<!ENTITY pcedil          "p&#x00327;">           <!-- small p cedilla -->
+<!ENTITY Pcirc           "P&#x00302;">           <!-- capital P circumflex -->
+<!ENTITY pcirc           "p&#x00302;">           <!-- small p circumflex -->
+<!ENTITY Picirc          "&#x003A0;&#x00302;">   <!-- capital pi circumflex -->
+<!ENTITY picirc          "&#x003C0;&#x00302;">   <!-- small pi circumflex -->
+<!ENTITY piundl          "&#x003C0;&#x00332;">   <!-- small pi with underline -->
+<!ENTITY Phicirc         "&#x003A6;&#x00302;">   <!-- capital Phi with circumflex -->
+<!ENTITY phicirc         "&#x003C6;&#x00302;">   <!-- small phi with circumflex -->
+<!ENTITY phimacr         "&#x003C6;&#x00304;">   <!-- small phi macron -->
+<!ENTITY phiundl         "&#x003C6;&#x00332;">   <!-- small phi underlined -->
+<!ENTITY plusdash        "&#x02508;&#x020D3;">   <!-- plus sign with dashed line -->
+<!ENTITY plusln          "[plusln]">             <!-- plus sign with line -->
+<!ENTITY Pmacr           "P&#x00304;">           <!-- capital p macron -->
+<!ENTITY pmacr           "p&#x00304;">           <!-- small p macron -->
+<!ENTITY psicirc         "&#x003C8;&#x00302;">   <!-- small psi circumflex -->
+<!ENTITY Psitilde        "&#x003A8;&#x00303;">   <!-- capital Psi tilde -->
+<!ENTITY Ptilde          "P&#x00303;">           <!-- capital P tilde -->
+<!ENTITY ptilde          "p&#x00303;">           <!-- small p tilde -->
+<!ENTITY Puml            "P&#x00308;">           <!-- capital P umlaut -->
+<!ENTITY qbreve          "q&#x00306;">           <!-- small q breve -->
+<!ENTITY Qcedil          "Q&#x00327;">           <!-- capital Q cedilla -->
+<!ENTITY Qcirc           "Q&#x00302;">           <!-- capital Q circumflex -->
+<!ENTITY qcirc           "q&#x00302;">           <!-- small q circumflex -->
+<!ENTITY Qdot            "Q&#x00307;">           <!-- capital Q dot over -->
+<!ENTITY qdot            "q&#x00307;">           <!-- small q dot over -->
+<!ENTITY Qequals         "Q&#x00347;">           <!-- capital Q with equal sign under -->
+<!ENTITY Qmacr           "Q&#x00304;">           <!-- capital Q macron -->
+<!ENTITY qmacr           "q&#x00304;">           <!-- small q macron -->
+<!ENTITY Qscr            "&#x1D4AC;">            <!-- capital Q script -->
+<!ENTITY Qtilde          "Q&#x00303;">           <!-- capital Q tilde -->
+<!ENTITY qtilde          "q&#x00303;">           <!-- small q tilde -->
+<!ENTITY rbreve          "r&#x00306;">           <!-- small r breve -->
+<!ENTITY Rcirc           "R&#x00302;">           <!-- capital R circumflex -->
+<!ENTITY rcirc           "r&#x00302;">           <!-- small r circumflex -->
+<!ENTITY Rdot            "&#x01E58;">            <!-- capital R with dot over -->
+<!ENTITY rhocirc         "&#x003C1;&#x00302;">   <!-- small rho circumflex -->
+<!ENTITY rhomacr         "&#x003C1;&#x00304;">   <!-- small rho macron -->
+<!ENTITY Rmacr           "R&#x00304;">           <!-- capital R macron-->
+<!ENTITY rmacr           "r&#x00304;">           <!-- small r macron-->
+<!ENTITY Ropf            "&#x0211D;">            <!-- capital r openface-->
+<!ENTITY rring           "r&#x0030A;">           <!-- small r ring-->
+<!ENTITY Rtilde          "R&#x00303;">           <!-- capital R tilde -->
+<!ENTITY rtilde          "r&#x00303;">           <!-- small r tilde -->
+<!ENTITY Sbreve          "S&#x00306;">           <!-- capital S breve -->
+<!ENTITY sbreve          "s&#x00306;">           <!-- small s breve -->
+<!ENTITY scissors        "&#x02704;">            <!-- scissors -->
+<!ENTITY Sdot            "&#x01E60;">            <!-- capital S dot above -->
+<!ENTITY Sigmacrc        "&#x003A3;&#x00302;">   <!-- capital Sigma, Greek with circ over -->
+<!ENTITY sigmacrc        "&#x003C2;&#x00302;">   <!-- small sigma, Greek with circ over -->
+<!ENTITY Sigmamacr       "&#x003A3;&#x00304;">   <!-- capital Sigma, Greek with macron over -->
+<!ENTITY sigmamacr       "&#x003C2;&#x00304;">   <!-- small sigma, Greek with macron over -->
+<!ENTITY Sigmatilde      "&#x003A3;&#x00303;">   <!-- capital Sigma, Greek with tilde over -->
+<!ENTITY sigmatld        "&#x003C3;&#x00303;">   <!-- small sigma, Greek with tilde -->
+<!ENTITY Smacr           "S&#x00304;">           <!-- capital S macron-->
+<!ENTITY smacr           "s&#x00304;">           <!-- small s macron-->
+<!ENTITY smacrcrc        "s&#x00304;&#x00302;">  <!-- small s macron with circumflex over-->
+<!ENTITY Sogon           "S&#x00328;">           <!-- capital S ogonek -->
+<!ENTITY sogon           "s&#x00328;">           <!-- small s ogonek -->
+<!ENTITY sqdot5          "[sqdot5]">             <!-- 5 dots in square -->
+<!ENTITY sqdot7          "[sqdot7]">             <!-- 7 dots in square -->
+<!ENTITY sqdot8          "[sqdot8]">             <!-- 8 dots in square  -->
+<!ENTITY sqln            "[sqln]">               <!-- square with line  -->
+<!ENTITY sqpatocr        "[sqpatocr]">           <!-- square pattern open crosses  -->
+<!ENTITY squdcr          "[squdcr]">             <!-- square diagonal cross -->
+<!ENTITY squdd2          "[squdd2]">             <!-- square diag down 2-stripe -->
+<!ENTITY squdd3          "[squdd3]">             <!-- square diag down 3-stripe -->
+<!ENTITY squdd6          "[squdd6]">             <!-- square diag down 6-stripe -->
+<!ENTITY squdots         "[squdots]">            <!-- square with single dot -->
+<!ENTITY squdu3          "[squdu3]">             <!-- square diag up 3-stripe -->
+<!ENTITY squdu6          "[squdu6]">             <!-- square diag up 6-stripe -->
+<!ENTITY squfdd3         "[squfdd3]">            <!-- filled square diag down 3-stripe-->
+<!ENTITY squfdu3         "[squfdu3]">            <!-- filled square diag up 3-stripe-->
+<!ENTITY squfhln         "[squfhln]">            <!-- filled square with line-->
+<!ENTITY sqzigdu         "[sqzigdu]">            <!-- square zigzag diag up stripes-->
+<!ENTITY starcir         "&#x0272A;">            <!-- open star in filled circle -->
+<!ENTITY starhf          "[starhf]">             <!-- star, half-filled -->
+<!ENTITY Stilde          "S&#x00303;">           <!-- capital S tilde -->
+<!ENTITY stilde          "s&#x00303;">           <!-- small s tilde -->
+<!ENTITY sturk           "[sturk]">              <!-- small s, Turkish -->
+<!ENTITY suml            "s&#x00308;">           <!-- small s umlaut -->
+<!ENTITY tacute          "t&#x00301;">           <!-- small t acute -->
+<!ENTITY taucirc         "&#x003C4;&#x00302;">   <!-- small tau circumflex -->
+<!ENTITY tbreve          "t&#x00306;">           <!-- small t breve -->
+<!ENTITY Tcallig         "&#x1D447;&#x0FE00;">   <!-- capital T calligraphy -->
+<!ENTITY Tcirc           "T&#x00302;">           <!-- capital T circumflex -->
+<!ENTITY tcirc           "t&#x00302;">           <!-- small t circumflex -->
+<!ENTITY thetacrc        "&#x003B8;&#x00302;">   <!-- small theta, Greek with circumflex over -->
+<!ENTITY thetacirc       "&#x003B8;&#x00302;">   <!-- small theta, Greek with circumflex over -->
+<!ENTITY thetamacr       "&#x003B8;&#x00304;">   <!-- small theta, Greek with macron over -->
+<!ENTITY thetatilde      "&#x003B8;&#x00303;">   <!-- small theta, Greek with tilde over -->
+<!ENTITY Tmacr           "T&#x00304;">           <!-- capital T macron -->
+<!ENTITY tmacr           "t&#x00304;">           <!-- small t macron -->
+<!ENTITY trapln          "[trapln]">             <!-- trapezoid with line -->
+<!ENTITY trie            "&#x0225C;">            <!-- delta equal to -->
+<!ENTITY trifln          "[trifln]">             <!-- filled triangle with line -->
+<!ENTITY triln           "[triln]">              <!-- triangle with line -->
+<!ENTITY Tstrok          "&#x00166;">            <!-- capital T stroke -->
+<!ENTITY Ttilde          "T&#x00303;">           <!-- capital T tilde -->
+<!ENTITY ttilde          "t&#x00303;">           <!-- small t tilde -->
+<!ENTITY udot            "u&#x00307;">           <!-- small u dot above -->
+<!ENTITY vacute          "v&#x00301;">           <!-- small v acute -->
+<!ENTITY varrul          "&#x02195;&#x00332;">   <!-- updown arrow, underlined -->
+<!ENTITY Vcirc           "V&#x00302;">           <!-- capital v circumflex -->
+<!ENTITY vcirc           "v&#x00302;">           <!-- small v circumflex -->
+<!ENTITY Vdot            "V&#x00307;">           <!-- capital V dot above -->
+<!ENTITY vdot            "v&#x00307;">           <!-- small v dot over -->
+<!ENTITY Vdoti           "&#x1D449;&#x00307;">   <!-- capital V dot above, italic -->
+<!ENTITY Vmacr           "V&#x00304;">           <!-- capital V macron -->
+<!ENTITY vmacr           "v&#x00304;">           <!-- lowercase V macron -->
+<!ENTITY Vtilde          "V&#x00303;">           <!-- capital v tilde -->
+<!ENTITY vtilde          "v&#x00303;">           <!-- small v tilde -->
+<!ENTITY Wcirc           "&#x00174;">            <!-- capital W circumflex -->
+<!ENTITY Wdot            "&#x01E86;">            <!-- capital W dot -->
+<!ENTITY Wmacr           "W&#x00304;">           <!-- capital W macron -->
+<!ENTITY wmacr           "w&#x00304;">           <!-- small w macron -->
+<!ENTITY Wstrok          "W&#x00336;">           <!-- capital W with stroke through it -->
+<!ENTITY Wtilde          "W&#x00303;">           <!-- capital W tilde -->
+<!ENTITY wtilde          "w&#x00303;">           <!-- small w tilde -->
+<!ENTITY Wuml            "W&#x00308;">           <!-- capital W umlaut -->
+<!ENTITY xacute          "x&#x00301;">           <!-- small x with acute over -->
+<!ENTITY Xcirc           "X&#x00302;">           <!-- Deprecated -->
+<!ENTITY xcrcmflx        "x&#x00302;">           <!-- small x circumflex -->
+<!ENTITY Xcrcmflx        "X&#x00302;">           <!-- capital x circumflex -->
+<!ENTITY Xdot            "&#x01E8A;">            <!-- capital X with dot above -->
+<!ENTITY xdot            "&#x01E8B;">            <!-- small x dot above -->
+<!ENTITY xhln            "[xhln]">               <!-- x with horizontal line -->
+<!ENTITY Xmacr           "X&#x00304;">           <!-- capital X macron -->
+<!ENTITY xmacr           "x&#x00304;">           <!-- small x macron -->
+<!ENTITY Xmacrcrc        "X&#x00304;&#x00302;">  <!-- large italic X with macron and circ over -->
+<!ENTITY Xtilde          "X&#x00303;">           <!-- capital X tilde -->
+<!ENTITY xtilde          "x&#x00303;">           <!-- small x tilde -->
+<!ENTITY xwedge          "&#x022C0;">            <!-- bigwedge L logical or operator -->
+<!ENTITY Ydot            "&#x01E8E;">            <!-- capital Y with dot above -->
+<!ENTITY ydot            "&#x01E8F;">            <!-- small y dot above -->
+<!ENTITY ygrave          "y&#x00300;">           <!-- small y grave above -->
+<!ENTITY Ymacr           "Y&#x00304;">           <!-- capital Y macron -->
+<!ENTITY ymacr           "y&#x00304;">           <!-- small y macron -->
+<!ENTITY Ytilde          "Y&#x00303;">           <!-- capital Y tilde -->
+<!ENTITY ytilde          "y&#x00303;">           <!-- small y tilde -->
+<!ENTITY Zbreve          "Z&#x00306;">           <!-- capital Z breve -->
+<!ENTITY zbreve          "z&#x00306;">           <!-- small z breve -->
+<!ENTITY zcedil          "z&#x00327;">           <!-- small z cedilla -->
+<!ENTITY Zcirc           "&#x01E90;">            <!-- capital Z circumflex -->
+<!ENTITY zcirc           "&#x01E91;">            <!-- small z circumflex -->
+<!ENTITY zetacn          "&#x003B6;&#x0030C;">   <!-- small zeta, Greek with caron over -->
+<!ENTITY zgrave          "z&#x00300;">           <!-- small z grave -->
+<!ENTITY Zmacr           "Z&#x00304;">           <!-- capital Z macron -->
+<!ENTITY zmacr           "z&#x00304;">           <!-- small z macron -->
+<!ENTITY zring           "z&#x0030A;">           <!-- small z ring -->
+<!ENTITY Zstrok          "&#x001B5;">            <!-- capital z, horizontal stroke -->
+<!ENTITY zstrok          "&#x001B6;">            <!-- small z, horizontal stroke -->
+<!ENTITY Zstrokcn        "&#x001B5;&#x0030C;">   <!-- capital Z, Polish with caron over -->
+<!ENTITY ztilde          "z&#x00303;">           <!-- small z, with tilde over -->
+<!ENTITY Zuml            "Z&#x00308;">           <!-- capital Z umlaut -->
