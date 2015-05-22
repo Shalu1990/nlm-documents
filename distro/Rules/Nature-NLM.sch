@@ -73,6 +73,8 @@ Use the <let> element to define the attribute if necessary.
         value="if (matches($pcode,'^(maestrorj|testpalevent|testnatevent|npgdelor|nplants|nrdp|nmicrobiol|nenergy|natrevmats)$')) then 'yes'     else ()"/>
   <let name="maestro"
         value="if ($maestro-aj='yes' or $maestro-rj='yes') then 'yes' else ()"/>
+  <let name="npj_journal"
+        value="if (matches($pcode,'^(npjschz|npjmgrav|npjbcancer|npjparkd)$')) then 'yes' else ()"/>
   <let name="pubevent"
         value="if (matches($pcode,'^(maestrorj|testnatevent|testpalevent|nplants|nrdp)$')) then 'yes'     else 'no'"/>
   <let name="existing-oa-aj"
@@ -1130,6 +1132,12 @@ Use the <let> element to define the attribute if necessary.
          <report id="uri1" test=".">Do not use "uri" for links to websites. Please change to "ext-link" with attributes 'ext-link-type="url"' and 'xlink:href' containing the full address.</report>
       </rule>
   </pattern>
+   <pattern><!--npj 'af' articles should have an editorial summary-->
+      <rule context="article[@article-type='af']/front/article-meta[$npj_journal='yes'][not(abstract[@abstract-type='long-summary'])]"
+            role="error">
+         <report id="npj1a" test=".">All Articles (article-type "af") in "<value-of select="$journal-title"/>" should have an editorial summary (abstract with 'abstract-type="long-summary"'). If you have not been provided with the text for this summary, please contact NPG Production.</report>
+      </rule>
+  </pattern>
    <pattern><!--"is-data-descriptor-to should be added by sync tool-->
     <rule context="article[$pcode='sdata'][$article-type='dd'][not(descendant::subj-group[@subj-group-type='study-parameters'])]//related-article[@related-article-type='is-data-descriptor-to']"
             role="error">
@@ -1359,12 +1367,6 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--sec - sec-type or specific-use attribute used-->
     <rule context="sec[@sec-type and @specific-use]" role="error">
          <report id="sec1b" test=".">"sec" should only use one "sec-type" or "specific-use" attribute, not both.</report>
-      </rule>
-  </pattern>
-   <pattern><!--sec - id and xml:lang attributes not used-->
-    <rule context="sec[@id][not(matches($pcode,'^sdata$'))][not($article-type='threads')]"
-            role="error">
-         <report id="sec1c" test=".">Do not use "id" attribute on "sec".</report>
       </rule>
   </pattern>
    <pattern>
