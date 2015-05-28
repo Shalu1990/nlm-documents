@@ -70,9 +70,9 @@ Use the <let> element to define the attribute if necessary.
   <let name="transition"
         value="if ($pcode eq 'srep' and number($volume) lt 6) then 'yes'     else if ($pcode eq 'ncomms' and number($volume) lt 7) then 'yes'     else ()"/>
   <let name="maestro-rj"
-        value="if (matches($pcode,'^(maestrorj|testpalevent|testnatevent|npgdelor|nplants|nrdp|nmicrobiol|nenergy|natrevmats)$')) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(maestrorj|npgdelor|testnatevent|testpalevent|nplants|nrdp|nmicrobiol|nenergy|natrevmats)$')) then 'yes'     else ()"/>
   <let name="maestro"
-        value="if ($maestro-aj='yes' or $maestro-rj='yes') then 'yes' else ()"/>
+        value="if (matches($pcode,'^(testnatevent|testpalevent)$')) then 'no' else      if ($maestro-aj='yes' or $maestro-rj='yes') then 'yes' else ()"/>
   <let name="npj_journal"
         value="if (matches($pcode,'^(npjschz|npjmgrav|npjbcancer|npjparkd)$')) then 'yes' else ()"/>
   <let name="pubevent"
