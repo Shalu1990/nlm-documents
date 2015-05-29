@@ -1144,13 +1144,6 @@ Use the <let> element to define the attribute if necessary.
          <report id="sdata1b" test=".">"related-article" with 'related-article-type' of "is-data-descriptor-to" should be added by the SciData synch tool. It does not need to be included as part of the typesetting process - please delete.</report>
       </rule>
   </pattern>
-   <pattern><!--"is-data-descriptor-to should be added by sync tool-->
-    <rule context="article[$pcode='sdata'][$article-type='dd']//related-article[not(@related-article-type='is-data-descriptor-to')]"
-            role="error">
-         <let name="type" value="@related-article-type"/>
-         <report id="sdata1d" test=".">In Data Descriptors, the only "related-article" 'related-article-type' value should be "is-data-descriptor-to", which will be added by the SciData synch tool. Please delete "related-article" with 'related-article-type="<value-of select="$type"/>"'.</report>
-      </rule>
-  </pattern>
    <pattern><!--only one element-citation in ref-->
     <rule context="ref-list[@content-type='data-citations']/ref[@id]/element-citation[1][following-sibling::element-citation]"
             role="error">
