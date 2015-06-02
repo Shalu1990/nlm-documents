@@ -1182,4 +1182,84 @@
             <article-heading>Retraction</article-heading>
         </article-type>
     </journal>
+    <journal pcode="npjpollcon">
+        <article-type code="af">
+            <article-heading>Article</article-heading>
+        </article-type>
+        <article-type code="ed">
+            <article-heading>Editorial</article-heading>
+        </article-type>
+        <article-type code="nv">
+            <article-heading>News and Views</article-heading>
+        </article-type>
+        <article-type code="rv">
+            <article-heading>Review Article</article-heading>
+            <article-heading>Mini Review</article-heading>
+        </article-type>
+        <article-type code="add">
+            <article-heading>Addendum</article-heading>
+        </article-type>
+        <article-type code="cg">
+            <article-heading>Corrigendum</article-heading>
+        </article-type>
+        <article-type code="cs">
+            <article-heading>Correction</article-heading>
+        </article-type>
+        <article-type code="er">
+            <article-heading>Erratum</article-heading>
+        </article-type>
+        <article-type code="ret">
+            <article-heading>Retraction</article-heading>
+        </article-type>
+    </journal>
+    <journal pcode="npjvaccines">
+        <article-type code="af">
+            <article-heading>Article</article-heading>
+        </article-type>
+        <article-type code="bc">
+            <article-heading>Brief Communication</article-heading>
+        </article-type>
+        <article-type code="caser">
+            <article-heading>Case Report</article-heading>
+        </article-type>
+        <article-type code="com">
+            <article-heading>Comment</article-heading>
+        </article-type>
+        <article-type code="cr">
+            <article-heading>Correspondence</article-heading>
+        </article-type>
+        <article-type code="ed">
+            <article-heading>Editorial</article-heading>
+        </article-type>
+        <article-type code="mr">
+            <article-heading>Meeting Report</article-heading>
+        </article-type>
+        <article-type code="nv">
+            <article-heading>News and Views</article-heading>
+        </article-type>
+        <article-type code="pe">
+            <article-heading>Perspective</article-heading>
+        </article-type>
+        <article-type code="prot">
+            <article-heading>Protocol</article-heading>
+        </article-type>
+        <article-type code="rv">
+            <article-heading>Review Article</article-heading>
+        </article-type>
+        <article-type code="add">
+            <article-heading>Addendum</article-heading>
+        </article-type>
+        <article-type code="cg">
+            <article-heading>Corrigendum</article-heading>
+        </article-type>
+        <article-type code="cs">
+            <article-heading>Correction</article-heading>
+        </article-type>
+        <article-type code="er">
+            <article-heading>Erratum</article-heading>
+        </article-type>
+        <article-type code="ret">
+            <article-heading>Retraction</article-heading>
+        </article-type>
+    </journal>
 </allowed-article-types>
