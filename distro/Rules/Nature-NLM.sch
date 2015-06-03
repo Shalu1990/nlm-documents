@@ -1469,12 +1469,14 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--List-item - no id attribute-->
-    <rule context="list-item[@id]" role="error">
+    <rule context="list-item[not(ancestor::supplementary-material[@content-type='annotations'])][@id]"
+            role="error">
          <report id="list2e" test=".">Do not use "id" attribute on "list-item" element.</report>
       </rule>
   </pattern>
    <pattern><!--List - list-type attribute stated (apart from interview/quizzes)-->
-    <rule context="list[not(@list-content)][not(@list-type)]" role="error">
+    <rule context="list[not(@list-content)][not(ancestor::supplementary-material[@content-type='annotations'])][not(@list-type)]"
+            role="error">
          <report id="list3a" test=".">Use "list-type" attribute to show type of list used. Allowed values are: none, bullet, number, lcletter, ucletter, lcroman and ucroman for unbracketed labels. Use number-paren, lcletter-paren and roman-paren for labels in parentheses.</report>
       </rule>
   </pattern>
@@ -1535,14 +1537,15 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--content-type attribute is valid-->
-    <rule context="p[not(ancestor::sec/@sec-type)][not(ancestor::ack or ancestor::app or ancestor::app-group or ancestor::boxed-text)][@content-type]"
+    <rule context="p[not(ancestor::sec/@sec-type)][not(ancestor::ack or ancestor::app or ancestor::app-group or ancestor::boxed-text)][not(ancestor::supplementary-material[@content-type='annotations'])][@content-type]"
             role="error">
          <let name="contentType" value="@content-type"/>
          <assert id="para1a" test="$allowed-values/content-types/content-type[.=$contentType]">Unexpected value for "content-type" attribute (<value-of select="$contentType"/>). Allowed values are: cross-head, dateline and greeting. </assert>
       </rule>
   </pattern>
    <pattern><!--p - no unnecessary attributes-->
-    <rule context="p[@id]" role="error">
+    <rule context="p[not(ancestor::supplementary-material[@content-type='annotations'])][@id]"
+            role="error">
          <report id="para1b" test=".">Do not use "id" attribute on "p" element.</report>
       </rule>
   </pattern>
@@ -2665,7 +2668,8 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--illustration and toc image - should have @position="anchor"-->
-        <rule context="graphic[@content-type][not(@position='anchor')]" role="error">
+        <rule context="graphic[@content-type='illustration' or @content-type='toc-image'][not(@position='anchor')]"
+            role="error">
             <report id="ill1e" test=".">"graphic" should have attribute 'position="anchor"'.</report>
         </rule>
     </pattern>
@@ -2806,7 +2810,7 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--supplementary-material - only caption allowed as a child-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')]/*"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')]/*"
             role="error">
          <assert id="supp1a" test="self::caption or self::alternatives">Only "caption" should be used as a child of "supplementary-material" - do not use "<name/>".</assert>
       </rule>
@@ -2817,13 +2821,13 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have an @id-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')]"
             role="error">
          <assert id="supp2a" test="@id">Missing 'id' attribute - "supplementary-material" should have an 'id' of the form "s"+number.</assert>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - @id must be correct format-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][@id]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][@id]"
             role="error">
          <assert id="supp2b" test="matches(@id,'^s[0-9]+$')">Invalid 'id' value ("<value-of select="@id"/>"). "supplementary-material" 'id' attribute should be of the form "s"+number.</assert>
       </rule>
@@ -2835,7 +2839,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @content-type; when @xlink:href is invalid, point to Tagging instructions-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][contains(@xlink:href,'.')]"
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <report id="supp3b"
@@ -2843,7 +2847,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @content-type; when @xlink:href exists (and is valid) gives value that should be used-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][contains(@xlink:href,'.')]"
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <let name="content-type"
@@ -2863,7 +2867,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have an @xlink:href-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')]"
             role="error">
          <assert id="supp4a" test="@xlink:href">Missing 'xlink:href' attribute on "supplementary-material". The 'xlink:href' should contain the filename (including extension) of the item of supplementary information. Do not include any path information.</assert>
       </rule>
@@ -2889,13 +2893,13 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mimetype; when @xlink:href does not exist, point to Tagging instructions-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][not(@xlink:href or contains(@xlink:href,'.'))]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][not(@xlink:href or contains(@xlink:href,'.'))]"
             role="error">
          <assert id="supp5a" test="@mimetype">Missing 'mimetype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</assert>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mimetype; when @xlink:href is invalid, point to Tagging instructions-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][contains(@xlink:href,'.')]"
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <report id="supp5b"
@@ -2903,7 +2907,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mimetype; when @xlink:href exists (and is valid) gives value that should be used-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][contains(@xlink:href,'.')]"
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <let name="mimetype"
@@ -2923,13 +2927,13 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mime-subtype; when @xlink:href does not exist or is invalid, point to Tagging instructions-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][not(@xlink:href or contains(@xlink:href,'.'))]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][not(@xlink:href or contains(@xlink:href,'.'))]"
             role="error">
          <assert id="supp6a" test="@mime-subtype">Missing 'mime-subtype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</assert>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mime-subtype; when @xlink:href exists (and is invalid) points to Tagging instructions-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][contains(@xlink:href,'.')]"
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <report id="supp6b"
@@ -2937,7 +2941,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mime-subtype; when @xlink:href exists (and is valid) gives value that should be used-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][contains(@xlink:href,'.')]"
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <let name="mime-subtype"
