@@ -66,13 +66,13 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
   <let name="transition"
         value="if ($pcode eq 'srep' and number($volume) lt 6) then 'yes'     else if ($pcode eq 'ncomms' and number($volume) lt 7) then 'yes'     else ()"/>
   <let name="maestro-rj"
-        value="if (matches($pcode,'^(maestrorj|testpalevent|testnatevent|npgdelor|nplants|nrdp|nmicrobiol|nenergy|natrevmats)$')) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(maestrorj|npgdelor|testnatevent|testpalevent|nplants|nrdp|nmicrobiol|nenergy|natrevmats)$')) then 'yes'     else ()"/>
   <let name="maestro"
-        value="if ($maestro-aj='yes' or $maestro-rj='yes') then 'yes' else ()"/>
+        value="if (matches($pcode,'^(testnatevent|testpalevent)$')) then 'no' else      if ($maestro-aj='yes' or $maestro-rj='yes') then 'yes' else ()"/>
   <let name="npj_journal"
         value="if (matches($pcode,'^(npjschz|npjmgrav|npjbcancer|npjparkd)$')) then 'yes' else ()"/>
   <let name="pubevent"
@@ -80,7 +80,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj|testnatfile|testpalfile|paldelor|testnatevent|npgdelor|testpalevent)$')) then 'yes' else 'no'"/>
   <let name="collection"
@@ -1144,13 +1144,6 @@ Use the <let> element to define the attribute if necessary.
          <report id="sdata1b" test=".">"related-article" with 'related-article-type' of "is-data-descriptor-to" should be added by the SciData synch tool. It does not need to be included as part of the typesetting process - please delete.</report>
       </rule>
   </pattern>
-   <pattern><!--"is-data-descriptor-to should be added by sync tool-->
-    <rule context="article[$pcode='sdata'][$article-type='dd']//related-article[not(@related-article-type='is-data-descriptor-to')]"
-            role="error">
-         <let name="type" value="@related-article-type"/>
-         <report id="sdata1d" test=".">In Data Descriptors, the only "related-article" 'related-article-type' value should be "is-data-descriptor-to", which will be added by the SciData synch tool. Please delete "related-article" with 'related-article-type="<value-of select="$type"/>"'.</report>
-      </rule>
-  </pattern>
    <pattern><!--only one element-citation in ref-->
     <rule context="ref-list[@content-type='data-citations']/ref[@id]/element-citation[1][following-sibling::element-citation]"
             role="error">
@@ -1476,12 +1469,14 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--List-item - no id attribute-->
-    <rule context="list-item[@id]" role="error">
+    <rule context="list-item[not(ancestor::supplementary-material[@content-type='annotations'])][@id]"
+            role="error">
          <report id="list2e" test=".">Do not use "id" attribute on "list-item" element.</report>
       </rule>
   </pattern>
    <pattern><!--List - list-type attribute stated (apart from interview/quizzes)-->
-    <rule context="list[not(@list-content)][not(@list-type)]" role="error">
+    <rule context="list[not(@list-content)][not(ancestor::supplementary-material[@content-type='annotations'])][not(@list-type)]"
+            role="error">
          <report id="list3a" test=".">Use "list-type" attribute to show type of list used. Allowed values are: none, bullet, number, lcletter, ucletter, lcroman and ucroman for unbracketed labels. Use number-paren, lcletter-paren and roman-paren for labels in parentheses.</report>
       </rule>
   </pattern>
@@ -1542,14 +1537,15 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--content-type attribute is valid-->
-    <rule context="p[not(ancestor::sec/@sec-type)][not(ancestor::ack or ancestor::app or ancestor::app-group or ancestor::boxed-text)][@content-type]"
+    <rule context="p[not(ancestor::sec/@sec-type)][not(ancestor::ack or ancestor::app or ancestor::app-group or ancestor::boxed-text)][not(ancestor::supplementary-material[@content-type='annotations'])][@content-type]"
             role="error">
          <let name="contentType" value="@content-type"/>
          <assert id="para1a" test="$allowed-values/content-types/content-type[.=$contentType]">Unexpected value for "content-type" attribute (<value-of select="$contentType"/>). Allowed values are: cross-head, dateline and greeting. </assert>
       </rule>
   </pattern>
    <pattern><!--p - no unnecessary attributes-->
-    <rule context="p[@id]" role="error">
+    <rule context="p[not(ancestor::supplementary-material[@content-type='annotations'])][@id]"
+            role="error">
          <report id="para1b" test=".">Do not use "id" attribute on "p" element.</report>
       </rule>
   </pattern>
@@ -2672,7 +2668,8 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--illustration and toc image - should have @position="anchor"-->
-        <rule context="graphic[@content-type][not(@position='anchor')]" role="error">
+        <rule context="graphic[@content-type='illustration' or @content-type='toc-image'][not(@position='anchor')]"
+            role="error">
             <report id="ill1e" test=".">"graphic" should have attribute 'position="anchor"'.</report>
         </rule>
     </pattern>
@@ -2813,7 +2810,7 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--supplementary-material - only caption allowed as a child-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')]/*"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')]/*"
             role="error">
          <assert id="supp1a" test="self::caption or self::alternatives">Only "caption" should be used as a child of "supplementary-material" - do not use "<name/>".</assert>
       </rule>
@@ -2824,13 +2821,13 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have an @id-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')]"
             role="error">
          <assert id="supp2a" test="@id">Missing 'id' attribute - "supplementary-material" should have an 'id' of the form "s"+number.</assert>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - @id must be correct format-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][@id]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][@id]"
             role="error">
          <assert id="supp2b" test="matches(@id,'^s[0-9]+$')">Invalid 'id' value ("<value-of select="@id"/>"). "supplementary-material" 'id' attribute should be of the form "s"+number.</assert>
       </rule>
@@ -2842,7 +2839,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @content-type; when @xlink:href is invalid, point to Tagging instructions-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][contains(@xlink:href,'.')]"
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <report id="supp3b"
@@ -2850,7 +2847,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @content-type; when @xlink:href exists (and is valid) gives value that should be used-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][contains(@xlink:href,'.')]"
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <let name="content-type"
@@ -2870,7 +2867,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have an @xlink:href-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')]"
             role="error">
          <assert id="supp4a" test="@xlink:href">Missing 'xlink:href' attribute on "supplementary-material". The 'xlink:href' should contain the filename (including extension) of the item of supplementary information. Do not include any path information.</assert>
       </rule>
@@ -2896,13 +2893,13 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mimetype; when @xlink:href does not exist, point to Tagging instructions-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][not(@xlink:href or contains(@xlink:href,'.'))]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][not(@xlink:href or contains(@xlink:href,'.'))]"
             role="error">
          <assert id="supp5a" test="@mimetype">Missing 'mimetype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</assert>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mimetype; when @xlink:href is invalid, point to Tagging instructions-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][contains(@xlink:href,'.')]"
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <report id="supp5b"
@@ -2910,7 +2907,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mimetype; when @xlink:href exists (and is valid) gives value that should be used-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][contains(@xlink:href,'.')]"
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <let name="mimetype"
@@ -2930,13 +2927,13 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mime-subtype; when @xlink:href does not exist or is invalid, point to Tagging instructions-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][not(@xlink:href or contains(@xlink:href,'.'))]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][not(@xlink:href or contains(@xlink:href,'.'))]"
             role="error">
          <assert id="supp6a" test="@mime-subtype">Missing 'mime-subtype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</assert>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mime-subtype; when @xlink:href exists (and is invalid) points to Tagging instructions-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][contains(@xlink:href,'.')]"
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <report id="supp6b"
@@ -2944,7 +2941,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mime-subtype; when @xlink:href exists (and is valid) gives value that should be used-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.')]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][contains(@xlink:href,'.')]"
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <let name="mime-subtype"
