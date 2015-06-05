@@ -523,6 +523,9 @@
         <article-type code="nw">
             <article-heading>News</article-heading>
         </article-type>
+        <article-type code="pe">
+            <article-heading>Perspective</article-heading>
+        </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
             <article-heading>Mini Review</article-heading>
