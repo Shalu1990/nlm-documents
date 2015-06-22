@@ -581,6 +581,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="copy1c" test=".">Permissions should include the copyright holder.</report>
       </rule>
   </pattern>
+   <pattern>
+      <rule context="permissions/copyright-holder[not(normalize-space(.) or *)]">
+         <report id="copy1d" test=".">"copyright-holder" should not be empty. Please add correct information.</report>
+      </rule>
+  </pattern>
    <pattern><!--Is the copyright year valid?-->
     <rule context="copyright-year[not(matches(.,'^(19|20)[0-9]{2}$'))]" role="error">
          <report id="copy2" test=".">Invalid year value for copyright: <value-of select="."/>. It should be a 4-digit number starting with 19 or 20.</report>
@@ -1896,6 +1901,21 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--do not use @display on mml:math-->
     <rule context="mml:math[@display]">
          <report id="form3" test=".">Do not use 'display' attribute on "mml:math". If the formula is inline, then use "inline-formula" as the parent element, otherwise use "disp-formula".</report>
+      </rule>
+  </pattern>
+   <pattern><!--mml:labeledtr should only have mml:mtd child elements-->
+      <rule context="mml:mlabeledtr[*[not(self::mml:mtd)]]">
+         <report id="form4a" test=".">"mml:labeledtr" should only have "mml:mtd" child elements.</report>
+      </rule>
+  </pattern>
+   <pattern><!--mml:mtr should only have mml:mtd child elements-->
+      <rule context="mml:mtr[*[not(self::mml:mtd)]]">
+         <report id="form4b" test=".">"mml:mtr" should only have "mml:mtd" child elements.</report>
+      </rule>
+  </pattern>
+   <pattern><!--mml:math should not be child of p-->
+      <rule context="mml:math[parent::p]">
+         <report id="form5" test=".">Do not use "mml:math" on its own - please wrap the expression in "inline-formula".</report>
       </rule>
   </pattern>
    <pattern><!--back - label or title should not be used-->
