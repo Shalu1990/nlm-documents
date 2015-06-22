@@ -66,7 +66,7 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
   <let name="transition"
         value="if ($pcode eq 'srep' and number($volume) lt 6) then 'yes'     else if ($pcode eq 'ncomms' and number($volume) lt 7) then 'yes'     else ()"/>
   <let name="maestro-rj"
@@ -80,7 +80,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj|testnatfile|testpalfile|paldelor|testnatevent|npgdelor|testpalevent)$')) then 'yes' else 'no'"/>
   <let name="collection"
@@ -579,6 +579,11 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="permissions[not(copyright-holder)]">
          <report id="copy1c" test=".">Permissions should include the copyright holder.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="permissions/copyright-holder[not(normalize-space(.) or *)]">
+         <report id="copy1d" test=".">"copyright-holder" should not be empty. Please add correct information.</report>
       </rule>
   </pattern>
    <pattern><!--Is the copyright year valid?-->
@@ -1896,6 +1901,21 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--do not use @display on mml:math-->
     <rule context="mml:math[@display]">
          <report id="form3" test=".">Do not use 'display' attribute on "mml:math". If the formula is inline, then use "inline-formula" as the parent element, otherwise use "disp-formula".</report>
+      </rule>
+  </pattern>
+   <pattern><!--mml:labeledtr should only have mml:mtd child elements-->
+      <rule context="mml:mlabeledtr[*[not(self::mml:mtd)]]">
+         <report id="form4a" test=".">"mml:labeledtr" should only have "mml:mtd" child elements.</report>
+      </rule>
+  </pattern>
+   <pattern><!--mml:mtr should only have mml:mtd child elements-->
+      <rule context="mml:mtr[*[not(self::mml:mtd)]]">
+         <report id="form4b" test=".">"mml:mtr" should only have "mml:mtd" child elements.</report>
+      </rule>
+  </pattern>
+   <pattern><!--mml:math should not be child of p-->
+      <rule context="mml:math[parent::p]">
+         <report id="form5" test=".">Do not use "mml:math" on its own - please wrap the expression in "inline-formula".</report>
       </rule>
   </pattern>
    <pattern><!--back - label or title should not be used-->
