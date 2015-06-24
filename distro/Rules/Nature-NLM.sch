@@ -288,7 +288,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--subject codes should have @content-type="npg.subject" (for transforms to work properly) in new journals-->
-    <rule context="article[$maestro='yes']//subj-group[@subj-group-type='subject']/subject[not(@content-type='npg.subject')]">
+    <rule context="article[$maestro='yes']//subj-group[@subj-group-type='subject']/subject[not(@content-type='npg.subject')][not(@content-type='npg.technique')]">
          <report id="subject1" test=".">In "subj-group" with attribute 'subj-group="subject"', child "subject" elements should have 'content-type="npg.subject"'.</report>
       </rule>
   </pattern>
@@ -787,13 +787,13 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--open access license info should be given in all new OA only journals (except in correction articles)-->
-    <rule context="article[$maestro-aj='yes' and not(matches($article-type,'^(add|cg|cs|er|ret)$')) and not($pcode='bdjteam')]/front/article-meta/permissions"
+    <rule context="article[$maestro-aj='yes' and not(matches($article-type,'^(add|cg|cs|er|ret)$')) and not(matches($pcode,'^(bdjteam|scsandc)$'))]/front/article-meta/permissions"
             role="error">
          <assert id="oa-aj3" test="license">"<value-of select="$journal-title"/>" should contain "license", which gives details of the Open Access license being used. Please contact NPG for this information.</assert>
       </rule>
   </pattern>
    <pattern><!--open access license info should not be given in correction articles in new OA only journals-->
-    <rule context="article[$maestro-aj='yes' and matches($article-type,'^(add|cg|cs|er|ret)$') and not($pcode='bdjteam')]/front/article-meta/permissions"
+    <rule context="article[$maestro-aj='yes' and matches($article-type,'^(add|cg|cs|er|ret)$') and not(matches($pcode,'^(bdjteam|scsandc)$'))]/front/article-meta/permissions"
             role="error">
          <report id="oa-aj3b" test="license">"license" should not be used in correction articles, as they are not Open Access. This article is: <value-of select="$allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading"/>.</report>
       </rule>
