@@ -668,7 +668,7 @@ Use the <let> element to define the attribute if necessary.
     <rule context="article-meta/related-article" role="error">
          <let name="relatedArticleType" value="@related-article-type"/>
          <assert id="relart2"
-                 test="$allowed-values/related-article-types/related-article-type[.=$relatedArticleType]">"related-article" element has incorrect 'related-article-type' value (<value-of select="@related-article-type"/>). Allowed values are: is-addendum-to, is-comment-to, is-correction-to, is-corrigendum-to, is-erratum-to, is-news-and-views-to, is-protocol-to, is-protocol-update-to, is-related-to, is-research-highlight-to, is-response-to, is-retraction-to, is-update-to</assert>
+                 test="$allowed-values/related-article-types/related-article-type[.=$relatedArticleType]">"related-article" element has incorrect 'related-article-type' value (<value-of select="@related-article-type"/>). Allowed values are: is-addendum-to, is-comment-to, is-correction-to, is-corrigendum-to, is-erratum-to, is-news-and-views-to, is-prime-view-to, is-protocol-to, is-protocol-update-to, is-related-to, is-research-highlight-to, is-response-to, is-retraction-to, is-update-to</assert>
       </rule>  
   </pattern>
    <pattern><!--valid @abstract-type-->
@@ -1027,7 +1027,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--authors should link to their affiliated body, even when there is only one aff-->
-    <rule context="article[$maestro='yes' or $transition='yes']/front/article-meta[aff]/contrib-group//contrib[@contrib-type='author'][not(ancestor::collab[@collab-type='authors'])]"
+    <rule context="article[$maestro='yes']/front/article-meta[aff]/contrib-group//contrib[@contrib-type='author'][not(ancestor::collab[@collab-type='authors'])]"
             role="error">
          <assert id="oa-aj12" test="xref[@ref-type='aff']">All authors should be linked to an affiliated body. Insert xref with 'ref-type="aff"'.</assert>
       </rule>
@@ -1044,8 +1044,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--Only one author email per corresp element-->
-    <rule context="corresp[count(email) gt 1][$maestro='yes' or $transition='yes']"
-            role="error">
+    <rule context="corresp[count(email) gt 1][$maestro='yes']" role="error">
          <report id="maestro1" test=".">Corresponding author information should only contain one email address. Please split "corresp" with id='<value-of select="@id"/>' into separate "corresp" elements - one for each corresponding author. You will also need to update the equivalent "xref" elements with the new 'rid' values.</report>
       </rule>
   </pattern>
@@ -1223,7 +1222,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article-meta/aff[@id]" role="error"><!--Affiliation information given, but no corresponding author in contrib list-->
+      <rule context="article-meta[not($transition='yes')]/aff[@id]" role="error"><!--Affiliation information given, but no corresponding author in contrib list-->
       <let name="id" value="@id"/>
          <assert id="aff3c" test="ancestor::article//contrib/xref[@rid=$id]">Affiliation information has been given (id="<value-of select="@id"/>"), but no link has been added to the contrib information. Insert an "xref" link with attributes ref-type="aff" and rid="<value-of select="@id"/>" on the relevant contributor.</assert>
       </rule>
@@ -1267,7 +1266,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="contrib[@corresp='yes']" role="error"><!--Correspondence information given, but no corresponding author in contrib list-->
+      <rule context="contrib[@corresp='yes'][not($transition='yes')]" role="error"><!--Correspondence information given, but no corresponding author in contrib list-->
       <assert id="corres1e" test="xref[@ref-type='corresp']">Contributor has been identified as a corresponding author (corresp="yes"), but no "xref" link (ref-type="corresp") has been given.</assert>
       </rule>
   </pattern>
@@ -1391,43 +1390,43 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-2" is a child of sec heading level 1-->
-    <rule context="sec[@specific-use='heading-level-2'][not(parent::sec[@specific-use='heading-level-1'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-1'])]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-2'][not(parent::sec[@specific-use='heading-level-1'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-1'])]"
             role="error">
          <report id="sec3b" test=".">Section heading level 2 should be a child of section heading level 1 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-3" is a child of sec heading level 2-->
-    <rule context="sec[@specific-use='heading-level-3'][not(parent::sec[@specific-use='heading-level-2'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-2'])]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-3'][not(parent::sec[@specific-use='heading-level-2'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-2'])]"
             role="error">
          <report id="sec3c" test=".">Section heading level 3 should be a child of section heading level 2 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-4" is a child of sec heading level 3-->
-    <rule context="sec[@specific-use='heading-level-4'][not(parent::sec/@specific-use='heading-level-3')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-4'][not(parent::sec/@specific-use='heading-level-3')]"
             role="error">
          <report id="sec3d" test=".">Section heading level 4 should be a child of section heading level 3 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-5" is a child of sec heading level 4-->
-    <rule context="sec[@specific-use='heading-level-5'][not(parent::sec/@specific-use='heading-level-4')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-5'][not(parent::sec/@specific-use='heading-level-4')]"
             role="error">
          <report id="sec3e" test=".">Section heading level 5 should be a child of section heading level 4 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-6" is a child of sec heading level 5-->
-    <rule context="sec[@specific-use='heading-level-6'][not(parent::sec/@specific-use='heading-level-5')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-6'][not(parent::sec/@specific-use='heading-level-5')]"
             role="error">
          <report id="sec3f" test=".">Section heading level 6 should be a child of section heading level 5 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-7" is a child of sec heading level 6-->
-    <rule context="sec[@specific-use='heading-level-7'][not(parent::sec/@specific-use='heading-level-6')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-7'][not(parent::sec/@specific-use='heading-level-6')]"
             role="error">
          <report id="sec3g" test=".">Section heading level 7 should be a child of section heading level 6 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-8" is a child of sec heading level 7-->
-    <rule context="sec[@specific-use='heading-level-8'][not(parent::sec/@specific-use='heading-level-7')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-8'][not(parent::sec/@specific-use='heading-level-7')]"
             role="error">
          <report id="sec3h" test=".">Section heading level 8 should be a child of section heading level 7 - check nesting and "specific-use" attribute values.</report>
       </rule>
@@ -1626,17 +1625,20 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--url starting https should not have extra http added to @xlink:href-->
-    <rule context="ext-link[contains(@xlink:href,'http://http')]" role="error">
+    <rule context="ext-link[not($transition='yes')][contains(@xlink:href,'http://http')]"
+            role="error">
          <report id="url1a" test=".">Do not insert extra "http://" on an 'xlink-href' which already has an http protocol - <value-of select="@xlink:href"/>.</report>
       </rule>
   </pattern>
    <pattern><!--url starting ftp:// should not have extra http added to @xlink:href-->
-    <rule context="ext-link[contains(@xlink:href,'http://ftp://')]" role="error">
+    <rule context="ext-link[not($transition='yes')][contains(@xlink:href,'http://ftp://')]"
+            role="error">
          <report id="url1b" test=".">Do not insert "http://" on an 'xlink-href' to an ftp - <value-of select="@xlink:href"/>.</report>
       </rule>
   </pattern>
    <pattern><!--url starting mailto should not have extra http added to @xlink:href-->
-    <rule context="ext-link[contains(@xlink:href,'http://mailto')]" role="error">
+    <rule context="ext-link[not($transition='yes')][contains(@xlink:href,'http://mailto')]"
+            role="error">
          <report id="url1c" test=".">Do not use "ext-link" for links to email addresses. Use the "email" element, retaining the 'xlink:href' attribute (and delete 'http://mailto' from it).</report>
       </rule>
   </pattern>
@@ -1656,12 +1658,14 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--ext-link @xlink:href should not contain whitespace-->
-    <rule context="ext-link[matches(@xlink:href,'\s')]" role="error">
+    <rule context="ext-link[not($transition='yes')][matches(@xlink:href,'\s')]"
+            role="error">
          <report id="url2c" test=".">"ext-link" 'xlink:href' attribute (<value-of select="@xlink:href"/>) should not contain whitespace - this may create a broken link in the online article. Please delete spaces and new lines.</report>
       </rule>
   </pattern>
    <pattern><!--ext-link should not be used for email addresses-->
-    <rule context="ext-link[starts-with(@xlink:href,'mailto')]" role="error">
+    <rule context="ext-link[not($transition='yes')][starts-with(@xlink:href,'mailto')]"
+            role="error">
          <report id="url2d" test=".">Do not use "ext-link" for links to email addresses. Use the "email" element, retaining the 'xlink:href' attribute (and delete 'mailto' from it).</report>
       </rule>
   </pattern>
@@ -1678,14 +1682,14 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--no empty xrefs for some ref-types-->
-    <rule context="xref[matches(@ref-type,'^(bibr|fig|supplementary-material|table-fn)$')][not($pcode='pcrj' or $transition='yes')]"
+    <rule context="xref[matches(@ref-type,'^(bibr|fig|supplementary-material|table-fn)$')][not($pcode='pcrj')][not($transition='yes')]"
             role="error">
          <let name="ref-type" value="@ref-type"/>
          <assert id="xref1" test="normalize-space(.) or *">"xref" with ref-type="<value-of select="$ref-type"/>" and rid="<value-of select="@rid"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
       </rule>
   </pattern>
    <pattern><!--tweaked rule for PCRJ archive and transition journals only - no empty xrefs for some ref-types, ok for figures-->
-      <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|supplementary-material|table-fn)$')][($pcode='pcrj' or $transition='yes')]"
+      <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|supplementary-material|table-fn)$')][$pcode='pcrj']"
             role="error">
          <let name="ref-type" value="@ref-type"/>
          <assert id="xref1b" test="normalize-space(.) or *">"xref" with ref-type="<value-of select="$ref-type"/>" and rid="<value-of select="@rid"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
@@ -1817,21 +1821,21 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--range not marked up properly-->
-    <rule context="xref[@ref-type='bibr'][following::node()[1]='–'][following-sibling::xref[@ref-type='bibr'][1]]"
+    <rule context="xref[not($transition='yes')][@ref-type='bibr'][following::node()[1]='–'][following-sibling::xref[@ref-type='bibr'][1]]"
             role="error">
          <let name="end" value="following-sibling::xref[@ref-type='bibr'][1]/text()"/>
          <report id="xref3f1" test=".">For a range of references, do not put a separate "xref" on the start and end value. One "xref" should cover the range using multiple 'rid' values - one for each reference in the range. "xref" text should be "<value-of select="."/>&amp;#x2013;<value-of select="$end"/>". See the Tagging Instructions for example markup.</report>
       </rule>
   </pattern>
    <pattern><!--range not marked up properly-->
-    <rule context="xref[@ref-type='bibr'][following::node()[1]='—'][following-sibling::xref[@ref-type='bibr'][1]]"
+    <rule context="xref[not($transition='yes')][@ref-type='bibr'][following::node()[1]='—'][following-sibling::xref[@ref-type='bibr'][1]]"
             role="error">
          <let name="end" value="following-sibling::xref[@ref-type='bibr'][1]/text()"/>
          <report id="xref3f2" test=".">For a range of references, do not put a separate "xref" on the start and end value. One "xref" should cover the range using multiple 'rid' values - one for each reference in the range. "xref" text should be "<value-of select="."/>&amp;#x2014;<value-of select="$end"/>". See the Tagging Instructions for example markup.</report>
       </rule>
   </pattern>
    <pattern><!--range not marked up properly-->
-    <rule context="xref[@ref-type='bibr'][following::node()[1]='-'][following-sibling::xref[@ref-type='bibr'][1]]"
+    <rule context="xref[not($transition='yes')][@ref-type='bibr'][following::node()[1]='-'][following-sibling::xref[@ref-type='bibr'][1]]"
             role="error">
          <let name="end" value="following-sibling::xref[@ref-type='bibr'][1]/text()"/>
          <report id="xref3f3" test=".">For a range of references, do not put a separate "xref" on the start and end value. One "xref" should cover the range using multiple 'rid' values - one for each reference in the range. "xref" text should be "<value-of select="."/>-<value-of select="$end"/>". See the Tagging Instructions for example markup.</report>
@@ -2179,7 +2183,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--no brackets in year-->
-    <rule context="ref/mixed-citation/year" role="error">
+    <rule context="ref[not($transition='yes')]/mixed-citation/year" role="error">
          <report id="punct1a" test="starts-with(.,'(') or ends-with(.,')')">Do not include parentheses in the "year" element in citations in NPG/Palgrave articles.</report>
       </rule>
   </pattern>
@@ -2199,12 +2203,13 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--elocation-id should not contain text 'doi'-->
-    <rule context="ref/mixed-citation/elocation-id[@content-type='doi']" role="error">
+    <rule context="ref[not($transition='yes')]/mixed-citation/elocation-id[@content-type='doi']"
+            role="error">
          <report id="eloc1c" test="starts-with(.,'doi')">"elocation-id" should contain the DOI value only - move the text 'doi' and any punctuation to be outside the "doi" element.</report>
       </rule>
   </pattern>
    <pattern><!--isbn should not contain text 'ISBN'-->
-    <rule context="ref/mixed-citation/isbn" role="error">
+    <rule context="ref[not($transition='yes')]/mixed-citation/isbn" role="error">
          <report id="isbn1" test="starts-with(.,'ISBN')">"isbn" should contain the ISBN value only - move the text 'ISBN' and any punctuation to be outside the "isbn" element.</report>
       </rule>
   </pattern>
@@ -2314,7 +2319,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--second set of authors in book citation should be contained in person-group-->
-    <rule context="back//mixed-citation[@publication-type='book']/chapter-title"
+    <rule context="back[not($transition='yes')]//mixed-citation[@publication-type='book']/chapter-title"
             role="error">
          <report id="reflist7a" test="following-sibling::string-name">The second set of author/editor names in book citation "<value-of select="ancestor::ref/@id"/>" should be enclosed in "person-group" with a 'person-group-type' attribute to identify authors/editors etc.</report>
       </rule>
@@ -2426,7 +2431,8 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern>
-        <rule context="xref[@ref-type='table-fn']" role="error"><!--Does symbol in link match symbol on footnote?-->
+        <rule context="xref[@ref-type='table-fn'][not($transition='yes')]"
+            role="error"><!--Does symbol in link match symbol on footnote?-->
             <let name="id" value="@rid"/>
             <let name="sup-link" value="descendant::text()"/>
             <let name="sup-fn"
@@ -2435,7 +2441,7 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern>
-        <rule context="xref[@ref-type='table-fn'][not(parent::sup or descendant::sup)][matches(descendant::text(),'^[a-z]$')]"
+        <rule context="xref[@ref-type='table-fn'][not($transition='yes')][not(parent::sup or descendant::sup)][matches(descendant::text(),'^[a-z]$')]"
             role="error"><!--single letter references should be superscript-->
             <report id="tab10d" test=".">Table footnote xref to "<value-of select="@rid"/>" should be wrapped in superscript element "sup".</report>
         </rule>

@@ -63,6 +63,7 @@ Created - 20120208
     <related-article-type>has-data-descriptor</related-article-type>
     <related-article-type>is-erratum-to</related-article-type>
     <related-article-type>is-news-and-views-to</related-article-type>
+    <related-article-type>is-prime-view-to</related-article-type>
     <related-article-type>is-protocol-to</related-article-type>
     <related-article-type>is-protocol-update-to</related-article-type>
     <related-article-type>is-related-to</related-article-type>
@@ -83,7 +84,7 @@ Created - 20120208
     <abstract-type>research-summary</abstract-type>
     <abstract-type>editorial-notes</abstract-type>
     <abstract-type>in-brief</abstract-type>
-    <abstract-type>first-paragraph</abstract-type>
+    <!--abstract-type>first-paragraph</abstract-type--><!--DEPRECATED-->
     <abstract-type>executive-summary</abstract-type>
     <abstract-type>web-summary</abstract-type>
     <abstract-type>toc</abstract-type>

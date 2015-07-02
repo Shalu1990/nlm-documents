@@ -669,6 +669,9 @@
         <article-type code="prim">
             <article-heading>Primer</article-heading>
         </article-type>
+        <article-type code="pv">
+            <article-heading>PrimeView</article-heading>
+        </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
