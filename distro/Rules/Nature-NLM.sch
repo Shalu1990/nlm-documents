@@ -1554,8 +1554,9 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="p[@specific-use]" role="error">
-         <report id="para1c" test=".">Do not use "specific-use" attribute on "p" element.</report>
+      <rule context="p[@specific-use][not(@specific-use='search-only')]"
+            role="error">
+         <report id="para1c" test=".">Do not use "specific-use" attribute on "p" element (apart from when defining a paragraph as "search-only").</report>
       </rule>
   </pattern>
    <pattern>
@@ -2177,7 +2178,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--elements not allowed as children of ref-list-->
-    <rule context="ref-list/label|ref-list/address|ref-list/alternatives|ref-list/array|ref-list/boxed-text|ref-list/chem-struct-wrap|ref-list/fig|ref-list/fig-group|ref-list/graphic|ref-list/media|ref-list/preformat|ref-list/supplementary-material|ref-list/table-wrap|ref-list/table-wrap-group|ref-list/disp-formula|ref-list/disp-formula-group|ref-list/def-list|ref-list/list|ref-list/tex-math|ref-list/mml:math|ref-list/related-article|ref-list/related-object|ref-list/disp-quote|ref-list/speech|ref-list/statement|ref-list/verse-group"
+    <rule context="ref-list/label|ref-list/address|ref-list/alternatives|ref-list/array|ref-list/chem-struct-wrap|ref-list/graphic|ref-list/media|ref-list/preformat|ref-list/supplementary-material|ref-list/table-wrap|ref-list/table-wrap-group|ref-list/disp-formula|ref-list/disp-formula-group|ref-list/def-list|ref-list/list|ref-list/tex-math|ref-list/mml:math|ref-list/related-article|ref-list/related-object|ref-list/disp-quote|ref-list/speech|ref-list/statement|ref-list/verse-group"
             role="error">
          <report id="disallowed3" test=".">Do not use "<name/>" element in "ref-list" in NPG/Palgrave articles.</report>
       </rule>
