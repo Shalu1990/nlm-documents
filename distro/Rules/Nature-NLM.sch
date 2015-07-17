@@ -882,7 +882,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro='yes']//fig[not(@specific-use='suppinfo')]//graphic[@xlink:href]"
+      <rule context="article[$maestro='yes']//fig[not(@specific-use='suppinfo')]//graphic[@xlink:href][not(@xlink:href='')]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -1390,43 +1390,43 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-2" is a child of sec heading level 1-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-2'][not(parent::sec[@specific-use='heading-level-1'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-1'])]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-2'][not(parent::sec[@specific-use='heading-level-1'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-1'])][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3b" test=".">Section heading level 2 should be a child of section heading level 1 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-3" is a child of sec heading level 2-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-3'][not(parent::sec[@specific-use='heading-level-2'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-2'])]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-3'][not(parent::sec[@specific-use='heading-level-2'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-2'])][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3c" test=".">Section heading level 3 should be a child of section heading level 2 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-4" is a child of sec heading level 3-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-4'][not(parent::sec/@specific-use='heading-level-3')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-4'][not(parent::sec/@specific-use='heading-level-3')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3d" test=".">Section heading level 4 should be a child of section heading level 3 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-5" is a child of sec heading level 4-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-5'][not(parent::sec/@specific-use='heading-level-4')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-5'][not(parent::sec/@specific-use='heading-level-4')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3e" test=".">Section heading level 5 should be a child of section heading level 4 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-6" is a child of sec heading level 5-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-6'][not(parent::sec/@specific-use='heading-level-5')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-6'][not(parent::sec/@specific-use='heading-level-5')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3f" test=".">Section heading level 6 should be a child of section heading level 5 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-7" is a child of sec heading level 6-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-7'][not(parent::sec/@specific-use='heading-level-6')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-7'][not(parent::sec/@specific-use='heading-level-6')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3g" test=".">Section heading level 7 should be a child of section heading level 6 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-8" is a child of sec heading level 7-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-8'][not(parent::sec/@specific-use='heading-level-7')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-8'][not(parent::sec/@specific-use='heading-level-7')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3h" test=".">Section heading level 8 should be a child of section heading level 7 - check nesting and "specific-use" attribute values.</report>
       </rule>
@@ -1448,7 +1448,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="title[not(normalize-space(.) or *)]">
+      <rule context="sec/title[not(normalize-space(.) or *)]">
          <report id="title1c" test=".">Do not use empty section "title" for formatting purposes.</report>
       </rule>
   </pattern>
@@ -2474,7 +2474,7 @@ Use the <let> element to define the attribute if necessary.
     </pattern>
    <pattern>
       <rule context="fig//graphic[@xlink:href='' or @mimetype='' or @mime-subtype='']" role="error">
-        <report id="fig1a" test=".">Graphic attribute values 'xlink:href', 'mimetype' and 'mime-subtype' should be used and not be empty - please check that entity declarations have been converted correctly before transformation.</report>
+        <report id="fig1a" test=".">Graphic attribute values 'xlink:href', 'mimetype' and 'mime-subtype' should be used and not be empty. If the article has been converted from AJ or NPG XML, please check that entity declarations have been converted correctly before transformation.</report>
       </rule>
    </pattern>
    <pattern>
@@ -2495,7 +2495,7 @@ Use the <let> element to define the attribute if necessary.
     </pattern>
    <pattern><!--fig - caption must not be empty-->
         <rule context="fig/caption" role="error">
-            <assert id="fig2b" test="normalize-space(.) or *">Figure "caption" should not be empty.</assert>
+            <assert id="fig2b" test="normalize-space(.)">Figure "caption" should not be empty.</assert>
         </rule>
     </pattern>
    <pattern><!--fig - caption must not have attributes-->
@@ -2550,12 +2550,13 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--@xlink:href contains a '.' and therefore may have an extension-->
-        <rule context="fig//graphic[@xlink:href]" role="error">
+        <rule context="fig//graphic[@xlink:href][not(@xlink:href='')]" role="error">
             <assert id="fig4c" test="contains(@xlink:href,'.')">Figure graphic 'xlink:href' value ("<value-of select="@xlink:href"/>") should contain the file extension (e.g. jpg, gif, etc).</assert>
         </rule>
     </pattern>
    <pattern><!--@xlink:href has valid file extension - check allowed image extensions-->
-        <rule context="fig//graphic[@xlink:href]" role="error">
+        <rule context="fig//graphic[@xlink:href][not(@xlink:href='')][contains(@xlink:href,'.')]"
+            role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
             <assert id="fig4d"
                  test="matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')">Unexpected file extension value ("<value-of select="$extension"/>") in figure "graphic" '@xlink:href' attribute - please check.</assert>
@@ -2584,12 +2585,13 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--value used for @mimetype is correct based on file extension (includes test for valid extension)-->
-        <rule context="fig//graphic[@mimetype][contains(@xlink:href,'.')]" role="error">
+        <rule context="fig//graphic[@mimetype][not(@mimetype='')][contains(@xlink:href,'.')]"
+            role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
             <let name="mimetype"
               value="if (matches($extension,'^(doc|docx|eps|exe|noa|pdf|pps|ppt|pptx|ps|rtf|swf|tar|tgz|wmf|xls|xlsx|xml|zip)$')) then 'application'                 else if (matches($extension,'^(mp2|mp3|ra|wav)$')) then 'audio'                 else if (matches($extension,'^(cif|pdb|sdf)$')) then 'chemical'                 else if (matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$')) then 'image'                 else if (matches($extension,'^(c|csv|htm|html|sif|txt)$')) then 'text'                 else if (matches($extension,'^(avi|mov|mp4|mpg|qt|rv|wmv)$')) then 'video'                 else ()"/>
             <assert id="fig5d"
-                 test="@mimetype=$mimetype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">For figure graphics with extension "<value-of select="$extension"/>", the mimetype attribute should have the value "<value-of select="$mimetype"/>" (not "<value-of select="@mimetype"/>").</assert>
+                 test="@mimetype=$mimetype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">For figure graphics with extension "<value-of select="$extension"/>", the 'mimetype' attribute should have the value "<value-of select="$mimetype"/>" (not "<value-of select="@mimetype"/>").</assert>
         </rule>
     </pattern>
    <pattern><!--fig graphic - must have a @mime-subtype; when @xlink:href does not exist or is invalid, point to Tagging instructions-->
@@ -2615,7 +2617,8 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--value used for @mimetype is correct based on file extension (includes test for valid extension)-->
-        <rule context="fig//graphic[@mime-subtype][contains(@xlink:href,'.')]" role="error">
+        <rule context="fig//graphic[@mime-subtype][not(@mime-subtype='')][contains(@xlink:href,'.')]"
+            role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
             <let name="mime-subtype"
               value="if ($extension='tgz') then 'application/gzip'                 else if ($extension='bmp') then 'bmp'                 else if ($extension='csv') then 'csv'                 else if ($extension='gif') then 'gif'                 else if ($extension='htm' or $extension='html') then 'html'                 else if ($extension='jpeg' or $extension='jpg') then 'jpeg'                 else if ($extension='mp4' or $extension='mp2' or $extension='mp3' or $extension='mpg') then 'mpeg'                 else if ($extension='doc' or $extension='dot') then 'msword'                 else if ($extension='exe' or $extension='noa' or $extension='ole' or $extension='wp') then 'octet-stream'                 else if ($extension='pdf') then 'pdf'                 else if ($extension='c' or $extension='sif' or $extension='txt') then 'plain'                 else if ($extension='png') then 'png'                 else if ($extension='eps' or $extension='ps') then 'postscript'                 else if ($extension='mov' or $extension='qt') then 'quicktime'                 else if ($extension='rtf') then 'rtf'                 else if ($extension='sbml') then 'sbml+xml'                 else if ($extension='tiff') then 'tiff'                 else if ($extension='xls') then 'vnd.ms-excel'                 else if ($extension='xlsm') then 'vnd.ms-excel.sheet.macroEnabled.12'                 else if ($extension='pps' or $extension='ppt') then 'vnd.ms-powerpoint'                 else if ($extension='pptm') then 'vnd.ms-powerpoint.presentation.macroEnabled.12'                 else if ($extension='docm') then 'vnd.ms-word.document.macroEnabled.12'                 else if ($extension='pptx') then 'vnd.openxmlformats-officedocument.presentationml.presentation'                 else if ($extension='xlsx') then 'vnd.openxmlformats-officedocument.spreadsheetml.sheet'                 else if ($extension='docx') then 'vnd.openxmlformats-officedocument.wordprocessingml.document'                 else if ($extension='ra') then 'vnd.rn-realaudio'                 else if ($extension='rv') then 'vnd.rn-realvideo'                 else if ($extension='cdx') then 'x-cdx'                 else if ($extension='cif') then 'x-cif'                 else if ($extension='jdx') then 'x-jcamp-dx'                 else if ($extension='tex') then 'x-latex'                 else if ($extension='mol') then 'x-mdl-molfile'                 else if ($extension='sdf') then 'x-mdl-sdfile'                 else if ($extension='xml') then 'xml'                 else if ($extension='wmf') then 'x-msmetafile'                 else if ($extension='avi') then 'x-msvideo'                 else if ($extension='wmv') then 'x-ms-wmv'                 else if ($extension='pdb') then 'x-pdb'                 else if ($extension='pict') then 'x-pict'                 else if ($extension='swf') then 'x-shockwave-flash'                 else if ($extension='tar') then 'x-tar'                 else if ($extension='wav') then 'x-wav'                 else if ($extension='zip') then 'x-zip-compressed'                 else ()"/>
@@ -2794,6 +2797,12 @@ Use the <let> element to define the attribute if necessary.
             <report id="box1a" test=".">"boxed-text" (which is not an excerpt) should only be a child of "floats-group" - not "<value-of select="local-name(parent::*)"/>".</report>
         </rule>
     </pattern>
+   <pattern><!--box - allowed children of regular boxes-->
+      <rule context="boxed-text/object-id | boxed-text/sec-meta | boxed-text/address | boxed-text/alternatives | boxed-text/array | boxed-text/boxed-text | boxed-text/chem-struct-wrap | boxed-text/fig | boxed-text/fig-group | boxed-text/graphic | boxed-text/media |  boxed-text/supplementary-material | boxed-text/table-wrap | boxed-text/table-wrap-group | boxed-text/disp-formula-group | boxed-text/def-list | boxed-text/tex-math | boxed-text/mml:math | boxed-text[not(@content-type='excerpt')]/related-article | boxed-text/related-object | boxed-text/disp-quote | boxed-text/speech | boxed-text/statement | boxed-text/verse-group | boxed-text/fn-group | boxed-text/glossary | boxed-text/ref-list | boxed-text[not(@content-type='excerpt')]/sec | boxed-text/attrib | boxed-text/permissions"
+            role="error">
+         <report id="box2" test=".">Do not use "<name/>" as a child of "boxed-text".</report>
+      </rule>
+  </pattern>
    <pattern><!--box - caption must not be empty-->
         <rule context="boxed-text/caption" role="error">
             <assert id="box3a" test="normalize-space(.) or *">Box "caption" should not be empty - delete or include required title.</assert>
