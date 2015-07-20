@@ -882,7 +882,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro='yes']//fig[not(@specific-use='suppinfo')]//graphic[@xlink:href]"
+      <rule context="article[$maestro='yes']//fig[not(@specific-use='suppinfo')]//graphic[@xlink:href][not(@xlink:href='')]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -1390,43 +1390,43 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-2" is a child of sec heading level 1-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-2'][not(parent::sec[@specific-use='heading-level-1'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-1'])]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-2'][not(parent::sec[@specific-use='heading-level-1'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-1'])][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3b" test=".">Section heading level 2 should be a child of section heading level 1 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-3" is a child of sec heading level 2-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-3'][not(parent::sec[@specific-use='heading-level-2'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-2'])]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-3'][not(parent::sec[@specific-use='heading-level-2'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-2'])][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3c" test=".">Section heading level 3 should be a child of section heading level 2 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-4" is a child of sec heading level 3-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-4'][not(parent::sec/@specific-use='heading-level-3')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-4'][not(parent::sec/@specific-use='heading-level-3')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3d" test=".">Section heading level 4 should be a child of section heading level 3 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-5" is a child of sec heading level 4-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-5'][not(parent::sec/@specific-use='heading-level-4')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-5'][not(parent::sec/@specific-use='heading-level-4')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3e" test=".">Section heading level 5 should be a child of section heading level 4 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-6" is a child of sec heading level 5-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-6'][not(parent::sec/@specific-use='heading-level-5')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-6'][not(parent::sec/@specific-use='heading-level-5')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3f" test=".">Section heading level 6 should be a child of section heading level 5 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-7" is a child of sec heading level 6-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-7'][not(parent::sec/@specific-use='heading-level-6')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-7'][not(parent::sec/@specific-use='heading-level-6')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3g" test=".">Section heading level 7 should be a child of section heading level 6 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-8" is a child of sec heading level 7-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-8'][not(parent::sec/@specific-use='heading-level-7')]"
+    <rule context="sec[not($transition='yes')][@specific-use='heading-level-8'][not(parent::sec/@specific-use='heading-level-7')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3h" test=".">Section heading level 8 should be a child of section heading level 7 - check nesting and "specific-use" attribute values.</report>
       </rule>
@@ -1448,7 +1448,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="title[not(normalize-space(.) or *)]">
+      <rule context="sec/title[not(normalize-space(.) or *)]">
          <report id="title1c" test=".">Do not use empty section "title" for formatting purposes.</report>
       </rule>
   </pattern>
@@ -1541,7 +1541,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--content-type attribute is valid-->
-    <rule context="p[not(ancestor::sec/@sec-type)][not(ancestor::ack or ancestor::app or ancestor::app-group or ancestor::boxed-text)][not(ancestor::supplementary-material[@content-type='annotations'])][@content-type]"
+    <rule context="p[not(ancestor::sec/@sec-type)][not(ancestor::ack or ancestor::app or ancestor::app-group or ancestor::boxed-text or ancestor::table-wrap)][not(ancestor::supplementary-material[@content-type='annotations'])][@content-type]"
             role="error">
          <let name="contentType" value="@content-type"/>
          <assert id="para1a" test="$allowed-values/content-types/content-type[.=$contentType]">Unexpected value for "content-type" attribute (<value-of select="$contentType"/>). Allowed values are: cross-head, dateline and greeting. </assert>
@@ -1554,8 +1554,9 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="p[@specific-use]" role="error">
-         <report id="para1c" test=".">Do not use "specific-use" attribute on "p" element.</report>
+      <rule context="p[@specific-use][not(@specific-use='search-only')]"
+            role="error">
+         <report id="para1c" test=".">Do not use "specific-use" attribute on "p" element (apart from when defining a paragraph as "search-only").</report>
       </rule>
   </pattern>
    <pattern>
@@ -1580,7 +1581,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--preformat should have @preformat-type to assist rendering-->
     <rule context="preformat" role="error">
-         <assert id="style2a" test="@preformat-type">"preformat" should have an 'preformat-type' attribute with value "inline" (for inline monospaced type) or "block" (for set out code).</assert>
+         <assert id="style2a" test="@preformat-type">"preformat" should have a 'preformat-type' attribute with value "inline" (for inline monospaced type) or "block" (for set out code).</assert>
       </rule>
   </pattern>
    <pattern><!--@preformat-type should have allowed values-->
@@ -1648,12 +1649,12 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--ext-link should have @xlink:href-->
-    <rule context="ext-link[not(@xlink:href)]" role="error">
+    <rule context="ext-link[not(@xlink:href)][not(ancestor::notes/@notes-type='database-links')]" role="error">
          <report id="url2a" test=".">"ext-link" should have an 'xlink:href' attribute giving the target website or ftp site.</report>
       </rule>
   </pattern>
    <pattern><!--ext-link should have non-empty @xlink:href-->
-    <rule context="ext-link[@xlink:href='']" role="error">
+    <rule context="ext-link[@xlink:href=''][not(ancestor::notes/@notes-type='database-links')]" role="error">
          <report id="url2b" test=".">"ext-link" 'xlink:href' attribute should not be empty. It should contain the address for the target website or ftp site.</report>
       </rule>
   </pattern>
@@ -1670,13 +1671,13 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--ext-link should have @xlink:href-->
-    <rule context="ext-link[not(@ext-link-type)][not(ancestor::ref-list[@content-type='data-citations'])]"
+    <rule context="ext-link[not(@ext-link-type)][not(ancestor::ref-list[@content-type='data-citations'])][not(ancestor::notes/@notes-type='database-links')]"
             role="error">
          <report id="url3a" test=".">"ext-link" should have an 'ext-link-type' attribute: "url" for a link to a website; "ftp" for a link to an ftp site.</report>
       </rule>
   </pattern>
    <pattern><!--ext-link should have non-empty @xlink:href-->
-    <rule context="ext-link[@ext-link-type=''][not(ancestor::ref-list[@content-type='data-citations'])]"
+    <rule context="ext-link[@ext-link-type=''][not(ancestor::ref-list[@content-type='data-citations'])][not(ancestor::notes/@notes-type='database-links')]"
             role="error">
          <report id="url3b" test=".">"ext-link" 'ext-link-type' attribute should not be empty. It should be "url" for a link to a website; "ftp" for a link to an ftp site.</report>
       </rule>
@@ -2177,7 +2178,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--elements not allowed as children of ref-list-->
-    <rule context="ref-list/label|ref-list/address|ref-list/alternatives|ref-list/array|ref-list/boxed-text|ref-list/chem-struct-wrap|ref-list/fig|ref-list/fig-group|ref-list/graphic|ref-list/media|ref-list/preformat|ref-list/supplementary-material|ref-list/table-wrap|ref-list/table-wrap-group|ref-list/disp-formula|ref-list/disp-formula-group|ref-list/def-list|ref-list/list|ref-list/tex-math|ref-list/mml:math|ref-list/related-article|ref-list/related-object|ref-list/disp-quote|ref-list/speech|ref-list/statement|ref-list/verse-group"
+    <rule context="ref-list/label|ref-list/address|ref-list/alternatives|ref-list/array|ref-list/chem-struct-wrap|ref-list/graphic|ref-list/media|ref-list/preformat|ref-list/supplementary-material|ref-list/table-wrap|ref-list/table-wrap-group|ref-list/disp-formula|ref-list/disp-formula-group|ref-list/def-list|ref-list/list|ref-list/tex-math|ref-list/mml:math|ref-list/related-article|ref-list/related-object|ref-list/disp-quote|ref-list/speech|ref-list/statement|ref-list/verse-group"
             role="error">
          <report id="disallowed3" test=".">Do not use "<name/>" element in "ref-list" in NPG/Palgrave articles.</report>
       </rule>
@@ -2231,12 +2232,12 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--ref-list - do not use 'content-type' attribute (except for link groups)-->
     <rule context="ref-list[@content-type]" role="error">
          <assert id="reflist1d"
-                 test="@content-type='link-group' or @content-type='data-citations'">Do not use 'content-type' attribute on "ref-list", except for link groups or data citations.</assert>
+                 test="@content-type='link-group' or @content-type='data-citations'">Do not use 'content-type' attribute on "ref-list", except for 'link-group' or 'data-citations'.</assert>
       </rule>
   </pattern>
    <pattern><!--ref-list does not need title "References"-->
     <rule context="back/ref-list[not(@content-type)]/title" role="error">
-         <report id="reflist2a" test=".='references' or .='References' or .='REFERENCES'">A "title" element with text 'References' is not necessary at the start of the References section - please delete.</report>
+         <report id="reflist2a" test="lower-case(.)='references'">A "title" element with text 'References' is not necessary at the start of the References section - please delete.</report>
       </rule>
   </pattern>
    <pattern><!--citations in ref-list do not need labels, values can be generated from id-->
@@ -2391,8 +2392,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--caption must contain a title-->
-        <rule context="table-wrap/caption" role="error">
-            <report id="tab5a" test="not(child::title) and child::p" role="error">Table-wrap "caption" should contain a "title" element - change "p" to "title".</report>
+        <rule context="table-wrap/caption[not(title) and p]" role="error">
+            <report id="tab5a" test="." role="error">Table-wrap "caption" should contain a "title" element - change "p" to "title".</report>
         </rule>
     </pattern>
    <pattern><!--caption should not be empty (strip out unicode spaces as well - &#x2003; &#x2009;)-->
@@ -2408,13 +2409,18 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--caption should not have attributes-->
-        <rule context="table-wrap/caption" role="error">
-            <report id="tab5d" test="attribute::*" role="error">Do not use attributes on table-wrap "caption".</report>
+        <rule context="table-wrap/caption[attribute::*]" role="error">
+            <report id="tab5d" test="." role="error">Do not use attributes on table-wrap "caption".</report>
         </rule>
     </pattern>
-   <pattern><!--caption title or p should not have attributes-->
-        <rule context="table-wrap/caption/title|table-wrap/caption/p" role="error">
-            <report id="tab5e" test="attribute::*" role="error">Do not use attributes on "<name/>" within table-wrap "caption".</report>
+   <pattern><!--caption title should not have attributes-->
+        <rule context="table-wrap/caption/title[@specific-use]" role="error">
+            <report id="tab5e-1" test="." role="error">Do not use 'specific-use' attribute on "title" within table-wrap "caption".</report>
+        </rule>
+    </pattern>
+   <pattern><!--caption p should not have attributes-->
+        <rule context="table-wrap/caption/p[@content-type]" role="error">
+            <report id="tab5e-2" test="." role="error">Do not use 'content-type' attribute on "p" within table-wrap "caption".</report>
         </rule>
     </pattern>
    <pattern>
@@ -2452,23 +2458,23 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern>
-        <rule context="oasis:entry[@namest and @nameend]">
-            <assert id="tab11a" test="@align">Spanning table entries should also have an 'align' attribute.</assert>
+        <rule context="oasis:entry[@namest and @nameend and not(@align)]">
+            <report id="tab11a" test=".">Spanning table entries should also have an 'align' attribute.</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="oasis:entry[@nameend]">
-            <assert id="tab11b" test="@namest">Table entry has 'nameend' attribute (<value-of select="@nameend"/>), but there is no 'namest' attribute. Spanning entries should have both these attributes; non-spanning entries should have neither.</assert>
+        <rule context="oasis:entry[@nameend and not(@namest)]">
+            <report id="tab11b" test=".">Table entry has 'nameend' attribute (<value-of select="@nameend"/>), but there is no 'namest' attribute. Spanning entries should have both these attributes; non-spanning entries should have neither.</report>
         </rule>
     </pattern>
    <pattern>
-        <rule context="oasis:entry[@namest]">
-            <assert id="tab11c" test="@nameend">Table entry has 'namest' attribute (<value-of select="@namest"/>), but there is no 'nameend' attribute. Spanning entries should have both these attributes; non-spanning entries should have neither.</assert>
+        <rule context="oasis:entry[@namest and not(@nameend)]">
+            <report id="tab11c" test=".">Table entry has 'namest' attribute (<value-of select="@namest"/>), but there is no 'nameend' attribute. Spanning entries should have both these attributes; non-spanning entries should have neither.</report>
         </rule>
     </pattern>
    <pattern>
-      <rule context="fig//graphic" role="error">
-        <report id="fig1a" test="@xlink:href='' or @mimetype='' or @mime-subtype=''">Graphic attribute values 'xlink:href', 'mimetype' and 'mime-subtype' should be used and not be empty - please check that entity declarations have been converted correctly before transformation.</report>
+      <rule context="fig//graphic[@xlink:href='' or @mimetype='' or @mime-subtype='']" role="error">
+        <report id="fig1a" test=".">Graphic attribute values 'xlink:href', 'mimetype' and 'mime-subtype' should be used and not be empty. If the article has been converted from AJ or NPG XML, please check that entity declarations have been converted correctly before transformation.</report>
       </rule>
    </pattern>
    <pattern>
@@ -2482,14 +2488,14 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--fig - allowed children only-->
-        <rule context="fig/alt-text | fig/long-desc | fig/email | fig/ext-link | fig/uri | fig/disp-formula | fig/disp-formula-group | fig/chem-struct-wrap | fig/disp-quote | fig/speech | fig/statement | fig/verse-group | fig/table-wrap | fig/p | fig/def-list | fig/list | fig/array | fig/media | fig/preformat | fig/permissions"
+        <rule context="fig/alt-text | fig/long-desc | fig/email | fig/ext-link | fig/disp-formula | fig/disp-formula-group | fig/chem-struct-wrap | fig/disp-quote | fig/speech | fig/statement | fig/verse-group | fig/table-wrap | fig/p | fig/def-list | fig/list | fig/array | fig/media | fig/preformat | fig/permissions"
             role="error">
             <report id="fig2a" test=".">Do not use "<name/>" as a child of "fig". Refer to Tagging Instructions for sample markup.</report>
         </rule>
     </pattern>
    <pattern><!--fig - caption must not be empty-->
         <rule context="fig/caption" role="error">
-            <assert id="fig2b" test="normalize-space(.) or *">Figure "caption" should not be empty.</assert>
+            <assert id="fig2b" test="normalize-space(.)">Figure "caption" should not be empty.</assert>
         </rule>
     </pattern>
    <pattern><!--fig - caption must not have attributes-->
@@ -2544,12 +2550,13 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--@xlink:href contains a '.' and therefore may have an extension-->
-        <rule context="fig//graphic[@xlink:href]" role="error">
+        <rule context="fig//graphic[@xlink:href][not(@xlink:href='')]" role="error">
             <assert id="fig4c" test="contains(@xlink:href,'.')">Figure graphic 'xlink:href' value ("<value-of select="@xlink:href"/>") should contain the file extension (e.g. jpg, gif, etc).</assert>
         </rule>
     </pattern>
    <pattern><!--@xlink:href has valid file extension - check allowed image extensions-->
-        <rule context="fig//graphic[@xlink:href]" role="error">
+        <rule context="fig//graphic[@xlink:href][not(@xlink:href='')][contains(@xlink:href,'.')]"
+            role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
             <assert id="fig4d"
                  test="matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')">Unexpected file extension value ("<value-of select="$extension"/>") in figure "graphic" '@xlink:href' attribute - please check.</assert>
@@ -2578,12 +2585,13 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--value used for @mimetype is correct based on file extension (includes test for valid extension)-->
-        <rule context="fig//graphic[@mimetype][contains(@xlink:href,'.')]" role="error">
+        <rule context="fig//graphic[@mimetype][not(@mimetype='')][contains(@xlink:href,'.')]"
+            role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
             <let name="mimetype"
               value="if (matches($extension,'^(doc|docx|eps|exe|noa|pdf|pps|ppt|pptx|ps|rtf|swf|tar|tgz|wmf|xls|xlsx|xml|zip)$')) then 'application'                 else if (matches($extension,'^(mp2|mp3|ra|wav)$')) then 'audio'                 else if (matches($extension,'^(cif|pdb|sdf)$')) then 'chemical'                 else if (matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$')) then 'image'                 else if (matches($extension,'^(c|csv|htm|html|sif|txt)$')) then 'text'                 else if (matches($extension,'^(avi|mov|mp4|mpg|qt|rv|wmv)$')) then 'video'                 else ()"/>
             <assert id="fig5d"
-                 test="@mimetype=$mimetype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">For figure graphics with extension "<value-of select="$extension"/>", the mimetype attribute should have the value "<value-of select="$mimetype"/>" (not "<value-of select="@mimetype"/>").</assert>
+                 test="@mimetype=$mimetype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">For figure graphics with extension "<value-of select="$extension"/>", the 'mimetype' attribute should have the value "<value-of select="$mimetype"/>" (not "<value-of select="@mimetype"/>").</assert>
         </rule>
     </pattern>
    <pattern><!--fig graphic - must have a @mime-subtype; when @xlink:href does not exist or is invalid, point to Tagging instructions-->
@@ -2609,7 +2617,8 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--value used for @mimetype is correct based on file extension (includes test for valid extension)-->
-        <rule context="fig//graphic[@mime-subtype][contains(@xlink:href,'.')]" role="error">
+        <rule context="fig//graphic[@mime-subtype][not(@mime-subtype='')][contains(@xlink:href,'.')]"
+            role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
             <let name="mime-subtype"
               value="if ($extension='tgz') then 'application/gzip'                 else if ($extension='bmp') then 'bmp'                 else if ($extension='csv') then 'csv'                 else if ($extension='gif') then 'gif'                 else if ($extension='htm' or $extension='html') then 'html'                 else if ($extension='jpeg' or $extension='jpg') then 'jpeg'                 else if ($extension='mp4' or $extension='mp2' or $extension='mp3' or $extension='mpg') then 'mpeg'                 else if ($extension='doc' or $extension='dot') then 'msword'                 else if ($extension='exe' or $extension='noa' or $extension='ole' or $extension='wp') then 'octet-stream'                 else if ($extension='pdf') then 'pdf'                 else if ($extension='c' or $extension='sif' or $extension='txt') then 'plain'                 else if ($extension='png') then 'png'                 else if ($extension='eps' or $extension='ps') then 'postscript'                 else if ($extension='mov' or $extension='qt') then 'quicktime'                 else if ($extension='rtf') then 'rtf'                 else if ($extension='sbml') then 'sbml+xml'                 else if ($extension='tiff') then 'tiff'                 else if ($extension='xls') then 'vnd.ms-excel'                 else if ($extension='xlsm') then 'vnd.ms-excel.sheet.macroEnabled.12'                 else if ($extension='pps' or $extension='ppt') then 'vnd.ms-powerpoint'                 else if ($extension='pptm') then 'vnd.ms-powerpoint.presentation.macroEnabled.12'                 else if ($extension='docm') then 'vnd.ms-word.document.macroEnabled.12'                 else if ($extension='pptx') then 'vnd.openxmlformats-officedocument.presentationml.presentation'                 else if ($extension='xlsx') then 'vnd.openxmlformats-officedocument.spreadsheetml.sheet'                 else if ($extension='docx') then 'vnd.openxmlformats-officedocument.wordprocessingml.document'                 else if ($extension='ra') then 'vnd.rn-realaudio'                 else if ($extension='rv') then 'vnd.rn-realvideo'                 else if ($extension='cdx') then 'x-cdx'                 else if ($extension='cif') then 'x-cif'                 else if ($extension='jdx') then 'x-jcamp-dx'                 else if ($extension='tex') then 'x-latex'                 else if ($extension='mol') then 'x-mdl-molfile'                 else if ($extension='sdf') then 'x-mdl-sdfile'                 else if ($extension='xml') then 'xml'                 else if ($extension='wmf') then 'x-msmetafile'                 else if ($extension='avi') then 'x-msvideo'                 else if ($extension='wmv') then 'x-ms-wmv'                 else if ($extension='pdb') then 'x-pdb'                 else if ($extension='pict') then 'x-pict'                 else if ($extension='swf') then 'x-shockwave-flash'                 else if ($extension='tar') then 'x-tar'                 else if ($extension='wav') then 'x-wav'                 else if ($extension='zip') then 'x-zip-compressed'                 else ()"/>
@@ -2788,6 +2797,12 @@ Use the <let> element to define the attribute if necessary.
             <report id="box1a" test=".">"boxed-text" (which is not an excerpt) should only be a child of "floats-group" - not "<value-of select="local-name(parent::*)"/>".</report>
         </rule>
     </pattern>
+   <pattern><!--box - allowed children of regular boxes-->
+      <rule context="boxed-text/object-id | boxed-text/sec-meta | boxed-text/address | boxed-text/alternatives | boxed-text/array | boxed-text/boxed-text | boxed-text/chem-struct-wrap | boxed-text/fig | boxed-text/fig-group | boxed-text/graphic | boxed-text/media |  boxed-text/supplementary-material | boxed-text/table-wrap | boxed-text/table-wrap-group | boxed-text/disp-formula-group | boxed-text/def-list | boxed-text/tex-math | boxed-text/mml:math | boxed-text[not(@content-type='excerpt')]/related-article | boxed-text/related-object | boxed-text/disp-quote | boxed-text/speech | boxed-text/statement | boxed-text/verse-group | boxed-text/fn-group | boxed-text/glossary | boxed-text/ref-list | boxed-text[not(@content-type='excerpt')]/sec | boxed-text/attrib | boxed-text/permissions"
+            role="error">
+         <report id="box2" test=".">Do not use "<name/>" as a child of "boxed-text".</report>
+      </rule>
+  </pattern>
    <pattern><!--box - caption must not be empty-->
         <rule context="boxed-text/caption" role="error">
             <assert id="box3a" test="normalize-space(.) or *">Box "caption" should not be empty - delete or include required title.</assert>

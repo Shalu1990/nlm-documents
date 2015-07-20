@@ -1123,8 +1123,14 @@
         <article-type code="af">
             <article-heading>Article</article-heading>
         </article-type>
+        <article-type code="cr">
+            <article-heading>Correspondence</article-heading>
+        </article-type>
         <article-type code="ed">
             <article-heading>Editorial</article-heading>
+        </article-type>
+        <article-type code="nv">
+            <article-heading>News and Views</article-heading>
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>

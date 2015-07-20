@@ -16,6 +16,10 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2015/07/07 - CDS-975 - Added "is-prime-view-to" to 'related-article-type' attribute values
+
+2015/05/15 - CDS-890 - Added "fd" as a possible child of "li"
+
 2015/01/14 - CDS-649 - Additional elements and attributes to support funding information:
                        Added "funding-group" as possible child of "pubfm"
                        Added "award" and "funding-statement" as possible children of "funding-group"
@@ -1112,7 +1116,7 @@ type (electronic | print) "print"
   id   ID  #IMPLIED
   extrefid  CDATA #REQUIRED
   extrefid-type (uri | doi | local-path) "doi"
-  related-article-type (protocol | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol | is-protocol-update-to | has-protocol-update | is-data-descriptor-to | has-data-descriptor | is-update-to | excerpt-from) #REQUIRED
+  related-article-type (protocol | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol | is-protocol-update-to | has-protocol-update | is-data-descriptor-to | has-data-descriptor | is-update-to | excerpt-from | is-prime-view-to) #REQUIRED
 >
 
 <!ELEMENT article-link EMPTY>
@@ -1697,7 +1701,7 @@ file CDATA #IMPLIED
 id ID #REQUIRED
 type (bullet | number | ucletter | lcletter | ucroman | lcroman) "bullet"
 >
-<!ELEMENT li (%data; | cite | f | list | critical | trouble | caution | pause | timing)*>
+<!ELEMENT li (%data; | cite | f | fd | list | critical | trouble | caution | pause | timing)*>
 <!ELEMENT deflist (listttl?, (term, defn)+)>
 <!ATTLIST deflist
 id ID #REQUIRED

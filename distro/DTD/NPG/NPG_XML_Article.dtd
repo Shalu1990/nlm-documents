@@ -16,6 +16,8 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2015/07/07 - CDS-975 - Added "is-prime-view-to" to 'related-article-type' attribute values
+
 2015/05/15 - CDS-890 - Added "fd" as a possible child of "li"
 
 2015/01/14 - CDS-649 - Additional elements and attributes to support funding information:
@@ -1104,7 +1106,7 @@ type (electronic | print) "print"
   id   ID  #IMPLIED
   extrefid  CDATA #REQUIRED
   extrefid-type (uri | doi | local-path) "doi"
-  related-article-type (protocol | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol | is-protocol-update-to | has-protocol-update | is-data-descriptor-to | has-data-descriptor | is-update-to | excerpt-from) #REQUIRED
+  related-article-type (protocol | is-correction-to | is-corrigendum-to | is-erratum-to | is-retraction-to | is-addendum-to | is-response-to | is-comment-to | is-news-and-views-to | is-research-highlight-to | is-related-to | is-protocol-to | has-protocol | is-protocol-update-to | has-protocol-update | is-data-descriptor-to | has-data-descriptor | is-update-to | excerpt-from | is-prime-view-to) #REQUIRED
 >
 
 <!ELEMENT article-link EMPTY>
