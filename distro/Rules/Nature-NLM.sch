@@ -2786,7 +2786,7 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--no other elements used in graphics-->
-        <rule context="graphic[@content-type]/alt-text | graphic[@content-type]/email | graphic[@content-type]/ext-link | graphic[@content-type]/label | graphic[@content-type]/long-desc | graphic[@content-type]/permissions | graphic[@content-type]/uri"
+        <rule context="graphic[@content-type]/alt-text[not($article-type eq 'pv')] | graphic[@content-type]/email | graphic[@content-type]/ext-link | graphic[@content-type]/label | graphic[@content-type]/long-desc | graphic[@content-type]/permissions | graphic[@content-type]/uri"
             role="error">
             <report id="ill6a" test="." role="error">Do not use "<name/>" in "graphic".</report>
         </rule>
@@ -2798,7 +2798,7 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--box - allowed children of regular boxes-->
-      <rule context="boxed-text/object-id | boxed-text/sec-meta | boxed-text/address | boxed-text/alternatives | boxed-text/array | boxed-text/boxed-text | boxed-text/chem-struct-wrap | boxed-text/fig | boxed-text/fig-group | boxed-text/graphic | boxed-text/media |  boxed-text/supplementary-material | boxed-text/table-wrap | boxed-text/table-wrap-group | boxed-text/disp-formula-group | boxed-text/def-list | boxed-text/tex-math | boxed-text/mml:math | boxed-text[not(@content-type='excerpt')]/related-article | boxed-text/related-object | boxed-text/disp-quote | boxed-text/speech | boxed-text/statement | boxed-text/verse-group | boxed-text/fn-group | boxed-text/glossary | boxed-text/ref-list | boxed-text[not(@content-type='excerpt')]/sec | boxed-text/attrib | boxed-text/permissions"
+      <rule context="boxed-text/sec-meta | boxed-text/address | boxed-text/alternatives | boxed-text/array | boxed-text/chem-struct-wrap | boxed-text/graphic | boxed-text/media |  boxed-text/supplementary-material | boxed-text/table-wrap | boxed-text/table-wrap-group | boxed-text/disp-formula-group | boxed-text/def-list | boxed-text/tex-math | boxed-text/mml:math | boxed-text[not(@content-type='excerpt')]/related-article | boxed-text/related-object | boxed-text/disp-quote | boxed-text/speech | boxed-text/statement | boxed-text/verse-group | boxed-text/fn-group | boxed-text/glossary | boxed-text/ref-list | boxed-text[not(@content-type='excerpt')]/sec | boxed-text/attrib | boxed-text/permissions"
             role="error">
          <report id="box2" test=".">Do not use "<name/>" as a child of "boxed-text".</report>
       </rule>
