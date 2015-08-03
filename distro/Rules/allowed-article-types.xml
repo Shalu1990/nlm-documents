@@ -857,8 +857,8 @@
         <article-type code="bc">
             <article-heading>Brief Communication</article-heading>
         </article-type>
-        <article-type code="caser">
-            <article-heading>Case Report</article-heading>
+        <article-type code="cr">
+            <article-heading>Correspondence</article-heading>
         </article-type>
         <article-type code="ed">
             <article-heading>Editorial</article-heading>
@@ -1304,6 +1304,38 @@
         </article-type>
         <article-type code="prot">
             <article-heading>Protocol</article-heading>
+        </article-type>
+        <article-type code="rv">
+            <article-heading>Review Article</article-heading>
+        </article-type>
+        <article-type code="add">
+            <article-heading>Addendum</article-heading>
+        </article-type>
+        <article-type code="cg">
+            <article-heading>Corrigendum</article-heading>
+        </article-type>
+        <article-type code="cs">
+            <article-heading>Correction</article-heading>
+        </article-type>
+        <article-type code="er">
+            <article-heading>Erratum</article-heading>
+        </article-type>
+        <article-type code="ret">
+            <article-heading>Retraction</article-heading>
+        </article-type>
+    </journal>
+    <journal pcode="npjmolphen">
+        <article-type code="af">
+            <article-heading>Article</article-heading>
+        </article-type>
+        <article-type code="bc">
+            <article-heading>Brief Communication</article-heading>
+        </article-type>
+        <article-type code="cr">
+            <article-heading>Correspondence</article-heading>
+        </article-type>
+        <article-type code="ed">
+            <article-heading>Editorial</article-heading>
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>

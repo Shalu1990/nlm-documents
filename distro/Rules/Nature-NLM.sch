@@ -66,7 +66,7 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans|npjmolphen)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
   <let name="transition"
         value="if ($pcode eq 'srep' and number($volume) lt 6) then 'yes'     else if ($pcode eq 'ncomms' and number($volume) lt 7) then 'yes'     else ()"/>
   <let name="maestro-rj"
@@ -80,7 +80,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj|testnatfile|testpalfile|paldelor|testnatevent|npgdelor|testpalevent)$')) then 'yes' else 'no'"/>
   <let name="collection"
@@ -2786,7 +2786,7 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--no other elements used in graphics-->
-        <rule context="graphic[@content-type]/alt-text | graphic[@content-type]/email | graphic[@content-type]/ext-link | graphic[@content-type]/label | graphic[@content-type]/long-desc | graphic[@content-type]/permissions | graphic[@content-type]/uri"
+        <rule context="graphic[@content-type]/alt-text[not($article-type eq 'pv')] | graphic[@content-type]/email | graphic[@content-type]/ext-link | graphic[@content-type]/label | graphic[@content-type]/long-desc | graphic[@content-type]/permissions | graphic[@content-type]/uri"
             role="error">
             <report id="ill6a" test="." role="error">Do not use "<name/>" in "graphic".</report>
         </rule>
@@ -2798,7 +2798,7 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--box - allowed children of regular boxes-->
-      <rule context="boxed-text/object-id | boxed-text/sec-meta | boxed-text/address | boxed-text/alternatives | boxed-text/array | boxed-text/boxed-text | boxed-text/chem-struct-wrap | boxed-text/fig | boxed-text/fig-group | boxed-text/graphic | boxed-text/media |  boxed-text/supplementary-material | boxed-text/table-wrap | boxed-text/table-wrap-group | boxed-text/disp-formula-group | boxed-text/def-list | boxed-text/tex-math | boxed-text/mml:math | boxed-text[not(@content-type='excerpt')]/related-article | boxed-text/related-object | boxed-text/disp-quote | boxed-text/speech | boxed-text/statement | boxed-text/verse-group | boxed-text/fn-group | boxed-text/glossary | boxed-text/ref-list | boxed-text[not(@content-type='excerpt')]/sec | boxed-text/attrib | boxed-text/permissions"
+      <rule context="boxed-text/sec-meta | boxed-text/address | boxed-text/alternatives | boxed-text/array | boxed-text/chem-struct-wrap | boxed-text/graphic | boxed-text/media |  boxed-text/supplementary-material | boxed-text/table-wrap | boxed-text/table-wrap-group | boxed-text/disp-formula-group | boxed-text/def-list | boxed-text/tex-math | boxed-text/mml:math | boxed-text[not(@content-type='excerpt')]/related-article | boxed-text/related-object | boxed-text/disp-quote | boxed-text/speech | boxed-text/statement | boxed-text/verse-group | boxed-text/fn-group | boxed-text/glossary | boxed-text/ref-list | boxed-text[not(@content-type='excerpt')]/sec | boxed-text/attrib | boxed-text/permissions"
             role="error">
          <report id="box2" test=".">Do not use "<name/>" as a child of "boxed-text".</report>
       </rule>
