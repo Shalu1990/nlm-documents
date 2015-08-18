@@ -66,7 +66,7 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans|npjmolphen)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
   <let name="transition"
         value="if ($pcode eq 'srep' and number($volume) lt 6) then 'yes'     else if ($pcode eq 'ncomms' and number($volume) lt 7) then 'yes'     else ()"/>
   <let name="maestro-rj"
@@ -80,7 +80,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj|testnatfile|testpalfile|paldelor|testnatevent|npgdelor|testpalevent)$')) then 'yes' else 'no'"/>
   <let name="collection"
@@ -2850,7 +2850,7 @@ Use the <let> element to define the attribute if necessary.
             <report id="box5a" test="not(child::title) and child::p" role="error">Box "caption" should contain a "title" element - change "p" to "title".</report>
         </rule>
     </pattern>
-   <pattern><!--supplementary-material - only caption allowed as a child-->
+   <pattern><!--supplementary-material - only caption or alternatives allowed as a child-->
     <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')]/*"
             role="error">
          <assert id="supp1a" test="self::caption or self::alternatives">Only "caption" should be used as a child of "supplementary-material" - do not use "<name/>".</assert>
