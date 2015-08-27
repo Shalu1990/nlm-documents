@@ -965,7 +965,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro='yes']//floats-group/supplementary-material[@xlink:href][not(@content-type='isa-tab')]"
+      <rule context="article[$maestro='yes']//floats-group/supplementary-material[@xlink:href][matches(@id,'^s[0-9]+$')][not(@content-type='isa-tab')]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
       <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
@@ -975,7 +975,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="supp-id" value="@id"/>
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <assert id="oa-aj9"
-                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) or starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,$supp-id) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for supplementary information (<value-of select="$supp-image"/>). Expected format is "<value-of select="concat($article-id,'-',$supp-id,'.',$extension)"/>", i.e. XML filename + dash + id of supplementary material.</assert>
+                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) or starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,$supp-id) or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for supplementary information (<value-of select="@xlink:href"/>). Expected format is "<value-of select="concat($article-id,'-',$supp-id,'.',$extension)"/>", i.e. XML filename + dash + id of supplementary material.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -988,17 +988,6 @@ Use the <let> element to define the attribute if necessary.
          <let name="supp-number" value="replace(replace($supp-image,$article-id,''),'-','')"/>
          <assert id="oa-aj9b"
                  test="starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,'^isa1') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for ISA-tab file (<value-of select="$supp-image"/>). It does not follow the same numbering as other supplementary information files. Expected value is "<value-of select="concat($article-id,'-isa1')"/>".</assert>
-      </rule>
-  </pattern>
-   <pattern><!--subject path found in subject ontology-->
-    <rule context="article[$maestro='yes' and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
-         <assert id="oa-aj10a" test=".=$journals//npg:subjectPath">Subject path (<value-of select="."/>) is not recognized by the subject ontology. Please check the information supplied by NPG.</assert>
-      </rule>
-  </pattern>
-   <pattern><!--subject path valid for the journal-->
-    <rule context="article[$maestro='yes' and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
-         <assert id="oa-aj10b"
-                 test=".=$journals//npg:Journal[npg:pcode=$pcode]/npg:subjectPath or not(.=$journals//npg:subjectPath)">Subject path <value-of select="."/> is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by NPG.</assert>
       </rule>
   </pattern>
    <pattern><!--id should be final value in subject path-->
@@ -2178,7 +2167,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--elements not allowed as children of ref-list-->
-    <rule context="ref-list/label|ref-list/address|ref-list/alternatives|ref-list/array|ref-list/chem-struct-wrap|ref-list/graphic|ref-list/media|ref-list/preformat|ref-list/supplementary-material|ref-list/table-wrap|ref-list/table-wrap-group|ref-list/disp-formula|ref-list/disp-formula-group|ref-list/def-list|ref-list/list|ref-list/tex-math|ref-list/mml:math|ref-list/related-article|ref-list/related-object|ref-list/disp-quote|ref-list/speech|ref-list/statement|ref-list/verse-group"
+    <rule context="ref-list/label|ref-list/address|ref-list/alternatives|ref-list/array|ref-list/chem-struct-wrap|ref-list/graphic|ref-list/media|ref-list/preformat|ref-list/table-wrap|ref-list/table-wrap-group|ref-list/disp-formula|ref-list/disp-formula-group|ref-list/def-list|ref-list/list|ref-list/tex-math|ref-list/mml:math|ref-list/related-article|ref-list/related-object|ref-list/disp-quote|ref-list/speech|ref-list/statement|ref-list/verse-group"
             role="error">
          <report id="disallowed3" test=".">Do not use "<name/>" element in "ref-list" in NPG/Palgrave articles.</report>
       </rule>
@@ -2365,6 +2354,11 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--publisher-loc should not be used instead of publisher-name-->
     <rule context="ref/mixed-citation[not(publisher-name)]/publisher-loc" role="error">
          <report id="reflist9a" test=".">Citation "<value-of select="ancestor::ref/@id"/>" has "publisher-loc" (<value-of select="."/>), but no corresponding "publisher-name". Change "publisher-loc" to "publisher-name" or add publisher name information.</report>
+      </rule>
+  </pattern>
+   <pattern><!--article-title should not contain 'ext-link'-->
+      <rule context="ref/mixed-citation/article-title[ext-link]" role="error">
+         <report id="reflist9b" test=".">"ext-link" should not be used in "article-title". The closing tag of "article-title" is probably in the wrong place - please check.</report>
       </rule>
   </pattern>
    <pattern><!--journal citation should not contain chapter-title-->
@@ -2861,10 +2855,17 @@ Use the <let> element to define the attribute if necessary.
          <assert id="supp1b" test="title">Supplementary-material "caption" must contain "title".</assert>
       </rule>
   </pattern>
-   <pattern><!--supplementary-material - must have an @id-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')]"
+   <pattern><!--supplementary-material - should be child of floats gropu-->
+      <rule context="supplementary-material[matches(@id,'^s[0-9]+$')][not(parent::floats-group)]"
             role="error">
-         <assert id="supp2a" test="@id">Missing 'id' attribute - "supplementary-material" should have an 'id' of the form "s"+number.</assert>
+         <let name="parent" value="parent::*"/>
+         <report id="supp1c" test=".">Supplementary information should be a child of "floats-group" not "<value-of select="local-name($parent)"/>".</report>
+      </rule>
+  </pattern>
+   <pattern><!--supplementary-material - must have an @id-->
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][not(@id)]"
+            role="error">
+         <report id="supp2a" test=".">Missing 'id' attribute - "supplementary-material" should have an 'id' of the form "s"+number.</report>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - @id must be correct format-->
@@ -2874,9 +2875,9 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have an @content-type-->
-    <rule context="floats-group/supplementary-material[not(@xlink:href or contains(@xlink:href,'.'))]"
+    <rule context="floats-group/supplementary-material[not(@xlink:href) or not(contains(@xlink:href,'.'))][not(@content-type)]"
             role="error">
-         <assert id="supp3a" test="@content-type">Missing 'content-type' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</assert>
+         <report id="supp3a" test=".">Missing 'content-type' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</report>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @content-type; when @xlink:href is invalid, point to Tagging instructions-->
@@ -2934,7 +2935,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mimetype; when @xlink:href does not exist, point to Tagging instructions-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][not(@xlink:href or contains(@xlink:href,'.'))]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][not(@xlink:href) or not(contains(@xlink:href,'.'))]"
             role="error">
          <assert id="supp5a" test="@mimetype">Missing 'mimetype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</assert>
       </rule>
@@ -2968,7 +2969,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mime-subtype; when @xlink:href does not exist or is invalid, point to Tagging instructions-->
-    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][not(@xlink:href or contains(@xlink:href,'.'))]"
+    <rule context="floats-group/supplementary-material[not(@content-type='external-media' or @content-type='annotations')][not(@xlink:href) or not(contains(@xlink:href,'.'))]"
             role="error">
          <assert id="supp6a" test="@mime-subtype">Missing 'mime-subtype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</assert>
       </rule>
@@ -2978,7 +2979,7 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <report id="supp6b"
-                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tif|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpeg|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) and not(@mime-subtype)">Missing 'mime-subtype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value based.</report>
+                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tif|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpeg|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) and not(@mime-subtype)">Missing 'mime-subtype' attribute on "supplementary-material". Refer to Tagging Instructions for correct value.</report>
       </rule>
   </pattern>
    <pattern><!--supplementary-material - must have a @mime-subtype; when @xlink:href exists (and is valid) gives value that should be used-->
@@ -2986,7 +2987,7 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <let name="mime-subtype"
-              value="if ($extension='tgz') then 'application/gzip'         else if ($extension='bmp') then 'bmp'         else if ($extension='csv') then 'csv'         else if ($extension='gif') then 'gif'         else if ($extension='htm' or $extension='html') then 'html'         else if ($extension='jpeg' or $extension='jpg') then 'jpeg'         else if ($extension='mp4' or $extension='mp2' or $extension='mp3' or $extension='mpg' or $extension='mpeg') then 'mpeg'         else if ($extension='doc' or $extension='dot') then 'msword'         else if ($extension='exe' or $extension='noa' or $extension='ole' or $extension='wp') then 'octet-stream'         else if ($extension='pdf') then 'pdf'         else if ($extension='c' or $extension='sif' or $extension='txt') then 'plain'         else if ($extension='png') then 'png'         else if ($extension='eps' or $extension='ps') then 'postscript'         else if ($extension='mov' or $extension='qt') then 'quicktime'         else if ($extension='rtf') then 'rtf'         else if ($extension='sbml') then 'sbml+xml'         else if ($extension='tiff' or $extension='tif') then 'tiff'         else if ($extension='xls') then 'vnd.ms-excel'         else if ($extension='xlsm') then 'vnd.ms-excel.sheet.macroEnabled.12'         else if ($extension='pps' or $extension='ppt') then 'vnd.ms-powerpoint'         else if ($extension='pptm') then 'vnd.ms-powerpoint.presentation.macroEnabled.12'         else if ($extension='docm') then 'vnd.ms-word.document.macroEnabled.12'         else if ($extension='pptx') then 'vnd.openxmlformats-officedocument.presentationml.presentation'         else if ($extension='xlsx') then 'vnd.openxmlformats-officedocument.spreadsheetml.sheet'         else if ($extension='docx') then 'vnd.openxmlformats-officedocument.wordprocessingml.document'         else if ($extension='ra') then 'vnd.rn-realaudio'         else if ($extension='rv') then 'vnd.rn-realvideo'         else if ($extension='cdx') then 'x-cdx'         else if ($extension='cif') then 'x-cif'         else if ($extension='jdx') then 'x-jcamp-dx'         else if ($extension='tex') then 'x-latex'         else if ($extension='mol') then 'x-mdl-molfile'         else if ($extension='sdf') then 'x-mdl-sdfile'         else if ($extension='xml') then 'xml'         else if ($extension='wmf') then 'x-msmetafile'         else if ($extension='avi') then 'x-msvideo'         else if ($extension='wmv') then 'x-ms-wmv'         else if ($extension='pdb') then 'x-pdb'         else if ($extension='pict') then 'x-pict'         else if ($extension='swf') then 'x-shockwave-flash'         else if ($extension='tar') then 'x-tar'         else if ($extension='wav') then 'x-wav'         else if ($extension='zip') then 'x-zip-compressed'         else ()"/>
+              value="if ($extension='tgz') then 'application/gzip'         else if ($extension='bmp') then 'bmp'         else if ($extension='csv') then 'csv'         else if ($extension='gif') then 'gif'         else if ($extension='htm' or $extension='html') then 'html'         else if ($extension='jpeg' or $extension='jpg') then 'jpeg'         else if ($extension='mp4') then 'mp4'         else if ($extension='mp2' or $extension='mp3' or $extension='mpg' or $extension='mpeg') then 'mpeg'         else if ($extension='doc' or $extension='dot') then 'msword'         else if ($extension='exe' or $extension='noa' or $extension='ole' or $extension='wp') then 'octet-stream'         else if ($extension='pdf') then 'pdf'         else if ($extension='c' or $extension='sif' or $extension='txt') then 'plain'         else if ($extension='png') then 'png'         else if ($extension='eps' or $extension='ps') then 'postscript'         else if ($extension='mov' or $extension='qt') then 'quicktime'         else if ($extension='rtf') then 'rtf'         else if ($extension='sbml') then 'sbml+xml'         else if ($extension='tiff' or $extension='tif') then 'tiff'         else if ($extension='xls') then 'vnd.ms-excel'         else if ($extension='xlsm') then 'vnd.ms-excel.sheet.macroEnabled.12'         else if ($extension='pps' or $extension='ppt') then 'vnd.ms-powerpoint'         else if ($extension='pptm') then 'vnd.ms-powerpoint.presentation.macroEnabled.12'         else if ($extension='docm') then 'vnd.ms-word.document.macroEnabled.12'         else if ($extension='pptx') then 'vnd.openxmlformats-officedocument.presentationml.presentation'         else if ($extension='xlsx') then 'vnd.openxmlformats-officedocument.spreadsheetml.sheet'         else if ($extension='docx') then 'vnd.openxmlformats-officedocument.wordprocessingml.document'         else if ($extension='ra') then 'vnd.rn-realaudio'         else if ($extension='rv') then 'vnd.rn-realvideo'         else if ($extension='cdx') then 'x-cdx'         else if ($extension='cif') then 'x-cif'         else if ($extension='jdx') then 'x-jcamp-dx'         else if ($extension='tex') then 'x-latex'         else if ($extension='mol') then 'x-mdl-molfile'         else if ($extension='sdf') then 'x-mdl-sdfile'         else if ($extension='xml') then 'xml'         else if ($extension='wmf') then 'x-msmetafile'         else if ($extension='avi') then 'x-msvideo'         else if ($extension='wmv') then 'x-ms-wmv'         else if ($extension='pdb') then 'x-pdb'         else if ($extension='pict') then 'x-pict'         else if ($extension='swf') then 'x-shockwave-flash'         else if ($extension='tar') then 'x-tar'         else if ($extension='wav') then 'x-wav'         else if ($extension='zip') then 'x-zip-compressed'         else ()"/>
          <assert id="supp6c"
                  test="@mime-subtype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tif|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpeg|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">Missing 'mime-subtype' attribute on "supplementary-material". For files with extension "<value-of select="$extension"/>", this should have the value "<value-of select="$mime-subtype"/>".</assert>
       </rule>
@@ -2996,7 +2997,7 @@ Use the <let> element to define the attribute if necessary.
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <let name="mime-subtype"
-              value="if ($extension='tgz') then 'application/gzip'         else if ($extension='bmp') then 'bmp'         else if ($extension='csv') then 'csv'         else if ($extension='gif') then 'gif'         else if ($extension='htm' or $extension='html') then 'html'         else if ($extension='jpeg' or $extension='jpg') then 'jpeg'         else if ($extension='mp4' or $extension='mp2' or $extension='mp3' or $extension='mpg' or $extension='mpeg') then 'mpeg'         else if ($extension='doc' or $extension='dot') then 'msword'         else if ($extension='exe' or $extension='noa' or $extension='ole' or $extension='wp') then 'octet-stream'         else if ($extension='pdf') then 'pdf'         else if ($extension='c' or $extension='sif' or $extension='txt') then 'plain'         else if ($extension='png') then 'png'         else if ($extension='eps' or $extension='ps') then 'postscript'         else if ($extension='mov' or $extension='qt') then 'quicktime'         else if ($extension='rtf') then 'rtf'         else if ($extension='sbml') then 'sbml+xml'         else if ($extension='tiff' or $extension='tif') then 'tiff'         else if ($extension='xls') then 'vnd.ms-excel'         else if ($extension='xlsm') then 'vnd.ms-excel.sheet.macroEnabled.12'         else if ($extension='pps' or $extension='ppt') then 'vnd.ms-powerpoint'         else if ($extension='pptm') then 'vnd.ms-powerpoint.presentation.macroEnabled.12'         else if ($extension='docm') then 'vnd.ms-word.document.macroEnabled.12'         else if ($extension='pptx') then 'vnd.openxmlformats-officedocument.presentationml.presentation'         else if ($extension='xlsx') then 'vnd.openxmlformats-officedocument.spreadsheetml.sheet'         else if ($extension='docx') then 'vnd.openxmlformats-officedocument.wordprocessingml.document'         else if ($extension='ra') then 'vnd.rn-realaudio'         else if ($extension='rv') then 'vnd.rn-realvideo'         else if ($extension='cdx') then 'x-cdx'         else if ($extension='cif') then 'x-cif'         else if ($extension='jdx') then 'x-jcamp-dx'         else if ($extension='tex') then 'x-latex'         else if ($extension='mol') then 'x-mdl-molfile'         else if ($extension='sdf') then 'x-mdl-sdfile'         else if ($extension='xml') then 'xml'         else if ($extension='wmf') then 'x-msmetafile'         else if ($extension='avi') then 'x-msvideo'         else if ($extension='wmv') then 'x-ms-wmv'         else if ($extension='pdb') then 'x-pdb'         else if ($extension='pict') then 'x-pict'         else if ($extension='swf') then 'x-shockwave-flash'         else if ($extension='tar') then 'x-tar'         else if ($extension='wav') then 'x-wav'         else if ($extension='zip') then 'x-zip-compressed'         else ()"/>
+              value="if ($extension='tgz') then 'application/gzip'         else if ($extension='bmp') then 'bmp'         else if ($extension='csv') then 'csv'         else if ($extension='gif') then 'gif'         else if ($extension='htm' or $extension='html') then 'html'         else if ($extension='jpeg' or $extension='jpg') then 'jpeg'         else if ($extension='mp4') then 'mp4'         else if ($extension='mp2' or $extension='mp3' or $extension='mpg' or $extension='mpeg') then 'mpeg'         else if ($extension='doc' or $extension='dot') then 'msword'         else if ($extension='exe' or $extension='noa' or $extension='ole' or $extension='wp') then 'octet-stream'         else if ($extension='pdf') then 'pdf'         else if ($extension='c' or $extension='sif' or $extension='txt') then 'plain'         else if ($extension='png') then 'png'         else if ($extension='eps' or $extension='ps') then 'postscript'         else if ($extension='mov' or $extension='qt') then 'quicktime'         else if ($extension='rtf') then 'rtf'         else if ($extension='sbml') then 'sbml+xml'         else if ($extension='tiff' or $extension='tif') then 'tiff'         else if ($extension='xls') then 'vnd.ms-excel'         else if ($extension='xlsm') then 'vnd.ms-excel.sheet.macroEnabled.12'         else if ($extension='pps' or $extension='ppt') then 'vnd.ms-powerpoint'         else if ($extension='pptm') then 'vnd.ms-powerpoint.presentation.macroEnabled.12'         else if ($extension='docm') then 'vnd.ms-word.document.macroEnabled.12'         else if ($extension='pptx') then 'vnd.openxmlformats-officedocument.presentationml.presentation'         else if ($extension='xlsx') then 'vnd.openxmlformats-officedocument.spreadsheetml.sheet'         else if ($extension='docx') then 'vnd.openxmlformats-officedocument.wordprocessingml.document'         else if ($extension='ra') then 'vnd.rn-realaudio'         else if ($extension='rv') then 'vnd.rn-realvideo'         else if ($extension='cdx') then 'x-cdx'         else if ($extension='cif') then 'x-cif'         else if ($extension='jdx') then 'x-jcamp-dx'         else if ($extension='tex') then 'x-latex'         else if ($extension='mol') then 'x-mdl-molfile'         else if ($extension='sdf') then 'x-mdl-sdfile'         else if ($extension='xml') then 'xml'         else if ($extension='wmf') then 'x-msmetafile'         else if ($extension='avi') then 'x-msvideo'         else if ($extension='wmv') then 'x-ms-wmv'         else if ($extension='pdb') then 'x-pdb'         else if ($extension='pict') then 'x-pict'         else if ($extension='swf') then 'x-shockwave-flash'         else if ($extension='tar') then 'x-tar'         else if ($extension='wav') then 'x-wav'         else if ($extension='zip') then 'x-zip-compressed'         else ()"/>
          <assert id="supp6d"
                  test="@mime-subtype=$mime-subtype or not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tif|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpeg|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$'))">For supplementary material files with extension "<value-of select="$extension"/>", the mime-subtype attribute should have the value "<value-of select="$mime-subtype"/>" (not "<value-of select="@mime-subtype"/>").</assert>
       </rule>
