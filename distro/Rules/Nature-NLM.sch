@@ -990,17 +990,6 @@ Use the <let> element to define the attribute if necessary.
                  test="starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,'^isa1') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for ISA-tab file (<value-of select="$supp-image"/>). It does not follow the same numbering as other supplementary information files. Expected value is "<value-of select="concat($article-id,'-isa1')"/>".</assert>
       </rule>
   </pattern>
-   <pattern><!--subject path found in subject ontology-->
-    <rule context="article[$maestro='yes' and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
-         <assert id="oa-aj10a" test=".=$journals//npg:subjectPath">Subject path (<value-of select="."/>) is not recognized by the subject ontology. Please check the information supplied by NPG.</assert>
-      </rule>
-  </pattern>
-   <pattern><!--subject path valid for the journal-->
-    <rule context="article[$maestro='yes' and $test-journal='no']//subject[@content-type='npg.subject']/named-content[@content-type='path']">
-         <assert id="oa-aj10b"
-                 test=".=$journals//npg:Journal[npg:pcode=$pcode]/npg:subjectPath or not(.=$journals//npg:subjectPath)">Subject path <value-of select="."/> is not allowed in "<value-of select="$journal-title"/>". Please check the information supplied by NPG.</assert>
-      </rule>
-  </pattern>
    <pattern><!--id should be final value in subject path-->
     <rule context="article[($maestro='yes' or $transition='yes') and $test-journal='no']//subject[@content-type='npg.subject'][named-content[@content-type='id']]">
          <let name="path" value="named-content[@content-type='path'][1]"/>
