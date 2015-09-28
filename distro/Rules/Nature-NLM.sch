@@ -1421,7 +1421,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--sec - sec-type or specific-use attribute used-->
-    <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/chem-struct-wrap | sec/graphic | sec/media |  sec/supplementary-material | sec/table-wrap | sec/table-wrap-group | sec/disp-formula-group | sec/def-list | sec/tex-math | sec/mml:math | sec/related-article | sec/related-object | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list"
+    <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/chem-struct-wrap | sec/graphic | sec/media | sec/supplementary-material | sec/disp-formula-group | sec/def-list | sec/tex-math | sec/mml:math | sec/related-article | sec/related-object | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list"
             role="error">
          <report id="sec4" test=".">Children of "sec" should only be "title", "p", "sec", "disp-formula", "disp-quote" or "preformat" - do not use "<name/>".</report>
       </rule>
@@ -1876,6 +1876,81 @@ Use the <let> element to define the attribute if necessary.
       <report id="xref5c" test=".">Do not use "named-content" in "xref" to illustration "<value-of select="parent::xref/@rid"/>" for image alignment information.</report>
       </rule>
   </pattern>
+   <pattern>
+      <rule context="xref[not(@ref-type)][not(ancestor::contrib)]"><!--xref should have a ref-type attribute-->
+         <report id="xref6a" test=".">"xref" should have a 'ref-type' attribute describing the target object, e.g. "bibr", "fig", etc.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[not(@rid)][not(ancestor::contrib)]"><!--xref should have an rid attribute-->
+         <report id="xref6b" test=".">"xref" should have a 'rid' attribute giving the id of the target object, e.g. "b1", "f2", etc.</report>
+      </rule>
+  </pattern>
+   <pattern><!--xref rid format should match expected value based on ref-type-->
+      <rule context="xref[matches(@rid,'^a[1-9][0-9]*$')][@ref-type][not(@ref-type='aff')]">
+         <report id="xref7a" test=".">Mismatch between "xref" 'rid' format ("a"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "a"+number is "aff".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[matches(@rid,'^c[1-9][0-9]*$')][@ref-type][not(@ref-type='corresp')]">
+         <report id="xref7b" test=".">Mismatch between "xref" 'rid' format ("c"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "c"+number is "corresp".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[matches(@rid,'^d[1-9][0-9]*$')][@ref-type][not(@ref-type='other')]">
+         <report id="xref7c-1" test=".">Mismatch between "xref" 'rid' format ("d"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "d"+number (used for data citations) is "other".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[matches(@rid,'^i[1-9][0-9]*$')][@ref-type][not(@ref-type='other')]">
+         <report id="xref7c-2" test=".">Mismatch between "xref" 'rid' format ("i"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "i"+number (used for illustrations) is "other".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[matches(@rid,'^f[1-9][0-9]*$')][@ref-type][not(@ref-type='fig')]">
+         <report id="xref7d" test=".">Mismatch between "xref" 'rid' format ("f"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "f"+number is "fig".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[matches(@rid,'^eq[1-9][0-9]*$')][@ref-type][not(@ref-type='disp-formula')]">
+         <report id="xref7e" test=".">Mismatch between "xref" 'rid' format ("eq"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "eq"+number is "disp-formula".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[matches(@rid,'^t[1-9][0-9]*$')][@ref-type][not(@ref-type='table')]">
+         <report id="xref7f" test=".">Mismatch between "xref" 'rid' format ("t"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "t"+number is "table".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[matches(@rid,'^t[1-9][0-9]?-fn[1-9][0-9]?$')][@ref-type][not(@ref-type='table-fn')]">
+         <report id="xref7g" test=".">Mismatch between "xref" 'rid' format ("t"+number-"fn"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "t"+number-"fn"+number is "table-fn".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[matches(@rid,'^s[1-9][0-9]*$')][@ref-type][not(@ref-type='supplementary-material')]">
+         <report id="xref7h" test=".">Mismatch between "xref" 'rid' format ("s"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "s"+number is "supplementary-material".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[matches(@rid,'^sc[1-9][0-9]*$')][@ref-type][not(@ref-type='scheme')]">
+         <report id="xref7i" test=".">Mismatch between "xref" 'rid' format ("sc"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "sc"+number is "scheme".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[matches(@rid,'^app[1-9][0-9]*$')][@ref-type][not(@ref-type='app')]">
+         <report id="xref7j" test=".">Mismatch between "xref" 'rid' format ("app"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "app"+number is "app".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[matches(@rid,'^bx[1-9][0-9]*$')][@ref-type][not(@ref-type='boxed-text')]">
+         <report id="xref7k" test=".">Mismatch between "xref" 'rid' format ("bx"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "bx"+number is "boxed-text".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[matches(@rid,'^fn[1-9][0-9]*$')][@ref-type][not(@ref-type='fn')]">
+         <report id="xref7l" test=".">Mismatch between "xref" 'rid' format ("fn"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "fn"+number is "fn".</report>
+      </rule>
+  </pattern>
    <pattern><!--elements which should have two child elements-->
     <rule context="mml:mfrac|mml:mroot|mml:msub|mml:msup|mml:munder|mml:mover"
             role="error">
@@ -2167,7 +2242,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--elements not allowed as children of ref-list-->
-    <rule context="ref-list/label|ref-list/address|ref-list/alternatives|ref-list/array|ref-list/chem-struct-wrap|ref-list/graphic|ref-list/media|ref-list/preformat|ref-list/table-wrap|ref-list/table-wrap-group|ref-list/disp-formula|ref-list/disp-formula-group|ref-list/def-list|ref-list/list|ref-list/tex-math|ref-list/mml:math|ref-list/related-article|ref-list/related-object|ref-list/disp-quote|ref-list/speech|ref-list/statement|ref-list/verse-group"
+    <rule context="ref-list/label|ref-list/address|ref-list/alternatives|ref-list/array|ref-list/chem-struct-wrap|ref-list/graphic|ref-list/media|ref-list/preformat|ref-list/disp-formula|ref-list/disp-formula-group|ref-list/def-list|ref-list/list|ref-list/tex-math|ref-list/mml:math|ref-list/related-article|ref-list/related-object|ref-list/disp-quote|ref-list/speech|ref-list/statement|ref-list/verse-group"
             role="error">
          <report id="disallowed3" test=".">Do not use "<name/>" element in "ref-list" in NPG/Palgrave articles.</report>
       </rule>
@@ -2385,6 +2460,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="reflist11a" test=".">Citation "<value-of select="ancestor::ref/@id"/>" has two "year" elements. Please check that the citation has been constructed correctly.</report>
       </rule>
   </pattern>
+   <pattern><!--table-wrap should be child of floats-group-->
+        <rule context="table-wrap[not(ancestor::floats-group)]" role="error">
+            <report id="tab1" test="." role="error">"table-wrap" should be within "floats-group", not "<value-of select="local-name(ancestor::*[parent::article])"/>".</report>
+        </rule>
+    </pattern>
    <pattern><!--caption must contain a title-->
         <rule context="table-wrap/caption[not(title) and p]" role="error">
             <report id="tab5a" test="." role="error">Table-wrap "caption" should contain a "title" element - change "p" to "title".</report>
