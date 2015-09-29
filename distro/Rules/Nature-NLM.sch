@@ -68,7 +68,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="maestro-aj"
         value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
   <let name="transition"
-        value="if ($pcode eq 'srep' and number($volume) lt 6) then 'yes'     else if ($pcode eq 'ncomms' and number($volume) lt 7) then 'yes'     else ()"/>
+        value="if ($journals//npg:Journal[npg:pcode=$pcode]/npg:isTransitionJournal='true') then 'yes'     else ()"/>
   <let name="maestro-rj"
         value="if (matches($pcode,'^(maestrorj|npgdelor|testnatevent|testpalevent|nplants|nrdp|nmicrobiol|nenergy|natrevmats)$')) then 'yes'     else ()"/>
   <let name="maestro"
@@ -1379,43 +1379,43 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-2" is a child of sec heading level 1-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-2'][not(parent::sec[@specific-use='heading-level-1'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-1'])][not(ancestor::boxed-text)]"
+    <rule context="sec[@specific-use='heading-level-2'][not(parent::sec[@specific-use='heading-level-1'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-1'])][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3b" test=".">Section heading level 2 should be a child of section heading level 1 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-3" is a child of sec heading level 2-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-3'][not(parent::sec[@specific-use='heading-level-2'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-2'])][not(ancestor::boxed-text)]"
+    <rule context="sec[@specific-use='heading-level-3'][not(parent::sec[@specific-use='heading-level-2'] or parent::sec[@sec-type='online-methods'][parent::sec/@specific-use='heading-level-2'])][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3c" test=".">Section heading level 3 should be a child of section heading level 2 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-4" is a child of sec heading level 3-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-4'][not(parent::sec/@specific-use='heading-level-3')][not(ancestor::boxed-text)]"
+    <rule context="sec[@specific-use='heading-level-4'][not(parent::sec/@specific-use='heading-level-3')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3d" test=".">Section heading level 4 should be a child of section heading level 3 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-5" is a child of sec heading level 4-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-5'][not(parent::sec/@specific-use='heading-level-4')][not(ancestor::boxed-text)]"
+    <rule context="sec[@specific-use='heading-level-5'][not(parent::sec/@specific-use='heading-level-4')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3e" test=".">Section heading level 5 should be a child of section heading level 4 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-6" is a child of sec heading level 5-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-6'][not(parent::sec/@specific-use='heading-level-5')][not(ancestor::boxed-text)]"
+    <rule context="sec[@specific-use='heading-level-6'][not(parent::sec/@specific-use='heading-level-5')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3f" test=".">Section heading level 6 should be a child of section heading level 5 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-7" is a child of sec heading level 6-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-7'][not(parent::sec/@specific-use='heading-level-6')][not(ancestor::boxed-text)]"
+    <rule context="sec[@specific-use='heading-level-7'][not(parent::sec/@specific-use='heading-level-6')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3g" test=".">Section heading level 7 should be a child of section heading level 6 - check nesting and "specific-use" attribute values.</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use="heading-level-8" is a child of sec heading level 7-->
-    <rule context="sec[not($transition='yes')][@specific-use='heading-level-8'][not(parent::sec/@specific-use='heading-level-7')][not(ancestor::boxed-text)]"
+    <rule context="sec[@specific-use='heading-level-8'][not(parent::sec/@specific-use='heading-level-7')][not(ancestor::boxed-text)]"
             role="error">
          <report id="sec3h" test=".">Section heading level 8 should be a child of section heading level 7 - check nesting and "specific-use" attribute values.</report>
       </rule>
