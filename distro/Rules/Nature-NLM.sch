@@ -1008,7 +1008,13 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--article-heading should be used-->
-    <rule context="article[($maestro='yes' or $transition='yes') and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta/article-categories"
+    <rule context="article[$transition='yes']/front/article-meta/article-categories[not(subj-group/@subj-group-type='article-heading')]"
+            role="error">
+         <report id="transition1" test=".">Article categories should contain a "subj-group" element with attribute "subj-group-type='article-heading'".</report>
+         </rule>
+  </pattern>
+   <pattern><!--article-heading should be used-->
+      <rule context="article[$maestro='yes' and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta/article-categories"
             role="error">
          <let name="article-heading"
               value="replace(string-join($allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading,' or '),'\W\([a-z]+\)','')"/>
@@ -1071,7 +1077,7 @@ Use the <let> element to define the attribute if necessary.
     <rule context="article[($maestro='yes' or $transition='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta"
             role="error">
          <let name="article-heading"
-              value="$allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading"/>
+              value="if ($article-type='add') then 'Addendum articles'          else if ($article-type='cg') then 'Corrigendum articles'          else if ($article-type='cs') then 'Correction articles'          else if ($article-type='er') then 'Erratum articles'          else if ($article-type='ret') then 'Retraction articles' else ()"/>
          <let name="related-article-type"
               value="if ($article-type='add') then 'is-addendum-to'          else if ($article-type='cg') then 'is-corrigendum-to'          else if ($article-type='cs') then 'is-correction-to'          else if ($article-type='er') then 'is-erratum-to'          else if ($article-type='ret') then 'is-retraction-to' else ()"/>
          <assert id="correct1a" test="related-article">
