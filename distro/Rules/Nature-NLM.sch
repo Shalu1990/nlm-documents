@@ -1487,7 +1487,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--List-item - no labels needed-->
-    <rule context="list-item/label" role="error">
+    <rule context="list-item[not(ancestor::list/@list-content='interview')]/label"
+            role="error">
          <report id="list4" test=".">Do not use "label" element in "list-item".</report>
       </rule>
   </pattern>
