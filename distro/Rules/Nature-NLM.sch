@@ -1994,6 +1994,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="form5" test=".">Do not use "mml:math" on its own - please wrap the expression in "inline-formula".</report>
       </rule>
   </pattern>
+   <pattern><!--inline-formula/mml:math should not be used for single letters-->
+      <rule context="inline-formula/mml:math[count(descendant::*)=1][not(mml:mi/@mathvariant='script')]">
+         <report id="form6" test=".">Single letters should not be tagged as an inline formula with MathML markup. Please use regular article elements and/or Unicode characters.</report>
+      </rule>
+  </pattern>
    <pattern><!--back - label or title should not be used-->
     <rule context="back/label | back/title" role="error">
          <report id="back1" test=".">Do not use "<name/>" at start of "back" matter.</report>
