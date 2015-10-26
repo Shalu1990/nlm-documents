@@ -1487,7 +1487,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--List-item - no labels needed-->
-    <rule context="list-item/label" role="error">
+    <rule context="list-item[not(ancestor::list/@list-content='interview')]/label"
+            role="error">
          <report id="list4" test=".">Do not use "label" element in "list-item".</report>
       </rule>
   </pattern>
@@ -1991,6 +1992,11 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--mml:math should not be child of p-->
       <rule context="mml:math[parent::p]">
          <report id="form5" test=".">Do not use "mml:math" on its own - please wrap the expression in "inline-formula".</report>
+      </rule>
+  </pattern>
+   <pattern><!--inline-formula/mml:math should not be used for single letters-->
+      <rule context="inline-formula/mml:math[count(descendant::*)=1][not(mml:mi/@mathvariant='script')]">
+         <report id="form6" test=".">Single letters should not be tagged as an inline formula with MathML markup. Please use regular article elements and/or Unicode characters.</report>
       </rule>
   </pattern>
    <pattern><!--back - label or title should not be used-->
