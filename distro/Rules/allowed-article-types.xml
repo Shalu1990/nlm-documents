@@ -1162,9 +1162,6 @@
         </article-type>
     </journal>
     <journal pcode="natrevmats">
-        <article-type code="com">
-            <article-heading>Comment</article-heading>
-        </article-type>
         <article-type code="cr">
             <article-heading>Correspondence</article-heading>
         </article-type>
@@ -1179,9 +1176,6 @@
         </article-type>
         <article-type code="mr">
             <article-heading>Meeting Report</article-heading>
-        </article-type>
-        <article-type code="na">
-            <article-heading>News Analysis</article-heading>
         </article-type>
         <article-type code="nv">
             <article-heading>News and Views</article-heading>
@@ -1389,6 +1383,41 @@
         </article-type>
         <article-type code="mr">
             <article-heading>Meeting Report</article-heading>
+        </article-type>
+        <article-type code="pe">
+            <article-heading>Perspective</article-heading>
+        </article-type>
+        <article-type code="rv">
+            <article-heading>Review Article</article-heading>
+        </article-type>
+        <article-type code="add">
+            <article-heading>Addendum</article-heading>
+        </article-type>
+        <article-type code="cg">
+            <article-heading>Corrigendum</article-heading>
+        </article-type>
+        <article-type code="cs">
+            <article-heading>Correction</article-heading>
+        </article-type>
+        <article-type code="er">
+            <article-heading>Erratum</article-heading>
+        </article-type>
+        <article-type code="ret">
+            <article-heading>Retraction</article-heading>
+        </article-type>
+    </journal>
+    <journal pcode="npjtracklife">
+        <article-type code="af">
+            <article-heading>Article</article-heading>
+        </article-type>
+        <article-type code="bc">
+            <article-heading>Brief Communication</article-heading>
+        </article-type>
+        <article-type code="cr">
+            <article-heading>Correspondence</article-heading>
+        </article-type>
+        <article-type code="ed">
+            <article-heading>Editorial</article-heading>
         </article-type>
         <article-type code="pe">
             <article-heading>Perspective</article-heading>
