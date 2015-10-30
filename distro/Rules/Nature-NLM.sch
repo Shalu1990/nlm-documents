@@ -771,6 +771,16 @@ Use the <let> element to define the attribute if necessary.
          <report id="oa-aj2a2" test=".">A "volume" element should not be used in "<value-of select="$journal-title"/>".</report>
       </rule>
   </pattern>
+   <pattern><!--expected volume value should be used in all maestro OA only journals; #not allowed in issue-based journals#-->
+      <rule context="article[$maestro='yes' and $pubevent='no' and $test-journal='no' and not(matches($pcode,'^(bdjteam)$'))]/front/article-meta/volume"
+            role="error">
+         <let name="pub_year"
+              value="preceding-sibling::pub-date[@pub-type='epub']/year"/>
+         <let name="expected_volume"
+              value="if (matches($pcode,'^(npjpcrm|)$')) then $pub_year - 1990 else         if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(mtm|hortres|sdata|hgv|mto)$')) then $pub_year - 2013 else          if (matches($pcode,'^(bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife)$')) then $pub_year - 2015 else ()"/>
+         <assert id="oa-aj2a3" test=". = $expected_volume">Unexpected volume number: "<value-of select="."/>". For an "<value-of select="$journal-title"/>" article published in <value-of select="$pub_year"/>, the expected volume number is "<value-of select="$expected_volume"/>".</assert>
+      </rule>
+  </pattern>
    <pattern><!--issue should not be used in new OA only journals nor event-based publishing-->
       <rule context="article[$maestro='yes']/front/article-meta/issue" role="error">
          <report id="oa-aj2b" test=".">An "issue" element should not be used in "<value-of select="$journal-title"/>".</report>
