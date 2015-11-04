@@ -772,7 +772,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--expected volume value should be used in all maestro OA only journals - add mtm, mto, scsandc when needed; #not allowed in issue-based journals#-->
-      <rule context="article[$maestro='yes' and $pubevent='no' and $test-journal='no' and not(matches($pcode,'^(bdjteam)$'))]/front/article-meta[pub-date/@pub-type='epub']/volume"
+      <rule context="article[$maestro='yes' and $pubevent='no' and $test-journal='no' and not(matches($pcode,'^(bdjteam|mtm|mto|scsandc)$'))]/front/article-meta[pub-date/@pub-type='epub']/volume"
             role="error">
          <let name="pub_year"
               value="preceding-sibling::pub-date[@pub-type='epub']/year"/>
