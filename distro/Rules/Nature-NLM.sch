@@ -74,8 +74,8 @@ Use the <let> element to define the attribute if necessary.
   <let name="maestro"
         value="if (matches($pcode,'^(testnatevent|testpalevent)$')) then 'no' else      if ($maestro-aj='yes' or $maestro-rj='yes') then 'yes' else ()"/>
   <let name="npj_journal"
-        value="if (matches($pcode,'^(npjschz|npjmgrav|npjbcancer|npjparkd)$')) then 'yes' else ()"/>
-  <!--for testing that all articles (@article-type="af") have a long-summary-->
+        value="if (matches($pcode,'^(npjschz|npjmgrav|npjbcancer|npjparkd|npjqi)$')) then 'yes' else ()"/>
+  <!--for testing that all articles (@article-type="af") have a long-summary. Currently only the US npj titles - check if should be all of them-->
   <let name="pubevent"
         value="if (matches($pcode,'^(maestrorj|testnatevent|testpalevent|nplants|nrdp)$')) then 'yes'     else 'no'"/>
   <let name="existing-oa-aj"
