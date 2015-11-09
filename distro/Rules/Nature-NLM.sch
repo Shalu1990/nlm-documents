@@ -77,7 +77,7 @@ Use the <let> element to define the attribute if necessary.
         value="if (matches($pcode,'^(npjschz|npjmgrav|npjbcancer|npjparkd|npjqi)$')) then 'yes' else ()"/>
   <!--for testing that all articles (@article-type="af") have a long-summary. Currently only the US npj titles - check if should be all of them-->
   <let name="pubevent"
-        value="if (matches($pcode,'^(maestrorj|testnatevent|testpalevent|nplants|nrdp)$')) then 'yes'     else 'no'"/>
+        value="if (matches($pcode,'^(maestrorj|testnatevent|testpalevent|nplants|nrdp|nmicrobiol|nenergy|natrevmats)$')) then 'yes'     else 'no'"/>
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
@@ -772,7 +772,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--expected volume value should be used in all maestro OA only journals - add mtm, mto, scsandc when needed; #not allowed in issue-based journals#-->
-      <rule context="article[$maestro='yes' and $pubevent='no' and $test-journal='no' and not(matches($pcode,'^(bdjteam|mtm|mto|scsandc)$'))]/front/article-meta[pub-date/@pub-type='epub']/volume"
+      <rule context="article[$maestro-aj='yes' and $test-journal='no' and not(matches($pcode,'^(bdjteam|mtm|mto|scsandc)$'))]/front/article-meta[pub-date/@pub-type='epub']/volume"
             role="error">
          <let name="pub_year"
               value="preceding-sibling::pub-date[@pub-type='epub']/year"/>
