@@ -1197,9 +1197,15 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="contrib/xref[@ref-type]" role="error"><!--Contrib xref ref-type should have allowed value-->
+      <rule context="contrib[not($article-type='qa')]/xref[@ref-type]" role="error"><!--Contrib xref ref-type should have allowed value-->
         <assert id="contrib1c"
                  test="matches(@ref-type,'^(aff|corresp|author-notes|statement)$')">Unexpected value for contributor "xref" 'ref-type' attribute (<value-of select="@ref-type"/>). The allowed values are "aff" (for links to affilation information), "corresp" (for correspondence information) and "author-notes" for any other notes.</assert>
+      </rule>
+    </pattern>
+   <pattern>
+      <rule context="contrib[$article-type='qa']/xref[@ref-type]" role="error"><!--Contrib xref ref-type should have allowed value-->
+        <assert id="contrib1d"
+                 test="matches(@ref-type,'^(aff|corresp|author-notes|other|statement)$')">Unexpected value for contributor "xref" 'ref-type' attribute (<value-of select="@ref-type"/>). The allowed values are "aff" (for links to affilation information), "corresp" (for correspondence information), "other" for a contributor photo, and "author-notes" for any other notes.</assert>
       </rule>
     </pattern>
    <pattern>
@@ -1879,7 +1885,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="xref[@ref-type='other'][not(ancestor::abstract)][@rid=ancestor::article//graphic[@content-type='illustration']/@id][not(@specific-use)]"><!--xref to illustration should have @specific-use for image alignment info-->
+      <rule context="xref[@ref-type='other'][not(ancestor::abstract)][not(parent::contrib)][@rid=ancestor::article//graphic[@content-type='illustration']/@id][not(@specific-use)]"><!--xref to illustration should have @specific-use for image alignment info-->
       <report id="xref5a" test=".">"xref" to illustration "<value-of select="@rid"/>" should have 'specific-use' attribute containing image alignment. Allowed values are: "align-left", "align-center" and "align-right".</report>
       </rule>
   </pattern>
