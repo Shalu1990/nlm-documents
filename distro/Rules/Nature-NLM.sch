@@ -2576,6 +2576,11 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern>
+        <rule context="oasis:entry[@namest and @nameend and @colname]">
+            <report id="tab11d" test=".">Spanning table entries should not have 'colname' attribute - please delete.</report>
+        </rule>
+    </pattern>
+   <pattern>
       <rule context="fig//graphic[@xlink:href='' or @mimetype='' or @mime-subtype='']" role="error">
         <report id="fig1a" test=".">Graphic attribute values 'xlink:href', 'mimetype' and 'mime-subtype' should be used and not be empty. If the article has been converted from AJ or NPG XML, please check that entity declarations have been converted correctly before transformation.</report>
       </rule>
