@@ -777,7 +777,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="pub_year"
               value="preceding-sibling::pub-date[@pub-type='epub']/year"/>
          <let name="expected_volume"
-              value="if (matches($pcode,'^(npjpcrm|)$')) then $pub_year - 1990 else         if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(hortres|sdata|hgv)$')) then $pub_year - 2013 else          if (matches($pcode,'^(bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood)$')) then $pub_year - 2015 else ()"/>
+              value="if (matches($pcode,'^(npjpcrm|)$')) then $pub_year - 1990 else         if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(hortres|sdata|hgv)$')) then $pub_year - 2013 else          if (matches($pcode,'^(bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjcompumats|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood)$')) then $pub_year - 2015 else ()"/>
          <assert id="oa-aj2a3" test=". = $expected_volume">Unexpected volume number: "<value-of select="."/>". For an "<value-of select="$journal-title"/>" article published in <value-of select="$pub_year"/>, the expected volume number is "<value-of select="$expected_volume"/>".</assert>
       </rule>
   </pattern>
@@ -1197,9 +1197,15 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="contrib/xref[@ref-type]" role="error"><!--Contrib xref ref-type should have allowed value-->
+      <rule context="contrib[not($article-type='qa')]/xref[@ref-type]" role="error"><!--Contrib xref ref-type should have allowed value-->
         <assert id="contrib1c"
                  test="matches(@ref-type,'^(aff|corresp|author-notes|statement)$')">Unexpected value for contributor "xref" 'ref-type' attribute (<value-of select="@ref-type"/>). The allowed values are "aff" (for links to affilation information), "corresp" (for correspondence information) and "author-notes" for any other notes.</assert>
+      </rule>
+    </pattern>
+   <pattern>
+      <rule context="contrib[$article-type='qa']/xref[@ref-type]" role="error"><!--Contrib xref ref-type should have allowed value-->
+        <assert id="contrib1d"
+                 test="matches(@ref-type,'^(aff|corresp|author-notes|other|statement)$')">Unexpected value for contributor "xref" 'ref-type' attribute (<value-of select="@ref-type"/>). The allowed values are "aff" (for links to affilation information), "corresp" (for correspondence information), "other" for a contributor photo, and "author-notes" for any other notes.</assert>
       </rule>
     </pattern>
    <pattern>
@@ -1879,7 +1885,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="xref[@ref-type='other'][not(ancestor::abstract)][@rid=ancestor::article//graphic[@content-type='illustration']/@id][not(@specific-use)]"><!--xref to illustration should have @specific-use for image alignment info-->
+      <rule context="xref[@ref-type='other'][not(ancestor::abstract)][not(parent::contrib)][@rid=ancestor::article//graphic[@content-type='illustration']/@id][not(@specific-use)]"><!--xref to illustration should have @specific-use for image alignment info-->
       <report id="xref5a" test=".">"xref" to illustration "<value-of select="@rid"/>" should have 'specific-use' attribute containing image alignment. Allowed values are: "align-left", "align-center" and "align-right".</report>
       </rule>
   </pattern>
@@ -2567,6 +2573,11 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
         <rule context="oasis:entry[@namest and not(@nameend)]">
             <report id="tab11c" test=".">Table entry has 'namest' attribute (<value-of select="@namest"/>), but there is no 'nameend' attribute. Spanning entries should have both these attributes; non-spanning entries should have neither.</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="oasis:entry[@namest and @nameend and @colname]">
+            <report id="tab11d" test=".">Spanning table entries should not have 'colname' attribute - please delete.</report>
         </rule>
     </pattern>
    <pattern>
