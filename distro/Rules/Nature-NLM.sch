@@ -74,7 +74,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="maestro"
         value="if (matches($pcode,'^(testnatevent|testpalevent)$')) then 'no' else      if ($maestro-aj='yes' or $maestro-rj='yes') then 'yes' else ()"/>
   <let name="npj_journal"
-        value="if (matches($pcode,'^(npjschz|npjmgrav|npjbcancer|npjparkd|npjqi)$')) then 'yes' else ()"/>
+        value="if (matches($pcode,'^(npjschz|npjmgrav|npjbcancer|npjparkd|npjqi|npjbiofilms|npjpcrm|npjgenmed)$')) then 'yes' else ()"/>
   <!--for testing that all articles (@article-type="af") have a long-summary. Currently only the US npj titles - check if should be all of them-->
   <let name="pubevent"
         value="if (matches($pcode,'^(maestrorj|testnatevent|testpalevent|nplants|nrdp|nmicrobiol|nenergy|natrevmats)$')) then 'yes'     else 'no'"/>
@@ -86,6 +86,9 @@ Use the <let> element to define the attribute if necessary.
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj|testnatfile|testpalfile|paldelor|testnatevent|npgdelor|testpalevent)$')) then 'yes' else 'no'"/>
   <let name="collection"
         value="$journals//npg:Journal[npg:pcode=$pcode]/npg:hasDomain/functx:substring-after-last(@rdf:resource,'/')"/>
+   <let name="full-text"
+        value="if (//article/body[@specific-use='search-only']) then 'no' else 'yes'"/>
+  
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
       <let name="article-type"
@@ -485,7 +488,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-    <rule context="volume[parent::article-meta] | issue[parent::article-meta] | lpage[not($pcode='pcrj')][parent::article-meta]"
+    <rule context="volume[parent::article-meta] | lpage[not($pcode='pcrj')][parent::article-meta]"
             role="error">
          <let name="value" value="replace(.,'test','')"/>
          <assert id="artinfo2"
@@ -728,6 +731,16 @@ Use the <let> element to define the attribute if necessary.
                  test="@specific-use=./preceding-sibling::abstract[@abstract-type='editorial-notes']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear on editorial-notes in each article.</report>
       </rule>
   </pattern>
+   <pattern>
+      <rule context="abstract[not(normalize-space(.) or *)]" role="error">
+         <report id="abs5a" test=".">"abstract" should not be empty. If this article does not have an abstract, please delete "abstract" tags.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="abstract/title[not(normalize-space(.) or *)]" role="error">
+         <report id="abs5b" test=".">Abstract "title" should not be empty. Add required text, or delete "title" tags.</report>
+      </rule>
+  </pattern>
    <pattern><!--update $derived-status with all Frontiers titles if they are converted to JATS-->
     <rule context="article-meta" role="error">
          <let name="derived-status"
@@ -760,7 +773,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--volume should be given in all new OA only journals; #not allowed in issue-based journals?#-->
-    <rule context="article[$maestro='yes' and $pubevent='no']/front/article-meta"
+    <rule context="article[$maestro='yes' and $pubevent='no' and not(matches($pcode,'^(bdjteam|scsandc)$'))]/front/article-meta"
             role="error">
          <assert id="oa-aj2a" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
@@ -1085,7 +1098,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--correction articles should contain a related-article element-->
-    <rule context="article[($maestro='yes' or $transition='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta"
+    <rule context="article[($maestro='yes' or $transition='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta[not(article-categories/subj-group/subject[@content-type='article-heading']/.='Case Study')]"
             role="error">
          <let name="article-heading"
               value="if ($article-type='add') then 'Addendum articles'          else if ($article-type='cg') then 'Corrigendum articles'          else if ($article-type='cs') then 'Correction articles'          else if ($article-type='er') then 'Erratum articles'          else if ($article-type='ret') then 'Retraction articles' else ()"/>
@@ -1856,7 +1869,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="floats-group/fig[not(@fig-type='cover-image')][not(@specific-use='suppinfo')][@id]"
+      <rule context="floats-group[$full-text='yes']/fig[not(@fig-type='cover-image')][not(@specific-use='suppinfo')][@id]"
             role="error"><!--All figures should be referenced in the text-->
       <let name="id" value="@id"/>
          <assert id="xref4a"
@@ -1864,21 +1877,22 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="floats-group/table-wrap[@id]" role="error"><!--All tables should be referenced in the text-->
+      <rule context="floats-group[$full-text='yes']/table-wrap[@id]" role="error"><!--All tables should be referenced in the text-->
       <let name="id" value="@id"/>
          <assert id="xref4b"
                  test="ancestor::article//xref[@ref-type='table' and matches(@rid,$id)]">Table <value-of select="replace($id,'t','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Table <value-of select="replace($id,'t','')"/>, please contact NPG.</assert>
       </rule>
   </pattern>
    <pattern>
-      <rule context="floats-group/graphic[@content-type='illustration'][@id]" role="error"><!--All tables should be referenced in the text-->
+      <rule context="floats-group[$full-text='yes']/graphic[@content-type='illustration'][@id]"
+            role="error"><!--All tables should be referenced in the text-->
       <let name="id" value="@id"/>
          <assert id="xref4c"
                  test="ancestor::article//xref[@ref-type='other' and matches(@rid,$id)]">Illustration <value-of select="replace($id,'i','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location.</assert>
       </rule>
   </pattern>
    <pattern>
-      <rule context="floats-group/boxed-text[@id]" role="error"><!--All boxes should be referenced in the text-->
+      <rule context="floats-group[$full-text='yes']/boxed-text[@id]" role="error"><!--All boxes should be referenced in the text-->
       <let name="id" value="@id"/>
          <assert id="xref4d"
                  test="ancestor::article//xref[@ref-type='boxed-text' and matches(@rid,$id)]">Box <value-of select="replace($id,'bx','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Box <value-of select="replace($id,'bx','')"/>, please contact NPG.</assert>
