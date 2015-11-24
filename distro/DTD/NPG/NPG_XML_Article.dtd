@@ -16,6 +16,8 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2015/11/20 - CDS-1143 - Add "hkl" and "fcf" as allowed values for supplementary files
+
 2015/07/07 - CDS-975 - Added "is-prime-view-to" to 'related-article-type' attribute values
 
 2015/05/15 - CDS-890 - Added "fd" as a possible child of "li"
@@ -947,7 +949,7 @@ DTD Change History (yyyy/mm/dd format)
  Following "integral", the numbers 1, 2, etc. have been used. NOTE, however,
  that numbers were removed from %refchars; on 1/11/00. -->
 <!-- The following notation values denote the format of the Supplementary Object or document. If the format is not known at time of conversion, choose "unknown" -->
-<!ENTITY % notation "(avi | bmp | c | cdx | cif | csv | default | doc | docm | docx | dot | eps | exe | gif | htm | html | icb | item | jdx | jpeg | jpg | mol | mov | mp4 | mp3 | mpg | noa | ole | pdb | pdf | pict | png | pps | ppt | pptm | pptx | ps | qt | ra | rtf | rv | sbml | sdf | sif | swf | tar | tex | tgz | tiff | timeline | txt | wav | wmf | wmv | wp | xls | xlsm | xlsx | xml | zip | unknown)">
+<!ENTITY % notation "(avi | bmp | c | cdx | cif | csv | default | doc | docm | docx | dot | eps | exe | fcf| gif | hkl | htm | html | icb | item | jdx | jpeg | jpg | mol | mov | mp4 | mp3 | mpg | noa | ole | pdb | pdf | pict | png | pps | ppt | pptm | pptx | ps | qt | ra | rtf | rv | sbml | sdf | sif | swf | tar | tex | tgz | tiff | timeline | txt | wav | wmf | wmv | wp | xls | xlsm | xlsx | xml | zip | unknown)">
 
 <!ENTITY % figure-data "(csv | doc | docx | gif | jpeg | jpg | pdf | png | tiff | txt | xls | xlsx | xml | zip)">
 

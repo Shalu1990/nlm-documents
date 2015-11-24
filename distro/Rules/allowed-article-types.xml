@@ -863,6 +863,9 @@
         <article-type code="ed">
             <article-heading>Editorial</article-heading>
         </article-type>
+        <article-type code="pe">
+            <article-heading>Perspective</article-heading>
+        </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
             <article-heading>Mini Review</article-heading>
