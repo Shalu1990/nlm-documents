@@ -250,9 +250,9 @@ Use the <let> element to define the attribute if necessary.
       </rule>
     </pattern>
    <pattern>
-      <rule context="article-categories/subj-group[@subj-group-type='category'][$article-type and subject][not(subject = $article-type)]"
+      <rule context="article-categories[not($transition='yes')]/subj-group[@subj-group-type='category'][$article-type and subject][not(subject = $article-type)]"
             role="error">
-         <report id="ameta2b" test=".">Subject catgory (<value-of select="subject"/>) does not match root article type (<value-of select="$article-type"/>)</report>
+         <report id="ameta2b" test=".">Subject category (<value-of select="subject"/>) does not match root article type (<value-of select="$article-type"/>)</report>
       </rule>
   </pattern>
    <pattern>
@@ -1399,7 +1399,19 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--sec - sec-type is valid-->
     <rule context="sec[@sec-type]" role="error">
          <let name="secType" value="@sec-type"/>
-         <assert id="sec2a" test="$allowed-values/sec-types/sec-type[.=$secType]">Unexpected value for "sec-type" attribute (<value-of select="$secType"/>). Allowed values are: "bookshelf" (only for use in book reviews), "materials", "online-methods", "procedure". </assert>
+         <assert id="sec2a" test="$allowed-values/sec-types/sec-type[.=$secType]">Unexpected value for "sec-type" attribute (<value-of select="$secType"/>). Allowed values are: "bookshelf" (only for use in book reviews), "materials", "online-methods", "procedure" and "transcript" (only for use in video articles).</assert>
+      </rule>
+  </pattern>
+   <pattern><!--sec - sec-type transcript only allowed in video articles-->
+      <rule context="sec[@sec-type='bookshelf'][not($article-type='bo')]"
+            role="error">
+         <report id="sec2a-1" test=".">Unexpected value for "sec-type" attribute (bookshelf). This is only allowed in Book Reviews (article type: "bo"). Allowed values are: "materials", "online-methods", "procedure" and "transcript" (only for use in video articles).</report>
+      </rule>
+  </pattern>
+   <pattern><!--sec - sec-type transcript only allowed in video articles-->
+      <rule context="sec[@sec-type='transcript'][not($article-type='video')]"
+            role="error">
+         <report id="sec2a-2" test=".">Unexpected value for "sec-type" attribute (transcript). This is only allowed in Video articles (article type: "video"). Allowed values are: "bookshelf" (only for use in book reviews), "materials", "online-methods", "procedure".</report>
       </rule>
   </pattern>
    <pattern><!--sec/@specific-use - follows expected syntax-->
