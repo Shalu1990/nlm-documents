@@ -1247,7 +1247,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article-meta[not($transition='yes')]/aff[@id]" role="error"><!--Affiliation information given, but no corresponding author in contrib list-->
+      <rule context="article-meta/aff[@id]" role="error"><!--Affiliation information given, but no corresponding author in contrib list-->
       <let name="id" value="@id"/>
          <assert id="aff3c" test="ancestor::article//contrib/xref[@rid=$id]">Affiliation information has been given (id="<value-of select="@id"/>"), but no link has been added to the contrib information. Insert an "xref" link with attributes ref-type="aff" and rid="<value-of select="@id"/>" on the relevant contributor.</assert>
       </rule>
