@@ -1165,6 +1165,9 @@
         </article-type>
     </journal>
     <journal pcode="natrevmats">
+        <article-type code="com">
+-            <article-heading>Comment</article-heading>
+-        </article-type>
         <article-type code="cr">
             <article-heading>Correspondence</article-heading>
         </article-type>
@@ -1180,6 +1183,9 @@
         <article-type code="mr">
             <article-heading>Meeting Report</article-heading>
         </article-type>
+        <article-type code="na">
+-            <article-heading>News Analysis</article-heading>
+-        </article-type>
         <article-type code="nv">
             <article-heading>News and Views</article-heading>
         </article-type>
