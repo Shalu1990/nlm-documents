@@ -13,6 +13,9 @@
 
 <!-- 
 
+05.01.16
+. CDS-1237 - Add phone to %address
+
 15.01.15
 . CDS-649 - Additional elements and attributes to support funding information:
             Added "funding-group" as possible child of "artfm"
@@ -1287,7 +1290,7 @@ citdoi | cittext | delim" >
 <!--********************************************************************-->
 <!--       Entity defining reusable address/correspondence elements	-->
 <!--********************************************************************-->
-<!ENTITY  % address     "org | street | city | state | co | postal | fax">
+<!ENTITY  % address     "org | street | city | state | co | postal | fax | phone">
 
 <!--********************************************************************-->
 <!--       Entity defining reusable author paid elements		-->
@@ -1969,6 +1972,8 @@ serieshead?, tochead?, arttype, subarttype?, artcode?, subject*, technique*, cla
 <!ELEMENT	postal		(#PCDATA)>
 
 <!ELEMENT	fax		(#PCDATA)>
+
+<!ELEMENT	phone		(#PCDATA)>
            
 <!--********************************************************************-->
 <!--       Corresponding affiliation                                   	-->
