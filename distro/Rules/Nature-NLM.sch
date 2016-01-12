@@ -8,8 +8,7 @@ Due to the configuration of XSLT templates used in the validation service, attri
 For example, context="article[@article-type]" will recognise the context as 'article' with an 'article-type' attribute, but context="article/@article-type" will set context as 'article'.
 Use the <let> element to define the attribute if necessary.
 
--->
-<schema xmlns="http://purl.oclc.org/dsdl/schematron"
+--><schema xmlns="http://purl.oclc.org/dsdl/schematron"
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         queryBinding="xslt2">
   <title>Schematron rules for NPG content in JATS v1.0</title>
@@ -17,6 +16,7 @@ Use the <let> element to define the attribute if necessary.
   <ns uri="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table"
        prefix="oasis"/>
   <ns uri="http://www.w3.org/1999/xlink" prefix="xlink"/>
+  
   <ns prefix="npg" uri="http://ns.nature.com/terms/"/>
   <ns prefix="rdf" uri="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
   <ns prefix="skos" uri="http://www.w3.org/2004/02/skos/core#"/>
@@ -34,7 +34,7 @@ Use the <let> element to define the attribute if necessary.
    <!--look-up file for allowed article types. Once the product ontology contains this information, this file can be deleted and the Schematron rules updated-->
 
   <let name="journals" value="document('journals.xml')"/>
-    
+      
   <ns prefix="functx" uri="http://www.functx.com"/>
    <!--extended XPath functions from Priscilla Walmsley-->
   <xsl:function xmlns:functx="http://www.functx.com" name="functx:substring-after-last"
@@ -66,7 +66,7 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|npjquantmats|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'yes'     else ()"/>
   <let name="transition"
         value="if ($journals//npg:Journal[npg:pcode=$pcode]/npg:isTransitionJournal='true') then 'yes'     else ()"/>
   <let name="maestro-rj"
@@ -75,18 +75,18 @@ Use the <let> element to define the attribute if necessary.
         value="if (matches($pcode,'^(testnatevent|testpalevent)$')) then 'no' else      if ($maestro-aj='yes' or $maestro-rj='yes') then 'yes' else ()"/>
   <let name="npj_journal"
         value="if (matches($pcode,'^(npjschz|npjmgrav|npjbcancer|npjparkd|npjqi|npjbiofilms|npjpcrm|npjgenmed)$')) then 'yes' else ()"/>
-  <!--for testing that all articles (@article-type="af") have a long-summary. Currently only the US/UK npj titles - check if should be all of them-->
+   <!--for testing that all articles (@article-type="af") have a long-summary. Currently only the US/UK npj titles - check if should be all of them-->
   <let name="pubevent"
         value="if (matches($pcode,'^(maestrorj|testnatevent|testpalevent|nplants|nrdp|nmicrobiol|nenergy|natrevmats)$')) then 'yes'     else 'no'"/>
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'three'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjquantmats)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'three'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj|testnatfile|testpalfile|paldelor|testnatevent|npgdelor|testpalevent)$')) then 'yes' else 'no'"/>
   <let name="collection"
         value="$journals//npg:Journal[npg:pcode=$pcode]/npg:hasDomain/functx:substring-after-last(@rdf:resource,'/')"/>
-   <let name="full-text"
+  <let name="full-text"
         value="if (//article/body[@specific-use='search-only']) then 'no' else 'yes'"/>
   
    <pattern>
@@ -382,13 +382,13 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--subjects should be in own subj-group-->
-      <rule context="subject[@content-type='npg.subject'][parent::subj-group[not(@subj-group-type='subject')]]">
+    <rule context="subject[@content-type='npg.subject'][parent::subj-group[not(@subj-group-type='subject')]]">
          <let name="subj-group-type" value="parent::subj-group/@subj-group-type"/>
-      <report id="subject9a" test=".">Subjects should not be included in "subj-group/@subj-group-type='<value-of select="$subj-group-type"/>'". Create a separate "subj-group" with '@subj-group-type='subject'.</report>
+         <report id="subject9a" test=".">Subjects should not be included in "subj-group/@subj-group-type='<value-of select="$subj-group-type"/>'". Create a separate "subj-group" with '@subj-group-type='subject'.</report>
       </rule>
   </pattern>
    <pattern><!--techniques should be in own subj-group-->
-      <rule context="subject[@content-type='npg.technique'][parent::subj-group[not(@subj-group-type='technique')]]">
+    <rule context="subject[@content-type='npg.technique'][parent::subj-group[not(@subj-group-type='technique')]]">
          <let name="subj-group-type" value="parent::subj-group/@subj-group-type"/>
          <report id="tech1a" test=".">Techniques should not be included in "subj-group/@subj-group-type='<value-of select="$subj-group-type"/>'". Create a separate "subj-group" with '@subj-group-type='technique'.</report>
       </rule>
@@ -488,7 +488,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-    <rule context="volume[parent::article-meta] | lpage[not($pcode='pcrj')][parent::article-meta]"
+      <rule context="volume[parent::article-meta] | lpage[not($pcode='pcrj')][parent::article-meta]"
             role="error">
          <let name="value" value="replace(.,'test','')"/>
          <assert id="artinfo2"
@@ -779,23 +779,21 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--volume not allowed in pub event based journals? -->
-    <rule context="article[$pubevent='yes']/front/article-meta/volume"
-            role="error">
+    <rule context="article[$pubevent='yes']/front/article-meta/volume" role="error">
          <report id="oa-aj2a2" test=".">A "volume" element should not be used in "<value-of select="$journal-title"/>".</report>
       </rule>
   </pattern>
    <pattern><!--expected volume value should be used in all maestro OA only journals - add mtm, mto, scsandc, npjscilearn, npjregenmed when needed; #not allowed in issue-based journals#-->
-      <rule context="article[$maestro-aj='yes' and $test-journal='no' and not(matches($pcode,'^(bdjteam|mtm|mto|scsandc|npjscilearn|npjregenmed)$'))]/front/article-meta[pub-date/@pub-type='epub']/volume"
+    <rule context="article[$maestro-aj='yes' and $test-journal='no' and not(matches($pcode,'^(bdjteam|mtm|mto|scsandc|npjscilearn|npjregenmed)$'))]/front/article-meta[pub-date/@pub-type='epub']/volume"
             role="error">
-         <let name="pub_year"
-              value="preceding-sibling::pub-date[@pub-type='epub']/year"/>
+         <let name="pub_year" value="preceding-sibling::pub-date[@pub-type='epub']/year"/>
          <let name="expected_volume"
-              value="if (matches($pcode,'^(npjpcrm)$')) then $pub_year - 1990 else         if (matches($pcode,'^(npjnutd)$')) then $pub_year - 2010 else          if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(hortres|sdata|hgv)$')) then $pub_year - 2013 else          if (matches($pcode,'^(bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjcompumats|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjgenmed|npjvaccines|npjclimatsci)$')) then $pub_year - 2015 else ()"/>
+              value="if (matches($pcode,'^(npjpcrm)$')) then $pub_year - 1990 else         if (matches($pcode,'^(npjnutd)$')) then $pub_year - 2010 else          if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(hortres|sdata|hgv)$')) then $pub_year - 2013 else          if (matches($pcode,'^(bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjcompumats|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjgenmed|npjvaccines|npjclimatsci|npjflexelectron|npjquantmats)$')) then $pub_year - 2015 else ()"/>
          <assert id="oa-aj2a3" test=". = $expected_volume">Unexpected volume number: "<value-of select="."/>". For an "<value-of select="$journal-title"/>" article published in <value-of select="$pub_year"/>, the expected volume number is "<value-of select="$expected_volume"/>".</assert>
       </rule>
   </pattern>
    <pattern><!--issue should not be used in new OA only journals nor event-based publishing-->
-      <rule context="article[$maestro='yes']/front/article-meta/issue" role="error">
+    <rule context="article[$maestro='yes']/front/article-meta/issue" role="error">
          <report id="oa-aj2b" test=".">An "issue" element should not be used in "<value-of select="$journal-title"/>".</report>
       </rule>
   </pattern>
@@ -805,8 +803,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--elocation-id should be numerical, i.e. does not start with 'e' or leading zeros-->
-    <rule context="article[$maestro='yes']/front/article-meta/elocation-id"
-            role="error">
+    <rule context="article[$maestro='yes']/front/article-meta/elocation-id" role="error">
          <assert id="oa-aj2d" test="matches(.,'^[1-9][0-9]*$')">"elocation-id" in "<value-of select="$journal-title"/>" should be a numerical value only (with no leading zeros), not "<value-of select="."/>".</assert>
       </rule>
   </pattern>
@@ -876,25 +873,25 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--no subsections in editorial summaries-->
-      <rule context="abstract[@abstract-type][$maestro='yes' or $transition='yes'][sec]"
+    <rule context="abstract[@abstract-type][$maestro='yes' or $transition='yes'][sec]"
             role="error">
          <report id="oa-aj-abs1b" test=".">Do not use sections in editorial summaries (<value-of select="@abstract-type"/>) - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - no title-->
-      <rule context="abstract[@abstract-type='standfirst'][$maestro='yes' or $transition='yes'][title]"
+    <rule context="abstract[@abstract-type='standfirst'][$maestro='yes' or $transition='yes'][title]"
             role="error">
          <report id="oa-aj-abs1c" test=".">Do not use "title" in standfirsts - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - no images-->
-      <rule context="abstract[@abstract-type='standfirst'][$maestro='yes' or $transition='yes'][descendant::xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id]]"
+    <rule context="abstract[@abstract-type='standfirst'][$maestro='yes' or $transition='yes'][descendant::xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id]]"
             role="error">
          <report id="oa-aj-abs1d" test=".">Do not use images in standfirsts - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - one paragraph-->
-      <rule context="abstract[@abstract-type='standfirst' or $transition='yes'][$maestro='yes'][count(p) gt 1]"
+    <rule context="abstract[@abstract-type='standfirst' or $transition='yes'][$maestro='yes'][count(p) gt 1]"
             role="error">
          <report id="oa-aj-abs1e" test=".">Standfirsts should only contain one paragraph - please contact NPG/Palgrave.</report>
       </rule>
@@ -935,8 +932,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
-         <let name="fig-number"
-              value="replace(replace($fig-image,$article-id,''),'-','')"/>
+         <let name="fig-number" value="replace(replace($fig-image,$article-id,''),'-','')"/>
          <assert id="oa-aj6c"
                  test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^sf[1-9][0-9]*[a-z]?$') or not($derivedPcode ne '' and $pcode=$derivedPcode and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Unexpected filename for supplementary figure image (<value-of select="$fig-image"/>). Expected format is "<value-of select="concat($article-id,'-sf')"/>"+number (and following letters, if figure has multiple images).</assert>
       </rule>
@@ -978,9 +974,9 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--graphical abstract filename-->
-      <rule context="article[$maestro='yes']//floats-group/graphic[@content-type='toc-image'][contains(@xlink:href,'.')]"
+    <rule context="article[$maestro='yes']//floats-group/graphic[@content-type='toc-image'][contains(@xlink:href,'.')]"
             role="error">
-      <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
          <let name="graphab" value="concat($article-id,'-toc')"/>
@@ -1035,10 +1031,10 @@ Use the <let> element to define the attribute if necessary.
     <rule context="article[$transition='yes']/front/article-meta/article-categories[not(subj-group/@subj-group-type='article-heading')]"
             role="error">
          <report id="transition1" test=".">Article categories should contain a "subj-group" element with attribute "subj-group-type='article-heading'".</report>
-         </rule>
+      </rule>
   </pattern>
    <pattern><!--article-heading should be used-->
-      <rule context="article[$maestro='yes' and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta/article-categories"
+    <rule context="article[$maestro='yes' and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta/article-categories"
             role="error">
          <let name="article-heading"
               value="replace(string-join($allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading,' or '),'\W\([a-z]+\)','')"/>
@@ -1088,7 +1084,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--Current address and death notices should not be in "aff"-->
-      <rule context="aff[$maestro='yes'][contains(.,'address')]" role="error">
+    <rule context="aff[$maestro='yes'][contains(.,'address')]" role="error">
          <report id="aj-aunote2a" test=".">Do not use "aff" for current address information - use author notes instead. Refer to Tagging Instructions.</report>
       </rule>
   </pattern>
@@ -1144,19 +1140,19 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--suppinfo should not be tif in maestro titles - use tiff instead-->
-      <rule context="floats-group[$maestro='yes']/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.') and not(contains(@xlink:href,'.doi.'))]"
+    <rule context="floats-group[$maestro='yes']/supplementary-material[not(@content-type='external-media')][contains(@xlink:href,'.') and not(contains(@xlink:href,'.doi.'))]"
             role="error">
          <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
          <report id="maestro-tif" test="$extension = 'tif'">Do not use 'tif' files for supplementary material. Please change file extension to 'tiff' on the asset, in the article XML and in the manifest file.</report>
       </rule>
   </pattern>
    <pattern><!--ext-link should be used instead of uri-->
-      <rule context="uri" role="error">
+    <rule context="uri" role="error">
          <report id="uri1" test=".">Do not use "uri" for links to websites. Please change to "ext-link" with attributes 'ext-link-type="url"' and 'xlink:href' containing the full address.</report>
       </rule>
   </pattern>
    <pattern><!--npj 'af' articles should have an editorial summary-->
-      <rule context="article[@article-type='af']/front/article-meta[$npj_journal='yes'][not(abstract[@abstract-type='long-summary'])]"
+    <rule context="article[@article-type='af']/front/article-meta[$npj_journal='yes'][not(abstract[@abstract-type='long-summary'])]"
             role="error">
          <report id="npj1a" test=".">All Articles (article-type "af") in "<value-of select="$journal-title"/>" should have an editorial summary (abstract with 'abstract-type="long-summary"'). If you have not been provided with the text for this summary, please contact NPG Production.</report>
       </rule>
@@ -1192,7 +1188,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--separate contrib elements for each data citation contributor-->
-      <rule context="ref-list[@content-type='data-citations']/ref//contrib[count(name) gt 1]"
+    <rule context="ref-list[@content-type='data-citations']/ref//contrib[count(name) gt 1]"
             role="error">
          <let name="id" value="ancestor::ref/@id"/>
          <report id="sdata3a" test=".">Multiple names given in one "contrib" in data citation <value-of select="$id"/>: use a separate "contrib" element for each contributor. Please refer to the Tagging Instructions.</report>
@@ -1357,7 +1353,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--markup for orcids is correct-->
-      <rule context="contrib-id[not(@contrib-id-type='orcid')]" role="error">
+    <rule context="contrib-id[not(@contrib-id-type='orcid')]" role="error">
          <report id="orcid1a" test=".">"contrib-id" should have 'contrib-id-type="orcid"'.</report>
       </rule>
   </pattern>
@@ -1403,14 +1399,12 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--sec - sec-type transcript only allowed in video articles-->
-      <rule context="sec[@sec-type='bookshelf'][not($article-type='bo')]"
-            role="error">
+    <rule context="sec[@sec-type='bookshelf'][not($article-type='bo')]" role="error">
          <report id="sec2a-1" test=".">Unexpected value for "sec-type" attribute (bookshelf). This is only allowed in Book Reviews (article type: "bo"). Allowed values are: "materials", "online-methods", "procedure" and "transcript" (only for use in video articles).</report>
       </rule>
   </pattern>
    <pattern><!--sec - sec-type transcript only allowed in video articles-->
-      <rule context="sec[@sec-type='transcript'][not($article-type='video')]"
-            role="error">
+    <rule context="sec[@sec-type='transcript'][not($article-type='video')]" role="error">
          <report id="sec2a-2" test=".">Unexpected value for "sec-type" attribute (transcript). This is only allowed in Video articles (article type: "video"). Allowed values are: "bookshelf" (only for use in book reviews), "materials", "online-methods", "procedure".</report>
       </rule>
   </pattern>
@@ -1592,8 +1586,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="p[@specific-use][not(@specific-use='search-only')]"
-            role="error">
+      <rule context="p[@specific-use][not(@specific-use='search-only')]" role="error">
          <report id="para1c" test=".">Do not use "specific-use" attribute on "p" element (apart from when defining a paragraph as "search-only").</report>
       </rule>
   </pattern>
@@ -1682,17 +1675,19 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--@xlink:href shouldn't target doifinder - does not work on Maestro-->
-      <rule context="ext-link[contains(@xlink:href,'doifinder')]" role="error">
+    <rule context="ext-link[contains(@xlink:href,'doifinder')]" role="error">
          <report id="url1d" test=".">Do not link to doifinder in "ext-link" as this does not work for JATS articles. 'xlink:href' should be: <value-of select="concat('http://dx.doi.org',substring-after(@xlink:href,'doifinder'))"/>.</report>
       </rule>
   </pattern>
    <pattern><!--ext-link should have @xlink:href-->
-    <rule context="ext-link[not(@xlink:href)][not(ancestor::notes/@notes-type='database-links')]" role="error">
+    <rule context="ext-link[not(@xlink:href)][not(ancestor::notes/@notes-type='database-links')]"
+            role="error">
          <report id="url2a" test=".">"ext-link" should have an 'xlink:href' attribute giving the target website or ftp site.</report>
       </rule>
   </pattern>
    <pattern><!--ext-link should have non-empty @xlink:href-->
-    <rule context="ext-link[@xlink:href=''][not(ancestor::notes/@notes-type='database-links')]" role="error">
+    <rule context="ext-link[@xlink:href=''][not(ancestor::notes/@notes-type='database-links')]"
+            role="error">
          <report id="url2b" test=".">"ext-link" 'xlink:href' attribute should not be empty. It should contain the address for the target website or ftp site.</report>
       </rule>
   </pattern>
@@ -1728,7 +1723,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--tweaked rule for PCRJ archive and transition journals only - no empty xrefs for some ref-types, ok for figures-->
-      <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|supplementary-material|table-fn)$')][$pcode='pcrj']"
+    <rule context="xref[matches(@ref-type,'^(bibr|disp-formula|supplementary-material|table-fn)$')][$pcode='pcrj']"
             role="error">
          <let name="ref-type" value="@ref-type"/>
          <assert id="xref1b" test="normalize-space(.) or *">"xref" with ref-type="<value-of select="$ref-type"/>" and rid="<value-of select="@rid"/>" should contain text. Please see Tagging Instructions for further examples.</assert>
@@ -1928,16 +1923,16 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern>
       <rule context="xref[not(@ref-type)][not(ancestor::contrib)]"><!--xref should have a ref-type attribute-->
-         <report id="xref6a" test=".">"xref" should have a 'ref-type' attribute describing the target object, e.g. "bibr", "fig", etc.</report>
+      <report id="xref6a" test=".">"xref" should have a 'ref-type' attribute describing the target object, e.g. "bibr", "fig", etc.</report>
       </rule>
   </pattern>
    <pattern>
       <rule context="xref[not(@rid)][not(ancestor::contrib)]"><!--xref should have an rid attribute-->
-         <report id="xref6b" test=".">"xref" should have a 'rid' attribute giving the id of the target object, e.g. "b1", "f2", etc.</report>
+      <report id="xref6b" test=".">"xref" should have a 'rid' attribute giving the id of the target object, e.g. "b1", "f2", etc.</report>
       </rule>
   </pattern>
    <pattern><!--xref rid format should match expected value based on ref-type-->
-      <rule context="xref[matches(@rid,'^a[1-9][0-9]*$')][@ref-type][not(@ref-type='aff')]">
+    <rule context="xref[matches(@rid,'^a[1-9][0-9]*$')][@ref-type][not(@ref-type='aff')]">
          <report id="xref7a" test=".">Mismatch between "xref" 'rid' format ("a"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "a"+number is "aff".</report>
       </rule>
   </pattern>
@@ -2023,22 +2018,22 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--mml:labeledtr should only have mml:mtd child elements-->
-      <rule context="mml:mlabeledtr[*[not(self::mml:mtd)]]">
+    <rule context="mml:mlabeledtr[*[not(self::mml:mtd)]]">
          <report id="form4a" test=".">"mml:labeledtr" should only have "mml:mtd" child elements.</report>
       </rule>
   </pattern>
    <pattern><!--mml:mtr should only have mml:mtd child elements-->
-      <rule context="mml:mtr[*[not(self::mml:mtd)]]">
+    <rule context="mml:mtr[*[not(self::mml:mtd)]]">
          <report id="form4b" test=".">"mml:mtr" should only have "mml:mtd" child elements.</report>
       </rule>
   </pattern>
    <pattern><!--mml:math should not be child of p-->
-      <rule context="mml:math[parent::p]">
+    <rule context="mml:math[parent::p]">
          <report id="form5" test=".">Do not use "mml:math" on its own - please wrap the expression in "inline-formula".</report>
       </rule>
   </pattern>
    <pattern><!--inline-formula/mml:math should not be used for single letters-->
-      <rule context="inline-formula/mml:math[count(descendant::*)=1][not(mml:mi/@mathvariant='script')]">
+    <rule context="inline-formula/mml:math[count(descendant::*)=1][not(mml:mi/@mathvariant='script')]">
          <report id="form6" test=".">Single letters should not be tagged as an inline formula with MathML markup. Please use regular article elements and/or Unicode characters.</report>
       </rule>
   </pattern>
@@ -2487,7 +2482,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--article-title should not contain 'ext-link'-->
-      <rule context="ref/mixed-citation/article-title[ext-link]" role="error">
+    <rule context="ref/mixed-citation/article-title[ext-link]" role="error">
          <report id="reflist9b" test=".">"ext-link" should not be used in "article-title". The closing tag of "article-title" is probably in the wrong place - please check.</report>
       </rule>
   </pattern>
@@ -2510,8 +2505,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--citation should not contain two <years> - messes up transforms-->
-      <rule context="ref[$maestro='yes']/mixed-citation[count(year) gt 1]"
-            role="error">
+    <rule context="ref[$maestro='yes']/mixed-citation[count(year) gt 1]" role="error">
          <report id="reflist11a" test=".">Citation "<value-of select="ancestor::ref/@id"/>" has two "year" elements. Please check that the citation has been constructed correctly.</report>
       </rule>
   </pattern>
@@ -2566,8 +2560,7 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern>
-        <rule context="xref[@ref-type='table-fn'][not($transition='yes')]"
-            role="error"><!--Does symbol in link match symbol on footnote?-->
+        <rule context="xref[@ref-type='table-fn'][not($transition='yes')]" role="error"><!--Does symbol in link match symbol on footnote?-->
             <let name="id" value="@rid"/>
             <let name="sup-link" value="descendant::text()"/>
             <let name="sup-fn"
@@ -2607,7 +2600,8 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern>
-      <rule context="fig//graphic[@xlink:href='' or @mimetype='' or @mime-subtype='']" role="error">
+      <rule context="fig//graphic[@xlink:href='' or @mimetype='' or @mime-subtype='']"
+            role="error">
         <report id="fig1a" test=".">Graphic attribute values 'xlink:href', 'mimetype' and 'mime-subtype' should be used and not be empty. If the article has been converted from AJ or NPG XML, please check that entity declarations have been converted correctly before transformation.</report>
       </rule>
    </pattern>
@@ -2803,8 +2797,7 @@ Use the <let> element to define the attribute if necessary.
     </pattern>
    <pattern>
         <rule context="floats-group/graphic" role="error">
-            <assert id="ill1a"
-                 test="matches(@content-type,'^(illustration|toc-image)$')"
+            <assert id="ill1a" test="matches(@content-type,'^(illustration|toc-image)$')"
                  role="error">Unexpected "graphic" as child of "floats-group". If this is an illustration, add content-type='illustration'. If this is a figure image, enclose in "fig" and add "caption" information. If this is a graphical abstract, add content-type='toc-image'.</assert>
         </rule>
     </pattern>
@@ -2853,8 +2846,7 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--@xlink:href has valid file extension - check allowed image extensions-->
-        <rule context="graphic[@content-type][contains(@xlink:href,'.')]"
-            role="error">
+        <rule context="graphic[@content-type][contains(@xlink:href,'.')]" role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
             <assert id="ill2c" test="matches($extension,'^(bmp|gif|jpeg|jpg|pict|png|tiff)$')">Unexpected file extension value ("<value-of select="$extension"/>") in "graphic" '@xlink:href' attribute - please check.</assert>
         </rule>
@@ -2932,7 +2924,7 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--box - allowed children of regular boxes-->
-      <rule context="boxed-text/sec-meta | boxed-text/address | boxed-text/alternatives | boxed-text/array | boxed-text/chem-struct-wrap | boxed-text/graphic | boxed-text/media |  boxed-text/supplementary-material | boxed-text/table-wrap | boxed-text/table-wrap-group | boxed-text/disp-formula-group | boxed-text/def-list | boxed-text/tex-math | boxed-text/mml:math | boxed-text[not(@content-type='excerpt')]/related-article | boxed-text/related-object | boxed-text/disp-quote | boxed-text/speech | boxed-text/statement | boxed-text/verse-group | boxed-text/fn-group | boxed-text/glossary | boxed-text/ref-list | boxed-text[not(@content-type='excerpt')]/sec | boxed-text/attrib | boxed-text/permissions"
+    <rule context="boxed-text/sec-meta | boxed-text/address | boxed-text/alternatives | boxed-text/array | boxed-text/chem-struct-wrap | boxed-text/graphic | boxed-text/media |  boxed-text/supplementary-material | boxed-text/table-wrap | boxed-text/table-wrap-group | boxed-text/disp-formula-group | boxed-text/def-list | boxed-text/tex-math | boxed-text/mml:math | boxed-text[not(@content-type='excerpt')]/related-article | boxed-text/related-object | boxed-text/disp-quote | boxed-text/speech | boxed-text/statement | boxed-text/verse-group | boxed-text/fn-group | boxed-text/glossary | boxed-text/ref-list | boxed-text[not(@content-type='excerpt')]/sec | boxed-text/attrib | boxed-text/permissions"
             role="error">
          <report id="box2" test=".">Do not use "<name/>" as a child of "boxed-text".</report>
       </rule>
@@ -2996,7 +2988,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--supplementary-material - should be child of floats gropu-->
-      <rule context="supplementary-material[matches(@id,'^s[0-9]+$')][not(parent::floats-group)]"
+    <rule context="supplementary-material[matches(@id,'^s[0-9]+$')][not(parent::floats-group)]"
             role="error">
          <let name="parent" value="parent::*"/>
          <report id="supp1c" test=".">Supplementary information should be a child of "floats-group" not "<value-of select="local-name($parent)"/>".</report>
