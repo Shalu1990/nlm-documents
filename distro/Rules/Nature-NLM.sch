@@ -590,6 +590,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="copy1d" test=".">"copyright-holder" should not be empty. Please add correct information.</report>
       </rule>
   </pattern>
+   <pattern>
+      <rule context="permissions[$pcode='nplants']/copyright-holder[. ne 'Macmillan Publishers Limited']">
+         <report id="copy1e" test=".">"copyright-holder" for Nature Plants should be "Macmillan Publishers Limited", not "<value-of select="."/>".</report>
+      </rule>
+  </pattern>
    <pattern><!--Is the copyright year valid?-->
     <rule context="copyright-year[not(matches(.,'^(19|20)[0-9]{2}$'))]" role="error">
          <report id="copy2" test=".">Invalid year value for copyright: <value-of select="."/>. It should be a 4-digit number starting with 19 or 20.</report>
@@ -737,8 +742,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="abstract/title[not(normalize-space(.) or *)]" role="error">
-         <report id="abs5b" test=".">Abstract "title" should not be empty. Add required text, or delete "title" tags.</report>
+      <rule context="abstract[not(descendant::text())]" role="error">
+         <report id="abs5b" test=".">Abstracts and editorial summaries should not be empty. Add required text, or delete "abstract" tags.</report>
       </rule>
   </pattern>
    <pattern><!--update $derived-status with all Frontiers titles if they are converted to JATS-->
@@ -1352,6 +1357,12 @@ Use the <let> element to define the attribute if necessary.
          <report id="collab1b" test=".">"on behalf of" collaborations cannot have <value-of select="$refType"/>. Please contact NPG for markup instructions.</report>
       </rule>
   </pattern>
+   <pattern>
+      <rule context="contrib/collab[@collab-type='authors']/xref[@ref-type='author-notes']"
+            role="error"><!--no author-notes on consortia-->
+         <report id="collab2" test=".">Do not use author notes for consortia, use group text instead. See Tagging Instructions for further details.</report>
+      </rule>
+  </pattern>
    <pattern><!--markup for orcids is correct-->
     <rule context="contrib-id[not(@contrib-id-type='orcid')]" role="error">
          <report id="orcid1a" test=".">"contrib-id" should have 'contrib-id-type="orcid"'.</report>
@@ -1463,7 +1474,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--sec - sec-type or specific-use attribute used-->
-    <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/chem-struct-wrap | sec/graphic | sec/media | sec/supplementary-material | sec/disp-formula-group | sec/def-list | sec/tex-math | sec/mml:math | sec/related-article | sec/related-object | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list"
+    <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/chem-struct-wrap | sec/graphic | sec/media | sec/supplementary-material | sec/disp-formula-group | sec/def-list | sec/mml:math | sec/related-article | sec/related-object | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list"
             role="error">
          <report id="sec4" test=".">Children of "sec" should only be "title", "p", "sec", "disp-formula", "disp-quote" or "preformat" - do not use "<name/>".</report>
       </rule>
@@ -1631,9 +1642,16 @@ Use the <let> element to define the attribute if necessary.
          <report id="quote1a" test=".">"disp-quote" should have an 'content-type' attribute with value "pullquote" (for quotes shown at the side of the text) or "quote" (for an indented block of text within the body of the article).</report>
       </rule>
   </pattern>
-   <pattern><!--quote should have valid @content-type-->
-    <rule context="disp-quote[@content-type]" role="error">
+   <pattern><!--quote should have valid @content-type (NPG)-->
+    <rule context="disp-quote[$collection='nature'][@content-type]" role="error">
          <assert id="quote1b" test="@content-type='pullquote' or @content-type='quote'">"disp-quote" 'content-type' attribute should have value "pullquote" (for quotes shown at the side of the text) or "quote" (for an indented block of text within the body of the article), not "<value-of select="@content-type"/>".</assert>
+      </rule>
+  </pattern>
+   <pattern><!--quote should have valid @content-type (Palgrave)-->
+      <rule context="disp-quote[$collection='palgrave'][@content-type]"
+            role="error">
+         <assert id="quote1b2"
+                 test="@content-type='pullquote' or @content-type='quote' or @content-type='sidenote'">"disp-quote" 'content-type' attribute should have value "pullquote" (for quotes shown at the side of the text), "quote" (for an indented block of text within the body of the article), or "sidenote" (for a note in the sidebar of the article), not "<value-of select="@content-type"/>".</assert>
       </rule>
   </pattern>
    <pattern><!--block quotes should not have atrribution-->
@@ -2292,7 +2310,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--elements not allowed as children of ref-list-->
-    <rule context="ref-list/label|ref-list/address|ref-list/alternatives|ref-list/array|ref-list/chem-struct-wrap|ref-list/graphic|ref-list/media|ref-list/preformat|ref-list/disp-formula|ref-list/disp-formula-group|ref-list/def-list|ref-list/list|ref-list/tex-math|ref-list/mml:math|ref-list/related-article|ref-list/related-object|ref-list/disp-quote|ref-list/speech|ref-list/statement|ref-list/verse-group"
+    <rule context="ref-list/label|ref-list/address|ref-list/alternatives|ref-list/array|ref-list/chem-struct-wrap|ref-list/graphic|ref-list/media|ref-list/preformat|ref-list/disp-formula|ref-list/disp-formula-group|ref-list/def-list|ref-list/list|ref-list/mml:math|ref-list/related-article|ref-list/related-object|ref-list/disp-quote|ref-list/speech|ref-list/statement|ref-list/verse-group"
             role="error">
          <report id="disallowed3" test=".">Do not use "<name/>" element in "ref-list" in NPG/Palgrave articles.</report>
       </rule>
@@ -2924,7 +2942,7 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern><!--box - allowed children of regular boxes-->
-    <rule context="boxed-text/sec-meta | boxed-text/address | boxed-text/alternatives | boxed-text/array | boxed-text/chem-struct-wrap | boxed-text/graphic | boxed-text/media |  boxed-text/supplementary-material | boxed-text/table-wrap | boxed-text/table-wrap-group | boxed-text/disp-formula-group | boxed-text/def-list | boxed-text/tex-math | boxed-text/mml:math | boxed-text[not(@content-type='excerpt')]/related-article | boxed-text/related-object | boxed-text/disp-quote | boxed-text/speech | boxed-text/statement | boxed-text/verse-group | boxed-text/fn-group | boxed-text/glossary | boxed-text/ref-list | boxed-text[not(@content-type='excerpt')]/sec | boxed-text/attrib | boxed-text/permissions"
+    <rule context="boxed-text/sec-meta | boxed-text/address | boxed-text/alternatives | boxed-text/array | boxed-text/chem-struct-wrap | boxed-text/graphic | boxed-text/media |  boxed-text/supplementary-material | boxed-text/table-wrap | boxed-text/table-wrap-group | boxed-text/disp-formula-group | boxed-text/def-list | boxed-text/mml:math | boxed-text[not(@content-type='excerpt')]/related-article | boxed-text/related-object | boxed-text/disp-quote | boxed-text/speech | boxed-text/statement | boxed-text/verse-group | boxed-text/fn-group | boxed-text/glossary | boxed-text/ref-list | boxed-text[not(@content-type='excerpt')]/sec | boxed-text/attrib | boxed-text/permissions"
             role="error">
          <report id="box2" test=".">Do not use "<name/>" as a child of "boxed-text".</report>
       </rule>
@@ -3171,7 +3189,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--elements not allowed in NPG JATS content-->
-    <rule context="abbrev | collab-alternatives | comment | gov | issn-l | issue-id | issue-part | issue-title | milestone-end | milestone-start | object-id |  page-range | part-title | patent | pub-id | roman | std | trans-abstract | trans-source | volume-id | volume-series"
+    <rule context="abbrev | collab-alternatives | comment | gov | issn-l | issue-id | issue-part | issue-title | milestone-end | milestone-start | object-id |  page-range | part-title | patent | pub-id | roman | std | tex-math | trans-abstract | trans-source | volume-id | volume-series"
             role="error">
          <report id="disallowed1" test=".">Do not use "<name/>" element in NPG/Palgrave articles.</report>
       </rule>
