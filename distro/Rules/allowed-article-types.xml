@@ -73,7 +73,13 @@
         </article-type>
     </journal>
     <journal pcode="sdata">
-        <article-type code="com">
+        <article-type code="af">
+            <article-heading>Article</article-heading>
+        </article-type>
+        <article-type code="an">
+            <article-heading>Analysis</article-heading>
+        </article-type>
+    	<article-type code="com">
             <article-heading>Comment</article-heading>
         </article-type>
         <article-type code="dd">
