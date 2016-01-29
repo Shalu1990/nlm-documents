@@ -16,6 +16,12 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2016/01/29 - CDS-1237 - Add "phone" and "fax" to %address
+		   - CDS-1244 - Added "aap" to 'issue' attribute values for element "article".
+           				Added "aap" to 'type' attribute values for element "pubdate".
+
+2015/11/20 - CDS-1143 - Add "hkl" and "fcf" as allowed values for supplementary files
+
 2015/07/07 - CDS-975 - Added "is-prime-view-to" to 'related-article-type' attribute values
 
 2015/05/15 - CDS-890 - Added "fd" as a possible child of "li"
@@ -915,7 +921,7 @@ DTD Change History (yyyy/mm/dd format)
 <!ENTITY % links "natlink | sir | cir | url | weblink | xnav | xref">
 <!ENTITY % data "%straight-text; | %fontchng; | %controls; | %refs; | %links; | accession | anchor | email | company | prod | brandname | term | scientific | code | geneseq | proteinseq">
 <!ENTITY % author "%data; | fnm | snm | suff | ttl | inits | auid">
-<!ENTITY % address "%data; | org | street | cty | co | st | zip | cny | prf">
+<!ENTITY % address "%data; | org | street | cty | co | st | zip | cny | prf | phone | fax">
 
 <!ENTITY % tabl "(title?, caption?, tgroup*, tblimg*, slide?, credit?)" >
 
@@ -957,7 +963,7 @@ DTD Change History (yyyy/mm/dd format)
  Following "integral", the numbers 1, 2, etc. have been used. NOTE, however,
  that numbers were removed from %refchars; on 1/11/00. -->
 <!-- The following notation values denote the format of the Supplementary Object or document. If the format is not known at time of conversion, choose "unknown" -->
-<!ENTITY % notation "(avi | bmp | c | cdx | cif | csv | default | doc | docm | docx | dot | eps | exe | gif | htm | html | icb | item | jdx | jpeg | jpg | mol | mov | mp4 | mp3 | mpg | noa | ole | pdb | pdf | pict | png | pps | ppt | pptm | pptx | ps | qt | ra | rtf | rv | sbml | sdf | sif | swf | tar | tex | tgz | tiff | timeline | txt | wav | wmf | wmv | wp | xls | xlsm | xlsx | xml | zip | unknown)">
+<!ENTITY % notation "(avi | bmp | c | cdx | cif | csv | default | doc | docm | docx | dot | eps | exe | fcf| gif | hkl | htm | html | icb | item | jdx | jpeg | jpg | mol | mov | mp4 | mp3 | mpg | noa | ole | pdb | pdf | pict | png | pps | ppt | pptm | pptx | ps | qt | ra | rtf | rv | sbml | sdf | sif | swf | tar | tex | tgz | tiff | timeline | txt | wav | wmf | wmv | wp | xls | xlsm | xlsx | xml | zip | unknown)">
 
 <!ENTITY % figure-data "(csv | doc | docx | gif | jpeg | jpg | pdf | png | tiff | txt | xls | xlsx | xml | zip)">
 
@@ -994,7 +1000,7 @@ DTD Change History (yyyy/mm/dd format)
 <!ATTLIST article
 id CDATA #REQUIRED
 language %language; "eng"
-publish (issue | supp | aop | online | nfv | prototype | offline | retired | fav) "issue"
+publish (issue | supp | aop | online | nfv | prototype | offline | retired | fav | aap) "issue"
 relation (yes | no) "no"
 uid-replace CDATA #IMPLIED
 correstype (correspondence | response | reply) #IMPLIED
@@ -1388,7 +1394,7 @@ day CDATA #IMPLIED
 >
 <!ELEMENT pubdate EMPTY>
 <!ATTLIST pubdate
-type (aop | iss | online | nfv | embargo | fav) "iss"
+type (aop | iss | online | nfv | embargo | fav | aap) "iss"
 %dateatt;
 time CDATA #IMPLIED
 hour CDATA #IMPLIED

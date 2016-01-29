@@ -16,6 +16,10 @@ Please refer to DTD Change History for list of changes and dates.
 <!--
 DTD Change History (yyyy/mm/dd format)
 
+2016/01/29 - CDS-1237 - Add "phone" and "fax" to %address
+		   - CDS-1244 - Added "aap" to 'issue' attribute values for element "article".
+           				Added "aap" to 'type' attribute values for element "pubdate".
+
 2015/11/20 - CDS-1143 - Add "hkl" and "fcf" as allowed values for supplementary files
 
 2015/07/07 - CDS-975 - Added "is-prime-view-to" to 'related-article-type' attribute values
@@ -907,7 +911,7 @@ DTD Change History (yyyy/mm/dd format)
 <!ENTITY % links "natlink | sir | cir | url | weblink | xnav | xref">
 <!ENTITY % data "%straight-text; | %fontchng; | %controls; | %refs; | %links; | accession | anchor | email | company | prod | brandname | term | scientific | code | geneseq | proteinseq">
 <!ENTITY % author "%data; | fnm | snm | suff | ttl | inits | auid">
-<!ENTITY % address "%data; | org | street | cty | co | st | zip | cny | prf">
+<!ENTITY % address "%data; | org | street | cty | co | st | zip | cny | prf | phone | fax">
 
 <!ENTITY % tabl "(title?, caption?, tgroup*, tblimg*, slide?, credit?)" >
 
@@ -986,7 +990,7 @@ DTD Change History (yyyy/mm/dd format)
 <!ATTLIST article
 id CDATA #REQUIRED
 language %language; "eng"
-publish (issue | supp | aop | online | nfv | prototype | offline | retired | fav) "issue"
+publish (issue | supp | aop | online | nfv | prototype | offline | retired | fav | aap) "issue"
 relation (yes | no) "no"
 uid-replace CDATA #IMPLIED
 correstype (correspondence | response | reply) #IMPLIED
@@ -1380,7 +1384,7 @@ day CDATA #IMPLIED
 >
 <!ELEMENT pubdate EMPTY>
 <!ATTLIST pubdate
-type (aop | iss | online | nfv | embargo | fav) "iss"
+type (aop | iss | online | nfv | embargo | fav | aap) "iss"
 %dateatt;
 time CDATA #IMPLIED
 hour CDATA #IMPLIED
