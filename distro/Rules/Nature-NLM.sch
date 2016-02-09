@@ -124,6 +124,12 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
+      <rule context="journal-meta/journal-id[@journal-id-type='publisher'][.='']"
+            role="error"><!--Journal id should not be empty-->
+         <report id="jmeta1c" test=".">Publisher journal-id should not be empty.</report>
+      </rule>
+  </pattern>
+   <pattern>
       <rule context="journal-meta" role="error"><!--Journal title exists-->
          <assert id="jmeta2a"
                  test="descendant::journal-title-group/journal-title and not($journal-title='')">Journal title is missing from the journal metadata section. Other rules are based on having a correct journal title and therefore will not be run. Please resubmit this file when the title has been added.</assert>
@@ -135,7 +141,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="journal-title-group[not($journal-title='')]" role="error"><!--Is the journal title valid-->
+      <rule context="journal-title-group[not($pcode='')][not($transition='yes')][not($journal-title='')]"
+            role="error"><!--Is the journal title valid-->
          <assert id="jmeta3a"
                  test="not(descendant::journal-title) or $journals//npg:Journal[dc:title=$journal-title]">Journal titles must be from the prescribed list of journal names. "<value-of select="$journal-title"/>" is not on this list - check spelling, spacing of words or use of the ampersand. Other rules are based on having a correct journal title and therefore will not be run. Please resubmit this file when the title has been corrected.</assert>
       </rule>
