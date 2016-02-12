@@ -4,6 +4,9 @@
         <article-type code="af">
             <article-heading>Article</article-heading>
         </article-type>
+        <article-type code="caser">
+            <article-heading>Case Report</article-heading>
+        </article-type>
         <article-type code="com">
             <article-heading>Comment</article-heading>
         </article-type>
