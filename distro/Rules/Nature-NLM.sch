@@ -255,6 +255,18 @@ Use the <let> element to define the attribute if necessary.
          <report id="ameta1b" test=".">Article metadata should include an "article-categories" element.</report>
       </rule>
   </pattern>
+   <pattern>
+      <rule context="article-meta/article-id[@pub-id-type='publisher-id'][.=preceding-sibling::article-id[@pub-id-type='publisher-id']]"
+            role="error"><!--Duplicate article id given-->
+         <report id="ameta1c" test=".">A duplicate publisher article-id has been given - please delete.</report>
+      </rule>
+    </pattern>
+   <pattern>
+      <rule context="article-meta/article-id[@pub-id-type='doi'][.=preceding-sibling::article-id[@pub-id-type='doi']]"
+            role="error"><!--Duplicate article id given-->
+         <report id="ameta1d" test=".">A duplicate article DOI has been given - please delete.</report>
+      </rule>
+    </pattern>
    <pattern><!--Does article categories contain "category" information and does it match article/@article-type?-->
       <rule context="article-categories[not(subj-group[@subj-group-type='category'])]"
             role="error">
@@ -2601,6 +2613,30 @@ Use the <let> element to define the attribute if necessary.
             <report id="tab1" test="." role="error">"table-wrap" should be within "floats-group", not "<value-of select="local-name(ancestor::*[parent::article])"/>".</report>
         </rule>
     </pattern>
+   <pattern><!--table - must have an @id-->
+        <rule context="table-wrap[not(@id)]" role="error">
+            <report id="tab2a" test=".">Missing 'id' attribute - "table-wrap" should have an 'id' of the form "t"+number (with no leading zeros).</report>
+        </rule>
+    </pattern>
+   <pattern><!--table - @id must be correct format-->
+        <rule context="table-wrap[@id][not($transition='yes')]" role="error">
+            <assert id="tab2b" test="matches(@id,'^t[A-Z]?[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). "table-wrap" 'id' attribute should be of the form "t"+number (with no leading zeros).</assert>
+        </rule>
+    </pattern>
+   <pattern><!--table - label not necessary if text is of form "Table 1" etc-->
+        <rule context="table-wrap[matches(@id,'^t[A-Z]?[1-9][0-9]*$')]/label"
+            role="error">
+            <let name="derivedLabel"
+              value="concat('Table ',translate(parent::table-wrap/@id,'t',''))"/>
+            <report id="tab2c" test=".=$derivedLabel">Table "label" is not necessary when text is of the standard format "<value-of select="$derivedLabel"/>" - please delete.</report>
+        </rule>
+    </pattern>
+   <pattern><!--table footnote - @id must be correct format-->
+        <rule context="table-wrap-foot/fn[@id][not($transition='yes')]" role="error">
+        	<let name="tabfn-id-stem" value="concat(ancestor::table-wrap/@id,'-fn')"/>
+            <assert id="tab3" test="matches(@id,'^t[A-Za-z]?[1-9][0-9]*-fn[1-9][0-9]*$')">Invalid 'id' value ("<value-of select="@id"/>"). Table footnote 'id' attribute should be of the form "<value-of select="$tabfn-id-stem"/>"+number (with no leading zeros).</assert>
+        </rule>
+    </pattern>
    <pattern><!--caption must contain a title-->
         <rule context="table-wrap/caption[not(title) and p]" role="error">
             <report id="tab5a" test="." role="error">Table-wrap "caption" should contain a "title" element - change "p" to "title".</report>
@@ -2686,6 +2722,27 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
         <rule context="oasis:entry[@namest and @nameend and @colname]">
             <report id="tab11d" test=".">Spanning table entries should not have 'colname' attribute - please delete.</report>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="oasis:entry[@namest]">
+        	<let name="namest" value="@namest"/>
+            <assert id="tab12a"
+                 test="ancestor::oasis:tgroup/oasis:colspec[@colname eq $namest]">Table entry 'namest' attribute (<value-of select="$namest"/>) has not been defined in colspec.</assert>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="oasis:entry[@nameend]">
+        	<let name="nameend" value="@nameend"/>
+            <assert id="tab12b"
+                 test="ancestor::oasis:tgroup/oasis:colspec[@colname eq $nameend]">Table entry 'nameend' attribute (<value-of select="$nameend"/>) has not been defined in colspec.</assert>
+        </rule>
+    </pattern>
+   <pattern>
+        <rule context="oasis:entry[matches(@namest,'[0-9]') and matches(@nameend,'[0-9]')]">
+        	<let name="namest" value="number(replace(@namest, '[^\d]', ''))"/>
+        	<let name="nameend" value="number(replace(@nameend, '[^\d]', ''))"/>
+            <assert id="tab12c" test="$nameend gt $namest">In spanning table entries, the value of the 'nameend' (<value-of select="@nameend"/>) attribute should be greater than the 'namest' attribute (<value-of select="@namest"/>).</assert>
         </rule>
     </pattern>
    <pattern>
