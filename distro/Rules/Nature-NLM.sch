@@ -829,15 +829,15 @@ Use the <let> element to define the attribute if necessary.
   	boneres - volume 1 in 2013
   	hortres, sdata, hgv - volume 1 in 2014
   	nrdp, bdjopen, cddiscovery, celldisc, micronano, npjamd, npjbcancer, npjbiofilms, npjcompumats, npjmgrav, npjparkd, npjqi, npjsba, npjschz, palcomms - volume 1 in 2015
-  	npjpollcon, sigtrans, npjmolphen, npjcleanwater, npjtracklife, npjscifood, npjmatdeg, npjgenmed, npjvaccines, npjclimatsci, npjflexelectron, npjquantmats, npjprecisiononcology - volume 1 in 2016
+  	npjpollcon, sigtrans, npjmolphen, npjcleanwater, npjtracklife, npjscifood, npjmatdeg, npjgenmed, npjregenmed, npjvaccines, npjclimatsci, npjflexelectron, npjquantmats, npjprecisiononcology - volume 1 in 2016
   	natastron, natbiomedeng, natecolevol, nathumbehav, natrevchem - volume 1 in 2017
   	-->
-      <rule context="article[$maestro-aj='yes' and $test-journal='no' and not(matches($pcode,'^(bdjteam|mtm|mto|scsandc|npjscilearn|npjregenmed)$'))]/front/article-meta[pub-date/@pub-type='epub']/volume"
+      <rule context="article[$maestro='yes' and $pubevent='no' and $test-journal='no' and not(matches($pcode,'^(bdjteam|mtm|mto|scsandc)$'))]/front/article-meta[pub-date/@pub-type='epub']/volume"
             role="error">
          <let name="pub_year"
               value="preceding-sibling::pub-date[@pub-type='epub']/year"/>
          <let name="expected_volume"
-              value="if (matches($pcode,'^(npjpcrm)$')) then $pub_year - 1990 else         if (matches($pcode,'^(npjnutd)$')) then $pub_year - 2010 else          if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(hortres|sdata|hgv)$')) then $pub_year - 2013 else          if (matches($pcode,'^(nrdp|bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjcompumats|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjgenmed|npjvaccines|npjclimatsci|npjflexelectron|npjquantmats|npjprecisiononcology)$')) then $pub_year - 2015 else          if (matches($pcode,'^(natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem)$')) then $pub_year - 2016 else ()"/>
+              value="if (matches($pcode,'^(npjpcrm)$')) then $pub_year - 1990 else         if (matches($pcode,'^(npjnutd)$')) then $pub_year - 2010 else          if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(hortres|sdata|hgv)$')) then $pub_year - 2013 else          if (matches($pcode,'^(bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjcompumats|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms|nrdp)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjgenmed|npjvaccines|npjclimatsci|npjflexelectron|npjquantmats|npjprecisiononcology|npjregenmed|npjscilearn)$')) then $pub_year - 2015 else          if (matches($pcode,'^(natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem)$')) then $pub_year - 2016 else ()"/>
          <assert id="oa-aj2a3" test=". = $expected_volume">Unexpected volume number: "<value-of select="."/>". For an "<value-of select="$journal-title"/>" article published in <value-of select="$pub_year"/>, the expected volume number is "<value-of select="$expected_volume"/>".</assert>
       </rule>
   </pattern>
