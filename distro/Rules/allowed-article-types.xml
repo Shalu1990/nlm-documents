@@ -185,7 +185,7 @@
         <article-type code="bc">
             <article-heading>Brief Communication</article-heading>
         </article-type>
-        <article-type code="com">
+    	<article-type code="com">
       <article-heading>Comment</article-heading>
     </article-type>
         <article-type code="cr">
@@ -202,7 +202,7 @@
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
-            </article-type>
+        </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
@@ -247,7 +247,7 @@
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
-            </article-type>
+        </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
@@ -271,7 +271,7 @@
         <article-type code="bc">
             <article-heading>Brief Communication</article-heading>
         </article-type>
-        <article-type code="com">
+    	<article-type code="com">
       <article-heading>Comment</article-heading>
     </article-type>
         <article-type code="cr">
@@ -288,7 +288,7 @@
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
-            </article-type>
+        </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
@@ -372,7 +372,7 @@
         <article-type code="bc">
             <article-heading>Brief Communication</article-heading>
         </article-type>
-        <article-type code="com">
+    	<article-type code="com">
       <article-heading>Comment</article-heading>
     </article-type>
 	<article-type code="cr">
@@ -386,7 +386,7 @@
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
-            </article-type>
+        </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
@@ -437,7 +437,7 @@
         <article-type code="bc">
             <article-heading>Brief Communication</article-heading>
         </article-type>
-        <article-type code="com">
+    	<article-type code="com">
       <article-heading>Comment</article-heading>
     </article-type>
         <article-type code="cr">
@@ -449,9 +449,9 @@
         <article-type code="mr">
             <article-heading>Meeting Report</article-heading>
         </article-type>
-        <article-type code="pe">
-            <article-heading>Perspective</article-heading>
-            </article-type>
+    	<article-type code="pe">
+       <article-heading>Perspective</article-heading>
+    </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
         </article-type>
@@ -581,7 +581,7 @@
         <article-type code="bc">
             <article-heading>Brief Communication</article-heading>
         </article-type>
-        <article-type code="com">
+    	<article-type code="com">
             <article-heading>Comment</article-heading>
         </article-type>
         <article-type code="caser">
@@ -596,7 +596,7 @@
         <article-type code="mr">
             <article-heading>Meeting Report</article-heading>
         </article-type>
-        <article-type code="pe">
+    	<article-type code="pe">
        <article-heading>Perspective</article-heading>
     </article-type>
         <article-type code="rv">
@@ -655,7 +655,7 @@
         <article-type code="bc">
             <article-heading>Brief Communication</article-heading>
         </article-type>
-        <article-type code="com">
+    	<article-type code="com">
       <article-heading>Comment</article-heading>
     </article-type>
 	<article-type code="cr">
@@ -672,7 +672,7 @@
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
-            </article-type>
+        </article-type>
         <article-type code="tf">
             <article-heading>Technology Feature</article-heading>
         </article-type>
@@ -731,7 +731,7 @@
         <article-type code="bc">
             <article-heading>Brief Communication</article-heading>
         </article-type>
-        <article-type code="com">
+    	<article-type code="com">
       <article-heading>Comment</article-heading>
     </article-type>
         <article-type code="cr">
@@ -748,7 +748,7 @@
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
-            </article-type>
+        </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
@@ -772,7 +772,7 @@
         <article-type code="bc">
             <article-heading>Brief Communication</article-heading>
         </article-type>
-        <article-type code="com">
+    	<article-type code="com">
       <article-heading>Comment</article-heading>
     </article-type>
         <article-type code="cr">
@@ -789,7 +789,7 @@
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
-            </article-type>
+        </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
@@ -813,7 +813,7 @@
         <article-type code="bc">
             <article-heading>Brief Communication</article-heading>
         </article-type>
-        <article-type code="com">
+    	<article-type code="com">
       <article-heading>Comment</article-heading>
     </article-type>
         <article-type code="cr">
@@ -825,9 +825,9 @@
         <article-type code="mr">
             <article-heading>Meeting Report</article-heading>
         </article-type>
-        <article-type code="pe">
-            <article-heading>Perspective</article-heading>
-            </article-type>
+    	<article-type code="pe">
+       <article-heading>Perspective</article-heading>
+    </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
         </article-type>
@@ -877,7 +877,7 @@
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
-            </article-type>
+        </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
@@ -901,7 +901,7 @@
         <article-type code="bc">
             <article-heading>Brief Communication</article-heading>
         </article-type>
-        <article-type code="com">
+    	<article-type code="com">
       <article-heading>Comment</article-heading>
     </article-type>
         <article-type code="cr">
@@ -915,7 +915,7 @@
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
-            </article-type>
+        </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
@@ -962,7 +962,7 @@
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
-            </article-type>
+        </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
@@ -1270,15 +1270,15 @@
             <article-heading>Article</article-heading>
         </article-type>
         <article-type code="bc">
-            <article-heading>Brief Communication</article-heading>
-        </article-type>
-        <article-type code="com">
-            <article-heading>Comment</article-heading>
-        </article-type>
-        <article-type code="cr">
-            <article-heading>Correspondence</article-heading>
-            </article-type>
-        <article-type code="pe">
+       <article-heading>Brief Communication</article-heading>
+    </article-type>
+	<article-type code="com">
+      <article-heading>Comment</article-heading>
+    </article-type>
+	<article-type code="cr">
+       <article-heading>Correspondence</article-heading>
+    </article-type>
+	<article-type code="pe">
        <article-heading>Perspective</article-heading>
     </article-type>
     	<article-type code="ed">
@@ -1480,7 +1480,7 @@
         <article-type code="bc">
             <article-heading>Brief Communication</article-heading>
         </article-type>
-        <article-type code="com">
+    	<article-type code="com">
       <article-heading>Comment</article-heading>
     </article-type>
         <article-type code="cr">
@@ -1651,7 +1651,7 @@
             <article-heading>Retraction</article-heading>
         </article-type>
     </journal>
-     <journal pcode="npjclimatsci">
+    <journal pcode="npjclimatsci">
          <article-type code="af">
             <article-heading>Article</article-heading>
         </article-type>
@@ -1678,6 +1678,294 @@
         </article-type>
           <article-type code="rs">
             <article-heading>Resource</article-heading>
+        </article-type>
+        <article-type code="add">
+            <article-heading>Addendum</article-heading>
+        </article-type>
+        <article-type code="cg">
+            <article-heading>Corrigendum</article-heading>
+        </article-type>
+        <article-type code="cs">
+            <article-heading>Correction</article-heading>
+        </article-type>
+        <article-type code="er">
+            <article-heading>Erratum</article-heading>
+        </article-type>
+        <article-type code="ret">
+            <article-heading>Retraction</article-heading>
+        </article-type>
+    </journal>
+	<journal pcode="natrevchem">
+        <article-type code="an">
+            <article-heading>Analysis</article-heading>
+        </article-type>
+        <article-type code="bo">
+            <article-heading>Book Review</article-heading>
+        </article-type>
+        <article-type code="com">
+            <article-heading>Comment</article-heading>
+        </article-type>
+        <article-type code="cr">
+            <article-heading>Correspondence</article-heading>
+        </article-type>
+        <article-type code="ed">
+            <article-heading>Editorial</article-heading>
+        </article-type>
+        <article-type code="nv">
+            <article-heading>News and Views</article-heading>
+        </article-type>
+        <article-type code="nw">
+            <article-heading>News</article-heading>
+        </article-type>
+		<article-type code="ob">
+			<article-heading>Obituary</article-heading>
+		</article-type>
+        <article-type code="pe">
+            <article-heading>Perspective</article-heading>
+        </article-type>
+        <article-type code="qa">
+            <article-heading>Q&amp;A</article-heading>
+        </article-type>
+        <article-type code="hl">
+            <article-heading>Research Highlight</article-heading>
+        </article-type>
+        <article-type code="rv">
+            <article-heading>Review Article</article-heading>
+        </article-type>
+        <article-type code="add">
+            <article-heading>Addendum</article-heading>
+        </article-type>
+        <article-type code="cg">
+            <article-heading>Corrigendum</article-heading>
+        </article-type>
+        <article-type code="cs">
+            <article-heading>Correction</article-heading>
+        </article-type>
+        <article-type code="er">
+            <article-heading>Erratum</article-heading>
+        </article-type>
+        <article-type code="ret">
+            <article-heading>Retraction</article-heading>
+        </article-type>
+    </journal>
+	<journal pcode="natastron">
+         <article-type code="af">
+            <article-heading>Article</article-heading>
+        </article-type>
+        <article-type code="com">
+            <article-heading>Comment</article-heading>
+        </article-type>
+        <article-type code="cr">
+            <article-heading>Correspondence</article-heading>
+        </article-type>
+        <article-type code="ed">
+            <article-heading>Editorial</article-heading>
+        </article-type>
+		<article-type code="nv">
+            <article-heading>News and Views</article-heading>
+        </article-type>
+        <article-type code="pe">
+            <article-heading>Perspective</article-heading>
+        </article-type>
+        <article-type code="hl">
+            <article-heading>Research Highlight</article-heading>
+        </article-type>
+        <article-type code="rv">
+            <article-heading>Review Article</article-heading>
+        </article-type>
+        <article-type code="add">
+            <article-heading>Addendum</article-heading>
+        </article-type>
+        <article-type code="cg">
+            <article-heading>Corrigendum</article-heading>
+        </article-type>
+        <article-type code="cs">
+            <article-heading>Correction</article-heading>
+        </article-type>
+        <article-type code="er">
+            <article-heading>Erratum</article-heading>
+        </article-type>
+        <article-type code="ret">
+            <article-heading>Retraction</article-heading>
+        </article-type>
+    </journal>
+	<journal pcode="natbiomedeng">
+         <article-type code="af">
+            <article-heading>Article</article-heading>
+        </article-type>
+        <article-type code="com">
+            <article-heading>Comment</article-heading>
+        </article-type>
+        <article-type code="cr">
+            <article-heading>Correspondence</article-heading>
+        </article-type>
+        <article-type code="ed">
+            <article-heading>Editorial</article-heading>
+        </article-type>
+		<article-type code="nv">
+            <article-heading>News and Views</article-heading>
+        </article-type>
+        <article-type code="pe">
+            <article-heading>Perspective</article-heading>
+        </article-type>
+        <article-type code="hl">
+            <article-heading>Research Highlight</article-heading>
+        </article-type>
+        <article-type code="rv">
+            <article-heading>Review Article</article-heading>
+        </article-type>
+        <article-type code="add">
+            <article-heading>Addendum</article-heading>
+        </article-type>
+        <article-type code="cg">
+            <article-heading>Corrigendum</article-heading>
+        </article-type>
+        <article-type code="cs">
+            <article-heading>Correction</article-heading>
+        </article-type>
+        <article-type code="er">
+            <article-heading>Erratum</article-heading>
+        </article-type>
+        <article-type code="ret">
+            <article-heading>Retraction</article-heading>
+        </article-type>
+    </journal>
+	<journal pcode="nathumbehav">
+         <article-type code="af">
+            <article-heading>Article</article-heading>
+        </article-type>
+        <article-type code="com">
+            <article-heading>Comment</article-heading>
+        </article-type>
+        <article-type code="cr">
+            <article-heading>Correspondence</article-heading>
+        </article-type>
+        <article-type code="ed">
+            <article-heading>Editorial</article-heading>
+        </article-type>
+		<article-type code="nv">
+            <article-heading>News and Views</article-heading>
+        </article-type>
+        <article-type code="pe">
+            <article-heading>Perspective</article-heading>
+        </article-type>
+        <article-type code="hl">
+            <article-heading>Research Highlight</article-heading>
+        </article-type>
+        <article-type code="rv">
+            <article-heading>Review Article</article-heading>
+        </article-type>
+        <article-type code="add">
+            <article-heading>Addendum</article-heading>
+        </article-type>
+        <article-type code="cg">
+            <article-heading>Corrigendum</article-heading>
+        </article-type>
+        <article-type code="cs">
+            <article-heading>Correction</article-heading>
+        </article-type>
+        <article-type code="er">
+            <article-heading>Erratum</article-heading>
+        </article-type>
+        <article-type code="ret">
+            <article-heading>Retraction</article-heading>
+        </article-type>
+    </journal>
+	<journal pcode="natecolevol">
+        <article-type code="an">
+            <article-heading>Analysis</article-heading>
+        </article-type>
+        <article-type code="af">
+            <article-heading>Article</article-heading>
+        </article-type>
+        <article-type code="bo">
+            <article-heading>Book Review</article-heading>
+        </article-type>
+        <article-type code="bc">
+            <article-heading>Brief Communication</article-heading>
+        </article-type>
+        <article-type code="bca">
+            <article-heading>Brief Communications Arising</article-heading>
+        </article-type>
+        <article-type code="com">
+            <article-heading>Comment</article-heading>
+        </article-type>
+        <article-type code="cr">
+            <article-heading>Correspondence</article-heading>
+        </article-type>
+        <article-type code="ed">
+            <article-heading>Editorial</article-heading>
+        </article-type>
+        <article-type code="fe">
+            <article-heading>Feature</article-heading>
+        </article-type>
+        <article-type code="hyp">
+            <article-heading>Hypothesis</article-heading>
+        </article-type>
+        <article-type code="nv">
+            <article-heading>News and Views</article-heading>
+        </article-type>
+        <article-type code="nw">
+            <article-heading>News</article-heading>
+        </article-type>
+		<article-type code="ob">
+			<article-heading>Obituary</article-heading>
+		</article-type>
+        <article-type code="pe">
+            <article-heading>Perspective</article-heading>
+        </article-type>
+        <article-type code="qa">
+            <article-heading>Q&amp;A</article-heading>
+        </article-type>
+        <article-type code="hl">
+            <article-heading>Research Highlight</article-heading>
+        </article-type>
+        <article-type code="rv">
+            <article-heading>Review Article</article-heading>
+        </article-type>
+        <article-type code="add">
+            <article-heading>Addendum</article-heading>
+        </article-type>
+        <article-type code="cg">
+            <article-heading>Corrigendum</article-heading>
+        </article-type>
+        <article-type code="cs">
+            <article-heading>Correction</article-heading>
+        </article-type>
+        <article-type code="er">
+            <article-heading>Erratum</article-heading>
+        </article-type>
+        <article-type code="ret">
+            <article-heading>Retraction</article-heading>
+        </article-type>
+    </journal>
+	<journal pcode="npjprecisiononcology">
+         <article-type code="af">
+            <article-heading>Article</article-heading>
+        </article-type>
+        <article-type code="bc">
+            <article-heading>Brief Communication</article-heading>
+        </article-type>
+        <article-type code="caser">
+            <article-heading>Case Report</article-heading>
+        </article-type>
+        <article-type code="com">
+            <article-heading>Comment</article-heading>
+        </article-type>
+        <article-type code="cr">
+            <article-heading>Correspondence</article-heading>
+        </article-type>
+        <article-type code="ed">
+            <article-heading>Editorial</article-heading>
+        </article-type>
+        <article-type code="mr">
+            <article-heading>Meeting Report</article-heading>
+        </article-type>
+        <article-type code="pe">
+            <article-heading>Perspective</article-heading>
+        </article-type>
+        <article-type code="rv">
+            <article-heading>Review Article</article-heading>
         </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
