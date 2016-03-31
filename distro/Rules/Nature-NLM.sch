@@ -1368,13 +1368,13 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="corresp[contains(.,'Tel:') or contains(.,'Tel.')][not(phone)]"
+      <rule context="corresp[contains(text(),'Tel:') or contains(text(),'Tel.')][not(phone)]"
             role="error"><!--phone numbers should be contained in "phone" element-->
          <report id="corres3a" test=".">Please use "phone" element on telephone numbers in correspondence details.</report>
       </rule>
   </pattern>
    <pattern>
-      <rule context="corresp[contains(.,'Fax')][not(fax)]" role="error"><!--fax numbers should be contained in "fax" element-->
+      <rule context="corresp[contains(text(),'Fax')][not(fax)]" role="error"><!--fax numbers should be contained in "fax" element-->
          <report id="corres3b" test=".">Please use "fax" element on fax numbers in correspondence details.</report>
       </rule>
   </pattern>
