@@ -878,7 +878,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--error in pcode, but numerical value ok-->
       <rule context="article[$maestro='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
-         <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize(.,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
          <report id="oa-aj4a2"
                  test="not($pcode=$derivedPcode) and ($derivedPcode ne '' and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article id (<value-of select="."/>) should start with the pcode/journal-id (<value-of select="$pcode"/>) not "<value-of select="$derivedPcode"/>". Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
@@ -887,7 +887,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--pcode ok but error in numerical value-->
       <rule context="article[$maestro='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
-         <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize(.,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
          <report id="oa-aj4a3"
                  test="not(matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$')) and ($derivedPcode ne '' and $pcode=$derivedPcode)">Article id after the "<value-of select="$pcode"/>" pcode (<value-of select="$numericValue"/>) should have format year + number of article (without additional letters or leading zeros). Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
@@ -896,7 +896,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--errors in pcode and numerical value-->
       <rule context="article[$maestro='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
-         <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize(.,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
          <report id="oa-aj4a4"
                  test="$derivedPcode ne '' and not($pcode=$derivedPcode) and not(matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article id (<value-of select="."/>) should have format pcode + year + number of article (without additional letters or leading zeros). Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
@@ -906,7 +906,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes']//article-meta/article-id[@pub-id-type='doi']"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="baseDOI"
               value="if ($collection='nature') then '10.1038/' else if ($collection='palgrave') then '10.1057/' else ()"/>
@@ -956,7 +956,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes']//fig[not(@specific-use='suppinfo')]//graphic[@xlink:href][not(@xlink:href='')]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
          <let name="fig-number"
@@ -969,7 +969,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes']//fig[not(@specific-use='suppinfo')]//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
          <let name="fig-number"
@@ -981,7 +981,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="article[$maestro-rj='yes']//fig[@specific-use='suppinfo']//graphic[@xlink:href]"
             role="error">
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
          <let name="fig-number"
@@ -994,7 +994,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes']//table-wrap//graphic[@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="tab-image" value="substring-before(@xlink:href,'.')"/>
          <let name="tab-number"
@@ -1007,7 +1007,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes']//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="tab-image" value="substring-before(@xlink:href,'.')"/>
          <let name="tab-number"
@@ -1020,7 +1020,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid)]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
          <let name="ill-number"
@@ -1032,7 +1032,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--graphical abstract filename-->
       <rule context="article[$maestro='yes']//floats-group/graphic[@content-type='toc-image'][contains(@xlink:href,'.')]"
             role="error">
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
          <let name="graphab" value="concat($article-id,'-toc')"/>
@@ -1044,7 +1044,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes']//floats-group/supplementary-material[@xlink:href][matches(@id,'^s[0-9]+$')][not(@content-type='isa-tab')]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="supp-image" value="substring-before(@xlink:href,'.')"/>
          <let name="supp-number"
@@ -1059,7 +1059,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$pcode='sdata']//floats-group/supplementary-material[@xlink:href][@content-type='isa-tab']"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="supp-image" value="substring-before(@xlink:href,'.')"/>
          <let name="supp-number"
