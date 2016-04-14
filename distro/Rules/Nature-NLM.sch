@@ -863,12 +863,6 @@ Use the <let> element to define the attribute if necessary.
          <assert id="oa-aj3" test="license">"<value-of select="$journal-title"/>" should contain "license", which gives details of the Open Access license being used. Please contact NPG for this information.</assert>
       </rule>
   </pattern>
-   <pattern><!--open access license info should not be given in correction articles in new OA only journals-->
-      <rule context="article[$maestro-aj='yes' and matches($article-type,'^(add|cg|cs|er|ret)$') and not(matches($pcode,'^(bdjteam|scsandc)$'))]/front/article-meta/permissions"
-            role="error">
-         <report id="oa-aj3b" test="license">"license" should not be used in correction articles, as they are not Open Access. This article is: <value-of select="$allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading"/>.</report>
-      </rule>
-  </pattern>
    <pattern><!--open access license info should not be given in BDJ Team, which is free. If this applies to other journals start a new variable $free rather than hard-coding pcodes here-->
       <rule context="article[$pcode='bdjteam']/front/article-meta/permissions/license"
             role="error">
