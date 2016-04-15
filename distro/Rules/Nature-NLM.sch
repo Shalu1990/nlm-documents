@@ -71,7 +71,7 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|npjquantmats|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjprecisiononcology)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|npjquantmats|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjprecisiononcology|npj2dmaterials)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'yes'     else ()"/>
   <let name="transition"
         value="if ($journals//npg:Journal[npg:pcode=$pcode]/npg:isTransitionJournal='true') then 'yes'     else ()"/>
   <let name="maestro-rj"
@@ -86,7 +86,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjquantmats|natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem|npjprecisiononcology)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'three'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjquantmats|natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem|npjprecisiononcology|npj2dmaterials)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'three'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj|testnatfile|testpalfile|paldelor|testnatevent|npgdelor|testpalevent)$')) then 'yes' else 'no'"/>
   <let name="collection"
@@ -830,14 +830,14 @@ Use the <let> element to define the attribute if necessary.
   	hortres, sdata, hgv - volume 1 in 2014
   	nrdp, bdjopen, cddiscovery, celldisc, micronano, npjamd, npjbcancer, npjbiofilms, npjcompumats, npjmgrav, npjparkd, npjqi, npjsba, npjschz, palcomms - volume 1 in 2015
   	npjpollcon, sigtrans, npjmolphen, npjcleanwater, npjtracklife, npjscifood, npjmatdeg, npjgenmed, npjregenmed, npjvaccines, npjclimatsci, npjflexelectron, npjquantmats, npjprecisiononcology - volume 1 in 2016
-  	natastron, natbiomedeng, natecolevol, nathumbehav, natrevchem - volume 1 in 2017
+  	natastron, natbiomedeng, natecolevol, nathumbehav, natrevchem, npj2dmaterials - volume 1 in 2017
   	-->
       <rule context="article[$maestro='yes' and $pubevent='no' and $test-journal='no' and not(matches($pcode,'^(bdjteam|mtm|mto|scsandc)$'))]/front/article-meta[pub-date/@pub-type='epub']/volume"
             role="error">
          <let name="pub_year"
               value="preceding-sibling::pub-date[@pub-type='epub']/year"/>
          <let name="expected_volume"
-              value="if (matches($pcode,'^(npjpcrm)$')) then $pub_year - 1990 else         if (matches($pcode,'^(npjnutd)$')) then $pub_year - 2010 else          if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(hortres|sdata|hgv)$')) then $pub_year - 2013 else          if (matches($pcode,'^(bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjcompumats|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms|nrdp)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjgenmed|npjvaccines|npjclimatsci|npjflexelectron|npjquantmats|npjprecisiononcology|npjregenmed|npjscilearn)$')) then $pub_year - 2015 else          if (matches($pcode,'^(natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem)$')) then $pub_year - 2016 else ()"/>
+              value="if (matches($pcode,'^(npjpcrm)$')) then $pub_year - 1990 else         if (matches($pcode,'^(npjnutd)$')) then $pub_year - 2010 else          if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(hortres|sdata|hgv)$')) then $pub_year - 2013 else          if (matches($pcode,'^(bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjcompumats|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms|nrdp)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjgenmed|npjvaccines|npjclimatsci|npjflexelectron|npjquantmats|npjprecisiononcology|npjregenmed|npjscilearn)$')) then $pub_year - 2015 else          if (matches($pcode,'^(natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem|npj2dmaterials)$')) then $pub_year - 2016 else ()"/>
          <assert id="oa-aj2a3" test=". = $expected_volume">Unexpected volume number: "<value-of select="."/>". For an "<value-of select="$journal-title"/>" article published in <value-of select="$pub_year"/>, the expected volume number is "<value-of select="$expected_volume"/>".</assert>
       </rule>
   </pattern>
@@ -863,12 +863,6 @@ Use the <let> element to define the attribute if necessary.
          <assert id="oa-aj3" test="license">"<value-of select="$journal-title"/>" should contain "license", which gives details of the Open Access license being used. Please contact NPG for this information.</assert>
       </rule>
   </pattern>
-   <pattern><!--open access license info should not be given in correction articles in new OA only journals-->
-      <rule context="article[$maestro-aj='yes' and matches($article-type,'^(add|cg|cs|er|ret)$') and not(matches($pcode,'^(bdjteam|scsandc)$'))]/front/article-meta/permissions"
-            role="error">
-         <report id="oa-aj3b" test="license">"license" should not be used in correction articles, as they are not Open Access. This article is: <value-of select="$allowed-article-types/journal[@pcode eq $pcode]/article-type[@code=$article-type]/article-heading"/>.</report>
-      </rule>
-  </pattern>
    <pattern><!--open access license info should not be given in BDJ Team, which is free. If this applies to other journals start a new variable $free rather than hard-coding pcodes here-->
       <rule context="article[$pcode='bdjteam']/front/article-meta/permissions/license"
             role="error">
@@ -878,7 +872,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--error in pcode, but numerical value ok-->
       <rule context="article[$maestro='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
-         <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize(.,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
          <report id="oa-aj4a2"
                  test="not($pcode=$derivedPcode) and ($derivedPcode ne '' and matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article id (<value-of select="."/>) should start with the pcode/journal-id (<value-of select="$pcode"/>) not "<value-of select="$derivedPcode"/>". Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
@@ -887,7 +881,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--pcode ok but error in numerical value-->
       <rule context="article[$maestro='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
-         <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize(.,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
          <report id="oa-aj4a3"
                  test="not(matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$')) and ($derivedPcode ne '' and $pcode=$derivedPcode)">Article id after the "<value-of select="$pcode"/>" pcode (<value-of select="$numericValue"/>) should have format year + number of article (without additional letters or leading zeros). Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
@@ -896,7 +890,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--errors in pcode and numerical value-->
       <rule context="article[$maestro='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
-         <let name="derivedPcode" value="tokenize(.,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize(.,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
          <report id="oa-aj4a4"
                  test="$derivedPcode ne '' and not($pcode=$derivedPcode) and not(matches($numericValue,'^20[1-9][0-9][1-9][0-9]*$'))">Article id (<value-of select="."/>) should have format pcode + year + number of article (without additional letters or leading zeros). Other rules are based on having a correct article id and therefore will not be run. Please resubmit this file when the article id has been corrected.</report>
@@ -906,7 +900,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes']//article-meta/article-id[@pub-id-type='doi']"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="baseDOI"
               value="if ($collection='nature') then '10.1038/' else if ($collection='palgrave') then '10.1057/' else ()"/>
@@ -956,7 +950,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes']//fig[not(@specific-use='suppinfo')]//graphic[@xlink:href][not(@xlink:href='')]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
          <let name="fig-number"
@@ -969,7 +963,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes']//fig[not(@specific-use='suppinfo')]//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
          <let name="fig-number"
@@ -981,7 +975,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="article[$maestro-rj='yes']//fig[@specific-use='suppinfo']//graphic[@xlink:href]"
             role="error">
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
          <let name="fig-number"
@@ -994,7 +988,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes']//table-wrap//graphic[@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="tab-image" value="substring-before(@xlink:href,'.')"/>
          <let name="tab-number"
@@ -1007,7 +1001,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes']//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="tab-image" value="substring-before(@xlink:href,'.')"/>
          <let name="tab-number"
@@ -1020,7 +1014,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid)]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
          <let name="ill-number"
@@ -1032,7 +1026,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--graphical abstract filename-->
       <rule context="article[$maestro='yes']//floats-group/graphic[@content-type='toc-image'][contains(@xlink:href,'.')]"
             role="error">
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
          <let name="graphab" value="concat($article-id,'-toc')"/>
@@ -1044,7 +1038,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes']//floats-group/supplementary-material[@xlink:href][matches(@id,'^s[0-9]+$')][not(@content-type='isa-tab')]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="supp-image" value="substring-before(@xlink:href,'.')"/>
          <let name="supp-number"
@@ -1059,7 +1053,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$pcode='sdata']//floats-group/supplementary-material[@xlink:href][@content-type='isa-tab']"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
-         <let name="derivedPcode" value="tokenize($article-id,'[0-9]')[1]"/>
+         <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
          <let name="supp-image" value="substring-before(@xlink:href,'.')"/>
          <let name="supp-number"
