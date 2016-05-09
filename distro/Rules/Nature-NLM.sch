@@ -2108,7 +2108,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--equation with @id has used mtable to mark up the formula content-->
       <rule context="disp-formula[@id]/mml:math">
-         <assert id="form2a" test="count(*)=1 and mml:mtable">Where an equation is numbered in the pdf, the whole expression should be captured using "mml:mtable". The label should captured as the first cell of "mml:mlabeledtr". If the equation is not numbered in the pdf, delete the 'id' attribute.</assert>
+         <assert id="form2a" test="mml:mtable/mml:mlabeledtr">Where an equation is numbered in the pdf, the expression should be captured using "mml:mtable". The label should captured as the first cell of "mml:mlabeledtr". If the equation is not numbered in the pdf, delete the 'id' attribute.</assert>
       </rule>
   </pattern>
    <pattern><!--do not use @display on mml:math-->
