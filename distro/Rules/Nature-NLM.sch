@@ -679,7 +679,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="stub"
               value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
          <let name="standardizeStub"
-              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
+              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,') ')) then substring-before($stub,')') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
          <let name="typeStub"
               value="if (ends-with($standardizeStub,'/')) then functx:substring-before-last($standardizeStub,'/') else $standardizeStub"/>
          <let name="type" value="replace($typeStub,'/','-')"/>
