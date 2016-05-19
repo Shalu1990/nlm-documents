@@ -625,6 +625,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="copy1e" test=".">"copyright-holder" for Nature Plants should be "Macmillan Publishers Limited", not "<value-of select="."/>".</report>
       </rule>
   </pattern>
+   <pattern>
+      <rule context="permissions[count(copyright-holder) gt 1]">
+         <report id="copy1f" test=".">"permissions" should only include one "copyright-holder".</report>
+      </rule>
+  </pattern>
    <pattern><!--Is the copyright year valid?-->
       <rule context="copyright-year[not(matches(.,'^(19|20)[0-9]{2}$'))]"
             role="error">
@@ -2108,7 +2113,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--equation with @id has used mtable to mark up the formula content-->
       <rule context="disp-formula[@id]/mml:math">
-         <assert id="form2a" test="mml:mtable/mml:mlabeledtr">Where an equation is numbered in the pdf, the expression should be captured using "mml:mtable". The label should captured as the first cell of "mml:mlabeledtr". If the equation is not numbered in the pdf, delete the 'id' attribute.</assert>
+         <assert id="form2a" test="mml:mtable/mml:mlabeledtr">Where an equation is numbered in the pdf, the expression should be captured using "mml:mtable". The label should be captured as the first cell of "mml:mlabeledtr". If the equation is not numbered in the pdf, delete the 'id' attribute.</assert>
       </rule>
   </pattern>
    <pattern><!--do not use @display on mml:math-->
@@ -2136,6 +2141,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="form6" test=".">Single letters should not be tagged as an inline formula with MathML markup. Please use regular article elements and/or Unicode characters.</report>
       </rule>
   </pattern>
+   <pattern>
+		    <rule context="inline-formula[parent::italic]">
+			      <report id="form7" test=".">Formulae should not appear inside italics. Please close "italic" element before start of "inline-formula" and reopen afterwards (if appropriate).</report>
+		    </rule>
+	  </pattern>
    <pattern><!--back - label or title should not be used-->
       <rule context="back/label | back/title" role="error">
          <report id="back1" test=".">Do not use "<name/>" at start of "back" matter.</report>
