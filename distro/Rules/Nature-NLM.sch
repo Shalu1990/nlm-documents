@@ -71,7 +71,7 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|npjquantmats|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjprecisiononcology|npj2dmaterials)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|npjquantmats|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjprecisiononcology|npj2dmaterials|npjdepression)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'yes'     else ()"/>
   <let name="transition"
         value="if ($journals//npg:Journal[npg:pcode=$pcode]/npg:isTransitionJournal='true') then 'yes'     else ()"/>
   <let name="maestro-rj"
@@ -86,7 +86,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjquantmats|natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem|npjprecisiononcology|npj2dmaterials)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'three'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjquantmats|natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem|npjprecisiononcology|npj2dmaterials|npjdepression)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'three'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj|testnatfile|testpalfile|paldelor|testnatevent|npgdelor|testpalevent)$')) then 'yes' else 'no'"/>
   <let name="collection"
@@ -625,6 +625,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="copy1e" test=".">"copyright-holder" for Nature Plants should be "Macmillan Publishers Limited", not "<value-of select="."/>".</report>
       </rule>
   </pattern>
+   <pattern>
+      <rule context="permissions[count(copyright-holder) gt 1]">
+         <report id="copy1f" test=".">"permissions" should only include one "copyright-holder".</report>
+      </rule>
+  </pattern>
    <pattern><!--Is the copyright year valid?-->
       <rule context="copyright-year[not(matches(.,'^(19|20)[0-9]{2}$'))]"
             role="error">
@@ -642,7 +647,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="stub"
               value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
          <let name="standardizeStub"
-              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
+              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,') ')) then substring-before($stub,')') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
          <let name="url"
               value="concat('http://creativecommons.org/licenses/',$standardizeStub)"/>
          <report id="license1a" test=".">"license" should have 'xlink:href' attribute containing the url declared in the license text - "<value-of select="$url"/>".</report>
@@ -654,7 +659,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="stub"
               value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
          <let name="standardizeStub"
-              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
+              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,') ')) then substring-before($stub,')') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
          <let name="typeStub"
               value="if (ends-with($standardizeStub,'/')) then functx:substring-before-last($standardizeStub,'/') else $standardizeStub"/>
          <let name="type" value="replace($typeStub,'/','-')"/>
@@ -667,7 +672,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="stub"
               value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
          <let name="standardizeStub"
-              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
+              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,') ')) then substring-before($stub,')') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
          <let name="url"
               value="concat('http://creativecommons.org/licenses/',$standardizeStub)"/>
          <assert id="license2a" test="$url eq @xlink:href">"license" 'xlink:href' attribute (<value-of select="@xlink:href"/>) does not match the url declared in the license text (<value-of select="$url"/>).</assert>
@@ -679,7 +684,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="stub"
               value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
          <let name="standardizeStub"
-              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
+              value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,') ')) then substring-before($stub,')') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
          <let name="typeStub"
               value="if (ends-with($standardizeStub,'/')) then functx:substring-before-last($standardizeStub,'/') else $standardizeStub"/>
          <let name="type" value="replace($typeStub,'/','-')"/>
@@ -829,7 +834,7 @@ Use the <let> element to define the attribute if necessary.
   	boneres - volume 1 in 2013
   	hortres, sdata, hgv - volume 1 in 2014
   	nrdp, bdjopen, cddiscovery, celldisc, micronano, npjamd, npjbcancer, npjbiofilms, npjcompumats, npjmgrav, npjparkd, npjqi, npjsba, npjschz, palcomms - volume 1 in 2015
-  	npjpollcon, sigtrans, npjmolphen, npjcleanwater, npjtracklife, npjscifood, npjmatdeg, npjgenmed, npjregenmed, npjvaccines, npjclimatsci, npjflexelectron, npjquantmats, npjprecisiononcology - volume 1 in 2016
+  	npjpollcon, sigtrans, npjmolphen, npjcleanwater, npjtracklife, npjscifood, npjmatdeg, npjgenmed, npjregenmed, npjvaccines, npjclimatsci, npjflexelectron, npjquantmats, npjprecisiononcology, npjdepression - volume 1 in 2016
   	natastron, natbiomedeng, natecolevol, nathumbehav, natrevchem, npj2dmaterials - volume 1 in 2017
   	-->
       <rule context="article[$maestro='yes' and $pubevent='no' and $test-journal='no' and not(matches($pcode,'^(bdjteam|mtm|mto|scsandc)$'))]/front/article-meta[pub-date/@pub-type='epub']/volume"
@@ -837,7 +842,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="pub_year"
               value="preceding-sibling::pub-date[@pub-type='epub']/year"/>
          <let name="expected_volume"
-              value="if (matches($pcode,'^(npjpcrm)$')) then $pub_year - 1990 else         if (matches($pcode,'^(npjnutd)$')) then $pub_year - 2010 else          if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(hortres|sdata|hgv)$')) then $pub_year - 2013 else          if (matches($pcode,'^(bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjcompumats|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms|nrdp)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjgenmed|npjvaccines|npjclimatsci|npjflexelectron|npjquantmats|npjprecisiononcology|npjregenmed|npjscilearn)$')) then $pub_year - 2015 else          if (matches($pcode,'^(natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem|npj2dmaterials)$')) then $pub_year - 2016 else ()"/>
+              value="if (matches($pcode,'^(npjpcrm)$')) then $pub_year - 1990 else         if (matches($pcode,'^(npjnutd)$')) then $pub_year - 2010 else          if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(hortres|sdata|hgv)$')) then $pub_year - 2013 else          if (matches($pcode,'^(bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjcompumats|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms|nrdp)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjgenmed|npjvaccines|npjclimatsci|npjflexelectron|npjquantmats|npjprecisiononcology|npjregenmed|npjscilearn|npjdepression)$')) then $pub_year - 2015 else          if (matches($pcode,'^(natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem|npj2dmaterials)$')) then $pub_year - 2016 else ()"/>
          <assert id="oa-aj2a3" test=". = $expected_volume">Unexpected volume number: "<value-of select="."/>". For an "<value-of select="$journal-title"/>" article published in <value-of select="$pub_year"/>, the expected volume number is "<value-of select="$expected_volume"/>".</assert>
       </rule>
   </pattern>
@@ -2108,7 +2113,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--equation with @id has used mtable to mark up the formula content-->
       <rule context="disp-formula[@id]/mml:math">
-         <assert id="form2a" test="mml:mtable/mml:mlabeledtr">Where an equation is numbered in the pdf, the expression should be captured using "mml:mtable". The label should captured as the first cell of "mml:mlabeledtr". If the equation is not numbered in the pdf, delete the 'id' attribute.</assert>
+         <assert id="form2a" test="mml:mtable/mml:mlabeledtr">Where an equation is numbered in the pdf, the expression should be captured using "mml:mtable". The label should be captured as the first cell of "mml:mlabeledtr". If the equation is not numbered in the pdf, delete the 'id' attribute.</assert>
       </rule>
   </pattern>
    <pattern><!--do not use @display on mml:math-->
@@ -2136,6 +2141,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="form6" test=".">Single letters should not be tagged as an inline formula with MathML markup. Please use regular article elements and/or Unicode characters.</report>
       </rule>
   </pattern>
+   <pattern>
+		    <rule context="inline-formula[parent::italic]">
+			      <report id="form7" test=".">Formulae should not appear inside italics. Please close "italic" element before start of "inline-formula" and reopen afterwards (if appropriate).</report>
+		    </rule>
+	  </pattern>
    <pattern><!--back - label or title should not be used-->
       <rule context="back/label | back/title" role="error">
          <report id="back1" test=".">Do not use "<name/>" at start of "back" matter.</report>
