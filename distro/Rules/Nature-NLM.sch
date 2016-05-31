@@ -624,7 +624,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="permissions[$pcode='nplants']/copyright-holder[. ne 'Macmillan Publishers Limited']">
          <report id="copy1e" test=".">"copyright-holder" for Nature Plants should be "Macmillan Publishers Limited", not "<value-of select="."/>".</report>
       </rule>
-  </pattern>
+    </pattern>
    <pattern>
       <rule context="permissions[count(copyright-holder) gt 1]">
          <report id="copy1f" test=".">"permissions" should only include one "copyright-holder".</report>
@@ -820,12 +820,6 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes' and $pubevent='no' and not(matches($pcode,'^(bdjteam|scsandc)$'))]/front/article-meta"
             role="error">
          <assert id="oa-aj2a" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
-      </rule>
-  </pattern>
-   <pattern><!--volume not allowed in pub event based journals? -->
-      <rule context="article[$pubevent='yes']/front/article-meta/volume"
-            role="error">
-         <report id="oa-aj2a2" test=".">A "volume" element should not be used in "<value-of select="$journal-title"/>".</report>
       </rule>
   </pattern>
    <pattern><!--expected volume value should be used in all maestro OA only journals - add mtm, mto, scsandc when needed; #not allowed in issue-based journals
