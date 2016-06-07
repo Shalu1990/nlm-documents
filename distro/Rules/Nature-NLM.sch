@@ -1751,6 +1751,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="quote4" test=".">Do not use "<name/>" in "disp-quote". Only "p" or "attrib" should be used.</report>
       </rule>
   </pattern>
+   <pattern><!--quote should be a block-level element-->
+      <rule context="disp-quote[not($transition='yes')][parent::p]" role="error">
+         <report id="quote5" test=".">Do not enclose "disp-quote" in the "p" element, as it should be block-level only.</report>
+      </rule>
+  </pattern>
    <pattern><!--url starting https should not have extra http added to @xlink:href-->
       <rule context="ext-link[not($transition='yes')][contains(@xlink:href,'http://http')]"
             role="error">
