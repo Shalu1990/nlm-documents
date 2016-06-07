@@ -624,7 +624,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="permissions[$pcode='nplants']/copyright-holder[. ne 'Macmillan Publishers Limited']">
          <report id="copy1e" test=".">"copyright-holder" for Nature Plants should be "Macmillan Publishers Limited", not "<value-of select="."/>".</report>
       </rule>
-  </pattern>
+    </pattern>
    <pattern>
       <rule context="permissions[count(copyright-holder) gt 1]">
          <report id="copy1f" test=".">"permissions" should only include one "copyright-holder".</report>
@@ -820,12 +820,6 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[$maestro='yes' and $pubevent='no' and not(matches($pcode,'^(bdjteam|scsandc)$'))]/front/article-meta"
             role="error">
          <assert id="oa-aj2a" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
-      </rule>
-  </pattern>
-   <pattern><!--volume not allowed in pub event based journals? -->
-      <rule context="article[$pubevent='yes']/front/article-meta/volume"
-            role="error">
-         <report id="oa-aj2a2" test=".">A "volume" element should not be used in "<value-of select="$journal-title"/>".</report>
       </rule>
   </pattern>
    <pattern><!--expected volume value should be used in all maestro OA only journals - add mtm, mto, scsandc when needed; #not allowed in issue-based journals
@@ -1755,6 +1749,11 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--quote should only contain p or attrib-->
       <rule context="disp-quote/*[not(self::p or self::attrib)]" role="error">
          <report id="quote4" test=".">Do not use "<name/>" in "disp-quote". Only "p" or "attrib" should be used.</report>
+      </rule>
+  </pattern>
+   <pattern><!--quote should be a block-level element-->
+      <rule context="disp-quote[not($transition='yes')][parent::p]" role="error">
+         <report id="quote5" test=".">Do not enclose "disp-quote" in the "p" element, as it should be block-level only.</report>
       </rule>
   </pattern>
    <pattern><!--url starting https should not have extra http added to @xlink:href-->
