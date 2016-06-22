@@ -79,7 +79,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="maestro"
         value="if (matches($pcode,'^(testnatevent|testpalevent)$')) then 'no' else      if ($maestro-aj='yes' or $maestro-rj='yes') then 'yes' else ()"/>
   <let name="npj_journal"
-        value="if (matches($pcode,'^(npjschz|npjmgrav|npjbcancer|npjparkd|npjqi|npjbiofilms|npjpcrm|npjgenmed|npjscilearn|npjregenmed)$')) then 'yes' else ()"/>
+        value="if (matches($pcode,'^(npjschz|npjmgrav|npjbcancer|npjparkd|npjqi|npjbiofilms|npjpcrm|npjgenmed|npjscilearn|npjregenmed|npjvaccines)$')) then 'yes' else ()"/>
    <!--for testing that all articles (@article-type="af") have a long-summary. Currently only the US/UK npj titles - check if should be all of them-->
   <let name="pubevent"
         value="if (matches($pcode,'^(bdjteam|scsandc)$')) then 'no' else      if ($journals//npg:Journal[npg:pcode=$pcode]/npg:isIssueBased='true') then 'yes'     else 'no'"/>
