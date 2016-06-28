@@ -13,6 +13,9 @@
 
 <!-- 
 
+28.06.16
+. CDS-1434 - Added "pdb" to NOTATION types and %format; parameter entity set.
+
 05.01.16
 . CDS-1237 - Add phone to %address
 
@@ -1078,6 +1081,7 @@ SYSTEM  ajarticle_v7_x.dtd
 <!NOTATION mpa SYSTEM "">   <!-- MPEG audio-only        -->
 <!NOTATION mpeg SYSTEM "">   <!--Moving  Picture Experts Group -->
 <!NOTATION ole SYSTEM "">   <!-- OLE object (Object Linking and Embedding) -->
+<!NOTATION pdb SYSTEM "">   <!-- Program database -->
 <!NOTATION pdf SYSTEM "">   <!--Portable Document Format (Adobe) -->
 <!NOTATION PDF SYSTEM "">   <!--Portable Document Format (Adobe) -->
 <!NOTATION pict SYSTEM "">   <!--         -->
@@ -1136,7 +1140,7 @@ SYSTEM  ajarticle_v7_x.dtd
 <!ENTITY % plain-text "%straight-text; | %emphasis; | %fontfamily; | %fontattr; | %zwidth;">
 
 <!-- common file format extensions        -->
-<!ENTITY % format    	"ado | aiff | applet | asf | asp | au | avi | bmp | class | csv | do | doc | docx | dta | eps | gif | html | htmlonly | java | jpeg | js | ma | mb | midi | mlonly | mov | mp2 | mp3 | mp4 | mpa | mpeg | nb | ole | pict | pdf | png | pps | ppt | pptx | ps | ra | ram | sgml | svg | texonly | tiff | txt | wav | wmf | wmv | xls | xlsm | xlsx | xml | zip">
+<!ENTITY % format    	"ado | aiff | applet | asf | asp | au | avi | bmp | class | csv | do | doc | docx | dta | eps | gif | html | htmlonly | java | jpeg | js | ma | mb | midi | mlonly | mov | mp2 | mp3 | mp4 | mpa | mpeg | nb | ole | pict | pdb | pdf | png | pps | ppt | pptx | ps | ra | ram | sgml | svg | texonly | tiff | txt | wav | wmf | wmv | xls | xlsm | xlsx | xml | zip">
 
 <!--********************************************************************-->
 <!--       % mathtypes for Math                                  		-->
