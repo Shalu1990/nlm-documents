@@ -71,7 +71,7 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|npjquantmats|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjprecisiononcology|npj2dmaterials|npjdepression)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|npjquantmats|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjprecisiononcology|npj2dmaterials|npjdepression|npjdigitalmed)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'yes'     else ()"/>
   <let name="transition"
         value="if ($journals//npg:Journal[npg:pcode=$pcode]/npg:isTransitionJournal='true') then 'yes'     else ()"/>
   <let name="maestro-rj"
@@ -86,7 +86,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjquantmats|natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem|npjprecisiononcology|npj2dmaterials|npjdepression)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'three'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjquantmats|natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem|npjprecisiononcology|npj2dmaterials|npjdepression|npjdigitalmed)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'three'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj|testnatfile|testpalfile|paldelor|testnatevent|npgdelor|testpalevent)$')) then 'yes' else 'no'"/>
   <let name="collection"
@@ -730,43 +730,6 @@ Use the <let> element to define the attribute if necessary.
                  test="@abstract-type=./preceding-sibling::abstract/@abstract-type">Only one abstract of type "<value-of select="@abstract-type"/>" should appear in an article.</report>
       </rule>
   </pattern>
-   <pattern><!--dateline para in correct place-->
-      <rule context="abstract[p[@content-type='dateline']]" role="error">
-         <assert id="abs3a" test="@abstract-type='web-summary' or @abstract-type='toc'">Dateline paragraphs should only be used in 'web-summary' or 'toc' abstracts.</assert>
-      </rule>
-  </pattern>
-   <pattern>
-      <rule context="abstract[@abstract-type='web-summary' or @abstract-type='toc']/p[@content-type='dateline']"
-            role="error">
-         <assert id="abs3b" test="not(preceding-sibling::p)">Dateline paragraphs should only appear as the first element in an abstract.</assert>
-      </rule>
-  </pattern>
-   <pattern><!--editor summaries specific-use attribute equal to 'aop' or 'issue'-->
-      <rule context="abstract[@abstract-type='editor' or @abstract-type='editor-standfirst' or @abstract-type='research-summary' or @abstract-type='editorial-notes'][@specific-use]"
-            role="error">
-         <assert id="abs4a" test="@specific-use='aop' or @specific-use='issue'">Unexpected value (<value-of select="@specific-use"/>) for "specific-use" attribute on editor abstracts. Allowed values are "aop" or "issue".</assert>
-      </rule>
-  </pattern>
-   <pattern><!--only one of each specific-use type used in editor summaries-->
-      <rule context="abstract[@abstract-type='editor'][@specific-use]" role="error">
-         <report id="abs4b"
-                 test="@specific-use=./preceding-sibling::abstract[@abstract-type='editor']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear on editor abstract in each article.</report>
-      </rule>
-  </pattern>
-   <pattern>
-      <rule context="abstract[@abstract-type='editor-standfirst'][@specific-use]"
-            role="error">
-         <report id="abs4c"
-                 test="@specific-use=./preceding-sibling::abstract[@abstract-type='editor-standfirst']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear on editor-standfirst in each article.</report>
-      </rule>
-  </pattern>
-   <pattern>
-      <rule context="abstract[@abstract-type='research-summary'][@specific-use]"
-            role="error">
-         <report id="abs4d"
-                 test="@specific-use=./preceding-sibling::abstract[@abstract-type='research-summary']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear on research-summary in each article.</report>
-      </rule>
-  </pattern>
    <pattern>
       <rule context="abstract[@abstract-type='editorial-notes'][@specific-use]"
             role="error">
@@ -836,7 +799,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="pub_year"
               value="preceding-sibling::pub-date[@pub-type='epub']/year"/>
          <let name="expected_volume"
-              value="if (matches($pcode,'^(npjpcrm)$')) then $pub_year - 1990 else         if (matches($pcode,'^(npjnutd)$')) then $pub_year - 2010 else          if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(hortres|sdata|hgv)$')) then $pub_year - 2013 else          if (matches($pcode,'^(bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjcompumats|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms|nrdp)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjgenmed|npjvaccines|npjclimatsci|npjflexelectron|npjquantmats|npjprecisiononcology|npjregenmed|npjscilearn|npjdepression)$')) then $pub_year - 2015 else          if (matches($pcode,'^(natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem|npj2dmaterials)$')) then $pub_year - 2016 else ()"/>
+              value="if (matches($pcode,'^(npjpcrm)$')) then $pub_year - 1990 else         if (matches($pcode,'^(npjnutd)$')) then $pub_year - 2010 else          if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(hortres|sdata|hgv)$')) then $pub_year - 2013 else          if (matches($pcode,'^(bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjcompumats|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms|nrdp)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjgenmed|npjvaccines|npjclimatsci|npjflexelectron|npjquantmats|npjprecisiononcology|npjregenmed|npjscilearn|npjdepression)$')) then $pub_year - 2015 else          if (matches($pcode,'^(natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem|npj2dmaterials|npjdigitalmed)$')) then $pub_year - 2016 else ()"/>
          <assert id="oa-aj2a3" test=". = $expected_volume">Unexpected volume number: "<value-of select="."/>". For an "<value-of select="$journal-title"/>" article published in <value-of select="$pub_year"/>, the expected volume number is "<value-of select="$expected_volume"/>".</assert>
       </rule>
   </pattern>
