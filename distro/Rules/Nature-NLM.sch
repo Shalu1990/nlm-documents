@@ -785,6 +785,12 @@ Use the <let> element to define the attribute if necessary.
          <assert id="oa-aj2a" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
   </pattern>
+   <pattern><!--volume should be given Nature Energy, Nature Microbiology and Nature Plants-->
+      <rule context="article[matches($pcode,'^(nenergy|nmicrobiol|nplants)$')]/front/article-meta"
+            role="error">
+         <assert id="vol-npg" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
+      </rule>
+  </pattern>
    <pattern><!--expected volume value should be used in all maestro OA only journals - add mtm, mto, scsandc when needed; #not allowed in issue-based journals
   	npjpcrm (formerly pcrj) - volume 1 in 1991
   	npjnutd (formerly nutd) - volume 1 in 2011
