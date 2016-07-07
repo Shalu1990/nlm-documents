@@ -675,7 +675,8 @@ Use the <let> element to define the attribute if necessary.
               value="if (contains($stub,'/. ')) then substring-before($stub,'. ') else         if (contains($stub,') ')) then substring-before($stub,')') else         if (contains($stub,' ')) then substring-before($stub,' ') else         if (ends-with($stub,'.')) then functx:substring-before-last($stub,'.') else          if (contains($stub,'deed.en_US')) then substring-before($stub,'deed.en_US') else $stub"/>
          <let name="url"
               value="concat('http://creativecommons.org/licenses/',$standardizeStub)"/>
-         <assert id="license2a" test="$url eq @xlink:href">"license" 'xlink:href' attribute (<value-of select="@xlink:href"/>) does not match the url declared in the license text (<value-of select="$url"/>).</assert>
+         <assert id="license2a"
+                 test="($url eq @xlink:href) or ($url eq concat(@xlink:href,'/') or (concat($url,'/') eq @xlink:href))">"license" 'xlink:href' attribute (<value-of select="@xlink:href"/>) does not match the url declared in the license text (<value-of select="$url"/>).</assert>
       </rule>  
   </pattern>
    <pattern><!--licence type is correct-->
