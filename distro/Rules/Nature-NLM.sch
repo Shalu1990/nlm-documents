@@ -717,26 +717,11 @@ Use the <let> element to define the attribute if necessary.
                  test="$allowed-values/related-article-types/related-article-type[.=$relatedArticleType]">"related-article" element has incorrect 'related-article-type' value (<value-of select="@related-article-type"/>). Allowed values are: is-addendum-to, is-comment-to, is-correction-to, is-corrigendum-to, is-erratum-to, is-news-and-views-to, is-prime-view-to, is-protocol-to, is-protocol-update-to, is-related-to, is-research-highlight-to, is-response-to, is-retraction-to, is-update-to</assert>
       </rule>  
   </pattern>
-   <pattern><!--valid @abstract-type-->
-      <rule context="abstract[@abstract-type][not($maestro-aj='yes')]" role="error">
-         <let name="abstractType" value="@abstract-type"/>
-         <assert id="abs1"
-                 test="$allowed-values/abstract-types/abstract-type[.=$abstractType]">Unexpected value for "abstract-type" attribute (<value-of select="$abstractType"/>). Allowed values are: editor, editor-standfirst, editorial-summary, editorial-notes, executive-summary, first-paragraph, key-points, research-summary, standfirst, synopsis, toc, toc-note, web-summary.</assert>
-      </rule>
-  </pattern>
-   <pattern><!--only one of each abstract type used-->
-      <rule context="abstract[not(@abstract-type='editor' or @abstract-type='editor-standfirst' or @abstract-type='research-summary' or @abstract-type='editorial-summary' or @abstract-type='editorial-notes')]"
-            role="error">
+   <pattern>
+      <rule context="abstract[@abstract-type]" role="error">
          <report id="abs2a"
                  test="@abstract-type=./preceding-sibling::abstract/@abstract-type">Only one abstract of type "<value-of select="@abstract-type"/>" should appear in an article.</report>
-      </rule>
-  </pattern>
-   <pattern>
-      <rule context="abstract[@abstract-type='editorial-notes'][@specific-use]"
-            role="error">
-         <report id="abs4e"
-                 test="@specific-use=./preceding-sibling::abstract[@abstract-type='editorial-notes']/@specific-use">Only one abstract of type "<value-of select="@specific-use"/>" should appear on editorial-notes in each article.</report>
-      </rule>
+         </rule>
   </pattern>
    <pattern>
       <rule context="abstract[not(normalize-space(.) or *)]" role="error">
@@ -880,37 +865,35 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--valid @abstract-type-->
-      <rule context="abstract[@abstract-type][$maestro='yes']" role="error">
+      <rule context="abstract[@abstract-type]" role="error">
          <assert id="oa-aj-abs1a"
                  test="matches(@abstract-type,'^(standfirst|long-summary|short-summary|key-points)$')">Unexpected value for "abstract-type" attribute (<value-of select="@abstract-type"/>). Allowed values are: standfirst, long-summary, short-summary and key-points.</assert>
       </rule>
   </pattern>
    <pattern><!--no subsections in editorial summaries-->
-      <rule context="abstract[@abstract-type][$maestro='yes' or $transition='yes'][sec]"
-            role="error">
+      <rule context="abstract[@abstract-type][sec]" role="error">
          <report id="oa-aj-abs1b" test=".">Do not use sections in editorial summaries (<value-of select="@abstract-type"/>) - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - no title-->
-      <rule context="abstract[@abstract-type='standfirst'][$maestro='yes' or $transition='yes'][title]"
-            role="error">
+      <rule context="abstract[@abstract-type='standfirst'][title]" role="error">
          <report id="oa-aj-abs1c" test=".">Do not use "title" in standfirsts - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - no images-->
-      <rule context="abstract[@abstract-type='standfirst'][$maestro='yes' or $transition='yes'][descendant::xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id]]"
+      <rule context="abstract[@abstract-type='standfirst'][descendant::xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id]]"
             role="error">
          <report id="oa-aj-abs1d" test=".">Do not use images in standfirsts - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - one paragraph-->
-      <rule context="abstract[@abstract-type='standfirst' or $transition='yes'][$maestro='yes'][count(p) gt 1]"
+      <rule context="abstract[@abstract-type='standfirst'][count(p) gt 1]"
             role="error">
          <report id="oa-aj-abs1e" test=".">Standfirsts should only contain one paragraph - please contact NPG/Palgrave.</report>
       </rule>
   </pattern>
    <pattern><!--only one true abstract used; there is a general rule to test for more than one of the same @abstract-type-->
-      <rule context="abstract[not(@xml:lang)][$maestro='yes' or $transition='yes'][not(@abstract-type)][preceding-sibling::abstract[not(@abstract-type)]]"
+      <rule context="abstract[not(@xml:lang)][not(@abstract-type)][preceding-sibling::abstract[not(@abstract-type)]]"
             role="error">
          <report id="oa-aj-abs2a" test=".">Only one true abstract should appear in an article.</report>
       </rule>
