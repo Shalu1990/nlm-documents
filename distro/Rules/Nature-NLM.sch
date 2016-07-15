@@ -1501,7 +1501,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--sec - sec-type or specific-use attribute used-->
-      <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/chem-struct-wrap | sec/graphic | sec/media | sec/supplementary-material | sec/disp-formula-group | sec/def-list | sec/mml:math | sec/related-article | sec/related-object | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list"
+      <rule context="sec/sec-meta | sec/label | sec/address | sec/alternatives | sec/array | sec/chem-struct-wrap | sec/graphic | sec/media | sec/supplementary-material | sec/disp-formula-group | sec[not($transition='yes')]/def-list | sec/mml:math | sec/related-article | sec/related-object | sec/speech | sec/statement | sec/verse-group | sec/fn-group | sec/glossary | sec/ref-list"
             role="error">
          <report id="sec4" test=".">Children of "sec" should only be "title", "p", "sec", "disp-formula", "disp-quote" or "preformat" - do not use "<name/>".</report>
       </rule>
