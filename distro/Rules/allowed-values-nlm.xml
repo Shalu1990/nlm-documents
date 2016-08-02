@@ -75,24 +75,6 @@ Created - 20120208
     <related-article-type>see-also</related-article-type>
     <related-article-type>original-article</related-article-type>
   </related-article-types>
-  <abstract-types>
-    <abstract-type>standfirst</abstract-type>
-    <abstract-type>long-summary</abstract-type>
-    <abstract-type>key-points</abstract-type>
-    <abstract-type>short-summary</abstract-type>
-    <!--abstract-type>editorial-summary</abstract-type>
-    <abstract-type>research-summary</abstract-type>
-    <abstract-type>editorial-notes</abstract-type>
-    <abstract-type>in-brief</abstract-type>
-    <abstract-type>first-paragraph</abstract-type>
-    <abstract-type>executive-summary</abstract-type>
-    <abstract-type>web-summary</abstract-type>
-    <abstract-type>toc</abstract-type>
-    <abstract-type>toc-note</abstract-type>
-    <abstract-type>editor</abstract-type>
-    <abstract-type>editor-standfirst</abstract-type>
-    <abstract-type>synopsis</abstract-type--><!--ALL DEPRECATED-->
-  </abstract-types>
   <sec-types>
     <sec-type>bookshelf</sec-type>
     <sec-type>materials</sec-type>
