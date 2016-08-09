@@ -771,8 +771,8 @@ Use the <let> element to define the attribute if necessary.
          <assert id="oa-aj2a" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
   </pattern>
-   <pattern><!--volume should be given Nature Energy, Nature Microbiology and Nature Plants-->
-      <rule context="article[matches($pcode,'^(nenergy|nmicrobiol|nplants)$')]/front/article-meta"
+   <pattern><!--volume should be given Nature Energy, Nature Microbiology and Nature Plants; also for 2017 Nature-branded journals-->
+      <rule context="article[matches($pcode,'^(nenergy|nmicrobiol|nplants|natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem)$')]/front/article-meta"
             role="error">
          <assert id="vol-npg" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
