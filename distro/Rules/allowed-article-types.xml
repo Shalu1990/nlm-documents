@@ -1708,8 +1708,14 @@
         <article-type code="cr">
             <article-heading>Correspondence</article-heading>
         </article-type>
+        <article-type code="dtb">
+            <article-heading>Down to Business</article-heading>
+        </article-type>
         <article-type code="ed">
             <article-heading>Editorial</article-heading>
+        </article-type>
+        <article-type code="inclass">
+            <article-heading>In the Classroom</article-heading>
         </article-type>
         <article-type code="nv">
             <article-heading>News and Views</article-heading>
@@ -1769,6 +1775,9 @@
         </article-type>
         <article-type code="hl">
             <article-heading>Research Highlight</article-heading>
+        </article-type>
+        <article-type code="misscont">
+            <article-heading>Mission Control</article-heading>
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>

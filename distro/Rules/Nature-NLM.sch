@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-* Schematron rules for testing semantic validity of XML files in the JATS DTD submitted to NPG *
+* Schematron rules for testing semantic validity of XML files in the JATS DTD submitted to Springer Nature *
 
 Due to the configuration of XSLT templates used in the validation service, attributes cannot be used as the 'context' of a rule.
 
@@ -12,7 +12,7 @@ Use the <let> element to define the attribute if necessary.
 <schema xmlns="http://purl.oclc.org/dsdl/schematron"
         xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
         queryBinding="xslt2">
-  <title>Schematron rules for NPG content in JATS v1.0</title>
+  <title>Schematron rules for Springer Nature content in JATS v1.0</title>
   <ns uri="http://www.w3.org/1998/Math/MathML" prefix="mml"/>
   <ns uri="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table"
        prefix="oasis"/>
@@ -120,7 +120,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern>
       <rule context="journal-meta" role="error"><!--Only one journal-id included-->
-         <assert id="jmeta1b" test="count(journal-id) eq 1">There should only be one "journal-id" element in NPG/Palgrave articles, with attribute: journal-id-type="publisher".</assert>
+         <assert id="jmeta1b" test="count(journal-id) eq 1">There should only be one "journal-id" element in Springer Nature articles, with attribute: journal-id-type="publisher".</assert>
       </rule>
   </pattern>
    <pattern>
@@ -447,19 +447,19 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--Rules around expected attribute values of pub-date, and only one of each type-->
       <rule context="pub-date[not(@pub-type)]" role="error">
-         <report id="pubdate0a" test=".">"pub-date" element should have attribute "pub-type" declared. Allowed values are: cover-date, aop, collection, epub, epreprint, fav (final author version or author-ms) and ppub. Please check with NPG.</report>
+         <report id="pubdate0a" test=".">"pub-date" element should have attribute "pub-type" declared. Allowed values are: cover-date, aop, collection, epub, epreprint, fav (final author version or author-ms) and ppub. Please check with Springer Nature.</report>
       </rule>
     </pattern>
    <pattern>
       <rule context="pub-date[@pub-type][not(@pub-type=$allowed-values/pub-types/pub-type)]"
             role="error">
-         <report id="pubdate0b" test=".">Unexpected value for "pub-type" attribute on "pub-date" element (<value-of select="@pub-type"/>). Allowed values are: cover-date, aop, collection, epub, epreprint, fav (final author version or author-ms) and ppub. Please check with NPG.</report>
+         <report id="pubdate0b" test=".">Unexpected value for "pub-type" attribute on "pub-date" element (<value-of select="@pub-type"/>). Allowed values are: cover-date, aop, collection, epub, epreprint, fav (final author version or author-ms) and ppub. Please check with Springer Nature.</report>
       </rule>
   </pattern>
    <pattern>
       <rule context="pub-date[@pub-type=./preceding-sibling::pub-date/@pub-type]"
             role="error">
-         <report id="pubdate0c" test=".">There should only be one instance of the "pub-date" element with "pub-type" attribute value of "<value-of select="@pub-type"/>". Please check with NPG.</report>
+         <report id="pubdate0c" test=".">There should only be one instance of the "pub-date" element with "pub-type" attribute value of "<value-of select="@pub-type"/>". Please check with Springer Nature.</report>
       </rule>
   </pattern>
    <pattern><!--Valid values for year, month and day-->
@@ -544,19 +544,19 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--Rules around expected attribute values of date-->
       <rule context="history/date[not(@date-type)]" role="error">
-         <report id="histdate0a" test=".">"date" element should have attribute "date-type" declared. Allowed values are: created, received, rev-recd (revision received), first-decision, accepted and misc. Please check with NPG.</report>
+         <report id="histdate0a" test=".">"date" element should have attribute "date-type" declared. Allowed values are: created, received, rev-recd (revision received), first-decision, accepted and misc. Please check with Springer Nature.</report>
       </rule>
   </pattern>
    <pattern>
       <rule context="history/date[@date-type][not(@date-type=$allowed-values/date-types/date-type)]"
             role="error">
-         <report id="histdate0b" test=".">Unexpected value for "date-type" attribute on "date" element (<value-of select="@date-type"/>). Allowed values are: created, received, rev-recd (revision received), first-decision, accepted and misc. Please check with NPG.</report>
+         <report id="histdate0b" test=".">Unexpected value for "date-type" attribute on "date" element (<value-of select="@date-type"/>). Allowed values are: created, received, rev-recd (revision received), first-decision, accepted and misc. Please check with Springer Nature.</report>
       </rule>
   </pattern>
    <pattern><!--... and only one of each type-->
       <rule context="history/date[not(@date-type='rev-recd')][@date-type=./preceding-sibling::date/@date-type]"
             role="error">
-         <report id="histdate0c" test=".">There should only be one instance of the "date" element with "date-type" attribute value of "<value-of select="@date-type"/>". Please check with NPG.</report>
+         <report id="histdate0c" test=".">There should only be one instance of the "date" element with "date-type" attribute value of "<value-of select="@date-type"/>". Please check with Springer Nature.</report>
       </rule>
   </pattern>
    <pattern><!--Valid values for year, month and day-->
@@ -721,7 +721,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="abstract[@abstract-type]" role="error">
          <report id="abs2a"
                  test="@abstract-type=./preceding-sibling::abstract/@abstract-type">Only one abstract of type "<value-of select="@abstract-type"/>" should appear in an article.</report>
-         </rule>
+      </rule>
   </pattern>
    <pattern>
       <rule context="abstract[not(normalize-space(.) or *)]" role="error">
@@ -771,8 +771,8 @@ Use the <let> element to define the attribute if necessary.
          <assert id="oa-aj2a" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
   </pattern>
-   <pattern><!--volume should be given Nature Energy, Nature Microbiology and Nature Plants-->
-      <rule context="article[matches($pcode,'^(nenergy|nmicrobiol|nplants)$')]/front/article-meta"
+   <pattern><!--volume should be given Nature Energy, Nature Microbiology and Nature Plants; also for 2017 Nature-branded journals-->
+      <rule context="article[matches($pcode,'^(nenergy|nmicrobiol|nplants|natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem)$')]/front/article-meta"
             role="error">
          <assert id="vol-npg" test="volume">A "volume" element should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
@@ -814,7 +814,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--open access license info should be given in all new OA only journals (except in correction articles)-->
       <rule context="article[$maestro-aj='yes' and not(matches($article-type,'^(add|cg|cs|er|ret)$')) and not(matches($pcode,'^(bdjteam|scsandc)$'))]/front/article-meta/permissions"
             role="error">
-         <assert id="oa-aj3" test="license">"<value-of select="$journal-title"/>" should contain "license", which gives details of the Open Access license being used. Please contact NPG for this information.</assert>
+         <assert id="oa-aj3" test="license">"<value-of select="$journal-title"/>" should contain "license", which gives details of the Open Access license being used. Please contact Springer Nature for this information.</assert>
       </rule>
   </pattern>
    <pattern><!--open access license info should not be given in BDJ Team, which is free. If this applies to other journals start a new variable $free rather than hard-coding pcodes here-->
@@ -872,24 +872,24 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--no subsections in editorial summaries-->
       <rule context="abstract[@abstract-type][sec]" role="error">
-         <report id="oa-aj-abs1b" test=".">Do not use sections in editorial summaries (<value-of select="@abstract-type"/>) - please contact NPG/Palgrave.</report>
+         <report id="oa-aj-abs1b" test=".">Do not use sections in editorial summaries (<value-of select="@abstract-type"/>) - please contact Springer Nature.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - no title-->
       <rule context="abstract[@abstract-type='standfirst'][title]" role="error">
-         <report id="oa-aj-abs1c" test=".">Do not use "title" in standfirsts - please contact NPG/Palgrave.</report>
+         <report id="oa-aj-abs1c" test=".">Do not use "title" in standfirsts - please contact Springer Nature.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - no images-->
       <rule context="abstract[@abstract-type='standfirst'][descendant::xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id]]"
             role="error">
-         <report id="oa-aj-abs1d" test=".">Do not use images in standfirsts - please contact NPG/Palgrave.</report>
+         <report id="oa-aj-abs1d" test=".">Do not use images in standfirsts - please contact Springer Nature.</report>
       </rule>
   </pattern>
    <pattern><!--standfirst - one paragraph-->
       <rule context="abstract[@abstract-type='standfirst'][count(p) gt 1]"
             role="error">
-         <report id="oa-aj-abs1e" test=".">Standfirsts should only contain one paragraph - please contact NPG/Palgrave.</report>
+         <report id="oa-aj-abs1e" test=".">Standfirsts should only contain one paragraph - please contact Springer Nature.</report>
       </rule>
   </pattern>
    <pattern><!--only one true abstract used; there is a general rule to test for more than one of the same @abstract-type-->
@@ -1020,7 +1020,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="id" value="named-content[@content-type='id']"/>
          <let name="derivedId" value="functx:substring-after-last($path,'/')"/>
          <assert id="oa-aj10c"
-                 test="$id=$derivedId or not($journals//npg:Journal[npg:pcode=$pcode]/npg:subjectPath[.=$path]) or not($journals//npg:subjectPath[.=$path])">Subject 'id' (<value-of select="$id"/>) does not match the final part of subject 'path' (<value-of select="$derivedId"/>). Please check the information supplied by NPG.</assert>
+                 test="$id=$derivedId or not($journals//npg:Journal[npg:pcode=$pcode]/npg:subjectPath[.=$path]) or not($journals//npg:subjectPath[.=$path])">Subject 'id' (<value-of select="$id"/>) does not match the final part of subject 'path' (<value-of select="$derivedId"/>). Please check the information supplied by Springer Nature.</assert>
       </rule>
   </pattern>
    <pattern><!--article-type and article heading should be equivalent-->
@@ -1160,7 +1160,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--npj 'af' articles should have an editorial summary-->
       <rule context="article[@article-type='af']/front/article-meta[$npj_journal='yes'][not(abstract[@abstract-type='long-summary'])]"
             role="error">
-         <report id="npj1a" test=".">All Articles (article-type "af") in "<value-of select="$journal-title"/>" should have an editorial summary (abstract with 'abstract-type="long-summary"'). If you have not been provided with the text for this summary, please contact NPG Production.</report>
+         <report id="npj1a" test=".">All Articles (article-type "af") in "<value-of select="$journal-title"/>" should have an editorial summary (abstract with 'abstract-type="long-summary"'). If you have not been provided with the text for this summary, please contact Springer Nature Production.</report>
       </rule>
   </pattern>
    <pattern><!--"is-data-descriptor-to should be added by sync tool-->
@@ -1184,7 +1184,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--named-content for source info is not required in sdata-->
       <rule context="ref-list[@content-type='data-citations'][$pcode='sdata']/ref[@id]//named-content[@content-type='source']"
             role="error">
-         <report id="sdata2c" test=".">Error in data citation <value-of select="ancestor::ref/@id"/>: data citation references in Scientific Data do not need the source status (new/existing) declared, as this information will not be supplied by NPG. Please delete the "named-content" element.</report>
+         <report id="sdata2c" test=".">Error in data citation <value-of select="ancestor::ref/@id"/>: data citation references in Scientific Data do not need the source status (new/existing) declared, as this information will not be supplied by Springer Nature. Please delete the "named-content" element.</report>
       </rule>
   </pattern>
    <pattern><!--year should be included-->
@@ -1229,6 +1229,12 @@ Use the <let> element to define the attribute if necessary.
                  test="matches(@ref-type,'^(aff|corresp|author-notes|other|statement)$')">Unexpected value for contributor "xref" 'ref-type' attribute (<value-of select="@ref-type"/>). The allowed values are "aff" (for links to affilation information), "corresp" (for correspondence information), "other" for a contributor photo, and "author-notes" for any other notes.</assert>
       </rule>
     </pattern>
+   <pattern>
+      <rule context="article-meta[$maestro='yes'][not(contrib-group)][$article-type='com']"
+            role="error">
+         <report id="contrib2" test=".">All "Comment" articles should have at least one author. If this information has not been provided, please contact Springer Nature.</report>
+      </rule>
+   </pattern>
    <pattern>
       <rule context="front//aff" role="error"><!--should be a child of article-meta-->
          <assert id="aff1" test="parent::article-meta">"aff" element should be a direct child of "article-meta" after "contrib-group" - not a child of "<value-of select="name(parent::*)"/>".</assert>
@@ -1366,7 +1372,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern>
       <rule context="author-notes/fn[@fn-type='equal']" role="error"><!--use author-notes not equal footnotes-->
-         <report id="aunote2" test=".">Do not use author footnote with 'fn-type="equal"' in Macmillan articles. Mark up as a normal author footnote instead, i.e. "fn" with no 'fn-type' attribute, and a linking xref from the relevant contributors. See example in Tagging Instructions.</report>
+         <report id="aunote2" test=".">Do not use author footnote with 'fn-type="equal"' in Springer Nature articles. Mark up as a normal author footnote instead, i.e. "fn" with no 'fn-type' attribute, and a linking xref from the relevant contributors. See example in Tagging Instructions.</report>
       </rule>
   </pattern>
    <pattern>
@@ -1379,7 +1385,7 @@ Use the <let> element to define the attribute if necessary.
             role="error"><!--no xref links allowed when contributor is a collaboration-->
          <let name="refType"
               value="if (@ref-type='aff') then 'an affiliation' else         if (@ref-type='corresp') then 'correspondence information' else         if (@ref-type='author-notes') then 'author notes' else 'xref links'"/>
-         <report id="collab1b" test=".">"on behalf of" collaborations cannot have <value-of select="$refType"/>. Please contact NPG for markup instructions.</report>
+         <report id="collab1b" test=".">"on behalf of" collaborations cannot have <value-of select="$refType"/>. Please contact Springer Nature for markup instructions.</report>
       </rule>
   </pattern>
    <pattern>
@@ -1936,14 +1942,14 @@ Use the <let> element to define the attribute if necessary.
             role="error"><!--All figures should be referenced in the text-->
          <let name="id" value="@id"/>
          <assert id="xref4a"
-                 test="ancestor::article//xref[@ref-type='fig' and matches(@rid,$id)]">Figure <value-of select="replace($id,'f','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Figure <value-of select="replace($id,'f','')"/>, please contact NPG.</assert>
+                 test="ancestor::article//xref[@ref-type='fig' and matches(@rid,$id)]">Figure <value-of select="replace($id,'f','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Figure <value-of select="replace($id,'f','')"/>, please contact Springer Nature.</assert>
       </rule>
   </pattern>
    <pattern>
       <rule context="floats-group[$full-text='yes']/table-wrap[@id]" role="error"><!--All tables should be referenced in the text-->
          <let name="id" value="@id"/>
          <assert id="xref4b"
-                 test="ancestor::article//xref[@ref-type='table' and matches(@rid,$id)]">Table <value-of select="replace($id,'t','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Table <value-of select="replace($id,'t','')"/>, please contact NPG.</assert>
+                 test="ancestor::article//xref[@ref-type='table' and matches(@rid,$id)]">Table <value-of select="replace($id,'t','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Table <value-of select="replace($id,'t','')"/>, please contact Springer Nature.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -1958,7 +1964,7 @@ Use the <let> element to define the attribute if necessary.
       <rule context="floats-group[$full-text='yes']/boxed-text[@id]" role="error"><!--All boxes should be referenced in the text-->
          <let name="id" value="@id"/>
          <assert id="xref4d"
-                 test="ancestor::article//xref[@ref-type='boxed-text' and matches(@rid,$id)]">Box <value-of select="replace($id,'bx','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Box <value-of select="replace($id,'bx','')"/>, please contact NPG.</assert>
+                 test="ancestor::article//xref[@ref-type='boxed-text' and matches(@rid,$id)]">Box <value-of select="replace($id,'bx','')"/> is not linked to in the XML and therefore will not appear in the online article. Please add an xref link in the required location. If the text itself does not reference Box <value-of select="replace($id,'bx','')"/>, please contact Springer Nature.</assert>
       </rule>
   </pattern>
    <pattern>
@@ -2349,23 +2355,23 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--elements not allowed as children of mixed-citation-->
       <rule context="ref/mixed-citation/alternatives|ref/mixed-citation/chem-struct|ref/mixed-citation/conf-date|ref/mixed-citation/conf-loc|ref/mixed-citation/conf-name|ref/mixed-citation/conf-sponsor|ref/mixed-citation/date|ref/mixed-citation/date-in-citation|ref/mixed-citation/inline-graphic|ref/mixed-citation/institution|ref/mixed-citation/label|ref/mixed-citation/name|ref/mixed-citation/name-alternatives|ref/mixed-citation/private-char|ref/mixed-citation/role|ref/mixed-citation/series|ref/mixed-citation/size|ref/mixed-citation/supplement"
             role="error">
-         <report id="disallowed2" test=".">Do not use "<name/>" element in "mixed-citation" in NPG/Palgrave articles.</report>
+         <report id="disallowed2" test=".">Do not use "<name/>" element in "mixed-citation" in Springer Nature articles.</report>
       </rule>
   </pattern>
    <pattern><!--elements not allowed as children of ref-list-->
       <rule context="ref-list/label|ref-list/address|ref-list/alternatives|ref-list/array|ref-list/chem-struct-wrap|ref-list/graphic|ref-list/media|ref-list/preformat|ref-list/disp-formula|ref-list/disp-formula-group|ref-list/def-list|ref-list/list|ref-list/mml:math|ref-list/related-article|ref-list/related-object|ref-list/disp-quote|ref-list/speech|ref-list/statement|ref-list/verse-group"
             role="error">
-         <report id="disallowed3" test=".">Do not use "<name/>" element in "ref-list" in NPG/Palgrave articles.</report>
+         <report id="disallowed3" test=".">Do not use "<name/>" element in "ref-list" in Springer Nature articles.</report>
       </rule>
   </pattern>
    <pattern><!--no brackets in year-->
       <rule context="ref[not($transition='yes')]/mixed-citation/year" role="error">
-         <report id="punct1a" test="starts-with(.,'(') or ends-with(.,')')">Do not include parentheses in the "year" element in citations in NPG/Palgrave articles.</report>
+         <report id="punct1a" test="starts-with(.,'(') or ends-with(.,')')">Do not include parentheses in the "year" element in citations in Springer Nature articles.</report>
       </rule>
   </pattern>
    <pattern><!--no brackets in publisher-name-->
       <rule context="ref/mixed-citation/publisher-name" role="error">
-         <report id="punct1b" test="starts-with(.,'(') and ends-with(.,')')">Do not include parentheses in the "publisher-name" element in citations in NPG/Palgrave articles.</report>
+         <report id="punct1b" test="starts-with(.,'(') and ends-with(.,')')">Do not include parentheses in the "publisher-name" element in citations in Springer Nature articles.</report>
       </rule>
   </pattern>
    <pattern><!--elocation-id should have @content-type in citations-->
@@ -2452,12 +2458,12 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern>
       <rule context="etal" role="error"><!--etal not followed by full stop-->
-         <report id="reflist5b" test="starts-with(following::node()[1],'.')">"etal" should not be followed by a full stop - in NPG/Palgrave articles, it is the equivalent of 'et al.' in italics.</report>
+         <report id="reflist5b" test="starts-with(following::node()[1],'.')">"etal" should not be followed by a full stop - in Springer Nature articles, it is the equivalent of 'et al.' in italics.</report>
       </rule>
   </pattern>
    <pattern>
       <rule context="etal" role="error"><!--etal should be empty-->
-         <report id="reflist5c" test="normalize-space(.) or *">"etal" should be an empty element in NPG/Palgrave articles - please delete content.</report>
+         <report id="reflist5c" test="normalize-space(.) or *">"etal" should be an empty element in Springer Nature articles - please delete content.</report>
       </rule>
   </pattern>
    <pattern><!--collab should have @collab-type-->
@@ -2578,6 +2584,13 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--table-wrap should be child of floats-group-->
         <rule context="table-wrap[not(ancestor::floats-group)]" role="error">
             <report id="tab1" test="." role="error">"table-wrap" should be within "floats-group", not "<value-of select="local-name(ancestor::*[parent::article])"/>".</report>
+        </rule>
+    </pattern>
+   <pattern><!--table-wrap should not be inside another table-->
+        <rule context="table-wrap[@id][ancestor::table-wrap[@id]]" role="error">
+         <let name="tabId" value="substring-after(@id,'t')"/>
+         <let name="ancestorId" value="substring-after(ancestor::table-wrap/@id,'t')"/>
+            <report id="tab1b" test="." role="error">Table <value-of select="$tabId"/> is contained within Table <value-of select="$ancestorId"/>. It should be a separate block-level element in "floats-group".</report>
         </rule>
     </pattern>
    <pattern><!--table - must have an @id-->
@@ -2720,13 +2733,13 @@ Use the <let> element to define the attribute if necessary.
    </pattern>
    <pattern>
         <rule context="fig-group" role="error">
-            <report id="fig1b" test=".">Do not use "fig-group" in NPG/Palgrave articles. Figures should be captured as direct children of "floats-group".</report>
+            <report id="fig1b" test=".">Do not use "fig-group" in Springer Nature articles. Figures should be captured as direct children of "floats-group".</report>
         </rule>
     </pattern>
    <pattern>
         <rule context="fig[not(parent::floats-group or parent::fig-group)]"
             role="error">
-            <report id="fig1c" test=".">"fig" should be only be a child of "floats-group" in NPG/Palgrave articles - not "<value-of select="local-name(parent::*)"/>".</report>
+            <report id="fig1c" test=".">"fig" should be only be a child of "floats-group" in Springer Nature articles - not "<value-of select="local-name(parent::*)"/>".</report>
         </rule>
     </pattern>
    <pattern><!--fig - allowed children only-->
@@ -3036,6 +3049,11 @@ Use the <let> element to define the attribute if necessary.
             <report id="ill6a" test="." role="error">Do not use "<name/>" in "graphic".</report>
         </rule>
     </pattern>
+   <pattern><!--illustration - caption must not be empty-->
+        <rule context="graphic/caption" role="error">
+            <assert id="ill7" test="normalize-space(.)">Illustration "caption" should not be empty.</assert>
+        </rule>
+    </pattern>
    <pattern>
         <rule context="boxed-text[not(@content-type='excerpt')][not(parent::floats-group)]"
             role="error">
@@ -3293,7 +3311,7 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--elements not allowed in NPG JATS content-->
       <rule context="abbrev | collab-alternatives | comment | gov | issn-l | issue-id | issue-part | issue-title | milestone-end | milestone-start | object-id |  page-range | part-title | patent | pub-id | roman | std | tex-math | trans-abstract | trans-source | volume-id | volume-series"
             role="error">
-         <report id="disallowed1" test=".">Do not use "<name/>" element in NPG/Palgrave articles.</report>
+         <report id="disallowed1" test=".">Do not use "<name/>" element in Springer Nature articles.</report>
       </rule>
   </pattern>
 </schema>
