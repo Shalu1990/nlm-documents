@@ -1864,6 +1864,9 @@
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
         </article-type>
+        <article-type code="world">
+            <article-heading>World View</article-heading>
+        </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
