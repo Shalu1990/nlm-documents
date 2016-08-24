@@ -417,6 +417,91 @@ Use the <let> element to define the attribute if necessary.
          <report id="tech1a" test=".">Techniques should not be included in "subj-group/@subj-group-type='<value-of select="$subj-group-type"/>'". Create a separate "subj-group" with '@subj-group-type='technique'.</report>
       </rule>
   </pattern>
+   <pattern><!--technique codes should only contained "named-content"-->
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique']/*[not(self::named-content)]">
+         <report id="tech2" test=".">"technique" should only contain "named-content" child elements. Do not use "<name/>".</report>
+      </rule>
+  </pattern>
+   <pattern><!--technique codes should contain three "named-content" children-->
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique'][count(named-content) ne 3]">
+         <report id="tech3" test=".">"technique" contains <value-of select="count(named-content)"/> "named-content" children. It should contain 3, with 'content-type' values of "id", "path" and "version".</report>
+      </rule>
+  </pattern>
+   <pattern><!--"named-content" @content-type should be id, path or version-->
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique'][count(named-content) eq 3 and count(*) eq 3]/named-content[not(matches(@content-type,'^(id|path|version)$'))]">
+         <report id="tech4" test=".">Unexpected value for 'content-type' in technique codes (<value-of select="@content-type"/>). Allowed values are on each of: "id", "path" and "version".</report>
+      </rule>
+  </pattern>
+   <pattern><!--"version" included-->
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique'][count(named-content) eq 3 and count(*) eq 3][not(named-content[not(matches(@content-type,'^(id|path|version)$'))])][not(named-content[@content-type='version'])]">
+         <report id="tech5" test=".">Missing "named-content" with 'content-type="version"' in technique codes. "technique" should contain three "named-content" children, with one of each 'content-type' attribute value: "id", "path" and "version".</report>
+      </rule>
+  </pattern>
+   <pattern><!--"id" included-->
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique'][count(named-content) eq 3 and count(*) eq 3][not(named-content[not(matches(@content-type,'^(id|path|version)$'))])][not(named-content[@content-type='id'])]">
+         <report id="tech6" test=".">Missing "named-content" with 'content-type="id"' in technique codes. "technique" should contain three "named-content" children, with one of each 'content-type' attribute value: "id", "path" and "version".</report>
+      </rule>
+  </pattern>
+   <pattern><!--"path" included-->
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique'][count(named-content) eq 3 and count(*) eq 3][not(named-content[not(matches(@content-type,'^(id|path|version)$'))])][not(named-content[@content-type='path'])]">
+         <report id="tech7" test=".">Missing "named-content" with 'content-type="path"' in technique codes. "technique" should contain three "named-content" children, with one of each 'content-type' attribute value: "id", "path" and "version".</report>
+      </rule>
+  </pattern>
+   <pattern><!--named-content should only use @content-type-->
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique']/named-content[@id]">
+         <report id="tech8a" test=".">Only 'content-type' should be used as an attribute on "named-content" in "technique". Do not use 'id'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique']/named-content[@alt]">
+         <report id="tech8b" test=".">Only 'content-type' should be used as an attribute on "named-content" in "technique". Do not use 'alt'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique']/named-content[@rid]">
+         <report id="tech8c" test=".">Only 'content-type' should be used as an attribute on "named-content" in "technique". Do not use 'rid'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique']/named-content[@specific-use]">
+         <report id="tech8d" test=".">Only 'content-type' should be used as an attribute on "named-content" in "technique". Do not use 'specific-use'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique']/named-content[@xlink:actuate]">
+         <report id="tech8e" test=".">Only 'content-type' should be used as an attribute on "named-content" in "technique". Do not use 'xlink:actuate'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique']/named-content[@xlink:href]">
+         <report id="tech8f" test=".">Only 'content-type' should be used as an attribute on "named-content" in "technique". Do not use 'xlink:href'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique']/named-content[@xlink:role]">
+         <report id="tech8g" test=".">Only 'content-type' should be used as an attribute on "named-content" in "technique". Do not use 'xlink:role'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique']/named-content[@xlink:show]">
+         <report id="tech8h" test=".">Only 'content-type' should be used as an attribute on "named-content" in "technique". Do not use 'xlink:show'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique']/named-content[@xlink:title]">
+         <report id="tech8i" test=".">Only 'content-type' should be used as an attribute on "named-content" in "technique". Do not use 'xlink:title'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique']/named-content[@xlink:type]">
+         <report id="tech8j" test=".">Only 'content-type' should be used as an attribute on "named-content" in "technique". Do not use 'xlink:type'.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique']/named-content[@xml:lang]">
+         <report id="tech8k" test=".">Only 'content-type' should be used as an attribute on "named-content" in "technique". Do not use 'xml:lang'.</report>
+      </rule>
+  </pattern>
    <pattern>
       <rule context="trans-title-group[parent::title-group][not($transition='yes')]"
             role="error"><!--No unexpected children of article title-group used-->
@@ -715,6 +800,13 @@ Use the <let> element to define the attribute if necessary.
          <let name="relatedArticleType" value="@related-article-type"/>
          <assert id="relart2"
                  test="$allowed-values/related-article-types/related-article-type[.=$relatedArticleType]">"related-article" element has incorrect 'related-article-type' value (<value-of select="@related-article-type"/>). Allowed values are: is-addendum-to, is-comment-to, is-correction-to, is-corrigendum-to, is-erratum-to, is-news-and-views-to, is-prime-view-to, is-protocol-to, is-protocol-update-to, is-related-to, is-research-highlight-to, is-response-to, is-retraction-to, is-update-to</assert>
+      </rule>  
+  </pattern>
+   <pattern><!--Bi directional articles should have doi in @xlink:href not url-->
+      <rule context="article-meta/related-article[contains(@xlink:href,'dx.doi')]"
+            role="error">
+         <let name="extra-stuff" value="substring-before(@xlink:href,'10.')"/>
+         <report id="relart3" test=".">"related-article" element of type '<value-of select="@related-article-type"/>' should only contain article doi in 'xlink:href'. Please remove extra text: "<value-of select="$extra-stuff"/>".</report>
       </rule>  
   </pattern>
    <pattern>
@@ -2796,23 +2888,18 @@ Use the <let> element to define the attribute if necessary.
             <report id="fig3d" test="." role="error">Do not use "xml:lang" attribute on "fig".</report>
         </rule>
     </pattern>
-   <pattern><!--fig - must have an @xlink:href-->
-        <rule context="fig//graphic[not(@xlink:href)]" role="error">
-            <report id="fig4a" test=".">Missing 'xlink:href' attribute on figure "graphic". The 'xlink:href' should contain the filename (including extension) of the graphic. Do not include any path information.</report>
-        </rule>
-    </pattern>
    <pattern><!--@xlink:href does not contain filepath info-->
-        <rule context="fig//graphic[@xlink:href]" role="error">
-            <report id="fig4b" test="contains(@xlink:href,'/')">Do not include filepath information for figure graphic files "<value-of select="@xlink:href"/>".</report>
+        <rule context="fig//graphic[contains(@xlink:href,'/')]" role="error">
+            <report id="fig4b" test=".">Do not include filepath information for figure graphic files "<value-of select="@xlink:href"/>".</report>
         </rule>
     </pattern>
    <pattern><!--@xlink:href contains a '.' and therefore may have an extension-->
-        <rule context="fig//graphic[@xlink:href][not(@xlink:href='')]" role="error">
+        <rule context="fig//graphic[not(@xlink:href='')]" role="error">
             <assert id="fig4c" test="contains(@xlink:href,'.')">Figure graphic 'xlink:href' value ("<value-of select="@xlink:href"/>") should contain the file extension (e.g. jpg, gif, etc).</assert>
         </rule>
     </pattern>
    <pattern><!--@xlink:href has valid file extension - check allowed image extensions-->
-        <rule context="fig//graphic[@xlink:href][not(@xlink:href='')][contains(@xlink:href,'.')]"
+        <rule context="fig//graphic[not(@xlink:href='')][contains(@xlink:href,'.')]"
             role="error">
             <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
             <assert id="fig4d"

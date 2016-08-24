@@ -1699,6 +1699,9 @@
         <article-type code="an">
             <article-heading>Analysis</article-heading>
         </article-type>
+        <article-type code="ba">
+            <article-heading>Books and Arts</article-heading>
+        </article-type>
         <article-type code="bo">
             <article-heading>Book Review</article-heading>
         </article-type>
@@ -1713,6 +1716,9 @@
         </article-type>
         <article-type code="ed">
             <article-heading>Editorial</article-heading>
+        </article-type>
+        <article-type code="fe">
+            <article-heading>Feature</article-heading>
         </article-type>
         <article-type code="inclass">
             <article-heading>In the Classroom</article-heading>
@@ -1767,7 +1773,10 @@
         <article-type code="ed">
             <article-heading>Editorial</article-heading>
         </article-type>
-		<article-type code="nv">
+		<article-type code="le">
+            <article-heading>Letter</article-heading>
+        </article-type>
+        <article-type code="nv">
             <article-heading>News and Views</article-heading>
         </article-type>
         <article-type code="pe">
@@ -1802,8 +1811,17 @@
          <article-type code="af">
             <article-heading>Article</article-heading>
         </article-type>
+        <article-type code="an">
+            <article-heading>Analysis</article-heading>
+        </article-type>
+        <article-type code="caser">
+            <article-heading>Case Report</article-heading>
+        </article-type>
         <article-type code="com">
             <article-heading>Comment</article-heading>
+        </article-type>
+        <article-type code="cons">
+            <article-heading>Consensus Statement</article-heading>
         </article-type>
         <article-type code="cr">
             <article-heading>Correspondence</article-heading>
@@ -1811,11 +1829,20 @@
         <article-type code="ed">
             <article-heading>Editorial</article-heading>
         </article-type>
-		<article-type code="nv">
+		<article-type code="fe">
+            <article-heading>Feature</article-heading>
+        </article-type>
+        <article-type code="nv">
             <article-heading>News and Views</article-heading>
         </article-type>
-        <article-type code="pe">
+        <article-type code="nw">
+            <article-heading>News</article-heading>
+        </article-type>
+		<article-type code="pe">
             <article-heading>Perspective</article-heading>
+        </article-type>
+        <article-type code="qa">
+            <article-heading>Q&amp;A</article-heading>
         </article-type>
         <article-type code="hl">
             <article-heading>Research Highlight</article-heading>
@@ -1843,6 +1870,18 @@
          <article-type code="af">
             <article-heading>Article</article-heading>
         </article-type>
+        <article-type code="an">
+            <article-heading>Analysis</article-heading>
+        </article-type>
+        <article-type code="ba">
+            <article-heading>Books and Arts</article-heading>
+        </article-type>
+        <article-type code="bo">
+            <article-heading>Book Review</article-heading>
+        </article-type>
+        <article-type code="caser">
+            <article-heading>Case Report</article-heading>
+        </article-type>
         <article-type code="com">
             <article-heading>Comment</article-heading>
         </article-type>
@@ -1852,17 +1891,44 @@
         <article-type code="ed">
             <article-heading>Editorial</article-heading>
         </article-type>
-		<article-type code="nv">
+		<article-type code="fe">
+            <article-heading>Feature</article-heading>
+        </article-type>
+        <article-type code="hyp">
+            <article-heading>Hypothesis</article-heading>
+        </article-type>
+        <article-type code="le">
+            <article-heading>Letter</article-heading>
+        </article-type>
+        <article-type code="mr">
+            <article-heading>Meeting Report</article-heading>
+        </article-type>
+        <article-type code="nv">
             <article-heading>News and Views</article-heading>
         </article-type>
+        <article-type code="nw">
+            <article-heading>News</article-heading>
+        </article-type>
+		<article-type code="ob">
+			<article-heading>Obituary</article-heading>
+		</article-type>
         <article-type code="pe">
             <article-heading>Perspective</article-heading>
+        </article-type>
+        <article-type code="qa">
+            <article-heading>Q&amp;A</article-heading>
         </article-type>
         <article-type code="hl">
             <article-heading>Research Highlight</article-heading>
         </article-type>
+        <article-type code="rs">
+            <article-heading>Resource</article-heading>
+        </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
+        </article-type>
+        <article-type code="world">
+            <article-heading>World View</article-heading>
         </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
@@ -1886,6 +1952,9 @@
         </article-type>
         <article-type code="af">
             <article-heading>Article</article-heading>
+        </article-type>
+        <article-type code="ba">
+            <article-heading>Books and Arts</article-heading>
         </article-type>
         <article-type code="bo">
             <article-heading>Book Review</article-heading>
