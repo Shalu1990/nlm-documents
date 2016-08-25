@@ -1486,6 +1486,14 @@ Use the <let> element to define the attribute if necessary.
          <report id="collab2" test=".">Do not use author notes for consortia, use group text instead. See Tagging Instructions for further details.</report>
       </rule>
   </pattern>
+   <pattern><!--consortia authors which are also main authors do not need affiliation links-->
+      <rule context="collab[named-content/@content-type='program']/contrib-group/contrib[@contrib-type='author'][xref/@ref-type='aff']/name"
+            role="error">
+        <let name="name" value="concat(given-names,' ',surname)"/>
+        <report id="collab3"
+                 test="ancestor::article-meta/contrib-group/contrib[@contrib-type='author']/name[concat(given-names,' ',surname) eq $name]">Where authors listed as consortia members are also main article authors, affiliation links should not be used. Please delete affilation "xref"s from <value-of select="$name"/> within "collab".</report>
+      </rule>
+  </pattern>
    <pattern><!--markup for orcids is correct-->
       <rule context="contrib-id[not(@contrib-id-type='orcid')]" role="error">
          <report id="orcid1a" test=".">"contrib-id" should have 'contrib-id-type="orcid"'.</report>
