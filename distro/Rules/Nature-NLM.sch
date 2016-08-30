@@ -1486,6 +1486,12 @@ Use the <let> element to define the attribute if necessary.
          <report id="collab2" test=".">Do not use author notes for consortia, use group text instead. See Tagging Instructions for further details.</report>
       </rule>
   </pattern>
+   <pattern>
+      <rule context="contrib[collab/@collab-type='authors']/xref[@ref-type='author-notes']"
+            role="error"><!--no author-notes on consortia-->
+         <report id="collab2b" test=".">Do not use author notes for consortia, use group text instead. See Tagging Instructions for further details.</report>
+      </rule>
+  </pattern>
    <pattern><!--consortia authors which are also main authors do not need affiliation links-->
       <rule context="collab[named-content/@content-type='program']/contrib-group/contrib[@contrib-type='author'][xref/@ref-type='aff']/name"
             role="error">
@@ -3207,6 +3213,12 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--caption must contain a title-->
         <rule context="boxed-text/caption" role="error">
             <report id="box5a" test="not(child::title) and child::p" role="error">Box "caption" should contain a "title" element - change "p" to "title".</report>
+        </rule>
+    </pattern>
+   <pattern><!--paragraphs should not be empty (strip out unicode spaces as well - &#x2003; &#x2009;)-->
+        <rule context="boxed-text/p" role="error">
+            <let name="text" value="replace(.,' | | ','')"/>
+            <assert id="box6a" test="normalize-space($text) or *" role="error">Empty paragraphs should not be used for formatting purposes.</assert>
         </rule>
     </pattern>
    <pattern><!--supplementary-material - only caption or alternatives allowed as a child-->
