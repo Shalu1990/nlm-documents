@@ -3210,15 +3210,20 @@ Use the <let> element to define the attribute if necessary.
             <report id="box4d" test="." role="error">Do not use "xml:lang" attribute on "boxed-text".</report>
         </rule>
     </pattern>
-   <pattern><!--caption must contain a title-->
+   <pattern><!--box caption must contain a title-->
         <rule context="boxed-text/caption" role="error">
             <report id="box5a" test="not(child::title) and child::p" role="error">Box "caption" should contain a "title" element - change "p" to "title".</report>
+        </rule>
+    </pattern>
+   <pattern><!--box caption should not contain the box paragraphs-->
+        <rule context="boxed-text/caption[title][p]" role="error">
+            <report id="box5b" test="." role="error">Box "caption" should only contain a "title" element. Move paragraphs to be direct children of "boxed-text".</report>
         </rule>
     </pattern>
    <pattern><!--paragraphs should not be empty (strip out unicode spaces as well - &#x2003; &#x2009;)-->
         <rule context="boxed-text/p" role="error">
             <let name="text" value="replace(.,' | | ','')"/>
-            <assert id="box6a" test="normalize-space($text) or *" role="error">Empty paragraphs should not be used for formatting purposes.</assert>
+            <assert id="box6" test="normalize-space($text) or *" role="error">Empty paragraphs should not be used for formatting purposes.</assert>
         </rule>
     </pattern>
    <pattern><!--supplementary-material - only caption or alternatives allowed as a child-->
