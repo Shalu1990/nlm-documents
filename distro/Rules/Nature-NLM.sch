@@ -1187,8 +1187,9 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="aff[$maestro='yes'][contains(.,'Deceased')]" role="error">
-         <report id="aj-aunote2b" test=".">Do not use "aff" for deceased information - use author notes instead. Refer to Tagging Instructions.</report>
+      <rule context="aff[$maestro='yes'][normalize-space(.) or *][not(institution or addr-line or country) or ext-link/@ext-link-type='url']"
+            role="error">
+         <report id="aj-aunote2c" test=".">"aff" does not contain expected child elements (<value-of select="text()"/>). If this is an institutional or personal address, add missing child elements. If this is biographical or other information about the author, please use author notes instead. Refer to Tagging Instructions.</report>
       </rule>
   </pattern>
    <pattern><!--correction articles should contain a related-article element-->
@@ -1359,6 +1360,11 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
+      <rule context="aff[not(normalize-space(.) or *)]" role="error"><!--Affiliation should not be empty-->
+         <report id="aff3d" test=".">"aff" should not be empty. Either add affiliation information or delete.</report>
+      </rule>
+  </pattern>
+   <pattern>
       <rule context="addr-line[not(parent::address)]" role="error">
          <assert id="aff10a" test="@content-type">"addr-line" should have a 'content-type' attribute. Allowed values are: street, city, state, and zip.</assert>
       </rule>
@@ -1366,6 +1372,12 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="addr-line[@content-type]" role="error">
          <assert id="aff10b" test="matches(@content-type,'^(street|city|state|zip)$')">Unexpected value for "addr-line" 'content-type' attribute (<value-of select="@content-type"/>). Allowed values are: street, city, state, and zip.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="addr-line[@content-type]/*[not(self::sup or self::sub)]"
+            role="error">
+         <report id="aff10c" test=".">"addr-line" (content-type='<value-of select="parent::addr-line/@content-type"/>') contains unexpected child element(s): "<value-of select="local-name()"/>".</report>
       </rule>
   </pattern>
    <pattern>
