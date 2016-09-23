@@ -293,13 +293,15 @@
 				<axsl:apply-templates select="." mode="schematron-select-full-path"/>
 			</axsl:attribute>
 		</xsl:if>
-		  
+		
+		<xsl:if test="function-available('saxon:line-number')">
 		<axsl:attribute name="line-number">
                    <axsl:value-of select="saxon:line-number(current())"/>        
                 </axsl:attribute>	
                 <axsl:attribute name="column-number">
                    <axsl:value-of select="saxon:column-number(current())"/>
                 </axsl:attribute>
+		</xsl:if>
                 <svrl:text>
 			<xsl:apply-templates mode="text" />
 	
@@ -375,12 +377,14 @@
 				<axsl:apply-templates select="." mode="schematron-select-full-path"/>
 			</axsl:attribute>
 		</xsl:if>
+		<xsl:if test="function-available('saxon:line-number')">
 	         <axsl:attribute name="line-number">
                    <axsl:value-of select="saxon:line-number(current())"/>
                 </axsl:attribute>
                 <axsl:attribute name="column-number">
                    <axsl:value-of select="saxon:column-number(current())"/>
-                </axsl:attribute> 
+                </axsl:attribute>
+		</xsl:if>	
 		<svrl:text>
 			<xsl:apply-templates mode="text" />
 
