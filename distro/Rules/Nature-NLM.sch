@@ -76,6 +76,11 @@ Use the <let> element to define the attribute if necessary.
         value="if ($journals//npg:Journal[npg:pcode=$pcode]/npg:isTransitionJournal='true') then 'yes'     else ()"/>
   <let name="maestro-rj"
         value="if (matches($pcode,'^(maestrorj|npgdelor|testnatevent|testpalevent|nplants|nrdp|nmicrobiol|nenergy|natrevmats|natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem|natsustain)$')) then 'yes'     else ()"/>
+  <let name="maestro-springer"
+        value="if (matches($pcode,'^(natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem|natsustain)$')) then 'yes' else 'no'"/>
+  <let name="springer-id"
+        value="if ($pcode='natastron') then '41550' else         if ($pcode='natbiomedeng') then '41551' else         if ($pcode='natecolevol') then '41559' else         if ($pcode='nathumbehav') then '41562' else         if ($pcode='natrevchem') then '41570' else         ()"/>
+   <!--add info for natsustain once have the springer id-->
   <let name="maestro"
         value="if (matches($pcode,'^(testnatevent|testpalevent)$')) then 'no' else      if ($maestro-aj='yes' or $maestro-rj='yes') then 'yes' else ()"/>
   <let name="npj_journal"
@@ -86,7 +91,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjquantmats|natastron|natbiomedeng|natecolevol|nathumbehav|natrevchem|npjprecisiononcology|npj2dmaterials|npjdepression|npjdigitalmed|natsustain)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'three'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjquantmats|npjprecisiononcology|npj2dmaterials|npjdepression|npjdigitalmed)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'three'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj|testnatfile|testpalfile|paldelor|testnatevent|npgdelor|testpalevent)$')) then 'yes' else 'no'"/>
   <let name="collection"
@@ -896,7 +901,7 @@ Use the <let> element to define the attribute if necessary.
          <assert id="oa-aj2c" test="elocation-id">An "elocation-id" should be used in "<value-of select="$journal-title"/>".</assert>
       </rule>
   </pattern>
-   <pattern><!--elocation-id should be numerical, i.e. does not start with 'e' or leading zeros-->
+   <pattern>
       <rule context="article[$maestro='yes']/front/article-meta/elocation-id"
             role="error">
          <assert id="oa-aj2d" test="matches(.,'^[1-9][0-9]*$')">"elocation-id" in "<value-of select="$journal-title"/>" should be a numerical value only (with no leading zeros), not "<value-of select="."/>".</assert>
@@ -915,7 +920,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--error in pcode, but numerical value ok-->
-      <rule context="article[$maestro='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
+      <rule context="article[$maestro='yes' and $maestro-springer='no']//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
          <let name="derivedPcode" value="tokenize(.,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
@@ -924,7 +929,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--pcode ok but error in numerical value-->
-      <rule context="article[$maestro='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id']"
+      <rule context="article[$maestro='yes' and $maestro-springer='no' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
          <let name="derivedPcode" value="tokenize(.,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
@@ -933,7 +938,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--errors in pcode and numerical value-->
-      <rule context="article[$maestro='yes']//article-meta/article-id[@pub-id-type='publisher-id']"
+      <rule context="article[$maestro='yes' and $maestro-springer='no']//article-meta/article-id[@pub-id-type='publisher-id']"
             role="error">
          <let name="derivedPcode" value="tokenize(.,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace(.,$derivedPcode,'')"/>
@@ -942,7 +947,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--Does doi match article-id? # check formatting of nplants DOIs #-->
-      <rule context="article[$maestro='yes']//article-meta/article-id[@pub-id-type='doi']"
+      <rule context="article[$maestro='yes' and $maestro-springer='no']//article-meta/article-id[@pub-id-type='doi']"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)-->
          <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
@@ -990,7 +995,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro='yes']//fig[not(@specific-use='suppinfo')]//graphic[@xlink:href][not(@xlink:href='')]"
+      <rule context="article[$maestro='yes' and $maestro-springer='no']//fig[not(@specific-use='suppinfo')]//graphic[@xlink:href][not(@xlink:href='')]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
          <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
@@ -1003,7 +1008,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro='yes']//fig[not(@specific-use='suppinfo')]//supplementary-material[@content-type='slide'][@xlink:href]"
+      <rule context="article[$maestro='yes' and $maestro-springer='no']//fig[not(@specific-use='suppinfo')]//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
          <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
@@ -1016,7 +1021,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-rj='yes']//fig[@specific-use='suppinfo']//graphic[@xlink:href]"
+      <rule context="article[$maestro-rj='yes' and $maestro-springer='no']//fig[@specific-use='suppinfo']//graphic[@xlink:href]"
             role="error">
          <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
@@ -1028,7 +1033,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro='yes']//table-wrap//graphic[@xlink:href]"
+      <rule context="article[$maestro='yes' and $maestro-springer='no']//table-wrap//graphic[@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
          <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
@@ -1041,7 +1046,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro='yes']//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
+      <rule context="article[$maestro='yes' and $maestro-springer='no']//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
          <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
@@ -1054,7 +1059,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid)]"
+      <rule context="article[$maestro='yes' and $maestro-springer='no']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid)]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
          <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
@@ -1067,7 +1072,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--graphical abstract filename-->
-      <rule context="article[$maestro='yes']//floats-group/graphic[@content-type='toc-image'][contains(@xlink:href,'.')]"
+      <rule context="article[$maestro='yes' and $maestro-springer='no']//floats-group/graphic[@content-type='toc-image'][contains(@xlink:href,'.')]"
             role="error">
          <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
          <let name="numericValue" value="replace($article-id,$derivedPcode,'')"/>
@@ -1078,7 +1083,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro='yes']//floats-group/supplementary-material[@xlink:href][matches(@id,'^s[0-9]+$')][not(@content-type='isa-tab')]"
+      <rule context="article[$maestro='yes' and $maestro-springer='no']//floats-group/supplementary-material[@xlink:href][matches(@id,'^s[0-9]+$')][not(@content-type='isa-tab')]"
             role="error">
       <!--let name="filename" value="functx:substring-after-last(functx:substring-before-last(base-uri(.),'.'),'/')"/--><!--or not($article-id=$filename)--> 
          <let name="derivedPcode" value="tokenize($article-id,'[0-9][0-9]')[1]"/>
@@ -1211,7 +1216,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--elocation-id follows expected format (three-digit article number)-->
-      <rule context="article[$new-eloc='three']/front/article-meta/elocation-id"
+      <rule context="article[$new-eloc='three' and $maestro-springer='no']/front/article-meta/elocation-id"
             role="error">
          <let name="year" value="substring(replace($article-id,$pcode,''),1,4)"/>
          <let name="artnum" value="replace(replace($article-id,$pcode,''),$year,'')"/>
@@ -1222,7 +1227,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--elocation-id follows expected format (four-digit article number-->
-      <rule context="article[$new-eloc='four']/front/article-meta/elocation-id"
+      <rule context="article[$new-eloc='four' and $maestro-springer='no']/front/article-meta/elocation-id"
             role="error">
          <let name="year" value="substring(replace($article-id,$pcode,''),1,4)"/>
          <let name="artnum" value="replace(replace($article-id,$pcode,''),$year,'')"/>
@@ -1253,6 +1258,182 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article[@article-type='af']/front/article-meta[$npj_journal='yes'][not(abstract[@abstract-type='long-summary'])]"
             role="error">
          <report id="npj1a" test=".">All Articles (article-type "af") in "<value-of select="$journal-title"/>" should have an editorial summary (abstract with 'abstract-type="long-summary"'). If you have not been provided with the text for this summary, please contact Springer Nature Production.</report>
+      </rule>
+  </pattern>
+   <pattern><!--error in basic article id format, should be 's' + springer id dash yyy dash aaaa-->
+      <rule context="article[$maestro-springer='yes']//article-meta/article-id[@pub-id-type='publisher-id'][not(matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$'))]"
+            role="error">
+         <report id="ms-aid1a" test=".">Article id (<value-of select="."/>) does not follow expected format, i.e. <value-of select="concat('s',$springer-id,'-yyy-nnnn')"/>, where 'yyy' represents the final three digits of the acceptance year and 'nnnn' is the manuscript number. Other rules are based on having a correct article id and therefore will not be run.</report>
+      </rule>
+  </pattern>
+   <pattern><!--error in journal id-->
+      <rule context="article[$maestro-springer='yes']//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
+            role="error">
+         <let name="derivedSpringerId"
+              value="substring-after(tokenize(.,'-')[1],'s')"/>
+         <let name="derivedAcceptanceYear" value="tokenize(.,'-')[2]"/>
+         <let name="acceptanceYear"
+              value="../history/date[@date-type='accepted']/year"/>
+         <let name="manuscriptNo" value="tokenize(.,'-')[3]"/>
+         <report id="ms-aid1b"
+                 test="not($springer-id=$derivedSpringerId) and concat('2',$derivedAcceptanceYear) eq $acceptanceYear">Unexpected value of journal id (<value-of select="$derivedSpringerId"/>) used in article id (<value-of select="."/>). The journal id for "<value-of select="$journal-title"/>" is "<value-of select="$springer-id"/>", so the expected article id is <value-of select="concat('s',$springer-id,'-',$derivedAcceptanceYear,'-',$manuscriptNo)"/>. Other rules are based on having a correct article id and therefore will not be run.</report>
+      </rule>
+  </pattern>
+   <pattern><!--error in acceptance year-->
+      <rule context="article[$maestro-springer='yes']//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
+            role="error">
+         <let name="derivedSpringerId"
+              value="substring-after(tokenize(.,'-')[1],'s')"/>
+         <let name="derivedAcceptanceYear" value="tokenize(.,'-')[2]"/>
+         <let name="acceptanceYear"
+              value="../history/date[@date-type='accepted']/year"/>
+         <let name="manuscriptNo" value="tokenize(.,'-')[3]"/>
+         <report id="ms-aid1c"
+                 test="$springer-id=$derivedSpringerId and not(concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Unexpected value for acceptance year (<value-of select="$derivedAcceptanceYear"/>) used in article id (<value-of select="."/>). The acceptance year is "<value-of select="$acceptanceYear"/>", so the expected article id is <value-of select="concat('s',$springer-id,'-',substring-after($acceptanceYear,'2'),'-',$manuscriptNo)"/>. Other rules are based on having a correct article id and therefore will not be run.</report>
+      </rule>
+  </pattern>
+   <pattern><!--error in journal id and acceptance year-->
+      <rule context="article[$maestro-springer='yes']//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
+            role="error">
+         <let name="derivedSpringerId"
+              value="substring-after(tokenize(.,'-')[1],'s')"/>
+         <let name="derivedAcceptanceYear" value="tokenize(.,'-')[2]"/>
+         <let name="acceptanceYear"
+              value="../history/date[@date-type='accepted']/year"/>
+         <let name="manuscriptNo" value="tokenize(.,'-')[3]"/>
+         <report id="ms-aid1d"
+                 test="not($springer-id=$derivedSpringerId) and not(concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Unexpected value for journal id (<value-of select="$derivedSpringerId"/>) and acceptance year (<value-of select="$derivedAcceptanceYear"/>) used in article id (<value-of select="."/>). The journal id for "<value-of select="$journal-title"/>" is "<value-of select="$springer-id"/>" and the acceptance year is "<value-of select="$acceptanceYear"/>", so the expected article id is <value-of select="concat('s',$springer-id,'-',substring-after($acceptanceYear,'2'),'-',$manuscriptNo)"/>. Other rules are based on having a correct article id and therefore will not be run.</report>
+      </rule>
+  </pattern>
+   <pattern><!--Does doi match article-id? -->
+      <rule context="article[$maestro-springer='yes']//article-meta/article-id[@pub-id-type='doi']"
+            role="error">
+         <let name="derivedSpringerId"
+              value="substring-after(tokenize($article-id,'-')[1],'s')"/>
+         <let name="derivedAcceptanceYear" value="tokenize($article-id,'-')[2]"/>
+         <let name="acceptanceYear"
+              value="../history/date[@date-type='accepted']/year"/>
+         <let name="derivedDoi" value="concat('10.1038/',$article-id)"/>
+         <assert id="ms-doi1"
+                 test=".=$derivedDoi or not($springer-id=$derivedSpringerId and concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Article DOI (<value-of select="."/>) does not match the expected value based on the article id (<value-of select="$derivedDoi"/>).</assert>
+      </rule>
+  </pattern>
+   <pattern><!--elocation-id follows expected format (three- or four-digit article number)-->
+      <rule context="article[$maestro-springer='yes']/front/article-meta[article-id[@pub-id-type='publisher-id']/matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]/elocation-id"
+            role="error">
+         <let name="year" value="substring(tokenize($article-id,'-')[2],2,2)"/>
+         <let name="artnum" value="tokenize($article-id,'-')[3]"/>
+         <let name="fullartnum"
+              value="if (starts-with($artnum,'0')) then substring($artnum,2,3) else $artnum"/>
+         <let name="eloc" value="concat($year,$fullartnum)"/>
+         <assert id="ms-eloc1" test=".=$eloc">Mismatch between elocation-id/article number (<value-of select="."/>) and expected value based on article id: <value-of select="$eloc"/>.</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[$maestro-springer='yes']//fig[not(@specific-use='suppinfo')]//graphic[@xlink:href][not(@xlink:href='')]"
+            role="error">
+         <let name="derivedSpringerId"
+              value="substring-after(tokenize($article-id,'-')[1],'s')"/>
+         <let name="derivedAcceptanceYear" value="tokenize($article-id,'-')[2]"/>
+         <let name="acceptanceYear"
+              value="ancestor::article/front/article-meta/history/date[@date-type='accepted']/year"/>
+         <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="fig-number"
+              value="replace(replace($fig-image,$article-id,''),'-','')"/>
+         <assert id="ms-file1"
+                 test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^f[1-9][0-9]*[a-z]?$') or not($springer-id eq $derivedSpringerId and concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Unexpected filename for figure image (<value-of select="$fig-image"/>). Expected format is "<value-of select="concat($article-id,'-f')"/>"+number (i.e. article id followed by '-f' and the figure number).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[$maestro-springer='yes']//fig[not(@specific-use='suppinfo')]//supplementary-material[@content-type='slide'][@xlink:href]"
+            role="error">
+         <let name="derivedSpringerId"
+              value="substring-after(tokenize($article-id,'-')[1],'s')"/>
+         <let name="derivedAcceptanceYear" value="tokenize($article-id,'-')[2]"/>
+         <let name="acceptanceYear"
+              value="ancestor::article/front/article-meta/history/date[@date-type='accepted']/year"/>
+         <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="fig-number"
+              value="replace(replace($fig-image,$article-id,''),'-','')"/>
+         <assert id="ms-file2"
+                 test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^pf[1-9][0-9]*[a-z]?$') or not($springer-id=$derivedSpringerId and concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Unexpected filename for figure slide (<value-of select="$fig-image"/>). Expected format is "<value-of select="concat($article-id,'-pf')"/>"+number (i.e. article id followed by '-pf' and the figure number).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[$maestro-springer='yes']//fig[@specific-use='suppinfo']//graphic[@xlink:href]"
+            role="error">
+         <let name="derivedSpringerId"
+              value="substring-after(tokenize($article-id,'-')[1],'s')"/>
+         <let name="derivedAcceptanceYear" value="tokenize($article-id,'-')[2]"/>
+         <let name="acceptanceYear"
+              value="ancestor::article/front/article-meta/history/date[@date-type='accepted']/year"/>
+         <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="fig-number"
+              value="replace(replace($fig-image,$article-id,''),'-','')"/>
+         <assert id="ms-file3"
+                 test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^sf[1-9][0-9]*[a-z]?$') or not($springer-id=$derivedSpringerId and concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Unexpected filename for supplementary figure image (<value-of select="$fig-image"/>). Expected format is "<value-of select="concat($article-id,'-sf')"/>"+number (i.e. article id followed by '-sf' and the figure number).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[$maestro-springer='yes']//table-wrap//graphic[@xlink:href]"
+            role="error">
+         <let name="derivedSpringerId"
+              value="substring-after(tokenize($article-id,'-')[1],'s')"/>
+         <let name="derivedAcceptanceYear" value="tokenize($article-id,'-')[2]"/>
+         <let name="acceptanceYear"
+              value="ancestor::article/front/article-meta/history/date[@date-type='accepted']/year"/>
+         <let name="tab-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="tab-number"
+              value="replace(replace($tab-image,$article-id,''),'-','')"/>
+         <assert id="ms-file4"
+                 test="starts-with($tab-image,concat($article-id,'-')) and matches($tab-number,'^t[1-9][0-9]*?$') or not($springer-id=$derivedSpringerId and concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Unexpected filename for table image (<value-of select="$tab-image"/>). Expected format is "<value-of select="concat($article-id,'-t')"/>"+number (i.e. article id followed by '-t' and the table number).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[$maestro-springer='yes']//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
+            role="error">
+         <let name="derivedSpringerId"
+              value="substring-after(tokenize($article-id,'-')[1],'s')"/>
+         <let name="derivedAcceptanceYear" value="tokenize($article-id,'-')[2]"/>
+         <let name="acceptanceYear"
+              value="ancestor::article/front/article-meta/history/date[@date-type='accepted']/year"/>
+         <let name="tab-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="tab-number"
+              value="replace(replace($tab-image,$article-id,''),'-','')"/>
+         <assert id="ms-file5"
+                 test="starts-with($tab-image,concat($article-id,'-')) and matches($tab-number,'^pt[1-9][0-9]*?$') or not($springer-id=$derivedSpringerId and concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Unexpected filename for table slide (<value-of select="$tab-image"/>). Expected format is "<value-of select="concat($article-id,'-pt')"/>"+number (i.e. article id followed by '-pt' and the table number).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[$maestro-springer='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid)]"
+            role="error">
+         <let name="derivedSpringerId"
+              value="substring-after(tokenize($article-id,'-')[1],'s')"/>
+         <let name="derivedAcceptanceYear" value="tokenize($article-id,'-')[2]"/>
+         <let name="acceptanceYear"
+              value="ancestor::article/front/article-meta/history/date[@date-type='accepted']/year"/>
+         <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="ill-number"
+              value="replace(replace($ill-image,$article-id,''),'-','')"/>
+         <assert id="ms-file6"
+                 test="starts-with($ill-image,concat($article-id,'-')) and matches($ill-number,'^i[1-9][0-9]*?$') or not($springer-id=$derivedSpringerId and concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Unexpected filename for illustration (<value-of select="$ill-image"/>). Expected format is "<value-of select="concat($article-id,'-i')"/>"+number (i.e. article id followed by '-i' and the illustration number).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[$maestro-springer='yes']//floats-group/supplementary-material[@xlink:href][matches(@id,'^s[0-9]+$')][not(@content-type='isa-tab')]"
+            role="error">
+         <let name="derivedSpringerId"
+              value="substring-after(tokenize($article-id,'-')[1],'s')"/>
+         <let name="derivedAcceptanceYear" value="tokenize($article-id,'-')[2]"/>
+         <let name="acceptanceYear"
+              value="ancestor::article/front/article-meta/history/date[@date-type='accepted']/year"/>
+         <let name="supp-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="supp-number"
+              value="replace(replace($supp-image,$article-id,''),'-','')"/>
+         <let name="supp-id" value="@id"/>
+         <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+         <assert id="ms-file8"
+                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) or starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,$supp-id) or not($springer-id=$derivedSpringerId and concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Unexpected filename for supplementary information (<value-of select="@xlink:href"/>). Expected format is "<value-of select="concat($article-id,'-',$supp-id,'.',$extension)"/>" (i.e. article id followed by '-s' and the supplementary material number).</assert>
       </rule>
   </pattern>
    <pattern><!--"is-data-descriptor-to should be added by sync tool-->
