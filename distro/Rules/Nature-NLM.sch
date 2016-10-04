@@ -902,7 +902,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro='yes']/front/article-meta/elocation-id"
+      <rule context="article[$maestro='yes' and $maestro-springer='no']/front/article-meta/elocation-id"
             role="error">
          <assert id="oa-aj2d" test="matches(.,'^[1-9][0-9]*$')">"elocation-id" in "<value-of select="$journal-title"/>" should be a numerical value only (with no leading zeros), not "<value-of select="."/>".</assert>
       </rule>
@@ -1260,14 +1260,14 @@ Use the <let> element to define the attribute if necessary.
          <report id="npj1a" test=".">All Articles (article-type "af") in "<value-of select="$journal-title"/>" should have an editorial summary (abstract with 'abstract-type="long-summary"'). If you have not been provided with the text for this summary, please contact Springer Nature Production.</report>
       </rule>
   </pattern>
-   <pattern><!--error in basic article id format, should be 's' + springer id dash yyy dash aaaa-->
-      <rule context="article[$maestro-springer='yes']//article-meta/article-id[@pub-id-type='publisher-id'][not(matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$'))]"
+   <pattern><!--error in basic article id format, should be 's' + springer id dash yyy dash aaaa; exclude test articles-->
+      <rule context="article[$maestro-springer='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id'][not(matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$'))]"
             role="error">
          <report id="ms-aid1a" test=".">Article id (<value-of select="."/>) does not follow expected format, i.e. <value-of select="concat('s',$springer-id,'-yyy-nnnn')"/>, where 'yyy' represents the final three digits of the acceptance year and 'nnnn' is the manuscript number. Other rules are based on having a correct article id and therefore will not be run.</report>
       </rule>
   </pattern>
    <pattern><!--error in journal id-->
-      <rule context="article[$maestro-springer='yes']//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
+      <rule context="article[$maestro-springer='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
             role="error">
          <let name="derivedSpringerId"
               value="substring-after(tokenize(.,'-')[1],'s')"/>
@@ -1280,7 +1280,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--error in acceptance year-->
-      <rule context="article[$maestro-springer='yes']//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
+      <rule context="article[$maestro-springer='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
             role="error">
          <let name="derivedSpringerId"
               value="substring-after(tokenize(.,'-')[1],'s')"/>
@@ -1293,7 +1293,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--error in journal id and acceptance year-->
-      <rule context="article[$maestro-springer='yes']//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
+      <rule context="article[$maestro-springer='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
             role="error">
          <let name="derivedSpringerId"
               value="substring-after(tokenize(.,'-')[1],'s')"/>
