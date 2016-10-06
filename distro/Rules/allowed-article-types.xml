@@ -1788,6 +1788,15 @@
         <article-type code="misscont">
             <article-heading>Mission Control</article-heading>
         </article-type>
+        <article-type code="mr">
+            <article-heading>Meeting Report</article-heading>
+        </article-type>
+        <article-type code="ob">
+			<article-heading>Obituary</article-heading>
+		</article-type>
+        <article-type code="qa">
+            <article-heading>Q&amp;A</article-heading>
+        </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
         </article-type>
@@ -1920,6 +1929,9 @@
         </article-type>
         <article-type code="hl">
             <article-heading>Research Highlight</article-heading>
+        </article-type>
+        <article-type code="regrep">
+            <article-heading>Registered Report</article-heading>
         </article-type>
         <article-type code="rs">
             <article-heading>Resource</article-heading>
