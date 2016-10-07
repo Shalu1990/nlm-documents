@@ -2650,6 +2650,12 @@ Use the <let> element to define the attribute if necessary.
          <assert id="notes4d" test="@xlink:href=.">'xlink:href' should be equal to the link text (<value-of select="."/>).</assert>
       </rule>
   </pattern>
+   <pattern><!--incorrect use of @notes-type="database-links"-->
+      <rule context="back/notes[@notes-type='database-links'][starts-with(p/text()[1],'Supplement')]"
+            role="error">
+         <report id="notes5" test=".">Do not use "notes notes-type='database-links'" for note about supplementary information. Mark this up as a closenote, using "fn-group content-type='closenotes'" and "fn fn-type='other'".</report>
+      </rule>
+  </pattern>
    <pattern><!--elements not allowed as children of mixed-citation-->
       <rule context="ref/mixed-citation/alternatives|ref/mixed-citation/chem-struct|ref/mixed-citation/conf-date|ref/mixed-citation/conf-loc|ref/mixed-citation/conf-name|ref/mixed-citation/conf-sponsor|ref/mixed-citation/date|ref/mixed-citation/date-in-citation|ref/mixed-citation/inline-graphic|ref/mixed-citation/institution|ref/mixed-citation/label|ref/mixed-citation/name|ref/mixed-citation/name-alternatives|ref/mixed-citation/private-char|ref/mixed-citation/role|ref/mixed-citation/series|ref/mixed-citation/size|ref/mixed-citation/supplement"
             role="error">
