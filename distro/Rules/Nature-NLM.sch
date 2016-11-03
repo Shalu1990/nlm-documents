@@ -1318,14 +1318,10 @@ Use the <let> element to define the attribute if necessary.
                  test=".=$derivedDoi or not($springer-id=$derivedSpringerId and concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Article DOI (<value-of select="."/>) does not match the expected value based on the article id (<value-of select="$derivedDoi"/>).</assert>
       </rule>
   </pattern>
-   <pattern><!--elocation-id follows expected format (three- or four-digit article number)-->
+   <pattern><!--elocation-id follows expected format (equivalent to manuscript number)-->
       <rule context="article[$maestro-springer='yes']/front/article-meta[article-id[@pub-id-type='publisher-id']/matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]/elocation-id"
             role="error">
-         <let name="year" value="substring(tokenize($article-id,'-')[2],2,2)"/>
-         <let name="artnum" value="tokenize($article-id,'-')[3]"/>
-         <let name="fullartnum"
-              value="if (starts-with($artnum,'0')) then substring($artnum,2,3) else $artnum"/>
-         <let name="eloc" value="concat($year,$fullartnum)"/>
+         <let name="eloc" value="tokenize($article-id,'-')[3]"/>
          <assert id="ms-eloc1" test=".=$eloc">Mismatch between elocation-id/article number (<value-of select="."/>) and expected value based on article id: <value-of select="$eloc"/>.</assert>
       </rule>
   </pattern>
