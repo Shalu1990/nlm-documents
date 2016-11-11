@@ -224,7 +224,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--Journal with eissn in ontology has ISSN epub declared in XML-->
-      <rule context="journal-meta" role="error">
+      <rule context="journal-meta[not($pcode='nature' and $volume le '426')]"
+            role="error">
          <assert id="jmeta5c1b"
                  test="not($journal-title) or not($journals//npg:Journal[dc:title=$journal-title]) or not($journals//npg:Journal[npg:pcode=$pcode]) or not($journals//npg:Journal[npg:pcode=$pcode][bibo:eissn]) or issn[@pub-type='epub']">
             <value-of select="$journal-title"/> should have eISSN (<value-of select="$journals//npg:Journal[npg:pcode=$pcode]/bibo:eissn"/>).</assert>
