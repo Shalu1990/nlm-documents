@@ -1180,13 +1180,7 @@ Use the <let> element to define the attribute if necessary.
          <assert id="oa-aj11a" test=".=tokenize($article-heading,' or ')">Mismatch between article-heading (<value-of select="."/>) and expected value based on article-type "<value-of select="$article-type"/>" (<value-of select="$article-heading"/>).</assert>
       </rule>
   </pattern>
-   <pattern><!--article-heading should be used-->
-      <rule context="article[$transition='yes']/front/article-meta/article-categories[not(subj-group/@subj-group-type='article-heading')]"
-            role="error">
-         <report id="transition1" test=".">Article categories should contain a "subj-group" element with attribute "subj-group-type='article-heading'".</report>
-      </rule>
-  </pattern>
-   <pattern><!--article-heading should be used-->
+  <pattern><!--article-heading should be used-->
       <rule context="article[$maestro='yes' and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta/article-categories"
             role="error">
          <let name="article-heading"
