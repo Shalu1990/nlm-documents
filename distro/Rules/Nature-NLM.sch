@@ -99,6 +99,19 @@ Use the <let> element to define the attribute if necessary.
   <let name="full-text"
         value="if (//article/body[@specific-use='search-only']) then 'no' else 'yes'"/>
   
+   <!--Publication and history dates-->
+   <let name="pubdate"
+        value="//article/front/article-meta/(pub-date[@pub-type eq 'aap']|pub-date[@pub-type eq 'nfv']|pub-date[@pub-type eq 'aop']|pub-date[@pub-type eq 'epub']|pub-date[@pub-type eq 'collection']|pub-date[@pub-type eq 'cover-date'])[1][day and month and year]/concat(year,month,day)"/>
+   <let name="usable-pubdate"
+        value="concat(substring($pubdate,1,4),'-',substring($pubdate,5,2),'-',substring($pubdate,7,2))"/>
+   <let name="accepted-date"
+        value="//history[count(date[@date-type='accepted']) eq 1]/date[@date-type='accepted'][day and month and year]/concat(year,month,day)"/>
+   <let name="usable-acc-date"
+        value="concat(substring($accepted-date,1,4),'-',substring($accepted-date,5,2),'-',substring($accepted-date,7,2))"/>
+   <let name="received-date"
+        value="//history[count(date[@date-type='received']) eq 1]/date[@date-type='received'][day and month and year]/concat(year,month,day)"/>
+   <let name="usable-rec-date"
+        value="concat(substring($received-date,1,4),'-',substring($received-date,5,2),'-',substring($received-date,7,2))"/>
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
          <let name="article-type"
@@ -211,7 +224,8 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--Journal with eissn in ontology has ISSN epub declared in XML-->
-      <rule context="journal-meta" role="error">
+      <rule context="journal-meta[not($pcode='nature' and $volume le '426')]"
+            role="error">
          <assert id="jmeta5c1b"
                  test="not($journal-title) or not($journals//npg:Journal[dc:title=$journal-title]) or not($journals//npg:Journal[npg:pcode=$pcode]) or not($journals//npg:Journal[npg:pcode=$pcode][bibo:eissn]) or issn[@pub-type='epub']">
             <value-of select="$journal-title"/> should have eISSN (<value-of select="$journals//npg:Journal[npg:pcode=$pcode]/bibo:eissn"/>).</assert>
@@ -318,6 +332,12 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--only one of each subj-group-type used-->
       <rule context="subj-group/subject[@id]" role="error">
          <report id="ameta2i" test=".">Do not use 'id' attribute on "subject".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article-categories[not($transition='yes')]/subj-group[@subj-group-type='article-heading']/subject[@content-type][not(@content-type='article-heading')]">
+         <let name="content-type" value="@content-type"/>
+         <report id="ameta3a" test=".">"subject" within "subj-group" (subj-group-type="article-heading") should have a 'content-type' attribute equal to "article-heading", not "<value-of select="$content-type"/>".</report>
       </rule>
   </pattern>
    <pattern><!--subject codes should have @content-type="npg.subject" (for transforms to work properly) in new journals-->
@@ -855,6 +875,40 @@ Use the <let> element to define the attribute if necessary.
                  test="following-sibling::custom-meta[meta-name='publish-type']">'publish-type' should only be used once in "custom-meta".</report>
       </rule>
   </pattern>
+   <pattern><!-- history should have accepted date -->
+      <rule context="history[not($pcode='pcrj')][not(date[not(@date-type)])][not(date[@date-type='accepted'])]">
+         <report id="histdate5a" test=".">"history" should contain an accepted date.</report>
+      </rule>
+   </pattern>
+   <pattern><!-- history should have received date -->
+      <rule context="history[not($pcode='pcrj')][not(date[not(@date-type)])][not(date[@date-type='received'])]">
+         <report id="histdate5b" test=".">"history" should contain an received date.</report>
+      </rule>
+   </pattern>
+   <pattern> <!-- Accepted date should be earlier or equal to publication date-->
+      <rule context="history/date[@date-type='accepted'][day and month and year][$accepted-date gt $pubdate]">
+         <report id="histdate6a" test=".">Accepted date (<value-of select="$usable-acc-date"/>) is later than the publication date (<value-of select="$usable-pubdate"/>). Please check which value is correct.</report>
+      </rule>
+   </pattern>
+   <pattern><!-- Revised date should be earlier than accepted date -->
+      <rule context="history/date[@date-type='rev-recd'][day and month and year]">
+         <let name="revised-date" value="concat(year,month,day)"/>
+         <let name="usable-rev-date" value="concat(year,'-',month,'-',day)"/>
+         <report id="histdate6b" test="$revised-date gt $accepted-date">Revision date (<value-of select="$usable-rev-date"/>) is later than the accepted date (<value-of select="$usable-acc-date"/>). Please check which value is correct.</report>
+      </rule>
+   </pattern>
+   <pattern><!-- Revised date should be later than received date -->
+      <rule context="history/date[@date-type='rev-recd'][day and month and year]">
+         <let name="revised-date" value="concat(year,month,day)"/>
+         <let name="usable-rev-date" value="concat(year,'-',month,'-',day)"/>
+         <report id="histdate6c" test="$revised-date lt $received-date">Revision date (<value-of select="$usable-rev-date"/>) is earlier than the received date (<value-of select="$usable-rec-date"/>). Please check which value is correct.</report>
+      </rule>
+   </pattern>
+   <pattern><!-- Received date should be earlier or equal to acceptance date -->
+      <rule context="history/date[@date-type='accepted'][day and month and year][$accepted-date lt $received-date]">
+         <report id="histdate6d" test=".">Accepted date (<value-of select="$usable-acc-date"/>) is earlier than the received date (<value-of select="$usable-rec-date"/>). Please check which value is correct.</report>
+      </rule>
+   </pattern>
    <pattern>
       <rule context="article[$maestro='yes' and $allowed-article-types/journal[@pcode=$pcode]]"
             role="error">
@@ -1127,13 +1181,7 @@ Use the <let> element to define the attribute if necessary.
          <assert id="oa-aj11a" test=".=tokenize($article-heading,' or ')">Mismatch between article-heading (<value-of select="."/>) and expected value based on article-type "<value-of select="$article-type"/>" (<value-of select="$article-heading"/>).</assert>
       </rule>
   </pattern>
-   <pattern><!--article-heading should be used-->
-      <rule context="article[$transition='yes']/front/article-meta/article-categories[not(subj-group/@subj-group-type='article-heading')]"
-            role="error">
-         <report id="transition1" test=".">Article categories should contain a "subj-group" element with attribute "subj-group-type='article-heading'".</report>
-      </rule>
-  </pattern>
-   <pattern><!--article-heading should be used-->
+  <pattern><!--article-heading should be used-->
       <rule context="article[$maestro='yes' and $allowed-article-types/journal[@pcode=$pcode]/article-type[$article-type=@code]]/front/article-meta/article-categories"
             role="error">
          <let name="article-heading"
@@ -1266,8 +1314,8 @@ Use the <let> element to define the attribute if necessary.
          <report id="ms-aid1a" test=".">Article id (<value-of select="."/>) does not follow expected format, i.e. <value-of select="concat('s',$springer-id,'-yyy-nnnn')"/>, where 'yyy' represents the final three digits of the acceptance year and 'nnnn' is the manuscript number. Other rules are based on having a correct article id and therefore will not be run.</report>
       </rule>
   </pattern>
-   <pattern><!--error in journal id-->
-      <rule context="article[$maestro-springer='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
+   <pattern><!--error in journal id (back half articles) -->
+      <rule context="article[$accepted-date][$maestro-springer='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
             role="error">
          <let name="derivedSpringerId"
               value="substring-after(tokenize(.,'-')[1],'s')"/>
@@ -1279,8 +1327,8 @@ Use the <let> element to define the attribute if necessary.
                  test="not($springer-id=$derivedSpringerId) and concat('2',$derivedAcceptanceYear) eq $acceptanceYear">Unexpected value of journal id (<value-of select="$derivedSpringerId"/>) used in article id (<value-of select="."/>). The journal id for "<value-of select="$journal-title"/>" is "<value-of select="$springer-id"/>", so the expected article id is <value-of select="concat('s',$springer-id,'-',$derivedAcceptanceYear,'-',$manuscriptNo)"/>. Other rules are based on having a correct article id and therefore will not be run.</report>
       </rule>
   </pattern>
-   <pattern><!--error in acceptance year-->
-      <rule context="article[$maestro-springer='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
+   <pattern><!--error in acceptance year (back half articles) -->
+      <rule context="article[$accepted-date][$maestro-springer='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
             role="error">
          <let name="derivedSpringerId"
               value="substring-after(tokenize(.,'-')[1],'s')"/>
@@ -1292,8 +1340,8 @@ Use the <let> element to define the attribute if necessary.
                  test="$springer-id=$derivedSpringerId and not(concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Unexpected value for acceptance year (<value-of select="$derivedAcceptanceYear"/>) used in article id (<value-of select="."/>). The acceptance year is "<value-of select="$acceptanceYear"/>", so the expected article id is <value-of select="concat('s',$springer-id,'-',substring-after($acceptanceYear,'2'),'-',$manuscriptNo)"/>. Other rules are based on having a correct article id and therefore will not be run.</report>
       </rule>
   </pattern>
-   <pattern><!--error in journal id and acceptance year-->
-      <rule context="article[$maestro-springer='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
+   <pattern><!--error in journal id and acceptance year (back half articles) -->
+      <rule context="article[$accepted-date][$maestro-springer='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
             role="error">
          <let name="derivedSpringerId"
               value="substring-after(tokenize(.,'-')[1],'s')"/>
@@ -1303,6 +1351,14 @@ Use the <let> element to define the attribute if necessary.
          <let name="manuscriptNo" value="tokenize(.,'-')[3]"/>
          <report id="ms-aid1d"
                  test="not($springer-id=$derivedSpringerId) and not(concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Unexpected value for journal id (<value-of select="$derivedSpringerId"/>) and acceptance year (<value-of select="$derivedAcceptanceYear"/>) used in article id (<value-of select="."/>). The journal id for "<value-of select="$journal-title"/>" is "<value-of select="$springer-id"/>" and the acceptance year is "<value-of select="$acceptanceYear"/>", so the expected article id is <value-of select="concat('s',$springer-id,'-',substring-after($acceptanceYear,'2'),'-',$manuscriptNo)"/>. Other rules are based on having a correct article id and therefore will not be run.</report>
+      </rule>
+  </pattern>
+   <pattern><!--error in journal id (front half articles) -->
+      <rule context="article[not($accepted-date)][$maestro-springer='yes' and not(ends-with($article-id,'test'))]//article-meta/article-id[@pub-id-type='publisher-id'][matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]"
+            role="error">
+         <let name="derivedSpringerId"
+              value="substring-after(tokenize(.,'-')[1],'s')"/>
+         <report id="ms-aid1e" test="not($springer-id=$derivedSpringerId)">Unexpected value of journal id (<value-of select="$derivedSpringerId"/>) used in article id (<value-of select="."/>). The journal id for "<value-of select="$journal-title"/>" is "<value-of select="$springer-id"/>".</report>
       </rule>
   </pattern>
    <pattern><!--Does doi match article-id? -->
@@ -2964,8 +3020,7 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern>
-        <rule context="xref[@ref-type='table-fn'][not($transition='yes')]"
-            role="error"><!--Does symbol in link match symbol on footnote?-->
+        <rule context="xref[@ref-type='table-fn']" role="error"><!--Does symbol in link match symbol on footnote?; will now test transition journal articles too - 9/11/16-->
             <let name="id" value="@rid"/>
             <let name="sup-link" value="descendant::text()"/>
             <let name="sup-fn"
