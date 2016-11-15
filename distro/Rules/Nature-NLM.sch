@@ -103,15 +103,15 @@ Use the <let> element to define the attribute if necessary.
    <let name="pubdate"
         value="//article/front/article-meta/(pub-date[@pub-type eq 'aap']|pub-date[@pub-type eq 'nfv']|pub-date[@pub-type eq 'aop']|pub-date[@pub-type eq 'epub']|pub-date[@pub-type eq 'collection']|pub-date[@pub-type eq 'cover-date'])[1][day and month and year]/concat(year,month,day)"/>
    <let name="usable-pubdate"
-        value="//article/front/article-meta/(pub-date[@pub-type eq 'aap']|pub-date[@pub-type eq 'nfv']|pub-date[@pub-type eq 'aop']|pub-date[@pub-type eq 'epub']|pub-date[@pub-type eq 'collection']|pub-date[@pub-type eq 'cover-date'])[1][day and month and year]/concat(day,'-',month,'-',year)"/>
+        value="//article/front/article-meta/(pub-date[@pub-type eq 'aap']|pub-date[@pub-type eq 'nfv']|pub-date[@pub-type eq 'aop']|pub-date[@pub-type eq 'epub']|pub-date[@pub-type eq 'collection']|pub-date[@pub-type eq 'cover-date'])[1][day and month and year]/concat(year,'-',month,'-',day)"/>
    <let name="accepted-date"
         value="//history[count(date[@date-type='accepted']) eq 1]/date[@date-type='accepted'][day and month and year]/concat(year,month,day)"/>
    <let name="usable-acc-date"
-        value="//history[count(date[@date-type='accepted']) eq 1]/date[@date-type='accepted'][day and month and year]/concat(day,'-',month,'-',year)"/>
+        value="//history[count(date[@date-type='accepted']) eq 1]/date[@date-type='accepted'][day and month and year]/concat(year,'-',month,'-',day)"/>
    <let name="received-date"
         value="//history[count(date[@date-type='received']) eq 1]/date[@date-type='received'][day and month and year]/concat(year,month,day)"/>
    <let name="usable-rec-date"
-        value="//history[count(date[@date-type='received']) eq 1]/date[@date-type='received'][day and month and year]/concat(day,'-',month,'-',year)"/>
+        value="//history[count(date[@date-type='received']) eq 1]/date[@date-type='received'][day and month and year]/concat(year,'-',month,'-',day)"/>
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
          <let name="article-type"
@@ -893,14 +893,14 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!-- Revised date should be earlier than accepted date -->
       <rule context="history/date[@date-type='rev-recd'][day and month and year]">
          <let name="revised-date" value="concat(year,month,day)"/>
-         <let name="usable-rev-date" value="concat(day,'-',month,'-',year)"/>
+         <let name="usable-rev-date" value="concat(year,'-',month,'-',day)"/>
          <report id="histdate6b" test="$revised-date gt $accepted-date">Revision date (<value-of select="$usable-rev-date"/>) is later than the accepted date (<value-of select="$usable-acc-date"/>). Please check which value is correct.</report>
       </rule>
    </pattern>
    <pattern><!-- Revised date should be later than received date -->
       <rule context="history/date[@date-type='rev-recd'][day and month and year]">
          <let name="revised-date" value="concat(year,month,day)"/>
-         <let name="usable-rev-date" value="concat(day,'-',month,'-',year)"/>
+         <let name="usable-rev-date" value="concat(year,'-',month,'-',day)"/>
          <report id="histdate6c" test="$revised-date lt $received-date">Revision date (<value-of select="$usable-rev-date"/>) is earlier than the received date (<value-of select="$usable-rec-date"/>). Please check which value is correct.</report>
       </rule>
    </pattern>
