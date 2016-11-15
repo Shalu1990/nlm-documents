@@ -103,15 +103,15 @@ Use the <let> element to define the attribute if necessary.
    <let name="pubdate"
         value="//article/front/article-meta/(pub-date[@pub-type eq 'aap']|pub-date[@pub-type eq 'nfv']|pub-date[@pub-type eq 'aop']|pub-date[@pub-type eq 'epub']|pub-date[@pub-type eq 'collection']|pub-date[@pub-type eq 'cover-date'])[1][day and month and year]/concat(year,month,day)"/>
    <let name="usable-pubdate"
-        value="//article/front/article-meta/(pub-date[@pub-type eq 'aap']|pub-date[@pub-type eq 'nfv']|pub-date[@pub-type eq 'aop']|pub-date[@pub-type eq 'epub']|pub-date[@pub-type eq 'collection']|pub-date[@pub-type eq 'cover-date'])[1][day and month and year]/concat(year,'-',month,'-',day)"/>
+        value="concat(substring($pubdate,1,4),'-',substring($pubdate,5,2),'-',substring($pubdate,7,2))"/>
    <let name="accepted-date"
         value="//history[count(date[@date-type='accepted']) eq 1]/date[@date-type='accepted'][day and month and year]/concat(year,month,day)"/>
    <let name="usable-acc-date"
-        value="//history[count(date[@date-type='accepted']) eq 1]/date[@date-type='accepted'][day and month and year]/concat(year,'-',month,'-',day)"/>
+        value="concat(substring($accepted-date,1,4),'-',substring($accepted-date,5,2),'-',substring($accepted-date,7,2))"/>
    <let name="received-date"
         value="//history[count(date[@date-type='received']) eq 1]/date[@date-type='received'][day and month and year]/concat(year,month,day)"/>
    <let name="usable-rec-date"
-        value="//history[count(date[@date-type='received']) eq 1]/date[@date-type='received'][day and month and year]/concat(year,'-',month,'-',day)"/>
+        value="concat(substring($received-date,1,4),'-',substring($received-date,5,2),'-',substring($received-date,7,2))"/>
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
          <let name="article-type"
