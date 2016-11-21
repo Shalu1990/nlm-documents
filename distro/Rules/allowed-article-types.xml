@@ -708,6 +708,9 @@
         <article-type code="pv">
             <article-heading>PrimeView</article-heading>
         </article-type>
+        <article-type code="video">
+            <article-heading>Video</article-heading>
+        </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
@@ -1676,7 +1679,7 @@
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
         </article-type>
-          <article-type code="rs">
+        <article-type code="rs">
             <article-heading>Resource</article-heading>
         </article-type>
         <article-type code="add">
@@ -1800,6 +1803,9 @@
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
         </article-type>
+        <article-type code="video">
+            <article-heading>Video</article-heading>
+        </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
@@ -1858,6 +1864,9 @@
         </article-type>
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
+        </article-type>
+        <article-type code="video">
+            <article-heading>Video</article-heading>
         </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>

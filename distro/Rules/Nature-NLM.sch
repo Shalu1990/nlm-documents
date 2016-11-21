@@ -901,12 +901,12 @@ Use the <let> element to define the attribute if necessary.
       <rule context="history/date[@date-type='rev-recd'][day and month and year]">
          <let name="revised-date" value="concat(year,month,day)"/>
          <let name="usable-rev-date" value="concat(year,'-',month,'-',day)"/>
-         <report id="histdate6c" test="$revised-date lt $received-date">Revision date (<value-of select="$usable-rev-date"/>) is earlier than the received date (<value-of select="$usable-rec-date"/>). Please check which value is correct.</report>
+         <report id="histdate6c" test="$revised-date lt $received-date">Received date (<value-of select="$usable-rec-date"/>) is later than the revision date (<value-of select="$usable-rev-date"/>). Please check which value is correct.</report>
       </rule>
    </pattern>
    <pattern><!-- Received date should be earlier or equal to acceptance date -->
       <rule context="history/date[@date-type='accepted'][day and month and year][$accepted-date lt $received-date]">
-         <report id="histdate6d" test=".">Accepted date (<value-of select="$usable-acc-date"/>) is earlier than the received date (<value-of select="$usable-rec-date"/>). Please check which value is correct.</report>
+         <report id="histdate6d" test=".">Received date (<value-of select="$usable-rec-date"/>) is later than the accepted date (<value-of select="$usable-acc-date"/>). Please check which value is correct.</report>
       </rule>
    </pattern>
    <pattern>
@@ -1189,12 +1189,6 @@ Use the <let> element to define the attribute if necessary.
          <assert id="oa-aj11c" test="subj-group/@subj-group-type='article-heading'">Article categories should contain a "subj-group" element with attribute "subj-group-type='article-heading'". The value of the child "subject" element (with attribute "content-type='article-heading'") should be: <value-of select="$article-heading"/>.</assert>
       </rule>
   </pattern>
-   <pattern><!--authors should link to their affiliated body, even when there is only one aff-->
-      <rule context="article[$maestro='yes']/front/article-meta[aff]/contrib-group//contrib[@contrib-type='author'][not(ancestor::collab[@collab-type='authors'])]"
-            role="error">
-         <assert id="oa-aj12" test="xref[@ref-type='aff']">All authors should be linked to an affiliated body. Insert xref with 'ref-type="aff"'.</assert>
-      </rule>
-  </pattern>
    <pattern><!--pub-date should have @pub-type="epub"-->
       <rule context="article[$maestro-aj='yes']/front/article-meta/pub-date"
             role="error">
@@ -1362,7 +1356,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--Does doi match article-id? -->
-      <rule context="article[$maestro-springer='yes']//article-meta/article-id[@pub-id-type='doi']"
+      <rule context="article[$accepted-date][$maestro-springer='yes']//article-meta/article-id[@pub-id-type='doi']"
             role="error">
          <let name="derivedSpringerId"
               value="substring-after(tokenize($article-id,'-')[1],'s')"/>
@@ -1374,6 +1368,13 @@ Use the <let> element to define the attribute if necessary.
                  test=".=$derivedDoi or not($springer-id=$derivedSpringerId and concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Article DOI (<value-of select="."/>) does not match the expected value based on the article id (<value-of select="$derivedDoi"/>).</assert>
       </rule>
   </pattern>
+   <pattern><!--Does doi match article-id? -->
+      <rule context="article[not($accepted-date)][$maestro-springer='yes']//article-meta/article-id[@pub-id-type='doi']"
+            role="error">
+         <let name="derivedDoi" value="concat('10.1038/',$article-id)"/>
+         <assert id="ms-doi1b" test=".=$derivedDoi">Article DOI (<value-of select="."/>) does not match the expected value based on the article id (<value-of select="$derivedDoi"/>).</assert>
+      </rule>
+  </pattern>
    <pattern><!--elocation-id follows expected format (equivalent to manuscript number)-->
       <rule context="article[$maestro-springer='yes']/front/article-meta[article-id[@pub-id-type='publisher-id']/matches(.,'^s[0-9]{5}-[0-9]{3}-[0-9]{4}$')]/elocation-id"
             role="error">
@@ -1382,7 +1383,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-springer='yes']//fig[not(@specific-use='suppinfo')]//graphic[@xlink:href][not(@xlink:href='')]"
+      <rule context="article[$accepted-date][$maestro-springer='yes']//fig[not(@specific-use='suppinfo')]//graphic[@xlink:href][not(@xlink:href='')]"
             role="error">
          <let name="derivedSpringerId"
               value="substring-after(tokenize($article-id,'-')[1],'s')"/>
@@ -1397,7 +1398,17 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-springer='yes']//fig[not(@specific-use='suppinfo')]//supplementary-material[@content-type='slide'][@xlink:href]"
+      <rule context="article[not($accepted-date)][$maestro-springer='yes']//fig[not(@specific-use='suppinfo')]//graphic[@xlink:href][not(@xlink:href='')]"
+            role="error">
+         <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="fig-number"
+              value="replace(replace($fig-image,$article-id,''),'-','')"/>
+         <assert id="ms-file1b"
+                 test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^f[1-9][0-9]*[a-z]?$')">Unexpected filename for figure image (<value-of select="$fig-image"/>). Expected format is "<value-of select="concat($article-id,'-f')"/>"+number (i.e. article id followed by '-f' and the figure number).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[$accepted-date][$maestro-springer='yes']//fig[not(@specific-use='suppinfo')]//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
          <let name="derivedSpringerId"
               value="substring-after(tokenize($article-id,'-')[1],'s')"/>
@@ -1409,6 +1420,16 @@ Use the <let> element to define the attribute if necessary.
               value="replace(replace($fig-image,$article-id,''),'-','')"/>
          <assert id="ms-file2"
                  test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^pf[1-9][0-9]*[a-z]?$') or not($springer-id=$derivedSpringerId and concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Unexpected filename for figure slide (<value-of select="$fig-image"/>). Expected format is "<value-of select="concat($article-id,'-pf')"/>"+number (i.e. article id followed by '-pf' and the figure number).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[not($accepted-date)][$maestro-springer='yes']//fig[not(@specific-use='suppinfo')]//supplementary-material[@content-type='slide'][@xlink:href]"
+            role="error">
+         <let name="fig-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="fig-number"
+              value="replace(replace($fig-image,$article-id,''),'-','')"/>
+         <assert id="ms-file2b"
+                 test="starts-with($fig-image,concat($article-id,'-')) and matches($fig-number,'^pf[1-9][0-9]*[a-z]?$')">Unexpected filename for figure slide (<value-of select="$fig-image"/>). Expected format is "<value-of select="concat($article-id,'-pf')"/>"+number (i.e. article id followed by '-pf' and the figure number).</assert>
       </rule>
   </pattern>
    <pattern>
@@ -1427,7 +1448,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-springer='yes']//table-wrap//graphic[@xlink:href]"
+      <rule context="article[$accepted-date][$maestro-springer='yes']//table-wrap//graphic[@xlink:href]"
             role="error">
          <let name="derivedSpringerId"
               value="substring-after(tokenize($article-id,'-')[1],'s')"/>
@@ -1442,7 +1463,17 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-springer='yes']//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
+      <rule context="article[not($accepted-date)][$maestro-springer='yes']//table-wrap//graphic[@xlink:href]"
+            role="error">
+         <let name="tab-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="tab-number"
+              value="replace(replace($tab-image,$article-id,''),'-','')"/>
+         <assert id="ms-file4b"
+                 test="starts-with($tab-image,concat($article-id,'-')) and matches($tab-number,'^t[1-9][0-9]*?$')">Unexpected filename for table image (<value-of select="$tab-image"/>). Expected format is "<value-of select="concat($article-id,'-t')"/>"+number (i.e. article id followed by '-t' and the table number).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[$accepted-date][$maestro-springer='yes']//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
             role="error">
          <let name="derivedSpringerId"
               value="substring-after(tokenize($article-id,'-')[1],'s')"/>
@@ -1457,7 +1488,17 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-springer='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid)]"
+      <rule context="article[not($accepted-date)][$maestro-springer='yes']//table-wrap//supplementary-material[@content-type='slide'][@xlink:href]"
+            role="error">
+         <let name="tab-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="tab-number"
+              value="replace(replace($tab-image,$article-id,''),'-','')"/>
+         <assert id="ms-file5b"
+                 test="starts-with($tab-image,concat($article-id,'-')) and matches($tab-number,'^pt[1-9][0-9]*?$')">Unexpected filename for table slide (<value-of select="$tab-image"/>). Expected format is "<value-of select="concat($article-id,'-pt')"/>"+number (i.e. article id followed by '-pt' and the table number).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[$accepted-date][$maestro-springer='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid)]"
             role="error">
          <let name="derivedSpringerId"
               value="substring-after(tokenize($article-id,'-')[1],'s')"/>
@@ -1472,7 +1513,42 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="article[$maestro-springer='yes']//floats-group/supplementary-material[@xlink:href][matches(@id,'^s[0-9]+$')][not(@content-type='isa-tab')]"
+      <rule context="article[not($accepted-date)][$maestro-springer='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][not(@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid)]"
+            role="error">
+         <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="ill-number"
+              value="replace(replace($ill-image,$article-id,''),'-','')"/>
+         <assert id="ms-file6b"
+                 test="starts-with($ill-image,concat($article-id,'-')) and matches($ill-number,'^i[1-9][0-9]*?$')">Unexpected filename for illustration (<value-of select="$ill-image"/>). Expected format is "<value-of select="concat($article-id,'-i')"/>"+number (i.e. article id followed by '-i' and the illustration number).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[$accepted-date][$maestro-springer='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid]"
+            role="error">
+         <let name="derivedSpringerId"
+              value="substring-after(tokenize($article-id,'-')[1],'s')"/>
+         <let name="derivedAcceptanceYear" value="tokenize($article-id,'-')[2]"/>
+         <let name="acceptanceYear"
+              value="ancestor::article/front/article-meta/history/date[@date-type='accepted']/year"/>
+         <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="ill-number"
+              value="replace(replace($ill-image,$article-id,''),'-','')"/>
+         <assert id="ms-file7"
+                 test="starts-with($ill-image,concat($article-id,'-')) and matches($ill-number,'^toc') or not($springer-id=$derivedSpringerId and concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Unexpected filename for graphical abstract (<value-of select="$ill-image"/>). Expected format is "<value-of select="concat($article-id,'-toc')"/>" (i.e. article id followed by '-toc').</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[not($accepted-date)][$maestro-springer='yes']//floats-group/graphic[@content-type='illustration'][contains(@xlink:href,'.')][@id=ancestor::article//abstract[@abstract-type]//xref[@ref-type='other']/@rid]"
+            role="error">
+         <let name="ill-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="ill-number"
+              value="replace(replace($ill-image,$article-id,''),'-','')"/>
+         <assert id="ms-file7b"
+                 test="starts-with($ill-image,concat($article-id,'-')) and matches($ill-number,'^toc')">Unexpected filename for graphical abstract (<value-of select="$ill-image"/>). Expected format is "<value-of select="concat($article-id,'-toc')"/>" (i.e. article id followed by '-toc').</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article[$accepted-date][$maestro-springer='yes']//floats-group/supplementary-material[@xlink:href][matches(@id,'^s[0-9]+$')][not(@content-type='isa-tab')]"
             role="error">
          <let name="derivedSpringerId"
               value="substring-after(tokenize($article-id,'-')[1],'s')"/>
@@ -1488,6 +1564,30 @@ Use the <let> element to define the attribute if necessary.
                  test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) or starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,$supp-id) or not($springer-id=$derivedSpringerId and concat('2',$derivedAcceptanceYear) eq $acceptanceYear)">Unexpected filename for supplementary information (<value-of select="@xlink:href"/>). Expected format is "<value-of select="concat($article-id,'-',$supp-id,'.',$extension)"/>" (i.e. article id followed by '-s' and the supplementary material number).</assert>
       </rule>
   </pattern>
+   <pattern>
+      <rule context="article[not($accepted-date)][$maestro-springer='yes']//floats-group/supplementary-material[@xlink:href][matches(@id,'^s[0-9]+$')][not(@content-type='isa-tab')]"
+            role="error">
+         <let name="supp-image" value="substring-before(@xlink:href,'.')"/>
+         <let name="supp-number"
+              value="replace(replace($supp-image,$article-id,''),'-','')"/>
+         <let name="supp-id" value="@id"/>
+         <let name="extension" value="functx:substring-after-last(@xlink:href,'.')"/>
+         <assert id="ms-file8b"
+                 test="not(matches($extension,'^(eps|gif|jpg|jpeg|bmp|png|pict|ps|tiff|wmf|doc|docx|pdf|pps|ppt|pptx|xls|xlsx|tar|tgz|zip|c|csv|htm|html|rtf|txt|xml|aiff|au|avi|midi|mov|mp2|mp3|mp4|mpa|mpg|noa|qt|ra|ram|rv|swf|wav|wmv|cif|exe|pdb|sdf|sif)$')) or starts-with($supp-image,concat($article-id,'-')) and matches($supp-number,$supp-id)">Unexpected filename for supplementary information (<value-of select="@xlink:href"/>). Expected format is "<value-of select="concat($article-id,'-',$supp-id,'.',$extension)"/>" (i.e. article id followed by '-s' and the supplementary material number).</assert>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="article-meta[$pcode='natrevchem' and matches($article-type,'^(rv|pe)$')][not(abstract[@abstract-type='short-summary']//xref[@ref-type='other'])]">
+         <let name="atype"
+              value="if ($article-type='rv') then 'Review Articles' else 'Perspectives'"/>
+         <report id="ms-ga1" test=".">All <value-of select="$atype"/> in Nature Reviews Chemistry should have a graphical abstract referenced in the short summary. If this image has not been supplied, please contact the SpringerNature production team. If it has been supplied, please refer to the JATS Tagging Instructions for details of the required mark-up.</report>
+      </rule>
+   </pattern>
+   <pattern>
+      <rule context="article-meta[$pcode='natrevchem' and not(matches($article-type,'^(rv|pe)$'))][abstract[@abstract-type='short-summary']//xref[@ref-type='other']]">
+         <report id="ms-ga2" test=".">Only Review Articles and Perspectives in Nature Reviews Chemistry should have a graphical abstract. Please delete from this <value-of select="//subject[@content-type='article-heading']/text()"/> article.</report>
+      </rule>
+   </pattern>
    <pattern><!--"is-data-descriptor-to should be added by sync tool-->
       <rule context="article[$pcode='sdata'][$article-type='dd'][not(descendant::subj-group[@subj-group-type='study-parameters'])]//related-article[@related-article-type='is-data-descriptor-to']"
             role="error">
@@ -1656,13 +1756,14 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="corresp[not(phone)]/text()[contains(.,'Tel:') or contains(.,'Tel.')]"
+      <rule context="corresp[not(phone)][contains(string-join(text(),''),'Tel:') or contains(string-join(text(),''),'Tel.')]"
             role="error"><!--phone numbers should be contained in "phone" element-->
          <report id="corres3a" test=".">Please use "phone" element on telephone numbers in correspondence details.</report>
       </rule>
   </pattern>
    <pattern>
-      <rule context="corresp[not(fax)]/text()[contains(.,'Fax')]" role="error"><!--fax numbers should be contained in "fax" element-->
+      <rule context="corresp[not(fax)][contains(string-join(text(),''),'Fax')]"
+            role="error"><!--fax numbers should be contained in "fax" element-->
          <report id="corres3b" test=".">Please use "fax" element on fax numbers in correspondence details.</report>
       </rule>
   </pattern>
@@ -2331,6 +2432,11 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="xref[@ref-type='other'][@rid=ancestor::article//graphic[@content-type='illustration']/@id]/named-content[@content-type='image-align']"><!--xref to illustration should not use named-content for image alignment info-->
          <report id="xref5c" test=".">Do not use "named-content" in "xref" to illustration "<value-of select="parent::xref/@rid"/>" for image alignment information.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[@ref-type='other'][ancestor::abstract/@abstract-type='short-summary'][@rid=ancestor::article//graphic[@content-type='illustration']/@id][@specific-use]"><!--xref to graphical abstract should not have @specific-use for image alignment-->
+         <report id="xref5d" test=".">"xref" to a graphical abstract does not require a 'specific-use' attribute for image alignment. Please delete.</report>
       </rule>
   </pattern>
    <pattern>
