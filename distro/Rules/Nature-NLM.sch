@@ -71,7 +71,7 @@ Use the <let> element to define the attribute if necessary.
   
   <let name="volume" value="article/front/article-meta/volume"/>
   <let name="maestro-aj"
-        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|npjquantmats|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjprecisiononcology|npj2dmaterials|npjdepression|npjdigitalmed)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'yes'     else ()"/>
+        value="if (matches($pcode,'^(nmstr|palmstr|testnatfile|testpalfile|paldelor|mtm|hortres|sdata|bdjteam|palcomms|hgv|npjbiofilms|npjschz|npjpcrm|npjamd|micronano|npjqi|npjquantmats|mto|npjsba|npjmgrav|celldisc|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|cddiscovery|scsandc|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjprecisiononcology|npj2dmaterials|npjdepression|npjdigitalmed)$')) then 'yes'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'yes'     else ()"/>
   <let name="transition"
         value="if ($journals//npg:Journal[npg:pcode=$pcode]/npg:isTransitionJournal='true') then 'yes'     else ()"/>
   <let name="maestro-rj"
@@ -91,7 +91,7 @@ Use the <let> element to define the attribute if necessary.
   <let name="existing-oa-aj"
         value="if (matches($pcode,'^(am|bcj|cddis|ctg|cti|emi|emm|lsa|msb|mtm|mtna|ncomms|nutd|oncsis|psp|scibx|srep|tp)$')) then 'yes'     else ()"/>
   <let name="new-eloc"
-        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjquantmats|npjprecisiononcology|npj2dmaterials|npjdepression|npjdigitalmed)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else if ($pcode eq 'npjnutd' and number($volume) gt 5) then 'three'     else ()"/>
+        value="if (ends-with($article-id,'test')) then 'none'     else if (matches($pcode,'^(bdjteam|palcomms|hgv|npjbiofilms|npjpcrm|npjschz|npjamd|micronano|npjqi|mto|nplants|npjsba|npjmgrav|celldisc|nrdp|npjbcancer|npjparkd|npjscilearn|npjgenmed|npjcompumats|npjregenmed|bdjopen|nmicrobiol|nenergy|cddiscovery|scsandc|natrevmats|npjpollcon|npjvaccines|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjclimatsci|npjflexelectron|npjquantmats|npjprecisiononcology|npj2dmaterials|npjdepression|npjdigitalmed)$')) then 'three'     else if ($pcode eq 'boneres' and number($volume) gt 1) then 'three'     else if ($pcode eq 'mtm' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'three'     else if ($pcode eq 'sdata' and number(substring(replace($article-id,$pcode,''),1,4)) gt 2013) then 'four'     else ()"/>
   <let name="test-journal"
         value="if (matches($pcode,'^(nmstr|palmstr|maestrorj|testnatfile|testpalfile|paldelor|testnatevent|npgdelor|testpalevent)$')) then 'yes' else 'no'"/>
   <let name="collection"
@@ -930,7 +930,6 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--expected volume value should be used in all maestro OA only journals - add mtm, mto, scsandc when needed; not tested for issue-based journals
   	npjpcrm (formerly pcrj) - volume 1 in 1991
-  	npjnutd (formerly nutd) - volume 1 in 2011
   	boneres - volume 1 in 2013
   	hortres, sdata, hgv - volume 1 in 2014
   	nrdp, bdjopen, cddiscovery, celldisc, micronano, npjamd, npjbcancer, npjbiofilms, npjcompumats, npjmgrav, npjparkd, npjqi, npjsba, npjschz, palcomms - volume 1 in 2015
@@ -941,7 +940,7 @@ Use the <let> element to define the attribute if necessary.
          <let name="pub_year"
               value="preceding-sibling::pub-date[@pub-type='epub']/year"/>
          <let name="expected_volume"
-              value="if (matches($pcode,'^(npjpcrm)$')) then $pub_year - 1990 else         if (matches($pcode,'^(npjnutd)$')) then $pub_year - 2010 else          if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(hortres|sdata|hgv)$')) then $pub_year - 2013 else          if (matches($pcode,'^(bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjcompumats|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms|nrdp)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjgenmed|npjvaccines|npjclimatsci|npjflexelectron|npjquantmats|npjprecisiononcology|npjregenmed|npjscilearn|npjdepression)$')) then $pub_year - 2015 else          if (matches($pcode,'^(npj2dmaterials|npjdigitalmed)$')) then $pub_year - 2016 else ()"/>
+              value="if (matches($pcode,'^(npjpcrm)$')) then $pub_year - 1990 else         if (matches($pcode,'^(boneres)$')) then $pub_year - 2012 else          if (matches($pcode,'^(hortres|sdata|hgv)$')) then $pub_year - 2013 else          if (matches($pcode,'^(bdjopen|cddiscovery|celldisc|micronano|npjamd|npjbcancer|npjbiofilms|npjcompumats|npjmgrav|npjparkd|npjqi|npjsba|npjschz|palcomms|nrdp)$')) then $pub_year - 2014 else          if (matches($pcode,'^(npjpollcon|sigtrans|npjmolphen|npjcleanwater|npjtracklife|npjscifood|npjmatdeg|npjgenmed|npjvaccines|npjclimatsci|npjflexelectron|npjquantmats|npjprecisiononcology|npjregenmed|npjscilearn|npjdepression)$')) then $pub_year - 2015 else          if (matches($pcode,'^(npj2dmaterials|npjdigitalmed)$')) then $pub_year - 2016 else ()"/>
          <assert id="oa-aj2a3" test=". = $expected_volume">Unexpected volume number: "<value-of select="."/>". For an "<value-of select="$journal-title"/>" article published in <value-of select="$pub_year"/>, the expected volume number is "<value-of select="$expected_volume"/>".</assert>
       </rule>
   </pattern>
@@ -3186,6 +3185,11 @@ Use the <let> element to define the attribute if necessary.
             <assert id="tab12c" test="$nameend gt $namest">In spanning table entries, the value of the 'nameend' (<value-of select="@nameend"/>) attribute should be greater than the 'namest' attribute (<value-of select="@namest"/>).</assert>
         </rule>
     </pattern>
+   <pattern>
+      <rule context="oasis:entry[list//list]">
+         <report id="tab13" test=".">Do not use nested lists in table entries.</report>
+      </rule>
+   </pattern>
    <pattern>
       <rule context="fig//graphic[@xlink:href='' or @mimetype='' or @mime-subtype='']"
             role="error">
