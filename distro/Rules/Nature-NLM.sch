@@ -1766,6 +1766,33 @@ Use the <let> element to define the attribute if necessary.
          <report id="corres3b" test=".">Please use "fax" element on fax numbers in correspondence details.</report>
       </rule>
   </pattern>
+   <pattern><!--email should contain a @ sign-->
+      <rule context="email[@xlink:href][not(contains(@xlink:href,'@'))]"
+            role="error">
+         <report id="corresp4a-1" test=".">"email" (<value-of select="@xlink:href"/>) does not contain an '@' sign. Check where @ should appear. If the link is actually to a url, use "ext-link" with 'ext-link-type="url"' instead.</report>
+      </rule>
+   </pattern>
+   <pattern><!--email should contain a @ sign-->
+      <rule context="email[not(@xlink:href)][not(contains(.,'@'))]" role="error">
+         <report id="corresp4a-2" test=".">"email" (<value-of select="."/>) does not contain an '@' sign. Check where @ should appear. If the link is actually to a url, use "ext-link" with 'ext-link-type="url"' instead.</report>
+      </rule>
+   </pattern>
+   <pattern><!--email should only contain email address-->
+      <rule context="email[starts-with(lower-case(.),'email') or starts-with(lower-case(.),'e-mail')]"
+            role="error">
+         <report id="corresp4b" test=".">Do not include text 'email' inside the "email" tag (<value-of select="."/>). It should contain the email address only</report>
+      </rule>
+   </pattern>
+   <pattern><!--email link should not contain a space-->
+      <rule context="email[contains(@xlink:href,' ')]" role="error">
+         <report id="corresp4c" test=".">"email" 'xlink:href' (<value-of select="@xlink:href"/>) contains a space. It should contain the text of one full email address and nothing else.</report>
+      </rule>
+   </pattern>
+   <pattern><!--email link should not end with a full stop-->
+      <rule context="email[ends-with(@xlink:href,'.')]" role="error">
+         <report id="corresp4d" test=".">"email" 'xlink:href' (<value-of select="@xlink:href"/>) ends with a full stop. It should contain the full email address and nothing else.</report>
+      </rule>
+   </pattern>
    <pattern>
       <rule context="author-notes/fn[@fn-type='conflict']/p" role="error"><!--Conflict of interest statement should not be empty - common in NPG titles. I assume XBuilder auto-generates it-->
          <assert id="conflict1" test="normalize-space(.) or *">Empty "conflict of interest" statement used. Please add text of the statement as used in the pdf.</assert>
@@ -2166,14 +2193,12 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--url starting https should not have extra http added to @xlink:href-->
-      <rule context="ext-link[not($transition='yes')][contains(@xlink:href,'http://http')]"
-            role="error">
+      <rule context="ext-link[contains(@xlink:href,'http://http')]" role="error">
          <report id="url1a" test=".">Do not insert extra "http://" on an 'xlink-href' which already has an http protocol - <value-of select="@xlink:href"/>.</report>
       </rule>
   </pattern>
    <pattern><!--url starting ftp:// should not have extra http added to @xlink:href-->
-      <rule context="ext-link[not($transition='yes')][contains(@xlink:href,'http://ftp://')]"
-            role="error">
+      <rule context="ext-link[contains(@xlink:href,'http://ftp://')]" role="error">
          <report id="url1b" test=".">Do not insert "http://" on an 'xlink-href' to an ftp - <value-of select="@xlink:href"/>.</report>
       </rule>
   </pattern>
@@ -2185,7 +2210,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--@xlink:href shouldn't target doifinder - does not work on Maestro-->
       <rule context="ext-link[contains(@xlink:href,'doifinder')]" role="error">
-         <report id="url1d" test=".">Do not link to doifinder in "ext-link" as this does not work for JATS articles. 'xlink:href' should be: <value-of select="concat('http://dx.doi.org',substring-after(@xlink:href,'doifinder'))"/>.</report>
+         <report id="url1d" test=".">Do not link to doifinder in "ext-link" as this does not work for JATS articles. 'xlink:href' should be: <value-of select="concat('https://doi.org',substring-after(@xlink:href,'doifinder'))"/>.</report>
       </rule>
   </pattern>
    <pattern><!--ext-link should have @xlink:href-->
@@ -2210,6 +2235,12 @@ Use the <let> element to define the attribute if necessary.
       <rule context="ext-link[not($transition='yes')][starts-with(@xlink:href,'mailto')]"
             role="error">
          <report id="url2d" test=".">Do not use "ext-link" for links to email addresses. Use the "email" element, retaining the 'xlink:href' attribute (and delete 'mailto' from it).</report>
+      </rule>
+  </pattern>
+   <pattern><!--ext-link should not be used for email addresses-->
+      <rule context="ext-link[contains(@xlink:href,'@')][not(starts-with(@xlink:href,'http') or starts-with(@xlink:href,'www') or starts-with(@xlink:href,'ftp') or starts-with(@xlink:href,'mailto'))]"
+            role="error">
+         <report id="url2e" test=".">Do not use "ext-link" for links to email addresses. Use the "email" element, retaining the 'xlink:href' attribute.</report>
       </rule>
   </pattern>
    <pattern><!--ext-link should have @xlink:href-->
