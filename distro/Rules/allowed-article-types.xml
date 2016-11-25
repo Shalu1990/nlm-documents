@@ -2022,6 +2022,9 @@
         <article-type code="rv">
             <article-heading>Review Article</article-heading>
         </article-type>
+        <article-type code="video">
+            <article-heading>Video</article-heading>
+        </article-type>
         <article-type code="add">
             <article-heading>Addendum</article-heading>
         </article-type>
