@@ -1770,6 +1770,9 @@
          <article-type code="af">
             <article-heading>Article</article-heading>
         </article-type>
+        <article-type code="ba">
+            <article-heading>Books and Arts</article-heading>
+        </article-type>
         <article-type code="com">
             <article-heading>Comment</article-heading>
         </article-type>
