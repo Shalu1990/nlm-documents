@@ -539,6 +539,9 @@
         <article-type code="ed">
             <article-heading>Editorial</article-heading>
         </article-type>
+        <article-type code="fe">
+            <article-heading>Feature</article-heading>
+        </article-type>
         <article-type code="le">
             <article-heading>Letter</article-heading>
         </article-type>
