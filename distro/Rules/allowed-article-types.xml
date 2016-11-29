@@ -1159,6 +1159,9 @@
         <article-type code="af">
             <article-heading>Article</article-heading>
         </article-type>
+        <article-type code="bo">
+            <article-heading>Book Review</article-heading>
+        </article-type>
         <article-type code="caser">
             <article-heading>Case Report</article-heading>
         </article-type>
