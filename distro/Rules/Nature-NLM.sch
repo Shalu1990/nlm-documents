@@ -448,7 +448,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--technique codes should contain three "named-content" children-->
-      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique'][count(named-content) ne 3]">
+      <rule context="subj-group[not($transition='yes')][@subj-group-type='technique']/subject[@content-type='npg.technique'][count(named-content) ne 3]">
          <report id="tech3" test=".">"technique" contains <value-of select="count(named-content)"/> "named-content" children. It should contain 3, with 'content-type' values of "id", "path" and "version".</report>
       </rule>
   </pattern>
@@ -458,18 +458,23 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--"version" included-->
-      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique'][count(named-content) eq 3 and count(*) eq 3][not(named-content[not(matches(@content-type,'^(id|path|version)$'))])][not(named-content[@content-type='version'])]">
+      <rule context="subj-group[not($transition='yes')][@subj-group-type='technique']/subject[@content-type='npg.technique'][count(named-content) eq 3 and count(*) eq 3][not(named-content[not(matches(@content-type,'^(id|path|version)$'))])][not(named-content[@content-type='version'])]">
          <report id="tech5" test=".">Missing "named-content" with 'content-type="version"' in technique codes. "technique" should contain three "named-content" children, with one of each 'content-type' attribute value: "id", "path" and "version".</report>
       </rule>
   </pattern>
    <pattern><!--"id" included-->
-      <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique'][count(named-content) eq 3 and count(*) eq 3][not(named-content[not(matches(@content-type,'^(id|path|version)$'))])][not(named-content[@content-type='id'])]">
+      <rule context="subj-group[not($transition='yes')][@subj-group-type='technique']/subject[@content-type='npg.technique'][count(named-content) eq 3 and count(*) eq 3][not(named-content[not(matches(@content-type,'^(id|path|version)$'))])][not(named-content[@content-type='id'])]">
          <report id="tech6" test=".">Missing "named-content" with 'content-type="id"' in technique codes. "technique" should contain three "named-content" children, with one of each 'content-type' attribute value: "id", "path" and "version".</report>
       </rule>
   </pattern>
    <pattern><!--"path" included-->
       <rule context="subj-group[@subj-group-type='technique']/subject[@content-type='npg.technique'][count(named-content) eq 3 and count(*) eq 3][not(named-content[not(matches(@content-type,'^(id|path|version)$'))])][not(named-content[@content-type='path'])]">
          <report id="tech7" test=".">Missing "named-content" with 'content-type="path"' in technique codes. "technique" should contain three "named-content" children, with one of each 'content-type' attribute value: "id", "path" and "version".</report>
+      </rule>
+  </pattern>
+   <pattern><!--"path" included-->
+      <rule context="subj-group[$transition='yes'][@subj-group-type='technique']/subject[@content-type='npg.technique'][not(named-content[@content-type='path'])]">
+         <report id="tech7b" test=".">Missing "named-content" with 'content-type="path"' in technique codes.</report>
       </rule>
   </pattern>
    <pattern><!--named-content should only use @content-type-->
