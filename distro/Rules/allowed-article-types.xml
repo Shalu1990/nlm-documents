@@ -539,9 +539,6 @@
         <article-type code="ed">
             <article-heading>Editorial</article-heading>
         </article-type>
-        <article-type code="fe">
-            <article-heading>Feature</article-heading>
-        </article-type>
         <article-type code="le">
             <article-heading>Letter</article-heading>
         </article-type>
@@ -1162,6 +1159,9 @@
         <article-type code="af">
             <article-heading>Article</article-heading>
         </article-type>
+        <article-type code="bo">
+            <article-heading>Book Review</article-heading>
+        </article-type>
         <article-type code="caser">
             <article-heading>Case Report</article-heading>
         </article-type>
@@ -1769,6 +1769,9 @@
 	<journal pcode="natastron">
          <article-type code="af">
             <article-heading>Article</article-heading>
+        </article-type>
+        <article-type code="ba">
+            <article-heading>Books and Arts</article-heading>
         </article-type>
         <article-type code="com">
             <article-heading>Comment</article-heading>
