@@ -2231,8 +2231,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--ext-link @xlink:href should not contain whitespace-->
-      <rule context="ext-link[not($transition='yes')][matches(@xlink:href,'\s')]"
-            role="error">
+      <rule context="ext-link[matches(@xlink:href,'\s')]" role="error">
          <report id="url2c" test=".">"ext-link" 'xlink:href' attribute (<value-of select="@xlink:href"/>) should not contain whitespace - this may create a broken link in the online article. Please delete spaces and new lines.</report>
       </rule>
   </pattern>
@@ -2258,6 +2257,18 @@ Use the <let> element to define the attribute if necessary.
       <rule context="ext-link[@ext-link-type=''][not(ancestor::ref-list[@content-type='data-citations'])][not(ancestor::notes/@notes-type='database-links')]"
             role="error">
          <report id="url3b" test=".">"ext-link" 'ext-link-type' attribute should not be empty. It should be "url" for a link to a website; "ftp" for a link to an ftp site.</report>
+      </rule>
+  </pattern>
+   <pattern><!--doi ext-link should contain 10.NNNN/-->
+      <rule context="ext-link[@ext-link-type='doi'][starts-with(@xlink:href,'https://doi.org/')][not(matches(@xlink:href,'10\.[\d]{4}/'))]"
+            role="error">
+         <report id="url4a" test=".">Unexpected format for DOI "ext-link" (<value-of select="substring-after(@xlink:href,'https://doi.org/')"/>). Expected format is '10.' followed by four digits, a slash and the remainder of the identifier.</report>
+      </rule>
+  </pattern>
+   <pattern><!--doi ext-link should use correct url format-->
+      <rule context="ext-link[@ext-link-type='doi'][matches(.,'10\.[\d]{4}/')][not(starts-with(@xlink:href,'https://doi.org/'))]"
+            role="error">
+         <report id="url4b" test=".">Incorrect url used for Cross Ref DOI link (<value-of select="@xlink:href"/>). Format should be 'https://doi.org/' followed by the DOI.</report>
       </rule>
   </pattern>
    <pattern><!--no empty xrefs for some ref-types-->
@@ -2883,9 +2894,21 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--elocation-id should not contain text 'doi'-->
-      <rule context="ref[not($transition='yes')]/mixed-citation/elocation-id[@content-type='doi']"
+      <rule context="ref/mixed-citation/elocation-id[@content-type='doi']"
             role="error">
-         <report id="eloc1c" test="starts-with(.,'doi')">"elocation-id" should contain the DOI value only - move the text 'doi' and any punctuation to be outside the "doi" element.</report>
+         <report id="eloc1c" test="starts-with(lower-case(.),'doi')">"elocation-id" should contain the DOI value only - move the text 'doi' and any punctuation to be outside the "doi" element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--doi elocation-id should be expected format-->
+      <rule context="ref/mixed-citation/elocation-id[@content-type='doi'][not(matches(.,'10\.[\d]{4}/'))]"
+            role="error">
+         <report id="eloc2a" test=".">Unexpectd format for DOI elocation-id (<value-of select="."/>). Expected format is '10.' followed by four digits, a slash and the remainder of the identifier.</report>
+      </rule>
+  </pattern>
+   <pattern><!--doi elocation-id should not contain text 'doi'-->
+      <rule context="ref/mixed-citation/elocation-id[@content-type='doi'][contains(.,'http')]"
+            role="error">
+         <report id="eloc2b" test=".">"elocation-id" should contain the DOI value only - do not use full http url.</report>
       </rule>
   </pattern>
    <pattern><!--isbn should not contain text 'ISBN'-->
@@ -3161,12 +3184,15 @@ Use the <let> element to define the attribute if necessary.
         </rule>
     </pattern>
    <pattern>
-        <rule context="xref[@ref-type='table-fn']" role="error"><!--Does symbol in link match symbol on footnote?; will now test transition journal articles too - 9/11/16-->
+        <rule context="xref[@ref-type='table-fn'][not($transition='yes')]"
+            role="error"><!--Does symbol in link match symbol on footnote?-->
             <let name="id" value="@rid"/>
             <let name="sup-link" value="descendant::text()"/>
             <let name="sup-fn"
               value="ancestor::article//table-wrap-foot/fn[@id=$id]/label//text()"/>
-            <assert id="tab10c" test="not($sup-fn) or not($sup-link) or $sup-link=$sup-fn">Mismatch on linking text: "<value-of select="$sup-link"/>" in table, but "<value-of select="$sup-fn"/>" in footnote. Please check that correct footnote has been linked to.</assert>
+            <let name="tabName"
+              value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
+        <assert id="tab10c" test="not($sup-fn) or not($sup-link) or $sup-link=$sup-fn">Mismatch on linking text in <value-of select="$tabName"/>: '<value-of select="$sup-link"/>' is used in the xref, but '<value-of select="$sup-fn"/>' is in the footnote (<value-of select="$id"/>). Please check that correct footnote id has been linked to.</assert>
         </rule>
     </pattern>
    <pattern>
@@ -3224,6 +3250,13 @@ Use the <let> element to define the attribute if necessary.
    <pattern>
       <rule context="oasis:entry[list//list]">
          <report id="tab13" test=".">Do not use nested lists in table entries.</report>
+      </rule>
+   </pattern>
+   <pattern>
+      <rule context="table-wrap[descendant::graphic[@specific-use='show']][count(descendant::oasis:entry) eq 1]">
+         <let name="tabName" value="concat('Table ',substring-after(@id, 't'))"/>
+         <report id="tab14" test=".">
+            <value-of select="$tabName"/> is represented by a graphic. Delete empty table with single entry XML markup.</report>
       </rule>
    </pattern>
    <pattern>
