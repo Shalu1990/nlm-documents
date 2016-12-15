@@ -168,8 +168,10 @@ Change history prior to 18 January 2002 deleted. A full change history is kept b
 <!ENTITY alphacrc        "&#x003B1;&#x00302;">   <!-- small alpha circumflex -->
 <!ENTITY alphamacr       "&#x003B1;&#x00304;">   <!-- small alpha macron -->
 <!ENTITY alphatilde      "&#x003B1;&#x00303;">   <!-- small alpha tilde -->
+<!ENTITY aolig           "[aolig]">              <!-- latin small letter ao -->
 <!ENTITY Aringacute      "&#x001FA;">            <!-- capital A ring with acute over -->
 <!ENTITY astln           "&#x0002A;&#x00336;">   <!-- asterix with line -->
+<!ENTITY avlig           "[avlig]">              <!-- latin small letter av -->
 <!ENTITY bacute          "b&#x00301;">           <!-- small b acute  -->
 <!ENTITY Bauriol         "[Bauriol]">            <!-- large italic B in Auriol font -->
 <!ENTITY Bcallig         "&#x1D435;&#x0FE00;">   <!-- capital B calligraphy -->
@@ -262,6 +264,7 @@ Change history prior to 18 January 2002 deleted. A full change history is kept b
 <!ENTITY dmacr           "d&#x00304;">           <!-- small d macron -->
 <!ENTITY Dtilde          "D&#x00303;">           <!-- capital D tilde -->
 <!ENTITY dtilde          "d&#x00303;">           <!-- small d tilde -->
+<!ENTITY eogonacute      "&#x0119;&#x0301;">     <!-- latin small letter e with ogonek and acute -->
 <!ENTITY Ebreve          "&#x00114;">            <!-- capital E breve -->
 <!ENTITY ebreve          "&#x00115;">            <!-- small e breve -->
 <!ENTITY ecedil          "&#x00229;">            <!-- small e cedilla -->
@@ -389,6 +392,7 @@ Change history prior to 18 January 2002 deleted. A full change history is kept b
 <!ENTITY Omegatilde      "&#x003A9;&#x00303;">   <!-- capital omega with tilde over -->
 <!ENTITY omegatilde      "&#x003C9;&#x00303;">   <!-- small omega with tilde over -->
 <!ENTITY oogon           "&#x001EB;">            <!-- small o ogonek -->
+<!ENTITY oslashogon      "[oslashogon]">         <!-- latin small letter o with stroke and ogonek -->
 <!ENTITY pacute          "&#x01E55;">            <!-- small p acute -->
 <!ENTITY partacute       "&#x02202;&#x00301;">   <!-- partial differential with acute over -->
 <!ENTITY Pcallig         "&#x1D443;&#x0FE00;">   <!-- capital P calligraphy style -->
@@ -402,6 +406,7 @@ Change history prior to 18 January 2002 deleted. A full change history is kept b
 <!ENTITY phicirc         "&#x003C6;&#x00302;">   <!-- small phi with circumflex -->
 <!ENTITY phimacr         "&#x003C6;&#x00304;">   <!-- small phi macron -->
 <!ENTITY phiundl         "&#x003C6;&#x00332;">   <!-- small phi underlined -->
+<!ENTITY planck          "[planck]">             <!-- planck constant-->
 <!ENTITY plusdash        "&#x02508;&#x020D3;">   <!-- plus sign with dashed line -->
 <!ENTITY plusln          "[plusln]">             <!-- plus sign with line -->
 <!ENTITY Pmacr           "P&#x00304;">           <!-- capital p macron -->
