@@ -2260,13 +2260,13 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--doi ext-link should contain 10.NNNN/-->
-      <rule context="ext-link[@ext-link-type='doi'][starts-with(@xlink:href,'https://doi.org/')][not(matches(@xlink:href,'10\.[\d]{4}/'))]"
+      <rule context="ext-link[@ext-link-type='doi'][starts-with(@xlink:href,'https://doi.org/')][not(matches(@xlink:href,'10\.[\d]{4}\d?/'))]"
             role="error">
          <report id="url4a" test=".">Unexpected format for DOI "ext-link" (<value-of select="substring-after(@xlink:href,'https://doi.org/')"/>). Expected format is '10.' followed by four digits, a slash and the remainder of the identifier.</report>
       </rule>
   </pattern>
    <pattern><!--doi ext-link should use correct url format-->
-      <rule context="ext-link[@ext-link-type='doi'][matches(.,'10\.[\d]{4}/')][not(starts-with(@xlink:href,'https://doi.org/'))]"
+      <rule context="ext-link[@ext-link-type='doi'][matches(.,'10\.[\d]{4}\d?/')][not(starts-with(@xlink:href,'https://doi.org/'))]"
             role="error">
          <report id="url4b" test=".">Incorrect url used for Cross Ref DOI link (<value-of select="@xlink:href"/>). Format should be 'https://doi.org/' followed by the DOI.</report>
       </rule>
@@ -2900,9 +2900,9 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--doi elocation-id should be expected format-->
-      <rule context="ref/mixed-citation/elocation-id[@content-type='doi'][not(matches(.,'10\.[\d]{4}/'))]"
+      <rule context="ref/mixed-citation/elocation-id[@content-type='doi'][not(matches(.,'10\.[\d]{4}\d?/'))]"
             role="error">
-         <report id="eloc2a" test=".">Unexpectd format for DOI elocation-id (<value-of select="."/>). Expected format is '10.' followed by four digits, a slash and the remainder of the identifier.</report>
+         <report id="eloc2a" test=".">Unexpected format for DOI elocation-id (<value-of select="."/>). Expected format is '10.' followed by four digits, a slash and the remainder of the identifier.</report>
       </rule>
   </pattern>
    <pattern><!--doi elocation-id should not contain text 'doi'-->
