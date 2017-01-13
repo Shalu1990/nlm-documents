@@ -2631,6 +2631,16 @@ Use the <let> element to define the attribute if necessary.
 			      <report id="form7" test=".">Formulae should not appear inside italics. Please close "italic" element before start of "inline-formula" and reopen afterwards (if appropriate).</report>
 		    </rule>
 	  </pattern>
+   <pattern>
+		    <rule context="inline-formula[inline-formula]">
+			      <report id="form7b" test=".">Two "inline-formula" elements wrapped round the same expression. Please delete extra element.</report>
+		    </rule>
+	  </pattern>
+   <pattern>
+		    <rule context="inline-formula[@id][not($transition='yes')]">
+			      <report id="form7c" test=".">'id' attribute is not required on inline-formulae, as these are not linked to. Please delete.</report>
+		    </rule>
+	  </pattern>
    <pattern><!--back - label or title should not be used-->
       <rule context="back/label | back/title" role="error">
          <report id="back1" test=".">Do not use "<name/>" at start of "back" matter.</report>
