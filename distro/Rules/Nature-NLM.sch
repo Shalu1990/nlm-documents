@@ -532,6 +532,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="tech8k" test=".">Only 'content-type' should be used as an attribute on "named-content" in "technique". Do not use 'xml:lang'.</report>
       </rule>
   </pattern>
+   <pattern><!--technique codes should have @content-type="npg.technique" (for transforms to work properly) in new journals-->
+      <rule context="subj-group[@subj-group-type='technique']/subject[not(@content-type='npg.technique')]">
+         <report id="tech9" test=".">In technique subject groups ('subj-group="technique"'), child "subject" elements should have 'content-type="npg.technique"' (not "<value-of select="@content-type"/>").</report>
+      </rule>
+  </pattern>
    <pattern>
       <rule context="trans-title-group[parent::title-group][not($transition='yes')]"
             role="error"><!--No unexpected children of article title-group used-->
@@ -757,7 +762,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>  
   </pattern>
    <pattern><!--licence link is present-->
-      <rule context="license[not(@xlink:href)][contains(license-p,'http://creativecommons.org/licenses/')]"
+      <rule context="license[not(@xlink:href)][count(license-p) eq 1][contains(license-p,'http://creativecommons.org/licenses/')]"
             role="error">
          <let name="stub"
               value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
@@ -769,7 +774,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>  
   </pattern>
    <pattern><!--licence type is present-->
-      <rule context="license[not(@license-type)][contains(license-p,'http://creativecommons.org/licenses/')]"
+      <rule context="license[not(@license-type)][count(license-p) eq 1][contains(license-p,'http://creativecommons.org/licenses/')]"
             role="error">
          <let name="stub"
               value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
@@ -782,7 +787,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>  
   </pattern>
    <pattern><!--licence links is correct-->
-      <rule context="license[@xlink:href][contains(license-p,'http://creativecommons.org/licenses/')]"
+      <rule context="license[@xlink:href][count(license-p) eq 1][contains(license-p,'http://creativecommons.org/licenses/')]"
             role="error">
          <let name="stub"
               value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
@@ -795,7 +800,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>  
   </pattern>
    <pattern><!--licence type is correct-->
-      <rule context="license[@license-type][contains(license-p,'http://creativecommons.org/licenses/')]"
+      <rule context="license[@license-type][count(license-p) eq 1][contains(license-p,'http://creativecommons.org/licenses/')]"
             role="error">
          <let name="stub"
               value="normalize-space(license-p/substring-after(.,'http://creativecommons.org/licenses/'))"/>
@@ -807,6 +812,11 @@ Use the <let> element to define the attribute if necessary.
          <assert id="license2b" test="$type eq @license-type">"license" 'license-type' attribute (<value-of select="@license-type"/>) does not match the license type declared in the license text (<value-of select="$type"/>).</assert>
       </rule>  
   </pattern>
+   <pattern><!-- license should only contain one license-p element - for correct display and transformation to AJ/NPG -->
+      <rule context="license[count(license-p) gt 1]" role="error">
+         <report id="license3" test=".">"license" should only contain one "license-p" child element. Please combine text within one element.</report>
+      </rule>
+   </pattern>
    <pattern><!--Related-article with a link should have @ext-link-type-->
       <rule context="article-meta/related-article[@xlink:href][not(@ext-link-type)]"
             role="error">
@@ -838,6 +848,16 @@ Use the <let> element to define the attribute if necessary.
          <let name="extra-stuff" value="substring-before(@xlink:href,'10.')"/>
          <report id="relart3" test=".">"related-article" element of type '<value-of select="@related-article-type"/>' should only contain article doi in 'xlink:href'. Please remove extra text: "<value-of select="$extra-stuff"/>".</report>
       </rule>  
+  </pattern>
+   <pattern>
+      <rule context="abstract[@specific-use]" role="error">
+         <report id="abs1a" test=".">Do not use 'specific-use' abstract on "abstract". Refer to Tagging Instructions for correct mark-up.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="abstract[@id][not($pcode='sdata')]" role="error">
+         <report id="abs1b" test=".">Do not use 'id' attribute on "abstract". Refer to Tagging Instructions for correct mark-up.</report>
+      </rule>
   </pattern>
    <pattern>
       <rule context="abstract[@abstract-type]" role="error">
@@ -1662,6 +1682,11 @@ Use the <let> element to define the attribute if necessary.
       <rule context="article-meta[$maestro='yes'][not(contrib-group)][$article-type='com']"
             role="error">
          <report id="contrib2" test=".">All "Comment" articles should have at least one author. If this information has not been provided, please contact Springer Nature.</report>
+      </rule>
+   </pattern>
+   <pattern><!--only one contrib-group allowed in article-meta (so that transforms work correctly)-->
+      <rule context="article-meta[count(contrib-group) gt 1]">
+         <report id="contrib3" test=".">"article-meta" contains <value-of select="count(contrib-group)"/> "contrib-group" elements. All authors and consortia should be contained in one "contrib-group". Refer to Tagging Instructions.</report>
       </rule>
    </pattern>
    <pattern>
@@ -2606,6 +2631,16 @@ Use the <let> element to define the attribute if necessary.
 			      <report id="form7" test=".">Formulae should not appear inside italics. Please close "italic" element before start of "inline-formula" and reopen afterwards (if appropriate).</report>
 		    </rule>
 	  </pattern>
+   <pattern>
+		    <rule context="inline-formula[inline-formula]">
+			      <report id="form7b" test=".">Two "inline-formula" elements wrapped round the same expression. Please delete extra element.</report>
+		    </rule>
+	  </pattern>
+   <pattern>
+		    <rule context="inline-formula[@id][not($transition='yes')]">
+			      <report id="form7c" test=".">'id' attribute is not required on inline-formulae, as these are not linked to. Please delete.</report>
+		    </rule>
+	  </pattern>
    <pattern><!--back - label or title should not be used-->
       <rule context="back/label | back/title" role="error">
          <report id="back1" test=".">Do not use "<name/>" at start of "back" matter.</report>
@@ -3257,6 +3292,20 @@ Use the <let> element to define the attribute if necessary.
          <let name="tabName" value="concat('Table ',substring-after(@id, 't'))"/>
          <report id="tab14" test=".">
             <value-of select="$tabName"/> is represented by a graphic. Delete empty table with single entry XML markup.</report>
+      </rule>
+   </pattern>
+   <pattern>
+      <rule context="table-wrap[count(descendant::oasis:entry) eq 1][table-wrap-foot][//oasis:entry/xref/@ref-type='other']">
+         <let name="tabName" value="concat('Table ',substring-after(@id, 't'))"/>
+         <report id="tab14b" test=".">
+            <value-of select="$tabName"/> should be represented by a "graphic" before the "table-wrap-foot", not an illustration inside a single entry XML table. Also rename illustration file to be a table image with "-t" suffix and regenerate the manifest file. Refer to Tagging Instructions.</report>
+      </rule>
+   </pattern>
+   <pattern>
+      <rule context="table-wrap[count(descendant::oasis:entry) eq 1][not(table-wrap-foot)][//oasis:entry/xref/@ref-type='other']">
+         <let name="tabName" value="concat('Table ',substring-after(@id, 't'))"/>
+         <report id="tab14c" test=".">
+            <value-of select="$tabName"/> should be represented by a "graphic", not an illustration inside a single entry XML table. Also rename illustration file to be a table image with "-t" suffix and regenerate the manifest file. Refer to Tagging Instructions.</report>
       </rule>
    </pattern>
    <pattern>
