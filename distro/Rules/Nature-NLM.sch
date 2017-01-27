@@ -843,10 +843,22 @@ Use the <let> element to define the attribute if necessary.
       </rule>  
   </pattern>
    <pattern><!--Bi directional articles should have doi in @xlink:href not url-->
-      <rule context="article-meta/related-article[contains(@xlink:href,'dx.doi')]"
+      <rule context="article-meta/related-article[contains(@xlink:href,'doi.org')]"
             role="error">
          <let name="extra-stuff" value="substring-before(@xlink:href,'10.')"/>
          <report id="relart3" test=".">"related-article" element of type '<value-of select="@related-article-type"/>' should only contain article doi in 'xlink:href'. Please remove extra text: "<value-of select="$extra-stuff"/>".</report>
+      </rule>  
+  </pattern>
+   <pattern><!--Bi directional articles should have doi in @xlink:href not url-->
+      <rule context="article-meta/related-article[not(contains(@xlink:href,'doi.org'))][contains(@xlink:href,'http')]"
+            role="error">
+         <report id="relart3b" test=".">"related-article" element of type '<value-of select="@related-article-type"/>' should only contain article doi in 'xlink:href', not a url: '<value-of select="@xlink:href"/>'.</report>
+      </rule>  
+  </pattern>
+   <pattern><!--Bi directional articles should have ext-link-type of doi -->
+      <rule context="article-meta/related-article[not($transition='yes')][@ext-link-type][not(@ext-link-type='doi')]"
+            role="error">
+         <report id="relart3c" test=".">"related-article" element should have 'ext-link-type="doi"', not "<value-of select="@ext-link-type"/>".</report>
       </rule>  
   </pattern>
    <pattern>
@@ -1260,6 +1272,18 @@ Use the <let> element to define the attribute if necessary.
       <rule context="aff[$maestro='yes'][normalize-space(.) or *][not(institution or addr-line or country) or ext-link/@ext-link-type='url']"
             role="error">
          <report id="aj-aunote2c" test=".">"aff" does not contain expected child elements (<value-of select="text()"/>). If this is an institutional or personal address, add missing child elements. If this is biographical or other information about the author, please use author notes instead. Refer to Tagging Instructions.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[@ref-type='author-notes'][$maestro-rj='yes' or $pcode='sdata'][sup/matches(.,'[0-9]+')]"
+            role="error">
+         <report id="rj-aunote1a" test=".">In Nature-branded journals, do not use a numbered "xref" link to author-notes. Either change to a symbol or use an empty "xref" element.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="author-notes/fn[not(@fn-type)][@id][$maestro-rj='yes' or $pcode='sdata']/label[matches(.,'[0-9]+')]"
+            role="error">
+         <report id="rj-aunote1b" test=".">In Nature-branded journals, do not use a numbered label for author notes. Either change to a symbol or delete "label".</report>
       </rule>
   </pattern>
    <pattern><!--correction articles should contain a related-article element-->
@@ -2641,6 +2665,11 @@ Use the <let> element to define the attribute if necessary.
 			      <report id="form7c" test=".">'id' attribute is not required on inline-formulae, as these are not linked to. Please delete.</report>
 		    </rule>
 	  </pattern>
+   <pattern><!--don't use @width on mml:mtable - NPG XML reports validation error-->
+      <rule context="mml:mtable[@width]">
+         <report id="form8" test=".">Do not use 'width' attribute on "mml:mtable". It does not affect rendering and causes problems when converting to XML for data sends.</report>
+      </rule>
+   </pattern>
    <pattern><!--back - label or title should not be used-->
       <rule context="back/label | back/title" role="error">
          <report id="back1" test=".">Do not use "<name/>" at start of "back" matter.</report>
