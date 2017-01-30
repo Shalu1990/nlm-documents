@@ -1925,6 +1925,31 @@ Use the <let> element to define the attribute if necessary.
                  test="ancestor::article-meta/contrib-group/contrib[@contrib-type='author']/name[concat(given-names,' ',surname) eq $name]">Where authors listed as consortia members are also main article authors, affiliation links should not be used. Please delete affilation "xref"s from <value-of select="$name"/> within "collab".</report>
       </rule>
   </pattern>
+   <pattern><!--collab should have a collab-type attribute-->
+      <rule context="contrib/collab[not(@collab-type)]">
+         <report id="collab4a" test=".">Where "collab" is used for capturing consortia, it should have a 'collab-type' attribute. Allowed values are "authors" and "on-behalf-of". See Tagging Instructions.</report>
+      </rule>
+   </pattern>
+   <pattern><!--collab should have allowed value for collab-type attribute-->
+      <rule context="contrib/collab[@collab-type][not(matches(@collab-type,'^(authors|on-behalf-of)$'))]">
+         <report id="collab4b" test=".">Unexpected value for consortia 'collab-type' attribute (<value-of select="@collab-type"/>). Allowed values are "authors" and "on-behalf-of". See Tagging Instructions.</report>
+      </rule>
+   </pattern>
+   <pattern><!--consortia program should have named-content for program name-->
+      <rule context="contrib/collab[@collab-type='authors'][not(named-content)]">
+         <report id="collab5a" test=".">Consortia program name (<value-of select="text()"/>) should be captured in "named-content" with attribute 'content-type="program"'. See Tagging Instructions.</report>
+      </rule>
+   </pattern>
+   <pattern><!--consortia program should have named-content for program name-->
+      <rule context="contrib/collab[@collab-type='authors'][named-content][not(named-content/@content-type='program')]">
+         <report id="collab5b" test=".">Consortia program name should be captured in "named-content" with attribute 'content-type="program"'. See Tagging Instructions.</report>
+      </rule>
+   </pattern>
+   <pattern><!--on behalf of consortia should not have named-content for name-->
+      <rule context="contrib/collab[@collab-type='on-behalf-of']/named-content">
+         <report id="collab5c" test=".">"On behalf of" consortia should not be captured in "named-content", just use text (<value-of select="text()"/>). See Tagging Instructions.</report>
+      </rule>
+   </pattern>
    <pattern><!--markup for orcids is correct-->
       <rule context="contrib-id[not(@contrib-id-type='orcid')]" role="error">
          <report id="orcid1a" test=".">"contrib-id" should have 'contrib-id-type="orcid"'.</report>
