@@ -843,10 +843,22 @@ Use the <let> element to define the attribute if necessary.
       </rule>  
   </pattern>
    <pattern><!--Bi directional articles should have doi in @xlink:href not url-->
-      <rule context="article-meta/related-article[contains(@xlink:href,'dx.doi')]"
+      <rule context="article-meta/related-article[contains(@xlink:href,'doi.org')]"
             role="error">
          <let name="extra-stuff" value="substring-before(@xlink:href,'10.')"/>
          <report id="relart3" test=".">"related-article" element of type '<value-of select="@related-article-type"/>' should only contain article doi in 'xlink:href'. Please remove extra text: "<value-of select="$extra-stuff"/>".</report>
+      </rule>  
+  </pattern>
+   <pattern><!--Bi directional articles should have doi in @xlink:href not url-->
+      <rule context="article-meta/related-article[not(contains(@xlink:href,'doi.org'))][contains(@xlink:href,'http')]"
+            role="error">
+         <report id="relart3b" test=".">"related-article" element of type '<value-of select="@related-article-type"/>' should only contain article doi in 'xlink:href', not a url: '<value-of select="@xlink:href"/>'.</report>
+      </rule>  
+  </pattern>
+   <pattern><!--Bi directional articles should have ext-link-type of doi -->
+      <rule context="article-meta/related-article[not($transition='yes')][@ext-link-type][not(@ext-link-type='doi')]"
+            role="error">
+         <report id="relart3c" test=".">"related-article" element should have 'ext-link-type="doi"', not "<value-of select="@ext-link-type"/>".</report>
       </rule>  
   </pattern>
    <pattern>
@@ -1260,6 +1272,18 @@ Use the <let> element to define the attribute if necessary.
       <rule context="aff[$maestro='yes'][normalize-space(.) or *][not(institution or addr-line or country) or ext-link/@ext-link-type='url']"
             role="error">
          <report id="aj-aunote2c" test=".">"aff" does not contain expected child elements (<value-of select="text()"/>). If this is an institutional or personal address, add missing child elements. If this is biographical or other information about the author, please use author notes instead. Refer to Tagging Instructions.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="xref[@ref-type='author-notes'][$maestro-rj='yes' or $pcode='sdata'][sup/matches(.,'[0-9]+')]"
+            role="error">
+         <report id="rj-aunote1a" test=".">In Nature-branded journals, do not use a numbered "xref" link to author-notes. Either change to a symbol or use an empty "xref" element.</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="author-notes/fn[not(@fn-type)][@id][$maestro-rj='yes' or $pcode='sdata']/label[matches(.,'[0-9]+')]"
+            role="error">
+         <report id="rj-aunote1b" test=".">In Nature-branded journals, do not use a numbered label for author notes. Either change to a symbol or delete "label".</report>
       </rule>
   </pattern>
    <pattern><!--correction articles should contain a related-article element-->
@@ -1901,6 +1925,31 @@ Use the <let> element to define the attribute if necessary.
                  test="ancestor::article-meta/contrib-group/contrib[@contrib-type='author']/name[concat(given-names,' ',surname) eq $name]">Where authors listed as consortia members are also main article authors, affiliation links should not be used. Please delete affilation "xref"s from <value-of select="$name"/> within "collab".</report>
       </rule>
   </pattern>
+   <pattern><!--collab should have a collab-type attribute-->
+      <rule context="contrib/collab[not(@collab-type)]">
+         <report id="collab4a" test=".">Where "collab" is used for capturing consortia, it should have a 'collab-type' attribute. Allowed values are "authors" and "on-behalf-of". See Tagging Instructions.</report>
+      </rule>
+   </pattern>
+   <pattern><!--collab should have allowed value for collab-type attribute-->
+      <rule context="contrib/collab[@collab-type][not(matches(@collab-type,'^(authors|on-behalf-of)$'))]">
+         <report id="collab4b" test=".">Unexpected value for consortia 'collab-type' attribute (<value-of select="@collab-type"/>). Allowed values are "authors" and "on-behalf-of". See Tagging Instructions.</report>
+      </rule>
+   </pattern>
+   <pattern><!--consortia program should have named-content for program name-->
+      <rule context="contrib/collab[@collab-type='authors'][not(named-content)]">
+         <report id="collab5a" test=".">Consortia program name (<value-of select="text()"/>) should be captured in "named-content" with attribute 'content-type="program"'. See Tagging Instructions.</report>
+      </rule>
+   </pattern>
+   <pattern><!--consortia program should have named-content for program name-->
+      <rule context="contrib/collab[@collab-type='authors'][named-content][not(named-content/@content-type='program')]">
+         <report id="collab5b" test=".">Consortia program name should be captured in "named-content" with attribute 'content-type="program"'. See Tagging Instructions.</report>
+      </rule>
+   </pattern>
+   <pattern><!--on behalf of consortia should not have named-content for name-->
+      <rule context="contrib/collab[@collab-type='on-behalf-of']/named-content">
+         <report id="collab5c" test=".">"On behalf of" consortia should not be captured in "named-content", just use text (<value-of select="text()"/>). See Tagging Instructions.</report>
+      </rule>
+   </pattern>
    <pattern><!--markup for orcids is correct-->
       <rule context="contrib-id[not(@contrib-id-type='orcid')]" role="error">
          <report id="orcid1a" test=".">"contrib-id" should have 'contrib-id-type="orcid"'.</report>
@@ -2641,6 +2690,11 @@ Use the <let> element to define the attribute if necessary.
 			      <report id="form7c" test=".">'id' attribute is not required on inline-formulae, as these are not linked to. Please delete.</report>
 		    </rule>
 	  </pattern>
+   <pattern><!--don't use @width on mml:mtable - NPG XML reports validation error-->
+      <rule context="mml:mtable[@width]">
+         <report id="form8" test=".">Do not use 'width' attribute on "mml:mtable". It does not affect rendering and causes problems when converting to XML for data sends.</report>
+      </rule>
+   </pattern>
    <pattern><!--back - label or title should not be used-->
       <rule context="back/label | back/title" role="error">
          <report id="back1" test=".">Do not use "<name/>" at start of "back" matter.</report>
