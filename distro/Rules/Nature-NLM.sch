@@ -2634,6 +2634,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="xref7l" test=".">Mismatch between "xref" 'rid' format ("fn"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "fn"+number is "fn".</report>
       </rule>
   </pattern>
+   <pattern>
+      <rule context="contrib/xref[@ref-type][@rid eq preceding-sibling::xref/@rid]">
+         <report id="xref8" test=".">Contributor contains duplicate "xref" elements to target 'rid': (<value-of select="@rid"/>). Delete repeated link.</report>
+      </rule>
+   </pattern>
    <pattern><!--elements which should have two child elements-->
       <rule context="mml:mfrac|mml:mroot|mml:msub|mml:msup|mml:munder|mml:mover"
             role="error">
