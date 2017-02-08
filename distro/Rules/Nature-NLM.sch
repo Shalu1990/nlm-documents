@@ -2635,7 +2635,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="contrib/xref[@ref-type][@rid eq preceding-sibling::xref/@rid]">
+      <rule context="contrib/xref[@ref-type][@rid=preceding-sibling::xref/@rid]">
          <report id="xref8" test=".">Contributor contains duplicate "xref" elements to target 'rid': (<value-of select="@rid"/>). Delete repeated link.</report>
       </rule>
    </pattern>
