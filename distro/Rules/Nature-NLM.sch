@@ -2863,7 +2863,7 @@ Use the <let> element to define the attribute if necessary.
   </pattern>
    <pattern><!--closenotes - fn-type="other"-->
       <rule context="back/fn-group[@content-type='closenotes']/fn" role="error">
-         <assert id="back-fn6a" test="@fn-type='other'">"fn" within closenotes should have attribute fn-type="other".</assert>
+         <assert id="back-fn6a" test="@specific-use='print-only'">"fn" within closenotes should have attribute specific-use="print-only".</assert>
       </rule>
   </pattern>
    <pattern><!--closenotes - id attribute not necessary-->
