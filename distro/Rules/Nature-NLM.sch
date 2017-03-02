@@ -112,6 +112,8 @@ Use the <let> element to define the attribute if necessary.
         value="//history[count(date[@date-type='received']) eq 1]/date[@date-type='received'][day and month and year]/concat(year,month,day)"/>
    <let name="usable-rec-date"
         value="concat(substring($received-date,1,4),'-',substring($received-date,5,2),'-',substring($received-date,7,2))"/>
+   <let name="headerx"
+        value="if (($pcode='nature' and number($pubdate) ge 19500101 and number($pubdate) le 19961231) or ($pcode='nbt' and number($pubdate) ge 19830101 and number($pubdate) le 19971231) or ($pcode='ng' and number($pubdate) ge 19920101 and number($pubdate) le 19971231) or ($pcode='nsmb' and number($pubdate) ge 19940101 and number($pubdate) le 19971231)) then 'yes' else ()"/>
    <pattern>
       <rule context="article" role="error"><!--Does the article have an article-type attribute-->
          <let name="article-type"
@@ -1287,7 +1289,7 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern><!--correction articles should contain a related-article element-->
-      <rule context="article[($maestro='yes' or $transition='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta[not(article-categories/subj-group/subject[@content-type='article-heading']/.='Case Study')]"
+      <rule context="article[not($headerx='yes')][($maestro='yes' or $transition='yes') and matches($article-type,'^(add|cg|cs|er|ret)$')]/front/article-meta[not(article-categories/subj-group/subject[@content-type='article-heading']/.='Case Study')]"
             role="error">
          <let name="article-heading"
               value="if ($article-type='add') then 'Addendum articles'          else if ($article-type='cg') then 'Corrigendum articles'          else if ($article-type='cs') then 'Correction articles'          else if ($article-type='er') then 'Erratum articles'          else if ($article-type='ret') then 'Retraction articles' else ()"/>
@@ -1845,6 +1847,11 @@ Use the <let> element to define the attribute if necessary.
    <pattern><!--email link should not end with a full stop-->
       <rule context="email[ends-with(@xlink:href,'.')]" role="error">
          <report id="corresp4d" test=".">"email" 'xlink:href' (<value-of select="@xlink:href"/>) ends with a full stop. It should contain the full email address and nothing else.</report>
+      </rule>
+   </pattern>
+   <pattern><!--email should contain @xlink:href-->
+      <rule context="email[not(@xlink:href)]" role="error">
+         <report id="corresp5" test=".">"email" should have 'xlink:href' attribute containing the email address.</report>
       </rule>
    </pattern>
    <pattern>
@@ -2634,6 +2641,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="xref7l" test=".">Mismatch between "xref" 'rid' format ("fn"+number) and 'ref-type' ("<value-of select="@ref-type"/>"). Please check which attribute is correct - expected 'ref-type' value for 'rid' "fn"+number is "fn".</report>
       </rule>
   </pattern>
+   <pattern>
+      <rule context="contrib/xref[@ref-type][@rid=preceding-sibling::xref/@rid]">
+         <report id="xref8" test=".">Contributor contains duplicate "xref" elements to target 'rid' (<value-of select="@rid"/>). Delete repeated link.</report>
+      </rule>
+   </pattern>
    <pattern><!--elements which should have two child elements-->
       <rule context="mml:mfrac|mml:mroot|mml:msub|mml:msup|mml:munder|mml:mover"
             role="error">
