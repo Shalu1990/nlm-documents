@@ -1283,9 +1283,15 @@ Use the <let> element to define the attribute if necessary.
       </rule>
   </pattern>
    <pattern>
-      <rule context="author-notes/fn[not(@fn-type)][@id][$maestro-rj='yes' or $pcode='sdata']/label[matches(.,'[0-9]+')]"
+      <rule context="author-notes/fn[not(@fn-type)][@id][$maestro-rj='yes' or $pcode='sdata']/label/sup[matches(.,'[0-9]+')]"
             role="error">
          <report id="rj-aunote1b" test=".">In Nature-branded journals, do not use a numbered label for author notes. Either change to a symbol or delete "label".</report>
+      </rule>
+  </pattern>
+   <pattern>
+      <rule context="author-notes/fn[not(@fn-type)][@id][$maestro-rj='yes' or $pcode='sdata']/label/sup[matches(.,'∗')]"
+            role="error">
+         <report id="rj-aunote1c" test=".">Incorrect Unicode used (U+2217) for asterisk in "label". Either use the ASCII keyboard symbol (*) or correct Unicode (U+002A).</report>
       </rule>
   </pattern>
    <pattern><!--correction articles should contain a related-article element-->
@@ -3372,6 +3378,20 @@ Use the <let> element to define the attribute if necessary.
          <let name="tabName" value="concat('Table ',substring-after(@id, 't'))"/>
          <report id="tab14c" test=".">
             <value-of select="$tabName"/> should be represented by a "graphic", not an illustration inside a single entry XML table. Also rename illustration file to be a table image with "-t" suffix and regenerate the manifest file. Refer to Tagging Instructions.</report>
+      </rule>
+   </pattern>
+   <pattern>
+      <rule context="oasis:colspec[string(number(@colnum)) = 'NaN']">
+         <let name="tabName"
+              value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
+         <report id="tab15a" test=".">"colspec" in <value-of select="$tabName"/> has non-numeric value (<value-of select="@colnum"/>) in the 'colnum' attribute. Please remove letters.</report>
+      </rule>
+   </pattern>
+   <pattern>
+      <rule context="oasis:colspec[string(number(@colname)) != 'NaN']">
+         <let name="tabName"
+              value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
+         <report id="tab15b" test=".">"colspec" in <value-of select="$tabName"/> has numeric value (<value-of select="@colnum"/>) in the 'colname' attribute. Please change to expected format: 'col'+column number.</report>
       </rule>
    </pattern>
    <pattern>
