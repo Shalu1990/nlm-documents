@@ -3384,14 +3384,14 @@ Use the <let> element to define the attribute if necessary.
       <rule context="oasis:colspec[string(number(@colnum)) = 'NaN']">
          <let name="tabName"
               value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
-         <report id="tab15a" test=".">"colspec" in <value-of select="$tabName"/> has non-numeric value (<value-of select="@colnum"/>) in the 'colnum' attribute. Please remove letters.</report>
+         <report id="tab15a" test=".">"colspec" 'colnum' attribute in <value-of select="$tabName"/> has non-numeric value (<value-of select="@colnum"/>). Please remove letters.</report>
       </rule>
    </pattern>
    <pattern>
       <rule context="oasis:colspec[string(number(@colname)) != 'NaN']">
          <let name="tabName"
               value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
-         <report id="tab15b" test=".">"colspec" in <value-of select="$tabName"/> has numeric value (<value-of select="@colnum"/>) in the 'colname' attribute. Please change to expected format: 'col'+column number.</report>
+         <report id="tab15b" test=".">"colspec" 'colname' attribute in <value-of select="$tabName"/> has numeric value (<value-of select="@colname"/>). Please change to expected format: 'col'+column number.</report>
       </rule>
    </pattern>
    <pattern>
