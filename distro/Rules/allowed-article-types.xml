@@ -455,6 +455,9 @@
         <article-type code="hl">
             <article-heading>Research Highlight</article-heading>
         </article-type>
+        <article-type code="hyp">
+            <article-heading>Hypothesis</article-heading>
+        </article-type>
         <article-type code="nv">
             <article-heading>News and Views</article-heading>
         </article-type>
