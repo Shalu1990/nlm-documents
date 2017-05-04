@@ -27,6 +27,10 @@ Use the <let> element to define the attribute if necessary.
   <ns prefix="dc" uri="http://purl.org/dc/elements/1.1/"/>
   <ns prefix="rdfs" uri="http://www.w3.org/2000/01/rdf-schema#"/>
   
+  <!--declarations required for Wendell Piez's CALS rules-->
+  <ns prefix="p" uri="http://www.wendellpiez.com/oasis-tables/util"/>
+  <xsl:include href="oasis-table-schematron-support.xsl"/>
+  
   <let name="allowed-values"
         value="document( 'allowed-values-nlm.xml' )/allowed-values"/>
    <!--Points at document containing information on allowed attribute values-->
@@ -436,6 +440,11 @@ Use the <let> element to define the attribute if necessary.
       <rule context="subject[@content-type='npg.subject'][parent::subj-group[not(@subj-group-type='subject')]]">
          <let name="subj-group-type" value="parent::subj-group/@subj-group-type"/>
          <report id="subject9a" test=".">Subjects should not be included in "subj-group/@subj-group-type='<value-of select="$subj-group-type"/>'". Create a separate "subj-group" with '@subj-group-type='subject'.</report>
+      </rule>
+  </pattern>
+   <pattern><!--subject paths should not be repeated-->
+      <rule context="subject[@content-type='npg.subject']/named-content[@content-type='path'][. = ../preceding-sibling::subject/named-content[@content-type='path']]">
+         <report id="subject10" test=".">Repeated subject given (<value-of select="."/>) - please delete.</report>
       </rule>
   </pattern>
    <pattern><!--techniques should be in own subj-group-->
@@ -1771,6 +1780,36 @@ Use the <let> element to define the attribute if necessary.
       <rule context="addr-line[@content-type]/*[not(self::sup or self::sub)]"
             role="error">
          <report id="aff10c" test=".">"addr-line" (content-type='<value-of select="parent::addr-line/@content-type"/>') contains unexpected child element(s): "<value-of select="local-name()"/>".</report>
+      </rule>
+  </pattern>
+   <pattern><!--aff should not contain more than one institution-->
+      <rule context="aff[count(institution) gt 1]">
+         <report id="aff11a" test=".">"aff" (id="<value-of select="@id"/>") should contain only one "institution" child element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--aff should not contain more than one street-->
+      <rule context="aff[count(addr-line[@content-type='street']) gt 1]">
+         <report id="aff11b1" test=".">"aff" (id="<value-of select="@id"/>") should contain only one street (addr-line[@content-type='street']) child element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--aff should not contain more than one city-->
+      <rule context="aff[count(addr-line[@content-type='city']) gt 1]">
+         <report id="aff11b2" test=".">"aff" (id="<value-of select="@id"/>") should contain only one city (addr-line[@content-type='city']) child element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--aff should not contain more than one street-->
+      <rule context="aff[count(addr-line[@content-type='state']) gt 1]">
+         <report id="aff11b3" test=".">"aff" (id="<value-of select="@id"/>") should contain only one state (addr-line[@content-type='state']) child element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--aff should not contain more than one zip-->
+      <rule context="aff[count(addr-line[@content-type='zip']) gt 1]">
+         <report id="aff11b4" test=".">"aff" (id="<value-of select="@id"/>") should contain only one zip/postcode (addr-line[@content-type='zip']) child element.</report>
+      </rule>
+  </pattern>
+   <pattern><!--aff should not contain more than one country-->
+      <rule context="aff[count(country) gt 1]">
+         <report id="aff11c" test=".">"aff" (id="<value-of select="@id"/>") should contain only one "country" child element.</report>
       </rule>
   </pattern>
    <pattern>
@@ -3381,17 +3420,78 @@ Use the <let> element to define the attribute if necessary.
       </rule>
    </pattern>
    <pattern>
-      <rule context="oasis:colspec[string(number(@colnum)) = 'NaN']">
+      <rule context="oasis:colspec[@colnum][string(number(@colnum)) = 'NaN']">
          <let name="tabName"
               value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
          <report id="tab15a" test=".">"colspec" 'colnum' attribute in <value-of select="$tabName"/> has non-numeric value (<value-of select="@colnum"/>). Please remove letters.</report>
       </rule>
    </pattern>
    <pattern>
-      <rule context="oasis:colspec[string(number(@colname)) != 'NaN']">
+      <rule context="oasis:colspec[not($transition='yes')][string(number(@colname)) != 'NaN']">
          <let name="tabName"
               value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
          <report id="tab15b" test=".">"colspec" 'colname' attribute in <value-of select="$tabName"/> has numeric value (<value-of select="@colname"/>). Please change to expected format: 'col'+column number.</report>
+      </rule>
+   </pattern>
+   <pattern>
+      <rule context="oasis:colspec[@colname][string(number(@colnum)) != 'NaN'][@colname/translate(.,translate(., '0123456789', ''), '') ne @colnum/translate(.,translate(., '0123456789', ''), '')]">
+         <let name="tabName"
+              value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
+         <report id="tab15c" test=".">In <value-of select="$tabName"/>, numeric value of "colspec" 'colname' attribute (<value-of select="@colname"/>) does not match 'colnum' attribute (<value-of select="@colnum"/>).</report>
+      </rule>
+   </pattern>
+   <pattern>
+      <rule context="oasis:colspec[string(number(@colnum)) != 'NaN'][@colnum=./preceding-sibling::oasis:colspec/@colnum]">
+         <let name="tabName"
+              value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
+         <report id="tab15d" test=".">In <value-of select="$tabName"/>, "colspec" has previously used 'colnum' attribute (<value-of select="@colnum"/>).</report>
+      </rule>
+   </pattern>
+   <pattern>
+      <rule context="oasis:colspec[not(@colnum)]">
+         <let name="tabName"
+              value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
+         <report id="tab15e" test=".">In <value-of select="$tabName"/>, 'colnum' attribute is missing on "colspec".</report>
+      </rule>
+   </pattern>
+   <pattern>
+      <rule context="oasis:tgroup[not(@cols castable as xs:integer) or not(number(@cols) gt 0)]">
+         <let name="tabName"
+              value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
+         <report id="tab16a" test=".">In <value-of select="$tabName"/>, incorrect 'cols' value (<value-of select="@cols"/>). Based on the number of "colspec" elements, it should be "<value-of select="count(oasis:colspec)"/>".</report>
+      </rule>
+   </pattern>
+   <pattern>
+      <rule context="oasis:tgroup[@cols castable as xs:integer and number(@cols) gt 0][not(number(@cols) eq count(oasis:colspec))]">
+         <let name="tabName"
+              value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
+         <report id="tab16b" test=".">In <value-of select="$tabName"/>, 'cols' value (<value-of select="@cols"/>) does not match number of "colspec" child elements (<value-of select="count(oasis:colspec)"/>). Check which is correct.</report>
+      </rule>
+   </pattern>
+   <pattern><!--Rule tab17a is a copy of a rule created by Wendell Piez and hosted in GitHub at: https://github.com/wendellpiez/JATSKit. Extra predicates have been added to the context, and the error message has been changed.-->
+      <rule context="oasis:row[ancestor::oasis:tgroup[@cols castable as xs:integer and number(@cols) gt 0][number(@cols) eq count(oasis:colspec)]]">
+         <let name="tabName"
+              value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
+         <let name="tgroup" value="ancestor::oasis:tgroup[1]"/>
+         <let name="cols"
+              value="$tgroup/@cols[. castable as xs:integer]/xs:integer(.)"/>
+         <let name="rowno" value="p:rowno(.)"/>
+         <let name="given-entries" value="key('entry-by-row',$rowno,$tgroup)"/>
+         <let name="entry-count" value="max($given-entries/p:across(.))"/>
+         <report id="tab17a" test="($entry-count &lt; $cols) and exists($cols)">In <value-of select="$tabName"/>, row doesn't have enough entries (<value-of select="$cols"/> 
+            <value-of select="if ($cols = 1) then ' is' else ' are'"/> expected; <value-of select="$entry-count"/> 
+            <value-of select="if ($entry-count = 1) then ' is' else ' are'"/> given). <value-of select="if ($entry-count = 1) then 'If this is an empty row, either insert one entry spanning all columns, or an empty entry for each column, depending on pdf format.' else if (exists(oasis:entry/@namest)) then 'Check that any spanning columns have the correct namest and nameend values.' else 'Check for missing empty cells or that any preceding morerows attributes have been used correctly.'"/>
+         </report>
+      </rule>
+   </pattern>
+   <pattern><!--Rule tab17b is a copy of a rule created by Wendell Piez and hosted in GitHub at: https://github.com/wendellpiez/JATSKit. Extra predicates have been added to the context, and the error message has been changed.-->
+      <rule context="oasis:entry[ancestor::oasis:tgroup[@cols castable as xs:integer and number(@cols) gt 0][number(@cols) eq count(oasis:colspec)]]">
+         <let name="tgroup" value="ancestor::oasis:tgroup[1]"/>
+         <let name="cols"
+              value="$tgroup/@cols[. castable as xs:integer]/xs:integer(.)"/>
+         <report id="tab17b" test="(p:across(.)[last()] &gt; $cols) or empty($cols)">Unexpected number of entries in this row. (<value-of select="concat($cols,' ')"/> 
+            <value-of select="if ($cols = 1) then 'is' else 'are'"/> allowed; entry is in column <value-of select="p:across(.)[last()]"/>.)
+</report>
       </rule>
    </pattern>
    <pattern>
