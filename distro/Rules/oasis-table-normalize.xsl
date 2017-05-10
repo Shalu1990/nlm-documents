@@ -3,11 +3,13 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:p="http://www.wendellpiez.com/oasis-tables/util"
-  xpath-default-namespace="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table"
+  xmlns:oasis="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table"   
   exclude-result-prefixes="#all">
 
   <!-- OASIS table normalization:
-   1. Assigns @p:across and @p:down values to table cells (entry elements);
+  xpath-default-namespace="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table"
+
+1. Assigns @p:across and @p:down values to table cells (entry elements);
    2. Generates ghost cells where cells are expected but not given;
    3. Assigns @p:full-width to tgroup whose colspec/@colwidth all have values in star notation
    -->
@@ -15,7 +17,7 @@
   <!-- Emit debugging messages? -->
   <xsl:param name="p:debug" select="false()"/>
   
-  <xsl:key name="colspec-by-name" match="colspec" use="@colname"/>
+  <xsl:key name="colspec-by-name" match="oasis:colspec" use="@colname"/>
 
   <!-- $default-border-style sets the style of borders only when set to appear -->
   <xsl:param name="default-border-style">solid</xsl:param>
@@ -36,47 +38,47 @@
     <xsl:copy-of select="."/>
   </xsl:template>
   
-  <xsl:template mode="p:normalize-table" match="entry//*">
+  <xsl:template mode="p:normalize-table" match="oasis:entry//*">
     <xsl:copy>
       <xsl:copy-of select="@*"/>
       <xsl:apply-templates mode="#current"/>
     </xsl:copy>
   </xsl:template>
   
-  <xsl:template mode="p:normalize-table" match="tgroup">
+  <xsl:template mode="p:normalize-table" match="oasis:tgroup">
     <xsl:copy>
       <xsl:call-template name="p:assign-gen-id"/>
       <xsl:copy-of select="@*"/>
-      <xsl:apply-templates mode="#current" select="colspec"/>
+      <xsl:apply-templates mode="#current" select="oasis:colspec"/>
       <!-- OASIS 1999 tables contain only thead?, tbody, but earlier
            models have tfoot, and not always last.
            This logic supports one each of thead, tfoot and tbody in any order;
            the output always comes thead, tbody, tfoot.
          (A calling stylesheet may rearrange them.) -->
-      <xsl:for-each select="thead">
+      <xsl:for-each select="oasis:thead">
         <xsl:copy>
           <xsl:call-template name="p:assign-gen-id"/>
           <xsl:copy-of select="@*"/>
-          <xsl:apply-templates mode="#current" select="row[1]">
+          <xsl:apply-templates mode="#current" select="oasis:row[1]">
             <xsl:with-param name="rowno" select="1"/>
           </xsl:apply-templates>
         </xsl:copy>
       </xsl:for-each>
-      <xsl:for-each select="tfoot">
+      <xsl:for-each select="oasis:tfoot">
         <xsl:copy>
           <xsl:call-template name="p:assign-gen-id"/>
           <xsl:copy-of select="@*"/>
-          <xsl:apply-templates mode="#current" select="row[1]">
-            <xsl:with-param name="rowno" select="count(../(thead|tbody)/row) + 1"/>
+          <xsl:apply-templates mode="#current" select="oasis:row[1]">
+            <xsl:with-param name="rowno" select="count(../(oasis:thead|oasis:tbody)/oasis:row) + 1"/>
           </xsl:apply-templates>
         </xsl:copy>
       </xsl:for-each>
-      <xsl:for-each select="tbody">
+      <xsl:for-each select="oasis:tbody">
         <xsl:copy>
           <xsl:call-template name="p:assign-gen-id"/>
           <xsl:copy-of select="@*"/>
-          <xsl:apply-templates mode="#current" select="row[1]">
-            <xsl:with-param name="rowno" select="count(../thead/row) + 1"/>
+          <xsl:apply-templates mode="#current" select="oasis:row[1]">
+            <xsl:with-param name="rowno" select="count(../oasis:thead/oasis:row) + 1"/>
           </xsl:apply-templates>
         </xsl:copy>
       </xsl:for-each>
@@ -84,16 +86,16 @@
     </xsl:copy>
   </xsl:template>
   
-  <xsl:template mode="p:normalize-table" match="row">
+  <xsl:template mode="p:normalize-table" match="oasis:row">
     <!-- Sibling recursion through the rows carries forward any cells with @morerows
          (as long as they stick within their tgroup|tfront|tbody)
          "remembering" them for purposes of placing cells around them. -->
     <xsl:param name="rowno" required="yes" as="xs:integer"/>
-    <xsl:param name="carried-entries" as="element(entry)*" select="()"/>
+    <xsl:param name="carried-entries" as="element(oasis:entry)*" select="()"/>
     
     <!-- $entries-here contains the results of processing this row's entries. -->
-    <xsl:variable name="entries-here" as="element(entry)*">
-      <xsl:apply-templates mode="#current" select="entry[1]">
+    <xsl:variable name="entries-here" as="element(oasis:entry)*">
+      <xsl:apply-templates mode="#current" select="oasis:entry[1]">
         <xsl:with-param name="rowno" select="$rowno" tunnel="yes"/>
         <!-- Note that $carried-entries does not tunnel through the rows, but it
              does through the cells in the row. -->
@@ -125,7 +127,7 @@
     
     <!-- Now we process the next sibling, incrementing rowno and carrying
          any cells inside $entries-here that are marked to span rows to come. -->
-    <xsl:apply-templates mode="#current" select="following-sibling::row[1]">
+    <xsl:apply-templates mode="#current" select="following-sibling::oasis:row[1]">
       <xsl:with-param name="rowno" select="$rowno + 1"/>
       <!-- Carry forward entries from earlier rows and from this one whose
            @p:down values (rows) are not all done yet. -->
@@ -134,12 +136,12 @@
     </xsl:apply-templates>
   </xsl:template>
 
-  <xsl:template mode="p:normalize-table" match="entry">
+  <xsl:template mode="p:normalize-table" match="oasis:entry">
     <!-- Moving across the row, one entry at a time. -->
     <xsl:param name="pos" select="1"/>
     <xsl:param name="rowno" required="yes" as="xs:integer" tunnel="yes"/>
     <!-- $carried-entries contains cells from earlier rows that span into this one. -->      
-    <xsl:param name="carried-entries" select="()" as="element(entry)*" tunnel="yes"/>
+    <xsl:param name="carried-entries" select="()" as="element(oasis:entry)*" tunnel="yes"/>
     <xsl:variable name="here" select="."/>
     
     <xsl:if test="$p:debug">
@@ -157,7 +159,7 @@
       </xsl:message>
     </xsl:if>
     
-    <xsl:variable name="t" select="ancestor::tgroup[1]"/>
+    <xsl:variable name="t" select="ancestor::oasis:tgroup[1]"/>
     <xsl:variable name="start-colspec" select="(@namest,@colname)[1]/key('colspec-by-name',.,$t)[1]"/>
     <xsl:variable name="end-colspec" select="@nameend/key('colspec-by-name',.,$t)[1]"/>
     <!-- $assigned-position is the column number explicitly assigned (or an empty sequence). -->
@@ -211,7 +213,7 @@
     </xsl:copy>
     
     <!-- Next we do the next entry in its position. -->
-    <xsl:apply-templates mode="#current" select="following-sibling::entry[1]">
+    <xsl:apply-templates mode="#current" select="following-sibling::oasis:entry[1]">
       <!-- Parameters $rowno and $carried-entries are tunneled. -->
       <xsl:with-param name="pos" select="($end-colspec/p:colno(.),$given-position)[1] + 1"/>
     </xsl:apply-templates>
@@ -219,14 +221,14 @@
 
   <xsl:function name="p:colno" as="xs:integer"><!-- saxon:memo-function="yes" -->
     <!-- Returns a column number for a column. -->
-    <xsl:param name="col" as="element(colspec)"/>
+    <xsl:param name="col" as="element(oasis:colspec)"/>
     <!-- We have to account for possible error conditions, falling back
          gracefully if colspecs are assigned explicit numbers -->
     <!-- Note that this means if the data is bad, more than one colspec
          can get the same number. -->
     <!-- The best way of avoiding this is to validate the input: either
          all colspecs are given with correct colnums, or none are. -->
-    <xsl:variable name="actual-colno" select="count($col|$col/preceding-sibling::colspec)"/>
+    <xsl:variable name="actual-colno" select="count($col|$col/preceding-sibling::oasis:colspec)"/>
     <xsl:choose>
       <xsl:when test="exists($col/@colnum[. castable as xs:integer][number(.) gt 0])">
         <!-- If a colno is given as a natural number, we use it. -->
@@ -269,7 +271,7 @@
   <xsl:function name="p:star-value" as="xs:double?">
     <!-- if string input is in "star" notation, returns its value as
          a double; the value "*" is read as "1*" -->
-    <xsl:param name="colspec" as="element(colspec)"/>
+    <xsl:param name="colspec" as="element(oasis:colspec)"/>
     <xsl:for-each select="$colspec">
       <!-- per OASIS spec 3.3.2.3 -->
       <xsl:if test="empty(@colwidth) or
@@ -293,8 +295,8 @@
     <!-- returns percentage value for colspec using * notation among its siblings
          using * notation
          colspec with no @colwidth are assumed to have @colwidth='1*' -->
-    <xsl:param name="colspec" as="element(colspec)"/>
-    <xsl:param name="family" as="element(colspec)+"/>
+    <xsl:param name="colspec" as="element(oasis:colspec)"/>
+    <xsl:param name="family" as="element(oasis:colspec)+"/>
     <xsl:variable name="this-value"
       select="p:star-value($colspec)"/>
     <xsl:variable name="total" select="sum($family/p:star-value(.))"/>
@@ -304,17 +306,17 @@
   
   <xsl:function name="p:align" as="xs:string">
     <!-- returns an alignment value for an entry -->
-    <xsl:param name="entry" as="element(entry)"/>
-    <xsl:variable name="t" select="$entry/ancestor::tgroup[1]"/>
+    <xsl:param name="entry" as="element(oasis:entry)"/>
+    <xsl:variable name="t" select="$entry/ancestor::oasis:tgroup[1]"/>
     <xsl:variable name="colspec" select="p:colspec-for-entry($entry)"/>
     <!-- taking first available: entry's align, colspec's align, tgroup's align, 'left' -->
     <xsl:sequence select="lower-case(($entry/@align,$colspec/@align,$t/@align,'left')[1])"/>
   </xsl:function>
   
-  <xsl:function name="p:colspec-for-entry" as="element(colspec)?"><!-- saxon:memo-function="yes" -->
+  <xsl:function name="p:colspec-for-entry" as="element(oasis:colspec)?"><!-- saxon:memo-function="yes" -->
     <!-- Returns a colspec element for a given entry; works dependably only on normalized tables. -->
-    <xsl:param name="entry" as="element(entry)"/>
-    <xsl:variable name="t" select="$entry/ancestor::tgroup[1]"/>
+    <xsl:param name="entry" as="element(oasis:entry)"/>
+    <xsl:variable name="t" select="$entry/ancestor::oasis:tgroup[1]"/>
     <!-- $nominal colspec is one actually named by the entry. -->
     <xsl:variable name="nominal-colspec" select="$entry/(@namest,@colname)[1]/key('colspec-by-name',.,$t)"/>
     <!-- $positioned-colspec is indicated by the entry's horizontal position -->
@@ -327,14 +329,14 @@
   <xsl:function name="p:border-spec" as="element(p:border)?"><!-- saxon:memo-function="yes" -->
     <!-- returns an element from inside $a:border-specs for
          applying borders to an entry -->
-    <xsl:param name="entry" as="element(entry)"/>
-    <xsl:variable name="frame-spec" select="$entry/ancestor::table/@frame"/>
-    <xsl:variable name="t" select="$entry/ancestor::tgroup[1]"/>
+    <xsl:param name="entry" as="element(oasis:entry)"/>
+    <xsl:variable name="frame-spec" select="$entry/ancestor::oasis:table/@frame"/>
+    <xsl:variable name="t" select="$entry/ancestor::oasis:tgroup[1]"/>
     <xsl:variable name="across" select="p:values($entry/@p:across)"/>
     <xsl:variable name="down" select="p:values($entry/@p:down)"/>
     
-    <xsl:variable name="top-edge" select="empty($entry/ancestor::tgroup/preceding-sibling::tgroup) and ($down = 1)"/>
-    <xsl:variable name="bottom-edge" select="empty($entry/ancestor::tgroup/following-sibling::tgroup) and $down = count($t//row)"/>
+    <xsl:variable name="top-edge" select="empty($entry/ancestor::oasis:tgroup/preceding-sibling::oasis:tgroup) and ($down = 1)"/>
+    <xsl:variable name="bottom-edge" select="empty($entry/ancestor::oasis:tgroup/following-sibling::oasis:tgroup) and $down = count($t//oasis:row)"/>
     <xsl:variable name="left-edge" select="$across = 1"/>
     <xsl:variable name="right-edge" select="$across = $t/@cols"/>
     
@@ -348,21 +350,21 @@
          (from among the neighbor entry's @rowsep, its colspec's @rowsep, its row's @rowsep,
           a @rowsep on the entry's tgroup or table) -->
     <xsl:variable name="top" select="(($neighbor-up/@rowsep, $neighbor-up/p:colspec-for-entry(.)/@rowsep,
-      $neighbor-up/parent::row/@rowsep, $entry/ancestor::tgroup[1]/@rowsep, $entry/ancestor::table[1]/@rowsep)[1] = '1')
+      $neighbor-up/parent::oasis:row/@rowsep, $entry/ancestor::oasis:tgroup[1]/@rowsep, $entry/ancestor::oasis:table[1]/@rowsep)[1] = '1')
       or ($top-edge and $frame-spec=('top','topbot','all'))"/>
     <!-- checking the entry likewise for $bottom -->
     <xsl:variable name="bottom" select="(($entry/@rowsep, $entry/p:colspec-for-entry(.)/@rowsep,
-      $entry/parent::row/@rowsep, $entry/ancestor::tgroup[1]/@rowsep, $entry/ancestor::table[1]/@rowsep)[1] = '1')
+      $entry/parent::oasis:row/@rowsep, $entry/ancestor::oasis:tgroup[1]/@rowsep, $entry/ancestor::oasis:table[1]/@rowsep)[1] = '1')
       or ($bottom-edge and $frame-spec=('bottom','topbot','all'))"/>
     <!-- $left is set if the closest available @colsep is 1
          (from among the neighbor entry's @colsep, its colspec's @colsep,
           or a @colsep on the entry's tgroup or table) -->
     <xsl:variable name="left" select="(($neighbor-left/@colsep, $neighbor-left/p:colspec-for-entry(.)/@colsep,
-      $entry/ancestor::tgroup[1]/@colsep, $entry/ancestor::table[1]/@colsep)[1] = '1')
+      $entry/ancestor::oasis:tgroup[1]/@colsep, $entry/ancestor::oasis:table[1]/@colsep)[1] = '1')
       or ($left-edge and $frame-spec=('left','sides','all'))"/>
     <!-- checking the entry likewise for $right -->
     <xsl:variable name="right" select="(($entry/@colsep, $entry/p:colspec-for-entry(.)/@colsep,
-      $entry/ancestor::tgroup[1]/@colsep, $entry/ancestor::table[1]/@colsep)[1] = '1')
+      $entry/ancestor::oasis:tgroup[1]/@colsep, $entry/ancestor::oasis:table[1]/@colsep)[1] = '1')
       or ($right-edge and $frame-spec=('right','sides','all'))"/>
     
     <!-- border-off strings together any of 'tblr' that will be turned off -->

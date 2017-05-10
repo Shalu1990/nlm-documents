@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:oasis="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table"   
   xmlns:p="http://www.wendellpiez.com/oasis-tables/util"
   xmlns="http://docbook.org/ns/docbook"
-  xpath-default-namespace="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table"
   exclude-result-prefixes="xs"
   version="2.0">
   
 <!-- XSLT in support of Schematron validation for OASIS tables
+  xpath-default-namespace="http://www.niso.org/standards/z39-96/ns/oasis-exchange/table"
      (provided in oasis-table.sch) -->
   
   <xsl:import href="oasis-table-normalize.xsl"/>
@@ -22,7 +23,7 @@
   <!-- For retrieving information from elements in tables
        after normalization -->
   <xsl:variable name="all-normalized">
-    <xsl:apply-templates select="//table" mode="p:normalize-table"/>
+    <xsl:apply-templates select="//oasis:table" mode="p:normalize-table"/>
   </xsl:variable>
   
 <!-- Functions called by Schematron:
@@ -38,9 +39,9 @@ p:colwidth-unit
   
   <xsl:key name="normalized" match="*[exists(@p:gen-id)]" use="@p:gen-id"/>
   
-  <xsl:key name="entry-by-row" match="entry" use="p:down(.)"/>
+  <xsl:key name="entry-by-row" match="oasis:entry" use="p:down(.)"/>
   
-  <xsl:key name="colspec-by-no" match="colspec" use="p:colno(.)"/>
+  <xsl:key name="colspec-by-no" match="oasis:colspec" use="p:colno(.)"/>
   
   <xsl:function name="p:normalized">
     <!-- Returns any table element's normalized counterpart -->
@@ -49,14 +50,14 @@ p:colwidth-unit
   </xsl:function>
   
   <xsl:function name="p:rowno" as="xs:integer">
-    <xsl:param name="r" as="element(row)"/>
+    <xsl:param name="r" as="element(oasis:row)"/>
     <xsl:sequence select="p:normalized($r)/@p:rowno[. castable as xs:integer]/xs:integer(.)"/>  
   </xsl:function>
   
   <xsl:function name="p:actual-cols">
     <!-- Returns the actual number of columns claimed by cells in a row. -->
-    <xsl:param name="r" as="element(row)"/>
-    <xsl:sequence select="max(key('entry-by-row',p:normalized($r)/@p:rowno,$r/ancestor::TGROUP[1])/p:across(.))"/>
+    <xsl:param name="r" as="element(oasis:row)"/>
+    <xsl:sequence select="max(key('entry-by-row',p:normalized($r)/@p:rowno,$r/ancestor::oasis:tgroup[1])/p:across(.))"/>
   </xsl:function>
   
   <xsl:function name="p:colwidth-unit" as="xs:string?">
@@ -85,11 +86,11 @@ p:colwidth-unit
   
   <xsl:function name="p:align" as="xs:string">
     <!-- returns an alignment value for an entry -->
-    <xsl:param name="entry" as="element(entry)"/>
+    <xsl:param name="entry" as="element(oasis:entry)"/>
     <!-- disabling alignment of 'char' specified on tgroup; this is valid,
          but without a @char or @charoff on tgroup it is unclear how it
          should work -->
-    <xsl:variable name="t" select="$entry/ancestor::tgroup[1]"/>
+    <xsl:variable name="t" select="$entry/ancestor::oasis:tgroup[1]"/>
     <xsl:variable name="colspec" select="p:colspec-for-entry($entry)"/>
     <!-- taking first available: entry's align, colspec's align, tgroup's align, 'left' -->
     <xsl:sequence select="lower-case(($entry/@align,$colspec/@align,$t/@align,'left')[1])"/>
@@ -97,8 +98,8 @@ p:colwidth-unit
   
   <xsl:function name="p:colspec-for-entry" as="element(colspec)?"><!-- saxon:memo-function="yes" -->
     <!-- Returns the normalized COLSPEC element for a given ENTRY -->
-    <xsl:param name="entry" as="element(entry)"/>
-    <xsl:variable name="t" select="$entry/ancestor::tgroup[1]"/>
+    <xsl:param name="entry" as="element(oasis:entry)"/>
+    <xsl:variable name="t" select="$entry/ancestor::oasis:tgroup[1]"/>
     <!-- $nominal COLSPEC is one actually named by the entry. -->
     <xsl:variable name="nominal-colspec" select="$entry/(@namest,@colname)[1]/key('colspec-by-name',.,$t)"/>
     <!-- $positioned-colspec is indicated by the entry's horizontal position -->
@@ -108,24 +109,24 @@ p:colwidth-unit
     <xsl:sequence select="($nominal-colspec,$positioned-colspec)[1]"/>
   </xsl:function>
   
-  <xsl:function name="p:overlaps" as="element(entry)*">
+  <xsl:function name="p:overlaps" as="element(oasis:entry)*">
     <!-- Returns any entries occupying the same position (across and down)
          as a given entry. -->
-    <xsl:param name="e" as="element(entry)"/>
+    <xsl:param name="e" as="element(oasis:entry)"/>
     <xsl:sequence
-      select="key('entry-by-row',$e/p:down(.),$e/ancestor::tgroup)[p:across(.) = p:across($e)]
+      select="key('entry-by-row',$e/p:down(.),$e/ancestor::oasis:tgroup)[p:across(.) = p:across($e)]
               except $e"/>
   </xsl:function>
   
   <xsl:function name="p:across">
     <!-- Returns the 'across' index values of an entry -->
-    <xsl:param name="e" as="element(entry)"/>
+    <xsl:param name="e" as="element(oasis:entry)"/>
     <xsl:sequence select="p:values(p:normalized($e)/@p:across)"/>
   </xsl:function>
 
   <xsl:function name="p:down">
     <!-- Returns the 'across' index values of an entry -->
-    <xsl:param name="e" as="element(entry)"/>
+    <xsl:param name="e" as="element(oasis:entry)"/>
     <xsl:sequence select="p:values(p:normalized($e)/@p:down)"/>
   </xsl:function>
 </xsl:stylesheet>

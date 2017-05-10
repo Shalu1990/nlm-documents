@@ -3468,10 +3468,11 @@ Use the <let> element to define the attribute if necessary.
          <report id="tab16b" test=".">In <value-of select="$tabName"/>, 'cols' value (<value-of select="@cols"/>) does not match number of "colspec" child elements (<value-of select="count(oasis:colspec)"/>). Check which is correct.</report>
       </rule>
    </pattern>
+   
    <pattern><!--Rule tab17a is a copy of a rule created by Wendell Piez and hosted in GitHub at: https://github.com/wendellpiez/JATSKit. Extra predicates have been added to the context, and the error message has been changed.-->
       <rule context="oasis:row[ancestor::oasis:tgroup[@cols castable as xs:integer and number(@cols) gt 0][number(@cols) eq count(oasis:colspec)]]">
          <let name="tabName"
-              value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
+              value="concat('Table ',substring-after(ancestor::oasis:table-wrap/@id, 't'))"/>
          <let name="tgroup" value="ancestor::oasis:tgroup[1]"/>
          <let name="cols"
               value="$tgroup/@cols[. castable as xs:integer]/xs:integer(.)"/>
@@ -3484,16 +3485,17 @@ Use the <let> element to define the attribute if necessary.
          </report>
       </rule>
    </pattern>
+
    <pattern><!--Rule tab17b is a copy of a rule created by Wendell Piez and hosted in GitHub at: https://github.com/wendellpiez/JATSKit. Extra predicates have been added to the context, and the error message has been changed.-->
       <rule context="oasis:entry[ancestor::oasis:tgroup[@cols castable as xs:integer and number(@cols) gt 0][number(@cols) eq count(oasis:colspec)]]">
          <let name="tabName"
-              value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
+              value="concat('Table ',substring-after(ancestor::oasis:table-wrap/@id, 't'))"/>
          <let name="tgroup" value="ancestor::oasis:tgroup[1]"/>
          <let name="cols"
               value="$tgroup/@cols[. castable as xs:integer]/xs:integer(.)"/>
          <report id="tab17b" test="(p:across(.)[last()] &gt; $cols) or empty($cols)">In <value-of select="$tabName"/>, unexpected number of entries in row. (<value-of select="concat($cols,' ')"/> 
             <value-of select="if ($cols = 1) then 'is' else 'are'"/> allowed; entry is in column <value-of select="p:across(.)[last()]"/>.)
-</report>
+         </report>
       </rule>
    </pattern>
    <pattern>
