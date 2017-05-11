@@ -3434,35 +3434,35 @@ Use the <let> element to define the attribute if necessary.
       </rule>
    </pattern>
    <pattern>
-      <rule context="oasis:colspec[@colname][string(number(@colnum)) != 'NaN'][@colname/translate(.,translate(., '0123456789', ''), '') ne @colnum/translate(.,translate(., '0123456789', ''), '')]">
+      <rule context="oasis:colspec[@colname][string(number(@colnum)) != 'NaN'][@colname/translate(.,translate(., '0123456789', ''), '') ne @colnum/translate(.,translate(., '0123456789', ''), '')][not(ancestor::alternatives[graphic])]">
          <let name="tabName"
               value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
          <report id="tab15c" test=".">In <value-of select="$tabName"/>, numeric value of "colspec" 'colname' attribute (<value-of select="@colname"/>) does not match 'colnum' attribute (<value-of select="@colnum"/>).</report>
       </rule>
    </pattern>
    <pattern>
-      <rule context="oasis:colspec[string(number(@colnum)) != 'NaN'][@colnum=./preceding-sibling::oasis:colspec/@colnum]">
+      <rule context="oasis:colspec[string(number(@colnum)) != 'NaN'][@colnum=./preceding-sibling::oasis:colspec/@colnum][not(ancestor::alternatives[graphic])]">
          <let name="tabName"
               value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
          <report id="tab15d" test=".">In <value-of select="$tabName"/>, "colspec" has previously used 'colnum' attribute (<value-of select="@colnum"/>).</report>
       </rule>
    </pattern>
    <pattern>
-      <rule context="oasis:colspec[not(@colnum)]">
+      <rule context="oasis:colspec[not(@colnum)][not(ancestor::alternatives[graphic])]">
          <let name="tabName"
               value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
          <report id="tab15e" test=".">In <value-of select="$tabName"/>, 'colnum' attribute is missing on "colspec".</report>
       </rule>
    </pattern>
    <pattern>
-      <rule context="oasis:tgroup[not(@cols castable as xs:integer) or not(number(@cols) gt 0)]">
+      <rule context="oasis:tgroup[not(@cols castable as xs:integer) or not(number(@cols) gt 0)][not(ancestor::alternatives[graphic])]">
          <let name="tabName"
               value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
          <report id="tab16a" test=".">In <value-of select="$tabName"/>, incorrect 'cols' value (<value-of select="@cols"/>). Based on the number of "colspec" elements, it should be "<value-of select="count(oasis:colspec)"/>".</report>
       </rule>
    </pattern>
    <pattern>
-      <rule context="oasis:tgroup[@cols castable as xs:integer and number(@cols) gt 0][not(number(@cols) eq count(oasis:colspec))]">
+      <rule context="oasis:tgroup[@cols castable as xs:integer and number(@cols) gt 0][not(number(@cols) eq count(oasis:colspec))][not(ancestor::alternatives[graphic])]">
          <let name="tabName"
               value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
          <report id="tab16b" test=".">In <value-of select="$tabName"/>, 'cols' value (<value-of select="@cols"/>) does not match number of "colspec" child elements (<value-of select="count(oasis:colspec)"/>). Check which is correct.</report>
@@ -3470,9 +3470,9 @@ Use the <let> element to define the attribute if necessary.
    </pattern>
    
    <pattern><!--Rule tab17a is a copy of a rule created by Wendell Piez and hosted in GitHub at: https://github.com/wendellpiez/JATSKit. Extra predicates have been added to the context, and the error message has been changed.-->
-      <rule context="oasis:row[ancestor::oasis:tgroup[@cols castable as xs:integer and number(@cols) gt 0][number(@cols) eq count(oasis:colspec)]]">
+      <rule context="oasis:row[ancestor::oasis:tgroup[@cols castable as xs:integer and number(@cols) gt 0][number(@cols) eq count(oasis:colspec)]][not(ancestor::alternatives[graphic])]">
          <let name="tabName"
-              value="concat('Table ',substring-after(ancestor::oasis:table-wrap/@id, 't'))"/>
+              value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
          <let name="tgroup" value="ancestor::oasis:tgroup[1]"/>
          <let name="cols"
               value="$tgroup/@cols[. castable as xs:integer]/xs:integer(.)"/>
@@ -3487,9 +3487,9 @@ Use the <let> element to define the attribute if necessary.
    </pattern>
 
    <pattern><!--Rule tab17b is a copy of a rule created by Wendell Piez and hosted in GitHub at: https://github.com/wendellpiez/JATSKit. Extra predicates have been added to the context, and the error message has been changed.-->
-      <rule context="oasis:entry[ancestor::oasis:tgroup[@cols castable as xs:integer and number(@cols) gt 0][number(@cols) eq count(oasis:colspec)]]">
+      <rule context="oasis:entry[ancestor::oasis:tgroup[@cols castable as xs:integer and number(@cols) gt 0][number(@cols) eq count(oasis:colspec)]][not(ancestor::alternatives[graphic])]">
          <let name="tabName"
-              value="concat('Table ',substring-after(ancestor::oasis:table-wrap/@id, 't'))"/>
+              value="concat('Table ',substring-after(ancestor::table-wrap/@id, 't'))"/>
          <let name="tgroup" value="ancestor::oasis:tgroup[1]"/>
          <let name="cols"
               value="$tgroup/@cols[. castable as xs:integer]/xs:integer(.)"/>
