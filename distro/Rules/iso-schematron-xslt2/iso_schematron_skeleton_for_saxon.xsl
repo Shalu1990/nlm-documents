@@ -639,6 +639,8 @@ which require a preprocess.
 	-->
     
     <xsl:call-template name="iso:exslt.add.imports" /> <!-- RJ moved report BH -->
+	<xsl:text>&#10;&#10;</xsl:text><xsl:comment>OASIS SUPPORT XSL INCLUDE</xsl:comment><xsl:text>&#10;</xsl:text>
+	<xsl:call-template name="call-oasis-support-import" />
 	<axsl:param name="archiveDirParameter" />
 	<axsl:param name="archiveNameParameter" />
 	<axsl:param name="fileNameParameter"  />
@@ -652,8 +654,8 @@ which require a preprocess.
 	<xsl:call-template name="process-prolog"/> 
     <xsl:text>&#10;&#10;</xsl:text><xsl:comment>XSD TYPES FOR XSLT2</xsl:comment><xsl:text>&#10;</xsl:text>
 	<xsl:apply-templates mode="do-types"   select="xsl:import-schema"/>
-    <xsl:text>&#10;&#10;</xsl:text><xsl:comment>KEYS AND FUNCTIONS</xsl:comment><xsl:text>&#10;</xsl:text>
-	<xsl:apply-templates mode="do-keys"   select="xsl:include | xsl:key | xsl:function "/>
+	<xsl:text>&#10;&#10;</xsl:text><xsl:comment>KEYS AND FUNCTIONS</xsl:comment><xsl:text>&#10;</xsl:text>
+	<xsl:apply-templates mode="do-keys"   select="xsl:key | xsl:function "/>
     <xsl:text>&#10;&#10;</xsl:text><xsl:comment>DEFAULT RULES</xsl:comment><xsl:text>&#10;</xsl:text>
     <xsl:call-template name="generate-default-rules" />
     <xsl:text>&#10;&#10;</xsl:text><xsl:comment>SCHEMA SETUP</xsl:comment><xsl:text>&#10;</xsl:text>
@@ -967,6 +969,16 @@ which require a preprocess.
       
 </xsl:template>
 
+<xsl:template name="call-oasis-support-import">
+	<xsl:variable name="xsl-uri" select="document-uri(document(''))" />
+	<xsl:variable name="rules-path" select="substring-before($xsl-uri, 'iso-schematron-xslt2/')" />
+	
+	<axsl:import>
+		<xsl:attribute name="href"><xsl:value-of select="concat($rules-path, 'oasis-table-schematron-support.xsl')"></xsl:value-of>
+		</xsl:attribute>
+	</axsl:import>
+</xsl:template>
+
 <!-- ============================================================== -->
 <!-- ISO SCHEMATRON ELEMENTS -->
 <!-- ============================================================== -->
@@ -1186,20 +1198,10 @@ which require a preprocess.
          </xsl:if>      
 	     <xsl:copy-of select="."/>
   </xsl:template>
-	
-	<xsl:template match="xsl:function"  /><!-- swallow -->
-	
-	<!-- XSL INCLUDE -->
-	<xsl:template  match="xsl:include" mode="do-keys" >
-		<xsl:if test="not(@href)">
-			<xsl:message>href attribute missing from include</xsl:message>
-		</xsl:if>      
-		<xsl:copy-of select="."/>
-	</xsl:template>
-	
-	<xsl:template match="xsl:include"  /><!-- swallow -->
 
-	<xsl:template match="iso:function"  >
+	<xsl:template match="xsl:function "  /><!-- swallow -->
+
+	<xsl:template match="iso:function "  >
 		<xsl:message><xsl:call-template name="outputLocalizedMessage" ><xsl:with-param name="number">17</xsl:with-param></xsl:call-template></xsl:message>
     </xsl:template>
 
